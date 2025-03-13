@@ -1210,31 +1210,29 @@
                 </ul>
                 
                 <div class="contact-form">
-                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-success-message="お問い合わせありがとうございます！メッセージを受け付けました。内容を確認次第、ご連絡いたします。" aria-label="お問い合わせフォーム">
-                        <input type="hidden" name="form-name" value="contact" />
-                        <input type="hidden" name="to-email" value="tomotravel.pm@gmail.com" />
-                        <p class="hidden">
-                            <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
-                        </p>
-                        <div class="form-group">
-                            <label for="name">お名前</label>
-                            <input type="text" id="name" name="name" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">メールアドレス</label>
-                            <input type="email" id="email" name="email" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">件名</label>
-                            <input type="text" id="subject" name="subject" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">お問い合わせ内容</label>
-                            <textarea id="message" name="message" required aria-required="true"></textarea>
-                        </div>
-                        <button type="submit" aria-label="フォームを送信する"><i class="fas fa-paper-plane"></i> 送信する</button>
-                    </form>
-                </div>
+    <form id="contactForm" action="https://formspree.io/f/xgegpzoj" method="POST" aria-label="お問い合わせフォーム">
+        <div class="form-group">
+            <label for="name">お名前</label>
+            <input type="text" id="name" name="name" required aria-required="true">
+        </div>
+        <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" required aria-required="true">
+        </div>
+        <div class="form-group">
+            <label for="subject">件名</label>
+            <input type="text" id="subject" name="subject" required aria-required="true">
+        </div>
+        <div class="form-group">
+            <label for="message">お問い合わせ内容</label>
+            <textarea id="message" name="message" required aria-required="true"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="ウェブサイトからのお問い合わせ">
+        <input type="hidden" name="_language" value="ja">
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" aria-label="フォームを送信する"><i class="fas fa-paper-plane"></i> 送信する</button>
+    </form>
+</div>
             </div>
         </section>
     </div>
