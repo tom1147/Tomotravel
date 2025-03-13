@@ -1,20 +1,4 @@
-.surfshark {
-            background-color: #0F212E;
-            border-color: #0A1822;
-        }
-        
-        .surfshark:hover {
-            background-color: #0A1822;
-        }
-        
-        .nordvpn {
-            background-color: #4687FF;
-            border-color: #2970FF;
-        }
-        
-        .nordvpn:hover {
-            background-color: #2970FF;
-        }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja" dir="ltr">
 <head>
     <meta charset="UTF-8">
@@ -985,9 +969,35 @@
                 font-size: 14px;
             }
         }
+        
+        .surfshark {
+            background-color: #0F212E;
+            border-color: #0A1822;
+        }
+        
+        .surfshark:hover {
+            background-color: #0A1822;
+        }
+        
+        .nordvpn {
+            background-color: #4687FF;
+            border-color: #2970FF;
+        }
+        
+        .nordvpn:hover {
+            background-color: #2970FF;
+        }
     </style>
 </head>
 <body>
+    <!-- Netlifyが正しくフォームを検出するための非表示フォーム -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="subject" />
+        <textarea name="message"></textarea>
+    </form>
+    
     <header id="header">
         <div class="container">
             <div class="header-content">
@@ -1176,8 +1186,10 @@
                 </ul>
                 
                 <div class="contact-form">
-                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-label="お問い合わせフォーム">
+                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" aria-label="お問い合わせフォーム">
                         <input type="hidden" name="form-name" value="contact" />
+                        <!-- 送信先メールアドレスを指定 -->
+                        <input type="hidden" name="to-email" value="tomotravel.pm@gmail.com" />
                         <p class="hidden">
                             <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
                         </p>
@@ -1188,6 +1200,10 @@
                         <div class="form-group">
                             <label for="email">メールアドレス</label>
                             <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">件名</label>
+                            <input type="text" id="subject" name="subject" required aria-required="true">
                         </div>
                         <div class="form-group">
                             <label for="message">お問い合わせ内容</label>
