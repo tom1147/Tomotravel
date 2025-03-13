@@ -1186,9 +1186,10 @@
                 </ul>
                 
             <div class="contact-form">
-    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" aria-label="お問い合わせフォーム">
+    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" netlify aria-label="お問い合わせフォーム">
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="to-email" value="tomotravel.pm@gmail.com" />
+        <input type="hidden" name="success_url" value="/thank-you" />
         <p class="hidden">
             <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
         </p>
