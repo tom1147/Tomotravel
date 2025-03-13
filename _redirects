@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせありがとうございます | とも旅ちゃんねるVLOG</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1E90FF;
+            --accent: #ff6b6b;
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            --border-radius: 12px;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 40px 20px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            margin: 20px;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .icon {
+            font-size: 60px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(30,144,255,0.3);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(30,144,255,0.2);
+        }
+    </style>
+    
+    <!-- 自動リダイレクト防止のためのJavaScript -->
+    <script>
+    // クエリパラメータで英語のメッセージがまだ表示される場合に備えて
+    document.addEventListener('DOMContentLoaded', function() {
+        // フォーム送信後のNetlifyの英語メッセージを非表示にする
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes) {
+                    mutation.addedNodes.forEach(function(node) {
+                        if (node.nodeType === 1) { // element node
+                            if (node.textContent.includes('Thank you') || 
+                                node.textContent.includes('Your form submission has been received')) {
+                                node.style.display = 'none';
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        
+        observer.observe(document.body, { childList: true, subtree: true });
+    });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>お問い合わせありがとうございます！</h1>
+        <p>メッセージを受け付けました。<br>内容を確認次第、ご連絡させていただきます。</p>
+        <a href="/" class="btn">サイトに戻る</a>
+    </div>
+</body>
+</html>
