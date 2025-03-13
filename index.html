@@ -618,6 +618,24 @@
             background-color: #990000;
         }
         
+        .surfshark {
+            background-color: #0F212E;
+            border-color: #0A1822;
+        }
+        
+        .surfshark:hover {
+            background-color: #0A1822;
+        }
+        
+        .nordvpn {
+            background-color: #4687FF;
+            border-color: #2970FF;
+        }
+        
+        .nordvpn:hover {
+            background-color: #2970FF;
+        }
+        
         /* ===== CONTACT FORM ===== */
         .contact-form {
             margin-top: 30px;
@@ -969,28 +987,34 @@
                 font-size: 14px;
             }
         }
-        
-        .surfshark {
-            background-color: #0F212E;
-            border-color: #0A1822;
+
+        /* フォーム送信成功メッセージのスタイル */
+        .form-success-message {
+            background-color: #f0f8ff;
+            border: 1px solid var(--primary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
         }
         
-        .surfshark:hover {
-            background-color: #0A1822;
+        .form-success-message h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
         }
         
-        .nordvpn {
-            background-color: #4687FF;
-            border-color: #2970FF;
-        }
-        
-        .nordvpn:hover {
-            background-color: #2970FF;
+        .form-success-message a {
+            color: var(--primary);
+            text-decoration: underline;
+            display: inline-block;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
-    <!-- Netlifyが正しくフォームを検出するための非表示フォーム -->
+    <!-- Netlifyフォーム検出用の隠しフォーム -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
         <input type="text" name="name" />
         <input type="email" name="email" />
@@ -1185,33 +1209,32 @@
                     <li><i class="fas fa-handshake"></i> <strong>スポンサーシップ・広告案件</strong>（動画内でのプロダクト紹介、サービス体験レビュー、旅行先でのコラボなど。動画内にクレジット表記いたします。詳細はお問い合わせください）</li>
                 </ul>
                 
-            <div class="contact-form">
-    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" netlify aria-label="お問い合わせフォーム">
-        <input type="hidden" name="form-name" value="contact" />
-        <input type="hidden" name="to-email" value="tomotravel.pm@gmail.com" />
-        <input type="hidden" name="success_url" value="/thank-you" />
-        <p class="hidden">
-            <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
-        </p>
-        <div class="form-group">
-            <label for="name">お名前</label>
-            <input type="text" id="name" name="name" required aria-required="true">
-        </div>
-        <div class="form-group">
-            <label for="email">メールアドレス</label>
-            <input type="email" id="email" name="email" required aria-required="true">
-        </div>
-        <div class="form-group">
-            <label for="subject">件名</label>
-            <input type="text" id="subject" name="subject" required aria-required="true">
-        </div>
-        <div class="form-group">
-            <label for="message">お問い合わせ内容</label>
-            <textarea id="message" name="message" required aria-required="true"></textarea>
-        </div>
-        <button type="submit" aria-label="フォームを送信する"><i class="fas fa-paper-plane"></i> 送信する</button>
-    </form>
-</div>
+                <div class="contact-form">
+                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-success-message="お問い合わせありがとうございます！メッセージを受け付けました。内容を確認次第、ご連絡いたします。" aria-label="お問い合わせフォーム">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <input type="hidden" name="to-email" value="tomotravel.pm@gmail.com" />
+                        <p class="hidden">
+                            <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
+                        </p>
+                        <div class="form-group">
+                            <label for="name">お名前</label>
+                            <input type="text" id="name" name="name" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">件名</label>
+                            <input type="text" id="subject" name="subject" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">お問い合わせ内容</label>
+                            <textarea id="message" name="message" required aria-required="true"></textarea>
+                        </div>
+                        <button type="submit" aria-label="フォームを送信する"><i class="fas fa-paper-plane"></i> 送信する</button>
+                    </form>
+                </div>
             </div>
         </section>
     </div>
@@ -1293,6 +1316,36 @@
                     behavior: 'smooth'
                 });
             });
+        });
+        
+        // フォーム送信後の英語メッセージを日本語に置き換える
+        document.addEventListener('DOMContentLoaded', function() {
+            // フォーム送信成功時のパラメータをチェック
+            if (window.location.search.includes('submission-ok') || 
+                window.location.search.includes('submit-success') || 
+                window.location.search.includes('success=true')) {
+                
+                // 1秒待ってから実行（Netlifyのメッセージが表示されるのを待つ）
+                setTimeout(function() {
+                    // 英語のメッセージを探す
+                    const messages = document.querySelectorAll('div, p, h1, h2, h3');
+                    
+                    messages.forEach(function(el) {
+                        if (el.textContent.includes('Thank you') || 
+                            el.textContent.includes('Your form submission has been received') ||
+                            el.textContent.includes('Back to our site')) {
+                            
+                            // 日本語のメッセージを作成
+                            const successMessage = document.createElement('div');
+                            successMessage.className = 'form-success-message';
+                            successMessage.innerHTML = '<h3>お問い合わせありがとうございます！</h3><p>メッセージを受け付けました。内容を確認次第、ご連絡いたします。</p><a href="/">サイトに戻る</a>';
+                            
+                            // 元のメッセージを置き換え
+                            el.parentNode.replaceChild(successMessage, el);
+                        }
+                    });
+                }, 1000);
+            }
         });
     </script>
 </body>
