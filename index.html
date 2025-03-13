@@ -1209,8 +1209,12 @@
                     <li><i class="fas fa-handshake"></i> <strong>スポンサーシップ・広告案件</strong>（動画内でのプロダクト紹介、サービス体験レビュー、旅行先でのコラボなど。動画内にクレジット表記いたします。詳細はお問い合わせください）</li>
                 </ul>
                 
-                <div class="contact-form">
-    <form id="contactForm" action="https://formspree.io/f/xgegpzoj" method="POST" aria-label="お問い合わせフォーム">
+               <div class="contact-form">
+    <form id="contactForm" name="contact" method="POST" netlify netlify-honeypot="bot-field" action="/?success=true">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+            <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
+        </p>
         <div class="form-group">
             <label for="name">お名前</label>
             <input type="text" id="name" name="name" required aria-required="true">
@@ -1227,9 +1231,6 @@
             <label for="message">お問い合わせ内容</label>
             <textarea id="message" name="message" required aria-required="true"></textarea>
         </div>
-        <input type="hidden" name="_subject" value="ウェブサイトからのお問い合わせ">
-        <input type="hidden" name="_language" value="ja">
-        <input type="text" name="_gotcha" style="display:none">
         <button type="submit" aria-label="フォームを送信する"><i class="fas fa-paper-plane"></i> 送信する</button>
     </form>
 </div>
@@ -1346,5 +1347,29 @@
             }
         });
     </script>
+    <script>
+// フォーム送信後のメッセージを日本語に変更
+document.addEventListener('DOMContentLoaded', function() {
+    // URLに成功パラメータがあるか確認
+    if (window.location.search.includes('success=true')) {
+        // bodyの内容を全て置き換え
+        document.body.innerHTML = `
+            <div style="text-align: center; font-family: 'Noto Sans JP', sans-serif; padding: 100px 20px; max-width: 600px; margin: 0 auto;">
+                <div style="background-color: white; border-radius: 12px; padding: 40px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                    <div style="font-size: 60px; color: #ff6b6b; margin-bottom: 20px;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h1 style="color: #1E90FF; font-size: 24px; margin-bottom: 20px;">お問い合わせありがとうございます！</h1>
+                    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 25px;">メッセージを受け付けました。<br>内容を確認次第、ご連絡させていただきます。</p>
+                    <a href="/" style="display: inline-block; background: #1E90FF; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; border: 2px solid transparent; box-shadow: 0 5px 15px rgba(30,144,255,0.3);">サイトに戻る</a>
+                </div>
+            </div>
+        `;
+        
+        // タイトルを変更
+        document.title = "お問い合わせありがとうございます | とも旅ちゃんねるVLOG";
+    }
+});
+</script>
 </body>
 </html>
