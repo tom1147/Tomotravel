@@ -825,6 +825,62 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
+        /* ===== THANK YOU PAGE ===== */
+        .thank-you-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .thank-you-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .thank-you-icon {
+            font-size: 60px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .thank-you-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .thank-you-text {
+            margin-bottom: 25px;
+        }
+        
+        .thank-you-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(30,144,255,0.3);
+        }
+        
+        .thank-you-btn:hover {
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(30,144,255,0.2);
+        }
+        
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
@@ -987,293 +1043,296 @@
                 font-size: 14px;
             }
         }
-
-        /* フォーム送信成功メッセージのスタイル */
-        .form-success-message {
-            background-color: #f0f8ff;
-            border: 1px solid var(--primary);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin: 50px auto;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-        }
-        
-        .form-success-message h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .form-success-message a {
-            color: var(--primary);
-            text-decoration: underline;
-            display: inline-block;
-            margin-top: 15px;
-        }
     </style>
 </head>
 <body>
-    <!-- Netlifyフォーム検出用の隠しフォーム -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="text" name="subject" />
-        <textarea name="message"></textarea>
-    </form>
+    <!-- URLパラメータが存在する場合にサンクスページを表示 -->
+    <div id="thank-you-page" class="thank-you-page" style="display: none;">
+        <div class="thank-you-container">
+            <div class="thank-you-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 class="thank-you-title">お問い合わせありがとうございます！</h1>
+            <p class="thank-you-text">メッセージを受け付けました。<br>内容を確認次第、ご連絡させていただきます。</p>
+            <a href="/" class="thank-you-btn">サイトに戻る</a>
+        </div>
+    </div>
     
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-center" aria-label="サイトロゴ">
-                    <h1 class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></h1>
+    <!-- メインコンテンツ -->
+    <div id="main-content">
+        <header id="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-center" aria-label="サイトロゴ">
+                        <h1 class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></h1>
+                    </div>
+                    <nav role="navigation" aria-label="メインナビゲーション">
+                        <ul class="nav-menu">
+                            <li><a href="#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
+                            <li><a href="#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
+                            <li><a href="#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
+                            <li><a href="#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
+                            <li><a href="#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
+                            <li><a href="#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
+                            <li><a href="#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
+                            <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <nav role="navigation" aria-label="メインナビゲーション">
-                    <ul class="nav-menu">
-                        <li><a href="#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
-                        <li><a href="#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
-                        <li><a href="#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
-                        <li><a href="#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
-                        <li><a href="#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
-                        <li><a href="#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
-                        <li><a href="#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
-                        <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+            </div>
+        </header>
+        
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-overlay">
+                    <h2>一緒に旅をしませんか？</h2>
+                    <p>とも旅ちゃんねるVLOGで世界の楽しさや文化を体験！英語ができなくても海外旅行は楽しめる！</p>
+                    <a href="#videos" class="hero-btn"><i class="fas fa-play-circle"></i> 旅の世界を見る</a>
+                </div>
+            </div>
+            <a href="#about" class="scroll-down" aria-label="下にスクロール">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+        
+        <div class="container">
+            <section id="about" class="fade-in">
+                <div class="section-bg-icon">
+                    <i class="fas fa-globe-asia"></i>
+                </div>
+                <div class="section-content">
+                    <h2>～とも旅チャンネルの概要～</h2>
+                    <p><i class="fas fa-plane-departure"></i> とも旅ちゃんねるでは東南アジアを中心に海外一人旅をしているリアルな様子をお届けするチャンネルです。一緒に旅しているような臨場感あふれる動画作りをモットーにしています。</p>
+                    <p><i class="fas fa-language"></i> 英語ができなくても、単語を並べるだけでも、身振り手振りでも何とかなる！そんな海外旅行の敷居を下げるような体験を共有したいと思っています。怖がらずに一歩踏み出せば、素晴らしい出会いや体験が待っています。ぜひみんなも行ってみよう！</p>
+                </div>
+            </section>
+            
+            <section id="videos" class="fade-in">
+                <div class="section-bg-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <div class="section-content">
+                    <h2>～最新動画はこちら！～</h2>
+                    <p><i class="fab fa-youtube"></i> チャンネル登録、高評価、コメントをいただけると励みになります！<i class="fas fa-calendar-alt"></i> 新しい旅の様子を定期的に更新中です。</p>
+                    <div class="video-container" aria-label="最新の旅行動画">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/z5APVNRi0FQ" title="とも旅ちゃんねるの最新動画" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" class="hero-btn">
+                            <i class="fab fa-youtube"></i> YouTubeチャンネルを見る
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="travel" class="fade-in">
+                <div class="section-bg-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div class="section-content">
+                    <h2>～海外一人旅の魅力～</h2>
+                    <p><i class="fas fa-clock"></i> 自分のペースで誰にも縛られず旅ができる、それが一人旅の最高の魅力！</p>
+                    <p><i class="fas fa-route"></i> 「あ、このお店気になる！」と思ったら寄り道できるし、疲れたら休めばいい。朝ゆっくり起きたっていいし、一日中歩き回ることだってできる。全部自分次第なんです。</p>
+                    <p><i class="fas fa-users"></i> 最初は不安もあるけど、現地の人との思わぬ出会いや、偶然見つけた絶景に出会えた時の喜びは格別。一人だからこそ、地元の人が声をかけてくれたり、本当の旅ができるんです。</p>
+                    <p><i class="fas fa-heart"></i> 何より、自分の中の小さな勇気が大きな自信に変わる瞬間を体験できるはず！</p>
+                </div>
+            </section>
+            
+            <section id="equipment" class="fade-in">
+                <div class="section-bg-icon">
+                    <i class="fas fa-camera-retro"></i>
+                </div>
+                <div class="section-content">
+                    <h2>～撮影機材・旅で使用している物～</h2>
+                    <ul class="equipment-list">
+                        <li><strong>カメラ:</strong> insta360 x4（自撮り棒必須）- 360度撮影できるので一人旅でも臨場感あふれる映像が撮れます！また撮り逃しが大幅に減ります。360度動画はVRヘッドセットをつければまるでその場にいるように追体験できちゃう！？(環境構築は高いですが…)
+                        <div class="purchase-links purchase-links-inline">
+                            <span class="buy-title">ご購入はこちら</span>
+                            <div class="buttons-container">
+                                <a href="https://www.amazon.co.jp/" target="_blank" class="buy-button amazon"><i class="fab fa-amazon"></i> Amazon</a>
+                                <a href="https://www.rakuten.co.jp/" target="_blank" class="buy-button rakuten"><i class="fas fa-shopping-cart"></i> 楽天</a>
+                            </div>
+                        </div>
+                        </li>
+                        <li><strong>通信回線:</strong> ahamo（30GB使えて世界の91か国でそのまま使えて2970円。とても安くて普段使いでも最高！）e-simや現地シムよりコスパいいケースも多々あります。何より現地でSIM契約の手続きをする必要がなく、到着したその瞬間からネットが使えるのが超便利です！
+                        <div class="purchase-links purchase-links-inline">
+                            <span class="buy-title">契約はこちらから</span>
+                            <div class="buttons-container">
+                                <a href="https://ahamo.com/" target="_blank" class="buy-button ahamo"><i class="fas fa-mobile-alt"></i> ahamo公式</a>
+                                <span class="affiliate-note">(こちらから契約いただけると旅の資金になります笑)</span>
+                            </div>
+                        </div>
+                        </li>
+                        <li><i class="fas fa-tshirt"></i> <strong>着替え:</strong> 下着と靴下、Tシャツくらいを持参。Tシャツなどは現地調達すれば最小限の荷物で済みます</li>
+                        <li><i class="fas fa-box-tissue"></i> <strong>ティッシュ・ウェットティッシュ:</strong> 海外ではトイレットペーパーがない場所も多いので必須アイテム。ウェットティッシュもあると便利。ティッシュは多めに持っていくのが良いです</li>
+                        <li><i class="fas fa-mitten"></i> <strong>上着:</strong> 南国でも冷房が効きすぎていることが多いので必須です。飛行機内でマジで寒いから夏でも忘れない方がいいです</li>
+                        <li><i class="fas fa-id-card"></i> <strong>パスポート:</strong> 当たり前ですが命綱です。コピーも別に持ち歩きましょう</li>
+                        <li><i class="fas fa-credit-card"></i> <strong>クレジットカード:</strong> 複数枚持っていくことをおすすめします（※楽天カードは海外で使うと頻繁にロックされることがあり、SMSや電話の関係上解除が面倒なため非推奨です）</li>
+                        <li><i class="fas fa-shield-alt"></i> <strong>VPN:</strong> フリーWiFiを使用する場合は必須！クレジットカードなどの大切な情報を保護します。ホテルやカフェのWiFiは安全ではないので、VPNを使ってセキュリティを確保しましょう。
+                        <div class="purchase-links purchase-links-inline" style="margin-top: 15px; display: flex; align-items: center;">
+                            <span class="buy-title" style="margin-right: 10px; background: rgba(0,0,0,0.05); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">おすすめVPN</span>
+                            <div class="buttons-container" style="display: flex; gap: 10px;">
+                                <a href="https://surfshark.com/" target="_blank" class="buy-button surfshark"><i class="fas fa-shield-virus"></i> Surfshark</a>
+                                <a href="https://nordvpn.com/" target="_blank" class="buy-button nordvpn"><i class="fas fa-lock"></i> NordVPN</a>
+                            </div>
+                            <span class="affiliate-note">(リンクからの契約でチャンネル支援になります)</span>
+                        </div>
+                        </li>
                     </ul>
-                </nav>
-            </div>
+                </div>
+            </section>
+            
+            <section id="booking" class="fade-in">
+                <div class="section-bg-icon">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <div class="section-content">
+                    <h2>～よく使う旅の予約について～</h2>
+                    <p class="affiliate-note-section">※以下のリンクからご予約いただくと、チャンネル運営の支援になります。旅の応援、ありがとうございます！</p>
+                    <ul class="booking-list">
+                        <li>
+                            <strong>Expedia:</strong> ホテルと航空券のセット予約でお得に旅行できます
+                            <div class="purchase-links">
+                                <a href="https://www.expedia.co.jp/" target="_blank" class="buy-button expedia"><i class="fas fa-building"></i> ご予約はこちら</a>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>Trip.com:</strong> 世界中のホテル予約で使える有名なサイトです
+                            <div class="purchase-links">
+                                <a href="https://jp.trip.com/" target="_blank" class="buy-button trip"><i class="fas fa-suitcase"></i> ご予約はこちら</a>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>Agoda:</strong> 世界中で使われている有名な宿泊予約サイトです
+                            <div class="purchase-links">
+                                <a href="https://www.agoda.com/ja-jp/" target="_blank" class="buy-button agoda"><i class="fas fa-bed"></i> ご予約はこちら</a>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>グーグルフライト:</strong> 航空券検索はマジでおすすめ！複数の航空会社を一度に比較できて便利です。価格追跡機能があるので「いつ買うべきか」がわかるし、カレンダービューで最安値の日がひと目でわかります。シンプルなUIなのに高機能で直感的に使えます！
+                            <div class="purchase-links">
+                                <a href="https://www.google.com/travel/flights" target="_blank" class="buy-button google"><i class="fas fa-plane-departure"></i> ご予約はこちら</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="preparation" class="fade-in">
+                <div class="section-bg-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <div class="section-content">
+                    <h2>～事前にしておくこと～</h2>
+                    
+                    <p><i class="fas fa-exclamation-triangle"></i> <strong>東南アジアの場合の注意点:</strong></p>
+                    <p><i class="fas fa-taxi"></i> GrabやBoltなどの配車アプリは事前にクレジットカードなど日本で登録しておかないとSNS認証などができなくて詰むことがあるので注意！現地でSIMを買ってからでは遅いケースがあります。</p>
+                    
+                    <p><i class="fas fa-passport"></i> 各国入出国には電子申請が必要なケースが増えています。例えばフィリピンならe旅行カード（e-Travel）、欧米ならESTAなど。帰国時は「Visit Japan Web」に登録しておくと入国がスムーズです。</p>
+                </div>
+            </section>
+            
+            <section id="contact" class="fade-in">
+                <div class="section-bg-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <div class="section-content">
+                    <h2>～お仕事のご依頼・お問い合わせはこちら～</h2>
+                    <p><i class="fas fa-briefcase"></i> 以下のようなお仕事を承っております：</p>
+                    <ul class="equipment-list" style="margin-bottom: 30px;">
+                        <li><i class="fas fa-video"></i> <strong>撮影依頼</strong>（承れない場合もあります）</li>
+                        <li><i class="fas fa-edit"></i> <strong>動画編集</strong>（Powerdirectorを使用しています）</li>
+                        <li><i class="fas fa-music"></i> <strong>音楽作成</strong>（動画内に使われている音楽・BGMの8割がAIを使用しての自作です）</li>
+                        <li><i class="fas fa-laptop-code"></i> <strong>LP作成</strong>（当ページ程度のクオリティ。GithubとNetlifyを使用した月額無料のLP。更新や運用してもらいたい場合はご相談ください）</li>
+                        <li><i class="fas fa-handshake"></i> <strong>スポンサーシップ・広告案件</strong>（動画内でのプロダクト紹介、サービス体験レビュー、旅行先でのコラボなど。動画内にクレジット表記いたします。詳細はお問い合わせください）</li>
+                    </ul>
+                    
+                    <div class="contact-form">
+                        <!-- Netlify検出用の隠しフォーム -->
+                        <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+                            <input type="text" name="name" />
+                            <input type="email" name="email" />
+                            <input type="text" name="subject" />
+                            <textarea name="message"></textarea>
+                        </form>
+                        
+                        <!-- 実際に表示されるフォーム -->
+                        <form id="contactForm" name="contact" method="POST" action="/?success=true" netlify netlify-honeypot="bot-field">
+                            <input type="hidden" name="form-name" value="contact" />
+                            <input type="hidden" name="to-email" value="tomotravel.pm@gmail.com" />
+                            <p class="hidden">
+                                <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
+                            </p>
+                            <div class="form-group">
+                                <label for="name">お名前</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">メールアドレス</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">件名</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">お問い合わせ内容</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit"><i class="fas fa-paper-plane"></i> 送信する</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
-    </header>
-    
-    <div class="hero">
-        <div class="hero-content">
-            <div class="hero-overlay">
-                <h2>一緒に旅をしませんか？</h2>
-                <p>とも旅ちゃんねるVLOGで世界の楽しさや文化を体験！英語ができなくても海外旅行は楽しめる！</p>
-                <a href="#videos" class="hero-btn"><i class="fas fa-play-circle"></i> 旅の世界を見る</a>
+        
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <h3>とも旅ちゃんねるVLOG</h3>
+                    <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagramアカウント"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TikTokアカウント"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <a href="#about">チャンネル概要</a>
+                        <a href="#videos">最新動画</a>
+                        <a href="#travel">旅の魅力</a>
+                        <a href="#equipment">撮影機材</a>
+                        <a href="#booking">旅の予約</a>
+                        <a href="#contact">お問い合わせ</a>
+                    </div>
+                    
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <a href="#about" class="scroll-down" aria-label="下にスクロール">
-            <i class="fas fa-chevron-down"></i>
-        </a>
+        </footer>
     </div>
-    
-    <div class="container">
-        <section id="about" class="fade-in">
-            <div class="section-bg-icon">
-                <i class="fas fa-globe-asia"></i>
-            </div>
-            <div class="section-content">
-                <h2>～とも旅チャンネルの概要～</h2>
-                <p><i class="fas fa-plane-departure"></i> とも旅ちゃんねるでは東南アジアを中心に海外一人旅をしているリアルな様子をお届けするチャンネルです。一緒に旅しているような臨場感あふれる動画作りをモットーにしています。</p>
-                <p><i class="fas fa-language"></i> 英語ができなくても、単語を並べるだけでも、身振り手振りでも何とかなる！そんな海外旅行の敷居を下げるような体験を共有したいと思っています。怖がらずに一歩踏み出せば、素晴らしい出会いや体験が待っています。ぜひみんなも行ってみよう！</p>
-            </div>
-        </section>
-        
-        <section id="videos" class="fade-in">
-            <div class="section-bg-icon">
-                <i class="fas fa-film"></i>
-            </div>
-            <div class="section-content">
-                <h2>～最新動画はこちら！～</h2>
-                <p><i class="fab fa-youtube"></i> チャンネル登録、高評価、コメントをいただけると励みになります！<i class="fas fa-calendar-alt"></i> 新しい旅の様子を定期的に更新中です。</p>
-                <div class="video-container" aria-label="最新の旅行動画">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/z5APVNRi0FQ" title="とも旅ちゃんねるの最新動画" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div style="text-align: center; margin-top: 20px;">
-                    <a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" class="hero-btn">
-                        <i class="fab fa-youtube"></i> YouTubeチャンネルを見る
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <section id="travel" class="fade-in">
-            <div class="section-bg-icon">
-                <i class="fas fa-map-marked-alt"></i>
-            </div>
-            <div class="section-content">
-                <h2>～海外一人旅の魅力～</h2>
-                <p><i class="fas fa-clock"></i> 自分のペースで誰にも縛られず旅ができる、それが一人旅の最高の魅力！</p>
-                <p><i class="fas fa-route"></i> 「あ、このお店気になる！」と思ったら寄り道できるし、疲れたら休めばいい。朝ゆっくり起きたっていいし、一日中歩き回ることだってできる。全部自分次第なんです。</p>
-                <p><i class="fas fa-users"></i> 最初は不安もあるけど、現地の人との思わぬ出会いや、偶然見つけた絶景に出会えた時の喜びは格別。一人だからこそ、地元の人が声をかけてくれたり、本当の旅ができるんです。</p>
-                <p><i class="fas fa-heart"></i> 何より、自分の中の小さな勇気が大きな自信に変わる瞬間を体験できるはず！</p>
-            </div>
-        </section>
-        
-        <section id="equipment" class="fade-in">
-            <div class="section-bg-icon">
-                <i class="fas fa-camera-retro"></i>
-            </div>
-            <div class="section-content">
-                <h2>～撮影機材・旅で使用している物～</h2>
-                <ul class="equipment-list">
-                    <li><strong>カメラ:</strong> insta360 x4（自撮り棒必須）- 360度撮影できるので一人旅でも臨場感あふれる映像が撮れます！また撮り逃しが大幅に減ります。360度動画はVRヘッドセットをつければまるでその場にいるように追体験できちゃう！？(環境構築は高いですが…)
-                    <div class="purchase-links purchase-links-inline">
-                        <span class="buy-title">ご購入はこちら</span>
-                        <div class="buttons-container">
-                            <a href="https://www.amazon.co.jp/" target="_blank" class="buy-button amazon"><i class="fab fa-amazon"></i> Amazon</a>
-                            <a href="https://www.rakuten.co.jp/" target="_blank" class="buy-button rakuten"><i class="fas fa-shopping-cart"></i> 楽天</a>
-                        </div>
-                    </div>
-                    </li>
-                    <li><strong>通信回線:</strong> ahamo（30GB使えて世界の91か国でそのまま使えて2970円。とても安くて普段使いでも最高！）e-simや現地シムよりコスパいいケースも多々あります。何より現地でSIM契約の手続きをする必要がなく、到着したその瞬間からネットが使えるのが超便利です！
-                    <div class="purchase-links purchase-links-inline">
-                        <span class="buy-title">契約はこちらから</span>
-                        <div class="buttons-container">
-                            <a href="https://ahamo.com/" target="_blank" class="buy-button ahamo"><i class="fas fa-mobile-alt"></i> ahamo公式</a>
-                            <span class="affiliate-note">(こちらから契約いただけると旅の資金になります笑)</span>
-                        </div>
-                    </div>
-                    </li>
-                    <li><i class="fas fa-tshirt"></i> <strong>着替え:</strong> 下着と靴下、Tシャツくらいを持参。Tシャツなどは現地調達すれば最小限の荷物で済みます</li>
-                    <li><i class="fas fa-box-tissue"></i> <strong>ティッシュ・ウェットティッシュ:</strong> 海外ではトイレットペーパーがない場所も多いので必須アイテム。ウェットティッシュもあると便利。ティッシュは多めに持っていくのが良いです</li>
-                    <li><i class="fas fa-mitten"></i> <strong>上着:</strong> 南国でも冷房が効きすぎていることが多いので必須です。飛行機内でマジで寒いから夏でも忘れない方がいいです</li>
-                    <li><i class="fas fa-id-card"></i> <strong>パスポート:</strong> 当たり前ですが命綱です。コピーも別に持ち歩きましょう</li>
-                    <li><i class="fas fa-credit-card"></i> <strong>クレジットカード:</strong> 複数枚持っていくことをおすすめします（※楽天カードは海外で使うと頻繁にロックされることがあり、SMSや電話の関係上解除が面倒なため非推奨です）</li>
-                    <li><i class="fas fa-shield-alt"></i> <strong>VPN:</strong> フリーWiFiを使用する場合は必須！クレジットカードなどの大切な情報を保護します。ホテルやカフェのWiFiは安全ではないので、VPNを使ってセキュリティを確保しましょう。
-                    <div class="purchase-links purchase-links-inline" style="margin-top: 15px; display: flex; align-items: center;">
-                        <span class="buy-title" style="margin-right: 10px; background: rgba(0,0,0,0.05); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">おすすめVPN</span>
-                        <div class="buttons-container" style="display: flex; gap: 10px;">
-                            <a href="https://surfshark.com/" target="_blank" class="buy-button surfshark" style="background-color: #0F212E; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center;"><i class="fas fa-shield-virus" style="margin-right: 5px;"></i> Surfshark</a>
-                            <a href="https://nordvpn.com/" target="_blank" class="buy-button nordvpn" style="background-color: #4687FF; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center;"><i class="fas fa-lock" style="margin-right: 5px;"></i> NordVPN</a>
-                        </div>
-                        <span class="affiliate-note" style="font-size: 0.8rem; color: #6c757d; font-style: italic; margin-left: 10px;">(リンクからの契約でチャンネル支援になります)</span>
-                    </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        
-        <section id="booking" class="fade-in">
-            <div class="section-bg-icon">
-                <i class="fas fa-ticket-alt"></i>
-            </div>
-            <div class="section-content">
-                <h2>～よく使う旅の予約について～</h2>
-                <p class="affiliate-note-section">※以下のリンクからご予約いただくと、チャンネル運営の支援になります。旅の応援、ありがとうございます！</p>
-                <ul class="booking-list">
-                    <li>
-                        <strong>Expedia:</strong> ホテルと航空券のセット予約でお得に旅行できます
-                        <div class="purchase-links">
-                            <a href="https://www.expedia.co.jp/" target="_blank" class="buy-button expedia"><i class="fas fa-building"></i> ご予約はこちら</a>
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Trip.com:</strong> 世界中のホテル予約で使える有名なサイトです
-                        <div class="purchase-links">
-                            <a href="https://jp.trip.com/" target="_blank" class="buy-button trip"><i class="fas fa-suitcase"></i> ご予約はこちら</a>
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Agoda:</strong> 世界中で使われている有名な宿泊予約サイトです
-                        <div class="purchase-links">
-                            <a href="https://www.agoda.com/ja-jp/" target="_blank" class="buy-button agoda"><i class="fas fa-bed"></i> ご予約はこちら</a>
-                        </div>
-                    </li>
-                    <li>
-                        <strong>グーグルフライト:</strong> 航空券検索はマジでおすすめ！複数の航空会社を一度に比較できて便利です。価格追跡機能があるので「いつ買うべきか」がわかるし、カレンダービューで最安値の日がひと目でわかります。シンプルなUIなのに高機能で直感的に使えます！
-                        <div class="purchase-links">
-                            <a href="https://www.google.com/travel/flights" target="_blank" class="buy-button google"><i class="fas fa-plane-departure"></i> ご予約はこちら</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        
-        <section id="preparation" class="fade-in">
-            <div class="section-bg-icon">
-                <i class="fas fa-clipboard-check"></i>
-            </div>
-            <div class="section-content">
-                <h2>～事前にしておくこと～</h2>
-                
-                <p><i class="fas fa-exclamation-triangle"></i> <strong>東南アジアの場合の注意点:</strong></p>
-                <p><i class="fas fa-taxi"></i> GrabやBoltなどの配車アプリは事前にクレジットカードなど日本で登録しておかないとSNS認証などができなくて詰むことがあるので注意！現地でSIMを買ってからでは遅いケースがあります。</p>
-                
-                <p><i class="fas fa-passport"></i> 各国入出国には電子申請が必要なケースが増えています。例えばフィリピンならe旅行カード（e-Travel）、欧米ならESTAなど。帰国時は「Visit Japan Web」に登録しておくと入国がスムーズです。</p>
-            </div>
-        </section>
-        
-        <section id="contact" class="fade-in">
-            <div class="section-bg-icon">
-                <i class="fas fa-envelope-open-text"></i>
-            </div>
-            <div class="section-content">
-                <h2>～お仕事のご依頼・お問い合わせはこちら～</h2>
-                <p><i class="fas fa-briefcase"></i> 以下のようなお仕事を承っております：</p>
-                <ul class="equipment-list" style="margin-bottom: 30px;">
-                    <li><i class="fas fa-video"></i> <strong>撮影依頼</strong>（承れない場合もあります）</li>
-                    <li><i class="fas fa-edit"></i> <strong>動画編集</strong>（Powerdirectorを使用しています）</li>
-                    <li><i class="fas fa-music"></i> <strong>音楽作成</strong>（動画内に使われている音楽・BGMの8割がAIを使用しての自作です）</li>
-                    <li><i class="fas fa-laptop-code"></i> <strong>LP作成</strong>（当ページ程度のクオリティ。GithubとNetlifyを使用した月額無料のLP。更新や運用してもらいたい場合はご相談ください）</li>
-                    <li><i class="fas fa-handshake"></i> <strong>スポンサーシップ・広告案件</strong>（動画内でのプロダクト紹介、サービス体験レビュー、旅行先でのコラボなど。動画内にクレジット表記いたします。詳細はお問い合わせください）</li>
-                </ul>
-                
-               <div class="contact-form">
-    <form id="contactForm" name="contact" method="POST" netlify netlify-honeypot="bot-field" action="/?success=true">
-        <input type="hidden" name="form-name" value="contact" />
-        <p class="hidden">
-            <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
-        </p>
-        <div class="form-group">
-            <label for="name">お名前</label>
-            <input type="text" id="name" name="name" required aria-required="true">
-        </div>
-        <div class="form-group">
-            <label for="email">メールアドレス</label>
-            <input type="email" id="email" name="email" required aria-required="true">
-        </div>
-        <div class="form-group">
-            <label for="subject">件名</label>
-            <input type="text" id="subject" name="subject" required aria-required="true">
-        </div>
-        <div class="form-group">
-            <label for="message">お問い合わせ内容</label>
-            <textarea id="message" name="message" required aria-required="true"></textarea>
-        </div>
-        <button type="submit" aria-label="フォームを送信する"><i class="fas fa-paper-plane"></i> 送信する</button>
-    </form>
-</div>
-            </div>
-        </section>
-    </div>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3>とも旅ちゃんねるVLOG</h3>
-                <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
-                
-                <div class="social-links">
-                    <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" aria-label="Instagramアカウント"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="TikTokアカウント"><i class="fab fa-tiktok"></i></a>
-                </div>
-                
-                <div class="footer-links">
-                    <a href="#about">チャンネル概要</a>
-                    <a href="#videos">最新動画</a>
-                    <a href="#travel">旅の魅力</a>
-                    <a href="#equipment">撮影機材</a>
-                    <a href="#booking">旅の予約</a>
-                    <a href="#contact">お問い合わせ</a>
-                </div>
-                
-                <div class="footer-bottom">
-                    <p>&copy; 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
     
     <script>
+        // URLパラメータをチェックして成功ページを表示
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.search.includes('success=true')) {
+                document.getElementById('thank-you-page').style.display = 'flex';
+                document.getElementById('main-content').style.display = 'none';
+                document.title = "お問い合わせありがとうございます | とも旅ちゃんねるVLOG";
+                window.scrollTo(0, 0);
+            }
+        });
+        
         // スクロール時のヘッダー変更
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
-            if (window.scrollY > 100) {
+            if (header && window.scrollY > 100) {
                 header.classList.add('scrolled');
-            } else {
+            } else if (header) {
                 header.classList.remove('scrolled');
             }
         });
@@ -1298,78 +1357,24 @@
             });
         });
         
-        // Netlifyフォーム送信の成功メッセージ
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('success') && urlParams.get('success') === 'true') {
-            alert('お問い合わせありがとうございます。内容を確認次第、ご連絡いたします。');
-            // クエリパラメータを削除してリダイレクト
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
-        
         // スムーズスクロール
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         });
-        
-        // フォーム送信後の英語メッセージを日本語に置き換える
-        document.addEventListener('DOMContentLoaded', function() {
-            // フォーム送信成功時のパラメータをチェック
-            if (window.location.search.includes('submission-ok') || 
-                window.location.search.includes('submit-success') || 
-                window.location.search.includes('success=true')) {
-                
-                // 1秒待ってから実行（Netlifyのメッセージが表示されるのを待つ）
-                setTimeout(function() {
-                    // 英語のメッセージを探す
-                    const messages = document.querySelectorAll('div, p, h1, h2, h3');
-                    
-                    messages.forEach(function(el) {
-                        if (el.textContent.includes('Thank you') || 
-                            el.textContent.includes('Your form submission has been received') ||
-                            el.textContent.includes('Back to our site')) {
-                            
-                            // 日本語のメッセージを作成
-                            const successMessage = document.createElement('div');
-                            successMessage.className = 'form-success-message';
-                            successMessage.innerHTML = '<h3>お問い合わせありがとうございます！</h3><p>メッセージを受け付けました。内容を確認次第、ご連絡いたします。</p><a href="/">サイトに戻る</a>';
-                            
-                            // 元のメッセージを置き換え
-                            el.parentNode.replaceChild(successMessage, el);
-                        }
-                    });
-                }, 1000);
-            }
-        });
     </script>
-    <script>
-// フォーム送信後のメッセージを日本語に変更
-document.addEventListener('DOMContentLoaded', function() {
-    // URLに成功パラメータがあるか確認
-    if (window.location.search.includes('success=true')) {
-        // bodyの内容を全て置き換え
-        document.body.innerHTML = `
-            <div style="text-align: center; font-family: 'Noto Sans JP', sans-serif; padding: 100px 20px; max-width: 600px; margin: 0 auto;">
-                <div style="background-color: white; border-radius: 12px; padding: 40px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-                    <div style="font-size: 60px; color: #ff6b6b; margin-bottom: 20px;">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h1 style="color: #1E90FF; font-size: 24px; margin-bottom: 20px;">お問い合わせありがとうございます！</h1>
-                    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 25px;">メッセージを受け付けました。<br>内容を確認次第、ご連絡させていただきます。</p>
-                    <a href="/" style="display: inline-block; background: #1E90FF; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; border: 2px solid transparent; box-shadow: 0 5px 15px rgba(30,144,255,0.3);">サイトに戻る</a>
-                </div>
-            </div>
-        `;
-        
-        // タイトルを変更
-        document.title = "お問い合わせありがとうございます | とも旅ちゃんねるVLOG";
-    }
-});
-</script>
 </body>
 </html>
