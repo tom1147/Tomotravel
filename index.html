@@ -1,0 +1,1283 @@
+.surfshark {
+            background-color: #0F212E;
+            border-color: #0A1822;
+        }
+        
+        .surfshark:hover {
+            background-color: #0A1822;
+        }
+        
+        .nordvpn {
+            background-color: #4687FF;
+            border-color: #2970FF;
+        }
+        
+        .nordvpn:hover {
+            background-color: #2970FF;
+        }<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>とも旅ちゃんねるVLOG | 東南アジア一人旅おすすめ情報</title>
+    <meta name="description" content="とも旅ちゃんねるVLOGでは東南アジアを中心に海外一人旅のリアルな様子をお届け。英語ができなくても海外旅行を楽しめるコツや旅の魅力を配信中！">
+    <meta name="keywords" content="とも旅, 一人旅, 海外旅行, 東南アジア, 旅行VLOG, 旅行チャンネル, insta360, ahamo">
+    <meta property="og:title" content="とも旅ちゃんねるVLOG | 東南アジア一人旅おすすめ情報">
+    <meta property="og:description" content="一緒に旅しているような臨場感あふれる動画で、英語ができなくても楽しめる海外旅行の魅力をお届け">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tomotabi-channel.com/">
+    <meta property="og:image" content="https://tomotabi-channel.com/images/ogp.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tomotabi-channel.com/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #1E90FF;
+            --primary-dark: #0066cc;
+            --accent: #ff6b6b;
+            --accent-dark: #ff5252;
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --text-muted: #6c757d;
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            --section-space: 80px;
+            --container-padding: 0 24px;
+            --border-radius: 12px;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+        
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width var(--transition-medium);
+        }
+        
+        section:hover h2::after {
+            width: 100%;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+            transition: padding var(--transition-fast);
+        }
+        
+        .logo-center {
+            text-align: center;
+            margin-bottom: 15px;
+            transition: all var(--transition-fast);
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary) !important;
+            text-align: center;
+            letter-spacing: 0.5px;
+            transition: font-size var(--transition-fast);
+        }
+        
+        .vlog-text {
+            color: var(--accent) !important;
+            position: relative;
+        }
+        
+        .vlog-text::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            bottom: 2px;
+            right: -8px;
+        }
+        
+        nav {
+            width: 100%;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            padding: 8px 12px;
+            display: block;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: var(--primary);
+            opacity: 0.1;
+            transition: height var(--transition-fast);
+            z-index: -1;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a:hover::before {
+            height: 100%;
+        }
+        
+        .nav-icon {
+            margin-right: 5px;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 85vh;
+            min-height: 580px;
+            background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: var(--section-space);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(30,144,255,0.2) 0%, rgba(0,0,0,0) 70%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-overlay {
+            background-color: rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: fadeInUp 1s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .hero h2::after {
+            display: none;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            border: 2px solid transparent;
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+            transform: translateY(0);
+        }
+        
+        .hero-btn:hover {
+            background: transparent;
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255,107,107,0.4);
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: white;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            transition: all var(--transition-fast);
+        }
+        
+        .scroll-down:hover {
+            color: var(--accent);
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-30px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+        }
+        
+        /* ===== SECTIONS ===== */
+        section {
+            margin-bottom: var(--section-space);
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            opacity: 0.8;
+        }
+        
+        .section-bg-icon {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            font-size: 200px;
+            color: rgba(0,0,0,0.03);
+            transform: rotate(-10deg);
+            z-index: 0;
+        }
+        
+        .section-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== VIDEO CONTAINER ===== */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin: 30px 0;
+            overflow: hidden;
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transition: all var(--transition-fast);
+        }
+        
+        .video-container:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: scale(1.02);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+        
+        /* ===== LISTS ===== */
+        .equipment-list, .booking-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .equipment-list li, .booking-list li {
+            margin-bottom: 25px;
+            padding: 20px 25px;
+            position: relative;
+            background: rgba(255,255,255,0.5);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all var(--transition-fast);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        
+        .equipment-list li:hover, .booking-list li:hover {
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+        }
+        
+        .equipment-list li:before, .booking-list li:before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .equipment-list li:after {
+            content: '📷';
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+        }
+        
+        .booking-list li:after {
+            content: '✈️';
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+        }
+        
+        /* ===== BUTTONS & LINKS ===== */
+        .purchase-links {
+            margin: 15px 0 5px 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .purchase-links-inline {
+            margin: 15px 0 5px 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .buy-title {
+            font-weight: bold;
+            font-size: 0.9rem;
+            background: rgba(0,0,0,0.05);
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        
+        .buy-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all var(--transition-fast);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 2px solid transparent;
+        }
+        
+        .buy-button i {
+            margin-right: 8px;
+        }
+        
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateX(-100%);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .buy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .buy-button:hover::before {
+            transform: translateX(0);
+        }
+        
+        .amazon {
+            background-color: #FF9900;
+            border-color: #e68a00;
+        }
+        
+        .amazon:hover {
+            background-color: #e68a00;
+        }
+        
+        .affiliate-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-left: 10px;
+            opacity: 0.8;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .affiliate-note:hover {
+            opacity: 1;
+        }
+        
+        .affiliate-note-section {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-style: italic;
+            padding: 10px 15px;
+            border-left: 3px solid var(--primary);
+            background: rgba(30,144,255,0.05);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .expedia {
+            background-color: #00355F;
+            border-color: #002340;
+        }
+        
+        .expedia:hover {
+            background-color: #002340;
+        }
+        
+        .trip {
+            background-color: #0896FF;
+            border-color: #0077cc;
+        }
+        
+        .trip:hover {
+            background-color: #0077cc;
+        }
+        
+        .agoda {
+            background-color: #5C2D90;
+            border-color: #4a2475;
+        }
+        
+        .agoda:hover {
+            background-color: #4a2475;
+        }
+        
+        .google {
+            background-color: #4285F4;
+            border-color: #1a73e8;
+        }
+        
+        .google:hover {
+            background-color: #1a73e8;
+        }
+        
+        .ahamo {
+            background-color: #754C97;
+            border-color: #5e3e79;
+        }
+        
+        .ahamo:hover {
+            background-color: #5e3e79;
+        }
+        
+        .rakuten {
+            background-color: #BF0000;
+            border-color: #990000;
+        }
+        
+        .rakuten:hover {
+            background-color: #990000;
+        }
+        
+        /* ===== CONTACT FORM ===== */
+        .contact-form {
+            margin-top: 30px;
+            background: rgba(255,255,255,0.5);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all var(--transition-fast);
+        }
+        
+        .contact-form:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all var(--transition-fast);
+            background: rgba(255,255,255,0.9);
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30,144,255,0.2);
+            background: white;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        button i {
+            margin-right: 8px;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            transform: translateX(-100%);
+            transition: all 0.8s ease;
+            z-index: -1;
+        }
+        
+        button:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255,107,107,0.4);
+        }
+        
+        button:hover::before {
+            transform: translateX(100%);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-nav-link:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 18px;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== MEDIA QUERIES ===== */
+        @media (max-width: 992px) {
+            :root {
+                --section-space: 60px;
+            }
+            
+            .hero {
+                min-height: 500px;
+                height: 75vh;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --section-space: 50px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .header-content {
+                padding: 10px 0;
+            }
+            
+            .logo-text {
+                font-size: 26px;
+            }
+            
+            .vlog-text {
+                font-size: 22px;
+            }
+            
+            nav ul.nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul.nav-menu li a {
+                padding: 6px 10px;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            
+            .hero {
+                min-height: 450px;
+                height: 65vh;
+                background-attachment: scroll;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 25px 20px;
+            }
+            
+            .equipment-list li, .booking-list li {
+                padding: 15px 20px;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+            
+            .footer-links a {
+                margin: 0 10px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            :root {
+                --section-space: 40px;
+            }
+            
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            .vlog-text {
+                font-size: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-overlay {
+                padding: 25px;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            section {
+                padding: 20px 15px;
+            }
+            
+            p {
+                font-size: 0.95rem;
+            }
+            
+            .equipment-list li, .booking-list li {
+                padding: 15px;
+            }
+            
+            .buy-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-center" aria-label="サイトロゴ">
+                    <h1 class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></h1>
+                </div>
+                <nav role="navigation" aria-label="メインナビゲーション">
+                    <ul class="nav-menu">
+                        <li><a href="#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
+                        <li><a href="#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
+                        <li><a href="#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
+                        <li><a href="#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
+                        <li><a href="#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
+                        <li><a href="#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
+                        <li><a href="#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
+                        <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-overlay">
+                <h2>一緒に旅をしませんか？</h2>
+                <p>とも旅ちゃんねるVLOGで世界の楽しさや文化を体験！英語ができなくても海外旅行は楽しめる！</p>
+                <a href="#videos" class="hero-btn"><i class="fas fa-play-circle"></i> 旅の世界を見る</a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down" aria-label="下にスクロール">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+    
+    <div class="container">
+        <section id="about" class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-globe-asia"></i>
+            </div>
+            <div class="section-content">
+                <h2>～とも旅チャンネルの概要～</h2>
+                <p><i class="fas fa-plane-departure"></i> とも旅ちゃんねるでは東南アジアを中心に海外一人旅をしているリアルな様子をお届けするチャンネルです。一緒に旅しているような臨場感あふれる動画作りをモットーにしています。</p>
+                <p><i class="fas fa-language"></i> 英語ができなくても、単語を並べるだけでも、身振り手振りでも何とかなる！そんな海外旅行の敷居を下げるような体験を共有したいと思っています。怖がらずに一歩踏み出せば、素晴らしい出会いや体験が待っています。ぜひみんなも行ってみよう！</p>
+            </div>
+        </section>
+        
+        <section id="videos" class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-film"></i>
+            </div>
+            <div class="section-content">
+                <h2>～最新動画はこちら！～</h2>
+                <p><i class="fab fa-youtube"></i> チャンネル登録、高評価、コメントをいただけると励みになります！<i class="fas fa-calendar-alt"></i> 新しい旅の様子を定期的に更新中です。</p>
+                <div class="video-container" aria-label="最新の旅行動画">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/z5APVNRi0FQ" title="とも旅ちゃんねるの最新動画" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" class="hero-btn">
+                        <i class="fab fa-youtube"></i> YouTubeチャンネルを見る
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="travel" class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <div class="section-content">
+                <h2>～海外一人旅の魅力～</h2>
+                <p><i class="fas fa-clock"></i> 自分のペースで誰にも縛られず旅ができる、それが一人旅の最高の魅力！</p>
+                <p><i class="fas fa-route"></i> 「あ、このお店気になる！」と思ったら寄り道できるし、疲れたら休めばいい。朝ゆっくり起きたっていいし、一日中歩き回ることだってできる。全部自分次第なんです。</p>
+                <p><i class="fas fa-users"></i> 最初は不安もあるけど、現地の人との思わぬ出会いや、偶然見つけた絶景に出会えた時の喜びは格別。一人だからこそ、地元の人が声をかけてくれたり、本当の旅ができるんです。</p>
+                <p><i class="fas fa-heart"></i> 何より、自分の中の小さな勇気が大きな自信に変わる瞬間を体験できるはず！</p>
+            </div>
+        </section>
+        
+        <section id="equipment" class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-camera-retro"></i>
+            </div>
+            <div class="section-content">
+                <h2>～撮影機材・旅で使用している物～</h2>
+                <ul class="equipment-list">
+                    <li><strong>カメラ:</strong> insta360 x4（自撮り棒必須）- 360度撮影できるので一人旅でも臨場感あふれる映像が撮れます！また撮り逃しが大幅に減ります。360度動画はVRヘッドセットをつければまるでその場にいるように追体験できちゃう！？(環境構築は高いですが…)
+                    <div class="purchase-links purchase-links-inline">
+                        <span class="buy-title">ご購入はこちら</span>
+                        <div class="buttons-container">
+                            <a href="https://www.amazon.co.jp/" target="_blank" class="buy-button amazon"><i class="fab fa-amazon"></i> Amazon</a>
+                            <a href="https://www.rakuten.co.jp/" target="_blank" class="buy-button rakuten"><i class="fas fa-shopping-cart"></i> 楽天</a>
+                        </div>
+                    </div>
+                    </li>
+                    <li><strong>通信回線:</strong> ahamo（30GB使えて世界の91か国でそのまま使えて2970円。とても安くて普段使いでも最高！）e-simや現地シムよりコスパいいケースも多々あります。何より現地でSIM契約の手続きをする必要がなく、到着したその瞬間からネットが使えるのが超便利です！
+                    <div class="purchase-links purchase-links-inline">
+                        <span class="buy-title">契約はこちらから</span>
+                        <div class="buttons-container">
+                            <a href="https://ahamo.com/" target="_blank" class="buy-button ahamo"><i class="fas fa-mobile-alt"></i> ahamo公式</a>
+                            <span class="affiliate-note">(こちらから契約いただけると旅の資金になります笑)</span>
+                        </div>
+                    </div>
+                    </li>
+                    <li><i class="fas fa-tshirt"></i> <strong>着替え:</strong> 下着と靴下、Tシャツくらいを持参。Tシャツなどは現地調達すれば最小限の荷物で済みます</li>
+                    <li><i class="fas fa-box-tissue"></i> <strong>ティッシュ・ウェットティッシュ:</strong> 海外ではトイレットペーパーがない場所も多いので必須アイテム。ウェットティッシュもあると便利。ティッシュは多めに持っていくのが良いです</li>
+                    <li><i class="fas fa-mitten"></i> <strong>上着:</strong> 南国でも冷房が効きすぎていることが多いので必須です。飛行機内でマジで寒いから夏でも忘れない方がいいです</li>
+                    <li><i class="fas fa-id-card"></i> <strong>パスポート:</strong> 当たり前ですが命綱です。コピーも別に持ち歩きましょう</li>
+                    <li><i class="fas fa-credit-card"></i> <strong>クレジットカード:</strong> 複数枚持っていくことをおすすめします（※楽天カードは海外で使うと頻繁にロックされることがあり、SMSや電話の関係上解除が面倒なため非推奨です）</li>
+                    <li><i class="fas fa-shield-alt"></i> <strong>VPN:</strong> フリーWiFiを使用する場合は必須！クレジットカードなどの大切な情報を保護します。ホテルやカフェのWiFiは安全ではないので、VPNを使ってセキュリティを確保しましょう。
+                    <div class="purchase-links purchase-links-inline" style="margin-top: 15px; display: flex; align-items: center;">
+                        <span class="buy-title" style="margin-right: 10px; background: rgba(0,0,0,0.05); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;">おすすめVPN</span>
+                        <div class="buttons-container" style="display: flex; gap: 10px;">
+                            <a href="https://surfshark.com/" target="_blank" class="buy-button surfshark" style="background-color: #0F212E; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center;"><i class="fas fa-shield-virus" style="margin-right: 5px;"></i> Surfshark</a>
+                            <a href="https://nordvpn.com/" target="_blank" class="buy-button nordvpn" style="background-color: #4687FF; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center;"><i class="fas fa-lock" style="margin-right: 5px;"></i> NordVPN</a>
+                        </div>
+                        <span class="affiliate-note" style="font-size: 0.8rem; color: #6c757d; font-style: italic; margin-left: 10px;">(リンクからの契約でチャンネル支援になります)</span>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="booking" class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-ticket-alt"></i>
+            </div>
+            <div class="section-content">
+                <h2>～よく使う旅の予約について～</h2>
+                <p class="affiliate-note-section">※以下のリンクからご予約いただくと、チャンネル運営の支援になります。旅の応援、ありがとうございます！</p>
+                <ul class="booking-list">
+                    <li>
+                        <strong>Expedia:</strong> ホテルと航空券のセット予約でお得に旅行できます
+                        <div class="purchase-links">
+                            <a href="https://www.expedia.co.jp/" target="_blank" class="buy-button expedia"><i class="fas fa-building"></i> ご予約はこちら</a>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Trip.com:</strong> 世界中のホテル予約で使える有名なサイトです
+                        <div class="purchase-links">
+                            <a href="https://jp.trip.com/" target="_blank" class="buy-button trip"><i class="fas fa-suitcase"></i> ご予約はこちら</a>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Agoda:</strong> 世界中で使われている有名な宿泊予約サイトです
+                        <div class="purchase-links">
+                            <a href="https://www.agoda.com/ja-jp/" target="_blank" class="buy-button agoda"><i class="fas fa-bed"></i> ご予約はこちら</a>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>グーグルフライト:</strong> 航空券検索はマジでおすすめ！複数の航空会社を一度に比較できて便利です。価格追跡機能があるので「いつ買うべきか」がわかるし、カレンダービューで最安値の日がひと目でわかります。シンプルなUIなのに高機能で直感的に使えます！
+                        <div class="purchase-links">
+                            <a href="https://www.google.com/travel/flights" target="_blank" class="buy-button google"><i class="fas fa-plane-departure"></i> ご予約はこちら</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="preparation" class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-clipboard-check"></i>
+            </div>
+            <div class="section-content">
+                <h2>～事前にしておくこと～</h2>
+                
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>東南アジアの場合の注意点:</strong></p>
+                <p><i class="fas fa-taxi"></i> GrabやBoltなどの配車アプリは事前にクレジットカードなど日本で登録しておかないとSNS認証などができなくて詰むことがあるので注意！現地でSIMを買ってからでは遅いケースがあります。</p>
+                
+                <p><i class="fas fa-passport"></i> 各国入出国には電子申請が必要なケースが増えています。例えばフィリピンならe旅行カード（e-Travel）、欧米ならESTAなど。帰国時は「Visit Japan Web」に登録しておくと入国がスムーズです。</p>
+            </div>
+        </section>
+        
+        <section id="contact" class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <div class="section-content">
+                <h2>～お仕事のご依頼・お問い合わせはこちら～</h2>
+                <p><i class="fas fa-briefcase"></i> 以下のようなお仕事を承っております：</p>
+                <ul class="equipment-list" style="margin-bottom: 30px;">
+                    <li><i class="fas fa-video"></i> <strong>撮影依頼</strong>（承れない場合もあります）</li>
+                    <li><i class="fas fa-edit"></i> <strong>動画編集</strong>（Powerdirectorを使用しています）</li>
+                    <li><i class="fas fa-music"></i> <strong>音楽作成</strong>（動画内に使われている音楽・BGMの8割がAIを使用しての自作です）</li>
+                    <li><i class="fas fa-laptop-code"></i> <strong>LP作成</strong>（当ページ程度のクオリティ。GithubとNetlifyを使用した月額無料のLP。更新や運用してもらいたい場合はご相談ください）</li>
+                    <li><i class="fas fa-handshake"></i> <strong>スポンサーシップ・広告案件</strong>（動画内でのプロダクト紹介、サービス体験レビュー、旅行先でのコラボなど。動画内にクレジット表記いたします。詳細はお問い合わせください）</li>
+                </ul>
+                
+                <div class="contact-form">
+                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-label="お問い合わせフォーム">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <p class="hidden">
+                            <label>ボットでない方は触れないでください: <input name="bot-field" /></label>
+                        </p>
+                        <div class="form-group">
+                            <label for="name">お名前</label>
+                            <input type="text" id="name" name="name" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">お問い合わせ内容</label>
+                            <textarea id="message" name="message" required aria-required="true"></textarea>
+                        </div>
+                        <button type="submit" aria-label="フォームを送信する"><i class="fas fa-paper-plane"></i> 送信する</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>とも旅ちゃんねるVLOG</h3>
+                <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
+                
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagramアカウント"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTokアカウント"><i class="fab fa-tiktok"></i></a>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#about">チャンネル概要</a>
+                    <a href="#videos">最新動画</a>
+                    <a href="#travel">旅の魅力</a>
+                    <a href="#equipment">撮影機材</a>
+                    <a href="#booking">旅の予約</a>
+                    <a href="#contact">お問い合わせ</a>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // スクロール時のヘッダー変更
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // 要素が画面内に入ったらフェードイン
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        fadeInObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+            
+            fadeElements.forEach(element => {
+                fadeInObserver.observe(element);
+            });
+        });
+        
+        // Netlifyフォーム送信の成功メッセージ
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success') && urlParams.get('success') === 'true') {
+            alert('お問い合わせありがとうございます。内容を確認次第、ご連絡いたします。');
+            // クエリパラメータを削除してリダイレクト
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
