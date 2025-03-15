@@ -18,8 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
         :root {
             --primary: #1E90FF;
@@ -139,8 +137,6 @@
             text-align: center;
             letter-spacing: 0.5px;
             transition: font-size var(--transition-fast);
-            text-decoration: none;
-            display: inline-block;
         }
         
         .vlog-text {
@@ -1078,7 +1074,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo-center" aria-label="サイトロゴ">
-                        <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
+                        <h1 class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></h1>
                     </div>
                     <nav role="navigation" aria-label="メインナビゲーション">
                         <ul class="nav-menu">
@@ -1088,7 +1084,6 @@
                             <li><a href="#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
                             <li><a href="#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
                             <li><a href="#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
-                            <li><a href="/blog.html" aria-label="ブログへ"><i class="fas fa-book nav-icon" aria-hidden="true"></i>ブログ</a></li>
                             <li><a href="#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
                             <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
                         </ul>
@@ -1330,7 +1325,6 @@
                         <a href="#travel">旅の魅力</a>
                         <a href="#equipment">撮影機材</a>
                         <a href="#booking">旅の予約</a>
-                        <a href="/blog.html">ブログ</a>
                         <a href="#contact">お問い合わせ</a>
                     </div>
                     
@@ -1401,17 +1395,6 @@
                 });
             });
         });
-        
-        // Netlify Identity用のリダイレクト
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", user => {
-            if (!user) {
-              window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
-              });
-            }
-          });
-        }
     </script>
 </body>
 </html>
