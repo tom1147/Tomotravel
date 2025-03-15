@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main # GitHubのブランチ名（mainまたはmaster）
+  branch: main # GitHubのブランチ名（mainまたはmasterを使用）
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
@@ -15,5 +15,7 @@ collections:
       - {label: "タイトル", name: "title", widget: "string"}
       - {label: "公開日", name: "date", widget: "datetime"}
       - {label: "サムネイル画像", name: "thumbnail", widget: "image"}
-      - {label: "カテゴリー", name: "category", widget: "string"}
+      - {label: "カテゴリー", name: "category", widget: "select", options: ["初心者向け", "旅行術", "撮影機材", "タイ", "ベトナム", "マレーシア", "フィリピン", "インドネシア"]}
+      - {label: "タグ", name: "tags", widget: "list", required: false}
+      - {label: "概要", name: "excerpt", widget: "text"}
       - {label: "内容", name: "body", widget: "markdown"}
