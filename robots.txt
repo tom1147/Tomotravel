@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tomotravel-pm.com/sitemap.xml
