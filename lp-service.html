@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LP作成サービス詳細 | とも旅ちゃんねるVLOG</title>
+    <meta name="description" content="GitHubとNetlifyを使用した月額無料のLP作成サービス。あなたのビジネスに最適なランディングページを作成します。">
+    <meta name="keywords" content="LP作成, ランディングページ, GitHub, Netlify, 無料LP, ウェブ制作">
+    <meta property="og:title" content="LP作成サービス詳細 | とも旅ちゃんねるVLOG">
+    <meta property="og:description" content="GitHubとNetlifyを使用した月額無料のLP作成サービス。あなたのビジネスに最適なランディングページを作成します。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tomotabi-channel.com/lp-service.html">
+    <meta property="og:image" content="https://tomotabi-channel.com/images/ogp.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tomotabi-channel.com/lp-service.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #1E90FF;
+            --primary-dark: #0066cc;
+            --accent: #ff6b6b;
+            --accent-dark: #ff5252;
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --text-muted: #6c757d;
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            --section-space: 80px;
+            --container-padding: 0 24px;
+            --border-radius: 12px;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+        
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width var(--transition-medium);
+        }
+        
+        section:hover h2::after {
+            width: 100%;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+            transition: padding var(--transition-fast);
+        }
+        
+        .logo-center {
+            text-align: center;
+            margin-bottom: 15px;
+            transition: all var(--transition-fast);
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary) !important;
+            text-align: center;
+            letter-spacing: 0.5px;
+            transition: font-size var(--transition-fast);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .vlog-text {
+            color: var(--accent) !important;
+            position: relative;
+        }
+        
+        .vlog-text::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            bottom: 2px;
+            right: -8px;
+        }
+        
+        nav {
+            width: 100%;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            padding: 8px 12px;
+            display: block;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: var(--primary);
+            opacity: 0.1;
+            transition: height var(--transition-fast);
+            z-index: -1;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a:hover::before {
+            height: 100%;
+        }
+        
+        .nav-icon {
+            margin-right: 5px;
+        }
+        
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            padding-top: 150px;
+            padding-bottom: 50px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            margin-bottom: var(--section-space);
+            position: relative;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb li {
+            display: flex;
+            align-items: center;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .breadcrumb li:not(:last-child)::after {
+            content: '›';
+            margin: 0 10px;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+        
+        /* ===== SECTIONS ===== */
+        section {
+            margin-bottom: var(--section-space);
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            opacity: 0.8;
+        }
+        
+        .section-bg-icon {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            font-size: 200px;
+            color: rgba(0,0,0,0.03);
+            transform: rotate(-10deg);
+            z-index: 0;
+        }
+        
+        .section-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== PLAN CARDS ===== */
+        .plans-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 350px;
+            position: relative;
+            transition: all var(--transition-fast);
+            border: 2px solid transparent;
+            overflow: hidden;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+        
+        .plan-card.featured {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .plan-card.featured::before {
+            content: 'おすすめ';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 30px;
+            font-size: 0.8rem;
+            transform: rotate(45deg);
+        }
+        
+        .plan-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .plan-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .plan-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-right: 10px;
+        }
+        
+        .sale-price {
+            color: var(--accent);
+        }
+        
+        .limited-offer {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+        
+        .plan-period {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 28px;
+        }
+        
+        .plan-features li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .plan-features li.disabled {
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+        
+        .plan-features li.disabled::before {
+            content: '✕';
+            color: var(--text-muted);
+        }
+        
+        .plan-cta {
+            text-align: center;
+        }
+        
+        .plan-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            border: 2px solid transparent;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(30,144,255,0.3);
+        }
+        
+        .plan-button:hover {
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30,144,255,0.2);
+        }
+        
+        .plan-card.featured .plan-button {
+            background: var(--accent);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+        
+        .plan-card.featured .plan-button:hover {
+            background: transparent;
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.2);
+        }
+
+        /* ===== FEATURE LIST ===== */
+        .features-list {
+            margin: 20px 0 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            margin-bottom: 25px;
+            background: rgba(255,255,255,0.6);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            background: white;
+        }
+        
+        .feature-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 20px;
+            box-shadow: 0 5px 15px rgba(30,144,255,0.3);
+        }
+        
+        .feature-content {
+            flex: 1;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .feature-description {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* ===== PROCESS STEPS ===== */
+        .process-steps {
+            position: relative;
+            margin: 50px 0;
+            padding-left: 30px;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 15px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .step {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 10px rgba(30,144,255,0.3);
+            z-index: 1;
+        }
+        
+        .step-content {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all var(--transition-fast);
+        }
+        
+        .step:hover .step-content {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .step-description {
+            margin-bottom: 0;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-list {
+            margin: 30px 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: white;
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all var(--transition-fast);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+        
+        .faq-item.active .faq-question {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .faq-item.active .faq-question::after {
+            color: white;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            background: white;
+            transition: all var(--transition-fast);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 1000px;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 80px 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--section-space);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTI4MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIj48cGF0aCBkPSJNMTI4MCAwbC0yNjIuMSAxMTYuMjZhNzMuMjkgNzMuMjkgMCAwIDEtMzkuMDkgNiA3My4xNSA3My4xNSAwIDAgMS00Ni43LTQ2LjI4IDc0LjM2IDc0LjM2IDAgMCAxIDYtNDBMMTI4MCAweiIvPjwvZz48L3N2Zz4=');
+            background-size: 100% 100%;
+            opacity: 0.1;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 2px solid white;
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 18px;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== MEDIA QUERIES ===== */
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header {
+                padding-top: 120px;
+                padding-bottom: 40px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .plans-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .plan-card {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .plan-card.featured {
+                transform: scale(1);
+            }
+            
+            .plan-card.featured:hover {
+                transform: translateY(-10px);
+            }
+            
+            .feature-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .cta-section {
+                padding: 50px 20px;
+            }
+            
+            .cta-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 25px 20px;
+            }
+            
+            .step {
+                padding-left: 5px;
+            }
+            
+            .step-number {
+                left: -25px;
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+            
+            .process-steps::before {
+                left: 12px;
+            }
+            
+            .cta-title {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-center" aria-label="サイトロゴ">
+                    <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
+                </div>
+                <nav role="navigation" aria-label="メインナビゲーション">
+                    <ul class="nav-menu">
+                        <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
+                        <li><a href="/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
+                        <li><a href="/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
+                        <li><a href="/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
+                        <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
+                        <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
+                        <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
+                        <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <div class="page-header">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">ホーム</a></li>
+                <li>LP作成サービス</li>
+            </ul>
+            <h1>LP作成サービス詳細</h1>
+            <p>GitHubとNetlifyを使用した月額費用ゼロ円のランディングページ制作</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <section class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <div class="section-content">
+                <h2>サービス概要</h2>
+                <p><i class="fas fa-check-circle"></i> 当サービスでは、GitHubとNetlifyを活用した高品質なランディングページを制作します。従来のレンタルサーバーやWordPressと異なり、<strong>月額費用が0円</strong>で運用できるのが最大の特徴。独自ドメインをご希望の場合は、ドメイン代（年間1,000〜2,000円程度）のみご負担いただくだけで、ホスティング料金は一切かかりません。</p>
+                
+                <p><i class="fas fa-lightbulb"></i> このLP作成サービスは、広告運用やマーケティングを実施している方、新規事業を始める方、個人でビジネスをしている方に特におすすめです。費用を抑えながらも、プロフェッショナルな見た目と機能性を兼ね備えたウェブサイトを手に入れることができます。</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">月額費用0円</h3>
+                            <p class="feature-description">従来のホスティングサービスでは毎月数千円のコストがかかりますが、当サービスではGitHubとNetlifyの無料プランを活用し、月額費用をゼロにしています。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">高速表示でSEO対策も万全</h3>
+                            <p class="feature-description">Netlifyの高速CDNにより世界中のどこからでも素早くサイトが表示されます。また、静的サイトは読み込み速度が速く、Googleの検索順位アルゴリズムで有利に働きます。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">セキュリティ面も安心</h3>
+                            <p class="feature-description">WordPressなどのCMSと違い、静的サイトはハッキングのリスクが極めて低く、セキュリティ対策の手間やコストがかかりません。SSL証明書も無料で自動設定されます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="section-content">
+                <h2>制作の流れ</h2>
+                <p>LP制作から公開まで、スムーズな流れでご提供します。</p>
+                
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">ヒアリング</h3>
+                            <p class="step-description">ビジネスの目的、ターゲット層、掲載したい内容などについて詳しくお伺いします。メールでのやり取りを基本としています。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">デザイン案作成</h3>
+                            <p class="step-description">ヒアリング内容をもとに、最適なデザイン案を作成します。モバイルファーストを意識したレスポンシブデザインで、スマホでもPC画面でも美しく表示されるよう設計します。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">コーディング</h3>
+                            <p class="step-description">承認されたデザイン案をもとに、HTML/CSS/JavaScriptでコーディングを行います。SEO対策やページ表示速度の最適化も同時に実施します。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">テスト公開・確認</h3>
+                            <p class="step-description">テスト環境でLPを公開し、デザインや機能の確認をしていただきます。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3 class="step-title">本番公開・運用開始</h3>
+                            <p class="step-description">最終確認後、本番環境で公開します。ご希望があれば独自ドメインの設定も行います。公開後の運用サポートもご相談に応じます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <div class="section-content">
+                <h2>料金プラン</h2>
+                <p>お客様のニーズに合わせた最適なプランをご用意しています。</p>
+                
+                <div class="plans-container">
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3 class="plan-title">シンプルプラン</h3>
+                            <div class="plan-price">
+                                <span class="original-price">¥30,000</span>
+                                <span class="sale-price">¥15,000</span>
+                            </div>
+                            <div class="limited-offer">期間限定特別価格</div>
+                            <div class="plan-period">月額費用 ¥0</div>
+                        </div>
+                        <ul class="plan-features">
+                            <li>1ページのランディングページ</li>
+                            <li>レスポンシブデザイン対応</li>
+                            <li>お問い合わせフォーム設置</li>
+                            <li>SEO対策基本設定</li>
+                            <li>Netlify無料ホスティング</li>
+                            <li class="disabled">独自ドメイン設定</li>
+                            <li class="disabled">定期更新サポート</li>
+                        </ul>
+                        <div class="plan-cta">
+                            <a href="/#contact" class="plan-button">お問い合わせ</a>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-card featured">
+                        <div class="plan-header">
+                            <h3 class="plan-title">スタンダードプラン</h3>
+                            <div class="plan-price">
+                                <span class="original-price">¥40,000</span>
+                                <span class="sale-price">¥20,000</span>
+                            </div>
+                            <div class="limited-offer">期間限定特別価格</div>
+                            <div class="plan-period">月額費用 ¥0</div>
+                        </div>
+                        <ul class="plan-features">
+                            <li>1ページのランディングページ</li>
+                            <li>レスポンシブデザイン対応</li>
+                            <li>お問い合わせフォーム設置</li>
+                            <li>SEO対策基本設定</li>
+                            <li>Netlify無料ホスティング</li>
+                            <li>独自ドメイン設定（ドメイン代は別途）</li>
+                            <li class="disabled">定期更新サポート</li>
+                        </ul>
+                        <div class="plan-cta">
+                            <a href="/#contact" class="plan-button">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 30px; text-align: center; font-style: italic;">※ 独自ドメインをご希望の場合は、ドメイン代（年間1,000〜2,000円程度）が別途かかります。<br>※ 料金は税抜きです。別途消費税がかかります。</p>
+            </div>
+        </section>
+        
+        <section class="fade-in">
+            <div class="section-bg-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="section-content">
+                <h2>よくある質問</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">LPのクオリティはどれくらいですか？</div>
+                        <div class="faq-answer">
+                            <p>この詳細ページをご覧いただいているLPと同レベルのクオリティになります。個人で趣味の延長として制作しているサービスのため、プロのWeb制作会社のような高度なアニメーションや複雑な機能は限定的です。とはいえ、ビジネス用途としても十分に機能的で見栄えの良いサイトをお作りします。大規模で高度なWebサイトが必要な場合は、プロのWeb制作会社をお勧めしますが、コスト効率良く魅力的なLPを作りたい方には最適なサービスです。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">本当に月額費用が0円なのですか？</div>
+                        <div class="faq-answer">
+                            <p>はい、GitHubとNetlifyの無料プランを活用しているため、月額費用は一切かかりません。独自ドメインをご希望の場合のみ、ドメイン代（年間1,000〜2,000円程度）がかかります。サーバー代、保守費用などは一切かかりません。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">制作期間はどのくらいかかりますか？</div>
+                        <div class="faq-answer">
+                            <p>おおよそヒアリング終了から2週間くらいを目安にしています。ただし、私の状況によってはもう少しお時間をいただく場合もございます。いただいたご依頼はなるべく早く対応させていただきますのでご安心ください！</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">自分で更新することはできますか？</div>
+                        <div class="faq-answer">
+                            <p>GitHubの使い方をご存知であれば、自由に更新いただくことが可能です。GitHub操作の知識がない場合は、更新保守サポートプラン（月1回更新・別途月額5,000円）もご用意しています。希望される場合はご相談ください。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">どんな機能が実装できますか？</div>
+                        <div class="faq-answer">
+                            <p>お問い合わせフォーム、画像埋め込み、動画埋め込み、ソーシャルメディア連携など、基本的な静的サイトの機能を実装できます。こちらは簡易的なLPサービスになりますので、複雑な機能や動的コンテンツには対応していない点はご了承ください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="cta-section">
+            <h2 class="cta-title">月額費用0円のLPで、ビジネスを加速させませんか？</h2>
+            <p class="cta-description">ランニングコストを気にせず、プロフェッショナルなウェブサイトを手に入れましょう。<br>まずはお気軽にご相談ください。</p>
+            <a href="/#contact" class="cta-button">無料相談をする <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>とも旅ちゃんねるVLOG</h3>
+                <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
+                
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagramアカウント"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTokアカウント"><i class="fab fa-tiktok"></i></a>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="/#about">チャンネル概要</a>
+                    <a href="/#videos">最新動画</a>
+                    <a href="/#travel">旅の魅力</a>
+                    <a href="/#equipment">撮影機材</a>
+                    <a href="/#booking">旅の予約</a>
+                    <a href="/#contact">お問い合わせ</a>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // スクロール時のヘッダー変更
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (header && window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else if (header) {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // FAQアコーディオン
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // 他のすべてのアイテムを閉じる
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // クリックされたアイテムだけを開く（すでに開いていた場合は閉じる）
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // 要素が画面内に入ったらフェードイン
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        fadeInObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+            
+            fadeElements.forEach(element => {
+                fadeInObserver.observe(element);
+            });
+        });
+        
+        // スムーズスクロール
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
