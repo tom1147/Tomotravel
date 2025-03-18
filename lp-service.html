@@ -123,6 +123,7 @@ header.scrolled {
     align-items: center;
     padding: 20px 0;
     transition: padding var(--transition-fast);
+    position: relative;
 }
 
 .logo-center {
@@ -155,6 +156,7 @@ header.scrolled {
     text-shadow: 0 2px 4px rgba(0,0,0,0.05);
     position: relative;
     display: inline-block;
+    text-decoration: none;
 }
 
 .logo-text:hover {
@@ -173,62 +175,120 @@ header.scrolled {
     display: none;
 }
 
+/* ハンバーガーメニュー */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary);
+    transition: all var(--transition-fast);
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1001;
+}
+
+.menu-toggle:hover {
+    color: var(--accent);
+}
+
 nav {
     width: 100%;
 }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        nav ul li {
-            margin: 0 5px;
-            position: relative;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: all var(--transition-fast);
-            padding: 8px 12px;
-            display: block;
-            border-radius: 6px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        nav ul li a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: var(--primary);
-            opacity: 0.1;
-            transition: height var(--transition-fast);
-            z-index: -1;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-        
-        nav ul li a:hover::before {
-            height: 100%;
-        }
-        
-        .nav-icon {
-            margin-right: 5px;
-        }
-        
-        /* ===== PAGE HEADER ===== */
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 5px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    padding: 8px 12px;
+    display: block;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--primary);
+    opacity: 0.1;
+    transition: height var(--transition-fast);
+    z-index: -1;
+}
+
+nav ul li a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+nav ul li a:hover::before {
+    height: 100%;
+}
+
+.nav-icon {
+    margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        position: relative;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav#main-nav {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        width: 100%;
+    }
+    
+    nav#main-nav.active {
+        max-height: 500px;
+    }
+    
+    nav ul.nav-menu {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    
+    nav ul.nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul.nav-menu li a {
+        padding: 12px;
+        width: 100%;
+        display: block;
+    }
+    
+    .logo-center {
+        margin-bottom: 5px;
+    }
+}
+
+/* ===== PAGE HEADER ===== */
         .page-header {
             padding-top: 150px;
             padding-bottom: 50px;
@@ -488,8 +548,7 @@ nav {
             color: var(--accent);
             box-shadow: 0 8px 25px rgba(255,107,107,0.2);
         }
-
-        /* ===== FEATURE LIST ===== */
+/* ===== FEATURE LIST ===== */
         .features-list {
             margin: 20px 0 30px;
         }
@@ -941,7 +1000,11 @@ nav {
                 <div class="logo-center" aria-label="サイトロゴ">
                     <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
                 </div>
-                <nav role="navigation" aria-label="メインナビゲーション">
+                <!-- ハンバーガーメニューボタンを追加 -->
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
                     <ul class="nav-menu">
                         <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
                         <li><a href="/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
@@ -956,8 +1019,7 @@ nav {
             </div>
         </div>
     </header>
-    
-    <div class="page-header">
+<div class="page-header">
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="/">ホーム</a></li>
@@ -1152,7 +1214,7 @@ nav {
                         <div class="faq-question">制作期間はどのくらいかかりますか？</div>
                         <div class="faq-answer">
                             <p>おおよそヒアリング終了から2週間くらいを目安にしています。ただし、私の状況によってはもう少しお時間をいただく場合もございます。いただいたご依頼はなるべく早く対応させていただきますのでご安心ください！</p>
-                        </div>
+</div>
                     </div>
                     
                     <div class="faq-item">
@@ -1175,6 +1237,7 @@ nav {
     <div class="cta-section">
     <h2 class="cta-title">月額費用0円のLPで、ビジネスを加速させませんか？</h2>
     <p class="cta-description">ランニングコストを気にせず、プロフェッショナルなウェブサイトを手に入れましょう。<br>お気軽にお問い合わせください。</p>
+    <a href="/#contact" class="cta-button">お問い合わせはこちら</a>
 </div>
     </div>
     
@@ -1278,6 +1341,39 @@ nav {
                     }
                 });
             });
+        });
+        
+        // ハンバーガーメニューの動作
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    
+                    // アイコンを切り替え
+                    const icon = menuToggle.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                // メニュー項目をクリックしたらメニューを閉じる
+                const navLinks = mainNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mainNav.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
         });
     </script>
 </body>
