@@ -289,7 +289,7 @@ nav ul li a:hover::before {
         
 /* ブログ記事のスタイル */
 .blog-header {
-    padding-top: 120px;
+    margin-top: 100px;
     background-color: var(--card-bg);
     text-align: center;
     margin-bottom: 40px;
@@ -297,6 +297,7 @@ nav ul li a:hover::before {
     border-radius: var(--border-radius);
     overflow: hidden;
     position: relative;
+    padding: 30px 20px;
 }
 
 .blog-title {
@@ -310,7 +311,7 @@ nav ul li a:hover::before {
 .blog-meta {
     font-size: 0.9rem;
     color: var(--text-muted);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .blog-thumbnail {
@@ -496,9 +497,38 @@ nav ul li a:hover::before {
     color: var(--accent);
 }
 
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    margin: 30px 0;
+    overflow: hidden;
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transition: all var(--transition-fast);
+}
+
+.video-container:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    transform: scale(1.02);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    border-radius: var(--border-radius);
+}
+
 @media (max-width: 768px) {
     .blog-header {
-        padding-top: 100px;
+        margin-top: 90px;
+        padding: 20px 15px;
     }
     
     .blog-title {
@@ -656,14 +686,11 @@ footer::before {
     <div class="container">
         <!-- ブログ記事ヘッダー -->
         <div class="blog-header">
-            <img src="https://placehold.co/1200x500/1E90FF/white?text=セブ島の風景" alt="セブ島の風景" class="blog-thumbnail">
-            <div style="padding: 30px 20px;">
-                <h1 class="blog-title">【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</h1>
-                <div class="blog-meta">
-                    <span><i class="fas fa-user"></i> 投稿者: Tomo</span> | 
-                    <span><i class="fas fa-calendar-alt"></i> 2025年3月23日</span> | 
-                    <span><i class="fas fa-tag"></i> セブ島, フィリピン, 一人旅</span>
-                </div>
+            <h1 class="blog-title">【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</h1>
+            <div class="blog-meta">
+                <span><i class="fas fa-user"></i> 投稿者: Tomo</span> | 
+                <span><i class="fas fa-calendar-alt"></i> 2025年3月23日</span> | 
+                <span><i class="fas fa-tag"></i> セブ島, フィリピン, 一人旅</span>
             </div>
         </div>
         
@@ -675,7 +702,7 @@ footer::before {
             <p>今回は本当にラッキーな買い物ができました。往復で<em>29,400円</em>という驚きの価格で直行便のチケットをゲット！こんな安い値段でセブに行けるなんて信じられません。</p>
             
             <div class="blog-img-container">
-                <div class="video-container" style="padding-bottom: 56.25%; position: relative; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); margin: 30px 0;">
+                <div class="video-container">
                     <iframe width="1200" height="675" 
                             src="https://www.youtube.com/embed/V8Q69llrJcY" 
                             frameborder="0" 
