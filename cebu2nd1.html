@@ -178,13 +178,16 @@ header.scrolled {
 .menu-toggle {
     display: none;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 28px;
     color: var(--primary);
     transition: all var(--transition-fast);
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 25px;
     z-index: 1001;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .menu-toggle:hover {
@@ -289,15 +292,16 @@ nav ul li a:hover::before {
         
 /* ブログ記事のスタイル */
 .blog-header {
-    margin-top: 130px;
+    margin-top: 150px;
     background-color: var(--card-bg);
     text-align: center;
     margin-bottom: 40px;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     border-radius: var(--border-radius);
     overflow: hidden;
     position: relative;
-    padding: 30px 20px;
+    padding: 40px 30px;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .blog-title {
@@ -324,11 +328,12 @@ nav ul li a:hover::before {
 
 .blog-content {
     background-color: var(--card-bg);
-    padding: 40px;
+    padding: 50px;
     border-radius: var(--border-radius);
     margin-bottom: var(--section-space);
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     position: relative;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .blog-content h2 {
@@ -683,7 +688,7 @@ footer::before {
     </header>
     
     <!-- メインコンテンツ（ブログ記事） -->
-    <div class="container">
+    <div class="blog-container">
         <!-- ブログ記事ヘッダー -->
         <div class="blog-header">
             <h1 class="blog-title">【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</h1>
