@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？ | とも旅ちゃんねるVLOG</title>
+    <meta name="description" content="とも旅ちゃんねるVLOGでは東南アジアを中心に海外一人旅のリアルな様子をお届け。英語ができなくても海外旅行を楽しめるコツや旅の魅力を配信中！">
+    <meta name="keywords" content="とも旅, 一人旅, セブ島, フィリピン, 東横イン, 海外旅行, 東南アジア, 旅行VLOG, 旅行チャンネル, insta360, ahamo">
+    <meta property="og:title" content="【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？ | とも旅ちゃんねるVLOG">
+    <meta property="og:description" content="一緒に旅しているような臨場感あふれる動画で、英語ができなくても楽しめる海外旅行の魅力をお届け">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tomotabi-channel.com/blog/cebu-day1.html">
+    <meta property="og:image" content="https://tomotabi-channel.com/images/cebu-main.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tomotabi-channel.com/blog/cebu-day1.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #1E90FF;
+            --primary-dark: #0066cc;
+            --accent: #ff6b6b;
+            --accent-dark: #ff5252;
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --text-muted: #6c757d;
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            --section-space: 80px;
+            --container-padding: 0 24px;
+            --border-radius: 12px;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+        
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width var(--transition-medium);
+        }
+        
+        section:hover h2::after {
+            width: 100%;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+        
+/* ===== HEADER ===== */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all var(--transition-fast);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(30,144,255,0.1);
+}
+
+header.scrolled {
+    padding: 5px 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transition: padding var(--transition-fast);
+    position: relative;
+}
+
+.logo-center {
+    text-align: center;
+    margin-bottom: 18px;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.logo-center::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    border-radius: 2px;
+    opacity: 0.5;
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary) !important;
+    text-align: center;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-fast);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
+    display: inline-block;
+}
+
+.logo-text:hover {
+    transform: translateY(-2px);
+}
+
+.vlog-text {
+    color: var(--accent) !important;
+    position: relative;
+    font-weight: 700;
+    transition: all var(--transition-fast);
+}
+
+/* 赤いドットを削除 */
+.vlog-text::after {
+    display: none;
+}
+
+/* ハンバーガーメニュー */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary);
+    transition: all var(--transition-fast);
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1001;
+}
+
+.menu-toggle:hover {
+    color: var(--accent);
+}
+
+nav {
+    width: 100%;
+}
+        
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 5px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    padding: 8px 12px;
+    display: block;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--primary);
+    opacity: 0.1;
+    transition: height var(--transition-fast);
+    z-index: -1;
+}
+
+nav ul li a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+nav ul li a:hover::before {
+    height: 100%;
+}
+
+.nav-icon {
+    margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        position: relative;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav#main-nav {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        width: 100%;
+    }
+    
+    nav#main-nav.active {
+        max-height: 500px;
+    }
+    
+    nav ul.nav-menu {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    
+    nav ul.nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul.nav-menu li a {
+        padding: 12px;
+        width: 100%;
+        display: block;
+    }
+    
+    .logo-center {
+        margin-bottom: 5px;
+    }
+}
+        
+/* ブログ記事のスタイル */
+.blog-header {
+    padding-top: 120px;
+    background-color: var(--card-bg);
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: var(--card-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+}
+
+.blog-title {
+    font-size: 2.2rem;
+    padding: 0 20px;
+    margin-bottom: 15px;
+    color: var(--primary);
+    line-height: 1.4;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.blog-thumbnail {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 0;
+}
+
+.blog-content {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--section-space);
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+
+.blog-content h2 {
+    font-size: 1.8rem;
+    margin-top: 40px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent);
+    display: block;
+}
+
+.blog-content h2::after {
+    display: none;
+}
+
+.blog-content h3 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--primary-dark);
+}
+
+.blog-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.blog-img-container {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.blog-img-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.blog-img-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.blog-img-caption {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+    text-align: center;
+}
+
+.blog-content blockquote {
+    background-color: rgba(30,144,255,0.05);
+    border-left: 4px solid var(--primary);
+    padding: 20px;
+    margin: 30px 0;
+    font-style: italic;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.blog-content em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.blog-content ul {
+    margin-bottom: 25px;
+    padding-left: 25px;
+}
+
+.blog-content li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.blog-content li::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+}
+
+.blog-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.blog-tag {
+    background-color: rgba(30,144,255,0.1);
+    color: var(--primary);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.blog-tag:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.blog-share {
+    display: flex;
+    gap: 10px;
+}
+
+.share-button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.05);
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+}
+
+.share-button:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.next-prev-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.prev-post, .next-post {
+    max-width: 45%;
+}
+
+.nav-direction {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.nav-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    transition: all var(--transition-fast);
+}
+
+.nav-title:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .blog-header {
+        padding-top: 100px;
+    }
+    
+    .blog-title {
+        font-size: 1.8rem;
+    }
+    
+    .blog-content {
+        padding: 25px;
+    }
+    
+    .blog-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .blog-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .blog-footer, .next-prev-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .prev-post, .next-post {
+        max-width: 100%;
+    }
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    margin: 0 15px;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    padding: 5px 0;
+}
+
+.footer-links a:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+.social-links {
+    margin: 20px 0;
+}
+
+.social-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.social-nav-link:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 18px;
+    transition: all var(--transition-fast);
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+    </style>
+</head>
+<body>
+    <!-- ヘッダー部分 -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-center" aria-label="サイトロゴ">
+                    <h1 class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></h1>
+                </div>
+                <!-- ハンバーガーメニューボタン -->
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
+                    <ul class="nav-menu">
+                        <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
+                        <li><a href="/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
+                        <li><a href="/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
+                        <li><a href="/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
+                        <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
+                        <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
+                        <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
+                        <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- メインコンテンツ（ブログ記事） -->
+    <div class="container">
+        <!-- ブログ記事ヘッダー -->
+        <div class="blog-header">
+            <img src="https://placehold.co/1200x500/1E90FF/white?text=セブ島の風景" alt="セブ島の風景" class="blog-thumbnail">
+            <div style="padding: 30px 20px;">
+                <h1 class="blog-title">【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</h1>
+                <div class="blog-meta">
+                    <span><i class="fas fa-user"></i> 投稿者: Tomo</span> | 
+                    <span><i class="fas fa-calendar-alt"></i> 2025年3月23日</span> | 
+                    <span><i class="fas fa-tag"></i> セブ島, フィリピン, 一人旅</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ブログ記事本文 -->
+        <div class="blog-content">
+            <p>こんにちは、Tomoです！タイ旅行以来の海外旅行で、今回はフィリピンのセブ島に2泊4日の一人旅に来ています。前回セブに来たのは去年の7月くらいだったので、久しぶりの訪問にとてもワクワクしています。</p>
+            
+            <h2>超格安チケットでセブへ</h2>
+            <p>今回は本当にラッキーな買い物ができました。往復で<em>29,400円</em>という驚きの価格で直行便のチケットをゲット！こんな安い値段でセブに行けるなんて信じられません。</p>
+            
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=成田空港の出発ロビー" alt="成田空港の出発ロビー">
+                <div class="blog-img-caption">朝の成田空港第2ターミナル - 出発前のワクワク感</div>
+            </div>
+            
+            <p>朝7:35、成田空港第2ターミナルに到着しました。飛行機は8:10発なのでかなり急いでいます。今回の荷物はキャリーケースと、お土産を入れた紙袋だけの軽装備。チェックインを済ませたらすぐに搭乗ゲートへ向かいます。</p>
+            
+            <p>今回の旅行の目的は？単純に飲んで遊ぶだけです（笑）。ナイトライフを楽しみたい気分なんです。どこまで撮影できるか分かりませんが、できるだけ経験をシェアしていきますね！</p>
+            
+            <h2>セブに到着</h2>
+            <div class="blog-img-container">
+                <img src="images/cebu2nd/cebu2nd2.png" alt="セブ・マクタン空港">
+                <div class="blog-img-caption">セブ・マクタン空港に到着 - シヌログフェスティバルの装飾も</div>
+            </div>
+            
+            <p>セブ・マクタン空港に現地時間の午後2:15に到着しました。フライトはほぼ定刻通りでしたが、私の荷物が最後の方に出てきてしまったので、少し時間がかかりました。</p>
+            
+            <p>ちなみに、私の荷物はキャリーケースではなく紙袋だけという恥ずかしい状態。きちんとしたバッグを持ってくるのを忘れてしまい、空港で購入した紙袋に入れています。中身はRICAへのお土産の食べ物だけ。チェックインカウンターで紙袋を預けたとき、スタッフの目が「お金ないの？」と言っているようで少し恥ずかしかったです。</p>
+            
+            <h2>タクシー待ちの長い列</h2>
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=タクシー乗り場の長蛇の列" alt="空港タクシー乗り場の長蛇の列">
+                <div class="blog-img-caption">信じられないほど長いタクシー待ちの列 - シヌログフェスティバルの影響？</div>
+            </div>
+            
+            <p>本来ならGrabを使おうと思っていましたが、呼んでも30分以上待っても来ません。結局タクシー乗り場に行ったら、とんでもない長蛇の列が！シヌログ・フェスティバルの影響でしょうか。警官が整理している公式タクシー乗り場で、<em>1時間半も待ちました</em>。こんなに長く待ったのは初めてです。</p>
+            
+            <p>やっと乗れたタクシーは、ちゃんとメーターを使ってくれる良心的なドライバーでした。初乗り運賃は40ペソと非常に安く、Grabの380ペソと比べると大差です。空港からホテルまでは205ペソで、適正価格だと思います。</p>
+            
+            <h2>東横インセブの部屋チェック</h2>
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=東横インセブの外観" alt="東横インセブの外観">
+                <div class="blog-img-caption">東横インセブの外観 - 日本のブランドが海外に</div>
+            </div>
+            
+            <p>午後4時、ちょうどチェックイン時間に東横インセブに到着。フロントデスクは6階にあるようで、エレベーターで上がります。日本のブランドだけあって、エレベーター内の表示も日英両方あり、とても清潔です。</p>
+            
+            <blockquote>
+                前回セブで泊まったホテルはひどかったんです。大きなゴキブリがいて、蟻もたくさんいて、アメニティもなく、シャワーからお湯も出ませんでした。今回はちゃんとした普通のホテルに泊まりたかったんです。
+            </blockquote>
+            
+            <p>チェックインを済ませ、18階の部屋に案内されました。ホテルガイドによれば、会員のチェックアウトは12時、非会員は11時とのこと。10時かと思っていたので、ラッキーです。</p>
+            
+            <h3>部屋ツアー！</h3>
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=東横インセブの部屋" alt="東横インセブの部屋">
+                <div class="blog-img-caption">思ったより広くて清潔な部屋 - 日本の東横インと同レベル</div>
+            </div>
+            
+            <p>部屋に入るとまずフロアがタイル張りのようなマット仕上げになっています。カーペットではなく、タイルという感じ。ベッドは一番安いシングルベッドプランを予約したはずですが、思ったより大きくて快適です。日本の東横インとほぼ同じで、とても清潔です。</p>
+            
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=東横インセブのバスルーム" alt="東横インセブのバスルーム">
+                <div class="blog-img-caption">清潔なユニットバス - 必要なアメニティも揃っている</div>
+            </div>
+            
+            <p>バスルームはユニットバスでビジネスホテル的な雰囲気。清潔で、歯ブラシなどのアメニティも揃っています。コスパは最高で、一泊5000円程度なのに満足度が高いです。</p>
+            
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=部屋からの眺め" alt="部屋からの眺め">
+                <div class="blog-img-caption">18階から見たセブの街並み - コントラストある風景</div>
+            </div>
+            
+            <p>窓からの眺めは一部スラム的な地域が見えますが、奥には高層ビルが見え美しいです。日本人旅行者、特に私のように短期滞在の人には本当におすすめできるホテルです。</p>
+            
+            <h2>近くのJモールを探索</h2>
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=Jモールの外観" alt="Jモールの外観">
+                <div class="blog-img-caption">ホテルのすぐ隣にあるJモール - 便利な立地</div>
+            </div>
+            
+            <p>ホテルを出るとすぐ右手にJモールがあり、とても便利な立地です。中に入ってみると、各フロアにはいろいろな店が並んでいます。</p>
+            
+            <ul>
+                <li><strong>1階</strong>：ペットショップ、ドラッグストア、パン屋など小さな店舗が軒を連ねる</li>
+                <li><strong>2階</strong>：UNIQLOなどのアパレルショップ、スーパーマーケット、Jollibee（ファストフード）</li>
+                <li><strong>3階</strong>：主にアパレル、時計、アクセサリーなど</li>
+                <li><strong>4階</strong>：スマートフォンなどの電子機器、映画館、アミューズメントエリア、アーケード</li>
+            </ul>
+            
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=コマチのラーメン" alt="コマチのラーメン">
+                <div class="blog-img-caption">ネオトーキョー内のラーメン店の醤油ラーメン - 350ペソ（約1000円）</div>
+            </div>
+            
+            <p>夕食はネオトーキョー内にあるラーメン店で食べました。醤油ラーメンが350ペソ（約1000円）とやや高め。味は悪くはないけど特別美味しいわけでもなく、この価格に見合うかと言われるとちょっと微妙でした。</p>
+            
+            <h2>夜の予定</h2>
+            <div class="blog-img-container">
+                <img src="https://placehold.co/800x450/eeeeee/333333?text=セブの夜の街並み" alt="セブの夜の街並み">
+                <div class="blog-img-caption">ライトアップされたセブの夜の街 - これからナイトライフへ</div>
+            </div>
+            
+            <p>LINE経由でRICAと連絡を取り、一緒に食事して彼女の働くクラブに行こうと誘われましたが、交通事情の関係で遅くなりそうだった。（正直に言うと遅刻を避けるため同伴してと言われたのが嫌だった）</p>
+            
+            <p>次はB-PINKというJTVに行ってみようと思います。そこで少し飲んでから、Blueにも寄って、それからホテルに戻る予定です。</p>
+            
+            <p>セブの夜はこれからが本番！次回は初日の夜がどうなるか、お楽しみに！</p>
+            
+            <!-- ブログ記事フッター -->
+            <div class="blog-footer">
+                <div class="blog-tags">
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> セブ島</a>
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> フィリピン</a>
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 東横イン</a>
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 一人旅</a>
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 海外旅行</a>
+                </div>
+                
+                <div class="blog-share">
+                    <a href="#" class="share-button" aria-label="Xでシェア"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="share-button" aria-label="Facebookでシェア"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-button" aria-label="LINEでシェア"><i class="fab fa-line"></i></a>
+                </div>
+            </div>
+            
+            <!-- 前後の記事ナビゲーション -->
+            <div class="next-prev-nav">
+                <div class="prev-post">
+                    <span class="nav-direction"><i class="fas fa-chevron-left"></i> 前の記事</span>
+                    <a href="#" class="nav-title">【バリ島旅行】ウブドでの癒しの3日間</a>
+                </div>
+                <div class="next-post">
+                    <span class="nav-direction">次の記事 <i class="fas fa-chevron-right"></i></span>
+                    <a href="#" class="nav-title">セブ島旅行2日目 - B-PINKとBlueでの夜遊び体験</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- フッター部分 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>とも旅ちゃんねるVLOG</h3>
+                <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
+                
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagramアカウント"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTokアカウント"><i class="fab fa-tiktok"></i></a>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="/#about">チャンネル概要</a>
+                    <a href="/#videos">最新動画</a>
+                    <a href="/#travel">旅の魅力</a>
+                    <a href="/#equipment">撮影機材</a>
+                    <a href="/#booking">旅の予約</a>
+                    <a href="/#contact">お問い合わせ</a>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // スクロール時のヘッダー変更
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (header && window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else if (header) {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // ハンバーガーメニューの動作
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    
+                    // アイコンを切り替え
+                    const icon = menuToggle.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                // メニュー項目をクリックしたらメニューを閉じる
+                const navLinks = mainNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mainNav.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
