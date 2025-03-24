@@ -363,12 +363,14 @@ nav ul li a:hover::before {
 }
 
 .blog-content h2 {
-    font-size: 1.8rem;
+    font-size: 2.2rem; /* 見出しサイズを大きく */
     margin-top: 40px;
     padding-bottom: 8px;
     border-bottom: 2px solid var(--accent);
     display: block;
     text-align: center;
+    font-weight: 700; /* 太字に */
+    color: var(--primary-dark); /* 色を少し濃く */
 }
 
 .blog-content h2::after {
@@ -376,7 +378,7 @@ nav ul li a:hover::before {
 }
 
 .blog-content h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem; /* h3も少し大きく */
     margin-top: 30px;
     margin-bottom: 15px;
     color: var(--primary-dark);
@@ -415,21 +417,21 @@ nav ul li a:hover::before {
     text-align: center;
 }
 
-/* YouTube動画用に控えめな特別スタイル */
+/* YouTube動画用に大きめなサイズに修正 */
 .video-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     height: 0;
-    margin: 35px auto; /* 少し大きめのマージン */
+    margin: 40px auto; /* マージンを少し広く */
     overflow: hidden;
-    max-width: 95%; /* 他の画像より少し大きめの95% */
+    max-width: 100%; /* 最大幅100%に拡大 */
     border-radius: var(--border-radius);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* シャドウを強化 */
     transition: all var(--transition-fast);
 }
 
 .video-container:hover {
-    box-shadow: 0 18px 35px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
     transform: scale(1.02);
 }
 
@@ -583,11 +585,11 @@ nav ul li a:hover::before {
     }
     
     .blog-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem; /* モバイルでも大きめに */
     }
     
     .blog-content h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     
     .blog-footer, .next-prev-nav {
@@ -756,7 +758,7 @@ footer::before {
                 <div class="blog-img-caption">朝の成田空港第2ターミナル - 出発前のワクワク感</div>
             </div>
             
-            <p>朝7:35、成田空港第2ターミナルに到着しました。飛行機は8:10発なのでかなり急いでいます。今回の荷物はリュックとお土産を入れた紙袋だけの軽装備。チェックインを済ませているのですぐに搭乗ゲートへ向かいます。</p>
+                      <p>朝7:35、成田空港第2ターミナルに到着しました。飛行機は8:10発なのでかなり急いでいます。今回の荷物はリュックとお土産を入れた紙袋だけの軽装備。チェックインを済ませているのですぐに搭乗ゲートへ向かいます。</p>
             
             <p>今回の旅行の目的は？単純に飲んで遊ぶだけです（笑）。ナイトライフを楽しみたい気分なんです。どこまで撮影できるか分かりませんが、できるだけ経験をシェアしていきますね！</p>
             
