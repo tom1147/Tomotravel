@@ -417,22 +417,24 @@ nav ul li a:hover::before {
     text-align: center;
 }
 
-/* YouTube動画用に大きめなサイズに修正 */
+/* YouTube動画用に特大サイズに修正 */
 .video-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     height: 0;
     margin: 40px auto; /* マージンを少し広く */
     overflow: hidden;
-    max-width: 100%; /* 最大幅100%に拡大 */
+    max-width: 130%; /* 最大幅130%に拡大 */
     border-radius: var(--border-radius);
     box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* シャドウを強化 */
     transition: all var(--transition-fast);
+    transform: translateX(-15%); /* 左右センタリング調整 */
+    left: 15%; /* 左右センタリングの追加調整 */
 }
 
 .video-container:hover {
     box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    transform: scale(1.02);
+    transform: scale(1.02) translateX(-14.7%); /* ホバー時のスケールと位置調整 */
 }
 
 .video-container iframe {
