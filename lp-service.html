@@ -204,7 +204,7 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 5px;
+    margin: 0 2px;
     position: relative;
 }
 
@@ -818,6 +818,11 @@ nav ul li a:hover::before {
             margin: 0 auto;
         }
         
+        .footer-content p {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
         .footer-links {
             display: flex;
             justify-content: center;
@@ -827,10 +832,12 @@ nav ul li a:hover::before {
         
         .footer-links a {
             color: rgba(255,255,255,0.7);
-            margin: 0 15px;
+            margin: 0 6px;
             text-decoration: none;
             transition: all var(--transition-fast);
             padding: 5px 0;
+            white-space: nowrap;
+            font-size: 0.95rem;
         }
         
         .footer-links a:hover {
@@ -866,6 +873,10 @@ nav ul li a:hover::before {
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 0;
         }
         
         /* ===== ANIMATIONS ===== */
@@ -1013,6 +1024,7 @@ nav ul li a:hover::before {
                         <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
                         <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
                         <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
+                        <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
                         <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
                     </ul>
                 </nav>
@@ -1249,17 +1261,17 @@ nav ul li a:hover::before {
                 <div class="social-links">
                     <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank"><i class="fab fa-youtube"></i></a>
                     <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" aria-label="Instagramアカウント"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="TikTokアカウント"><i class="fab fa-tiktok"></i></a>
                 </div>
                 
                 <div class="footer-links">
-                    <a href="/#about">チャンネル概要</a>
-                    <a href="/#videos">最新動画</a>
-                    <a href="/#travel">旅の魅力</a>
-                    <a href="/#equipment">撮影機材</a>
-                    <a href="/#booking">旅の予約</a>
-                    <a href="/#contact">お問い合わせ</a>
+                    <a href="#about">チャンネル概要</a>
+                    <a href="#videos">最新動画</a>
+                    <a href="#travel">旅の魅力</a>
+                    <a href="#equipment">撮影機材</a>
+                    <a href="#booking">旅の予約</a>
+                    <a href="#preparation">事前準備</a>
+                    <a href="#contact">お問い合わせ</a>
+                    <a href="https://tomotravel-pm.com/blog">ブログ</a>
                 </div>
                 
                 <div class="footer-bottom">
