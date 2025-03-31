@@ -420,6 +420,8 @@ section {
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     position: relative;
     overflow: hidden;
+    /* スクロール時のオフセットを追加 - 修正点1 */
+    scroll-margin-top: 120px;
 }
 
 section:hover {
@@ -1470,7 +1472,7 @@ footer::before {
             });
         });
         
-        // スムーズスクロール
+        // スムーズスクロール - 修正コード
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -1481,7 +1483,16 @@ footer::before {
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        targetElement.scrollIntoView({
+                        // ヘッダーの高さを取得
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        
+                        // ターゲット要素の位置を取得してヘッダーの高さを引く
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                        
+                        // 計算した位置にスクロール
+                        window.scrollTo({
+                            top: offsetPosition,
                             behavior: 'smooth'
                         });
                     }
