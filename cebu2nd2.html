@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
+
     <!-- 構造化データの追加 (schema.org) -->
     <script type="application/ld+json">
     {
@@ -29,7 +29,7 @@
       "url": "https://tomotravel-pm.com"
     }
     </script>
-    
+
     <style>
         :root {
             --primary: #1E90FF;
@@ -47,17 +47,17 @@
             --transition-fast: 0.3s ease;
             --transition-medium: 0.5s ease;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         .hidden {
             display: none;
         }
-        
+
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
@@ -66,20 +66,20 @@
             overflow-x: hidden;
             text-align: center; /* 全体のテキストを中央揃えに */
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: var(--container-padding);
         }
-        
+
         /* ===== TYPOGRAPHY ===== */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', 'Noto Sans JP', sans-serif;
             line-height: 1.3;
             text-align: center; /* 見出しを中央揃えに */
         }
-        
+
         h2 {
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
@@ -87,7 +87,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         h2::after {
             content: '';
             position: absolute;
@@ -99,11 +99,11 @@
             border-radius: 2px;
             transition: width var(--transition-medium);
         }
-        
+
         section:hover h2::after {
             width: 100%;
         }
-        
+
         p {
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
@@ -113,7 +113,7 @@
             margin-left: auto; /* 左右のマージンを自動で中央に */
             margin-right: auto;
         }
-        
+
 /* ===== HEADER ===== */
 header {
     background-color: rgba(255, 255, 255, 0.95);
@@ -215,7 +215,7 @@ header.scrolled {
 nav {
     width: 100%;
 }
-        
+
 nav ul {
     display: flex;
     list-style: none;
@@ -271,43 +271,43 @@ nav ul li a:hover::before {
     .header-content {
         position: relative;
     }
-    
+
     .menu-toggle {
         display: block;
     }
-    
+
     nav#main-nav {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease;
         width: 100%;
     }
-    
+
     nav#main-nav.active {
         max-height: 500px;
     }
-    
+
     nav ul.nav-menu {
         flex-direction: column;
         padding: 10px 0;
     }
-    
+
     nav ul.nav-menu li {
         width: 100%;
         text-align: center;
     }
-    
+
     nav ul.nav-menu li a {
         padding: 12px;
         width: 100%;
         display: block;
     }
-    
+
     .logo-center {
         margin-bottom: 5px;
     }
 }
-        
+
 /* ブログ記事のスタイル */
 .blog-header {
     margin-top: 150px;
@@ -611,28 +611,28 @@ nav ul li a:hover::before {
         margin-top: 110px;
         padding: 20px 15px;
     }
-    
+
     .blog-title {
         font-size: 1.8rem;
     }
-    
+
     .blog-content {
         padding: 25px;
     }
-    
+
     .blog-content h2 {
         font-size: 1.8rem; /* モバイルでも大きめに */
     }
-    
+
     .blog-content h3 {
         font-size: 1.4rem;
     }
-    
+
     .blog-footer, .next-prev-nav {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .prev-post, .next-post {
         max-width: 100%;
     }
@@ -774,71 +774,71 @@ footer::before {
             </div>
         </div>
     </header>
-    
+
     <!-- メインコンテンツ（ブログ記事） -->
     <div class="blog-container">
         <!-- ブログ記事ヘッダー -->
         <div class="blog-header">
             <h1 class="blog-title">【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル</h1>
             <div class="blog-meta">
-                <span><i class="fas fa-user"></i> 投稿者: Tomo</span> | 
-                <span><i class="fas fa-calendar-alt"></i> 2025年3月24日</span> | 
+                <span><i class="fas fa-user"></i> 投稿者: Tomo</span> |
+                <span><i class="fas fa-calendar-alt"></i> 2025年3月24日</span> |
                 <span><i class="fas fa-tag"></i> セブ島, JTV, 夜遊び</span>
             </div>
         </div>
-        
+
         <!-- ブログ記事本文 -->
         <div class="blog-content">
             <p>こんにちは、Tomoです！セブ島旅行の楽しみ方といえば、美しいビーチやアイランドホッピングだけではありません。今回は「セブ島のJTVってどんな感じ？」と気になっている方も多いと思い、実際にセブ島のJTV（ジャパニーズ式カラオケ、日本でいうキャバクラのようなもの）を訪れた体験をリアルにお伝えします。セブ島旅行は<a href="https://jp.trip.com/?Allianceid=6140254&SID=183273476&trip_sub1=&trip_sub3=D2153692" target="_blank">Trip.com</a>で予約しましたが、<a href="https://t.afi-b.com/visit.php?a=G146077-7480944z&p=X949354E" target="_blank">Expedia</a>もよく使っています。カメラは<a href="https://rpx.a8.net/svt/ejp?a8mat=2NE1HP+9715R6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00u6874.2bo11c89.g00u6874.2bo1285d%2Fa16021852584_2NE1HP_9715R6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Finsta360-shop2%252Finsta360-x4%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Finsta360-shop2%252Fi%252F10000445%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" target="_blank">insta360 X4</a>にて360度で撮影しています。</p>
 
             <h2>セブの夜へ：JTVに向かう高揚感</h2>
             <p>セブ2日目の夜、ホテルから出発してNEOTOKYOという日本食レストラン街に向かいました。実はJTVに行くのは前回の訪問以来で、少し緊張しつつもワクワクしています。セブの夜は日本とは違う独特の雰囲気があり、その空気を感じるだけでも旅の醍醐味です。</p>
-            
+
             <div class="blog-img-container">
                 <div class="video-container">
-                    <iframe 
-                            src="https://www.youtube.com/embed/z5APVNRi0FQ" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    <iframe
+                            src="https://www.youtube.com/embed/z5APVNRi0FQ"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
                     </iframe>
                 </div>
                 <div class="blog-img-caption">セブ島JTV！夜のリアルはこちら！</div>
             </div>
-            
+
             <p>NEOTOKYOには日本料理店が多く、日本人観光客も多く見かけます。このエリアには複数のJTVがあり、今夜はその中でも評判の良いB-pinkを訪れることにしました。夜の街を歩きながら、どんな体験が待っているのかと期待が高まります。</p>
-            
+
             <h2>B-pink：初めて行くお店！JTV体験！</h2>
             <p>NEOTOKYOという日本食レストラン街近くにあるB-pinkを訪問することにしました。入店前は撮影許可をもらえるか不安でしたが、直接交渉したところOKをもらえました。全ての店舗で撮影OKとは限らないので、必ず許可を取ってからにしましょう。</p>
-            
+
             <div class="blog-img-container">
     <img src="images/cebu2nd2/21.png" alt="B-pinkでの体験の様子" loading="lazy">
     <div class="blog-img-caption">B-pinkでの体験 - 撮影許可をいただいています</div>
 </div>
-            
+
             <p>「いらっしゃいませ！」と元気な声で迎えられ、店内はピンク基調で美しい雰囲気。可愛らしい女性スタッフがたくさんいました。英語でのコミュニケーションが基本ですが、25歳のアージェリーさんと話すことになり、彼女は少し日本語も話せたのでコミュニケーションに困ることはありませんでした。</p>
-            
+
             <p>「かわいい」という日本語を教えると知っていると言い笑顔で反応してくれました。初めての訪問ではまだ距離感があり、深い会話までは至りませんでしたが、リピートすれば徐々に親しくなれるとの印象です。1時間滞在して、最初は2000ペソのソジュが飲みたいと言われたが、顔出し撮影できなかったので断り、テキーラとジュースを注文しました。合計で1,200ペソ（約3,000円）でした。</p>
-            
+
             <h2>Club K：穴場のJTV</h2>
             <div class="blog-img-container">
     <img src="images/cebu2nd2/22.png" alt="Club Kの店内" loading="lazy">
     <div class="blog-img-caption">Club Kの店内 - ショータイムの様子</div>
 </div>
-            
+
             <p>B-pinkのスタッフに他のおすすめを聞いたところ、有名な「Komachi」や「Blue」などが挙がりましたが、あまり聞いたことのない「Club K」という店を紹介されました。インターネットでも情報が少ないこの店に興味を持ち、訪問してみることに。</p>
-            
+
             <p>Club Kに到着すると、オーナーが出迎えてくれました。リオさんといくぴーさんなど有名なYouTuberも訪れる店だそうで、撮影も快く許可してくれました。</p>
-            
+
             <div class="blog-img-container">
     <img src="images/cebu2nd2/23.png" alt="Club Kのスタッフ" loading="lazy">
     <div class="blog-img-caption">Club Kのスタッフと撮影 - 許可を得ています</div>
 </div>
-            
+
             <p>ここでも魅力的な女性スタッフが多く、23歳のAYAさんを指名しました。彼女はJTVで働き始めてまだ1ヶ月とのこと。「日本の歌は知っていますか？」と尋ねても「まだ新人だから分からない」と返答。JTVでは定番の宇多田ヒカルの「First Love」を例に出しても反応がなく、その初々しさに魅力を感じました。</p>
-            
+
             <p>Club Kでは毎日ショータイムがあります。私が訪れた時は客が私一人だけでしたが、それでもスタッフ全員がショーを行ってくれました。ダンスは良くて目の保養になりました。このお店はクレジットカード使えないので注意しましょう。</p>
-            
+
             <h3>セブ島JTV訪問のポイント</h3>
             <ul>
                 <li><strong>料金システム</strong>：基本的に時間制で、1時間あたり400〜600ペソ程度。別途、キャストへの飲み物代がかかります。また、料金にはTAX18％程度が加算されますので注意してください。</li>
@@ -846,21 +846,21 @@ footer::before {
                 <li><strong>ショータイム</strong>：Club Kのようにショーを行う店もあります。ダンスは目の保養になりますし、観光の一環として楽しめます。</li>
                 <li><strong>リピートの重要性</strong>：一度の訪問だけではスタッフとの距離感があります。気に入った店があれば複数回訪れることで、より良い体験ができるでしょう。</li>
             </ul>
-            
+
             <h2>まとめ：セブ島JTVの魅力</h2>
            <div class="blog-img-container">
     <img src="images/cebu2nd2/24.png" alt="セブ島の夜の街並み" loading="lazy">
     <div class="blog-img-caption">Club Kの外観 - 穴場的なJTVスポット</div>
 </div>
-            
+
             <p>今回訪れたB-pinkとClub Kはどちらも良い印象でしたが、特にClub Kはスタッフのレベルが高く、ショーも楽しめました。来店当時はあまり有名ではなかったスポットを見つけられたのは大きな収穫です。次回の動画ではClub Blueに行く予定なので、お楽しみに！</p>
-            
+
             <blockquote>
                 セブ島のJTVは日本人観光客向けのエンターテイメントとして楽しめますが、マナーを守り敬意を持って接することが大切です。ハメを外しすぎず、楽しい時間を過ごしましょう。
             </blockquote>
-            
+
             <p>皆さんもセブ島を訪れる際は、ビーチだけでなく夜の街の文化も体験してみてはいかがでしょうか。ぜひ私の<a href="https://www.youtube.com/@TomoTravel-PM" target="_blank">YouTubeチャンネル</a>もチェックしてみてください！</p>
-            
+
             <!-- ブログ記事フッター -->
             <div class="blog-footer">
                 <div class="blog-tags">
@@ -872,7 +872,7 @@ footer::before {
                     <a href="#" class="blog-tag"><i class="fas fa-tag"></i> Club K</a>
                 </div>
             </div>
-            
+
             <!-- 次の記事ナビゲーション -->
             <div class="next-prev-nav">
                 <div class="prev-post">
@@ -881,24 +881,24 @@ footer::before {
                 </div>
                 <div class="next-post">
                     <span class="nav-direction">次の記事 <i class="fas fa-chevron-right"></i></span>
-                    <a href="#"><span class="nav-title">【セブ島JTV体験】Blueの魅力と料金システムを徹底解説</span></a>
+                    <a href="https://tomotravel-pm.com/blog/cebu2nd3"><span class="nav-title">お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】</span></a>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- フッター部分 -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <h3>とも旅ちゃんねるVLOG</h3>
                 <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
-                
+
                 <div class="social-links">
                     <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank"><i class="fab fa-youtube"></i></a>
                     <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
                 </div>
-                
+
                 <div class="footer-links">
                     <a href="#about">チャンネル概要</a>
                     <a href="#videos">最新動画</a>
@@ -909,14 +909,14 @@ footer::before {
                     <a href="#contact">お問い合わせ</a>
                     <a href="https://tomotravel-pm.com/blog">ブログ</a>
                 </div>
-                
+
                 <div class="footer-bottom">
-                    <p>&copy; 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
+                    <p>© 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
-    
+
     <script>
         // スクロール時のヘッダー変更
         window.addEventListener('scroll', function() {
@@ -927,16 +927,16 @@ footer::before {
                 header.classList.remove('scrolled');
             }
         });
-        
+
         // ハンバーガーメニューの動作
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
-            
+
             if (menuToggle && mainNav) {
                 menuToggle.addEventListener('click', function() {
                     mainNav.classList.toggle('active');
-                    
+
                     // アイコンを切り替え
                     const icon = menuToggle.querySelector('i');
                     if (icon.classList.contains('fa-bars')) {
@@ -947,7 +947,7 @@ footer::before {
                         icon.classList.add('fa-bars');
                     }
                 });
-                
+
                 // メニュー項目をクリックしたらメニューを閉じる
                 const navLinks = mainNav.querySelectorAll('a');
                 navLinks.forEach(link => {
