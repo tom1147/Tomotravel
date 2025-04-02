@@ -34,6 +34,9 @@
             --border-radius: 12px;
             --transition-fast: 0.3s ease;
             --transition-medium: 0.5s ease;
+            /* ヘッダーの高さを変数化（必要に応じて調整） */
+            --header-height-desktop: 140px; /* デスクトップ時の大体の高さ */
+            --header-height-mobile: 80px;  /* モバイル時の大体の高さ */
         }
 
         * {
@@ -53,6 +56,18 @@
             font-family: 'Noto Sans JP', sans-serif;
             overflow-x: hidden;
         }
+
+        html {
+            scroll-behavior: smooth; /* CSSでのスムーズスクロールを有効化 */
+            scroll-padding-top: var(--header-height-mobile); /* デフォルトのスクロール位置調整 */
+        }
+
+        @media (min-width: 769px) {
+            html {
+                scroll-padding-top: var(--header-height-desktop); /* デスクトップ用 */
+            }
+        }
+
 
         .container {
             max-width: 1200px;
@@ -183,7 +198,7 @@ header.scrolled {
     transition: all var(--transition-fast);
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 20px; /* 位置を調整 */
     z-index: 1001;
 }
 
@@ -210,15 +225,16 @@ nav ul li {
 /* メニュー幅を調整 */
 nav ul li a {
     font-size: 0.95rem;
-    padding: 8px 8px;
+    padding: 8px 8px; /* デフォルトのパディング */
 }
+
 
 nav ul li a {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 500;
     transition: all var(--transition-fast);
-    padding: 8px 8px;
+    padding: 8px 8px; /* 再度確認 */
     display: block;
     border-radius: 6px;
     position: relative;
@@ -254,44 +270,80 @@ nav ul li a:hover::before {
 
 @media (max-width: 768px) {
     .header-content {
-        position: relative;
+        /* モバイル時のヘッダー内コンテンツの配置を調整 */
+        flex-direction: row; /* 横並びに変更 */
+        justify-content: space-between; /* ロゴとトグルボタンを両端に */
+        align-items: center; /* 縦方向中央揃え */
+        padding: 10px 0; /* パディング調整 */
     }
+
+    .logo-center {
+        margin-bottom: 0; /* マージン除去 */
+        text-align: left; /* ロゴを左寄せに */
+        flex-grow: 1; /* 残りのスペースを埋める */
+        padding-left: 20px; /* 左に余白 */
+    }
+     .logo-center::after {
+         display: none; /* 下線を非表示 */
+     }
+     .logo-text {
+        font-size: 24px; /* モバイル用フォントサイズ */
+     }
+     .vlog-text {
+        font-size: 20px;
+     }
 
     .menu-toggle {
         display: block;
+        position: static; /* absolute解除 */
+        margin-right: 20px; /* 右に余白 */
+        /* topとrightは不要に */
     }
 
     nav#main-nav {
+        /* ハンバーガーメニューのスタイル */
+        position: absolute; /* ヘッダーコンテンツから独立させる */
+        top: 100%; /* ヘッダーのすぐ下に配置 */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98); /* 背景色 */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* 影 */
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.5s ease;
-        width: 100%;
+        transition: max-height 0.5s ease, padding 0.5s ease; /* パディングもアニメーション */
+        padding: 0; /* 閉じてる時はパディング0 */
+        border-top: 1px solid rgba(30,144,255,0.1); /* 上境界線 */
     }
 
     nav#main-nav.active {
-        max-height: 500px;
+        max-height: calc(100vh - var(--header-height-mobile)); /* 画面高さからヘッダー高さを引いた最大高さ */
+        padding: 10px 0; /* 開いた時のパディング */
+        overflow-y: auto; /* 内容が多い場合にスクロール */
     }
 
     nav ul.nav-menu {
         flex-direction: column;
-        padding: 10px 0;
+        padding: 0; /* nav#main-nav側でパディング管理 */
     }
 
     nav ul.nav-menu li {
         width: 100%;
         text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.05); /* 項目間に区切り線 */
+    }
+    nav ul.nav-menu li:last-child {
+        border-bottom: none; /* 最後の項目は線なし */
     }
 
     nav ul.nav-menu li a {
-        padding: 12px;
+        padding: 15px 20px; /* クリックしやすいようにパディングを増やす */
         width: 100%;
         display: block;
+        font-size: 1rem; /* フォントサイズ調整 */
     }
 
-    .logo-center {
-        margin-bottom: 5px;
-    }
 }
+
 
 /* ===== HERO SECTION ===== */
 .hero {
@@ -309,7 +361,7 @@ nav ul li a:hover::before {
     margin-bottom: var(--section-space);
     position: relative;
     overflow: hidden;
-    padding-top: 80px;
+    padding-top: 80px; /* ヘッダー固定分を考慮 */
 }
 
 .hero::before {
@@ -420,8 +472,8 @@ section {
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     position: relative;
     overflow: hidden;
-    /* スクロール時のオフセットを追加 - 修正点1 */
-    scroll-margin-top: 120px;
+    /* scroll-margin-top は html 要素の scroll-padding-top で代替 */
+    /* scroll-margin-top: 120px; */ /* コメントアウトまたは削除 */
 }
 
 section:hover {
@@ -876,22 +928,32 @@ footer::before {
 }
 
 .social-nav-link {
-    display: flex;
+    display: inline-flex; /* 修正 */
     align-items: center;
     justify-content: center;
     width: 36px;
     height: 36px;
     font-size: 18px;
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(255,255,255,0.1); /* フッターのリンクと統一 */
     border-radius: 50%;
     transition: all var(--transition-fast);
+    color: white; /* 色を指定 */
+    margin: 0 5px; /* 他のソーシャルリンクとの間隔 */
+    line-height: 36px; /* アイコン中央揃え */
 }
+
 
 .social-nav-link:hover {
     background-color: var(--primary);
     color: white;
     transform: translateY(-3px);
 }
+
+/* X(Twitter)アイコンの微調整 */
+.social-nav-link .fa-x-twitter {
+    font-size: 16px; /* 他のアイコンサイズと合わせる */
+}
+
 
 .social-links a {
     display: inline-flex;
@@ -928,6 +990,7 @@ footer::before {
     min-height: 100vh;
     text-align: center;
     padding: 20px;
+    background-color: var(--bg-light); /* 背景色追加 */
 }
 
 .thank-you-container {
@@ -1028,33 +1091,13 @@ footer::before {
         padding: 0 20px;
     }
 
-    .header-content {
-        padding: 10px 0;
-    }
-
-    .logo-text {
-        font-size: 26px;
-    }
-
-    .vlog-text {
-        font-size: 22px;
-    }
-
-    nav ul.nav-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav ul.nav-menu li a {
-        padding: 6px 10px;
-        font-size: 14px;
-        margin-bottom: 5px;
-    }
+    /* header-content の調整は上記 @media 内で実施済み */
 
     .hero {
         min-height: 450px;
         height: 65vh;
-        background-attachment: scroll;
+        background-attachment: scroll; /* モバイルではfixed解除 */
+        padding-top: var(--header-height-mobile); /* モバイルヘッダー高さを考慮 */
     }
 
     .hero h2 {
@@ -1091,13 +1134,7 @@ footer::before {
         --section-space: 40px;
     }
 
-    .logo-text {
-        font-size: 24px;
-    }
-
-    .vlog-text {
-        font-size: 20px;
-    }
+    /* ロゴサイズ調整は上記 @media (max-width: 768px) 内で実施済み */
 
     .hero h2 {
         font-size: 1.8rem;
@@ -1161,10 +1198,6 @@ footer::before {
                     <div class="logo-center" aria-label="サイトロゴ">
                         <h1 class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></h1>
                     </div>
-                    <!-- ハンバーガーメニューボタンを追加 -->
-                    <div class="menu-toggle" id="menu-toggle">
-                        <i class="fas fa-bars"></i>
-                    </div>
                     <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
                         <ul class="nav-menu">
                             <li><a href="#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
@@ -1178,6 +1211,10 @@ footer::before {
                             <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
                         </ul>
                     </nav>
+                    <!-- ハンバーガーメニューボタン (navの外に移動) -->
+                    <div class="menu-toggle" id="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
                 </div>
             </div>
         </header>
@@ -1221,7 +1258,7 @@ footer::before {
                         <a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" class="hero-btn">
                             <i class="fab fa-youtube"></i> YouTubeチャンネルを見る
                         </a>
-                        <a href="https://tomotravel-pm.com/blog" class="hero-btn" style="background-color: var(--primary); margin-left: 15px;">
+                        <a href="https://tomotravel-pm.com/blog" target="_blank" class="hero-btn" style="background-color: var(--primary); margin-left: 15px;">
                             <i class="fas fa-blog"></i> ブログを見る
                         </a>
                     </div>
@@ -1409,7 +1446,6 @@ footer::before {
                     <div class="social-links">
                         <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank"><i class="fab fa-youtube"></i></a>
                         <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-
                     </div>
 
                     <div class="footer-links">
@@ -1432,106 +1468,152 @@ footer::before {
     </div>
 
     <script>
-        // URLパラメータをチェックして成功ページを表示
         document.addEventListener('DOMContentLoaded', function() {
+            // --- URLパラメータチェック ---
             if (window.location.search.includes('success=true')) {
                 document.getElementById('thank-you-page').style.display = 'flex';
                 document.getElementById('main-content').style.display = 'none';
                 document.title = "お問い合わせありがとうございます | とも旅ちゃんねるVLOG";
-                window.scrollTo(0, 0);
+                window.scrollTo(0, 0); // ページトップへ
+                // フォーム送信成功後の履歴操作（ブラウザバックでフォーム再表示を防ぐ）
+                if (window.history.replaceState) {
+                    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                    window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+                }
             }
-        });
 
-        // スクロール時のヘッダー変更
-        window.addEventListener('scroll', function() {
+            // --- ヘッダーのスクロール変化 ---
             const header = document.getElementById('header');
-            if (header && window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else if (header) {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // 要素が画面内に入ったらフェードイン
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-
-            const fadeInObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        fadeInObserver.unobserve(entry.target);
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) { // 少し早めに変化させる
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
                     }
                 });
-            }, {
-                threshold: 0.15
-            });
+            }
 
-            fadeElements.forEach(element => {
-                fadeInObserver.observe(element);
-            });
-        });
+            // --- フェードインアニメーション ---
+            const fadeElements = document.querySelectorAll('.fade-in');
+            if ("IntersectionObserver" in window) {
+                const fadeInObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            fadeInObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1 // 要素が10%見えたら発火
+                });
 
-        // スムーズスクロール - 修正コード
-        document.addEventListener('DOMContentLoaded', function() {
+                fadeElements.forEach(element => {
+                    fadeInObserver.observe(element);
+                });
+            } else {
+                // IntersectionObserver 非対応ブラウザ向けのフォールバック (全表示)
+                fadeElements.forEach(element => element.classList.add('active'));
+            }
+
+
+            // --- スムーズスクロール (ヘッダーオフセット考慮) ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
                     const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+                    // href="#" または有効なIDでない場合はデフォルト動作
+                    if (!targetId || targetId === '#' || !document.querySelector(targetId)) {
+                         // ハンバーガーメニュー内のリンクならメニューを閉じるだけにする場合など
+                         if (this.closest('#main-nav')) {
+                             closeMobileMenu(); // メニューを閉じる関数を呼ぶ
+                         }
+                         return; // 何もせず終了
+                     }
+
+                    e.preventDefault(); // デフォルトのアンカー動作をキャンセル
 
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        // ヘッダーの高さを取得
-                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const headerElement = document.getElementById('header');
+                        let headerOffset = 0;
+                        if (headerElement) {
+                            headerOffset = headerElement.offsetHeight;
+                        }
 
-                        // ターゲット要素の位置を取得してヘッダーの高さを引く
+                        // ヘッダーの下に少し余裕を持たせるための追加オフセット (px)
+                        const extraPadding = 20; // 必要に応じて調整
+
                         const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                        const offsetPosition = window.pageYOffset + elementPosition - headerOffset - extraPadding;
 
-                        // 計算した位置にスクロール
                         window.scrollTo({
                             top: offsetPosition,
                             behavior: 'smooth'
                         });
+
+                        // モバイルメニューが開いていたら閉じる
+                        closeMobileMenu();
                     }
                 });
             });
-        });
 
-        // ハンバーガーメニューの動作
-        document.addEventListener('DOMContentLoaded', function() {
+            // --- ハンバーガーメニュー ---
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
+            const body = document.body; // body要素を取得
+
+            function openMobileMenu() {
+                if (mainNav && menuToggle) {
+                    mainNav.classList.add('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                    body.style.overflow = 'hidden'; // 背景スクロール禁止
+                }
+            }
+
+            function closeMobileMenu() {
+                if (mainNav && menuToggle && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    body.style.overflow = ''; // 背景スクロール許可
+                }
+            }
 
             if (menuToggle && mainNav) {
-                menuToggle.addEventListener('click', function() {
-                    mainNav.classList.toggle('active');
+                menuToggle.setAttribute('aria-controls', 'main-nav');
+                menuToggle.setAttribute('aria-expanded', 'false');
 
-                    // アイコンを切り替え
-                    const icon = menuToggle.querySelector('i');
-                    if (icon.classList.contains('fa-bars')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
+                menuToggle.addEventListener('click', function() {
+                    if (mainNav.classList.contains('active')) {
+                        closeMobileMenu();
                     } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
+                        openMobileMenu();
                     }
                 });
 
-                // メニュー項目をクリックしたらメニューを閉じる
-                const navLinks = mainNav.querySelectorAll('a');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        mainNav.classList.remove('active');
-                        const icon = menuToggle.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    });
+                // メニュー外をクリックしたら閉じる (オプション)
+                document.addEventListener('click', function(event) {
+                    if (!mainNav.contains(event.target) && !menuToggle.contains(event.target) && mainNav.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
                 });
+
+                // Escキーでメニューを閉じる (オプション)
+                 document.addEventListener('keydown', function(event) {
+                     if (event.key === 'Escape' && mainNav.classList.contains('active')) {
+                         closeMobileMenu();
+                     }
+                 });
+
+                // メニュー内のリンククリック時の処理はスムーズスクロール側に統合
             }
-        });
+
+        }); // END DOMContentLoaded
     </script>
     <script type='text/javascript' src='//pl26273446.effectiveratecpm.com/c5/10/e1/c510e12d2bf0cf3e4b6d7680c5cca15d.js'></script>
 </body>
