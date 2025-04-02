@@ -743,7 +743,7 @@
                 font-size: 0.9rem;
                 white-space: normal;
             }
-            .next-post { display: none; }
+            /* Removed display: none for next-post in mobile */
         }
         @media (max-width: 480px) {
             .blog-title { font-size: 1.6rem; }
@@ -1041,7 +1041,7 @@
                  </div>
             </div>
 
-             <!-- 前の記事ナビゲーション -->
+             <!-- 前後の記事ナビゲーション (修正箇所) -->
             <div class="next-prev-nav">
                 <div class="prev-post">
                    <a href="https://tomotravel-pm.com/cebu2nd2" rel="prev">
@@ -1049,8 +1049,12 @@
                         <span class="nav-title">【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル</span>
                     </a>
                 </div>
-                <div class="next-post" style="display: none;">
-                    <!-- 次の記事がない場合は非表示 -->
+                <!-- 次の記事へのリンクを追加・修正 -->
+                <div class="next-post">
+                    <a href="https://tomotravel-pm.com/blog/cebu2nd4" rel="next">
+                         <span class="nav-direction">次の記事 <i class="fas fa-chevron-right"></i></span>
+                         <span class="nav-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</span>
+                     </a>
                 </div>
             </div>
 
