@@ -268,6 +268,40 @@ nav ul li a:hover::before {
     margin-right: 5px;
 }
 
+/* ヘッダーナビゲーション内のソーシャルリンク（X）のスタイル */
+#main-nav .social-nav-link {
+    background-color: transparent; /* 背景色を透明に */
+    color: var(--text-dark);    /* アイコン色を通常テキスト色に */
+    width: auto;              /* 幅を自動調整 */
+    height: auto;             /* 高さを自動調整 */
+    font-size: 0.95rem;       /* 他のナビ項目と合わせる */
+    padding: 8px 8px;         /* 他のナビ項目と合わせる */
+    border-radius: 6px;       /* 他のナビ項目と合わせる */
+    margin: 0 2px;            /* 他のナビ項目と合わせる */
+    line-height: normal;      /* line-heightをリセット */
+    display: inline-flex;     /* アイコン中央揃えのため維持 */
+    align-items: center;      /* アイコン中央揃えのため維持 */
+    justify-content: center;  /* 中央揃え */
+}
+
+/* ヘッダーナビゲーション内のXアイコン固有の調整 */
+#main-nav .social-nav-link .fa-x-twitter {
+     font-size: 1em; /* 親要素のフォントサイズを継承 */
+     /* margin-right: 0; アイコンのみなので不要 */
+}
+
+/* ヘッダーナビゲーション内のソーシャルリンク ホバー時のスタイル */
+#main-nav .social-nav-link:hover {
+    color: var(--primary);      /* ホバー時の色 */
+    background-color: transparent; /* ホバー時の背景色（不要な場合は削除）*/
+    transform: translateY(-2px); /* 他のナビ項目と合わせる */
+}
+/* ヘッダーの .social-nav-link のホバー時 ::before スタイルは適用しない */
+#main-nav .social-nav-link:hover::before {
+    height: 0;
+}
+
+
 @media (max-width: 768px) {
     .header-content {
         /* モバイル時のヘッダー内コンテンツの配置を調整 */
@@ -340,6 +374,12 @@ nav ul li a:hover::before {
         width: 100%;
         display: block;
         font-size: 1rem; /* フォントサイズ調整 */
+    }
+
+    /* モバイル時のヘッダー内ソーシャルリンク調整 */
+    #main-nav .social-nav-link {
+        padding: 15px 20px; /* 他のメニュー項目と合わせる */
+        font-size: 1rem;   /* 他のメニュー項目と合わせる */
     }
 
 }
@@ -927,53 +967,33 @@ footer::before {
     margin: 20px 0;
 }
 
-.social-nav-link {
-    display: inline-flex; /* 修正 */
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    background-color: rgba(255,255,255,0.1); /* フッターのリンクと統一 */
-    border-radius: 50%;
-    transition: all var(--transition-fast);
-    color: white; /* 色を指定 */
-    margin: 0 5px; /* 他のソーシャルリンクとの間隔 */
-    line-height: 36px; /* アイコン中央揃え */
-}
-
-
-.social-nav-link:hover {
-    background-color: var(--primary);
-    color: white;
-    transform: translateY(-3px);
-}
-
-/* X(Twitter)アイコンの微調整 */
-.social-nav-link .fa-x-twitter {
-    font-size: 16px; /* 他のアイコンサイズと合わせる */
-}
-
-
-.social-links a {
+/* フッター内のソーシャルリンクスタイル */
+footer .social-links a { /* footer 内に限定 */
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin: 0 10px;
     width: 40px;
     height: 40px;
-    line-height: 40px;
+    line-height: 40px; /* 修正: アイコン上下中央揃えに影響する可能性 */
     border-radius: 50%;
     background: rgba(255,255,255,0.1);
     color: white;
     font-size: 18px;
     transition: all var(--transition-fast);
 }
+/* フッター内のXアイコンサイズ調整 */
+footer .social-links a .fa-x-twitter {
+    font-size: 16px; /* サイズ調整 */
+    line-height: 1; /* アイコンがずれる場合に追加 */
+}
 
-.social-links a:hover {
+
+footer .social-links a:hover {
     background: var(--primary);
     transform: translateY(-3px);
 }
+
 
 .footer-bottom {
     margin-top: 30px;
@@ -1522,12 +1542,18 @@ footer::before {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
                     // href="#" または有効なIDでない場合はデフォルト動作
-                    if (!targetId || targetId === '#' || !document.querySelector(targetId)) {
+                    // target="_blank" がついている場合も除外 (新しいタブで開くリンク)
+                    if (!targetId || targetId === '#' || !document.querySelector(targetId) || anchor.target === '_blank') {
                          // ハンバーガーメニュー内のリンクならメニューを閉じるだけにする場合など
                          if (this.closest('#main-nav')) {
                              closeMobileMenu(); // メニューを閉じる関数を呼ぶ
                          }
-                         return; // 何もせず終了
+                         // target="_blank"でない場合のみ return
+                         if (anchor.target !== '_blank') {
+                             return; // 何もせず終了
+                         }
+                         // target="_blank" の場合はデフォルト動作に任せる
+                         return;
                      }
 
                     e.preventDefault(); // デフォルトのアンカー動作をキャンセル
@@ -1598,10 +1624,12 @@ footer::before {
 
                 // メニュー外をクリックしたら閉じる (オプション)
                 document.addEventListener('click', function(event) {
-                    if (!mainNav.contains(event.target) && !menuToggle.contains(event.target) && mainNav.classList.contains('active')) {
-                        closeMobileMenu();
+                    // メニュー自体とトグルボタン以外をクリックした場合
+                    if (mainNav.classList.contains('active') && !mainNav.contains(event.target) && !menuToggle.contains(event.target)) {
+                         closeMobileMenu();
                     }
-                });
+                 });
+
 
                 // Escキーでメニューを閉じる (オプション)
                  document.addEventListener('keydown', function(event) {
@@ -1610,7 +1638,17 @@ footer::before {
                      }
                  });
 
-                // メニュー内のリンククリック時の処理はスムーズスクロール側に統合
+                 // メニュー内のリンククリック時の処理はスムーズスクロール側に統合済み
+                  // ただし、外部リンクや # 以外のリンクの場合はメニューを閉じる処理を追加
+                 mainNav.querySelectorAll('a').forEach(link => {
+                     link.addEventListener('click', function() {
+                         // href="#" で始まるアンカーリンク以外、または target="_blank" の場合
+                         if (!this.getAttribute('href').startsWith('#') || this.target === '_blank') {
+                             closeMobileMenu();
+                         }
+                         // href="#" で始まるアンカーリンクの場合はスムーズスクロールのイベントリスナーで閉じる
+                     });
+                 });
             }
 
         }); // END DOMContentLoaded
