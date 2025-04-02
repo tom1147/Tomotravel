@@ -32,6 +32,9 @@
             --hover-shadow: 0 14px 45px rgba(0,0,0,0.08);
             --border-radius: 16px;
             --transition-fast: 0.3s ease;
+            /* ヘッダーの高さを変数化 */
+            --header-height-desktop: 140px; /* デスクトップ用 */
+            --header-height-mobile: 80px; /* モバイル用 */
         }
 
         * {
@@ -48,6 +51,18 @@
             overflow-x: hidden;
         }
 
+        /* スクロール位置調整用 */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height-mobile);
+        }
+        @media (min-width: 769px) {
+            html {
+                scroll-padding-top: var(--header-height-desktop);
+            }
+        }
+
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -59,6 +74,7 @@
             font-family: 'Poppins', 'Noto Sans JP', sans-serif;
             line-height: 1.3;
         }
+        /* ヘッダー内のh1は .logo-text でスタイル指定 */
 
         a {
             text-decoration: none;
@@ -75,6 +91,7 @@
             font-size: 1.05rem;
             color: var(--text-dark);
         }
+         footer p { text-align: center; } /* フッター内は中央 */
 
         /* ===== HEADER ===== */
         header {
@@ -99,21 +116,21 @@
 
         .header-content {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
+            flex-direction: column; /* デフォルトは縦並び */
+            align-items: center; /* デフォルトは中央揃え */
+            padding: 20px 0; /* デフォルトのパディング */
             transition: padding var(--transition-fast);
             position: relative;
         }
 
         .logo-center {
             text-align: center;
-            margin-bottom: 18px;
+            margin-bottom: 18px; /* デフォルトのマージン */
             transition: all var(--transition-fast);
             position: relative;
         }
 
-        .logo-center::after {
+        .logo-center::after { /* デスクトップ用下線 */
             content: '';
             position: absolute;
             bottom: -10px;
@@ -124,10 +141,11 @@
             background: linear-gradient(to right, var(--primary), var(--accent));
             border-radius: 2px;
             opacity: 0.5;
+            transition: all var(--transition-fast); /* 追加 */
         }
 
         .logo-text {
-            font-size: 32px;
+            font-size: 32px; /* デフォルトのフォントサイズ */
             font-weight: bold;
             color: var(--primary) !important;
             text-align: center;
@@ -146,6 +164,7 @@
             position: relative;
             font-weight: 700;
             transition: all var(--transition-fast);
+            font-size: inherit; /* 親要素に追従 */
         }
 
         .vlog-text::after {
@@ -154,15 +173,17 @@
 
         /* ハンバーガーメニュー */
         .menu-toggle {
-            display: none;
+            display: none; /* デフォルトは非表示 */
             cursor: pointer;
-            font-size: 24px;
+            font-size: 24px; /* デフォルトサイズ調整 */
             color: var(--primary);
             transition: all var(--transition-fast);
-            position: absolute;
+            position: absolute; /* デフォルト配置 */
             right: 20px;
-            top: 20px; /* 元の位置に戻す */
+            top: 50%; /* 垂直中央揃え */
+            transform: translateY(-50%); /* 垂直中央揃え */
             z-index: 1001;
+            padding: 5px; /* パディング追加 */
         }
 
         .menu-toggle:hover {
@@ -176,12 +197,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            justify-content: center;
+            justify-content: center; /* デフォルトは中央揃え */
             flex-wrap: wrap;
+            padding-left: 0;
+            margin: 0;
         }
 
         nav ul li {
-            margin: 0 5px; /* 元の左右マージンに戻す */
+            margin: 0 5px; /* デフォルトマージン */
             position: relative;
         }
 
@@ -198,7 +221,7 @@
             z-index: 1;
         }
 
-        nav ul li a::before {
+        nav ul li a::before { /* ホバーエフェクト用 */
             content: '';
             position: absolute;
             bottom: 0;
@@ -224,52 +247,113 @@
             margin-right: 5px;
         }
 
+        /* モバイル用ヘッダースタイル (cebu2nd2.html から適用) */
         @media (max-width: 768px) {
             .header-content {
-                position: relative;
+                flex-direction: row; /* 横並び */
+                justify-content: space-between; /* 両端揃え */
+                align-items: center; /* 垂直中央揃え */
+                padding: 10px 0; /* モバイル用パディング */
+                height: var(--header-height-mobile); /* 高さを変数で指定 */
             }
 
+            .logo-center {
+                margin-bottom: 0; /* 下マージン削除 */
+                text-align: left; /* 左揃え */
+                flex-grow: 1; /* 残りスペースを埋める */
+                padding-left: 0; /* 左パディング削除 */
+            }
+             .logo-center::after { /* モバイルでは下線非表示 */
+                 display: none;
+             }
+             .logo-text {
+                font-size: 24px; /* モバイル用フォントサイズ */
+             }
+             .vlog-text {
+                font-size: 20px; /* モバイル用フォントサイズ */
+             }
+
             .menu-toggle {
-                display: block;
+                display: block; /* 表示する */
+                position: static; /* 配置をリセット */
+                transform: none; /* transform解除 */
+                font-size: 24px; /* モバイル用アイコンサイズ */
+                margin-right: 0; /* 右マージン削除 */
+                padding: 5px; /* モバイル用パディング */
+                background-color: transparent; /* 背景透明 */
             }
 
             nav#main-nav {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease;
+                position: absolute; /* 絶対配置 */
+                top: 100%; /* ヘッダーの真下 */
+                left: 0;
                 width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                max-height: 0; /* デフォルトは閉じた状態 */
+                overflow: hidden;
+                transition: max-height 0.5s ease, padding 0.5s ease;
+                padding: 0; /* 閉じた状態のパディング */
+                border-top: 1px solid rgba(30,144,255,0.1);
             }
 
-            nav#main-nav.active {
-                max-height: 500px;
+            nav#main-nav.active { /* 開いた状態 */
+                max-height: calc(100vh - var(--header-height-mobile)); /* 画面高さに合わせて最大高さを設定 */
+                padding: 10px 0; /* 開いた状態のパディング */
+                overflow-y: auto; /* 内容が多い場合にスクロール */
             }
 
             nav ul.nav-menu {
-                flex-direction: column;
-                padding: 10px 0;
+                flex-direction: column; /* 縦並び */
+                padding: 0; /* パディングリセット */
             }
 
             nav ul.nav-menu li {
                 width: 100%;
                 text-align: center;
+                border-bottom: 1px solid rgba(0,0,0,0.05); /* 区切り線 */
+                margin: 0; /* マージンリセット */
+            }
+            nav ul.nav-menu li:last-child { /* 最後の項目は線なし */
+                border-bottom: none;
             }
 
             nav ul.nav-menu li a {
-                padding: 12px;
+                padding: 15px 20px; /* モバイル用パディング */
                 width: 100%;
                 display: block;
+                font-size: 1rem; /* モバイル用フォントサイズ */
             }
+             /* Xアイコン用スタイル (cebu2nd2からコピー) */
+             nav ul.nav-menu li a.social-nav-link {
+                 display: inline-block; /* インラインブロックに変更 */
+                 width: auto; /* 幅自動 */
+                 padding: 15px 0; /* パディング調整 */
+                 background-color: transparent; /* 背景透明 */
+                 color: var(--primary); /* 色変更 */
+             }
+             nav ul.nav-menu li a.social-nav-link:hover {
+                 color: var(--accent);
+                 background-color: transparent;
+                 transform: translateY(-2px);
+             }
+             nav ul.nav-menu li a.social-nav-link i {
+                 font-size: 1.2rem; /* アイコンサイズ調整 */
+             }
+        } /* END @media (max-width: 768px) */
 
-            .logo-center {
-                margin-bottom: 5px;
-            }
-        }
 
         /* ===== BLOG PAGE STYLES ===== */
         .page-content {
-            margin-top: 140px;
+            margin-top: var(--header-height-desktop); /* デスクトップヘッダー高さ */
             padding: 60px 0;
             background: linear-gradient(to bottom, #f9fafc, #f1f4f9);
+        }
+         @media (max-width: 768px) {
+            .page-content {
+                margin-top: var(--header-height-mobile); /* モバイルヘッダー高さ */
+                 padding: 40px 0;
+            }
         }
 
         .posts-container {
@@ -444,7 +528,7 @@
             color: white;
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER (cebu2nd2.html と同じスタイル) ===== */
         footer {
             background-color: #222;
             color: white;
@@ -470,6 +554,7 @@
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 var(--container-padding); /* 左右パディング追加 */
         }
         .footer-content h3 { /* フッター内の見出し */
              color: white;
@@ -489,6 +574,8 @@
             margin: 20px 0;
             flex-wrap: wrap;
             gap: 5px 12px; /* リンク間のギャップ調整 */
+            padding-left: 0; /* リストのデフォルトパディング削除 */
+            list-style: none; /* リストマーカー削除 */
         }
 
         .footer-links a {
@@ -512,23 +599,28 @@
 
         /* ヘッダー内ソーシャルリンク用 */
         .social-nav-link {
-            display: flex;
+            display: inline-flex; /* ヘッダー/フッター共通化 */
             align-items: center;
             justify-content: center;
             width: 36px;
             height: 36px;
             font-size: 18px;
-            background-color: rgba(0,0,0,0.05);
+            background-color: transparent; /* ヘッダー内は背景なし */
             border-radius: 50%;
             transition: all var(--transition-fast);
-            margin-left: auto; /* 右寄せにする */
-            margin-right: 0; /* 右端のマージンは不要 */
+            color: var(--text-dark); /* ヘッダー内の色 */
+            text-decoration: none;
         }
-        .social-nav-link:hover {
-            background-color: var(--primary);
-            color: white;
+         /* ヘッダー内のホバー */
+        header .social-nav-link:hover {
+            background-color: transparent;
+            color: var(--primary);
             transform: translateY(-3px);
         }
+        .social-nav-link .fa-x-twitter {
+            font-size: 16px; /* アイコンサイズ調整 */
+        }
+
         /* フッター内ソーシャルリンク用 */
         .social-links a {
             display: inline-flex;
@@ -549,21 +641,19 @@
             background: var(--primary);
             transform: translateY(-3px);
         }
+         .social-links a .fa-x-twitter {
+             font-size: 16px; /* フッター内アイコンサイズ調整 */
+         }
 
         .footer-bottom {
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-         .footer-bottom p { margin-bottom: 0; }
+         .footer-bottom p { margin-bottom: 0; font-size: 0.9rem; } /* サイズ調整 */
 
 
         @media (max-width: 768px) {
-            .page-content {
-                margin-top: 120px;
-                padding: 40px 0;
-            }
-
             .posts-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -587,14 +677,11 @@
                 height: 180px;
                 flex: none;
             }
-            .social-nav-link {
-                margin-left: 0; /* スマホ表示では中央揃えリストの一部 */
-            }
+            /* モバイルメニュー内のソーシャルリンクスタイルは@media内nav ul li a.social-nav-linkで指定済 */
         }
 
         @media (max-width: 480px) {
             .page-content {
-                margin-top: 100px;
                 padding: 30px 0;
             }
 
@@ -624,10 +711,7 @@
                 <div class="logo-center" aria-label="サイトロゴ">
                      <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
                 </div>
-                <!-- ハンバーガーメニューボタン -->
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+                 <!-- nav要素を先に記述 -->
                 <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
                     <ul class="nav-menu">
                         <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
@@ -641,6 +725,10 @@
                         <li><a href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
                     </ul>
                 </nav>
+                <!-- ハンバーガーメニューボタンをnavの後ろに配置 -->
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </header>
@@ -773,70 +861,99 @@
                 </div>
 
                 <div class="footer-bottom">
-                    <p>&copy; 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
+                    <p>© 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript (cebu2nd2.html と同じ) -->
     <script>
-        // スクロール時のヘッダー変更
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (header && window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else if (header) {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // ハンバーガーメニューの動作
         document.addEventListener('DOMContentLoaded', function() {
+            // --- ヘッダーのスクロール変化 ---
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) { // 50px スクロールで変化
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // --- ハンバーガーメニュー ---
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
+            const body = document.body;
 
-            if (menuToggle && mainNav) {
-                menuToggle.addEventListener('click', function() {
-                    mainNav.classList.toggle('active');
-
-                    // アイコンを切り替え
+            function openMobileMenu() {
+                if (mainNav && menuToggle) {
+                    mainNav.classList.add('active');
                     const icon = menuToggle.querySelector('i');
-                    if (icon.classList.contains('fa-bars')) {
+                    if (icon) {
                         icon.classList.remove('fa-bars');
                         icon.classList.add('fa-times');
-                    } else {
+                    }
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                    body.style.overflow = 'hidden'; // 背景スクロール禁止
+                }
+            }
+
+            function closeMobileMenu() {
+                if (mainNav && menuToggle && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
                         icon.classList.remove('fa-times');
                         icon.classList.add('fa-bars');
                     }
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    body.style.overflow = ''; // 背景スクロール許可
+                }
+            }
+
+            if (menuToggle && mainNav) {
+                menuToggle.setAttribute('aria-controls', 'main-nav');
+                menuToggle.setAttribute('aria-expanded', 'false');
+
+                menuToggle.addEventListener('click', function(event) {
+                    event.stopPropagation(); // クリックイベントが伝播しないように
+                    if (mainNav.classList.contains('active')) {
+                        closeMobileMenu();
+                    } else {
+                        openMobileMenu();
+                    }
                 });
 
-                // メニュー項目をクリックしたらメニューを閉じる (ソーシャルリンクを除く)
-                const navLinks = mainNav.querySelectorAll('a:not(.social-nav-link)');
+                // メニュー内のリンククリックで閉じる
+                const navLinks = mainNav.querySelectorAll('a');
                 navLinks.forEach(link => {
                     link.addEventListener('click', function(e) {
-                         // ページ内リンク(#)でない場合、または#のみの場合に閉じる
-                         if (!link.getAttribute('href').startsWith('#') || link.getAttribute('href') === '#') {
-                             if (mainNav.classList.contains('active')) {
-                                 mainNav.classList.remove('active');
-                                 const icon = menuToggle.querySelector('i');
-                                 icon.classList.remove('fa-times');
-                                 icon.classList.add('fa-bars');
-                             }
-                         }
-                         // ページ内リンク(#aboutなど)の場合は、デフォルトのスクロール動作に任せ、メニューを閉じる
-                         else if (link.getAttribute('href').startsWith('#') && link.getAttribute('href') !== '#') {
-                            if (mainNav.classList.contains('active')) {
-                                mainNav.classList.remove('active');
-                                const icon = menuToggle.querySelector('i');
-                                icon.classList.remove('fa-times');
-                                icon.classList.add('fa-bars');
-                            }
-                            // スムーズスクロールが必要な場合はここに追加
-                         }
+                         // ページ内リンク(#aboutなど)や外部リンク、ブログページへのリンクでも閉じる
+                        closeMobileMenu();
                     });
                 });
+
+                // メニュー外をクリックしたら閉じる
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = mainNav.contains(event.target);
+                    const isClickOnToggle = menuToggle.contains(event.target);
+
+                    if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
+
+                // Escキーでメニューを閉じる
+                 document.addEventListener('keydown', function(event) {
+                     if (event.key === 'Escape' && mainNav.classList.contains('active')) {
+                         closeMobileMenu();
+                     }
+                 });
             }
-        });
+
+        }); // END DOMContentLoaded
     </script>
     <script type='text/javascript' src='//pl26273446.effectiveratecpm.com/c5/10/e1/c510e12d2bf0cf3e4b6d7680c5cca15d.js'></script>
 </body>
