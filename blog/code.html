@@ -1,46 +1,176 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テストブログ記事</title>
-    <!-- CSSファイルを読み込む -->
-    <link rel="stylesheet" href="style.css"> <!-- ★修正: ファイル名のみ -->
+    <title>これはテスト記事のタイトルです | とも旅ちゃんねるVLOG</title>
+    <meta name="description" content="これはテスト記事の簡単な説明文です。ダミーテキストを含みます。構成の参考用。">
+    <meta name="keywords" content="テスト, ダミー記事, サンプル, ブログ, 構成テスト">
+    <meta property="og:title" content="テスト記事タイトル【サンプル】 | とも旅ちゃんねるVLOG">
+    <meta property="og:description" content="これはテスト記事の簡単な説明文です。ダミーテキストを含みます。構成の参考用。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tomotravel-pm.com/blog/test-article"> <!-- 仮のURL -->
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=OGP+Image"> <!-- 仮のOGP画像 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tomotravel-pm.com/blog/test-article"> <!-- 仮のURL -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- ★ 外部CSSファイルの読み込み ★ -->
+    <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tomotravel-pm.com/blog/test-article" // 仮のURL
+      },
+      "headline": "これはテスト記事のタイトルです",
+      "description": "これはテスト記事の簡単な説明文です。ダミーテキストを含みます。構成の参考用。",
+      "image": "https://via.placeholder.com/800x450.png?text=Main+Image", // 仮のメイン画像
+      "author": {
+        "@type": "Person",
+        "name": "Tomo"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "とも旅ちゃんねるVLOG",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/logo.png" // ロゴ画像 (仮)
+        }
+      },
+      "datePublished": "2025-04-10", // 仮の日付
+      "dateModified": "2025-04-10" // 仮の日付
+    }
+    </script>
+
+    <!-- <style> タグは削除 (style.cssに記述されている想定) -->
+
 </head>
 <body>
+    <!-- ★ ヘッダー読み込み用プレースホルダー ★ -->
+    <div id="header-placeholder"></div>
 
-    <div class="container">
+    <!-- メインコンテンツ（テスト記事） -->
+    <div class="blog-container">
+        <!-- ブログ記事ヘッダー -->
+        <div class="blog-header">
+            <h1 class="blog-title">これはテスト記事のタイトルです</h1>
+            <div class="blog-meta">
+                <span><i class="fas fa-user"></i> 投稿者: Tomo</span> |
+                <span><i class="fas fa-calendar-alt"></i> 2025年4月10日</span> | <!-- 仮の日付 -->
+                <span><i class="fas fa-tag"></i> テスト, サンプル</span> <!-- 仮のタグ -->
+            </div>
+        </div>
 
-        <header id="header-placeholder">
-            <p>ヘッダーを読み込み中...</p>
-        </header>
+        <!-- ブログ記事本文 -->
+        <div class="blog-content">
 
-        <main>
-            <h1>最初のテスト記事タイトル</h1>
-            <p class="post-meta">公開日: 2023年10月27日</p>
+            <!-- 前書き -->
+            <p>この記事は、ブログ記事の構成要素を確認するためのテスト記事です。実際のコンテンツではありませんが、見出し、段落、画像、引用、リストなどの要素がどのように表示されるかを示します。<em>強調表示</em>はこのように見えます。</p>
 
-            <article>
-                <p>これは、JavaScriptを使用してヘッダーとフッターを動的に読み込むテスト用のブログ記事です。すべてのファイルは 'blog' サブディレクトリ内にあります。</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <!-- ダミーYouTube動画 -->
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
 
-                <h2>セクション見出し</h2>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <ul>
-                    <li>リスト項目1</li>
-                    <li>リスト項目2</li>
-                    <li>リスト項目3</li>
-                </ul>
-            </article>
-        </main>
+            <h2>セクション1: ダミーの見出し</h2>
+            <p>ここに最初のセクションの本文が入ります。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-        <footer id="footer-placeholder">
-            <p>フッターを読み込み中...</p>
-        </footer>
+            <div class="blog-img-container">
+                 <img src="https://via.placeholder.com/800x450.png?text=Dummy+Image+1" alt="ダミー画像1" loading="lazy">
+                <div class="blog-img-caption">これはダミー画像のキャプションです。</div>
+            </div>
 
-    </div>
+            <h3>サブセクション 1.1</h3>
+            <p>サブセクションの詳細な説明です。Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-    <!-- script.js を読み込む -->
-    <script src="script.js" defer></script> <!-- ★修正: ファイル名のみ -->
+            <!-- ahamo アフィリエイトボックス (例) -->
+            <div class="affiliate-box">
+                <a href="https://px.a8.net/svt/ejp?a8mat=44Z7VE+7O9A3M+4TIO+5YJRM" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-mobile-alt"></i> 海外でもスムーズ！ahamoで快適通信</a>
+            </div>
+
+            <h2>セクション2: リストと引用の例</h2>
+            <p>次に、リスト表示と引用の例を示します。リストはポイントを整理するのに役立ちます。</p>
+
+            <ul>
+                <li><strong>ポイント1:</strong> 重要な項目です。</li>
+                <li>ポイント2: 箇条書きの例です。</li>
+                <li>ポイント3: もう一つの項目。</li>
+            </ul>
+
+            <blockquote>
+                 <p>これは通常の引用ブロック（blockquote）の例です。少しインデントされ、左側に線が表示されます。</p>
+            </blockquote>
+
+            <blockquote class="alert-box-quote">
+                 <p><strong>【注意喚起！】</strong>これは警告や注意を促す引用ボックス（alert-box-quote）の例です。背景色と左側の線が異なります。</p>
+            </blockquote>
+
+            <div class="blog-img-container">
+                 <img src="https://via.placeholder.com/800x450.png?text=Dummy+Image+2" alt="ダミー画像2" loading="lazy">
+                <div class="blog-img-caption">別のダミー画像です。</div>
+            </div>
+
+            <!-- VPN アフィリエイトボックス (例) -->
+            <div class="affiliate-box">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4513V9+1CTP0I+4LSW+5YZ77" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-shield-alt"></i> 海外のフリーWi-Fiも安心！Surfshark VPN</a>
+                 <a href="https://rpx.a8.net/svt/ejp?a8mat=2NE1HP+9715R6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00u6874.2bo11c89.g00u6874.2bo1285d%2Fa16021852584_2NE1HP_9715R6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Finsta360-shop2%252Finsta360-x4%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Finsta360-shop2%252Fi%252F10000445%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-video"></i> 旅の記録はInsta360X4で！</a>
+            </div>
+
+            <p>以上でテスト記事の主要な構成要素の確認は終わりです。これが実際の記事でどのように見えるかの参考になれば幸いです。</p>
+
+
+            <!-- ブログ記事フッター -->
+            <div class="blog-footer">
+                <div class="blog-tags">
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> テスト</a>
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> サンプル</a>
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> ダミー</a>
+                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 構成確認</a>
+                </div>
+                 <div class="blog-share">
+                      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Ftest-article&text=%E3%81%93%E3%82%8C%E3%81%AF%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%81%A7%E3%81%99" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Twitterでシェア"><i class="fab fa-x-twitter"></i></a>
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Ftest-article" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Facebookでシェア"><i class="fab fa-facebook-f"></i></a>
+                      <a href="https://line.me/R/msg/text/?%E3%81%93%E3%82%8C%E3%81%AF%E3%83%86%E3%82%B9%E3%83%88%E8%A8%98%E4%BA%8B%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%81%A7%E3%81%99%0Ahttps%3A%2F%2Ftomotravel-pm.com%2Fblog%2Ftest-article" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="LINEで送る"><i class="fab fa-line"></i></a>
+                 </div>
+            </div>
+
+             <!-- 前後の記事ナビゲーション -->
+            <div class="next-prev-nav">
+                <div class="prev-post">
+                   <a href="cebu2nd4.html" rel="prev"> <!-- 前の記事としてcebu2nd4.htmlを指定 (同じ階層なのでファイル名のみ) -->
+                        <span class="nav-direction"><i class="fas fa-chevron-left"></i> 前の記事</span>
+                        <span class="nav-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</span>
+                    </a>
+                </div>
+                <div class="next-post">
+                     <!-- 次の記事へのリンク（もしあればここに追加） -->
+                     <!-- 例:
+                     <a href="next-article.html" rel="next">
+                          <span class="nav-direction">次の記事 <i class="fas fa-chevron-right"></i></span>
+                          <span class="nav-title">次の記事のタイトル</span>
+                     </a>
+                     -->
+                </div>
+            </div>
+
+        </div> <!-- /.blog-content -->
+    </div> <!-- /.blog-container -->
+
+    <!-- ★ フッター読み込み用プレースホルダー ★ -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ★ 外部JavaScriptファイルの読み込み ★ -->
+    <!-- (必要に応じて広告スクリプトなどもここに含める) -->
+    <script src="script.js"></script>
+    <script type='text/javascript' src='//pl26273446.effectiveratecpm.com/c5/10/e1/c510e12d2bf0cf3e4b6d7680c5cca15d.js'></script> <!-- 広告スクリプト（必要なら） -->
 
 </body>
 </html>
