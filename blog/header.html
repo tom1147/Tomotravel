@@ -1,26 +1,29 @@
-    <!-- ヘッダー部分 -->
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-center" aria-label="サイトロゴ">
-                    <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
-                </div>
-                <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
-                    <ul class="nav-menu">
-                        <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
-                        <li><a href="/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
-                        <li><a href="/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
-                        <li><a href="/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
-                        <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
-                        <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
-                        <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
-                        <li><a href="/blog" aria-label="ブログトップへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
-                        <li><a href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                    </ul>
-                </nav>
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+<!-- ヘッダー部分 (blog/header.html) -->
+<header id="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-center" aria-label="サイトロゴ">
+                 <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
+            </div>
+             <!-- nav要素を先に記述 -->
+            <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
+                    <li><a href="/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
+                    <li><a href="/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
+                    <li><a href="/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
+                    <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
+                    <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
+                    <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
+                    <!-- 注意: blog.htmlがルートにあるため、ブログへのリンクは /blog.html or /blog/ (設定による) -->
+                    <li><a href="/blog.html" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
+                    <li><a href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                </ul>
+            </nav>
+            <!-- ハンバーガーメニューボタンをnavの後ろに配置 -->
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
-    </header>
+    </div>
+</header>
