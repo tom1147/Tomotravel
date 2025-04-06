@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>とも旅ちゃんねるVLOG | 東南アジア一人旅リアル情報 - 英語苦手でも楽しめるコツ</title>
     <meta name="description" content="東南アジア一人旅のリアルなVLOGを発信！とも旅ちゃんねるでは、英語が苦手でも満喫できる海外旅行のコツ、Insta360を使った撮影術、ahamo活用法、おすすめ予約サイトまで、役立つ情報を臨場感あふれる動画でお届けします。">
-    <!-- keywordsに「ブログ」を追加 -->
     <meta name="keywords" content="一人旅, 東南アジア, 海外旅行, 旅行VLOG, とも旅, insta360, ahamo, 英語苦手 旅行, 旅行チャンネル, セブ島, JTV, ブログ">
     <meta property="og:title" content="とも旅ちゃんねるVLOG | 東南アジア一人旅リアル情報">
     <meta property="og:description" content="英語が苦手でも楽しめる！東南アジア一人旅のリアルな体験談や役立つ情報を発信中。Insta360の映像美とahamo活用術も。">
@@ -22,7 +21,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-    <!-- SEO強化: WebSite 構造化データを追加 -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -35,19 +33,18 @@
         "name": "とも旅ちゃんねるVLOG",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://tomotravel-pm.com/images/logo.png" // ロゴ画像のパスを確認
+          "url": "https://tomotravel-pm.com/images/logo.png"
         }
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://tomotravel-pm.com/search?q={search_term_string}", // サイト内検索があれば設定
+        "target": "https://tomotravel-pm.com/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
     </script>
 
     <style>
-        /* ===== 基本設定と変数 ===== */
         :root {
             --primary: #1E90FF;
             --primary-dark: #1073E0;
@@ -57,7 +54,6 @@
             --bg-section: #ffffff;
             --text-dark: #2c3e50;
             --text-muted: #7f8c8d;
-            /* カードの影を少し柔らかく */
             --card-shadow: 0 6px 20px rgba(44, 62, 80, 0.06);
             --card-shadow-hover: 0 10px 30px rgba(44, 62, 80, 0.1);
             --section-space: 70px;
@@ -68,22 +64,17 @@
             --header-height-desktop: 140px;
             --header-height-mobile: 80px;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         .hidden { display: none; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.7; /* 全体の行間調整 */ font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.7; font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         html { scroll-behavior: smooth; scroll-padding-top: var(--header-height-mobile); }
         @media (min-width: 769px) { html { scroll-padding-top: var(--header-height-desktop); } }
         .container { max-width: 1140px; margin: 0 auto; padding: var(--container-padding); }
-
-        /* ===== タイポグラフィ ===== */
         h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', 'Noto Sans JP', sans-serif; line-height: 1.4; font-weight: 600; }
         h2 { font-size: 2rem; margin-bottom: 1.8rem; color: var(--primary); text-align: center; position: relative; padding-bottom: 15px; }
         h2::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; width: 70px; height: 4px; background: linear-gradient(to right, var(--primary), var(--accent)); border-radius: 2px; transition: width var(--transition-medium); }
         section:hover h2::after { width: 100px; }
         p { margin-bottom: 1.5rem; font-size: 1rem; color: var(--text-dark); }
-
-        /* ========= ヘッダー (変更なし) ========= */
         header { background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; transition: all var(--transition-fast); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(30,144,255,0.1); }
         header.scrolled { padding: 5px 0; background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 30px rgba(0,0,0,0.1); }
         .header-content { display: flex; flex-direction: column; align-items: center; padding: 20px 0; transition: padding var(--transition-fast); position: relative; }
@@ -107,28 +98,8 @@
         #main-nav .social-nav-link .fa-x-twitter { font-size: 1em; }
         #main-nav .social-nav-link:hover { color: var(--primary); background-color: transparent; transform: translateY(-2px); }
         #main-nav .social-nav-link:hover::before { height: 0; }
-        @media (max-width: 768px) {
-            .header-content { flex-direction: row; justify-content: space-between; align-items: center; padding: 10px 0; height: var(--header-height-mobile); }
-            .logo-center { margin-bottom: 0; text-align: left; flex-grow: 1; padding-left: 0; }
-            .logo-center::after { display: none; }
-            .logo-text { font-size: 24px; } .vlog-text { font-size: 20px; }
-            .menu-toggle { display: block; position: static; transform: none; margin-right: 0; padding: 5px; font-size: 24px; }
-            nav#main-nav { position: absolute; top: 100%; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.5s ease; padding: 0; border-top: 1px solid rgba(30,144,255,0.1); }
-            nav#main-nav.active { max-height: calc(100vh - var(--header-height-mobile)); padding: 10px 0; overflow-y: auto; }
-            nav ul.nav-menu { flex-direction: column; padding: 0; }
-            nav ul.nav-menu li { width: 100%; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); margin: 0; }
-            nav ul.nav-menu li:last-child { border-bottom: none; }
-            nav ul.nav-menu li a { padding: 15px 20px; width: 100%; display: block; font-size: 1rem; }
-            nav ul.nav-menu li a.social-nav-link { display: inline-block; width: auto; padding: 15px 0; background-color: transparent; color: var(--primary); }
-            nav ul.nav-menu li a.social-nav-link:hover { color: var(--accent); background-color: transparent; transform: translateY(-2px); }
-            nav ul.nav-menu li a.social-nav-link i { font-size: 1.2rem; }
-        }
-        /* ========= ヘッダーここまで ========= */
-
-        /* ===== メインコンテンツエリア ===== */
+        @media (max-width: 768px) { .header-content { flex-direction: row; justify-content: space-between; align-items: center; padding: 10px 0; height: var(--header-height-mobile); } .logo-center { margin-bottom: 0; text-align: left; flex-grow: 1; padding-left: 0; } .logo-center::after { display: none; } .logo-text { font-size: 24px; } .vlog-text { font-size: 20px; } .menu-toggle { display: block; position: static; transform: none; margin-right: 0; padding: 5px; font-size: 24px; } nav#main-nav { position: absolute; top: 100%; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.5s ease; padding: 0; border-top: 1px solid rgba(30,144,255,0.1); } nav#main-nav.active { max-height: calc(100vh - var(--header-height-mobile)); padding: 10px 0; overflow-y: auto; } nav ul.nav-menu { flex-direction: column; padding: 0; } nav ul.nav-menu li { width: 100%; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); margin: 0; } nav ul.nav-menu li:last-child { border-bottom: none; } nav ul.nav-menu li a { padding: 15px 20px; width: 100%; display: block; font-size: 1rem; } nav ul.nav-menu li a.social-nav-link { display: inline-block; width: auto; padding: 15px 0; background-color: transparent; color: var(--primary); } nav ul.nav-menu li a.social-nav-link:hover { color: var(--accent); background-color: transparent; transform: translateY(-2px); } nav ul.nav-menu li a.social-nav-link i { font-size: 1.2rem; } }
         main { padding-top: 0; }
-
-        /* ===== HEROセクション ===== */
         .hero { height: 90vh; min-height: 600px; background-image: linear-gradient(to bottom, rgba(30, 144, 255, 0.5), rgba(0, 0, 0, 0.7)), url('images/ran.png'); background-size: cover; background-position: center bottom; background-attachment: fixed; display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative; overflow: hidden; padding-top: var(--header-height-desktop); }
         @media (max-width: 768px) { .hero { padding-top: var(--header-height-mobile); background-attachment: scroll; height: 80vh; min-height: 500px; } }
         .hero-content { max-width: 850px; position: relative; z-index: 2; margin: 0 auto; padding: 0 20px; text-align: center; }
@@ -147,8 +118,6 @@
         .scroll-down { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); font-size: 1.8rem; color: rgba(255,255,255,0.8); animation: bounce 2.5s infinite; cursor: pointer; text-shadow: 0 1px 5px rgba(0,0,0,0.4); transition: all var(--transition-fast); }
         .scroll-down:hover { color: white; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); opacity: 0.8; } 40% { transform: translateY(-25px) translateX(-50%); opacity: 1; } 60% { transform: translateY(-12px) translateX(-50%); opacity: 0.9; } }
-
-        /* ===== SECTIONS ===== */
         section { margin-bottom: var(--section-space); background-color: var(--bg-section); padding: 50px 40px; border-radius: var(--border-radius); box-shadow: var(--card-shadow); transition: transform var(--transition-fast), box-shadow var(--transition-fast); position: relative; overflow: hidden; }
         section:hover { transform: translateY(-6px); box-shadow: var(--card-shadow-hover); }
         section::before { display: none; }
@@ -156,14 +125,10 @@
         section:hover .section-bg-icon { transform: rotate(-5deg) scale(1.05); }
         .section-content { position: relative; z-index: 1; }
         .section-content p i { color: var(--primary); margin-right: 8px; width: 20px; text-align: center; }
-
-        /* ===== VIDEO CONTAINER ===== */
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; margin: 40px auto; overflow: hidden; max-width: 900px; border-radius: var(--border-radius); box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all var(--transition-fast); }
         .video-container:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.15); transform: scale(1.03); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; display: block; border-radius: var(--border-radius); }
         .video-buttons-container { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-
-        /* ===== LISTS (Equipment, Booking) ===== */
         .styled-list { list-style: none; margin: 30px 0; padding-left: 0; }
         .styled-list li { margin-bottom: 20px; padding: 25px 30px; position: relative; background-color: #f8f9fa; border-radius: var(--border-radius); border: 1px solid #e9ecef; transition: all var(--transition-fast); padding-left: 60px; }
         .styled-list li:hover { background-color: white; border-color: var(--primary); box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1); transform: translateX(5px); }
@@ -171,8 +136,6 @@
         .styled-list li:hover::before { color: var(--accent); transform: scale(1.2); }
         #equipment .styled-list li::before { content: "\f030"; } #equipment .styled-list li:nth-child(2)::before { content: "\f7cd"; } #equipment .styled-list li:nth-child(3)::before { content: "\f553"; } #equipment .styled-list li:nth-child(4)::before { content: "\e57d"; } #equipment .styled-list li:nth-child(5)::before { content: "\e006"; } #equipment .styled-list li:nth-child(6)::before { content: "\f2c2"; } #equipment .styled-list li:nth-child(7)::before { content: "\f09d"; } #equipment .styled-list li:nth-child(8)::before { content: "\f3ed"; }
         #booking .styled-list li::before { content: "\f1ad"; } #booking .styled-list li:nth-child(2)::before { content: "\f5b1"; } #booking .styled-list li:nth-child(3)::before { content: "\f236"; } #booking .styled-list li:nth-child(4)::before { content: "\f5b1"; } #booking .styled-list li:nth-child(5)::before { content: "\f072"; }
-
-        /* ===== BUTTONS & LINKS (購入/予約リンク) ===== */
         .purchase-links-container { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #e0e0e0; display: flex; flex-direction: column; gap: 15px; }
         .purchase-link-item { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
         .buy-title { font-weight: 500; font-size: 0.9rem; color: var(--text-muted); margin-right: 5px; flex-shrink: 0; }
@@ -180,25 +143,13 @@
         .buy-button { display: inline-flex; align-items: center; padding: 8px 18px; border-radius: 30px; color: white; text-decoration: none; font-weight: 500; transition: all var(--transition-fast); box-shadow: 0 3px 10px rgba(0,0,0,0.08); position: relative; overflow: hidden; z-index: 1; border: 1px solid transparent; font-size: 0.9rem; }
         .buy-button i { margin-right: 6px; }
         .buy-button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.12); }
-        .amazon { background-color: #FF9900; border-color: #e68a00; } .amazon:hover { background-color: #e68a00; }
-        .rakuten { background-color: #BF0000; border-color: #990000; } .rakuten:hover { background-color: #990000; }
-        .ahamo { background-color: #754C97; border-color: #5e3e79; } .ahamo:hover { background-color: #5e3e79; }
-        .surfshark { background-color: #0F212E; border-color: #0A1822; } .surfshark:hover { background-color: #0A1822; }
-        .nordvpn { background-color: #4687FF; border-color: #2970FF; } .nordvpn:hover { background-color: #2970FF; }
-        .expedia { background-color: #00355F; border-color: #002340; } .expedia:hover { background-color: #002340; }
-        .trip { background-color: #0896FF; border-color: #0077cc; } .trip:hover { background-color: #0077cc; }
-        .agoda { background-color: #5C2D90; border-color: #4a2475; } .agoda:hover { background-color: #4a2475; }
-        .jtb { background-color: #F05A24; border-color: #d8450f; } .jtb:hover { background-color: #d8450f; }
-        .google { background-color: #4285F4; border-color: #1a73e8; } .google:hover { background-color: #1a73e8; }
+        .amazon { background-color: #FF9900; border-color: #e68a00; } .amazon:hover { background-color: #e68a00; } .rakuten { background-color: #BF0000; border-color: #990000; } .rakuten:hover { background-color: #990000; } .ahamo { background-color: #754C97; border-color: #5e3e79; } .ahamo:hover { background-color: #5e3e79; } .surfshark { background-color: #0F212E; border-color: #0A1822; } .surfshark:hover { background-color: #0A1822; } .nordvpn { background-color: #4687FF; border-color: #2970FF; } .nordvpn:hover { background-color: #2970FF; } .expedia { background-color: #00355F; border-color: #002340; } .expedia:hover { background-color: #002340; } .trip { background-color: #0896FF; border-color: #0077cc; } .trip:hover { background-color: #0077cc; } .agoda { background-color: #5C2D90; border-color: #4a2475; } .agoda:hover { background-color: #4a2475; } .jtb { background-color: #F05A24; border-color: #d8450f; } .jtb:hover { background-color: #d8450f; } .google { background-color: #4285F4; border-color: #1a73e8; } .google:hover { background-color: #1a73e8; }
         .affiliate-note { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-left: 5px; opacity: 0.9; transition: opacity var(--transition-fast); }
         .affiliate-note:hover { opacity: 1; }
         .affiliate-note-section { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px; font-style: italic; padding: 12px 18px; border-left: 4px solid var(--primary); background: #f8f9fa; border-radius: 0 var(--border-radius) var(--border-radius) 0; line-height: 1.6; }
-
-        /* ===== CONTACT FORM ===== */
         .contact-form-container { margin-top: 40px; background: white; padding: 40px; border-radius: var(--border-radius); box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid #eee; }
         .form-group { margin-bottom: 25px; }
         label { display: block; margin-bottom: 10px; font-weight: 500; color: var(--text-dark); font-size: 0.95rem; }
-        /* 必須マーク */
         label .required-mark { color: var(--accent); margin-left: 5px; font-weight: normal; }
         input[type="text"], input[type="email"], textarea { width: 100%; padding: 14px 18px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; transition: all var(--transition-fast); background: var(--bg-light); color: var(--text-dark); }
         input[type="text"]:focus, input[type="email"]:focus, textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15); background: white; }
@@ -208,23 +159,18 @@
         .detail-link { margin-left: 10px; color: var(--primary) !important; text-decoration: underline !important; font-weight: 500; transition: all var(--transition-fast); font-size: 0.9em; }
         .detail-link:hover { color: var(--accent) !important; text-decoration: none !important; }
         .detail-link i { margin-right: 3px; }
-
-        /* ===== おすすめ記事セクション ===== */
         #recommended-articles { background-color: var(--bg-light); border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
         .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
-        .article-card { background-color: var(--bg-section); border-radius: var(--border-radius); box-shadow: var(--card-shadow); /* 影を再評価 */ overflow: hidden; transition: all var(--transition-fast); display: flex; flex-direction: column; }
+        .article-card { background-color: var(--bg-section); border-radius: var(--border-radius); box-shadow: var(--card-shadow); overflow: hidden; transition: all var(--transition-fast); display: flex; flex-direction: column; }
         .article-card:hover { transform: translateY(-8px); box-shadow: var(--card-shadow-hover); }
         .article-card a { text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; }
-        .article-card img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform var(--transition-fast); border-bottom: 1px solid #eee; } /* 画像下に線追加 */
+        .article-card img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform var(--transition-fast); border-bottom: 1px solid #eee; }
         .article-card:hover img { transform: scale(1.05); }
         .article-card-content { padding: 18px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
         .article-card h3 { font-size: 1.05rem; font-weight: 600; margin: 0; line-height: 1.4; color: var(--text-dark); transition: color var(--transition-fast); }
         .article-card a:hover h3 { color: var(--primary); }
         @media (max-width: 768px) { .articles-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; } .article-card img { height: 160px; } .article-card-content { padding: 15px; } .article-card h3 { font-size: 1rem; } }
         @media (max-width: 480px) { .articles-grid { grid-template-columns: 1fr; gap: 20px; } .article-card img { height: 180px; } }
-
-
-        /* ===== FOOTER (変更なし) ===== */
         footer { background-color: #222; color: white; text-align: center; padding: 40px 0; margin-top: 60px; position: relative; overflow: hidden; }
         footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(to right, var(--primary), var(--accent)); }
         .footer-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 var(--container-padding); }
@@ -239,8 +185,6 @@
         footer .social-links a:hover { background: var(--primary); transform: translateY(-4px) scale(1.05); }
         .footer-bottom { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: rgba(255,255,255,0.6); }
         .footer-bottom p { margin-bottom: 0; }
-
-        /* ===== THANK YOU PAGE ===== */
         .thank-you-page { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 20px; background-color: var(--bg-light); }
         .thank-you-container { background-color: white; border-radius: var(--border-radius); padding: 50px; box-shadow: var(--card-shadow); max-width: 600px; width: 100%; }
         .thank-you-icon { font-size: 70px; color: var(--accent); margin-bottom: 25px; }
@@ -248,57 +192,15 @@
         .thank-you-text { margin-bottom: 30px; font-size: 1.1rem; line-height: 1.7; }
         .thank-you-btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all var(--transition-fast); border: 2px solid transparent; cursor: pointer; font-size: 1rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); background-color: var(--primary); color: white; border-color: var(--primary); }
         .thank-you-btn:hover { background-color: var(--primary-dark); border-color: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3); }
-
-        /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in.active { opacity: 1; transform: translateY(0); }
-
-        /* ===== MEDIA QUERIES (微調整) ===== */
-        @media (max-width: 992px) {
-            :root { --section-space: 60px; }
-            .hero { min-height: 550px; height: 85vh; }
-            .hero h2 { font-size: 2.8rem; }
-            section { padding: 40px 30px; }
-            h2 { font-size: 1.9rem; }
-        }
-        @media (max-width: 768px) {
-            :root { --section-space: 50px; }
-            .container { padding: 0 20px; }
-            .hero { min-height: 500px; height: 75vh; }
-            .hero h2 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
-            h2 { font-size: 1.7rem; padding-bottom: 12px; }
-            h2::after { width: 60px; height: 3px; }
-            section:hover h2::after { width: 80px; }
-            section { padding: 35px 25px; }
-            .styled-list li { padding: 20px 25px 20px 50px; }
-            .styled-list li::before { left: 15px; top: 22px; font-size: 16px; }
-            .contact-form-container { padding: 30px; }
-            .footer-links a { margin: 0 8px 10px; }
-        }
-        @media (max-width: 480px) {
-            :root { --section-space: 40px; }
-            .hero h2 { font-size: 1.9rem; }
-            .hero-overlay { padding: 20px; }
-            .hero p { font-size: 1rem; margin-bottom: 25px; }
-            .btn { padding: 10px 25px; font-size: 0.95rem; }
-            .buy-button { padding: 7px 15px; font-size: 0.85rem; }
-            h2 { font-size: 1.5rem; }
-            section { padding: 30px 20px; }
-            p { font-size: 0.95rem; line-height: 1.65; }
-            .styled-list li { padding: 18px 20px 18px 45px; }
-            .styled-list li::before { left: 12px; top: 20px; font-size: 15px; }
-            .purchase-link-item { flex-direction: column; align-items: flex-start; }
-            .buy-title { margin-bottom: 5px; }
-            .contact-form-container { padding: 25px; }
-            input[type="text"], input[type="email"], textarea { padding: 12px 15px; }
-            .contact-form-container button[type="submit"] { width: 100%; padding: 12px 20px; font-size: 1rem; }
-        }
+        @media (max-width: 992px) { :root { --section-space: 60px; } .hero { min-height: 550px; height: 85vh; } .hero h2 { font-size: 2.8rem; } section { padding: 40px 30px; } h2 { font-size: 1.9rem; } }
+        @media (max-width: 768px) { :root { --section-space: 50px; } .container { padding: 0 20px; } .hero { min-height: 500px; height: 75vh; } .hero h2 { font-size: 2.2rem; } .hero p { font-size: 1.1rem; } h2 { font-size: 1.7rem; padding-bottom: 12px; } h2::after { width: 60px; height: 3px; } section:hover h2::after { width: 80px; } section { padding: 35px 25px; } .styled-list li { padding: 20px 25px 20px 50px; } .styled-list li::before { left: 15px; top: 22px; font-size: 16px; } .contact-form-container { padding: 30px; } .footer-links a { margin: 0 8px 10px; } }
+        @media (max-width: 480px) { :root { --section-space: 40px; } .hero h2 { font-size: 1.9rem; } .hero-overlay { padding: 20px; } .hero p { font-size: 1rem; margin-bottom: 25px; } .btn { padding: 10px 25px; font-size: 0.95rem; } .buy-button { padding: 7px 15px; font-size: 0.85rem; } h2 { font-size: 1.5rem; } section { padding: 30px 20px; } p { font-size: 0.95rem; line-height: 1.65; } .styled-list li { padding: 18px 20px 18px 45px; } .styled-list li::before { left: 12px; top: 20px; font-size: 15px; } .purchase-link-item { flex-direction: column; align-items: flex-start; } .buy-title { margin-bottom: 5px; } .contact-form-container { padding: 25px; } input[type="text"], input[type="email"], textarea { padding: 12px 15px; } .contact-form-container button[type="submit"] { width: 100%; padding: 12px 20px; font-size: 1rem; } }
     </style>
 </head>
 <body>
-    <!-- URLパラメータチェック用DIV (変更なし) -->
     <div id="thank-you-page" class="thank-you-page" style="display: none;">
         <div class="thank-you-container">
             <div class="thank-you-icon"><i class="fas fa-check-circle"></i></div>
@@ -308,9 +210,7 @@
         </div>
     </div>
 
-    <!-- メインコンテンツ -->
     <div id="main-content">
-        <!-- ==== ヘッダー (変更なし) ==== -->
         <header id="header">
             <div class="container">
                 <div class="header-content">
@@ -326,8 +226,7 @@
                             <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
                             <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
                             <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
-                            <!-- ブログリンクの絶対パスを確認 -->
-                            <li><a href="https://tomotravel-pm.com/blog" target="_blank" rel="noopener noreferrer" aria-label="ブログトップへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
+                            <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログトップへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
                             <li><a href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
                         </ul>
                     </nav>
@@ -337,7 +236,6 @@
                 </div>
             </div>
         </header>
-        <!-- ==== ヘッダーここまで ==== -->
 
         <main>
             <div class="hero">
@@ -371,13 +269,12 @@
                         </div>
                         <div class="video-buttons-container">
                             <a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-youtube"></i> YouTubeチャンネル</a>
-                            <!-- ブログリンクの絶対パスを確認 -->
                             <a href="https://tomotravel-pm.com/blog" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fas fa-blog"></i> ブログを見る</a>
                         </div>
                     </div>
                 </section>
 
-                <!-- ===== おすすめ記事セクション (最終版) ===== -->
+                <!-- ===== おすすめ記事セクション (リンク修正版) ===== -->
                 <section id="recommended-articles" class="fade-in" aria-labelledby="recommended-articles-heading">
                     <div class="section-bg-icon"> <i class="fas fa-newspaper"></i> </div>
                     <div class="section-content">
@@ -386,7 +283,8 @@
                         <div class="articles-grid">
                             <!-- カード 1: cebu2nd1 -->
                             <div class="article-card">
-                                <a href="cebu2nd1.html" aria-label="【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？ の記事を読む">
+                                <!-- リンク先を正しい絶対パスに修正 -->
+                                <a href="https://tomotravel-pm.com/cebu2nd1" aria-label="【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？ の記事を読む">
                                     <img src="https://img.youtube.com/vi/V8Q69llrJcY/hqdefault.jpg" alt="セブパシフィック航空と東横インセブのレビュー動画サムネイル" loading="lazy">
                                     <div class="article-card-content">
                                         <h3>【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</h3>
@@ -395,7 +293,8 @@
                             </div>
                             <!-- カード 2: cebu2nd2 -->
                             <div class="article-card">
-                                <a href="cebu2nd2.html" aria-label="【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル の記事を読む">
+                                <!-- リンク先を正しい絶対パスに修正 -->
+                                <a href="https://tomotravel-pm.com/cebu2nd2" aria-label="【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル の記事を読む">
                                     <img src="https://img.youtube.com/vi/z5APVNRi0FQ/hqdefault.jpg" alt="セブ島JTV B-pinkとClub Kの体験レポート動画サムネイル" loading="lazy">
                                     <div class="article-card-content">
                                         <h3>【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル</h3>
@@ -404,7 +303,8 @@
                             </div>
                             <!-- カード 3: cebu2nd3 -->
                             <div class="article-card">
-                                <a href="cebu2nd3.html" aria-label="お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】 の記事を読む">
+                                <!-- リンク先を正しい絶対パスに修正 -->
+                                <a href="https://tomotravel-pm.com/blog/cebu2nd3" aria-label="お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】 の記事を読む">
                                     <img src="https://img.youtube.com/vi/LNnFkivOQtE/hqdefault.jpg" alt="セブ島クラブBlueでの酔っ払いナイトライフ体験動画サムネイル" loading="lazy">
                                     <div class="article-card-content">
                                         <h3>お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】</h3>
@@ -413,7 +313,8 @@
                             </div>
                             <!-- カード 4: cebu2nd4 -->
                             <div class="article-card">
-                                <a href="cebu2nd4.html" aria-label="JTVで飲みすぎるとこうなる【セブ島2日目夜前編】 の記事を読む">
+                                <!-- リンク先を正しい絶対パスに修正 -->
+                                <a href="https://tomotravel-pm.com/blog/cebu2nd4" aria-label="JTVで飲みすぎるとこうなる【セブ島2日目夜前編】 の記事を読む">
                                     <img src="https://img.youtube.com/vi/ofMvQYhii58/hqdefault.jpg" alt="セブ島JTV Club Kでの飲みすぎエピソード動画サムネイル" loading="lazy">
                                     <div class="article-card-content">
                                         <h3>JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</h3>
@@ -421,9 +322,9 @@
                                 </a>
                             </div>
                         </div>
-                        <!-- ブログ全体へのリンクボタン (絶対パスに変更) -->
+                        <!-- ブログ全体へのリンクボタン (target属性削除) -->
                          <div style="text-align: center; margin-top: 40px;">
-                            <a href="https://tomotravel-pm.com/blog" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <a href="https://tomotravel-pm.com/blog" class="btn btn-secondary">
                                 <i class="fas fa-blog"></i> もっとブログ記事を見る
                             </a>
                         </div>
@@ -626,7 +527,6 @@
                     </div>
                     <div class="footer-links">
                         <a href="/#about">チャンネル概要</a> <a href="/#videos">最新動画</a> <a href="/#travel">旅の魅力</a> <a href="/#equipment">撮影機材</a> <a href="/#booking">旅の予約</a> <a href="/#preparation">事前準備</a> <a href="/#contact">お問い合わせ</a>
-                        <!-- ブログリンクの絶対パスを確認 -->
                         <a href="https://tomotravel-pm.com/blog" target="_blank" rel="noopener noreferrer">ブログ</a>
                     </div>
                     <div class="footer-bottom">
@@ -680,13 +580,15 @@
                      const isTopLevelLink = href === '/';
                      const isAnchorOnly = href === '#';
 
+                     // スムーズスクロール対象外のリンク（target="_blank", トップページリンク, #のみ）は何もしない
                      if (isExternal || isTopLevelLink || isAnchorOnly) {
                         if (this.closest('#main-nav')) { closeMobileMenu(); }
                         return;
                      }
 
+                     // ページ内リンクか、他ページからのトップセクションリンクかを判定
                      const targetIdMatch = href.match(/#(.+)$/);
-                     if (!targetIdMatch) {
+                     if (!targetIdMatch) { // # が含まれない通常のリンク
                         if (this.closest('#main-nav')) { closeMobileMenu(); }
                         return;
                      }
@@ -694,8 +596,9 @@
                      const targetId = `#${targetIdMatch[1]}`;
                      const targetElement = document.querySelector(targetId);
 
+                     // ターゲット要素が存在する場合のみスムーズスクロール実行
                      if (targetElement) {
-                         e.preventDefault();
+                         e.preventDefault(); // デフォルトのアンカー動作をキャンセル
                          const headerElement = document.getElementById('header');
                          let headerOffset = 0;
                          if (headerElement) { headerOffset = headerElement.offsetHeight; }
@@ -704,13 +607,17 @@
                          const offsetPosition = window.pageYOffset + elementPosition - headerOffset - extraPadding;
 
                          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                         closeMobileMenu();
+                         closeMobileMenu(); // スクロール後にメニューを閉じる
                      } else if (href.startsWith('/#')) {
-                         console.warn(`Target element ${targetId} not found on this page.`);
-                         if (this.closest('#main-nav')) { closeMobileMenu(); }
+                         // トップページのセクションへのリンクだが、現在のページにその要素がない場合
+                         // (JavaScriptだけでは別ページへの遷移とスクロールは難しいので、ここでは何もしないか、トップへ遷移)
+                          console.warn(`Target element ${targetId} not found. Consider navigating to the homepage first.`);
+                          // window.location.href = '/'; // トップページに遷移させる場合
+                          if (this.closest('#main-nav')) { closeMobileMenu(); } // メニューは閉じる
                      } else {
+                         // 現在のページ内にターゲット要素が見つからない場合
                          console.warn(`Target element ${targetId} not found on this page.`);
-                         if (this.closest('#main-nav')) { closeMobileMenu(); }
+                         if (this.closest('#main-nav')) { closeMobileMenu(); } // メニューは閉じる
                      }
                  });
              });
@@ -754,9 +661,11 @@
                  mainNav.querySelectorAll('a').forEach(link => {
                      link.addEventListener('click', function() {
                          const href = this.getAttribute('href');
+                         // スムーズスクロール対象のリンク以外はクリック時にメニューを閉じる
                          if (!href || (!href.startsWith('#') && !href.startsWith('/#')) || href === '#') {
                               closeMobileMenu();
                          }
+                         // スムーズスクロール対象リンクはスクロール完了後に閉じる（上のリスナーで処理）
                      });
                  });
             }
