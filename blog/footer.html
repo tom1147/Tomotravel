@@ -1,4 +1,5 @@
     <!-- フッター部分 -->
+    <!-- このファイルが blog/footer.html として配置されている想定 -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -11,14 +12,16 @@
                 </div>
 
                 <div class="footer-links">
-                    <a href="/#about">チャンネル概要</a>
-                    <a href="/#videos">最新動画</a>
-                    <a href="/#travel">旅の魅力</a>
-                    <a href="/#equipment">撮影機材</a>
-                    <a href="/#booking">旅の予約</a>
-                    <a href="/#preparation">事前準備</a>
-                    <a href="/#contact">お問い合わせ</a>
-                    <a href="/blog">ブログ</a>
+                    <!-- 各セクションへのリンク: blog/ から抜けてルートの #id を指すので ../#id -->
+                    <a href="../#about">チャンネル概要</a>
+                    <a href="../#videos">最新動画</a>
+                    <a href="../#travel">旅の魅力</a>
+                    <a href="../#equipment">撮影機材</a>
+                    <a href="../#booking">旅の予約</a>
+                    <a href="../#preparation">事前準備</a>
+                    <a href="../#contact">お問い合わせ</a>
+                    <!-- ブログトップへのリンク: 同じ blog/ ディレクトリ内を指すので ./ -->
+                    <a href="./">ブログ</a>
                 </div>
 
                 <div class="footer-bottom">
