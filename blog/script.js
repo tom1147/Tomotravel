@@ -1,13 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded and parsed"); // デバッグ用ログ
 
-    // === ヘッダーとフッターの読み込み処理 ===
-    const loadHTML = (url, placeholderId, callback) => { // ★ callbackを追加
+    // === HTMLコンポーネントの読み込み関数 ===
+    // url: 読み込むHTMLファイルのパス (このscript.jsからの相対パス)
+    // placeholderId: HTMLを挿入する要素のID
+    // callback: 読み込み完了後に実行する関数
+    const loadHTML = (url, placeholderId, callback) => {
         console.log(`Attempting to load: ${url} into #${placeholderId}`);
+        // fetchは実行中のJSファイル(script.js)からの相対パスでファイルを解決する
         fetch(url)
             .then(response => {
                 console.log(`Response status for ${url}: ${response.status}`);
                 if (!response.ok) {
+                    // エラーレスポンスの内容も表示
                     return response.text().then(text => {
                         throw new Error(`HTTP error! status: ${response.status} for ${url}. Response: ${text}`);
                     });
@@ -20,8 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (placeholder) {
                     placeholder.innerHTML = data;
                     console.log(`Successfully loaded ${url} into #${placeholderId}`);
-                    // ★ 読み込み完了後にコールバック関数を実行
+                    // 読み込み完了後にコールバック関数を実行
                     if (callback) {
+                        console.log(`Executing callback for #${placeholderId}`);
                         callback();
                     }
                 } else {
@@ -32,7 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error(`Could not load HTML from ${url}:`, error);
                 const placeholder = document.getElementById(placeholderId);
                 if (placeholder) {
-                    placeholder.innerHTML = `<p style="color: red; text-align: center; border: 1px solid red; padding: 10px;">Error loading ${placeholderId.replace('-placeholder','')}: ${error.message}</p>`;
+                    // エラーメッセージをプレースホルダー内に表示
+                    placeholder.innerHTML = `<p style="color: red; text-align: center; border: 1px solid red; padding: 10px;">Error loading ${placeholderId.replace('-placeholder','')}: ${error.message}. Check path and file existence.</p>`;
                 }
             });
     };
@@ -82,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function closeMobileMenu() {
+            // メニューがアクティブかどうかチェック
             if (mainNav && menuToggle && mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
                 const icon = menuToggle.querySelector('i');
@@ -146,23 +154,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // === フッター読み込み後に実行される初期化関数 (必要なら) ===
-    // function initializeFooterScript() {
-    //     console.log("Attempting to initialize footer scripts...");
-    //     // フッターに関するJS処理があればここに記述
-    //     console.log("Footer script initialization finished.");
-    // }
+    // function initializeFooterScript() { ... }
 
+    // === サイドバー読み込み後に実行される初期化関数 (必要なら) ===
+    // function initializeSidebarScript() { ... }
 
     // === 実際の読み込み処理 ===
-    // ヘッダーを読み込み、完了したら initializeHeaderScript を実行
-    loadHTML('header.html', 'header-placeholder', initializeHeaderScript);
-    // フッターを読み込み、完了したら initializeFooterScript を実行 (フッター用JSがなければnullや未指定でも可)
-    // loadHTML('footer.html', 'footer-placeholder', initializeFooterScript);
-    loadHTML('footer.html', 'footer-placeholder', null); // フッター用JSがない場合
-
+    // このスクリプト(script.js)が blog/ ディレクトリにあるため、
+    // 同じ blog/ ディレクトリにあるファイルは './' またはファイル名のみで指定。
+    // header.html, footer.html, sidebar.html が blog/ にある前提。
+    loadHTML('./header.html', 'header-placeholder', initializeHeaderScript);
+    loadHTML('./footer.html', 'footer-placeholder', null); // フッター用JSがない場合
+    loadHTML('./sidebar.html', 'sidebar-placeholder', null); // サイドバー用JSがない場合
 
     // === ブログ記事本体に特有のスクリプトがあればここに追加 ===
-    // (例: 目次生成、画像ギャラリーなど、ヘッダー/フッターとは独立したもの)
-    console.log("Executing other scripts unrelated to header/footer...");
+    console.log("Executing other scripts unrelated to loaded components...");
 
 }); // END DOMContentLoaded
