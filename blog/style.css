@@ -1,4 +1,5 @@
-/* CSSは元のファイルの内容と同じです */
+/* CSSの内容は変更なし */
+/* このファイルが blog/style.css として配置されていることを想定 */
 :root {
     --primary: #1E90FF;
     --primary-dark: #0066cc;
@@ -69,6 +70,8 @@ p {
 }
 header p { text-align: center; }
 footer p { text-align: center; }
+/* サイドバー内のpは別途調整 */
+.blog-sidebar p { text-align: left; margin-bottom: 0.5rem; font-size: 0.9rem;}
 
 
 header {
@@ -315,18 +318,39 @@ nav ul li a:hover::before {
      }
 }
 
-
-.blog-container {
-     padding-top: var(--header-height-mobile);
+/* ===== ブログページ全体レイアウト ===== */
+.blog-page-wrapper {
+    display: flex;
+    flex-direction: column; /* モバイルデフォルト */
+    gap: 30px; /* メインとサイドバーの間隔 */
+    padding-top: calc(var(--header-height-mobile) + 30px); /* ヘッダーとコンテンツの間隔 */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    padding-bottom: var(--section-space);
 }
-@media (min-width: 769px) {
-    .blog-container {
-        padding-top: var(--header-height-desktop);
+
+@media (min-width: 992px) { /* デスクトップ */
+    .blog-page-wrapper {
+        flex-direction: row; /* 横並び */
+        padding-top: calc(var(--header-height-desktop) + 40px);
     }
 }
 
+/* ===== メインコンテンツエリア ===== */
+.blog-main-content {
+    flex: 1; /* デスクトップで利用可能なスペースを取る */
+    min-width: 0; /* Flexアイテムの縮小問題を回避 */
+}
+
+/* .blog-container は記事コンテンツの最大幅を制御 */
+.blog-container {
+     padding-top: 0;
+}
+
 .blog-header {
-    margin-top: 40px;
+    margin-top: 0;
     background-color: var(--card-bg);
     text-align: center;
     margin-bottom: 40px;
@@ -336,7 +360,7 @@ nav ul li a:hover::before {
     position: relative;
     padding: 40px 30px;
     border: 1px solid rgba(0,0,0,0.05);
-    max-width: 900px;
+    max-width: 900px; /* Main content内の最大幅 */
     margin-left: auto;
     margin-right: auto;
 }
@@ -369,7 +393,7 @@ nav ul li a:hover::before {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     position: relative;
     border: 1px solid rgba(0,0,0,0.05);
-    max-width: 900px;
+    max-width: 900px; /* Main content内の最大幅 */
     margin-left: auto;
     margin-right: auto;
 }
@@ -402,7 +426,7 @@ nav ul li a:hover::before {
     margin-bottom: 20px;
     line-height: 1.8;
     text-align: left;
-    max-width: 100%;
+    max-width: 100%; /* 親要素の幅に合わせる */
 }
 
 .blog-img-container {
@@ -540,7 +564,7 @@ nav ul li a:hover::before {
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    max-width: 900px;
+    max-width: 900px; /* Main content内の最大幅 */
     margin-left: auto;
     margin-right: auto;
 }
@@ -601,6 +625,9 @@ nav ul li a:hover::before {
     width: 100%;
     border-top: 1px solid rgba(0,0,0,0.1);
     padding-top: 20px;
+    max-width: 900px; /* Main content内の最大幅 */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .prev-post, .next-post {
@@ -670,6 +697,112 @@ nav ul li a:hover::before {
     margin-right: 5px;
 }
 
+/* ===== サイドバー ===== */
+.blog-sidebar {
+    width: 100%; /* モバイルデフォルト */
+    order: 2; /* モバイルではメインコンテンツの後 */
+}
+
+@media (min-width: 992px) { /* デスクトップ */
+    .blog-sidebar {
+        width: 300px; /* 固定幅 */
+        flex-shrink: 0; /* 幅を維持 */
+        order: 2; /* メインコンテンツの右 */
+        position: sticky; /* スクロール追従 */
+        top: calc(var(--header-height-desktop) + 40px); /* ヘッダー下の追従開始位置 */
+        height: calc(100vh - var(--header-height-desktop) - 60px); /* 画面高さに合わせる (調整必要) */
+        overflow-y: auto; /* 内容が多い場合にスクロール */
+        padding-bottom: 20px; /* スクロール時の下部余白 */
+    }
+    .blog-main-content { order: 1; } /* メインコンテンツを左に */
+}
+
+.blog-sidebar > div { /* サイドバー内の各セクション */
+    background-color: var(--card-bg);
+    padding: 25px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.blog-sidebar h4 {
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    font-weight: 600;
+}
+
+/* プロフィールセクション */
+.sidebar-profile {
+    text-align: center;
+}
+.profile-icon img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid var(--primary);
+    padding: 3px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.profile-info h4 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+.profile-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0; /* 下の要素とのマージンは親で調整 */
+}
+
+/* おすすめ記事セクション */
+.recommended-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.recommended-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(0,0,0,0.07);
+}
+.recommended-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.recommended-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: block;
+    transition: color var(--transition-fast);
+}
+.recommended-link:hover {
+    color: var(--primary);
+}
+.recommended-link i {
+    margin-right: 8px;
+    color: var(--accent);
+    width: 16px; /* アイコン幅固定 */
+    text-align: center;
+}
+
+/* 他のサイドバーセクションのスタイル（カテゴリ、タグなど）は省略 */
+
+
+@media (max-width: 991px) { /* デスクトップ未満 (サイドバーが下にくる) */
+    .blog-sidebar {
+         margin-top: 0; /* blog-page-wrapperのgapで制御 */
+    }
+}
 
 @media (max-width: 768px) {
     .blog-header { padding: 30px 20px; }
@@ -688,7 +821,9 @@ nav ul li a:hover::before {
         font-size: 0.9rem;
         white-space: normal;
     }
-    .next-post { display: none; }
+    /* Removed display: none for next-post in mobile */
+    .blog-sidebar > div { padding: 20px 15px; } /* サイドバーのパディング調整 */
+    .blog-sidebar h4 { font-size: 1.1rem; }
 }
 @media (max-width: 480px) {
     .blog-title { font-size: 1.6rem; }
@@ -697,6 +832,8 @@ nav ul li a:hover::before {
     .blog-content h3 { font-size: 1.3rem; }
     .blog-content p { font-size: 1rem; }
     .nav-title { font-size: 1rem; }
+    .profile-info p { font-size: 0.85rem; }
+    .recommended-link { font-size: 0.9rem; }
 }
 
 
