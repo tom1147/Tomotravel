@@ -1,4 +1,6 @@
-/* CSSは元のファイルの内容と同じです */
+/* blog/style.css */
+/* 全ファイルが blog/ ディレクトリにある前提 */
+
 :root {
     --primary: #1E90FF;
     --primary-dark: #0066cc;
@@ -9,39 +11,820 @@
     --text-muted: #6c757d;
     --card-bg: #ffffff;
     --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    --section-space: 80px;
+    --section-space: 80px; /* 注意: ブログコンテンツ内の margin-bottom で使用 */
     --container-padding: 0 24px;
     --border-radius: 12px;
     --transition-fast: 0.3s ease;
     --transition-medium: 0.5s ease;
     --header-height-desktop: 140px;
     --header-height-mobile: 80px;
+    /* ▼▼▼ 追加 ▼▼▼ */
+    --sidebar-width-desktop: 300px;
+    --sidebar-gap: 30px;
 }
 
-/* (他のスタイルは変更なしのため省略) */
-/* ... */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    overflow-x: hidden; /* 横スクロール防止 */
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height-mobile);
+}
+
+@media (min-width: 992px) { /* ▼ デスクトップのブレークポイントを 992px に統一 ▼ */
+    html {
+        scroll-padding-top: var(--header-height-desktop);
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    line-height: 1.3;
+}
+
+/* 基本のpタグスタイル (ブログコンテンツ内で主に適用) */
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem; /* 基本の文字サイズ */
+    color: var(--text-dark);
+    text-align: left; /* デフォルトは左揃え */
+    /* max-width は各コンポーネント内で制御 */
+}
+/* 各コンポーネント内のpタグは必要に応じて上書き */
+header p { text-align: center; }
+footer p { text-align: center; margin-bottom: 1rem; }
+.blog-sidebar p { text-align: left; margin-bottom: 0.5rem; font-size: 0.9rem; }
+.blog-content p { max-width: 100%; } /* blog-content内で幅を制御 */
+
+
+/* ===== HEADER ===== */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all var(--transition-fast);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(30,144,255,0.1);
+}
+
+header.scrolled {
+    padding-top: 5px;    /* 上下のパディングを調整 */
+    padding-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
+
+/* ヘッダーコンテンツ (デスクトップ) */
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 20px 0; デスクトップ時の高さは下のスタイルで確保 */
+    transition: padding var(--transition-fast);
+    position: relative;
+    min-height: calc(var(--header-height-desktop) - 40px); /* padding分を考慮 */
+    padding: 20px 0; /* 通常時のパディング */
+    justify-content: center; /* ロゴとナビを中央に */
+}
+
+.logo-center {
+    text-align: center;
+    margin-bottom: 18px;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.logo-center::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    border-radius: 2px;
+    opacity: 0.5;
+    transition: opacity var(--transition-fast); /* スクロール時に消す効果 */
+}
+header.scrolled .logo-center::after {
+    opacity: 0; /* スクロールしたら消す */
+}
+
+
+.logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary) !important;
+    text-align: center;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-fast);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+a.logo-text:hover {
+    color: var(--primary-dark) !important;
+    transform: translateY(-2px);
+}
+
+.vlog-text {
+    color: var(--accent) !important;
+    position: relative;
+    font-weight: 700;
+    transition: all var(--transition-fast);
+    font-size: inherit; /* 親要素に追従 */
+}
+
+/* .vlog-text::after は不要 */
+
+.menu-toggle {
+    display: none; /* デスクトップでは非表示 */
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary);
+    transition: all var(--transition-fast);
+    position: absolute; /* header-content 内で絶対配置 */
+    right: 20px; /* 右端に配置 */
+    top: 50%; /* 垂直中央 */
+    transform: translateY(-50%);
+    z-index: 1001; /* ナビより手前 */
+    padding: 5px; /* クリック領域確保 */
+}
+.menu-toggle:hover {
+    color: var(--accent);
+}
+
+/* デスクトップナビゲーション */
+nav#main-nav { /* IDセレクタで詳細度を確保 */
+    width: 100%;
+    margin-top: 0; /* logo-centerとの間隔は logo-center の margin-bottom で調整 */
+}
+
+nav ul.nav-menu { /* クラスセレクタ追加 */
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap; /* 折り返し許可 */
+    padding-left: 0;
+    margin: 0;
+    gap: 4px; /* 項目間の最小間隔 */
+}
+
+nav ul.nav-menu li {
+    margin: 0; /* gapで調整するのでリセット */
+    position: relative;
+}
+
+nav ul.nav-menu li a {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    display: block;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+nav ul.nav-menu li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0; /* 初期状態は高さ0 */
+    background-color: var(--primary);
+    opacity: 0.1;
+    transition: height var(--transition-fast);
+    z-index: -1;
+}
+
+nav ul.nav-menu li a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+nav ul.nav-menu li a:hover::before {
+    height: 100%; /* ホバー時に背景を表示 */
+}
+
+.nav-icon {
+    margin-right: 5px;
+    width: 1em; /* アイコン幅の目安 */
+    text-align: center; /* アイコン中央揃え */
+}
+
+/* ソーシャルリンク (ヘッダーナビ内) */
+nav ul.nav-menu li a.social-nav-link {
+    padding: 8px 8px; /* パディング調整 */
+    background-color: transparent; /* 背景なし */
+    color: var(--text-dark); /* 通常の色 */
+}
+nav ul.nav-menu li a.social-nav-link:hover {
+    color: var(--primary); /* ホバー時の色 */
+    background-color: rgba(30,144,255,0.05); /* 薄い背景色 */
+    transform: translateY(-2px);
+}
+nav ul.nav-menu li a.social-nav-link i {
+    font-size: 1rem; /* アイコンサイズ調整 */
+    margin-right: 0; /* アイコンのみなのでマージン不要 */
+}
+nav ul.nav-menu li a.social-nav-link::before {
+    display: none; /* ホバー時の背景効果は不要 */
+}
+
+
+/* モバイルヘッダー (768px以下) */
+@media (max-width: 768px) {
+    header.scrolled {
+        /* モバイルではスクロール時のパディング変更は不要かも */
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .header-content {
+        flex-direction: row; /* 横並び */
+        justify-content: space-between; /* ロゴとトグルを両端に */
+        align-items: center;
+        min-height: var(--header-height-mobile); /* 高さを確保 */
+        padding: 0 15px; /* 左右パディング */
+    }
+
+    .logo-center {
+        margin-bottom: 0;
+        text-align: left; /* ロゴを左寄せ */
+        flex-grow: 1; /* 利用可能なスペースを取る */
+        padding-left: 0; /* reset */
+    }
+    .logo-center::after {
+        display: none; /* モバイルでは下線非表示 */
+    }
+    .logo-text {
+        font-size: 24px; /* モバイル用フォントサイズ */
+    }
+    .vlog-text {
+        font-size: 20px; /* モバイル用フォントサイズ */
+    }
+
+    .menu-toggle {
+        display: block; /* モバイルで表示 */
+        position: static; /* 静的配置 */
+        transform: none; /* 変形リセット */
+        font-size: 24px;
+        margin-left: 15px; /* ロゴとの間隔 */
+        padding: 5px;
+    }
+
+    /* モバイルナビゲーションパネル */
+    nav#main-nav {
+        position: absolute;
+        top: 100%; /* ヘッダーのすぐ下 */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        max-height: 0; /* 初期状態は閉じる */
+        overflow: hidden;
+        transition: max-height 0.5s ease, padding 0.5s ease;
+        padding: 0; /* 閉じてる時はパディング0 */
+        border-top: 1px solid rgba(30,144,255,0.1);
+        margin-top: 0; /* リセット */
+    }
+
+    nav#main-nav.active {
+        max-height: calc(100vh - var(--header-height-mobile)); /* 開いた時の最大高さ */
+        padding: 10px 0; /* 開いた時のパディング */
+        overflow-y: auto; /* 内容が多い場合にスクロール */
+    }
+
+    nav ul.nav-menu {
+        flex-direction: column; /* 縦並び */
+        padding: 0;
+        gap: 0; /* リセット */
+    }
+
+    nav ul.nav-menu li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        margin: 0;
+    }
+    nav ul.nav-menu li:last-child {
+        border-bottom: none;
+    }
+
+    nav ul.nav-menu li a {
+        padding: 15px 20px;
+        width: 100%;
+        display: block;
+        font-size: 1rem;
+        border-radius: 0; /* 角丸なし */
+    }
+    nav ul.nav-menu li a:hover {
+        background-color: rgba(30,144,255,0.05); /* ホバー背景色 */
+        transform: none; /* ホバー時の移動なし */
+        color: var(--primary);
+    }
+     nav ul.nav-menu li a::before {
+         display: none; /* ホバー時の下線効果は不要 */
+     }
+
+     /* モバイルナビ内のソーシャルリンク */
+     nav ul.nav-menu li a.social-nav-link {
+         display: inline-block; /* 他のテキストリンクと区別 */
+         width: auto; /* 自動幅 */
+         padding: 15px 10px; /* パディング調整 */
+         background-color: transparent;
+         color: var(--primary); /* 少し目立たせる */
+         margin: 0 5px; /* 左右マージン */
+     }
+     nav ul.nav-menu li a.social-nav-link:hover {
+         color: var(--accent);
+         background-color: transparent;
+         transform: translateY(-2px); /* ホバー時の動き */
+     }
+     nav ul.nav-menu li a.social-nav-link i {
+         font-size: 1.2rem; /* 少し大きめ */
+     }
+} /* End of @media (max-width: 768px) */
+
+
+/* ===== ブログページ全体レイアウト ===== */
+.blog-page-wrapper {
+    display: flex;
+    flex-direction: column; /* モバイルデフォルトは縦並び */
+    gap: var(--sidebar-gap); /* メインとサイドバーの間隔 */
+    /* ▼ ヘッダー分の高さを確保するpadding ▼ */
+    padding-top: calc(var(--header-height-mobile) + 30px);
+    max-width: 1200px; /* コンテンツ全体の最大幅 */
+    margin: 0 auto; /* 中央揃え */
+    padding-left: var(--container-padding); /* 左右の余白 */
+    padding-right: var(--container-padding);
+    padding-bottom: var(--section-space); /* ページ下部の余白 */
+}
+
+@media (min-width: 992px) { /* デスクトップ */
+    .blog-page-wrapper {
+        flex-direction: row; /* 横並び */
+        padding-top: calc(var(--header-height-desktop) + 40px);
+    }
+}
+
+/* ===== メインコンテンツエリア ===== */
+.blog-main-content {
+    flex: 1; /* デスクトップで利用可能なスペースを埋める */
+    min-width: 0; /* Flexアイテムの縮小問題を回避 */
+    order: 1; /* デスクトップで左側に配置 */
+}
+@media (max-width: 991px) {
+    .blog-main-content {
+        order: 1; /* モバイルでは最初に表示 */
+    }
+}
+
+
+/* ブログ記事コンテナ (パディング等はこちらでは設定しない) */
+.blog-container {
+     padding-top: 0; /* 上のラッパーで制御 */
+}
+
+/* ブログヘッダー (タイトル、メタ情報) */
+.blog-header {
+    margin-top: 0; /* 上のラッパーで制御 */
+    background-color: var(--card-bg);
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    overflow: hidden; /* 念のため */
+    position: relative;
+    padding: 40px 30px;
+    border: 1px solid rgba(0,0,0,0.05);
+    /* max-width: 900px; は不要、親の幅に依存 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-title {
+    font-size: 2.2rem;
+    padding: 0 10px; /* 左右パディング少し */
+    margin-bottom: 15px;
+    color: var(--primary);
+    line-height: 1.4;
+    text-align: center;
+    font-weight: 700;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0; /* 下の余白は親要素で調整 */
+    text-align: center;
+    line-height: 1.6;
+}
+.blog-meta span {
+    margin: 0 5px;
+    white-space: nowrap; /* 折り返さないように */
+}
+
+/* ブログ本文エリア */
+.blog-content {
+    background-color: var(--card-bg);
+    padding: 40px; /* パディング少し減らす */
+    border-radius: var(--border-radius);
+    margin-bottom: var(--section-space); /* 次のセクションとの間隔 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.05);
+    /* max-width: 900px; は不要、親の幅に依存 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-content h2 {
+    font-size: 2rem; /* 少し調整 */
+    margin-top: 50px; /* 上の間隔 */
+    margin-bottom: 25px; /* 下の間隔 */
+    padding-bottom: 10px; /* 下線との間隔 */
+    border-bottom: 2px solid var(--accent);
+    display: block; /* block要素として */
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+.blog-content h2:first-child {
+    margin-top: 0; /* 最初のh2は上の間隔不要 */
+}
+/* .blog-content h2::after は不要 */
+
+.blog-content h3 {
+    font-size: 1.6rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+    text-align: center;
+    font-weight: 600;
+    border-bottom: none; /* 下線なし */
+    padding-bottom: 0;
+}
+
+.blog-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    text-align: left;
+    max-width: 100%; /* コンテナ幅に追従 */
+    font-size: 1.05rem; /* 基本の文字サイズ */
+}
+
+.blog-img-container {
+    margin: 40px auto; /* 上下マージン調整 */
+    text-align: center;
+    max-width: 750px; /* 画像コンテナ最大幅 */
+}
+
+.blog-img-container img {
+    max-width: 100%; /* コンテナに収まるように */
+    height: auto; /* アスペクト比維持 */
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    display: block; /* 中央揃えのため */
+    margin: 0 auto 10px auto; /* 下に少しマージン */
+}
+
+.blog-img-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.blog-img-caption {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0; /* 画像下のマージンで調整済み */
+    text-align: center;
+    padding: 0 10px; /* 左右パディング */
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+    height: 0;
+    margin: 40px auto;
+    overflow: hidden;
+    max-width: 800px; /* 動画コンテナ最大幅 */
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: all var(--transition-fast);
+}
+
+.video-container:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    transform: scale(1.02); /* ホバー時に少し拡大 */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    border-radius: var(--border-radius); /* コンテナに合わせる */
+}
+
+.blog-content blockquote {
+    background-color: rgba(30,144,255,0.05);
+    border-left: 4px solid var(--primary);
+    padding: 20px 25px; /* パディング調整 */
+    margin: 30px auto;
+    font-style: italic;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    max-width: 90%;
+    text-align: left;
+    color: var(--text-dark);
+}
+.blog-content blockquote p {
+    margin-bottom: 0; /* blockquote内ではpのマージン不要 */
+    font-size: 1.05rem; /* 文字サイズ継承 */
+}
+
+.alert-box-quote {
+    background-color: #fff8e1;
+    border-left: 4px solid #ffca28;
+    padding: 20px 25px;
+    margin: 30px auto;
+    font-style: normal; /* italic解除 */
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    max-width: 90%;
+    text-align: left;
+    color: #333;
+}
+.alert-box-quote p {
+     margin-bottom: 0;
+     font-size: 1.05rem;
+}
+.alert-box-quote strong {
+    color: #c77405;
+    font-weight: bold;
+}
+
+.blog-content em {
+    font-style: normal; /* italic解除 */
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.blog-content ul {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding-left: 30px; /* リストマーカーのスペース確保 */
+    max-width: 700px; /* リストの最大幅 */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.blog-content li {
+    margin-bottom: 12px; /* 項目間隔 */
+    position: relative;
+    text-align: left;
+    list-style: none; /* デフォルトマーカー削除 */
+    padding-left: 10px; /* マーカーとの間隔 */
+    font-size: 1.05rem; /* 文字サイズ */
+}
+
+.blog-content li::before {
+    content: '';
+    position: absolute;
+    left: -20px; /* padding-left考慮 */
+    top: 0.6em; /* 行の高さに合わせて調整 */
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+}
+.blog-content li strong {
+     font-weight: 600;
+}
+
+/* ブログ記事フッター (タグ、シェア) */
+.blog-footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* モバイルで折り返す */
+    align-items: center;
+    gap: 15px; /* タグとシェアボタンの間隔 */
+    /* max-width は親(.blog-content)に依存 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 0; /* blog-footerのgapで調整 */
+}
+
+.blog-tag {
+    background-color: rgba(30,144,255,0.1);
+    color: var(--primary);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    white-space: nowrap;
+}
+.blog-tag i {
+    margin-right: 4px;
+}
+
+.blog-tag:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: scale(1.05); /* 少し拡大 */
+}
+
+.blog-share {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 0; /* blog-footerのgapで調整 */
+}
+
+.share-button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.05);
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+.share-button i {
+    font-size: 0.9rem; /* アイコンサイズ調整 */
+}
+
+.share-button:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* 前後の記事ナビゲーション */
+.next-prev-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px; /* 上の要素との間隔 */
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 25px;
+    /* max-width は親(.blog-content)に依存 */
+    margin-left: auto;
+    margin-right: auto;
+    gap: 20px; /* 前後記事の間の最小間隔 */
+}
+
+.prev-post, .next-post {
+    max-width: 48%; /* 幅を少し広げる */
+    flex-basis: 48%; /* flexアイテムの基本幅 */
+}
+.prev-post a, .next-post a {
+    text-decoration: none;
+    display: block;
+    padding: 10px; /* クリック領域 */
+    border-radius: 8px;
+    transition: background-color var(--transition-fast);
+}
+.prev-post a:hover, .next-post a:hover {
+    background-color: rgba(0,0,0,0.03);
+}
+
+.prev-post { text-align: left; }
+.next-post { text-align: right; }
+
+.nav-direction {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    display: block;
+}
+.nav-direction .fas {
+    margin: 0 4px;
+}
+
+.nav-title {
+    font-size: 1.05rem; /* 少し調整 */
+    font-weight: 600;
+    color: var(--primary);
+    transition: all var(--transition-fast);
+    display: block;
+    line-height: 1.4;
+}
+
+.prev-post a:hover .nav-title,
+.next-post a:hover .nav-title {
+    color: var(--accent);
+}
+
+/* アフィリエイトボタン */
+.affiliate-box {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 40px auto; /* 上下マージン */
+    text-align: center;
+    max-width: 800px; /* コンテナ幅 */
+}
+
+.affiliate-btn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white !important; /* 必要なら */
+    padding: 12px 30px; /* パディング調整 */
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 10px 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(30,144,255,0.3);
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.affiliate-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(30,144,255,0.4);
+}
+.affiliate-btn i {
+    margin-right: 8px; /* アイコンとテキストの間隔 */
+}
+
 
 /* ===== サイドバー ===== */
 .blog-sidebar {
-    width: 100%; /* モバイルデフォルト */
+    width: 100%; /* モバイルデフォルト幅 */
     order: 2; /* モバイルではメインコンテンツの後 */
 }
 
 @media (min-width: 992px) { /* デスクトップ */
     .blog-sidebar {
-        width: 300px; /* 固定幅 */
+        width: var(--sidebar-width-desktop); /* 固定幅 */
         flex-shrink: 0; /* 幅を維持 */
         order: 2; /* メインコンテンツの右 */
         position: sticky; /* スクロール追従 */
         top: calc(var(--header-height-desktop) + 40px); /* ヘッダー下の追従開始位置 */
-        height: calc(100vh - var(--header-height-desktop) - 60px); /* 画面高さに合わせる (調整必要) */
+        /* ▼ height指定は削除し、max-heightを使用 ▼ */
+        max-height: calc(100vh - var(--header-height-desktop) - 60px); /* 画面高さに合わせる (下部余白含む) */
         overflow-y: auto; /* 内容が多い場合にスクロール */
         padding-bottom: 20px; /* スクロール時の下部余白 */
     }
-    .blog-main-content { order: 1; } /* メインコンテンツを左に */
 }
 
-.blog-sidebar > div { /* サイドバー内の各セクション */
+/* サイドバー内の各ウィジェット */
+.blog-sidebar > div {
     background-color: var(--card-bg);
     padding: 25px 20px;
     border-radius: var(--border-radius);
@@ -49,38 +832,49 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     border: 1px solid rgba(0,0,0,0.03);
 }
+.blog-sidebar > div:last-child {
+    margin-bottom: 0; /* 最後のウィジェットの下マージンは不要 */
+}
+
 
 .blog-sidebar h4 {
     font-size: 1.2rem;
     color: var(--primary-dark);
-    margin-bottom: 15px;
-    padding-bottom: 8px;
+    margin-bottom: 20px; /* 少し間隔をあける */
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     text-align: center;
     font-weight: 600;
+    margin-top: 0; /* ウィジェット内の最初の要素なので上マージン不要 */
 }
 
 /* プロフィールセクション */
 .sidebar-profile {
     text-align: center;
 }
-.profile-icon img {
-    border-radius: 50%; /* 円形を維持 */
+.profile-icon { /* アイコンのラッパー */
     margin-bottom: 15px;
-    border: 4px solid rgba(30, 144, 255, 0.2); /* 境界線を少し太く、薄い色に */
-    padding: 4px; /* パディングを少し増やす */
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* 影を少し調整 */
     display: inline-block; /* 中央揃えのため */
-    transition: transform var(--transition-fast); /* ホバー効果追加 */
+}
+.profile-icon img {
+    width: 100px; /* サイズ指定 */
+    height: 100px;
+    object-fit: cover; /* 画像がコンテナに収まるように */
+    border-radius: 50%; /* 円形 */
+    border: 4px solid rgba(30, 144, 255, 0.2);
+    padding: 4px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: block; /* 親要素の中央揃えに追従 */
+    transition: transform var(--transition-fast);
 }
 .profile-icon img:hover {
-    transform: scale(1.05); /* ホバー時に少し拡大 */
+    transform: scale(1.05);
 }
 .profile-info h4 {
     border-bottom: none;
     padding-bottom: 0;
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* プロフィール文との間隔 */
     font-size: 1.1rem;
 }
 .profile-info p {
@@ -91,14 +885,17 @@
 }
 
 /* おすすめ記事セクション */
+.sidebar-recommended {
+    /* 特に追加スタイル不要、共通スタイル適用 */
+}
 .recommended-list {
     list-style: none;
     padding-left: 0;
-    margin-bottom: 0; /* ボタンとの間隔は下のsidebar-actionで調整 */
+    margin: 0; /* 上下のマージンリセット */
 }
 .recommended-item {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
     border-bottom: 1px dashed rgba(0,0,0,0.07);
 }
 .recommended-item:last-child {
@@ -109,90 +906,268 @@
 .recommended-link {
     text-decoration: none;
     color: var(--text-dark);
-    font-size: 0.95rem;
+    font-size: 0.9rem; /* 少し小さめ */
     line-height: 1.5;
-    display: flex; /* アイコンとテキストの整列のため */
-    align-items: center; /* アイコンとテキストを垂直中央揃え */
+    display: flex;
+    align-items: flex-start; /* アイコンとテキストを上揃え */
     transition: color var(--transition-fast);
+    gap: 8px; /* アイコンとテキストの間隔 */
 }
 .recommended-link:hover {
     color: var(--primary);
 }
 .recommended-link i {
-    margin-right: 8px;
+    /* margin-right: 8px; gapで指定 */
     color: var(--accent);
-    width: 16px; /* アイコン幅固定 */
+    width: 1.1em; /* アイコン幅 */
     text-align: center;
-    flex-shrink: 0; /* アイコンが縮まないように */
+    flex-shrink: 0;
+    margin-top: 0.15em; /* テキストとの微調整 */
 }
 
-/* ▼▼▼ 追加 ▼▼▼ */
 /* サイドバーアクションエリア（ボタン用） */
 .sidebar-action {
     text-align: center;
-    margin-top: 20px; /* おすすめ記事リストとの間隔 */
+    margin-top: 25px; /* おすすめ記事リストとの間隔 */
+    padding-top: 20px; /* 上にスペース */
+    border-top: 1px solid rgba(0,0,0,0.05); /* 区切り線 */
 }
 
 /* サイドバーボタン */
 .sidebar-button {
     display: inline-block;
-    background: linear-gradient(to right, var(--primary), var(--primary-dark));
-    color: white !important; /* 重要度を上げて色指定 */
-    padding: 10px 20px;
-    border-radius: 25px; /* 角丸 */
+    background: linear-gradient(135deg, var(--primary), var(--accent)); /* グラデーション変更 */
+    color: white; /* !important削除 */
+    padding: 10px 25px; /* パディング調整 */
+    border-radius: 25px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
     transition: all var(--transition-fast);
-    box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 影調整 */
     border: none;
     cursor: pointer;
-    line-height: 1.4; /* 追加 */
+    line-height: 1.4;
 }
 
 .sidebar-button:hover {
-    background: linear-gradient(to right, var(--primary-dark), #0052a3); /* ホバー時の色変化 */
+    background: linear-gradient(135deg, var(--primary-dark), var(--accent-dark));
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(30, 144, 255, 0.4);
-    color: white !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    color: white; /* ホバー時も白 */
 }
 .sidebar-button i {
     margin-right: 6px;
 }
-/* ▲▲▲ 追加 ▲▲▲ */
 
-/* (他のスタイルは変更なしのため省略) */
-/* ... */
 
-/* レスポンシブ調整 */
+/* ===== レスポンシブ調整 ===== */
+
+/* 992px未満 (タブレット縦・モバイル) */
 @media (max-width: 991px) {
     .blog-sidebar {
-         margin-top: 0;
+         margin-top: 0; /* blog-page-wrapperのgapで制御 */
+         order: 2; /* メインコンテンツの下に */
+         position: static; /* sticky解除 */
+         max-height: none; /* 高さ制限解除 */
+         overflow-y: visible; /* スクロール解除 */
+    }
+    .blog-main-content {
+        order: 1; /* メインコンテンツを上に */
     }
 }
 
+/* 768px未満 (モバイル) */
 @media (max-width: 768px) {
-    /* (省略: 既存のスタイル) */
-    .blog-sidebar > div { padding: 20px 15px; }
-    .blog-sidebar h4 { font-size: 1.1rem; }
-    /* ▼▼▼ 追加 ▼▼▼ */
+    .blog-page-wrapper {
+        padding-top: calc(var(--header-height-mobile) + 20px); /* 上部余白調整 */
+        gap: 25px; /* 間隔調整 */
+    }
+    .blog-header {
+        padding: 30px 20px;
+        margin-bottom: 30px;
+    }
+    .blog-title { font-size: 1.8rem; }
+    .blog-content {
+        padding: 30px 20px;
+        margin-bottom: 60px; /* 下部余白 */
+    }
+    .blog-content h2 { font-size: 1.8rem; margin-top: 40px; margin-bottom: 20px; }
+    .blog-content h3 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 15px; }
+    .blog-content p { font-size: 1rem; } /* モバイルでの基本文字サイズ */
+    .blog-content li { font-size: 1rem; }
+    .blog-content blockquote p { font-size: 1rem; }
+    .alert-box-quote p { font-size: 1rem; }
+
+    .blog-footer { flex-direction: column; gap: 20px; align-items: center; padding-top: 20px; }
+    .blog-tags { justify-content: center; }
+    .blog-share { margin-top: 0; /* gapで調整 */ }
+
+    .next-prev-nav {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch; /* 幅を揃える */
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+    .prev-post, .next-post {
+        max-width: 100%; /* 幅100% */
+        flex-basis: auto; /* リセット */
+        text-align: center; /* 中央揃え */
+    }
+    .nav-title { font-size: 1rem; } /* タイトルサイズ調整 */
+
+    .affiliate-box { max-width: 95%; margin: 30px auto;}
+    .affiliate-btn {
+        padding: 10px 20px; /* パディング調整 */
+        font-size: 0.9rem;
+        white-space: normal; /* 折り返し許可 */
+    }
+
+    /* サイドバーモバイル */
+    .blog-sidebar > div { padding: 20px 15px; margin-bottom: 20px; }
+    .blog-sidebar h4 { font-size: 1.1rem; margin-bottom: 15px; padding-bottom: 8px; }
     .sidebar-button {
-        padding: 8px 16px;
+        padding: 10px 20px; /* パディング調整 */
+        font-size: 0.9rem; /* サイズ調整 */
+    }
+    .profile-icon img { width: 80px; height: 80px; } /* アイコンサイズ調整 */
+    .profile-info h4 { font-size: 1rem; }
+    .profile-info p { font-size: 0.85rem; }
+    .recommended-link { font-size: 0.85rem; } /* おすすめ記事リンクサイズ */
+
+} /* End of @media (max-width: 768px) */
+
+/* 480px未満 (小型モバイル) */
+@media (max-width: 480px) {
+     :root { --container-padding: 0 15px; } /* コンテナ左右余白を狭める */
+     .blog-page-wrapper {
+        padding-top: calc(var(--header-height-mobile) + 15px);
+     }
+    .blog-title { font-size: 1.6rem; }
+    .blog-content { padding: 25px 15px; }
+    .blog-content h2 { font-size: 1.6rem; }
+    .blog-content h3 { font-size: 1.3rem; }
+
+    .blog-img-container { max-width: 100%; } /* 画像コンテナ幅 */
+    .video-container { max-width: 100%; } /* 動画コンテナ幅 */
+
+    .blog-content ul { padding-left: 25px; }
+    .blog-content li::before { left: -18px; }
+
+    .affiliate-btn { font-size: 0.85rem; padding: 8px 18px; }
+
+    .sidebar-button {
+        padding: 9px 18px;
         font-size: 0.85rem;
     }
-    /* ▲▲▲ 追加 ▲▲▲ */
-}
-@media (max-width: 480px) {
-    /* (省略: 既存のスタイル) */
-    .profile-info p { font-size: 0.85rem; }
-    .recommended-link { font-size: 0.9rem; }
-    /* ▼▼▼ 追加 ▼▼▼ */
-    .sidebar-button {
-        padding: 7px 14px;
-        font-size: 0.8rem;
-    }
-    /* ▲▲▲ 追加 ▲▲▲ */
+} /* End of @media (max-width: 480px) */
+
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #222;
+    color: rgba(255,255,255,0.8); /* 少し明るく */
+    text-align: center;
+    padding: 50px 0 40px 0; /* 上下のパディング調整 */
+    margin-top: 60px; /* 上のコンテンツとの間隔 */
+    position: relative;
+    overflow: hidden;
 }
 
-/* (footer スタイルなどは変更なしのため省略) */
-/* ... */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding); /* 左右パディング */
+}
+
+.footer-content h3 {
+     color: white;
+     font-size: 1.5rem;
+     margin-bottom: 1rem;
+     font-weight: 600;
+}
+
+.footer-content p { /* フッター内の基本pタグ */
+    text-align: center;
+    margin-bottom: 1.5rem; /* 間隔調整 */
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem; /* 少し大きく */
+    max-width: 600px; /* 中央揃え用 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0; /* 上下マージン */
+    flex-wrap: wrap;
+    gap: 8px 15px; /* 縦横の間隔 */
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    padding: 5px 0;
+    white-space: nowrap;
+    font-size: 0.9rem; /* 少し小さく */
+}
+
+.footer-links a:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* フッター内ソーシャルリンク */
+.social-links { /* フッター用 */
+    margin: 30px 0;
+}
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    width: 40px;
+    height: 40px;
+    /* line-height: 40px; は不要 */
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1.1rem; /* アイコンサイズ */
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+.social-links a:hover {
+    background: var(--primary);
+    transform: scale(1.1) translateY(-2px); /* ホバー効果変更 */
+}
+ .social-links a .fa-x-twitter {
+     font-size: 1rem; /* Xアイコンサイズ調整 */
+ }
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-bottom p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6); /* 少し薄く */
+}
