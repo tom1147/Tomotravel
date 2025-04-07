@@ -10,7 +10,7 @@
     <meta property="og:description" content="セブ島旅行2日目の夜遊び体験談。Neo Tokyoでのマッサージ、ルーフトップバーでの食事、Club KでのAYAさんとの再会とテキーラ飲みすぎエピソード。セブの夜のリアルレポート。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tomotravel-pm.com/blog/cebu2nd4"> <!-- 正式なURL -->
-    <meta property="og:image" content="https://tomotravel-pm.com/images/cebu-jtv-nightlife-og.jpg"> <!-- OGP画像 (新しい記事用に仮設定) -->
+    <meta property="og:image" content="https://tomotravel-pm.com/images/cebu-jtv-nightlife-og.jpg"> <!-- OGP画像 (ルートからのパス想定のまま) -->
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://tomotravel-pm.com/blog/cebu2nd4"> <!-- 正式なURL -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- ▼▼▼ 修正: 外部CSSへのリンク ▼▼▼ -->
+    <link rel="stylesheet" href="./style.css">
 
     <script type="application/ld+json">
     {
@@ -29,7 +32,7 @@
       },
       "headline": "JTVで飲みすぎるとこうなる【セブ島2日目夜前編】",
       "description": "セブ島旅行2日目の夜遊び体験談。Neo Tokyoでのマッサージ、ルーフトップバーでの食事、Club KでのAYAさんとの再会とテキーラ飲みすぎエピソード。セブの夜のリアルレポート。",
-      "image": "https://tomotravel-pm.com/images/cebu-jtv-nightlife-main.jpg", // メイン画像 (新しい記事用に仮設定)
+      "image": "https://tomotravel-pm.com/images/cebu-jtv-nightlife-main.jpg", // メイン画像 (ルートからのパス想定のまま)
       "author": {
         "@type": "Person",
         "name": "Tomo"
@@ -39,7 +42,7 @@
         "name": "とも旅ちゃんねるVLOG",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://tomotravel-pm.com/images/logo.png" // ロゴ画像
+          "url": "https://tomotravel-pm.com/images/logo.png" // ロゴ画像 (ルートからのパス想定のまま)
         }
       },
       "datePublished": "2025-04-03",
@@ -47,1111 +50,180 @@
     }
     </script>
 
-    <style>
-        /* CSSは変更なし */
-        :root {
-            --primary: #1E90FF;
-            --primary-dark: #0066cc;
-            --accent: #ff6b6b;
-            --accent-dark: #ff5252;
-            --bg-light: #f8f9fa;
-            --text-dark: #333;
-            --text-muted: #6c757d;
-            --card-bg: #ffffff;
-            --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            --section-space: 80px;
-            --container-padding: 0 24px;
-            --border-radius: 12px;
-            --transition-fast: 0.3s ease;
-            --transition-medium: 0.5s ease;
-            --header-height-desktop: 140px;
-            --header-height-mobile: 80px;
-        }
+    <!-- ▼▼▼ 削除: インラインスタイル ▼▼▼ -->
+    <!-- <style> ... </style> -->
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.8;
-            font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-            overflow-x: hidden;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: var(--header-height-mobile);
-        }
-
-        @media (min-width: 769px) {
-            html {
-                scroll-padding-top: var(--header-height-desktop);
-            }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--container-padding);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-            line-height: 1.3;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            text-align: left;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        header p { text-align: center; }
-        footer p { text-align: center; }
-
-
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: all var(--transition-fast);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(30,144,255,0.1);
-        }
-
-        header.scrolled {
-            padding: 5px 0;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
-            transition: padding var(--transition-fast);
-            position: relative;
-        }
-
-        .logo-center {
-            text-align: center;
-            margin-bottom: 18px;
-            transition: all var(--transition-fast);
-            position: relative;
-        }
-
-        .logo-center::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            border-radius: 2px;
-            opacity: 0.5;
-        }
-
-        .logo-text {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--primary) !important;
-            text-align: center;
-            letter-spacing: 0.5px;
-            transition: all var(--transition-fast);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            position: relative;
-            display: inline-block;
-            text-decoration: none;
-        }
-        a.logo-text:hover { color: var(--primary-dark) !important; transform: translateY(-2px); }
-
-
-        .vlog-text {
-            color: var(--accent) !important;
-            position: relative;
-            font-weight: 700;
-            transition: all var(--transition-fast);
-            font-size: inherit;
-        }
-
-        .vlog-text::after {
-            display: none;
-        }
-
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: var(--primary);
-            transition: all var(--transition-fast);
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1001;
-            padding: 5px;
-        }
-
-        .menu-toggle:hover {
-            color: var(--accent);
-        }
-
-        nav {
-            width: 100%;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin: 0 2px;
-            position: relative;
-        }
-
-        nav ul li a {
-            font-size: 0.95rem;
-            padding: 8px 12px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: all var(--transition-fast);
-            display: block;
-            border-radius: 6px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        nav ul li a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: var(--primary);
-            opacity: 0.1;
-            transition: height var(--transition-fast);
-            z-index: -1;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        nav ul li a:hover::before {
-            height: 100%;
-        }
-
-        .nav-icon {
-            margin-right: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 0;
-                height: var(--header-height-mobile);
-            }
-
-            .logo-center {
-                margin-bottom: 0;
-                text-align: left;
-                flex-grow: 1;
-                padding-left: 0;
-            }
-             .logo-center::after {
-                 display: none;
-             }
-             .logo-text {
-                font-size: 24px;
-             }
-             .vlog-text {
-                font-size: 20px;
-             }
-
-            .menu-toggle {
-                display: block;
-                position: static;
-                transform: none;
-                font-size: 24px;
-                margin-right: 0;
-                padding: 5px;
-            }
-
-            nav#main-nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: rgba(255, 255, 255, 0.98);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease, padding 0.5s ease;
-                padding: 0;
-                border-top: 1px solid rgba(30,144,255,0.1);
-            }
-
-            nav#main-nav.active {
-                max-height: calc(100vh - var(--header-height-mobile));
-                padding: 10px 0;
-                overflow-y: auto;
-            }
-
-            nav ul.nav-menu {
-                flex-direction: column;
-                padding: 0;
-            }
-
-            nav ul.nav-menu li {
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid rgba(0,0,0,0.05);
-                margin: 0;
-            }
-            nav ul.nav-menu li:last-child {
-                border-bottom: none;
-            }
-
-            nav ul.nav-menu li a {
-                padding: 15px 20px;
-                width: 100%;
-                display: block;
-                font-size: 1rem;
-            }
-             nav ul.nav-menu li a.social-nav-link {
-                 display: inline-block;
-                 width: auto;
-                 padding: 15px 0;
-                 background-color: transparent;
-                 color: var(--primary);
-             }
-             nav ul.nav-menu li a.social-nav-link:hover {
-                 color: var(--accent);
-                 background-color: transparent;
-                 transform: translateY(-2px);
-             }
-             nav ul.nav-menu li a.social-nav-link i {
-                 font-size: 1.2rem;
-             }
-        }
-
-
-        .blog-container {
-             padding-top: var(--header-height-mobile);
-        }
-        @media (min-width: 769px) {
-            .blog-container {
-                padding-top: var(--header-height-desktop);
-            }
-        }
-
-        .blog-header {
-            margin-top: 40px;
-            background-color: var(--card-bg);
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            position: relative;
-            padding: 40px 30px;
-            border: 1px solid rgba(0,0,0,0.05);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .blog-title {
-            font-size: 2.2rem;
-            padding: 0 20px;
-            margin-bottom: 15px;
-            color: var(--primary);
-            line-height: 1.4;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .blog-meta {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .blog-meta span {
-            margin: 0 5px;
-        }
-
-        .blog-content {
-            background-color: var(--card-bg);
-            padding: 50px;
-            border-radius: var(--border-radius);
-            margin-bottom: var(--section-space);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            border: 1px solid rgba(0,0,0,0.05);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .blog-content h2 {
-            font-size: 2.2rem;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--accent);
-            display: block;
-            text-align: center;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-        .blog-content h2::after { display: none; }
-
-        .blog-content h3 {
-            font-size: 1.6rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-            text-align: center;
-            font-weight: 600;
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .blog-content p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-            text-align: left;
-            max-width: 100%;
-        }
-
-        .blog-img-container {
-            margin: 30px auto;
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .blog-img-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-            display: block;
-            margin: 20px auto;
-        }
-
-        .blog-img-container img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .blog-img-caption {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            margin: 40px auto;
-            overflow: hidden;
-            max-width: 800px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            transition: all var(--transition-fast);
-        }
-
-        .video-container:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-            transform: scale(1.02);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            display: block;
-            border-radius: var(--border-radius);
-        }
-
-        .blog-content blockquote {
-            background-color: rgba(30,144,255,0.05);
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            margin: 30px auto;
-            font-style: italic;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            max-width: 90%;
-            text-align: left;
-            color: var(--text-dark);
-        }
-        .blog-content blockquote p {
-            margin-bottom: 0;
-        }
-
-        .alert-box-quote {
-            background-color: #fff8e1;
-            border-left: 4px solid #ffca28;
-            padding: 20px;
-            margin: 30px auto;
-            font-style: normal;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            max-width: 90%;
-            text-align: left;
-            color: #333;
-        }
-        .alert-box-quote p {
-             margin-bottom: 0;
-        }
-        .alert-box-quote strong {
-            color: #c77405;
-            font-weight: bold;
-        }
-
-        .blog-content em {
-            font-style: normal;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .blog-content ul {
-            margin-bottom: 25px;
-            padding-left: 25px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
-        }
-
-        .blog-content li {
-            margin-bottom: 10px;
-            position: relative;
-            text-align: left;
-            list-style: none;
-            padding-left: 5px;
-        }
-
-        .blog-content li::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 10px;
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent);
-            border-radius: 50%;
-        }
-        .blog-content li strong {
-             font-weight: 600;
-        }
-
-        .blog-footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            align-items: center;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .blog-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .blog-tag {
-            background-color: rgba(30,144,255,0.1);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: all var(--transition-fast);
-            text-decoration: none;
-        }
-        .blog-tag i {
-            margin-right: 3px;
-        }
-
-        .blog-tag:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .blog-share {
-            display: flex;
-            gap: 10px;
-        }
-
-        .share-button {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: rgba(0,0,0,0.05);
-            color: var(--text-muted);
-            transition: all var(--transition-fast);
-            text-decoration: none;
-        }
-
-        .share-button:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .next-prev-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            width: 100%;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 20px;
-        }
-
-        .prev-post, .next-post {
-            max-width: 45%;
-        }
-        .prev-post a, .next-post a {
-            text-decoration: none;
-            display: block;
-        }
-
-        .nav-direction {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-            display: block;
-        }
-        .nav-direction .fas {
-            margin: 0 3px;
-        }
-
-        .nav-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            transition: all var(--transition-fast);
-            display: block;
-            line-height: 1.4;
-        }
-
-        .nav-title:hover {
-            color: var(--accent);
-        }
-
-        .affiliate-box {
-            background-color: transparent;
-            border: none;
-            padding: 0;
-            margin: 30px auto;
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .affiliate-btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white !important;
-            padding: 10px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 10px 5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(30,144,255,0.3);
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            white-space: nowrap;
-        }
-
-        .affiliate-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(30,144,255,0.4);
-        }
-        .affiliate-btn i {
-            margin-right: 5px;
-        }
-
-
-        @media (max-width: 768px) {
-            .blog-header { padding: 30px 20px; }
-            .blog-title { font-size: 1.8rem; }
-            .blog-content { padding: 30px 20px; }
-            .blog-content h2 { font-size: 1.8rem; }
-            .blog-content h3 { font-size: 1.4rem; }
-            .blog-footer { flex-direction: column; gap: 15px; align-items: center; }
-            .blog-tags { justify-content: center; }
-            .blog-share { margin-top: 10px; }
-            .next-prev-nav { flex-direction: column; gap: 20px; align-items: center; }
-            .prev-post, .next-post { max-width: 90%; text-align: center;}
-            .affiliate-box { max-width: 95%; }
-            .affiliate-btn {
-                padding: 8px 18px;
-                font-size: 0.9rem;
-                white-space: normal;
-            }
-            .next-post { display: none; }
-        }
-        @media (max-width: 480px) {
-            .blog-title { font-size: 1.6rem; }
-            .blog-content { padding: 20px 15px; }
-            .blog-content h2 { font-size: 1.6rem; }
-            .blog-content h3 { font-size: 1.3rem; }
-            .blog-content p { font-size: 1rem; }
-            .nav-title { font-size: 1rem; }
-        }
-
-
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 50px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 var(--container-padding);
-        }
-
-        .footer-content h3 {
-             color: white;
-             font-size: 1.5rem;
-             margin-bottom: 1rem;
-        }
-
-        .footer-content p {
-            text-align: center;
-            margin-bottom: 1rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            flex-wrap: wrap;
-            gap: 5px 12px;
-            padding-left: 0;
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-            padding: 5px 0;
-            white-space: nowrap;
-            font-size: 0.95rem;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .social-links {
-            margin: 20px 0;
-        }
-
-        .social-nav-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            font-size: 18px;
-            background-color: transparent;
-            border-radius: 50%;
-            transition: all var(--transition-fast);
-            color: var(--text-dark);
-            text-decoration: none;
-        }
-        .social-nav-link:hover {
-            background-color: transparent;
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-        .social-nav-link .fa-x-twitter {
-            font-size: 16px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 10px;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            font-size: 18px;
-            transition: all var(--transition-fast);
-            text-decoration: none;
-        }
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-         .social-links a .fa-x-twitter {
-             font-size: 16px;
-         }
-
-        .footer-bottom {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .footer-bottom p { margin-bottom: 0; font-size: 0.9rem; }
-
-    </style>
 </head>
 <body>
-    <!-- ヘッダー部分 (変更なし) -->
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-center" aria-label="サイトロゴ">
-                    <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
-                </div>
-                <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
-                    <ul class="nav-menu">
-                        <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
-                        <li><a href="/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
-                        <li><a href="/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
-                        <li><a href="/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
-                        <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
-                        <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
-                        <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
-                        <li><a href="/blog" aria-label="ブログトップへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
-                        <li><a href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                    </ul>
-                </nav>
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- ▼▼▼ 追加: ヘッダープレースホルダー ▼▼▼ -->
+    <div id="header-placeholder"></div>
 
-    <!-- メインコンテンツ（ブログ記事） -->
-    <div class="blog-container">
-        <!-- ブログ記事ヘッダー -->
-        <div class="blog-header">
-            <h1 class="blog-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</h1>
-            <div class="blog-meta">
-                <span><i class="fas fa-user"></i> 投稿者: Tomo</span> |
-                <span><i class="fas fa-calendar-alt"></i> 2025年4月3日</span> |
-                <span><i class="fas fa-tag"></i> セブ島, 夜遊び, JTV, Club K</span>
-            </div>
-        </div>
+    <!-- ▼▼▼ 追加: ページ全体のラッパー ▼▼▼ -->
+    <div class="blog-page-wrapper container">
 
-        <!-- ブログ記事本文 -->
-        <div class="blog-content">
+        <!-- ▼▼▼ 追加: メインコンテンツエリア ▼▼▼ -->
+        <main class="blog-main-content">
 
-            <!-- 前書きを追加 -->
-            <p>セブ島での夜遊びは楽しいけれど、飲みすぎには注意が必要です。前回の記事では初日の体験をお伝えしましたが、今回は2日目の夜がどう展開したのか、その前編をお届けします。JTVでの飲み過ぎた夜の顛末、ぜひ最後までお付き合いください！</p>
-
-            <!-- YouTube動画を追加 -->
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ofMvQYhii58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-
-            <h2>遅めの起床</h2>
-            <p>気づいたら午後5時45分になっていました。起きられなくて気づいたらこんな時間に！JTVの開店まであと1時間くらいなので、先にマッサージに行き体をほぐすことにしました。</p>
-
-            <div class="blog-img-container">
-                 <img src="../images/cebu2nd4/1.jpg" alt="セブ島の時計、午後5時45分を示す" loading="lazy"> <!-- パス修正 1 -->
-                <div class="blog-img-caption">気づけば夕方…！</div>
-            </div>
-
-            <h2>Neo Tokyoでマッサージ</h2>
-            <p>Neo Tokyo内のマッサージ店に入りました。昨日行ったお店より安い！1時間500ペソのコースを選択。普通のマッサージでしたが、とてもリラックスできて良かったです。お店の場所はNeo Tokyoの2階にあり、リーズナブルなのに圧も効いていました。マッサージ中に○○○が大きくなってしまい恥ずかしい思いをしたので皆さんもご注意を。</p>
-
-             <div class="blog-img-container">
-                 <img src="../images/cebu2nd4/2.jpg" alt="Neo Tokyoのマッサージ店の入り口" loading="lazy"> <!-- パス修正 2 -->
-                <div class="blog-img-caption">Neo Tokyo内のマッサージ店へ</div>
-            </div>
-
-            <blockquote class="alert-box-quote">
-                 <p><strong>【要注意！？】</strong>マッサージでリラックスしすぎると、予期せぬ反応があるかも…（笑）</p>
-            </blockquote>
-
-            <!-- ahamo アフィリエイトボックス (移動後) -->
-            <div class="affiliate-box">
-                <a href="https://px.a8.net/svt/ejp?a8mat=44Z7VE+7O9A3M+4TIO+5YJRM" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-mobile-alt"></i> 海外でもスムーズ！ahamoで快適通信</a>
-            </div>
-
-            <h2>ルーフトップバーで食事</h2>
-            <p>Neo Tokyoの3階にあるルーフトップバーで食事することに。涼しい夜だったので外で食べるのに最適でした。このバーには日本人マネージャーがいて、週末にイベントがあるみたいなので、セブを訪れる際はぜひ立ち寄ってみてください。スタッフも親切でとても感じがよかったです！</p>
-
-            <div class="blog-img-container">
-                 <img src="../images/cebu2nd4/3.jpg" alt="Neo Tokyoのルーフトップバーの雰囲気" loading="lazy"> <!-- パス修正 3 -->
-                <div class="blog-img-caption">Neo Tokyo 3階のルーフトップバー</div>
-            </div>
-
-            <h2>美味しいピザ</h2>
-            <p>注文したピザが到着。大きくて、朝から何も食べていなかったので嬉しかったです。「フィリピンタイム」で時間がかかりましたが、待つ価値ありました。手投げではないけれどクリスピーなピザで、薄い生地にたっぷりチーズ。420ペソと手頃な価格でした。テリヤキチキンも注文しましたが、半分食べたところでお腹いっぱいに。</p>
-
-            <div class="blog-img-container">
-                 <img src="../images/cebu2nd4/4.jpg" alt="ルーフトップバーで食べた美味しそうなピザ" loading="lazy"> <!-- パス修正 4 -->
-                <div class="blog-img-caption">ボリューム満点のクリスピーピザ！</div>
-            </div>
-
-            <h2>Club Kへ移動</h2>
-            <p>Neo Tokyoのルーフトップバーはナイトライフ好きにはおすすめです。昨日行ったClub Kに再度向かいました。ネオトーキョーからClub Kには徒歩一分ほどの距離です。ネオトーキョー周辺にはClub blueやB-pink、小町など有名なJTVが集まっています。少し怪しい階段を2階まで上がると入口があります。</p>
-
-             <div class="blog-img-container">
-                 <img src="../images/cebu2nd4/5.jpg" alt="Club Kへ続く階段" loading="lazy"> <!-- パス修正 5 -->
-                <div class="blog-img-caption">いざ、Club Kへ！</div>
-            </div>
-
-            <!-- AYAさんとの再会とテキーラタイムを統合 -->
-            <h2>Club KでAYAさんと再会＆テキーラタイム！</h2>
-            <p>Club Kでは昨日会ったAYAさんと再会。彼女はビサヤ語を話し、英語はあまり得意ではないようです。めちゃくちゃ可愛い！！</p>
-            <p>さっそく最初のテキーラを注文して乾杯。テキーラのショットの淵に塩がついていて、しょっぱかったです。日本ではライムを使いますが、ここではカラマンシーというフルーツを使用。試してみましたが、個人的にはあまり美味しくないと感じました。</p>
-
-            <div class="blog-img-container">
-                 <img src="../images/cebu2nd4/6.jpg" alt="Club KでAYAさんと再会" loading="lazy"> <!-- パス修正 6 -->
-                <div class="blog-img-caption">Club Kの爆美女と再会！</div>
-            </div>
-
-             <div class="affiliate-box">
-                 <a href="https://rpx.a8.net/svt/ejp?a8mat=2NE1HP+9715R6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00u6874.2bo11c89.g00u6874.2bo1285d%2Fa16021852584_2NE1HP_9715R6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Finsta360-shop2%252Finsta360-x4%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Finsta360-shop2%252Fi%252F10000445%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-video"></i> 旅の記録はInsta360X4で！</a>
-            </div>
-
-            <h2>酔いが進む…</h2>
-            <p>テキーラを飲み続けているうちに、少し調子に乗ってしまいました。酔っぱらってカラオケをして、シャイな私にはとても恥ずかしかったです笑 リスナーさんに声をかけてもらえて嬉しかったです。夜11時30分、お金も使い果たしたので店を出ることにしました。</p>
-
-            <!-- 画像を挿入 -->
-            <div class="blog-img-container">
-                 <img src="../images/cebu2nd4/7.jpg" alt="カラオケで歌っている様子" loading="lazy"> <!-- パス修正 7 -->
-                <div class="blog-img-caption">泥酔して歌う男</div>
-            </div>
-
-            <blockquote>
-                 <p>「テキーラの力は偉大だ…普段なら絶対歌わないのに（笑）でも、声をかけてもらえて本当に嬉しかった！」</p>
-            </blockquote>
-
-            <!-- VPN アフィリエイトボックス (移動後) -->
-            <div class="affiliate-box">
-                <a href="https://px.a8.net/svt/ejp?a8mat=4513V9+1CTP0I+4LSW+5YZ77" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-shield-alt"></i> 海外のフリーWi-Fiも安心！Surfshark VPN</a>
-            </div>
-
-            <!-- ブログ記事フッター -->
-            <div class="blog-footer">
-                <div class="blog-tags">
-                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> セブ島</a>
-                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 夜遊び</a>
-                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> JTV</a>
-                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> Club K</a>
-                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> Neo Tokyo</a>
-                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> マッサージ</a>
-                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> テキーラ</a>
-                    <a href="#" class="blog-tag"><i class="fas fa-tag"></i> カラオケ</a>
-                </div>
-                 <div class="blog-share">
-                      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Fcebu2nd4&text=JTV%E3%81%A7%E9%A3%B2%E3%81%BF%E3%81%99%E3%81%8E%E3%82%8B%E3%81%A8%E3%81%93%E3%81%86%E3%81%AA%E3%82%8B%E3%80%90%E3%82%BB%E3%83%96%E5%B3%B62%E6%97%A5%E7%9B%AE%E5%A4%9C%E5%89%8D%E7%B7%A8%E3%80%91" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Twitterでシェア"><i class="fab fa-x-twitter"></i></a>
-                      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Fcebu2nd4" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Facebookでシェア"><i class="fab fa-facebook-f"></i></a>
-                      <a href="https://line.me/R/msg/text/?JTV%E3%81%A7%E9%A3%B2%E3%81%BF%E3%81%99%E3%81%8E%E3%82%8B%E3%81%A8%E3%81%93%E3%81%86%E3%81%AA%E3%82%8B%E3%80%90%E3%82%BB%E3%83%96%E5%B3%B62%E6%97%A5%E7%9B%AE%E5%A4%9C%E5%89%8D%E7%B7%A8%E3%80%91%0Ahttps%3A%2F%2Ftomotravel-pm.com%2Fblog%2Fcebu2nd4" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="LINEで送る"><i class="fab fa-line"></i></a>
-                 </div>
-            </div>
-
-             <!-- 前後の記事ナビゲーション -->
-            <div class="next-prev-nav">
-                <div class="prev-post">
-                   <a href="https://tomotravel-pm.com/blog/cebu2nd3" rel="prev">
-                        <span class="nav-direction"><i class="fas fa-chevron-left"></i> 前の記事</span>
-                        <span class="nav-title">お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】</span>
-                    </a>
-                </div>
-                <div class="next-post" style="display: none;">
-                    <!-- 次の記事がない場合は非表示 -->
-                </div>
-            </div>
-
-        </div> <!-- /.blog-content -->
-    </div> <!-- /.blog-container -->
-
-    <!-- フッター部分 (変更なし) -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3>とも旅ちゃんねるVLOG</h3>
-                <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
-
-                <div class="social-links">
-                    <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-                    <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            <!-- 既存のブログコンテンツ開始 -->
+            <!-- <div class="blog-container"> このdivは不要 -->
+                <!-- ブログ記事ヘッダー -->
+                <div class="blog-header">
+                    <h1 class="blog-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</h1>
+                    <div class="blog-meta">
+                        <span><i class="fas fa-user"></i> 投稿者: Tomo</span> |
+                        <span><i class="fas fa-calendar-alt"></i> 2025年4月3日</span> |
+                        <span><i class="fas fa-tag"></i> セブ島, 夜遊び, JTV, Club K</span>
+                    </div>
                 </div>
 
-                <div class="footer-links">
-                    <a href="/#about">チャンネル概要</a>
-                    <a href="/#videos">最新動画</a>
-                    <a href="/#travel">旅の魅力</a>
-                    <a href="/#equipment">撮影機材</a>
-                    <a href="/#booking">旅の予約</a>
-                    <a href="/#preparation">事前準備</a>
-                    <a href="/#contact">お問い合わせ</a>
-                    <a href="/blog">ブログ</a>
-                </div>
+                <!-- ブログ記事本文 -->
+                <article class="blog-content"> {/* articleタグに変更 */ }
 
-                <div class="footer-bottom">
-                    <p>© 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+                    <p>セブ島での夜遊びは楽しいけれど、飲みすぎには注意が必要です。前回の記事では初日の体験をお伝えしましたが、今回は2日目の夜がどう展開したのか、その前編をお届けします。JTVでの飲み過ぎた夜の顛末、ぜひ最後までお付き合いください！</p>
 
-    <script>
-        // JavaScript は変更なし
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- ヘッダーのスクロール変化 ---
-            const header = document.getElementById('header');
-            if (header) {
-                window.addEventListener('scroll', function() {
-                    if (window.scrollY > 50) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                });
-            }
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ofMvQYhii58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
 
-            // --- ハンバーガーメニュー ---
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
-            const body = document.body;
+                    <h2>遅めの起床</h2>
+                    <p>気づいたら午後5時45分になっていました。起きられなくて気づいたらこんな時間に！JTVの開店まであと1時間くらいなので、先にマッサージに行き体をほぐすことにしました。</p>
 
-            function openMobileMenu() {
-                if (mainNav && menuToggle) {
-                    mainNav.classList.add('active');
-                    const icon = menuToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    }
-                    menuToggle.setAttribute('aria-expanded', 'true');
-                    body.style.overflow = 'hidden';
-                }
-            }
+                    <div class="blog-img-container">
+                        {/* ▼▼▼ 修正: 画像パス ▼▼▼ */}
+                         <img src="./images/cebu2nd4/1.jpg" alt="セブ島の時計、午後5時45分を示す" loading="lazy">
+                        <div class="blog-img-caption">気づけば夕方…！</div>
+                    </div>
 
-            function closeMobileMenu() {
-                if (mainNav && menuToggle && mainNav.classList.contains('active')) {
-                    mainNav.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    body.style.overflow = '';
-                }
-            }
+                    <h2>Neo Tokyoでマッサージ</h2>
+                    <p>Neo Tokyo内のマッサージ店に入りました。昨日行ったお店より安い！1時間500ペソのコースを選択。普通のマッサージでしたが、とてもリラックスできて良かったです。お店の場所はNeo Tokyoの2階にあり、リーズナブルなのに圧も効いていました。マッサージ中に○○○が大きくなってしまい恥ずかしい思いをしたので皆さんもご注意を。</p>
 
-            if (menuToggle && mainNav) {
-                menuToggle.setAttribute('aria-controls', 'main-nav');
-                menuToggle.setAttribute('aria-expanded', 'false');
+                     <div class="blog-img-container">
+                        {/* ▼▼▼ 修正: 画像パス ▼▼▼ */}
+                         <img src="./images/cebu2nd4/2.jpg" alt="Neo Tokyoのマッサージ店の入り口" loading="lazy">
+                        <div class="blog-img-caption">Neo Tokyo内のマッサージ店へ</div>
+                    </div>
 
-                menuToggle.addEventListener('click', function(event) {
-                    if (mainNav.classList.contains('active')) {
-                        closeMobileMenu();
-                    } else {
-                        openMobileMenu();
-                    }
-                });
+                    <blockquote class="alert-box-quote">
+                         <p><strong>【要注意！？】</strong>マッサージでリラックスしすぎると、予期せぬ反応があるかも…（笑）</p>
+                    </blockquote>
 
-                const navLinks = mainNav.querySelectorAll('a');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        closeMobileMenu();
-                    });
-                });
+                    <div class="affiliate-box">
+                        <a href="https://px.a8.net/svt/ejp?a8mat=44Z7VE+7O9A3M+4TIO+5YJRM" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-mobile-alt"></i> 海外でもスムーズ！ahamoで快適通信</a>
+                    </div>
 
-                document.addEventListener('click', function(event) {
-                    const isClickInsideNav = mainNav.contains(event.target);
-                    const isClickOnToggle = menuToggle.contains(event.target);
+                    <h2>ルーフトップバーで食事</h2>
+                    <p>Neo Tokyoの3階にあるルーフトップバーで食事することに。涼しい夜だったので外で食べるのに最適でした。このバーには日本人マネージャーがいて、週末にイベントがあるみたいなので、セブを訪れる際はぜひ立ち寄ってみてください。スタッフも親切でとても感じがよかったです！</p>
 
-                    if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('active')) {
-                        closeMobileMenu();
-                    }
-                });
+                    <div class="blog-img-container">
+                        {/* ▼▼▼ 修正: 画像パス ▼▼▼ */}
+                         <img src="./images/cebu2nd4/3.jpg" alt="Neo Tokyoのルーフトップバーの雰囲気" loading="lazy">
+                        <div class="blog-img-caption">Neo Tokyo 3階のルーフトップバー</div>
+                    </div>
 
-                 document.addEventListener('keydown', function(event) {
-                     if (event.key === 'Escape' && mainNav.classList.contains('active')) {
-                         closeMobileMenu();
-                     }
-                 });
-            }
+                    <h2>美味しいピザ</h2>
+                    <p>注文したピザが到着。大きくて、朝から何も食べていなかったので嬉しかったです。「フィリピンタイム」で時間がかかりましたが、待つ価値ありました。手投げではないけれどクリスピーなピザで、薄い生地にたっぷりチーズ。420ペソと手頃な価格でした。テリヤキチキンも注文しましたが、半分食べたところでお腹いっぱいに。</p>
 
-        }); // END DOMContentLoaded
-    </script>
+                    <div class="blog-img-container">
+                        {/* ▼▼▼ 修正: 画像パス ▼▼▼ */}
+                         <img src="./images/cebu2nd4/4.jpg" alt="ルーフトップバーで食べた美味しそうなピザ" loading="lazy">
+                        <div class="blog-img-caption">ボリューム満点のクリスピーピザ！</div>
+                    </div>
+
+                    <h2>Club Kへ移動</h2>
+                    <p>Neo Tokyoのルーフトップバーはナイトライフ好きにはおすすめです。昨日行ったClub Kに再度向かいました。ネオトーキョーからClub Kには徒歩一分ほどの距離です。ネオトーキョー周辺にはClub blueやB-pink、小町など有名なJTVが集まっています。少し怪しい階段を2階まで上がると入口があります。</p>
+
+                     <div class="blog-img-container">
+                        {/* ▼▼▼ 修正: 画像パス ▼▼▼ */}
+                         <img src="./images/cebu2nd4/5.jpg" alt="Club Kへ続く階段" loading="lazy">
+                        <div class="blog-img-caption">いざ、Club Kへ！</div>
+                    </div>
+
+                    <h2>Club KでAYAさんと再会＆テキーラタイム！</h2>
+                    <p>Club Kでは昨日会ったAYAさんと再会。彼女はビサヤ語を話し、英語はあまり得意ではないようです。めちゃくちゃ可愛い！！</p>
+                    <p>さっそく最初のテキーラを注文して乾杯。テキーラのショットの淵に塩がついていて、しょっぱかったです。日本ではライムを使いますが、ここではカラマンシーというフルーツを使用。試してみましたが、個人的にはあまり美味しくないと感じました。</p>
+
+                    <div class="blog-img-container">
+                        {/* ▼▼▼ 修正: 画像パス ▼▼▼ */}
+                         <img src="./images/cebu2nd4/6.jpg" alt="Club KでAYAさんと再会" loading="lazy">
+                        <div class="blog-img-caption">Club Kの爆美女と再会！</div>
+                    </div>
+
+                     <div class="affiliate-box">
+                         <a href="https://rpx.a8.net/svt/ejp?a8mat=2NE1HP+9715R6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00u6874.2bo11c89.g00u6874.2bo1285d%2Fa16021852584_2NE1HP_9715R6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Finsta360-shop2%252Finsta360-x4%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Finsta360-shop2%252Fi%252F10000445%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-video"></i> 旅の記録はInsta360X4で！</a>
+                    </div>
+
+                    <h2>酔いが進む…</h2>
+                    <p>テキーラを飲み続けているうちに、少し調子に乗ってしまいました。酔っぱらってカラオケをして、シャイな私にはとても恥ずかしかったです笑 リスナーさんに声をかけてもらえて嬉しかったです。夜11時30分、お金も使い果たしたので店を出ることにしました。</p>
+
+                    <div class="blog-img-container">
+                        {/* ▼▼▼ 修正: 画像パス ▼▼▼ */}
+                         <img src="./images/cebu2nd4/7.jpg" alt="カラオケで歌っている様子" loading="lazy">
+                        <div class="blog-img-caption">泥酔して歌う男</div>
+                    </div>
+
+                    <blockquote>
+                         <p>「テキーラの力は偉大だ…普段なら絶対歌わないのに（笑）でも、声をかけてもらえて本当に嬉しかった！」</p>
+                    </blockquote>
+
+                    <div class="affiliate-box">
+                        <a href="https://px.a8.net/svt/ejp?a8mat=4513V9+1CTP0I+4LSW+5YZ77" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-shield-alt"></i> 海外のフリーWi-Fiも安心！Surfshark VPN</a>
+                    </div>
+
+                    <!-- ブログ記事フッター -->
+                    <div class="blog-footer">
+                        <div class="blog-tags">
+                            <a href="#" class="blog-tag"><i class="fas fa-tag"></i> セブ島</a>
+                            <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 夜遊び</a>
+                            <a href="#" class="blog-tag"><i class="fas fa-tag"></i> JTV</a>
+                            <a href="#" class="blog-tag"><i class="fas fa-tag"></i> Club K</a>
+                            <a href="#" class="blog-tag"><i class="fas fa-tag"></i> Neo Tokyo</a>
+                            <a href="#" class="blog-tag"><i class="fas fa-tag"></i> マッサージ</a>
+                            <a href="#" class="blog-tag"><i class="fas fa-tag"></i> テキーラ</a>
+                            <a href="#" class="blog-tag"><i class="fas fa-tag"></i> カラオケ</a>
+                        </div>
+                         <div class="blog-share">
+                              <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Fcebu2nd4&text=JTV%E3%81%A7%E9%A3%B2%E3%81%BF%E3%81%99%E3%81%8E%E3%82%8B%E3%81%A8%E3%81%93%E3%81%86%E3%81%AA%E3%82%8B%E3%80%90%E3%82%BB%E3%83%96%E5%B3%B62%E6%97%A5%E7%9B%AE%E5%A4%9C%E5%89%8D%E7%B7%A8%E3%80%91" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Twitterでシェア"><i class="fab fa-x-twitter"></i></a>
+                              <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Fcebu2nd4" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Facebookでシェア"><i class="fab fa-facebook-f"></i></a>
+                              <a href="https://line.me/R/msg/text/?JTV%E3%81%A7%E9%A3%B2%E3%81%BF%E3%81%99%E3%81%8E%E3%82%8B%E3%81%A8%E3%81%93%E3%81%86%E3%81%AA%E3%82%8B%E3%80%90%E3%82%BB%E3%83%96%E5%B3%B62%E6%97%A5%E7%9B%AE%E5%A4%9C%E5%89%8D%E7%B7%A8%E3%80%91%0Ahttps%3A%2F%2Ftomotravel-pm.com%2Fblog%2Fcebu2nd4" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="LINEで送る"><i class="fab fa-line"></i></a>
+                         </div>
+                    </div>
+
+                     <!-- 前後の記事ナビゲーション -->
+                    <nav class="next-prev-nav"> {/* navタグに変更 */ }
+                        <div class="prev-post">
+                           <a href="https://tomotravel-pm.com/blog/cebu2nd3" rel="prev">
+                                <span class="nav-direction"><i class="fas fa-chevron-left"></i> 前の記事</span>
+                                <span class="nav-title">お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】</span>
+                            </a>
+                        </div>
+                        {/* ▼▼▼ 修正: 次の記事がないため非表示 ▼▼▼ */}
+                        <div class="next-post" style="visibility: hidden;">
+                             {/* 将来記事ができたらリンクを追加 */}
+                             <!--
+                             <a href="#" rel="next">
+                                 <span class="nav-direction">次の記事 <i class="fas fa-chevron-right"></i></span>
+                                 <span class="nav-title">次の記事タイトル</span>
+                             </a>
+                             -->
+                        </div>
+                    </nav>
+
+                </article> <!-- /.blog-content -->
+            <!-- </div> /.blog-container このdivは不要 -->
+        </main>
+        <!-- ▲▲▲ メインコンテンツエリア終了 ▲▲▲ -->
+
+        <!-- ▼▼▼ 追加: サイドバープレースホルダー ▼▼▼ -->
+        <aside id="sidebar-placeholder" class="blog-sidebar"></aside>
+
+    </div> <!-- /.blog-page-wrapper -->
+    <!-- ▲▲▲ ページ全体のラッパー終了 ▲▲▲ -->
+
+    <!-- ▼▼▼ 修正: フッタープレースホルダー ▼▼▼ -->
+    <div id="footer-placeholder"></div>
+
+    <!-- ▼▼▼ 修正: script.jsのパス ▼▼▼ -->
+    <script src="./script.js"></script>
     <script type='text/javascript' src='//pl26273446.effectiveratecpm.com/c5/10/e1/c510e12d2bf0cf3e4b6d7680c5cca15d.js'></script>
 </body>
 </html>
