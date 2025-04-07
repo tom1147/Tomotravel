@@ -4,13 +4,12 @@
     <!-- サイドバー プロフィール -->
     <div class="sidebar-profile">
         <div class="profile-icon">
-            <!-- 画像パス: sidebar.htmlを読み込むHTML(例: cebu2nd3.html)からの相対パス -->
-            <!-- cebu2nd3.html と images/ が同じ blog/ ディレクトリにあるため -->
-            <img src="./images/tomoicon.png" alt="とも プロフィールアイコン" width="100" height="100">
+            <!-- 画像パス修正: blog/ から一つ上の階層の images/ を参照 -->
+            <img src="../images/tomoicon.png" alt="とも プロフィールアイコン" width="100" height="100">
         </div>
         <div class="profile-info">
             <h4>とも (Tomo)</h4>
-            <p>東南アジアを旅する男</p> <!-- プロフィール文言修正 -->
+            <p>東南アジアを旅する男</p>
         </div>
     </div>
 
@@ -40,6 +39,11 @@
                 </a>
             </li>
         </ul>
+        <!-- ▼▼▼ 追加 ▼▼▼ -->
+        <div class="sidebar-action">
+            <a href="https://tomotravel-pm.com/blog" class="sidebar-button" target="_blank" rel="noopener"><i class="fas fa-blog"></i> ブログ記事一覧へ</a>
+        </div>
+        <!-- ▲▲▲ 追加 ▲▲▲ -->
     </div>
 
     <!-- サイドバー カテゴリ（例） -->
