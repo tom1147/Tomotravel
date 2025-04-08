@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded and parsed"); // デバッグ用ログ
 
     // === HTMLコンポーネントの読み込み関数 ===
-    // url: 読み込むHTMLファイルのパス (このscript.jsからの相対パス)
+    // url: 読み込むHTMLファイルのパス (絶対パスに変更)
     // placeholderId: HTMLを挿入する要素のID
     // callback: 読み込み完了後に実行する関数
     const loadHTML = (url, placeholderId, callback) => {
         console.log(`Attempting to load: ${url} into #${placeholderId}`);
-        // fetchは実行中のJSファイル(script.js)からの相対パスでファイルを解決する
+        // fetchは指定されたURL(絶対パス)でファイルをリクエストする
         fetch(url)
             .then(response => {
                 console.log(`Response status for ${url}: ${response.status}`);
@@ -159,13 +159,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // === サイドバー読み込み後に実行される初期化関数 (必要なら) ===
     // function initializeSidebarScript() { ... }
 
-    // === 実際の読み込み処理 ===
-    // このスクリプト(script.js)が blog/ ディレクトリにあるため、
-    // 同じ blog/ ディレクトリにあるファイルは './' またはファイル名のみで指定。
-    // header.html, footer.html, sidebar.html が blog/ にある前提。
-    loadHTML('./header.html', 'header-placeholder', initializeHeaderScript);
-    loadHTML('./footer.html', 'footer-placeholder', null); // フッター用JSがない場合
-    loadHTML('./sidebar.html', 'sidebar-placeholder', null); // サイドバー用JSがない場合
+    // === 実際の読み込み処理 (★絶対パスに変更★) ===
+    // header.html, footer.html, sidebar.html が /blog/ ディレクトリにある前提。
+    // サイトのルートからの絶対パスで指定する。
+    loadHTML('/blog/header.html', 'header-placeholder', initializeHeaderScript);
+    loadHTML('/blog/footer.html', 'footer-placeholder', null); // フッター用JSがない場合
+    loadHTML('/blog/sidebar.html', 'sidebar-placeholder', null); // サイドバー用JSがない場合
 
     // === ブログ記事本体に特有のスクリプトがあればここに追加 ===
     console.log("Executing other scripts unrelated to loaded components...");
