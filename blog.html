@@ -9,38 +9,733 @@
     <meta property="og:title" content="ブログ記事一覧 | とも旅ちゃんねるVLOG">
     <meta property="og:description" content="海外一人旅の体験と情報をリアルにお届け。セブ島や東南アジアの魅力を発信中">
     <meta property="og:type" content="website">
-    <!-- ▼▼▼ このブログ一覧ページの正しいURLを指定 ▼▼▼ -->
-    <meta property="og:url" content="https://tomotravel-pm.com/blog.html">
-    <meta property="og:image" content="https://tomotravel-pm.com/images/ogp.jpg"> <!-- ルートからのパスでOK -->
+    <meta property="og:url" content="https://tomotravel-pm.com/blog/">
+    <meta property="og:image" content="https://tomotravel-pm.com/images/ogp.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <!-- ▼▼▼ このブログ一覧ページの正しいCanonical URLを指定 ▼▼▼ -->
-    <link rel="canonical" href="https://tomotravel-pm.com/blog.html">
+    <link rel="canonical" href="https://tomotravel-pm.com/blog/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- ▼▼▼ CSSを /blog/ ディレクトリから読み込む ▼▼▼ -->
-    <link rel="stylesheet" href="blog/style.css">
-    <!-- ▲▲▲ CSSを /blog/ ディレクトリから読み込む ▲▲▲ -->
+    <style>
+        :root {
+            --primary: #1E90FF;
+            --primary-dark: #0066cc;
+            --accent: #ff6b6b;
+            --accent-dark: #ff5252;
+            --bg-light: #f9fafc;
+            --bg-white: #ffffff;
+            --text-dark: #333;
+            --text-muted: #6c757d;
+            --border-color: rgba(0,0,0,0.05);
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --hover-shadow: 0 14px 45px rgba(0,0,0,0.08);
+            --border-radius: 16px;
+            --transition-fast: 0.3s ease;
+            /* ヘッダーの高さを変数化 */
+            --header-height-desktop: 140px; /* デスクトップ用 */
+            --header-height-mobile: 80px; /* モバイル用 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* スクロール位置調整用 */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height-mobile);
+        }
+        @media (min-width: 769px) {
+            html {
+                scroll-padding-top: var(--header-height-desktop);
+            }
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            line-height: 1.3;
+        }
+        /* ヘッダー内のh1は .logo-text でスタイル指定 */
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+         footer p { text-align: center; } /* フッター内は中央 */
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(30,144,255,0.1);
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column; /* デフォルトは縦並び */
+            align-items: center; /* デフォルトは中央揃え */
+            padding: 20px 0; /* デフォルトのパディング */
+            transition: padding var(--transition-fast);
+            position: relative;
+        }
+
+        .logo-center {
+            text-align: center;
+            margin-bottom: 18px; /* デフォルトのマージン */
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .logo-center::after { /* デスクトップ用下線 */
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+            opacity: 0.5;
+            transition: all var(--transition-fast); /* 追加 */
+        }
+
+        .logo-text {
+            font-size: 32px; /* デフォルトのフォントサイズ */
+            font-weight: bold;
+            color: var(--primary) !important;
+            text-align: center;
+            letter-spacing: 0.5px;
+            transition: all var(--transition-fast);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+            display: inline-block;
+            text-decoration: none; /* 下線削除 */
+        }
+         a.logo-text { color: var(--primary) !important; } /* リンクの場合の色指定 */
+         a.logo-text:hover { color: var(--primary-dark) !important; transform: translateY(-2px); }
+
+        .vlog-text {
+            color: var(--accent) !important;
+            position: relative;
+            font-weight: 700;
+            transition: all var(--transition-fast);
+            font-size: inherit; /* 親要素に追従 */
+        }
+
+        .vlog-text::after {
+            display: none;
+        }
+
+        /* ハンバーガーメニュー */
+        .menu-toggle {
+            display: none; /* デフォルトは非表示 */
+            cursor: pointer;
+            font-size: 24px; /* デフォルトサイズ調整 */
+            color: var(--primary);
+            transition: all var(--transition-fast);
+            position: absolute; /* デフォルト配置 */
+            right: 20px;
+            top: 50%; /* 垂直中央揃え */
+            transform: translateY(-50%); /* 垂直中央揃え */
+            z-index: 1001;
+            padding: 5px; /* パディング追加 */
+        }
+
+        .menu-toggle:hover {
+            color: var(--accent);
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center; /* デフォルトは中央揃え */
+            flex-wrap: wrap;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 5px; /* デフォルトマージン */
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            padding: 8px 12px;
+            display: block;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        nav ul li a::before { /* ホバーエフェクト用 */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: var(--primary);
+            opacity: 0.1;
+            transition: height var(--transition-fast);
+            z-index: -1;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:hover::before {
+            height: 100%;
+        }
+
+        .nav-icon {
+            margin-right: 5px;
+        }
+
+        /* モバイル用ヘッダースタイル (cebu2nd2.html から適用) */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row; /* 横並び */
+                justify-content: space-between; /* 両端揃え */
+                align-items: center; /* 垂直中央揃え */
+                padding: 10px 0; /* モバイル用パディング */
+                height: var(--header-height-mobile); /* 高さを変数で指定 */
+            }
+
+            .logo-center {
+                margin-bottom: 0; /* 下マージン削除 */
+                text-align: left; /* 左揃え */
+                flex-grow: 1; /* 残りスペースを埋める */
+                padding-left: 0; /* 左パディング削除 */
+            }
+             .logo-center::after { /* モバイルでは下線非表示 */
+                 display: none;
+             }
+             .logo-text {
+                font-size: 24px; /* モバイル用フォントサイズ */
+             }
+             .vlog-text {
+                font-size: 20px; /* モバイル用フォントサイズ */
+             }
+
+            .menu-toggle {
+                display: block; /* 表示する */
+                position: static; /* 配置をリセット */
+                transform: none; /* transform解除 */
+                font-size: 24px; /* モバイル用アイコンサイズ */
+                margin-right: 0; /* 右マージン削除 */
+                padding: 5px; /* モバイル用パディング */
+                background-color: transparent; /* 背景透明 */
+            }
+
+            nav#main-nav {
+                position: absolute; /* 絶対配置 */
+                top: 100%; /* ヘッダーの真下 */
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                max-height: 0; /* デフォルトは閉じた状態 */
+                overflow: hidden;
+                transition: max-height 0.5s ease, padding 0.5s ease;
+                padding: 0; /* 閉じた状態のパディング */
+                border-top: 1px solid rgba(30,144,255,0.1);
+            }
+
+            nav#main-nav.active { /* 開いた状態 */
+                max-height: calc(100vh - var(--header-height-mobile)); /* 画面高さに合わせて最大高さを設定 */
+                padding: 10px 0; /* 開いた状態のパディング */
+                overflow-y: auto; /* 内容が多い場合にスクロール */
+            }
+
+            nav ul.nav-menu {
+                flex-direction: column; /* 縦並び */
+                padding: 0; /* パディングリセット */
+            }
+
+            nav ul.nav-menu li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(0,0,0,0.05); /* 区切り線 */
+                margin: 0; /* マージンリセット */
+            }
+            nav ul.nav-menu li:last-child { /* 最後の項目は線なし */
+                border-bottom: none;
+            }
+
+            nav ul.nav-menu li a {
+                padding: 15px 20px; /* モバイル用パディング */
+                width: 100%;
+                display: block;
+                font-size: 1rem; /* モバイル用フォントサイズ */
+            }
+             /* Xアイコン用スタイル (cebu2nd2からコピー) */
+             nav ul.nav-menu li a.social-nav-link {
+                 display: inline-block; /* インラインブロックに変更 */
+                 width: auto; /* 幅自動 */
+                 padding: 15px 0; /* パディング調整 */
+                 background-color: transparent; /* 背景透明 */
+                 color: var(--primary); /* 色変更 */
+             }
+             nav ul.nav-menu li a.social-nav-link:hover {
+                 color: var(--accent);
+                 background-color: transparent;
+                 transform: translateY(-2px);
+             }
+             nav ul.nav-menu li a.social-nav-link i {
+                 font-size: 1.2rem; /* アイコンサイズ調整 */
+             }
+        } /* END @media (max-width: 768px) */
+
+
+        /* ===== BLOG PAGE STYLES ===== */
+        .page-content {
+            margin-top: var(--header-height-desktop); /* デスクトップヘッダー高さ */
+            padding: 60px 0;
+            background: linear-gradient(to bottom, #f9fafc, #f1f4f9);
+        }
+         @media (max-width: 768px) {
+            .page-content {
+                margin-top: var(--header-height-mobile); /* モバイルヘッダー高さ */
+                 padding: 40px 0;
+            }
+        }
+
+        .posts-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 40px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .post-card {
+            position: relative;
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: all var(--transition-fast);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+
+        .post-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+
+        .post-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .post-content {
+            padding: 25px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .post-meta > span {
+            display: flex;
+            align-items: center;
+            margin-right: 12px;
+            background-color: rgba(30,144,255,0.05);
+            padding: 4px 12px;
+            border-radius: 50px;
+        }
+
+        .post-meta i {
+            margin-right: 6px;
+        }
+
+        .post-title {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            transition: color var(--transition-fast);
+            line-height: 1.3;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .post-card:hover .post-title {
+            color: var(--primary);
+        }
+
+        .excerpt-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .post-thumbnail {
+            flex: 0 0 120px;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .post-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .post-card:hover .post-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .post-excerpt {
+            flex: 1;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        /* pタグのデフォルトマージンをリセット */
+        .post-excerpt p {
+            margin-bottom: 0;
+        }
+
+        .post-link {
+            align-self: flex-start;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50px;
+            transition: all var(--transition-fast);
+            box-shadow: 0 4px 15px rgba(30,144,255,0.3);
+            margin-top: auto; /* ボタンをカード下部に配置 */
+            margin-bottom: 20px; /* タグとの間にスペース */
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .post-link i {
+            margin-left: 10px;
+            transition: transform var(--transition-fast);
+        }
+
+        .post-link:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            box-shadow: 0 8px 25px rgba(30,144,255,0.5);
+        }
+
+        .post-link:hover i {
+            transform: translateX(6px);
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px; /* リンクボタンとの間にスペース */
+        }
+
+        .post-tag {
+            background-color: rgba(30,144,255,0.08);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            font-weight: 500;
+            border: 1px solid rgba(30,144,255,0.15);
+        }
+
+        .post-tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* ===== FOOTER (cebu2nd2.html と同じスタイル) ===== */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding); /* 左右パディング追加 */
+        }
+        .footer-content h3 { /* フッター内の見出し */
+             color: white;
+             font-size: 1.5rem;
+             margin-bottom: 1rem;
+        }
+
+        .footer-content p {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 5px 12px; /* リンク間のギャップ調整 */
+            padding-left: 0; /* リストのデフォルトパディング削除 */
+            list-style: none; /* リストマーカー削除 */
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            margin: 0; /* マージン削除、gapで調整 */
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            padding: 5px 0;
+            white-space: nowrap;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        /* ヘッダー内ソーシャルリンク用 */
+        .social-nav-link {
+            display: inline-flex; /* ヘッダー/フッター共通化 */
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+            background-color: transparent; /* ヘッダー内は背景なし */
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+            color: var(--text-dark); /* ヘッダー内の色 */
+            text-decoration: none;
+        }
+         /* ヘッダー内のホバー */
+        header .social-nav-link:hover {
+            background-color: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .social-nav-link .fa-x-twitter {
+            font-size: 16px; /* アイコンサイズ調整 */
+        }
+
+        /* フッター内ソーシャルリンク用 */
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 18px;
+            transition: all var(--transition-fast);
+            text-decoration: none; /* アイコンリンクの下線削除 */
+        }
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+         .social-links a .fa-x-twitter {
+             font-size: 16px; /* フッター内アイコンサイズ調整 */
+         }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+         .footer-bottom p { margin-bottom: 0; font-size: 0.9rem; } /* サイズ調整 */
+
+
+        @media (max-width: 768px) {
+            .posts-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .post-content {
+                padding: 20px;
+            }
+
+            .post-title {
+                font-size: 1.4rem;
+            }
+
+            .excerpt-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .post-thumbnail {
+                width: 100%;
+                height: 180px;
+                flex: none;
+            }
+            /* モバイルメニュー内のソーシャルリンクスタイルは@media内nav ul li a.social-nav-linkで指定済 */
+        }
+
+        @media (max-width: 480px) {
+            .page-content {
+                padding: 30px 0;
+            }
+
+            .post-title {
+                font-size: 1.3rem;
+            }
+
+            .post-meta {
+                flex-wrap: wrap;
+            }
+
+            .post-meta > span {
+                margin-bottom: 6px;
+            }
+
+            .post-thumbnail {
+                height: 150px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- ▼▼▼ ヘッダープレースホルダー (IDを cebu2nd3.html と合わせる) ▼▼▼ -->
-    <div id="header-placeholder"></div>
-    <!-- ▲▲▲ ヘッダープレースホルダー ▲▲▲ -->
+    <!-- ヘッダー部分 -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-center" aria-label="サイトロゴ">
+                     <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
+                </div>
+                 <!-- nav要素を先に記述 -->
+                <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
+                    <ul class="nav-menu">
+                        <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
+                        <li><a href="/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
+                        <li><a href="/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
+                        <li><a href="/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
+                        <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
+                        <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
+                        <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
+                        <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
+                        <li><a href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                    </ul>
+                </nav>
+                <!-- ハンバーガーメニューボタンをnavの後ろに配置 -->
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <!-- ▼▼▼ ページ全体のラッパー (クラス名を cebu2nd3.html と合わせる) ▼▼▼ -->
-    <!-- container クラスは style.css の設計に応じて必要なら付与 -->
-    <div class="blog-page-wrapper container">
-
-        <!-- ▼▼▼ メインコンテンツエリア (クラス名を cebu2nd3.html と合わせる) ▼▼▼ -->
-        <main class="blog-main-content">
-            <!-- 記事一覧ページ用の見出しなどをここに追加 -->
-            <div class="blog-list-header" style="padding-top: calc(var(--header-height-desktop, 140px) + 40px); padding-bottom: 40px; text-align: center;">
-                 <h1 style="font-size: 2.5rem; color: var(--primary, #1E90FF); font-weight: 700; margin-bottom: 0.5rem;">ブログ記事一覧</h1>
-                 <p style="font-size: 1.1rem; color: var(--text-muted, #6c757d); margin: 0;">セブ島や東南アジア一人旅の体験談をお届けします。</p>
-             </div>
-
-            <!-- 元の <main class="page-content"> 内の要素を配置 -->
+    <!-- メインコンテンツ：ブログ記事一覧 -->
+    <main class="page-content">
+        <div class="container">
             <div class="posts-container">
 
                 <!-- NEW: セブ島2日目夜前編 -->
@@ -50,22 +745,21 @@
                             <span><i class="fas fa-calendar-alt"></i> 2025/4/3</span>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu2nd4.html">
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd4">
                             <h2 class="post-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</h2>
                         </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/ofMvQYhii58/mqdefault.jpg" alt="セブ島JTVで飲みすぎた体験談のサムネイル" loading="lazy">
+                                <img src="https://img.youtube.com/vi/ofMvQYhii58/mqdefault.jpg" alt="セブ島JTVで飲みすぎた体験談のサムネイル">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行2日目の夜遊び体験【前編】ネオトーキョーでのマッサージでリフレッシュし、ルーフトップバーで食事を楽しんだ後、Club Kへ…爆美女との再会でテンションが上がり、テキーラを飲みすぎた結果カラオケで熱唱する羽目に…。セブの夜のリアルな楽しさと飲みすぎの顛末をレポートします！</p>
                             </div>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu2nd4.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd4" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
@@ -85,22 +779,21 @@
                             <span><i class="fas fa-calendar-alt"></i> 2025/4/2</span>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu2nd3.html">
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd3">
                             <h2 class="post-title">お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】</h2>
                         </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/LNnFkivOQtE/mqdefault.jpg" alt="セブ島夜遊び動画のサムネイル" loading="lazy">
+                                <img src="https://img.youtube.com/vi/LNnFkivOQtE/mqdefault.jpg" alt="セブ島夜遊び動画のサムネイル">
                             </div>
                             <div class="post-excerpt">
                                 <p>シヌログ祭りの熱気に沸くセブ島で、忘れられない夜遊びを体験！馴染みのクラブ「Blue」では、以前から指名していた女性との久しぶりの再会を果たし、テキーラで乾杯。お祭りムードも相まって、気づけばかなり酔っ払い。さらに深夜、予想外の誘いでマッサージ「Forest Spa」へ。旅の疲れを癒すはずがちょっとしたハプニングも？シヌログ期間ならではの混雑や移動の苦労、興奮と反省が入り混じるセブ島の夜を赤裸々にレポートします。</p>
                             </div>
                         </div>
-                         <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu2nd3.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd3" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
@@ -119,22 +812,21 @@
                             <span><i class="fas fa-calendar-alt"></i> 2025/3/28</span>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
-                         <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="cebu2nd2.html">
+                        <a href="https://tomotravel-pm.com/cebu2nd2">
                             <h2 class="post-title">【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル</h2>
                         </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/z5APVNRi0FQ/mqdefault.jpg" alt="セブ島JTVのサムネイル" loading="lazy">
+                                <img src="https://img.youtube.com/vi/z5APVNRi0FQ/mqdefault.jpg" alt="セブ島JTVのサムネイル">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島のJTVを実際に体験！B-pinkとClub Kの雰囲気や料金、スタッフとのコミュニケーションについて詳しくレポート。ショータイムやドリンク料金など、セブ島の夜遊びを楽しむためのリアルな情報をお届けします。初めての方でも安心して楽しめる情報満載です。</p>
                             </div>
                         </div>
-                         <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="cebu2nd2.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+
+                        <a href="https://tomotravel-pm.com/cebu2nd2" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
@@ -147,27 +839,26 @@
 
                 <!-- 記事：セブ島旅行初日 -->
                 <article class="post-card">
-                   <div class="post-content">
+                    <div class="post-content">
                         <div class="post-meta">
                             <span><i class="fas fa-calendar-alt"></i> 2025/3/23</span>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
-                         <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="cebu2nd1.html">
+                        <a href="https://tomotravel-pm.com/cebu2nd1">
                             <h2 class="post-title">【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</h2>
                         </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/V8Q69llrJcY/mqdefault.jpg" alt="セブ島旅行動画のサムネイル" loading="lazy">
+                                <img src="https://img.youtube.com/vi/V8Q69llrJcY/mqdefault.jpg" alt="セブ島旅行動画のサムネイル">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行初日の様子をお届け！往復たったの29,400円という格安チケットで行く、セブパシフィック航空の機内の様子、日本のブランドホテル「東横インセブ」のルームツアー、近くのJモールでの食事など、セブ島到着日のリアルな体験をご紹介します。</p>
                             </div>
                         </div>
-                         <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="cebu2nd1.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+
+                        <a href="https://tomotravel-pm.com/cebu2nd1" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> フィリピン</span>
@@ -176,25 +867,121 @@
                         </div>
                     </div>
                 </article>
-            </div> <!-- /.posts-container -->
+            </div>
+        </div>
+    </main>
 
-        </main> <!-- /.blog-main-content -->
-        <!-- ▲▲▲ メインコンテンツエリア ▲▲▲ -->
+    <!-- フッター部分 -->
+    <footer>
+    <div class="container">
+        <div class="footer-content">
+            <h3>とも旅ちゃんねるVLOG</h3>
+            <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="#about">チャンネル概要</a> <a href="#videos">最新動画</a> <a href="#travel">旅の魅力</a> <a href="#equipment">撮影機材</a> <a href="#booking">旅の予約</a> <a href="#preparation">事前準備</a> <a href="#contact">お問い合わせ</a>
+                <a href="https://tomotravel-pm.com/blog" target="_blank" rel="noopener noreferrer">ブログ</a>
+                <!-- ▼▼▼ 追加: プライバシーポリシーへのリンク ▼▼▼ -->
+                <a href="https://tomotravel-pm.com/privacy-policy.html">プライバシーポリシー</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
-        <!-- ▼▼▼ サイドバープレースホルダー (IDとクラス名を cebu2nd3.html と合わせる) ▼▼▼ -->
-        <aside id="sidebar-placeholder" class="blog-sidebar"></aside>
-        <!-- ▲▲▲ サイドバープレースホルダー ▲▲▲ -->
+    <!-- JavaScript (cebu2nd2.html と同じ) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- ヘッダーのスクロール変化 ---
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) { // 50px スクロールで変化
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
 
-    </div> <!-- /.blog-page-wrapper -->
-    <!-- ▲▲▲ ページ全体のラッパー ▲▲▲ -->
+            // --- ハンバーガーメニュー ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const body = document.body;
 
-    <!-- ▼▼▼ フッタープレースホルダー (IDを cebu2nd3.html と合わせる) ▼▼▼ -->
-    <div id="footer-placeholder"></div>
-    <!-- ▲▲▲ フッタープレースホルダー ▲▲▲ -->
+            function openMobileMenu() {
+                if (mainNav && menuToggle) {
+                    mainNav.classList.add('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    }
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                    body.style.overflow = 'hidden'; // 背景スクロール禁止
+                }
+            }
 
-    <!-- ▼▼▼ JavaScript を /blog/ ディレクトリから読み込む ▼▼▼ -->
-    <script src="blog/script.js"></script>
-    <!-- ▲▲▲ JavaScript を /blog/ ディレクトリから読み込む ▲▲▲ -->
+            function closeMobileMenu() {
+                if (mainNav && menuToggle && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    body.style.overflow = ''; // 背景スクロール許可
+                }
+            }
+
+            if (menuToggle && mainNav) {
+                menuToggle.setAttribute('aria-controls', 'main-nav');
+                menuToggle.setAttribute('aria-expanded', 'false');
+
+                menuToggle.addEventListener('click', function(event) {
+                    event.stopPropagation(); // クリックイベントが伝播しないように
+                    if (mainNav.classList.contains('active')) {
+                        closeMobileMenu();
+                    } else {
+                        openMobileMenu();
+                    }
+                });
+
+                // メニュー内のリンククリックで閉じる
+                const navLinks = mainNav.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                         // ページ内リンク(#aboutなど)や外部リンク、ブログページへのリンクでも閉じる
+                        closeMobileMenu();
+                    });
+                });
+
+                // メニュー外をクリックしたら閉じる
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = mainNav.contains(event.target);
+                    const isClickOnToggle = menuToggle.contains(event.target);
+
+                    if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
+
+                // Escキーでメニューを閉じる
+                 document.addEventListener('keydown', function(event) {
+                     if (event.key === 'Escape' && mainNav.classList.contains('active')) {
+                         closeMobileMenu();
+                     }
+                 });
+            }
+
+        }); // END DOMContentLoaded
+    </script>
     <script type='text/javascript' src='//pl26273446.effectiveratecpm.com/c5/10/e1/c510e12d2bf0cf3e4b6d7680c5cca15d.js'></script>
 </body>
 </html>
