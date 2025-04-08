@@ -400,9 +400,9 @@ nav ul.nav-menu li a.social-nav-link::before {
     display: flex;
     flex-direction: column;
     gap: var(--sidebar-gap);
-    /* ▼▼▼ 追加の余白を減らして調整 ▼▼▼ */
-    padding-top: calc(var(--header-height-mobile) + 10px); /* 例: モバイル追加余白を10pxに */
-    /* ▲▲▲ 追加の余白を減らして調整 ▲▲▲ */
+    /* ▼▼▼ 変更: ヘッダー高ちょうどにする (追加余白削除) ▼▼▼ */
+    padding-top: var(--header-height-mobile); /* モバイル時 */
+    /* ▲▲▲ 変更: ヘッダー高ちょうどにする (追加余白削除) ▲▲▲ */
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: var(--section-space);
@@ -411,10 +411,11 @@ nav ul.nav-menu li a.social-nav-link::before {
 @media (min-width: 992px) { /* デスクトップ */
     .blog-page-wrapper {
         flex-direction: row;
-        /* ▼▼▼ 追加の余白を減らして調整 ▼▼▼ */
-        padding-top: calc(var(--header-height-desktop) + 20px); /* 例: デスクトップ追加余白を20pxに */
-        /* ▲▲▲ 追加の余白を減らして調整 ▲▲▲ */
+        /* ▼▼▼ 変更: ヘッダー高ちょうどにする (追加余白削除) ▼▼▼ */
+        padding-top: var(--header-height-desktop); /* デスクトップ時 */
+        /* ▲▲▲ 変更: ヘッダー高ちょうどにする (追加余白削除) ▲▲▲ */
     }
+}
 
 /* ===== メインコンテンツエリア ===== */
 /* 記事ページと一覧ページ共通 */
@@ -431,14 +432,20 @@ nav ul.nav-menu li a.social-nav-link::before {
 /* 一覧ページ用の見出し (blog.html 内にインラインスタイルで仮置きしているもの) */
 .blog-list-header {
      text-align: center;
-     margin-bottom: 40px;
-     /* padding-top は blog-page-wrapper で制御 */
+     /* ▼▼▼ 変更: 見出しブロック下の余白を小さくする ▼▼▼ */
+     margin-bottom: 25px; /* 例: 40px から 25px に変更 */
+     /* ▲▲▲ 変更: 見出しブロック下の余白を小さくする ▲▲▲ */
+     /* ▼▼▼ 変更: ヘッダーとの間に少しだけ隙間を作る ▼▼▼ */
+     padding-top: 20px;
+     /* ▲▲▲ 変更: ヘッダーとの間に少しだけ隙間を作る ▲▲▲ */
  }
  .blog-list-header h1 {
      font-size: 2.5rem;
      color: var(--primary);
      font-weight: 700;
-     margin-bottom: 0.5rem;
+     /* ▼▼▼ 変更: 見出し下の余白を小さくする ▼▼▼ */
+     margin-bottom: 0.25rem; /* 例: 0.5rem から 0.25rem に変更 */
+     /* ▲▲▲ 変更: 見出し下の余白を小さくする ▲▲▲ */
  }
  .blog-list-header p {
      font-size: 1.1rem;
@@ -446,6 +453,12 @@ nav ul.nav-menu li a.social-nav-link::before {
      margin: 0;
  }
  @media (max-width: 768px) {
+    .blog-list-header {
+        /* ▼▼▼ 変更: モバイルでの見出しブロック下の余白 ▼▼▼ */
+        margin-bottom: 20px;
+        /* ▲▲▲ 変更: モバイルでの見出しブロック下の余白 ▼▼▼ */
+        padding-top: 15px; /* モバイルでの上部隙間調整 */
+    }
     .blog-list-header h1 { font-size: 2rem; }
     .blog-list-header p { font-size: 1rem; }
  }
@@ -1257,8 +1270,8 @@ nav ul.nav-menu li a.social-nav-link::before {
 
 /* 768px未満 (モバイル) */
 @media (max-width: 768px) {
+    /* .blog-page-wrapper の padding-top は変更済み */
     .blog-page-wrapper {
-        padding-top: calc(var(--header-height-mobile) + 20px);
         gap: 25px;
     }
     .blog-header { /* 記事ヘッダー */
@@ -1322,7 +1335,7 @@ nav ul.nav-menu li a.social-nav-link::before {
          --container-padding-mobile: 15px;
      }
      .blog-page-wrapper {
-        padding-top: calc(var(--header-height-mobile) + 15px);
+        padding-top: calc(var(--header-height-mobile) + 15px); /* 小型モバイルでは少し隙間を残す */
      }
     .blog-title { font-size: 1.6rem; } /* 記事タイトル */
 
