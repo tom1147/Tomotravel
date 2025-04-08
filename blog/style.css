@@ -400,9 +400,7 @@ nav ul.nav-menu li a.social-nav-link::before {
     display: flex;
     flex-direction: column;
     gap: var(--sidebar-gap);
-    /* ▼▼▼ 変更: ヘッダー高ちょうどにする (追加余白削除) ▼▼▼ */
-    padding-top: var(--header-height-mobile); /* モバイル時 */
-    /* ▲▲▲ 変更: ヘッダー高ちょうどにする (追加余白削除) ▲▲▲ */
+    padding-top: var(--header-height-mobile); /* モバイル時 ヘッダー高ちょうど */
     max-width: 1200px;
     margin: 0 auto;
     padding-bottom: var(--section-space);
@@ -411,9 +409,7 @@ nav ul.nav-menu li a.social-nav-link::before {
 @media (min-width: 992px) { /* デスクトップ */
     .blog-page-wrapper {
         flex-direction: row;
-        /* ▼▼▼ 変更: ヘッダー高ちょうどにする (追加余白削除) ▼▼▼ */
-        padding-top: var(--header-height-desktop); /* デスクトップ時 */
-        /* ▲▲▲ 変更: ヘッダー高ちょうどにする (追加余白削除) ▲▲▲ */
+        padding-top: var(--header-height-desktop); /* デスクトップ時 ヘッダー高ちょうど */
     }
 }
 
@@ -429,23 +425,17 @@ nav ul.nav-menu li a.social-nav-link::before {
 /* ===== BLOG LIST PAGE SPECIFIC STYLES ===== */
 /* ( /blog.html 用の記事一覧のデザイン ) */
 
-/* 一覧ページ用の見出し (blog.html 内にインラインスタイルで仮置きしているもの) */
+/* 一覧ページ用の見出し */
 .blog-list-header {
      text-align: center;
-     /* ▼▼▼ 変更: 見出しブロック下の余白を小さくする ▼▼▼ */
-     margin-bottom: 25px; /* 例: 40px から 25px に変更 */
-     /* ▲▲▲ 変更: 見出しブロック下の余白を小さくする ▲▲▲ */
-     /* ▼▼▼ 変更: ヘッダーとの間に少しだけ隙間を作る ▼▼▼ */
-     padding-top: 20px;
-     /* ▲▲▲ 変更: ヘッダーとの間に少しだけ隙間を作る ▲▲▲ */
+     margin-bottom: 25px; /* 下の要素との間隔 */
+     padding-top: 20px; /* ヘッダーとの隙間 */
  }
  .blog-list-header h1 {
      font-size: 2.5rem;
      color: var(--primary);
      font-weight: 700;
-     /* ▼▼▼ 変更: 見出し下の余白を小さくする ▼▼▼ */
-     margin-bottom: 0.25rem; /* 例: 0.5rem から 0.25rem に変更 */
-     /* ▲▲▲ 変更: 見出し下の余白を小さくする ▲▲▲ */
+     margin-bottom: 0.25rem; /* 見出し下の間隔 */
  }
  .blog-list-header p {
      font-size: 1.1rem;
@@ -454,9 +444,7 @@ nav ul.nav-menu li a.social-nav-link::before {
  }
  @media (max-width: 768px) {
     .blog-list-header {
-        /* ▼▼▼ 変更: モバイルでの見出しブロック下の余白 ▼▼▼ */
         margin-bottom: 20px;
-        /* ▲▲▲ 変更: モバイルでの見出しブロック下の余白 ▼▼▼ */
         padding-top: 15px; /* モバイルでの上部隙間調整 */
     }
     .blog-list-header h1 { font-size: 2rem; }
@@ -1464,3 +1452,654 @@ footer::before {
     font-size: 0.9rem;
     color: rgba(255,255,255,0.6);
 }
+
+/* ===== index.html 用のスタイル ===== */
+/* (トップページ特有の要素があればここに追加、または既存セクションに統合) */
+
+/* ヒーローセクション */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg') no-repeat center center/cover; /* 背景画像パス注意 */
+    color: white;
+    text-align: center;
+    padding: 120px 0; /* 上下のパディング */
+    position: relative; /* ヘッダーの下に配置するため調整が必要な場合あり */
+    min-height: 60vh; /* 最低限の高さを確保 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding-mobile);
+}
+@media (min-width: 769px) {
+    .hero-content {
+        padding: 0 var(--container-padding-desktop);
+    }
+}
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: white;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+}
+.hero-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 400;
+}
+.sp-only { display: inline; } /* 初期表示 */
+@media (min-width: 769px) {
+    .sp-only { display: none; } /* デスクトップでは改行なし */
+}
+
+/* 共通セクションタイトル */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
+    position: relative;
+    padding-bottom: 15px;
+    font-weight: 700;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    border-radius: 2px;
+}
+.section-title span { /* "ABOUT" などの英語部分 */
+    display: block;
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-top: -1rem; /* タイトルとの間隔調整 */
+    margin-bottom: 3rem; /* 下の要素との間隔 */
+}
+
+
+/* 共通セクションスタイル */
+section {
+    padding: var(--section-space) 0;
+    overflow: hidden; /* アニメーション用 */
+}
+section:nth-of-type(even) { /* 背景色を交互に */
+    background-color: var(--bg-white);
+}
+
+/* 共通ボタン */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--accent-dark));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    color: white; /* ホバー時も白 */
+}
+.btn-secondary {
+    background-color: var(--bg-white);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+.btn-secondary:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(30,144,255,0.2);
+}
+.section-button {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* アバウトセクション */
+.about-section { background-color: var(--bg-white); }
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+@media (min-width: 769px) {
+    .about-content {
+        flex-direction: row;
+        gap: 50px;
+        align-items: flex-start;
+    }
+}
+.about-image {
+    flex-shrink: 0;
+    text-align: center;
+}
+.about-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 5px solid white;
+}
+.about-text {
+    flex: 1;
+}
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+.about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+.about-social {
+    margin-top: 1.5rem;
+}
+.about-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(30,144,255,0.1);
+    color: var(--primary);
+    margin-right: 10px;
+    transition: all var(--transition-fast);
+    font-size: 1.1rem;
+}
+.about-social a:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* 動画セクション */
+.videos-section { /* 背景色はデフォルトの var(--bg-light) */ }
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.video-card {
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-fast);
+}
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+.video-card a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-dark);
+}
+.video-thumbnail {
+    position: relative;
+    overflow: hidden;
+}
+.video-thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* サムネイルの縦横比 */
+    object-fit: cover;
+    transition: transform var(--transition-medium);
+}
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+.video-card:hover .play-icon {
+    opacity: 1;
+}
+.video-title {
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-dark);
+}
+
+/* ブログ誘導セクション */
+.blog-promo-section { background-color: var(--bg-white); }
+.blog-promo-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.blog-promo-card {
+    background-color: var(--bg-light); /* カード背景色 */
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all var(--transition-fast);
+    border: 1px solid var(--border-color);
+}
+.blog-promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+.blog-promo-card a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-dark);
+    padding-bottom: 20px; /* 下部パディング */
+}
+.blog-promo-card img {
+    display: block;
+    width: 100%;
+    height: 180px; /* 画像高さ固定 */
+    object-fit: cover;
+    margin-bottom: 15px; /* 画像とテキストの間隔 */
+}
+.blog-promo-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 20px 10px 20px; /* 左右マージンと下マージン */
+    line-height: 1.4;
+    color: var(--primary-dark);
+}
+.blog-promo-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 20px 15px 20px;
+    line-height: 1.6;
+}
+.blog-promo-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0 20px;
+    text-align: right;
+}
+
+/* 旅の魅力セクション */
+.travel-section { /* 背景色はデフォルト */ }
+.travel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.travel-card {
+    text-align: center;
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-fast);
+}
+.travel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+.travel-card img {
+    width: 100%;
+    height: 200px; /* 画像高さ固定 */
+    object-fit: cover;
+    border-radius: calc(var(--border-radius) - 5px); /* 内側の角丸 */
+    margin-bottom: 20px;
+}
+.travel-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+.travel-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* 撮影機材セクション */
+.equipment-section { background-color: var(--bg-white); }
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 列の最小幅調整 */
+    gap: 30px;
+}
+.equipment-item {
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all var(--transition-fast);
+    border: 1px solid var(--border-color);
+}
+.equipment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+.equipment-item a {
+    text-decoration: none;
+    color: var(--text-dark);
+}
+.equipment-item img {
+    max-width: 80%; /* 画像が大きすぎないように */
+    height: 150px; /* 高さをある程度揃える */
+    object-fit: contain; /* アスペクト比維持して収める */
+    margin-bottom: 15px;
+}
+.equipment-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+}
+.equipment-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* 予約セクション */
+.booking-section { /* 背景色はデフォルト */ }
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+.booking-item {
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-fast);
+}
+.booking-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+.booking-item a {
+    text-decoration: none;
+    color: var(--text-dark);
+}
+.booking-item img {
+    max-height: 50px; /* ロゴの高さを制限 */
+    width: auto;
+    max-width: 80%;
+    margin-bottom: 20px;
+    filter: grayscale(50%); /* 少し色を抑える */
+    transition: filter var(--transition-fast);
+}
+.booking-item:hover img {
+    filter: grayscale(0%);
+}
+.booking-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+.booking-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* 事前準備セクション */
+.preparation-section { background-color: var(--bg-white); }
+.preparation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+.preparation-item {
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all var(--transition-fast);
+    border: 1px solid var(--border-color);
+}
+.preparation-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+.preparation-item a {
+    text-decoration: none;
+    color: var(--text-dark);
+}
+.preparation-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgba(255, 107, 107, 0.1);
+    border-radius: 50%;
+}
+.preparation-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+}
+.preparation-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* アフィリエイト注記 */
+.affiliate-notice {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+/* お問い合わせセクション */
+.contact-section { /* 背景色はデフォルト */ }
+.contact-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--bg-white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+.contact-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+.contact-email {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+.contact-email a {
+    color: var(--primary);
+    word-break: break-all; /* 長い場合に折り返す */
+}
+.contact-email a:hover {
+    color: var(--primary-dark);
+}
+.contact-email i {
+    margin-right: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #222;
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    padding: 50px 0 40px 0;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    /* padding は .container で管理 */
+}
+
+.footer-content h3 {
+     color: white;
+     font-size: 1.5rem;
+     margin-bottom: 1rem;
+     font-weight: 600;
+}
+
+.footer-content p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    padding: 5px 0;
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* フッター内ソーシャルリンク */
+.social-links {
+    margin: 30px 0;
+}
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1.1rem;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+.social-links a:hover {
+    background: var(--primary);
+    transform: scale(1.1) translateY(-2px);
+}
+ .social-links a .fa-x-twitter {
+     font-size: 1rem;
+ }
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-bottom p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+}
+
+/* ▼▼▼ index.html の main タグ用 padding-top 上書き ▼▼▼ */
+@media (min-width: 992px) {
+    /* index.html の main タグのインラインスタイルを上書き */
+    main[style*="padding-top: var(--header-height-mobile)"] {
+        padding-top: var(--header-height-desktop) !important;
+    }
+}
+/* ▲▲▲ index.html の main タグ用 padding-top 上書き ▲▲▲ */
