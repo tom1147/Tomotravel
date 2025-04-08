@@ -1,29 +1,28 @@
 /* /blog/style.css */
 
-/* === 基本設定と変数 === */
 :root {
     --primary: #1E90FF;
     --primary-dark: #0066cc;
     --accent: #ff6b6b;
     --accent-dark: #ff5252;
-    --bg-light: #f9fafc;
+    --bg-light: #f9fafc; /* 少し明るく */
     --bg-white: #ffffff;
     --text-dark: #333;
     --text-muted: #6c757d;
     --border-color: rgba(0,0,0,0.05);
     --card-bg: var(--bg-white);
-    --card-shadow: 0 10px 30px rgba(0,0,0,0.05); /* 影を少し抑える */
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
     --hover-shadow: 0 14px 45px rgba(0,0,0,0.08);
-    --section-space: 80px; /* セクション間の基本スペース */
+    --section-space: 80px;
     --container-padding-desktop: 24px;
     --container-padding-mobile: 15px;
-    --border-radius: 16px; /* 角丸統一 */
+    --border-radius: 16px; /* 角丸を統一 */
     --transition-fast: 0.3s ease;
     --transition-medium: 0.5s ease;
     --header-height-desktop: 140px;
     --header-height-mobile: 80px;
-    --sidebar-width-desktop: 300px; /* ブログページ用 */
-    --sidebar-gap: 30px; /* ブログページ用 */
+    --sidebar-width-desktop: 300px;
+    --sidebar-gap: 30px;
 }
 
 * {
@@ -32,12 +31,14 @@
     box-sizing: border-box;
 }
 
-.hidden { display: none; }
+.hidden {
+    display: none;
+}
 
 body {
     background-color: var(--bg-light);
     color: var(--text-dark);
-    line-height: 1.7;
+    line-height: 1.7; /* 少し調整 */
     font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
     overflow-x: hidden;
 }
@@ -46,18 +47,23 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height-mobile);
 }
+
 @media (min-width: 992px) {
-    html { scroll-padding-top: var(--header-height-desktop); }
+    html {
+        scroll-padding-top: var(--header-height-desktop);
+    }
 }
 
-/* === 基本要素スタイル === */
+/* ===== 基本要素 ===== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--container-padding-mobile);
 }
 @media (min-width: 769px) {
-    .container { padding: 0 var(--container-padding-desktop); }
+    .container {
+        padding: 0 var(--container-padding-desktop);
+    }
 }
 
 a {
@@ -65,24 +71,27 @@ a {
     text-decoration: none;
     transition: color var(--transition-fast);
 }
-a:hover { color: var(--primary-dark); }
+a:hover {
+    color: var(--primary-dark);
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-    line-height: 1.4;
-    font-weight: 700;
-    color: var(--text-dark);
+    line-height: 1.4; /* 少し調整 */
+    font-weight: 700; /* デフォルト太め */
+    color: var(--text-dark); /* デフォルト色 */
 }
 
 p {
     margin-bottom: 1.5rem;
     font-size: 1.05rem;
     color: var(--text-dark);
-    line-height: 1.8;
+    line-height: 1.8; /* 本文の行間は広めに */
 }
-/* コンポーネント内で必要なpタグスタイルは別途指定 */
+/* コンポーネント毎に p のスタイルは上書き */
 
-/* === HEADER (共通) === */
+
+/* ===== HEADER ===== */
 header {
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
@@ -96,652 +105,1362 @@ header {
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(30,144,255,0.1);
 }
+
 header.scrolled {
-    padding-top: 5px; padding-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: rgba(255, 255, 255, 0.98);
     box-shadow: 0 4px 30px rgba(0,0,0,0.1);
 }
+
+/* ヘッダーコンテンツ (デスクトップ) */
 .header-content {
-    display: flex; flex-direction: column; align-items: center;
-    transition: padding var(--transition-fast); position: relative;
-    min-height: calc(var(--header-height-desktop) - 40px);
-    padding: 20px 0; justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: padding var(--transition-fast);
+    position: relative;
+    min-height: calc(var(--header-height-desktop) - 40px); /* padding分引く */
+    padding: 20px 0;
+    justify-content: center;
 }
+
 .logo-center {
-    text-align: center; margin-bottom: 18px;
-    transition: all var(--transition-fast); position: relative;
+    text-align: center;
+    margin-bottom: 18px;
+    transition: all var(--transition-fast);
+    position: relative;
 }
+
 .logo-center::after {
-    content: ''; position: absolute; bottom: -10px; left: 50%;
-    transform: translateX(-50%); width: 80px; height: 2px;
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
     background: linear-gradient(to right, var(--primary), var(--accent));
-    border-radius: 2px; opacity: 0.5; transition: opacity var(--transition-fast);
+    border-radius: 2px;
+    opacity: 0.5;
+    transition: opacity var(--transition-fast);
 }
-header.scrolled .logo-center::after { opacity: 0; }
+header.scrolled .logo-center::after {
+    opacity: 0;
+}
+
 .logo-text {
-    font-size: 32px; font-weight: bold; color: var(--primary) !important;
-    text-align: center; letter-spacing: 0.5px; transition: all var(--transition-fast);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.05); position: relative;
-    display: inline-block; text-decoration: none;
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary) !important;
+    text-align: center;
+    letter-spacing: 0.5px;
+    transition: all var(--transition-fast);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
 }
-a.logo-text:hover { color: var(--primary-dark) !important; transform: translateY(-2px); }
+a.logo-text:hover {
+    color: var(--primary-dark) !important;
+    transform: translateY(-2px);
+}
+
 .vlog-text {
-    color: var(--accent) !important; position: relative; font-weight: 700;
-    transition: all var(--transition-fast); font-size: inherit;
+    color: var(--accent) !important;
+    position: relative;
+    font-weight: 700;
+    transition: all var(--transition-fast);
+    font-size: inherit;
 }
+
 .menu-toggle {
-    display: none; cursor: pointer; font-size: 24px; color: var(--primary);
-    transition: all var(--transition-fast); position: absolute;
-    right: var(--container-padding-mobile); top: 50%; transform: translateY(-50%);
-    z-index: 1001; padding: 5px;
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary);
+    transition: all var(--transition-fast);
+    position: absolute;
+    right: var(--container-padding-mobile); /* モバイルのパディングに合わせる */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+    padding: 5px;
 }
-.menu-toggle:hover { color: var(--accent); }
-@media (min-width: 769px) { .menu-toggle { right: var(--container-padding-desktop); } }
-nav#main-nav { width: 100%; }
+.menu-toggle:hover {
+    color: var(--accent);
+}
+@media (min-width: 769px) {
+    .menu-toggle {
+        right: var(--container-padding-desktop); /* デスクトップのパディング */
+    }
+}
+
+
+/* デスクトップナビゲーション */
+nav#main-nav {
+    width: 100%;
+}
+
 nav ul.nav-menu {
-    display: flex; list-style: none; justify-content: center;
-    flex-wrap: wrap; padding-left: 0; margin: 0; gap: 4px;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin: 0;
+    gap: 4px;
 }
-nav ul.nav-menu li { margin: 0; position: relative; }
+
+nav ul.nav-menu li {
+    margin: 0;
+    position: relative;
+}
+
 nav ul.nav-menu li a {
-    font-size: 0.95rem; padding: 8px 12px; text-decoration: none;
-    color: var(--text-dark); font-weight: 500; transition: all var(--transition-fast);
-    display: block; border-radius: 6px; position: relative; overflow: hidden; z-index: 1;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    display: block;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
+
 nav ul.nav-menu li a::before {
-    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0;
-    background-color: var(--primary); opacity: 0.1; transition: height var(--transition-fast); z-index: -1;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--primary);
+    opacity: 0.1;
+    transition: height var(--transition-fast);
+    z-index: -1;
 }
-nav ul.nav-menu li a:hover { color: var(--primary); transform: translateY(-2px); }
-nav ul.nav-menu li a:hover::before { height: 100%; }
-.nav-icon { margin-right: 5px; width: 1em; text-align: center; }
+
+nav ul.nav-menu li a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+nav ul.nav-menu li a:hover::before {
+    height: 100%;
+}
+
+.nav-icon {
+    margin-right: 5px;
+    width: 1em;
+    text-align: center;
+}
+
+/* ソーシャルリンク (ヘッダーナビ内) */
 nav ul.nav-menu li a.social-nav-link {
-    padding: 8px 8px; background-color: transparent; color: var(--text-dark);
+    padding: 8px 8px;
+    background-color: transparent;
+    color: var(--text-dark);
 }
 nav ul.nav-menu li a.social-nav-link:hover {
-    color: var(--primary); background-color: rgba(30,144,255,0.05); transform: translateY(-2px);
+    color: var(--primary);
+    background-color: rgba(30,144,255,0.05);
+    transform: translateY(-2px);
 }
-nav ul.nav-menu li a.social-nav-link i { font-size: 1rem; margin-right: 0; }
-nav ul.nav-menu li a.social-nav-link::before { display: none; }
+nav ul.nav-menu li a.social-nav-link i {
+    font-size: 1rem;
+    margin-right: 0;
+}
+nav ul.nav-menu li a.social-nav-link::before {
+    display: none;
+}
+
+
+/* モバイルヘッダー (768px以下) */
 @media (max-width: 768px) {
-    header.scrolled { padding-top: 0; padding-bottom: 0; }
+    header.scrolled {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
     .header-content {
-        flex-direction: row; justify-content: space-between; align-items: center;
-        min-height: var(--header-height-mobile); padding: 0 var(--container-padding-mobile);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-height: var(--header-height-mobile);
+        padding: 0 var(--container-padding-mobile);
     }
-    .logo-center { margin-bottom: 0; text-align: left; flex-grow: 1; padding-left: 0; }
-    .logo-center::after { display: none; }
-    .logo-text { font-size: 24px; }
-    .vlog-text { font-size: 20px; }
-    .menu-toggle { display: block; position: static; transform: none; font-size: 24px; margin-left: 15px; padding: 5px; right: auto; }
+
+    .logo-center {
+        margin-bottom: 0;
+        text-align: left;
+        flex-grow: 1;
+        padding-left: 0;
+    }
+    .logo-center::after {
+        display: none;
+    }
+    .logo-text {
+        font-size: 24px;
+    }
+    .vlog-text {
+        font-size: 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: static;
+        transform: none;
+        font-size: 24px;
+        margin-left: 15px;
+        padding: 5px;
+        right: auto; /* リセット */
+    }
+
+    /* モバイルナビゲーションパネル */
     nav#main-nav {
-        position: absolute; top: 100%; left: 0; width: 100%;
-        background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.5s ease;
-        padding: 0; border-top: 1px solid rgba(30,144,255,0.1); margin-top: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, padding 0.5s ease;
+        padding: 0;
+        border-top: 1px solid rgba(30,144,255,0.1);
+        margin-top: 0;
     }
-    nav#main-nav.active { max-height: calc(100vh - var(--header-height-mobile)); padding: 10px 0; overflow-y: auto; }
-    nav ul.nav-menu { flex-direction: column; padding: 0; gap: 0; }
-    nav ul.nav-menu li { width: 100%; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.05); margin: 0; }
-    nav ul.nav-menu li:last-child { border-bottom: none; }
-    nav ul.nav-menu li a { padding: 15px 20px; width: 100%; display: block; font-size: 1rem; border-radius: 0; }
-    nav ul.nav-menu li a:hover { background-color: rgba(30,144,255,0.05); transform: none; color: var(--primary); }
-    nav ul.nav-menu li a::before { display: none; }
-    nav ul.nav-menu li a.social-nav-link { display: inline-block; width: auto; padding: 15px 10px; background-color: transparent; color: var(--primary); margin: 0 5px; }
-    nav ul.nav-menu li a.social-nav-link:hover { color: var(--accent); background-color: transparent; transform: translateY(-2px); }
-    nav ul.nav-menu li a.social-nav-link i { font-size: 1.2rem; }
-}
 
-/* === FOOTER (共通) === */
-footer {
-    background-color: #222; color: rgba(255,255,255,0.8); text-align: center;
-    padding: 50px 0 40px 0; margin-top: 60px; position: relative; overflow: hidden;
-}
-footer::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-    background: linear-gradient(to right, var(--primary), var(--accent));
-}
-.footer-content {
-    position: relative; z-index: 1; max-width: 800px; margin: 0 auto;
-    /* padding は .container で管理 */
-}
-.footer-content h3 {
-     color: white; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;
-}
-.footer-content p {
-    text-align: center; margin-bottom: 1.5rem; color: rgba(255,255,255,0.7);
-    font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;
-}
-.footer-links {
-    display: flex; justify-content: center; margin: 25px 0; flex-wrap: wrap;
-    gap: 8px 15px; padding-left: 0; list-style: none;
-}
-.footer-links a {
-    color: rgba(255,255,255,0.7); text-decoration: none; transition: all var(--transition-fast);
-    padding: 5px 0; white-space: nowrap; font-size: 0.9rem;
-}
-.footer-links a:hover { color: white; transform: translateY(-3px); }
-.social-links { margin: 30px 0; }
-.social-links a {
-    display: inline-flex; align-items: center; justify-content: center; margin: 0 10px;
-    width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1);
-    color: white; font-size: 1.1rem; transition: all var(--transition-fast); text-decoration: none;
-}
-.social-links a:hover { background: var(--primary); transform: scale(1.1) translateY(-2px); }
-.social-links a .fa-x-twitter { font-size: 1rem; }
-.footer-bottom {
-    margin-top: 30px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1);
-}
-.footer-bottom p { margin-bottom: 0; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+    nav#main-nav.active {
+        max-height: calc(100vh - var(--header-height-mobile));
+        padding: 10px 0;
+        overflow-y: auto;
+    }
 
-/* === index.html トップページ固有スタイル === */
-/* ヒーローセクション */
-.hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg') no-repeat center center/cover;
-    color: white; text-align: center; padding: 120px 0; min-height: 60vh;
-    display: flex; align-items: center; justify-content: center;
-}
-.hero-content { max-width: 800px; margin: 0 auto; padding: 0 var(--container-padding-mobile); }
-@media (min-width: 769px) { .hero-content { padding: 0 var(--container-padding-desktop); } }
-.hero-title {
-    font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2;
-    color: white; text-shadow: 0 3px 10px rgba(0,0,0,0.5);
-}
-.hero-subtitle {
-    font-size: 1.4rem; margin-bottom: 2.5rem; color: rgba(255,255,255,0.9); font-weight: 400;
-}
-.sp-only { display: inline; }
-@media (min-width: 769px) { .sp-only { display: none; } }
+    nav ul.nav-menu {
+        flex-direction: column;
+        padding: 0;
+        gap: 0;
+    }
 
-/* 共通セクションタイトル */
-.section-title {
-    font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; color: var(--primary-dark);
-    position: relative; padding-bottom: 15px; font-weight: 700;
-}
-.section-title::after {
-    content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 60px; height: 3px; background: linear-gradient(to right, var(--primary), var(--accent)); border-radius: 2px;
-}
-.section-title span {
-    display: block; font-size: 1rem; color: var(--text-muted); margin-bottom: 0.3rem;
-    font-weight: 500; letter-spacing: 1px;
-}
-.section-subtitle {
-    text-align: center; color: var(--text-muted); font-size: 1.1rem;
-    margin-top: -1rem; margin-bottom: 3rem;
-}
+    nav ul.nav-menu li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        margin: 0;
+    }
+    nav ul.nav-menu li:last-child {
+        border-bottom: none;
+    }
 
-/* 共通セクションスタイル */
-main section { /* mainタグ内のセクションに適用 */
-    padding: var(--section-space) 0; overflow: hidden;
-}
-main section:nth-of-type(odd) { /* 奇数セクション */
-    background-color: var(--bg-light); /* デフォルト背景 */
-}
-main section:nth-of-type(even) { /* 偶数セクション */
-    background-color: var(--bg-white);
-}
+    nav ul.nav-menu li a {
+        padding: 15px 20px;
+        width: 100%;
+        display: block;
+        font-size: 1rem;
+        border-radius: 0;
+    }
+    nav ul.nav-menu li a:hover {
+        background-color: rgba(30,144,255,0.05);
+        transform: none;
+        color: var(--primary);
+    }
+     nav ul.nav-menu li a::before {
+         display: none;
+     }
 
-/* 共通ボタン */
-.btn {
-    display: inline-block; padding: 12px 30px; border-radius: 50px; text-decoration: none;
-    font-weight: 600; transition: all var(--transition-fast); cursor: pointer;
-    font-size: 1rem; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; }
-.btn-primary:hover {
-    background: linear-gradient(135deg, var(--primary-dark), var(--accent-dark));
-    transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); color: white;
-}
-.btn-secondary { background-color: var(--bg-white); color: var(--primary); border: 2px solid var(--primary); }
-.btn-secondary:hover {
-    background-color: var(--primary); color: white; transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(30,144,255,0.2);
-}
-.section-button { text-align: center; margin-top: 3rem; }
+     /* モバイルナビ内のソーシャルリンク */
+     nav ul.nav-menu li a.social-nav-link {
+         display: inline-block;
+         width: auto;
+         padding: 15px 10px;
+         background-color: transparent;
+         color: var(--primary);
+         margin: 0 5px;
+     }
+     nav ul.nav-menu li a.social-nav-link:hover {
+         color: var(--accent);
+         background-color: transparent;
+         transform: translateY(-2px);
+     }
+     nav ul.nav-menu li a.social-nav-link i {
+         font-size: 1.2rem;
+     }
+} /* End of @media (max-width: 768px) */
 
-/* アバウトセクション */
-.about-content {
-    display: flex; flex-direction: column; align-items: center; gap: 30px;
-    max-width: 900px; margin: 0 auto;
-}
-@media (min-width: 769px) { .about-content { flex-direction: row; gap: 50px; align-items: flex-start; } }
-.about-image { flex-shrink: 0; text-align: center; }
-.about-image img {
-    width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 5px solid white;
-}
-.about-text { flex: 1; }
-.about-text h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary); }
-.about-text p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; }
-.about-social { margin-top: 1.5rem; }
-.about-social a {
-    display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
-    border-radius: 50%; background-color: rgba(30,144,255,0.1); color: var(--primary);
-    margin-right: 10px; transition: all var(--transition-fast); font-size: 1.1rem;
-}
-.about-social a:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
 
-/* 動画セクション */
-.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.video-card {
-    background-color: var(--bg-white); border-radius: var(--border-radius); overflow: hidden;
-    box-shadow: var(--card-shadow); transition: all var(--transition-fast);
-}
-.video-card:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
-.video-card a { display: block; text-decoration: none; color: var(--text-dark); }
-.video-thumbnail { position: relative; overflow: hidden; }
-.video-thumbnail img {
-    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
-    object-fit: cover; transition: transform var(--transition-medium);
-}
-.video-card:hover .video-thumbnail img { transform: scale(1.05); }
-.play-icon {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    font-size: 3rem; color: rgba(255, 255, 255, 0.8); background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 50%; padding: 10px; width: 60px; height: 60px; display: flex;
-    align-items: center; justify-content: center; line-height: 1; opacity: 0; transition: opacity var(--transition-fast);
-}
-.video-card:hover .play-icon { opacity: 1; }
-.video-card .video-title { /* video-card内のh3に限定 */
-    font-size: 1.1rem; padding: 15px 20px; margin: 0; font-weight: 600; line-height: 1.4; color: var(--text-dark);
-}
-
-/* ブログ誘導セクション */
-.blog-promo-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.blog-promo-card {
-    background-color: var(--bg-light); border-radius: var(--border-radius); overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all var(--transition-fast); border: 1px solid var(--border-color);
-}
-.blog-promo-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-.blog-promo-card a { display: block; text-decoration: none; color: var(--text-dark); padding-bottom: 20px; }
-.blog-promo-card img { display: block; width: 100%; height: 180px; object-fit: cover; margin-bottom: 15px; }
-.blog-promo-card h3 {
-    font-size: 1.15rem; font-weight: 600; margin: 0 20px 10px 20px; line-height: 1.4; color: var(--primary-dark);
-}
-.blog-promo-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0 20px 15px 20px; line-height: 1.6; }
-.blog-promo-date { display: block; font-size: 0.8rem; color: var(--text-muted); margin: 0 20px; text-align: right; }
-
-/* 旅の魅力セクション */
-.travel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.travel-card {
-    text-align: center; background-color: var(--bg-white); padding: 30px; border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow); transition: all var(--transition-fast);
-}
-.travel-card:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
-.travel-card img { width: 100%; height: 200px; object-fit: cover; border-radius: calc(var(--border-radius) - 5px); margin-bottom: 20px; }
-.travel-card h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 10px; }
-.travel-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0; }
-
-/* 撮影機材セクション */
-.equipment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-.equipment-item {
-    background-color: var(--bg-light); border-radius: var(--border-radius); padding: 25px; text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all var(--transition-fast); border: 1px solid var(--border-color);
-}
-.equipment-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-.equipment-item a { text-decoration: none; color: var(--text-dark); }
-.equipment-item img { max-width: 80%; height: 150px; object-fit: contain; margin-bottom: 15px; }
-.equipment-item h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--primary-dark); }
-.equipment-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0; }
-
-/* 予約セクション */
-.booking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-.booking-item {
-    background-color: var(--bg-white); border-radius: var(--border-radius); padding: 25px; text-align: center;
-    box-shadow: var(--card-shadow); transition: all var(--transition-fast);
-}
-.booking-item:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
-.booking-item a { text-decoration: none; color: var(--text-dark); }
-.booking-item img { max-height: 50px; width: auto; max-width: 80%; margin-bottom: 20px; filter: grayscale(50%); transition: filter var(--transition-fast); }
-.booking-item:hover img { filter: grayscale(0%); }
-.booking-item h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--primary); }
-.booking-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0; }
-
-/* 事前準備セクション */
-.preparation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-.preparation-item {
-    background-color: var(--bg-light); border-radius: var(--border-radius); padding: 30px 25px; text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all var(--transition-fast); border: 1px solid var(--border-color);
-}
-.preparation-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-.preparation-item a { text-decoration: none; color: var(--text-dark); }
-.preparation-icon {
-    font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; display: inline-block;
-    width: 60px; height: 60px; line-height: 60px; background-color: rgba(255, 107, 107, 0.1); border-radius: 50%;
-}
-.preparation-item h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: var(--primary-dark); }
-.preparation-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0; }
-
-/* アフィリエイト注記 */
-.affiliate-notice { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 2rem; margin-bottom: 0; }
-
-/* お問い合わせセクション */
-.contact-content {
-    max-width: 700px; margin: 0 auto; text-align: center; background-color: var(--bg-white);
-    padding: 40px; border-radius: var(--border-radius); box-shadow: var(--card-shadow);
-}
-.contact-content p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--text-dark); }
-.contact-email { font-size: 1.2rem; font-weight: 500; margin-top: 1rem; margin-bottom: 1.5rem; }
-.contact-email a { color: var(--primary); word-break: break-all; }
-.contact-email a:hover { color: var(--primary-dark); }
-.contact-email i { margin-right: 8px; }
-
-/* === ブログ関連ページ共通レイアウト === */
+/* ===== ブログページ全体レイアウト ===== */
+/* 記事ページと一覧ページ共通 */
 .blog-page-wrapper {
-    display: flex; flex-direction: column; gap: var(--sidebar-gap);
-    padding-top: var(--header-height-mobile); max-width: 1200px; margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sidebar-gap);
+    /* ▼▼▼ 変更: ヘッダー高ちょうどにする (追加余白削除) ▼▼▼ */
+    padding-top: var(--header-height-mobile); /* モバイル時 */
+    /* ▲▲▲ 変更: ヘッダー高ちょうどにする (追加余白削除) ▲▲▲ */
+    max-width: 1200px;
+    margin: 0 auto;
     padding-bottom: var(--section-space);
 }
-@media (min-width: 992px) {
-    .blog-page-wrapper { flex-direction: row; padding-top: var(--header-height-desktop); }
-}
-.blog-main-content { flex: 1; min-width: 0; order: 1; }
 
-/* === BLOG LIST PAGE スタイル (/blog.html) === */
+@media (min-width: 992px) { /* デスクトップ */
+    .blog-page-wrapper {
+        flex-direction: row;
+        /* ▼▼▼ 変更: ヘッダー高ちょうどにする (追加余白削除) ▼▼▼ */
+        padding-top: var(--header-height-desktop); /* デスクトップ時 */
+        /* ▲▲▲ 変更: ヘッダー高ちょうどにする (追加余白削除) ▲▲▲ */
+    }
+}
+
+/* ===== メインコンテンツエリア ===== */
+/* 記事ページと一覧ページ共通 */
+.blog-main-content {
+    flex: 1;
+    min-width: 0;
+    order: 1; /* モバイルでもデスクトップでも左側(上側) */
+}
+
+
+/* ===== BLOG LIST PAGE SPECIFIC STYLES ===== */
+/* ( /blog.html 用の記事一覧のデザイン ) */
+
+/* 一覧ページ用の見出し (blog.html 内にインラインスタイルで仮置きしているもの) */
 .blog-list-header {
-     text-align: center; margin-bottom: 25px; padding-top: 20px;
+     text-align: center;
+     /* ▼▼▼ 変更: 見出しブロック下の余白を小さくする ▼▼▼ */
+     margin-bottom: 25px; /* 例: 40px から 25px に変更 */
+     /* ▲▲▲ 変更: 見出しブロック下の余白を小さくする ▲▲▲ */
+     /* ▼▼▼ 変更: ヘッダーとの間に少しだけ隙間を作る ▼▼▼ */
+     padding-top: 20px;
+     /* ▲▲▲ 変更: ヘッダーとの間に少しだけ隙間を作る ▲▲▲ */
  }
-.blog-list-header h1 { font-size: 2.5rem; color: var(--primary); font-weight: 700; margin-bottom: 0.25rem; }
-.blog-list-header p { font-size: 1.1rem; color: var(--text-muted); margin: 0; }
-@media (max-width: 768px) {
-    .blog-list-header { margin-bottom: 20px; padding-top: 15px; }
+ .blog-list-header h1 {
+     font-size: 2.5rem;
+     color: var(--primary);
+     font-weight: 700;
+     /* ▼▼▼ 変更: 見出し下の余白を小さくする ▼▼▼ */
+     margin-bottom: 0.25rem; /* 例: 0.5rem から 0.25rem に変更 */
+     /* ▲▲▲ 変更: 見出し下の余白を小さくする ▲▲▲ */
+ }
+ .blog-list-header p {
+     font-size: 1.1rem;
+     color: var(--text-muted);
+     margin: 0;
+ }
+ @media (max-width: 768px) {
+    .blog-list-header {
+        /* ▼▼▼ 変更: モバイルでの見出しブロック下の余白 ▼▼▼ */
+        margin-bottom: 20px;
+        /* ▲▲▲ 変更: モバイルでの見出しブロック下の余白 ▼▼▼ */
+        padding-top: 15px; /* モバイルでの上部隙間調整 */
+    }
     .blog-list-header h1 { font-size: 2rem; }
     .blog-list-header p { font-size: 1rem; }
-}
+ }
+
+/* --- 記事一覧コンテナ (Gridレイアウト) --- */
 .posts-container {
-    display: grid; grid-template-columns: repeat(1, 1fr); gap: 40px;
-    max-width: 850px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+    max-width: 850px; /* コンテナ最大幅 */
+    margin: 0 auto; /* 中央寄せ */
+    /* padding は container クラスで管理 */
 }
-@media (max-width: 768px) { .posts-container { gap: 30px; } }
+@media (max-width: 768px) {
+    .posts-container {
+        gap: 30px;
+    }
+}
+
+/* --- 記事カード --- */
 .post-card {
-    position: relative; background-color: var(--card-bg); border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow); overflow: hidden; transition: all var(--transition-fast);
-    border: 1px solid var(--border-color); display: flex; flex-direction: column; height: 100%;
+    position: relative;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
+/* 左側の縦線 */
 .post-card::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
     background: linear-gradient(to bottom, var(--primary), var(--accent));
     border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
-.post-card:hover { transform: translateY(-6px); box-shadow: var(--hover-shadow); }
-.post-content { padding: 25px 30px; flex-grow: 1; display: flex; flex-direction: column; }
-@media (max-width: 768px) { .post-content { padding: 20px; } }
-.post-meta {
-    display: flex; align-items: center; flex-wrap: wrap; margin-bottom: 12px;
-    color: var(--text-muted); font-size: 0.85rem;
-}
-.post-meta > span {
-    display: flex; align-items: center; margin-right: 12px; background-color: rgba(30,144,255,0.05);
-    padding: 4px 12px; border-radius: 50px; margin-bottom: 6px;
-}
-.post-meta i { margin-right: 6px; color: var(--primary); opacity: 0.8; }
-.post-title { /* 一覧ページのタイトル */
-    font-size: 1.7rem; margin-bottom: 15px; color: var(--text-dark); transition: color var(--transition-fast);
-    line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; text-align: left;
-}
-.post-card:hover .post-title { color: var(--primary); }
-@media (max-width: 768px) { .post-title { font-size: 1.4rem; } }
-@media (max-width: 480px) { .post-title { font-size: 1.3rem; } }
-.excerpt-container { display: flex; gap: 20px; margin-bottom: 20px; align-items: flex-start; }
-@media (max-width: 768px) { .excerpt-container { flex-direction: column; gap: 15px; } }
-.post-thumbnail {
-    flex: 0 0 120px; height: 120px; border-radius: 10px; overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-.post-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.post-card:hover .post-thumbnail img { transform: scale(1.05); }
-@media (max-width: 768px) { .post-thumbnail { width: 100%; height: 180px; flex: none; } }
-@media (max-width: 480px) { .post-thumbnail { height: 150px; } }
-.post-excerpt { flex: 1; color: var(--text-dark); font-size: 0.95rem; line-height: 1.6; }
-.post-excerpt p { margin-bottom: 0; font-size: inherit; line-height: inherit; }
-.post-link {
-    align-self: flex-start; font-weight: 600; display: inline-flex; align-items: center;
-    padding: 10px 24px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white !important; border-radius: 50px; transition: all var(--transition-fast);
-    box-shadow: 0 4px 15px rgba(30,144,255,0.3); margin-top: auto; margin-bottom: 15px;
-    letter-spacing: 0.5px; font-size: 0.95rem; text-decoration: none;
-}
-.post-link i { margin-left: 10px; transition: transform var(--transition-fast); }
-.post-link:hover {
-    transform: translateY(-2px); background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    color: white !important; box-shadow: 0 8px 25px rgba(30,144,255,0.5);
-}
-.post-link:hover i { transform: translateX(6px); }
-.post-tags { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 15px; }
-.post-tag {
-    background-color: rgba(30,144,255,0.08); color: var(--primary); padding: 6px 16px; border-radius: 50px;
-    font-size: 0.9rem; transition: all var(--transition-fast); font-weight: 500; border: 1px solid rgba(30,144,255,0.15);
-    text-decoration: none; display: inline-flex; align-items: center;
-}
-.post-tag i { margin-right: 5px; font-size: 0.8em; opacity: 0.7; }
-.post-tag:hover { background-color: var(--primary); color: white; border-color: var(--primary); }
-.post-tag:hover i { color: white; opacity: 1; }
 
-/* === BLOG POST PAGE スタイル (/blog/cebu2ndX.html) === */
-.blog-container { padding-top: 0; } /* ラッパーで制御 */
-.blog-header { /* 記事ヘッダー */
-    margin-top: 0; background-color: var(--card-bg); text-align: center; margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: var(--border-radius); overflow: hidden;
-    position: relative; padding: 40px 30px; border: 1px solid var(--border-color); margin-left: auto; margin-right: auto;
+.post-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--hover-shadow);
 }
-.blog-title { /* 記事タイトル */
-    font-size: 2.2rem; padding: 0 10px; margin-bottom: 15px; color: var(--primary);
-    line-height: 1.4; text-align: center; font-weight: 700;
-}
-.blog-meta { /* 記事メタ */
-    font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0; text-align: center; line-height: 1.6;
-}
-.blog-meta span { margin: 0 5px; white-space: nowrap; }
-.blog-content { /* 記事本文エリア */
-    background-color: var(--card-bg); padding: 40px; border-radius: var(--border-radius);
-    margin-bottom: var(--section-space); box-shadow: var(--card-shadow); position: relative;
-    border: 1px solid var(--border-color); margin-left: auto; margin-right: auto;
-}
-.blog-content h2 {
-    font-size: 2rem; margin-top: 50px; margin-bottom: 25px; padding-bottom: 10px;
-    border-bottom: 2px solid var(--accent); display: block; text-align: center; font-weight: 700; color: var(--primary-dark);
-}
-.blog-content h2:first-of-type { margin-top: 0; }
-.blog-content h3 {
-    font-size: 1.6rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary-dark);
-    text-align: center; font-weight: 600; border-bottom: none; padding-bottom: 0;
-}
-.blog-content p { margin-bottom: 20px; line-height: 1.8; text-align: left; max-width: 100%; font-size: 1.05rem; }
-.blog-img-container { margin: 40px auto; text-align: center; max-width: 750px; }
-.blog-img-container img {
-    max-width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast); display: block; margin: 0 auto 10px auto;
-}
-.blog-img-container img:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
-.blog-img-caption { font-size: 0.9rem; color: var(--text-muted); margin-top: 0; text-align: center; padding: 0 10px; }
-.video-container { /* 記事内動画 */
-    position: relative; padding-bottom: 56.25%; height: 0; margin: 40px auto; overflow: hidden; max-width: 800px;
-    border-radius: var(--border-radius); box-shadow: 0 15px 35px rgba(0,0,0,0.2); transition: all var(--transition-fast);
-}
-.video-container:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.25); transform: scale(1.02); }
-.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; display: block; border-radius: var(--border-radius); }
-.blog-content blockquote {
-    background-color: rgba(30,144,255,0.05); border-left: 4px solid var(--primary); padding: 20px 25px;
-    margin: 30px auto; font-style: italic; border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    max-width: 90%; text-align: left; color: var(--text-dark);
-}
-.blog-content blockquote p { margin-bottom: 0; font-size: 1.05rem; }
-.alert-box-quote {
-    background-color: #fff8e1; border-left: 4px solid #ffca28; padding: 20px 25px; margin: 30px auto;
-    font-style: normal; border-radius: 0 var(--border-radius) var(--border-radius) 0; max-width: 90%; text-align: left; color: #333;
-}
-.alert-box-quote p { margin-bottom: 0; font-size: 1.05rem; }
-.alert-box-quote strong { color: #c77405; font-weight: bold; }
-.blog-content em { font-style: normal; font-weight: 600; color: var(--accent); }
-.blog-content ul { margin: 25px auto; padding-left: 30px; max-width: 700px; text-align: left; }
-.blog-content li { margin-bottom: 12px; position: relative; text-align: left; list-style: none; padding-left: 10px; font-size: 1.05rem; }
-.blog-content li::before {
-    content: ''; position: absolute; left: -20px; top: 0.6em; width: 8px; height: 8px;
-    background-color: var(--accent); border-radius: 50%;
-}
-.blog-content li strong { font-weight: 600; }
-.blog-footer { /* 記事フッター */
-    margin-top: 40px; padding-top: 25px; border-top: 1px solid rgba(0,0,0,0.1); display: flex;
-    justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 15px; margin-left: auto; margin-right: auto;
-}
-.blog-tags { /* 記事内タグ */ display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
-.blog-tag { /* 記事内タグ */
-    background-color: rgba(30,144,255,0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px;
-    font-size: 0.85rem; transition: all var(--transition-fast); text-decoration: none; white-space: nowrap;
-    display: inline-flex; align-items: center;
-}
-.blog-tag i { margin-right: 4px; }
-.blog-tag:hover { background-color: var(--primary); color: white; transform: scale(1.05); }
-.blog-share { display: flex; gap: 10px; margin-bottom: 0; }
-.share-button {
-    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
-    background-color: rgba(0,0,0,0.05); color: var(--text-muted); transition: all var(--transition-fast); text-decoration: none;
-}
-.share-button i { font-size: 0.9rem; }
-.share-button:hover { background-color: var(--primary); color: white; transform: translateY(-3px); }
-.next-prev-nav {
-    display: flex; justify-content: space-between; margin-top: 40px; width: 100%;
-    border-top: 1px solid rgba(0,0,0,0.1); padding-top: 25px; margin-left: auto; margin-right: auto; gap: 20px;
-}
-.prev-post, .next-post { max-width: 48%; flex-basis: 48%; }
-.prev-post a, .next-post a { text-decoration: none; display: block; padding: 10px; border-radius: 8px; transition: background-color var(--transition-fast); }
-.prev-post a:hover, .next-post a:hover { background-color: rgba(0,0,0,0.03); }
-.prev-post { text-align: left; }
-.next-post { text-align: right; }
-.nav-direction { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; display: block; }
-.nav-direction .fas { margin: 0 4px; }
-.nav-title { /* 下部ナビタイトル */ font-size: 1.05rem; font-weight: 600; color: var(--primary); transition: all var(--transition-fast); display: block; line-height: 1.4; }
-.prev-post a:hover .nav-title, .next-post a:hover .nav-title { color: var(--accent); }
-.affiliate-box { background-color: transparent; border: none; padding: 0; margin: 40px auto; text-align: center; max-width: 800px; }
-.affiliate-btn {
-    display: inline-block; background-color: var(--primary); color: white !important; padding: 12px 30px; border-radius: 30px;
-    text-decoration: none; font-weight: 600; margin: 10px 5px; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(30,144,255,0.3);
-    border: none; cursor: pointer; font-size: 0.95rem; line-height: 1.5; white-space: nowrap;
-}
-.affiliate-btn:hover { background-color: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(30,144,255,0.4); }
-.affiliate-btn i { margin-right: 8px; }
 
-/* === サイドバー (ブログページ用) === */
-.blog-sidebar { width: 100%; order: 2; }
-@media (min-width: 992px) {
-    .blog-sidebar {
-        width: var(--sidebar-width-desktop); flex-shrink: 0; order: 2; position: sticky;
-        top: calc(var(--header-height-desktop) + 40px); max-height: calc(100vh - var(--header-height-desktop) - 60px);
-        overflow-y: auto; padding-bottom: 20px;
-    }
-}
-.blog-sidebar > div {
-    background-color: var(--card-bg); padding: 25px 20px; border-radius: var(--border-radius); margin-bottom: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);
-}
-.blog-sidebar > div:last-child { margin-bottom: 0; }
-.blog-sidebar h4 {
-    font-size: 1.2rem; color: var(--primary-dark); margin-bottom: 20px; padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0,0,0,0.1); text-align: center; font-weight: 600; margin-top: 0;
-}
-.sidebar-profile { text-align: center; }
-.profile-icon { margin-bottom: 15px; display: inline-block; }
-.profile-icon img {
-    width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 4px solid rgba(30, 144, 255, 0.2);
-    padding: 4px; background-color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: block; transition: transform var(--transition-fast);
-}
-.profile-icon img:hover { transform: scale(1.05); }
-.profile-info h4 { border-bottom: none; padding-bottom: 0; margin-bottom: 8px; font-size: 1.1rem; }
-.profile-info p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0; }
-.sidebar-recommended {}
-.recommended-list { list-style: none; padding-left: 0; margin: 0; }
-.recommended-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed rgba(0,0,0,0.07); }
-.recommended-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-.recommended-link {
-    text-decoration: none; color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; display: flex;
-    align-items: flex-start; transition: color var(--transition-fast); gap: 8px;
-}
-.recommended-link:hover { color: var(--primary); }
-.recommended-link i { color: var(--accent); width: 1.1em; text-align: center; flex-shrink: 0; margin-top: 0.15em; }
-.sidebar-action { text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05); }
-.sidebar-button {
-    display: inline-block; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white;
-    padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
-    transition: all var(--transition-fast); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); border: none; cursor: pointer; line-height: 1.4;
-}
-.sidebar-button:hover {
-    background: linear-gradient(135deg, var(--primary-dark), var(--accent-dark)); transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); color: white;
-}
-.sidebar-button i { margin-right: 6px; }
-
-/* === レスポンシブ調整 (共通) === */
-@media (max-width: 991px) {
-    .blog-sidebar { margin-top: 0; order: 2; position: static; max-height: none; overflow-y: visible; }
-    .blog-main-content { order: 1; }
-    .hero-title { font-size: 2.8rem; }
-    .hero-subtitle { font-size: 1.2rem; }
-    .section-title { font-size: 2rem; }
+/* カード内のコンテンツエリア */
+.post-content {
+    padding: 25px 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 @media (max-width: 768px) {
-    .blog-page-wrapper { padding-top: var(--header-height-mobile); gap: 25px; } /* 隙間は blog-list-header で調整 */
-    .blog-header { padding: 30px 20px; margin-bottom: 30px; }
-    .blog-title { font-size: 1.8rem; }
-    .blog-content { padding: 30px 20px; margin-bottom: 60px; }
+    .post-content {
+        padding: 20px;
+    }
+}
+
+/* --- メタ情報 (日付、場所) --- */
+.post-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.post-meta > span {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    background-color: rgba(30,144,255,0.05);
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 6px; /* 折り返し時の縦マージン */
+}
+
+.post-meta i {
+    margin-right: 6px;
+    color: var(--primary); /* アイコン色 */
+    opacity: 0.8;
+}
+
+/* --- 記事タイトル (一覧) --- */
+.post-title { /* 記事ページの .blog-title と区別 */
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    transition: color var(--transition-fast);
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: left; /* 左揃え */
+}
+
+.post-card:hover .post-title {
+    color: var(--primary);
+}
+@media (max-width: 768px) {
+    .post-title {
+        font-size: 1.4rem;
+    }
+}
+@media (max-width: 480px) {
+    .post-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* --- 抜粋コンテナ (サムネイル + 抜粋文) --- */
+.excerpt-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+@media (max-width: 768px) {
+    .excerpt-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* --- サムネイル --- */
+.post-thumbnail {
+    flex: 0 0 120px;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.post-card:hover .post-thumbnail img {
+    transform: scale(1.05);
+}
+@media (max-width: 768px) {
+    .post-thumbnail {
+        width: 100%;
+        height: 180px;
+        flex: none;
+    }
+}
+@media (max-width: 480px) {
+    .post-thumbnail {
+        height: 150px;
+    }
+}
+
+/* --- 抜粋文 --- */
+.post-excerpt {
+    flex: 1;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.post-excerpt p {
+    margin-bottom: 0; /* 抜粋内pのマージンリセット */
+    font-size: inherit; /* 親要素追従 */
+    line-height: inherit;
+}
+
+/* --- 「記事を読む」ボタン --- */
+.post-link {
+    align-self: flex-start;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white !important;
+    border-radius: 50px;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 15px rgba(30,144,255,0.3);
+    margin-top: auto; /* カード下部に配置 */
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
+.post-link i {
+    margin-left: 10px;
+    transition: transform var(--transition-fast);
+}
+
+.post-link:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: white !important;
+    box-shadow: 0 8px 25px rgba(30,144,255,0.5);
+}
+
+.post-link:hover i {
+    transform: translateX(6px);
+}
+
+/* --- タグ (一覧) --- */
+.post-tags { /* 記事ページの .blog-tags と区別 */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    margin-top: 15px;
+}
+
+.post-tag { /* 記事ページの .blog-tag と区別 */
+    background-color: rgba(30,144,255,0.08);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+    font-weight: 500;
+    border: 1px solid rgba(30,144,255,0.15);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+.post-tag i {
+    margin-right: 5px;
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.post-tag:hover {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+.post-tag:hover i {
+    color: white;
+    opacity: 1;
+}
+
+/* ===== BLOG POST PAGE SPECIFIC STYLES ===== */
+/* ( /blog/cebu2ndX.html 用の記事本文のデザイン ) */
+
+/* ブログ記事コンテナ (記事ページ用) */
+.blog-container { /* style.css に元々あったもの */
+     padding-top: 0; /* blog-page-wrapper で制御 */
+}
+
+/* ブログヘッダー (タイトル、メタ情報 - 記事ページ用) */
+.blog-header {
+    margin-top: 0;
+    background-color: var(--card-bg);
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    padding: 40px 30px;
+    border: 1px solid var(--border-color);
+    /* max-width は親の .blog-main-content に依存 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-title { /* 記事ページのタイトル */
+    font-size: 2.2rem;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    color: var(--primary);
+    line-height: 1.4;
+    text-align: center;
+    font-weight: 700;
+}
+
+.blog-meta { /* 記事ページのメタ情報 */
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 1.6;
+}
+.blog-meta span {
+    margin: 0 5px;
+    white-space: nowrap;
+}
+
+/* ブログ本文エリア (記事ページ用) */
+.blog-content {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--section-space); /* 下部マージン */
+    box-shadow: var(--card-shadow);
+    position: relative;
+    border: 1px solid var(--border-color);
+    /* max-width は親の .blog-main-content に依存 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-content h2 {
+    font-size: 2rem;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+.blog-content h2:first-of-type { /* 最初のh2のマージン除去 */
+    margin-top: 0;
+}
+
+.blog-content h3 {
+    font-size: 1.6rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+    text-align: center;
+    font-weight: 600;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.blog-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    text-align: left;
+    max-width: 100%; /* コンテナ幅に追従 */
+    font-size: 1.05rem;
+}
+
+.blog-img-container {
+    margin: 40px auto;
+    text-align: center;
+    max-width: 750px;
+}
+
+.blog-img-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.blog-img-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.blog-img-caption {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    margin: 40px auto;
+    overflow: hidden;
+    max-width: 800px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: all var(--transition-fast);
+}
+
+.video-container:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    transform: scale(1.02);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    border-radius: var(--border-radius);
+}
+
+.blog-content blockquote {
+    background-color: rgba(30,144,255,0.05);
+    border-left: 4px solid var(--primary);
+    padding: 20px 25px;
+    margin: 30px auto;
+    font-style: italic;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    max-width: 90%;
+    text-align: left;
+    color: var(--text-dark);
+}
+.blog-content blockquote p {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+}
+
+.alert-box-quote {
+    background-color: #fff8e1;
+    border-left: 4px solid #ffca28;
+    padding: 20px 25px;
+    margin: 30px auto;
+    font-style: normal;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    max-width: 90%;
+    text-align: left;
+    color: #333;
+}
+.alert-box-quote p {
+     margin-bottom: 0;
+     font-size: 1.05rem;
+}
+.alert-box-quote strong {
+    color: #c77405;
+    font-weight: bold;
+}
+
+.blog-content em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.blog-content ul {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding-left: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.blog-content li {
+    margin-bottom: 12px;
+    position: relative;
+    text-align: left;
+    list-style: none;
+    padding-left: 10px;
+    font-size: 1.05rem;
+}
+
+.blog-content li::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+}
+.blog-content li strong {
+     font-weight: 600;
+}
+
+/* ブログ記事フッター (タグ、シェア - 記事ページ用) */
+.blog-footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    /* max-width は親(.blog-content)に依存 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-tags { /* 記事ページのタグ */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.blog-tag { /* 記事ページのタグ */
+    background-color: rgba(30,144,255,0.1);
+    color: var(--primary);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-flex; /* アイコン用 */
+    align-items: center;
+}
+.blog-tag i {
+    margin-right: 4px;
+}
+
+.blog-tag:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: scale(1.05);
+}
+
+.blog-share {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.share-button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.05);
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+.share-button i {
+    font-size: 0.9rem;
+}
+
+.share-button:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* 前後の記事ナビゲーション */
+.next-prev-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 20px;
+}
+
+.prev-post, .next-post {
+    max-width: 48%;
+    flex-basis: 48%;
+}
+.prev-post a, .next-post a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color var(--transition-fast);
+}
+.prev-post a:hover, .next-post a:hover {
+    background-color: rgba(0,0,0,0.03);
+}
+
+.prev-post { text-align: left; }
+.next-post { text-align: right; }
+
+.nav-direction {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    display: block;
+}
+.nav-direction .fas {
+    margin: 0 4px;
+}
+
+.nav-title { /* 記事ページの下部ナビのタイトル */
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary);
+    transition: all var(--transition-fast);
+    display: block;
+    line-height: 1.4;
+}
+
+.prev-post a:hover .nav-title,
+.next-post a:hover .nav-title {
+    color: var(--accent);
+}
+
+/* アフィリエイトボタン */
+.affiliate-box {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 40px auto;
+    text-align: center;
+    max-width: 800px;
+}
+
+.affiliate-btn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white !important;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 10px 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(30,144,255,0.3);
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.affiliate-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(30,144,255,0.4);
+}
+.affiliate-btn i {
+    margin-right: 8px;
+}
+
+
+/* ===== サイドバー ===== */
+.blog-sidebar {
+    width: 100%; /* モバイルデフォルト */
+    order: 2;
+}
+
+@media (min-width: 992px) { /* デスクトップ */
+    .blog-sidebar {
+        width: var(--sidebar-width-desktop);
+        flex-shrink: 0;
+        order: 2;
+        position: sticky;
+        top: calc(var(--header-height-desktop) + 40px);
+        max-height: calc(100vh - var(--header-height-desktop) - 60px);
+        overflow-y: auto;
+        padding-bottom: 20px;
+    }
+}
+
+/* サイドバー内の各ウィジェット */
+.blog-sidebar > div {
+    background-color: var(--card-bg);
+    padding: 25px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+.blog-sidebar > div:last-child {
+    margin-bottom: 0;
+}
+
+.blog-sidebar h4 {
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+/* プロフィールセクション */
+.sidebar-profile {
+    text-align: center;
+}
+.profile-icon {
+    margin-bottom: 15px;
+    display: inline-block;
+}
+.profile-icon img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(30, 144, 255, 0.2);
+    padding: 4px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: block;
+    transition: transform var(--transition-fast);
+}
+.profile-icon img:hover {
+    transform: scale(1.05);
+}
+.profile-info h4 { /* サイドバーのプロフィールタイトル */
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+.profile-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* おすすめ記事セクション */
+.sidebar-recommended {
+    /* 特に追加スタイル不要 */
+}
+.recommended-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.recommended-item {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(0,0,0,0.07);
+}
+.recommended-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.recommended-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    transition: color var(--transition-fast);
+    gap: 8px;
+}
+.recommended-link:hover {
+    color: var(--primary);
+}
+.recommended-link i {
+    color: var(--accent);
+    width: 1.1em;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 0.15em;
+}
+
+/* サイドバーアクションエリア（ボタン用） */
+.sidebar-action {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* サイドバーボタン */
+.sidebar-button {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.sidebar-button:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--accent-dark));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+.sidebar-button i {
+    margin-right: 6px;
+}
+
+
+/* ===== レスポンシブ調整 (ブログ詳細・一覧共通) ===== */
+
+/* 992px未満 (タブレット縦・モバイル) */
+@media (max-width: 991px) {
+    .blog-sidebar {
+         margin-top: 0;
+         order: 2;
+         position: static;
+         max-height: none;
+         overflow-y: visible;
+    }
+    .blog-main-content {
+        order: 1;
+    }
+}
+
+/* 768px未満 (モバイル) */
+@media (max-width: 768px) {
+    /* .blog-page-wrapper の padding-top は変更済み */
+    .blog-page-wrapper {
+        gap: 25px;
+    }
+    .blog-header { /* 記事ヘッダー */
+        padding: 30px 20px;
+        margin-bottom: 30px;
+    }
+    .blog-title { font-size: 1.8rem; } /* 記事タイトル */
+    .blog-content { /* 記事本文エリア */
+        padding: 30px 20px;
+        margin-bottom: 60px;
+    }
     .blog-content h2 { font-size: 1.8rem; margin-top: 40px; margin-bottom: 20px; }
     .blog-content h3 { font-size: 1.4rem; margin-top: 30px; margin-bottom: 15px; }
     .blog-content p { font-size: 1rem; }
     .blog-content li { font-size: 1rem; }
     .blog-content blockquote p { font-size: 1rem; }
     .alert-box-quote p { font-size: 1rem; }
+
     .blog-footer { flex-direction: column; gap: 20px; align-items: center; padding-top: 20px; }
     .blog-tags { justify-content: center; }
     .blog-share { margin-top: 0; }
-    .next-prev-nav { flex-direction: column; gap: 20px; align-items: stretch; margin-top: 30px; padding-top: 20px; }
-    .prev-post, .next-post { max-width: 100%; flex-basis: auto; text-align: center; }
-    .nav-title { font-size: 1rem; }
+
+    .next-prev-nav {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+    .prev-post, .next-post {
+        max-width: 100%;
+        flex-basis: auto;
+        text-align: center;
+    }
+    .nav-title { font-size: 1rem; } /* 下部ナビタイトル */
+
     .affiliate-box { max-width: 95%; margin: 30px auto;}
-    .affiliate-btn { padding: 10px 20px; font-size: 0.9rem; white-space: normal; }
+    .affiliate-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        white-space: normal;
+    }
+
+    /* サイドバーモバイル */
     .blog-sidebar > div { padding: 20px 15px; margin-bottom: 20px; }
     .blog-sidebar h4 { font-size: 1.1rem; margin-bottom: 15px; padding-bottom: 8px; }
-    .sidebar-button { padding: 10px 20px; font-size: 0.9rem; }
+    .sidebar-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
     .profile-icon img { width: 80px; height: 80px; }
     .profile-info h4 { font-size: 1rem; }
     .profile-info p { font-size: 0.85rem; }
     .recommended-link { font-size: 0.85rem; }
-    .hero-section { padding: 80px 0; min-height: 50vh; }
-    .hero-title { font-size: 2.2rem; }
-    .hero-subtitle { font-size: 1.1rem; margin-bottom: 2rem; }
-    .section-title { font-size: 1.8rem; }
-    .section-subtitle { font-size: 1rem; margin-bottom: 2rem; }
-    .btn { padding: 10px 25px; font-size: 0.9rem; }
-    .about-image img { width: 150px; height: 150px; }
-    .about-text h3 { font-size: 1.5rem; }
-    .about-text p { font-size: 1rem; }
-}
+
+} /* End of @media (max-width: 768px) */
+
+/* 480px未満 (小型モバイル) */
 @media (max-width: 480px) {
-    :root { --container-padding-mobile: 15px; }
-    .blog-page-wrapper { padding-top: var(--header-height-mobile); } /* 隙間は blog-list-header で調整 */
-    .blog-title { font-size: 1.6rem; }
+     :root {
+         --container-padding-mobile: 15px;
+     }
+     .blog-page-wrapper {
+        padding-top: calc(var(--header-height-mobile) + 15px); /* 小型モバイルでは少し隙間を残す */
+     }
+    .blog-title { font-size: 1.6rem; } /* 記事タイトル */
+
     .blog-content { padding: 25px 15px; }
     .blog-content h2 { font-size: 1.6rem; }
     .blog-content h3 { font-size: 1.3rem; }
+
     .blog-img-container { max-width: 100%; }
     .video-container { max-width: 100%; }
+
     .blog-content ul { padding-left: 25px; }
     .blog-content li::before { left: -18px; }
+
     .affiliate-btn { font-size: 0.85rem; padding: 8px 18px; }
-    .sidebar-button { padding: 9px 18px; font-size: 0.85rem; }
-    .hero-title { font-size: 1.8rem; }
-    .hero-subtitle { font-size: 1rem; }
-    .section-title { font-size: 1.6rem; }
-    .section-subtitle { font-size: 0.9rem; }
-    .btn { padding: 9px 20px; font-size: 0.85rem; }
-    .about-image img { width: 120px; height: 120px; }
-    .about-text h3 { font-size: 1.3rem; }
-    .about-text p { font-size: 0.95rem; }
+
+    .sidebar-button {
+        padding: 9px 18px;
+        font-size: 0.85rem;
+    }
+} /* End of @media (max-width: 480px) */
+
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #222;
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    padding: 50px 0 40px 0;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* === index.html の main タグ用 padding-top 上書き === */
-@media (min-width: 992px) {
-    /* index.html の main タグのインラインスタイルを上書き */
-    main[style*="padding-top: var(--header-height-mobile)"] {
-        padding-top: var(--header-height-desktop) !important;
-    }
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    /* padding は .container で管理 */
+}
+
+.footer-content h3 {
+     color: white;
+     font-size: 1.5rem;
+     margin-bottom: 1rem;
+     font-weight: 600;
+}
+
+.footer-content p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    padding: 5px 0;
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* フッター内ソーシャルリンク */
+.social-links {
+    margin: 30px 0;
+}
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1.1rem;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+.social-links a:hover {
+    background: var(--primary);
+    transform: scale(1.1) translateY(-2px);
+}
+ .social-links a .fa-x-twitter {
+     font-size: 1rem;
+ }
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-bottom p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
 }
