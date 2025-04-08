@@ -400,20 +400,21 @@ nav ul.nav-menu li a.social-nav-link::before {
     display: flex;
     flex-direction: column;
     gap: var(--sidebar-gap);
-    /* ヘッダー分の高さを確保 */
-    padding-top: calc(var(--header-height-mobile) + 30px);
+    /* ▼▼▼ 追加の余白を減らして調整 ▼▼▼ */
+    padding-top: calc(var(--header-height-mobile) + 10px); /* 例: モバイル追加余白を10pxに */
+    /* ▲▲▲ 追加の余白を減らして調整 ▲▲▲ */
     max-width: 1200px;
     margin: 0 auto;
-    /* container クラスで左右padding管理 */
     padding-bottom: var(--section-space);
 }
 
 @media (min-width: 992px) { /* デスクトップ */
     .blog-page-wrapper {
         flex-direction: row;
-        padding-top: calc(var(--header-height-desktop) + 40px);
+        /* ▼▼▼ 追加の余白を減らして調整 ▼▼▼ */
+        padding-top: calc(var(--header-height-desktop) + 20px); /* 例: デスクトップ追加余白を20pxに */
+        /* ▲▲▲ 追加の余白を減らして調整 ▲▲▲ */
     }
-}
 
 /* ===== メインコンテンツエリア ===== */
 /* 記事ページと一覧ページ共通 */
