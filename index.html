@@ -122,8 +122,9 @@
         @media (max-width: 768px) { .hero { padding-top: var(--header-height-mobile); background-attachment: scroll; height: 80vh; min-height: 500px; } }
         .hero-content { max-width: 850px; position: relative; z-index: 2; margin: 0 auto; padding: 0 20px; text-align: center; }
         .hero-overlay { padding: 30px; animation: fadeInUp 1s ease 0.3s; animation-fill-mode: backwards; }
+        /* ▼▼▼ 元の h2 スタイルをそのまま適用（h1に変更する場合のコメントは削除）▼▼▼ */
         .hero h2 { font-size: 3.2rem; margin-bottom: 25px; color: white; text-shadow: 0 3px 8px rgba(0,0,0,0.5); font-weight: 700; letter-spacing: 1px; }
-        .hero h2::after { display: none; }
+        .hero h2::after { display: none; } /* h2だがヒーロー内では不要 */
         /* .hero p は上で定義済み */
         .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all var(--transition-fast); border: 2px solid transparent; cursor: pointer; font-size: 1rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); position: relative; overflow: hidden; z-index: 1; }
         .btn i { margin-right: 8px; }
@@ -245,7 +246,7 @@
         }
 
         .blog-sidebar > div { /* サイドバー内ウィジェット */
-            background-color: var(--card-bg); /* ウィジェット背景 */
+            background-color: var(--card-bg, #ffffff); /* ウィジェット背景, デフォルト白 */
             padding: 25px 20px;
             border-radius: var(--border-radius);
             margin-bottom: 25px;
@@ -689,6 +690,8 @@
                     <div class="footer-links">
                         <a href="#about">チャンネル概要</a> <a href="#videos">最新動画</a> <a href="#travel">旅の魅力</a> <a href="#equipment">撮影機材</a> <a href="#booking">旅の予約</a> <a href="#preparation">事前準備</a> <a href="#contact">お問い合わせ</a>
                         <a href="https://tomotravel-pm.com/blog" target="_blank" rel="noopener noreferrer">ブログ</a>
+                        <!-- ▼▼▼ 追加: プライバシーポリシーへのリンク ▼▼▼ -->
+                        <a href="https://tomotravel-pm.com/privacy-policy.html">プライバシーポリシー</a>
                     </div>
                     <div class="footer-bottom">
                         <p>© 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
@@ -744,11 +747,13 @@
                      const isTopLevelLink = href === '/';
                      const isAnchorOnly = href === '#';
 
-                     if (isExternal || isTopLevelLink || isAnchorOnly) {
+                     // 外部リンク、トップページリンク、意味のないアンカー、別ページへのリンクはデフォルト動作
+                     if (isExternal || isTopLevelLink || isAnchorOnly || href.startsWith('/#') || !href.startsWith('#')) {
                         if (this.closest('#main-nav')) { closeMobileMenu(); }
                         return;
                      }
 
+                     // 同一ページ内のアンカーリンクのみ処理
                      const targetIdMatch = href.match(/#(.+)$/);
                      if (!targetIdMatch) {
                         if (this.closest('#main-nav')) { closeMobileMenu(); }
@@ -759,19 +764,16 @@
                      const targetElement = document.querySelector(targetId);
 
                      if (targetElement) {
-                         e.preventDefault();
+                         e.preventDefault(); // デフォルトのアンカー動作をキャンセル
                          const headerElement = document.getElementById('header');
                          let headerOffset = 0;
                          if (headerElement) { headerOffset = headerElement.offsetHeight; }
-                         const extraPadding = 20;
+                         const extraPadding = 20; // スクロール位置の微調整
                          const elementPosition = targetElement.getBoundingClientRect().top;
                          const offsetPosition = window.pageYOffset + elementPosition - headerOffset - extraPadding;
 
                          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                         closeMobileMenu();
-                     } else if (href.startsWith('/#')) {
-                          console.warn(`Target element ${targetId} not found. Consider navigating to the homepage first.`);
-                          if (this.closest('#main-nav')) { closeMobileMenu(); }
+                         closeMobileMenu(); // スクロール開始時にメニューを閉じる
                      } else {
                          console.warn(`Target element ${targetId} not found on this page.`);
                          if (this.closest('#main-nav')) { closeMobileMenu(); }
@@ -790,7 +792,7 @@
                      const icon = menuToggle.querySelector('i');
                      if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
                      menuToggle.setAttribute('aria-expanded', 'true');
-                     body.style.overflow = 'hidden';
+                     body.style.overflow = 'hidden'; // スクロール禁止
                  }
              }
              function closeMobileMenu() {
@@ -799,7 +801,7 @@
                      const icon = menuToggle.querySelector('i');
                      if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
                      menuToggle.setAttribute('aria-expanded', 'false');
-                     body.style.overflow = '';
+                     body.style.overflow = ''; // スクロール許可
                  }
              }
              if (menuToggle && mainNav) {
@@ -810,20 +812,28 @@
                      if (mainNav.classList.contains('active')) { closeMobileMenu(); }
                      else { openMobileMenu(); }
                  });
+                 // メニュー外クリックで閉じる
                  document.addEventListener('click', function(event) {
-                    if (mainNav.classList.contains('active') && !mainNav.contains(event.target) && !menuToggle.contains(event.target)) { closeMobileMenu(); }
+                    if (mainNav.classList.contains('active') && !mainNav.contains(event.target) && !menuToggle.contains(event.target)) {
+                        closeMobileMenu();
+                    }
                  });
+                 // ESCキーで閉じる
                  document.addEventListener('keydown', function(event) {
-                     if (event.key === 'Escape' && mainNav.classList.contains('active')) { closeMobileMenu(); }
+                     if (event.key === 'Escape' && mainNav.classList.contains('active')) {
+                         closeMobileMenu();
+                     }
                  });
+                 // メニュー内のリンククリックで閉じる
                  mainNav.querySelectorAll('a').forEach(link => {
                      link.addEventListener('click', function(e) { // イベント引数追加
                          const href = this.getAttribute('href');
-                         // スムーズスクロール対象外のリンク、またはターゲット要素が見つからないページ内リンクでメニューを閉じる
-                          if (!href || (!href.startsWith('#') && !href.startsWith('/#')) || href === '#' || (href.startsWith('#') && !document.querySelector(href))) {
-                              closeMobileMenu();
-                          }
-                          // スムーズスクロール対象リンクはスクロール完了後に閉じる（上のsmooth scrollリスナー内で処理）
+                         // スムーズスクロール対象外のリンクや別ページへのリンクの場合、即座にメニューを閉じる
+                         // ただし、スムーズスクロール対象の同一ページ内アンカーリンク(#...)は除く
+                         if (!href || (!href.startsWith('#') && !href.startsWith('/#')) || href === '#') {
+                             closeMobileMenu();
+                         }
+                         // 同一ページへのスムーズスクロールリンク(#...)は、上のsmooth scrollリスナー内で閉じる
                      });
                  });
             }
