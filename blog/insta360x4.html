@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- タイトルとメタ情報をInsta360 X4の内容に更新 -->
-    <title>Insta360 X4 完全ガイド：[第2部] 8K 360度カメラの詳細レビューと注意点 | とも旅ちゃんねるVLOG</title> <!-- タイトルに第2部を追記 -->
-    <meta name="description" content="Insta360 X4を徹底解説！第2部では8K画質、長時間バッテリー、手ブレ補正、AI編集機能など、最新360度カメラの詳細スペック、メリット・デメリット、注意点、活用法まで紹介。">
-    <meta name="keywords" content="Insta360 X4, 360度カメラ, アクションカメラ, 8K, レビュー, 使い方, スペック, 詳細, とも旅">
-    <meta property="og:title" content="Insta360 X4 完全ガイド：[第2部] 8K 360度カメラの詳細レビュー | とも旅ちゃんねるVLOG">
-    <meta property="og:description" content="Insta360 X4を徹底解説！第2部では8K画質、長時間バッテリー、手ブレ補正、AI編集機能など、最新360度カメラの詳細スペック、メリット・デメリット、注意点、活用法まで紹介。">
+    <!-- タイトルとメタ情報をInsta360 X4のレビュー内容（第1部・第2部）に合わせて更新 -->
+    <title>Insta360 X4 完全ガイド：[第1部] 実使用レビュー＆[第2部] 詳細解説 | とも旅ちゃんねるVLOG</title> <!-- タイトルに第1部・第2部を明記 -->
+    <meta name="description" content="Insta360 X4を徹底解説！第1部では旅人Tomoのリアルな使用感レビュー（メリット・デメリット、必須アクセサリー）、第2部では8K画質、スペック、注意点を詳しく紹介。"> <!-- ディスクリプションを更新 -->
+    <meta name="keywords" content="Insta360 X4, 360度カメラ, アクションカメラ, 8K, レビュー, 使い方, スペック, 詳細, とも旅, VLOG, 比較, メリット, デメリット, アクセサリー, 注意点"> <!-- キーワードを追加 -->
+    <meta property="og:title" content="Insta360 X4 完全ガイド：[第1部] 実使用レビュー＆[第2部] 詳細解説 | とも旅ちゃんねるVLOG"> <!-- OGPタイトル更新 -->
+    <meta property="og:description" content="Insta360 X4を徹底解説！第1部では旅人Tomoのリアルな使用感レビュー、第2部では8K画質、スペック、注意点を詳しく紹介。"> <!-- OGPディスクリプション更新 -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tomotravel-pm.com/blog/insta360-x4-review"> <!-- ★仮のURL -->
     <meta property="og:image" content="https://tomotravel-pm.com/images/insta360-x4-og.jpg"> <!-- ★仮のOGP画像パス -->
@@ -32,8 +32,8 @@
         "@type": "WebPage",
         "@id": "https://tomotravel-pm.com/blog/insta360-x4-review" // ★仮のURL
       },
-      "headline": "Insta360 X4 完全ガイド：[第2部] 8K 360度カメラの詳細レビューと注意点", // headline更新
-      "description": "Insta360 X4を徹底解説！第2部では8K画質、長時間バッテリー、手ブレ補正、AI編集機能など、最新360度カメラの詳細スペック、メリット・デメリット、注意点、活用法まで紹介。",
+      "headline": "Insta360 X4 完全ガイド：[使い方レビュー＆詳細解説] 8K・注意点まで徹底網羅", // headline更新 (H1に合わせる)
+      "description": "Insta360 X4を徹底解説！第1部では旅人Tomoのリアルな使用感レビュー（メリット・デメリット、必須アクセサリー）、第2部では8K画質、スペック、注意点を詳しく紹介。", // description更新 (meta descriptionに合わせる)
       "image": "https://tomotravel-pm.com/images/insta360-x4-main.jpg", // ★仮のメイン画像パス
       "author": {
         "@type": "Person",
@@ -52,9 +52,9 @@
     }
     </script>
     <style>
-        /* テーブルを見やすくするための簡単なスタイル（必要に応じてstyle.cssで調整） */
+        /* テーブルを見やすくするための簡単なスタイル */
         .table-container {
-            overflow-x: auto; /* 横スクロール可能に */
+            overflow-x: auto;
             margin-bottom: 1.5em;
         }
         table {
@@ -67,15 +67,15 @@
             border: 1px solid #ddd;
             padding: 8px 12px;
             text-align: left;
-            vertical-align: top; /* セルの内容が長い場合に上揃え */
+            vertical-align: top;
         }
         th {
             background-color: #f2f2f2;
-            font-weight: 500; /* Noto Sans JP Medium相当 */
+            font-weight: 500;
         }
         thead th {
            background-color: #e9e9e9;
-           font-weight: 700; /* Noto Sans JP Bold相当 */
+           font-weight: 700;
         }
         /* 第1部と第2部の区切り線 */
         hr.section-divider {
@@ -84,6 +84,25 @@
             background: #ccc;
             margin: 2em 0;
         }
+        /* 引用スタイル (Part 2のalert-box-quoteと類似させる) */
+        blockquote.user-quote {
+            background-color: #f9f9f9;
+            border-left: 5px solid #f0ad4e; /* オレンジ系のボーダー */
+            padding: 1em 1.5em;
+            margin: 1.5em 0;
+            font-style: normal; /* 通常のフォントスタイル */
+            color: #333;
+        }
+        blockquote.user-quote p {
+            margin-bottom: 0.5em;
+        }
+        blockquote.user-quote p:last-child {
+            margin-bottom: 0;
+        }
+        blockquote.user-quote strong {
+            color: #d9534f; /* 赤系の強調色 */
+        }
+
     </style>
 </head>
 <body>
@@ -97,31 +116,91 @@
         <main class="blog-main-content">
             <!-- ブログ記事ヘッダーを更新 -->
             <div class="blog-header">
-                <h1 class="blog-title">Insta360 X4 完全ガイド：8K 360度カメラの進化と実力、注意点まで徹底解説</h1>
+                <h1 class="blog-title">Insta360 X4 完全ガイド：[使い方レビュー＆詳細解説] 8K・注意点まで徹底網羅</h1> <!-- H1タイトル更新 -->
                 <div class="blog-meta">
                     <span><i class="fas fa-user"></i> 投稿者: Tomo</span> |
                     <span><i class="fas fa-calendar-alt"></i> 2025年4月9日</span> | <!-- ★仮の日付 -->
-                    <span><i class="fas fa-tag"></i> Insta360 X4, 360度カメラ, アクションカメラ, レビュー</span> <!-- ★タグを更新 -->
+                    <span><i class="fas fa-tag"></i> Insta360 X4, 360度カメラ, アクションカメラ, レビュー, 使い方, 8K</span> <!-- ★タグを更新 -->
                 </div>
             </div>
 
             <!-- ブログ記事本文 (2部構成) -->
             <article class="blog-content">
 
-                <!-- 第1部 プレースホルダー -->
+                <!-- 第1部：実際の使用感レビュー -->
                 <section id="part1">
-                    <h2>第1部：Insta360 X4 ファーストインプレッション（仮）</h2>
-                    <p>こんにちは、Tomoです！</p>
-                    <p>今回は、話題の最新360度カメラ「Insta360 X4」について、まずは私の最初の印象や、なぜこのカメラに注目したのかをお話ししたいと思います。</p>
-                    <p><em>（ここに、第1部の記事内容として、購入経緯、開封の様子、簡単な使ってみた感想などを後日記述してください。）</em></p>
-                    <p>詳しいスペックや機能、実際に使ってみてわかったことなどは、次の第2部で詳しく解説していきます！</p>
+                    <h2>第1部：Insta360 X4 リアル使用感レビュー 〜旅の体験を360度で記録する〜</h2>
+                    <p>こんにちは、皆さん！旅人ともです。</p>
+                    <p>今回は私が YouTube の撮影で愛用している <strong>Insta360 X4</strong> についてご紹介します。このカメラ、本当に旅の記録方法を変えてくれました！</p>
+                    <p>このブログは2部構成になっていて、この<strong>第1部では私のリアルな使用感</strong>、そして第2部ではより詳しいスペックや機能について解説していきます。</p>
+
+                    <h3>最大の特徴：8K 360度撮影という「体験の記録」</h3>
+                    <p>このカメラの最大の魅力は、なんといっても<strong>8K解像度で360度全方向を撮影できる</strong>点です！</p>
+                    <p>私が旅動画を始めようと思ったきっかけの一つに「自宅で旅の体験を再現したい」という強い思いがありました。旅先での感動や発見、その場の空気感... それを後から何度でも追体験できたら、そして将来ふと思い立った時に、まるでその場にいるかのように思い出せたら...素晴らしいと思いませんか？</p>
+                    <p>Insta360 X4は、通常の2D動画では不可能な<strong>「体験を撮影できる」</strong>カメラなんです。これが普通のカメラにはない、本当に魅力的な機能だと感じて、購入を決めました。</p>
+
+                    <h3>私の撮影スタイル：こだわりは「8K 360度 30fps」</h3>
+                    <p>私は撮影時、<strong>ほぼ常に「8K 360度 30fps」</strong>の設定で撮影しています。なぜこの設定にこだわるか？ それは、先ほどお話しした「360度の体験をそのまま記録したい」からです。</p>
+                    <p>正直なところ、4K解像度の360度動画だと、VRヘッドセットで見たときに画質の粗さが気になってしまうんです。考えてみれば当然で、4K 360度というのは「球体全体」で4K。そこからVRで見える範囲（視界）を切り出すと、解像度はかなり低くなってしまいます。</p>
+                    <p>なので、没入感のあるVR体験を目指すなら、現時点では<strong>高解像度の8Kが必須</strong>だと私は考えています。（もちろん、VR視聴をメインに考えない場合は、動きの滑らかな5.7K 60fpsなども非常に有効な選択肢です！）</p>
+                    <p>ただし、現状では8K VR体験をフルに楽しむには高性能なPCや高スペックなVRデバイスが必要になるので、私にとっては「将来への投資」という意味合いも強いですね（笑）。</p>
+
+                    <h3>使って感じたメリット</h3>
+                    <ul>
+                        <li>✅ <strong>撮影ミスがほぼなくなる！</strong>
+                            <p>これが一番大きなメリットかもしれません。自撮り棒につけて、ある程度適当に持って歩いているだけでも、<strong>全方向が確実に撮影できています。</strong>後から編集で好きなアングルを選べるので、「あっちを撮っておけばよかった！」という後悔がなくなりました。手ブレ補正も驚くほど強力なので、歩きながらの撮影でもジンバルを使っているかのように滑らかです。「どうやって撮ってるの？」と聞かれることもありますね。</p>
+                        </li>
+                        <li>✅ <strong>使いやすい編集ソフト（アプリ）</strong>
+                            <p>Insta360の編集ソフト（PC版 Studio / スマホアプリ）は非常に直感的で、初心者でも比較的簡単にリフレーム（画角の切り出し）や書き出しができます。特にスマホアプリは手軽で、移動中などでもサッと編集できるのが便利です。（ただし、後述しますが8K編集はPC推奨です）</p>
+                        </li>
+                        <li>✅ <strong>多機能性</strong>
+                            <p>シングルレンズモードを使えば、普通のアクションカメラとしても十分使えます。広角で綺麗な映像が撮れるので、一台で何役もこなせるのは嬉しいポイントです。（私の場合はほとんど8K 360度しか使っていませんが…笑）</p>
+                        </li>
+                    </ul>
+
+                    <h3>知っておくべきデメリットと注意点</h3>
+                    <ul>
+                        <li>⚠️ <strong>膨大なデータ量</strong>
+                            <p>8K 360度撮影は、データ量が本当に膨大です。私の環境では、<strong>1分の撮影で約1GB</strong>のストレージを消費します。512GBのmicroSDカードを使っていても、計算上は約8.5時間分しか記録できません（※実際はファイルシステムのオーバーヘッド等でもう少し短くなります）。旅行中は複数枚のカードやデータ退避用のストレージが必須になりますね。</p>
+                        </li>
+                        <li>⚠️ <strong>熱問題（特に8K撮影時）</strong>
+                            <p>これはX4に限らず高画質アクションカメラの宿命かもしれませんが、長時間撮影、特に8Kで撮影していると本体がかなり熱くなります。私の経験では、<strong>気温が高い日だと45分程度の連続撮影で熱による録画停止</strong>が発生することがありました。一度停止すると、しばらく冷ます必要があるので、こまめに撮影をON/OFFしたり、休憩を入れたりする工夫が必要です。当然、バッテリーの消耗も早くなります。カタログスペックの連続撮影時間は、あくまで理想的な環境での参考値と考えた方が良いでしょう。</p>
+                        </li>
+                        <li>⚠️ <strong>編集の手間（リフレーム作業）</strong>
+                            <p>編集ソフト自体は使いやすいのですが、360度動画特有の<strong>「どの画角を切り出すか（リフレーム）」という作業</strong>が追加で必要になります。これが結構時間がかかります。通常の2D動画なら撮った素材をそのままカット編集できますが、360度動画の場合はまず「見せたい部分」を決める作業から始まるので、編集全体の時間は<strong>通常の1.5倍以上</strong>かかると覚悟しておいた方が良いかもしれません。ただ、その手間を補って余りある「撮れ高」があるのも事実です。</p>
+                        </li>
+                        <li>⚠️ <strong>暗所での画質</strong>
+                            <p>センサーサイズの限界もあり、<strong>暗い場所での撮影は正直得意ではありません。</strong>夜景などはノイズが目立ちやすくなります。8Kだと特にその傾向が強いと感じます（5.7Kの方が暗所に強いという話も聞きますが、私は未検証です）。日中の明るい場所では素晴らしい画質ですが、夜間の撮影がメインの方には少し物足りないかもしれません。</p>
+                        </li>
+                         <li>⚠️ <strong>2D切り出し画質の限界</strong>
+                            <p>昼間の8K 360度撮影から2D動画を切り出した場合でも、DJI Osmo Action/Pocketシリーズや最新のフラッグシップスマートフォン（iPhone Proシリーズなど）のネイティブな4K動画と比べると、ディテールや鮮明さでは一歩譲る印象です。360度撮影の利便性とトレードオフの部分ですね。</p>
+                        </li>
+                    </ul>
+
+                    <h3>これは必須！おすすめアクセサリー</h3>
+                    <p>デメリットというよりは、Insta360 X4を快適に使うための「必需品」です。</p>
+                    <blockquote class="user-quote">
+                        <p><strong>絶対に必要：レンズガード</strong><br>
+                        これは<strong>マストバイ</strong>です！360度カメラはレンズが剥き出しで、しかも両面にあるので、ちょっとした不注意で傷がつきやすいです。レンズに傷がつくと映像に影響が出てしまい、修理も高額。<strong>絶対に購入し、装着してください。</strong> 予備も持っておくことを強く推奨します。純正品は少し高価ですが、保護性能は高いです。AliExpressなどで安価な互換品もありますが、画質への影響や保護性能は物によります。傷がついてからでは遅いので、カメラ購入と同時に用意しましょう！</p>
+                    </blockquote>
+                    <blockquote class="user-quote">
+                        <p><strong>ほぼ必須：見えない自撮り棒（三脚付き推奨）</strong><br>
+                        Insta360といえば「見えない自撮り棒」。これを使うと、まるでドローンで撮影したかのような映像が簡単に撮れます。純正品でなくてもスティック部分が消えるものは多いですが、手持ち部分（グリップ）のデザインによっては不自然に映り込むことも。私が使っているのは<strong>三脚機能付きの自撮り棒</strong>です。旅先での食事シーンや定点撮影など、カメラを「置きたい」場面は意外と多いので、三脚機能は本当に便利。強くおすすめします！</p>
+                    </blockquote>
+
+                    <h3>総評：デメリットを理解した上で、最高の旅カメラ！</h3>
+                    <p>いくつかデメリットも挙げましたが、それでも私はInsta360 X4が大好きです！<strong>360度撮影の「撮り逃しのなさ」「後から編集できる自由度」</strong>は、一度体験すると普通のカメラには戻れないほどの魅力があります。ロマンと将来性を感じさせてくれるカメラですね。</p>
+                    <p>撮影ミスがほとんどなくなるというのは、特にワンオペで撮影している私にとっては本当に大きなアドバンテージです。</p>
+                    <p>価格は決して安くありませんが（楽天などで6万円台後半～）、旅の「体験」そのものを、一生の思い出として高画質で残せる投資だと考えれば、十分に価値はあると思います。</p>
+                    <p>次の第2部では、このカメラのさらに詳しいスペックや機能について掘り下げていきます！</p>
+
                 </section>
 
                 <hr class="section-divider">
 
-                <!-- 第2部 Insta360 X4 詳細レビュー -->
+                <!-- 第2部 Insta360 X4 詳細レビュー (変更なし) -->
                 <section id="part2">
-                    <h2>第2部：Insta360 X4 詳細レビュー＆徹底解説</h2>
+                    <h2>第2部：Insta360 X4 詳細スペック＆徹底解説</h2>
                     <p>第1部に引き続き、Insta360 X4の具体的な機能や性能について、深く掘り下げていきます。前モデルX3からの進化点や、実際の使用感、メリット・デメリット、購入前に知っておきたい注意点まで、詳しく見ていきましょう。</p>
 
                     <h3>1. Insta360 X4とは？</h3>
@@ -229,7 +308,7 @@
                             <tbody>
                                 <tr>
                                     <td>360度動画</td>
-                                    <td>8K (7680×3840) / 30, 25, 24fps<br>
+                                    <td><strong>8K (7680×3840) / 30, 25, 24fps</strong><br>
                                         5.7K+ (5760×2880) / 30, 25, 24fps (高画質モード)<br>
                                         5.7K (5760×2880) / 60, 50, 30, 25, 24fps<br>
                                         4K (3840×1920) / 100, 60, 50, 30, 25, 24fps (スローモーション)</td>
@@ -304,14 +383,14 @@
                                 <tr>
                                     <th>撮影設定</th>
                                     <th>公式連続撮影時間</th>
-                                    <th>実使用上の注意点</th>
+                                    <th>実使用上の注意点 (第1部のレビューも参照)</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>8K / 30fps</td>
                                     <td>約75分</td>
-                                    <td>これは理想的な実験環境下（25℃）での数値です。<strong>実際の使用、特に気温が高い環境や連続撮影では、本体の発熱によりこれより短くなる可能性が高い</strong>です。複数のユーザーレビューでは、実質40分～50分程度で熱停止するケースも報告されています。</td>
+                                    <td>これは理想的な実験環境下（25℃）での数値です。<strong>実際の使用、特に気温が高い環境や連続撮影では、本体の発熱によりこれより短くなる可能性が高い</strong>です。第1部のレビューにもある通り、実質40分～50分程度で熱停止するケースも報告されています。</td>
                                 </tr>
                                 <tr>
                                     <td>5.7K / 60fps</td>
@@ -385,7 +464,7 @@
                                     <td>レンズガード</td>
                                     <td><strong>取り外し・交換可能</strong></td>
                                     <td>固定式 (交換不可)</td>
-                                    <td>メンテナンス性と保護性能の向上</td>
+                                    <td>メンテナンス性と保護性能の向上 (第1部参照)</td>
                                 </tr>
                                  <tr>
                                     <td>AIチップ</td>
@@ -433,78 +512,78 @@
                                 水中では光の屈折によりスティッチングライン（映像のつなぎ目）が目立つことがあります。また、レンズガード装着時は曇りやすいため、潜水ケース使用、レンズガードを外す（自己責任）、曇り止め対策のいずれかが必要です。海水使用後は必ず真水で洗浄しましょう（本体のみでの海水利用は非推奨）。</p>
                             </blockquote>
                         </li>
-                        <li><strong>旅行・日常:</strong> 360度撮影なら、構図を気にせず周囲の風景や出来事をまるごと記録できます。後から好きなアングルを選んで編集できる「リフレーム」機能が便利。家族イベントなどでは、撮影者も含めて全員が自然な形で映像に残せます。11Kタイムラプス機能で、旅の移動風景や日の出・日の入りを印象的に記録するのもおすすめです。</li>
+                        <li><strong>旅行・日常 (第1部のレビューも参照):</strong> 360度撮影なら、構図を気にせず周囲の風景や出来事をまるごと記録できます。後から好きなアングルを選んで編集できる「リフレーム」機能が便利。家族イベントなどでは、撮影者も含めて全員が自然な形で映像に残せます。11Kタイムラプス機能で、旅の移動風景や日の出・日の入りを印象的に記録するのもおすすめです。</li>
                         <li><strong>ストリーミング・Vlog制作:</strong> シングルレンズモード（最大4K/60fps）を使えば通常のアクションカメラとしても高画質で利用できます。「ミーモード」を使えば、カメラが自動で自分を追尾しフレーミングしてくれるので、自撮りVlog撮影が簡単です。強化された風切り音低減機能により、移動中の音声もクリアに録音できます。</li>
                     </ul>
 
-                    <h3>6. メリット</h3>
+                    <h3>6. メリット (第1部のレビューも参照)</h3>
                     <p>Insta360 X4の主な利点です。</p>
                     <ul>
-                        <li>✅ <strong>クラス最高の画質:</strong> 8K解像度は圧倒的。日中の明るいシーンでは非常に精細で美しい。</li>
+                        <li>✅ <strong>クラス最高の画質 (特に日中):</strong> 8K解像度は圧倒的。非常に精細で美しい。</li>
                         <li>✅ <strong>優れたバッテリー持続時間（公式値）:</strong> 5.7K/30fpsで135分は安心感がある。</li>
-                        <li>✅ <strong>強力な手ブレ補正:</strong> ジンバル不要で滑らかな映像。</li>
+                        <li>✅ <strong>強力な手ブレ補正:</strong> ジンバル不要で滑らかな映像。「撮り逃し」が減る。</li>
                         <li>✅ <strong>直感的で使いやすい操作性:</strong> 大型タッチスクリーンと洗練されたUI。</li>
                         <li>✅ <strong>多機能性:</strong> 360度、アクションカム、多彩なモードを一台で。</li>
                         <li>✅ <strong>高い防水・耐久性能:</strong> 10m防水と交換可能レンズガード。</li>
                         <li>✅ <strong>強力なAI編集機能:</strong> スマホアプリで初心者でも簡単編集。</li>
                     </ul>
 
-                    <h3>7. デメリットと注意点</h3>
+                    <h3>7. デメリットと注意点 (第1部のレビューも参照)</h3>
                     <p>一方で、以下の点は考慮が必要です。</p>
                     <ul>
                         <li>⚠️ <strong>サイズと重量の増加:</strong> X3より大きく重く（203g）なり、携帯性や装着感に影響あり。</li>
-                        <li>⚠️ <strong>学習曲線:</strong> 360度特有の撮影・編集には慣れが必要。</li>
+                        <li>⚠️ <strong>学習曲線:</strong> 360度特有の撮影・編集（特にリフレーム）には慣れが必要。編集時間が長くなる傾向。</li>
                         <li>⚠️ <strong>低照度性能の限界:</strong> センサーサイズ据え置きで、暗所画質はノイズが多くなりがち。</li>
                         <li>⚠️ <strong>熱問題:</strong> 特に8K撮影時は<strong>かなり発熱</strong>。高温環境での長回しは熱停止リスクあり。
                             <ul>
                                 <li><strong>対策:</strong> 解像度/FPSを下げる、こまめな停止、日陰利用、外部電源時はバッテリー除去検討、ファームウェア更新。</li>
                             </ul>
                         </li>
-                        <li>⚠️ <strong>処理・編集の負荷:</strong> 8Kデータはファイルサイズ大。高性能PC/スマホ推奨。</li>
+                        <li>⚠️ <strong>処理・編集の負荷:</strong> 8Kデータはファイルサイズ大。高性能PC/スマホ推奨。データ管理も大変。</li>
                         <li>⚠️ <strong>価格:</strong> 約7～8万円と高価。アクセサリーで更にコスト増。</li>
                     </ul>
 
                     <h3>8. 撮影テクニックとコツ</h3>
                     <ul>
-                        <li><strong>解像度/FPS選択:</strong> 日常・長回しは5.7K/30fps、最高画質は8K/30fps、アクションは5.7K/60fpsが目安。</li>
+                        <li><strong>解像度/FPS選択:</strong> 日常・長回しは5.7K/30fps、最高画質は8K/30fps、アクションは5.7K/60fpsが目安。VR視聴目的なら8K推奨。</li>
                         <li><strong>手ブレ補正:</strong> FlowStateは基本的に常時ON推奨。</li>
-                        <li><strong>設置高さ:</strong> 人の目線（150-180cm）が自然。</li>
-                        <li><strong>見えない自撮り棒:</strong> 純正品をカメラと一直線に持つ。</li>
-                        <li><strong>レンズ清掃:</strong> 撮影前にマイクロファイバークロスで拭く。</li>
+                        <li><strong>設置高さ:</strong> 人の目線（150-180cm）が自然。低すぎたり高すぎたりすると不自然な映像になりやすい。</li>
+                        <li><strong>見えない自撮り棒:</strong> 純正品または互換品をカメラと一直線に持つ。曲げると映り込む可能性あり。</li>
+                        <li><strong>レンズ清掃:</strong> 撮影前に必ずマイクロファイバークロスで指紋や汚れを拭く。画質に直結します。</li>
                     </ul>
 
-                    <h3>9. アクセサリー</h3>
+                    <h3>9. アクセサリー (第1部のレビューも参照)</h3>
                     <p>X4の性能を引き出すにはアクセサリーが重要です。</p>
                     <ul>
                         <li><strong>必須級:</strong>
                             <ul>
-                                <li>✅ 見えない自撮り棒 (マジで必須!)</li>
-                                <li>✅ 高速・大容量microSDカード (V30, 128GB以上推奨)</li>
-                                <li>✅ 予備バッテリー</li>
-                                <li>✅ レンズガード (標準 or プレミアム マジで必須！)</li>
+                                <li>✅ <strong>レンズガード (標準 or プレミアム)</strong> <strong style="color:red;">(本当に必須！第1部参照)</strong></li>
+                                <li>✅ 見えない自撮り棒 <strong style="color:red;">(ほぼ必須！三脚付き推奨 第1部参照)</strong></li>
+                                <li>✅ 高速・大容量microSDカード (V30, 128GB以上推奨、8Kメインなら256GB以上)</li>
+                                <li>✅ 予備バッテリー (特に8K撮影や長時間の外出時)</li>
                             </ul>
                         </li>
                         <li><strong>用途別おすすめ:</strong>
                             <ul>
                                 <li><strong>水中:</strong> 見えない潜水ケース, フローティンググリップ</li>
-                                <li><strong>アクション:</strong> 各種マウント, クイックリリースマウント</li>
+                                <li><strong>アクション:</strong> 各種マウント (ヘルメット、チェスト、ハンドルバー等), クイックリリースマウント</li>
                                 <li><strong>旅行:</strong> キャリングケース, 多機能三脚</li>
-                                <li><strong>本格撮影:</strong> バレットタイムハンドル, 外部マイクアダプター, 急速充電ハブ</li>
+                                <li><strong>本格撮影:</strong> バレットタイムハンドル/コード, 外部マイクアダプター, 急速充電ハブ</li>
                             </ul>
                         </li>
-                        <li><strong>サードパーティ製:</strong> マウント類は互換品あり。</li>
+                        <li><strong>サードパーティ製:</strong> マウント類はGoPro互換品が多く利用可能。レンズガードや自撮り棒も選択肢あり。</li>
                     </ul>
 
-                    <h3>10. ユーザー評価と長期使用レポート</h3>
-                    <p>多くのユーザーは、日中の画質、手ブレ補正、使いやすさを高く評価しています。特にX3からの画質向上は明らかで、鮮やかな色再現性が好評です。アプリの使いやすさも、撮影から編集までのハードルを下げています。</p>
-                    <p>一方で、やはり<strong>熱問題と低照度性能は課題</strong>として指摘されています。8K撮影時の実用的な撮影時間や、暗所でのノイズ感が期待を下回るという声もあります。また、重量増による扱いにくさを指摘する声も一部で見られます。データ管理の負担も、高画質化に伴うトレードオフとして認識されています。</p>
+                    <h3>10. ユーザー評価と長期使用レポート (第1部の内容含む)</h3>
+                    <p>多くのユーザー（私Tomo含む）は、日中の画質、強力な手ブレ補正、アプリを含めた使いやすさを高く評価しています。特にX3からの画質向上は明らかで、鮮やかな色再現性も好評です。「撮り逃しがない」安心感は大きなメリットです。</p>
+                    <p>一方で、やはり<strong>熱問題と低照度性能は共通の課題</strong>として指摘されています。8K撮影時の実用的な連続撮影時間や、暗所でのノイズ感が期待を下回るという声も少なくありません。また、X3からの重量増による扱いにくさを気にする声や、8Kデータ管理の負担（ストレージ、編集PCスペック）も、高画質化に伴うトレードオフとして認識されています。</p>
 
                     <h3>11. 価格と購入ガイド</h3>
                     <ul>
                         <li><strong>価格:</strong> 標準セットで6万円台後半～7万円台前半が目安（2025年4月時点・変動あり）。</li>
-                        <li><strong>購入場所:</strong> 公式サイト、正規代理店、家電量販店、Amazon等。信頼できる販売店を選ぶ。</li>
-                        <li><strong>必須追加購入:</strong> microSDカード (UHS-I V30以上)。</li>
-                        <li><strong>アクセサリー検討:</strong> 自分の撮影スタイルに合わせて同時検討。</li>
+                        <li><strong>購入場所:</strong> 公式サイト、正規代理店（Amazon、楽天の公式ストア等）、大手家電量販店。信頼できる販売店を選びましょう。</li>
+                        <li><strong>必須追加購入:</strong> 高速microSDカード (UHS-I V30以上)。</li>
+                        <li><strong>アクセサリー検討:</strong> 自分の撮影スタイルに合わせて、レンズガードや自撮り棒などはカメラと同時に購入するのがおすすめです。</li>
                     </ul>
 
                     <h3>12. 競合製品との比較</h3>
@@ -528,59 +607,60 @@
                                 <tr><td>重量</td><td>203g</td><td><strong>154g</strong></td><td>182g</td><td>180g</td></tr>
                                 <tr><td>レンズガード</td><td><strong>交換可能</strong></td><td>固定</td><td>固定</td><td>固定</td></tr>
                                 <tr><td>価格帯 (目安)</td><td>7-8万円</td><td>5-6万円</td><td>11-12万円</td><td>5-6万円</td></tr>
-                                <tr><td>強み</td><td><strong>総合性能, 8K動画</strong></td><td>軽量, 価格, ブランド</td><td><strong>静止画質 (特に暗所)</strong></td><td>バランス, 価格</td></tr>
+                                <tr><td>強み</td><td><strong>総合性能, 8K動画, 機能性</strong></td><td>軽量, 価格, ブランド</td><td><strong>静止画質 (特に暗所)</strong></td><td>コスパ, バランス</td></tr>
                             </tbody>
                         </table>
                      </div>
                      <ul>
-                        <li><strong>X4を選ぶべき人:</strong> 最高画質の360度動画、アクション撮影、多機能性を求める人。</li>
-                        <li><strong>GoPro MAX:</strong> 軽量性、価格、GoProエコシステムを重視する人。</li>
-                        <li><strong>Ricoh THETA Z1:</strong> 静止画の画質（特に不動産撮影など）や暗所性能を最優先する人。</li>
-                        <li><strong>Insta360 X3:</strong> 予算を抑えたい、またはX4ほどの高スペックは不要な入門・中級者。</li>
+                        <li><strong>X4を選ぶべき人:</strong> 最高画質の360度動画、アクション撮影、多機能性を求める人。最新技術が好きで、熱問題やデータ管理の手間を許容できる人。</li>
+                        <li><strong>GoPro MAX:</strong> 軽量性、シンプルな操作性、GoProエコシステムを重視する人。動画画質はX4/X3に劣る。</li>
+                        <li><strong>Ricoh THETA Z1:</strong> 静止画の画質（特に不動産撮影など）や暗所性能を最優先する人。動画性能や耐久性は他に劣る。</li>
+                        <li><strong>Insta360 X3:</strong> 予算を抑えたい、またはX4ほどの高スペックは不要な入門・中級者。現在でも十分高性能でバランスが良い。</li>
                      </ul>
 
                     <h3>13. 活用事例</h3>
                     <ul>
-                        <li><strong>SNS:</strong> 印象的なVlog、タイニープラネット、バレットタイム映像など。</li>
-                        <li><strong>不動産・施設紹介:</strong> 没入感のあるバーチャルツアー。</li>
-                        <li><strong>スポーツ:</strong> フォームチェック、トレーニング記録、試合分析。</li>
-                        <li><strong>教育・記録:</strong> バーチャル見学、工程記録、ドキュメンタリー制作。</li>
+                        <li><strong>旅Vlog (Tomo実践中！):</strong> 臨場感あふれる旅の記録、街歩き、アクティビティ撮影。後から見返すのが楽しい。</li>
+                        <li><strong>SNS投稿:</strong> 印象的なリフレーム動画、タイニープラネット写真、バレットタイム映像など。</li>
+                        <li><strong>不動産・施設紹介:</strong> 没入感のあるバーチャルツアー作成。</li>
+                        <li><strong>スポーツ・アクティビティ:</strong> ライディング視点、フォームチェック、トレーニング記録、試合分析。</li>
+                        <li><strong>教育・業務記録:</strong> バーチャル工場見学、建設現場の工程記録、災害状況記録、ドキュメンタリー制作。</li>
                     </ul>
 
                     <h3>14. よくある質問とトラブルシューティング</h3>
                      <ul>
                          <li><strong>Q: 8K撮影におすすめのmicroSDカードは？</strong>
-                             <ul><li>A: UHS-I V30、容量256GB以上の信頼できるブランド（SanDisk Extreme/Extreme Pro, Lexar Professionalなど）を推奨します。</li></ul>
+                             <ul><li>A: UHS-I V30、容量256GB以上の信頼できるブランド（SanDisk Extreme/Extreme Pro, Lexar Professional, Samsung EVO Plus/PRO Plusなど）を推奨します。書き込み速度が安定していることが重要です。</li></ul>
                          </li>
                          <li><strong>Q: 水中撮影でレンズが曇る場合の対策は？</strong>
-                             <ul><li>A: ①潜水ケースを使う ②レンズガードを外す（自己責任） ③カメラを水温に慣らす ④市販の曇り止めを使う。</li></ul>
+                             <ul><li>A: ①潜水ケースを使う（内部に乾燥剤を入れるとより効果的） ②レンズガードを外す（自己責任、傷のリスク大） ③カメラを水に入れる前に水温に慣らす ④市販のレンズ用曇り止めを塗布する（コーティングに影響ないか要確認）。</li></ul>
                          </li>
-                         <li><strong>Q: 熱停止を防ぐには？</strong>
-                             <ul><li>A: 解像度/フレームレートを下げる、こまめに休憩する、直射日光を避ける、外部電源使用時はバッテリーを外す、ファームウェアを最新にする。</li></ul>
+                         <li><strong>Q: 熱停止を防ぐには？ (第1部も参照)</strong>
+                             <ul><li>A: 最も効果的なのは<strong>解像度/フレームレートを下げる</strong>こと。8K→5.7Kにするだけでもかなり改善します。他には、こまめに撮影を停止する、直射日光を避ける、風通しの良い場所に設置する、外部ファンで冷却する、外部電源使用時はバッテリーを外す（自己責任）、ファームウェアを最新にする、などがあります。</li></ul>
                          </li>
                          <li><strong>Q: 編集におすすめのPCスペックは？</strong>
-                             <ul><li>A: CPU: Intel Core i7/Ryzen 7以上, RAM: 16GB以上 (32GB推奨), GPU: NVIDIA GeForce GTX 1660/RTXシリーズ, AMD Radeon RX 5700以上, ストレージ: 高速SSD。</li></ul>
+                             <ul><li>A: <strong>8K 360度編集は非常に高負荷です。</strong>最低でも CPU: Intel Core i7 (第10世代以降) / AMD Ryzen 7 (3000シリーズ以降), RAM: 16GB (<strong>32GB以上推奨</strong>), GPU: NVIDIA GeForce RTX 3060 / AMD Radeon RX 6700 XT以上, ストレージ: 高速NVMe SSD (OS/アプリ用 + 作業用)。快適な編集にはより高性能なPCが必要です。</li></ul>
                          </li>
-                         <li><strong>Q: スマホだけで編集できる？</strong>
-                             <ul><li>A: はい、Insta360アプリで可能です。ただし、8K編集には高性能なスマートフォン（iPhone 12以降、Snapdragon 8 Gen 1以降など）が必要です。</li></ul>
+                         <li><strong>Q: スマホだけで編集できる？ (第1部も参照)</strong>
+                             <ul><li>A: はい、Insta360アプリで可能です。リフレームや簡単な編集、SNS投稿用動画作成なら十分こなせます。ただし、<strong>8K素材の編集や長時間のプロジェクトには高性能なスマートフォンが必要</strong>です（目安: iPhone 13 Pro以降、Snapdragon 8 Gen 1 / Dimensity 9000以降搭載のAndroid機）。それでもPC版に比べると動作が重くなったり、機能制限があったりします。</li></ul>
                          </li>
                      </ul>
 
-                     <h3>15. 将来性とまとめ</h3>
-                     <p>Insta360は定期的なファームウェアアップデートで機能改善やバグ修正を行うため、X4も今後さらに使いやすくなる可能性があります。また、新しいアクセサリーの登場も期待できます。</p>
+                     <h3>15. 将来性とまとめ (第1部の総評も踏まえて)</h3>
+                     <p>Insta360は定期的なファームウェアアップデートで機能改善やバグ修正、時には新機能追加を行うため、X4も今後さらに使いやすく、高性能になる可能性があります。新しいAI編集機能やアクセサリーの登場も期待できます。</p>
                      <p><strong>総合評価:</strong><br>
-                     Insta360 X4は、現行のコンシューマー向け360度カメラとして間違いなく最高峰の性能を持つ一台です。8K画質、強力な手ブレ補正、改善されたバッテリー、使いやすいAI編集機能は大きな魅力です。特にアウトドアやアクティビティの記録、クリエイティブな映像制作において、その真価を発揮します。</p>
-                     <p>しかし、高負荷時の<strong>熱問題、低照度性能の限界、価格の高さ、サイズの大きさは無視できないデメリット</strong>です。これらの点を理解し、自身の用途や予算と照らし合わせる必要があります。</p>
+                     Insta360 X4は、2024年現在、コンシューマー向け360度カメラとして<strong>間違いなく最高峰の性能と機能を持つ一台</strong>です。圧倒的な8K画質、強力かつ自然な手ブレ補正、大幅に改善されたバッテリー持続時間（特定条件下）、交換可能なレンズガード、そして強力なAI編集サポートは大きな魅力です。特にアウトドアやアクティビティの記録、旅行Vlog、クリエイティブな映像表現において、その真価を発揮します。</p>
+                     <p>しかし、第1部のレビューでも触れた通り、<strong>高負荷時の熱問題、依然として課題の残る低照度性能、8Kデータ処理の負荷（ファイルサイズ、編集）、X3からの価格上昇とサイズ/重量増は無視できないデメリット</strong>です。これらの点を十分に理解し、自身の撮影スタイル、用途、予算、そして許容できる手間と照らし合わせる必要があります。</p>
                      <p><strong>最終的な推薦:</strong><br>
-                     最高の360度映像を求めるクリエイター、アクティブな趣味を持つユーザー、最新技術を試したいガジェット好きには、Insta360 X4は強くおすすめできます。その多機能性と表現力は、価格に見合う価値を提供するでしょう。</p>
-                     <p>一方で、初めて360度カメラを使う方、予算を重視する方、暗所での撮影が多い方は、Insta360 X3や他の選択肢も検討する価値があります。</p>
-                     <p>Insta360 X4は、いくつかの注意点はあるものの、それを補って余りある可能性を秘めたカメラです。このカメラで、これまでにない映像体験を創造してみてはいかがでしょうか。</p>
+                     最高の360度映像を追求したいクリエイター、アクティブな趣味を持ち「撮り逃しなく」記録したいユーザー、最新技術を体験したいガジェット好きには、Insta360 X4は<strong>強くおすすめ</strong>できます。その多機能性と表現力は、価格に見合う、あるいはそれ以上の価値を提供してくれる可能性が高いです。</p>
+                     <p>一方で、初めて360度カメラを使う方、主な用途が夜間や室内の方、予算を最優先する方、編集の手間を極力減らしたい方は、依然として<strong>Insta360 X3も非常に有力な選択肢</strong>です。あるいは、用途によってはGoPro MAXやTHETAなども検討の価値があります。</p>
+                     <p>Insta360 X4は、いくつかの注意点やトレードオフはあるものの、それを補って余りある<strong>「体験を記録し、共有する」</strong>ための強力なツールです。このカメラで、あなただけの特別な視点と物語を記録してみてはいかがでしょうか。</p>
                 </section>
                 <!-- 第2部 ここまで -->
 
-                <!-- ★★★ アフィリエイトボックスは一旦そのまま残します ★★★ -->
+                <!-- ★★★ アフィリエイトボックスはそのまま残します ★★★ -->
                 <div class="affiliate-box">
-                     <a href="https://rpx.a8.net/svt/ejp?a8mat=2NE1HP+9715R6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00u6874.2bo11c89.g00u6874.2bo1285d%2Fa16021852584_2NE1HP_9715R6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Finsta360-shop2%252Finsta360-x4%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Finsta360-shop2%252Fi%252F10000445%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-video"></i> Insta360 X4はこちらからチェック！</a>
+                     <a href="https://rpx.a8.net/svt/ejp?a8mat=2NE1HP+9715R6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00u6874.2bo11c89.g00u6874.2bo1285d%2Fa16021852584_2NE1HP_9715R6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Finsta360-shop2%252Finsta360-x4%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Finsta360-shop2%252Fi%252F10000445%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-video"></i> Insta360 X4はこちらからチェック！(楽天)</a>
                 </div>
                 <div class="affiliate-box">
                     <a href="https://px.a8.net/svt/ejp?a8mat=44Z7VE+7O9A3M+4TIO+5YJRM" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-mobile-alt"></i> 日本で使う感覚で海外に来れる！携帯はahamo!</a>
@@ -597,13 +677,15 @@
                         <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 8K</a>
                         <a href="#" class="blog-tag"><i class="fas fa-tag"></i> レビュー</a>
                         <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 使い方</a>
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 詳細</a>
+                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> VLOG</a>
+                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> アクセサリー</a>
+                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 注意点</a>
                     </div>
                      <!-- シェアボタンのURLとテキストを更新 -->
                      <div class="blog-share">
-                          <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Finsta360-x4-review&text=Insta360+X4+%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89%EF%BC%9A%5B%E7%AC%AC2%E9%83%A8%5D+8K+360%E5%BA%A6%E3%82%AB%E3%83%A1%E3%83%A9%E3%81%AE%E8%A9%B3%E7%B4%B0%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Twitterでシェア"><i class="fab fa-x-twitter"></i></a>
+                          <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Finsta360-x4-review&text=Insta360+X4+%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89%EF%BC%9A%5B%E7%AC%AC1%E9%83%A8%5D+%E5%AE%9F%E4%BD%BF%E7%94%A8%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%EF%BC%86%5B%E7%AC%AC2%E9%83%A8%5D+%E8%A9%B3%E7%B4%B0%E8%A7%A3%E8%AA%AC+%7C+%E3%81%A8%E3%82%82%E6%97%85%E3%81%A1%E3%82%83%E3%82%93%E3%81%AD%E3%82%8BVLOG" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Twitterでシェア"><i class="fab fa-x-twitter"></i></a>
                           <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Finsta360-x4-review" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Facebookでシェア"><i class="fab fa-facebook-f"></i></a>
-                          <a href="https://line.me/R/msg/text/?Insta360+X4+%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89%EF%BC%9A%5B%E7%AC%AC2%E9%83%A8%5D+8K+360%E5%BA%A6%E3%82%AB%E3%83%A1%E3%83%A9%E3%81%AE%E8%A9%B3%E7%B4%B0%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%0Ahttps%3A%2F%2Ftomotravel-pm.com%2Fblog%2Finsta360-x4-review" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="LINEで送る"><i class="fab fa-line"></i></a>
+                          <a href="https://line.me/R/msg/text/?Insta360+X4+%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89%EF%BC%9A%5B%E7%AC%AC1%E9%83%A8%5D+%E5%AE%9F%E4%BD%BF%E7%94%A8%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%EF%BC%86%5B%E7%AC%AC2%E9%83%A8%5D+%E8%A9%B3%E7%B4%B0%E8%A7%A3%E8%AA%AC+%7C+%E3%81%A8%E3%82%82%E6%97%85%E3%81%A1%E3%82%83%E3%82%93%E3%81%AD%E3%82%8BVLOG%0Ahttps%3A%2F%2Ftomotravel-pm.com%2Fblog%2Finsta360-x4-review" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="LINEで送る"><i class="fab fa-line"></i></a>
                      </div>
                 </div>
 
