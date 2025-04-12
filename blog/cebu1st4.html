@@ -53,6 +53,10 @@
         .affiliate-box:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .affiliate-btn { display: block; padding: 12px 20px; background: #2980b9; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s; }
         .affiliate-btn:hover { background: #3498db; text-decoration: none; color: white; }
+        /* YouTubeチャンネルボタン用のスタイルを追加 */
+        .youtube-channel-btn { display: inline-block; margin-top: 1rem; padding: 10px 18px; background: #ff0000; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s; }
+        .youtube-channel-btn i { margin-right: 8px; }
+        .youtube-channel-btn:hover { background: #cc0000; text-decoration: none; color: white; }
         .blog-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #eee; }
         .blog-tags { margin-bottom: 1.2rem; }
         .blog-tag { display: inline-block; padding: 4px 10px; margin-right: 8px; margin-bottom: 8px; background: #f0f0f0; color: #555; border-radius: 4px; font-size: 0.85rem; transition: all 0.2s; }
@@ -89,12 +93,68 @@
       },
       "headline": "【セブ島旅行2日目中編】デートに最適！！憧れのルーフトップバーで美女とのデートが楽しすぎたｗｗ【フィリピン一人旅】",
       "description": "セブ島2日目中編！ルーフトップバーでの美女とのデート体験を完全公開。セブITパークの高層ビルから見る絶景、ネオトーキョーでの日本食、現地タクシー事情まで、ロマンチックな夜の冒険をリアルレポート！",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://tomotravel-pm.com/images/cebu1st4/1.jpg", // 完全URLを使用
-        "width": "1200",
-        "height": "800"
-      },
+      "image": [ /* 画像をリスト化 */
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/1.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/2.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/3.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/4.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/5.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/6.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/7.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/8.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu1st4/9.jpg",
+          "width": "1200",
+          "height": "800"
+         },
+         { /* OG画像も追加（任意ですが推奨） */
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/cebu-day2-midday-og.jpg",
+          "width": "1200", /* OG画像のサイズに合わせてください */
+          "height": "630" /* OG画像のサイズに合わせてください */
+         }
+      ],
       "author": {
         "@type": "Person",
         "name": "Tomo",
@@ -192,6 +252,11 @@
                     <meta itemprop="embedUrl" content="https://www.youtube.com/embed/qI4ls-2Bg68">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/qI4ls-2Bg68" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
+                <!-- YouTubeチャンネルボタンを追加 -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                     <a href="https://www.youtube.com/@TomoTravel-PM" class="youtube-channel-btn" target="_blank" rel="noopener noreferrer nofollow"><i class="fab fa-youtube"></i> YouTubeチャンネルはこちら</a>
+                </div>
+
 
                 <h2>ホテルでリフレッシュ、いざデートへ！</h2>
 
@@ -433,7 +498,7 @@
                     </div>
                     <div class="next-post">
                         <!-- 修正点3: 次の記事へのリンク修正 -->
-                        <a href="https://tomotravel-pm.com/blog/cebu1st4" rel="next">
+                        <a href="https://tomotravel-pm.com/blog/cebu1st5" rel="next"> <!-- 次の記事リンクをcebu1st5に変更 -->
                             <span class="nav-direction">次の記事 <i class="fas fa-chevron-right"></i></span>
                             <!-- 次の記事タイトルは仮 -->
                             <span class="nav-title">【セブ島旅行2日目後半～3日目前半】偶然？運命！？初めて行ったJTVが楽しすぎたｗｗ【ノリでプール行ってみた】</span>
