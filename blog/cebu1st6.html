@@ -46,8 +46,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-    <!-- CSSへのリンク (ルートからの相対パス) -->
-    <link rel="stylesheet" href="/style.css">
+    <!-- CSSへのリンク (参照ファイルに合わせる) -->
+    <link rel="stylesheet" href="./style.css">
 
     <!-- cebu1st5(2).html からコピーしたインラインスタイル -->
     <style>
@@ -176,13 +176,13 @@
     </script>
 </head>
 <body>
-    <!-- ヘッダープレースホルダー (cebu1st5(2).html と同じID) -->
+    <!-- ヘッダープレースホルダー (参照ファイルと同じID) -->
     <div id="header-placeholder"></div>
 
-    <!-- ページ全体のラッパー (メイン + サイドバー) (cebu1st5(2).html と同じクラス) -->
+    <!-- ページ全体のラッパー (メイン + サイドバー) (参照ファイルと同じクラス) -->
     <div class="blog-page-wrapper container">
 
-        <!-- メインコンテンツエリア (cebu1st5(2).html と同じクラス) -->
+        <!-- メインコンテンツエリア (参照ファイルと同じクラス) -->
         <main class="blog-main-content">
             <!-- ブログ記事ヘッダー -->
             <div class="blog-header">
@@ -196,7 +196,7 @@
                 </div>
             </div>
 
-            <!-- ブログ記事本文 (cebu1st5(2).html と同じクラス) -->
+            <!-- ブログ記事本文 (参照ファイルと同じクラス) -->
             <article class="blog-content" itemprop="articleBody">
                 <meta itemprop="wordCount" content="2500"> <!-- TODO: 実際の文字数に合わせて調整 -->
 
@@ -204,7 +204,7 @@
 
                 <p>ノリで突撃したプールでびしょ濡れ＆ヘトヘトになった後、気を取り直してマッサージデートへ。しかし、そこからまさかのトラブルが連発！？セブ名物の大渋滞に巻き込まれ、ホテルのチェックアウトでは謎の依頼を受け…それでも、やっぱりセブ島は最高だった！そんな濃密すぎるラストスパートをご覧ください。</p>
 
-                 <!-- YouTube動画 (cebu1st5(2).html のクラスを使用) -->
+                 <!-- YouTube動画 (参照ファイルと同じクラス) -->
                 <div class="video-container" itemprop="video" itemscope itemtype="https://schema.org/VideoObject">
                     <meta itemprop="name" content="【セブ島旅行3日目後半～帰国】激安マッサージ、JTV、大渋滞…最終日レポ">
                     <meta itemprop="description" content="セブ島一人旅最終日の様子。激安マッサージデート、JTVでの出来事、悪夢の大渋滞、ホテルのリアルレビュー、そして帰国までの記録。">
@@ -216,7 +216,7 @@
                     <!-- 指定されたYouTube動画 -->
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/BM2PLqTeT6w?start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-                 <!-- YouTubeチャンネルボタン (cebu1st5(2).html と同じスタイル) -->
+                 <!-- YouTubeチャンネルボタン (参照ファイルと同じスタイル) -->
                 <div style="text-align: center; margin-bottom: 2rem;">
                      <a href="https://www.youtube.com/@TomoTravel-PM" class="youtube-channel-btn" target="_blank" rel="noopener noreferrer nofollow"><i class="fab fa-youtube"></i> YouTubeチャンネルはこちら</a>
                 </div>
@@ -241,7 +241,7 @@
                     <li><strong>水着（上下セット）:</strong> プールで活躍してくれましたが…まあ、見ての通り<strong style="color: red;">偽物</strong>です。</li>
                 </ul>
 
-                <!-- 注意書き: cebu1st5(2).html のスタイルに合わせたクラスを使用 -->
+                <!-- 注意書き (参照ファイルと同じクラス) -->
                 <blockquote class="alert-box-quote">
                     <p><strong>持ち帰り注意！</strong> パークモールは偽ブランド品が多く売られている場所。今回水着は現地で使うために割り切って購入しましたが、偽物を日本に持ち帰るのは法律違反になる可能性があります。残念ですがセブで処分することにしました。皆さんも海外でのお買い物には注意してくださいね。</p>
                 </blockquote>
@@ -442,7 +442,7 @@
 
                 <p>それでは、また次の旅でお会いしましょう！</p>
 
-                <!-- ブログ記事フッター (cebu1st5(2).html と同じスタイル) -->
+                <!-- ブログ記事フッター (参照ファイルと同じスタイル) -->
                 <div class="blog-footer">
                     <div class="blog-tags">
                         <!-- 記事固有のタグ -->
@@ -464,7 +464,7 @@
                     </div>
                 </div>
 
-                <!-- 前後の記事ナビゲーション (cebu1st5(2).html と同じクラス) -->
+                <!-- 前後の記事ナビゲーション (参照ファイルと同じクラス) -->
                 <nav class="next-prev-nav">
                     <div class="prev-post">
                         <!-- 前の記事へのリンク -->
@@ -487,17 +487,17 @@
             </article> <!-- /.blog-content -->
         </main>
 
-        <!-- サイドバープレースホルダー (cebu1st5(2).html と同じIDとクラス) -->
+        <!-- サイドバープレースホルダー (参照ファイルと同じIDとクラス) -->
         <aside id="sidebar-placeholder" class="blog-sidebar"></aside>
 
     </div> <!-- /.blog-page-wrapper -->
 
-    <!-- フッタープレースホルダー (cebu1st5(2).html と同じID) -->
+    <!-- フッタープレースホルダー (参照ファイルと同じID) -->
     <div id="footer-placeholder"></div>
 
-    <!-- JavaScript (ルートからの相対パス) -->
-    <script src="/script.js"></script>
-    <!-- 広告スクリプト (cebu1st5(2).html と同じもの) -->
+    <!-- JavaScript (参照ファイルに合わせる) -->
+    <script src="./script.js"></script>
+    <!-- 広告スクリプト (参照ファイルと同じもの) -->
     <script type='text/javascript' src='//pl26273446.effectiveratecpm.com/c5/10/e1/c510e12d2bf0cf3e4b6d7680c5cca15d.js'></script>
 </body>
 </html>
