@@ -1,229 +1,294 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-<head>
+<head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ブログ記事一覧 | とも旅ちゃんねるVLOG</title>
-    <meta name="description" content="とも旅ちゃんねるVLOGの公式ブログ。セブ島や東南アジアを中心とした海外一人旅の情報、体験記をお届けします。">
-    <meta name="keywords" content="とも旅, 一人旅, 海外旅行, 東南アジア, セブ島, フィリピン, ブログ, 夜遊び, JTV, ルーフトップバー, 偽ブランド, ジョリビー">
+    <meta name="description" content="とも旅ちゃんねるVLOGの公式ブログ。セブ島や東南アジアを中心とした海外一人旅の情報、体験記を最新順にお届けします。">
+    <meta name="keywords" content="とも旅, 一人旅, 海外旅行, 東南アジア, セブ島, フィリピン, ブログ, 夜遊び, JTV, ルーフトップバー, マッサージ, ローカルプール, 偽ブランド, ジョリビー, ホテル, 帰国">
+    <!-- ▼▼▼ OGP設定（ページ内容に合わせて更新） ▼▼▼ -->
     <meta property="og:title" content="ブログ記事一覧 | とも旅ちゃんねるVLOG">
-    <meta property="og:description" content="海外一人旅の体験と情報をリアルにお届け。セブ島や東南アジアの魅力を発信中">
+    <meta property="og:description" content="セブ島や東南アジア一人旅の最新体験談と情報を発信中！JTV、ローカル体験、トラブルまでリアルにお届け。">
     <meta property="og:type" content="website">
-    <!-- ▼▼▼ このブログ一覧ページの正しいURLを指定 ▼▼▼ -->
     <meta property="og:url" content="https://tomotravel-pm.com/blog.html">
-    <meta property="og:image" content="https://tomotravel-pm.com/images/ogp.jpg"> <!-- ルートからのパスでOK -->
+    <meta property="og:image" content="https://tomotravel-pm.com/images/ogp_blog_list.jpg"> <!-- ブログ一覧用のOGP画像（例） -->
+    <meta property="og:site_name" content="とも旅ちゃんねるVLOG">
+    <meta property="og:locale" content="ja_JP">
+    <!-- ▲▲▲ OGP設定 ▲▲▲ -->
     <meta name="twitter:card" content="summary_large_image">
-    <!-- ▼▼▼ このブログ一覧ページの正しいCanonical URLを指定 ▼▼▼ -->
+    <meta name="twitter:title" content="ブログ記事一覧 | とも旅ちゃんねるVLOG">
+    <meta name="twitter:description" content="セブ島や東南アジア一人旅の最新体験談と情報を発信中！リアルな旅の記録をご覧ください。">
+    <meta name="twitter:image" content="https://tomotravel-pm.com/images/ogp_blog_list.jpg"> <!-- ブログ一覧用のTwitter Card画像（例） -->
+    <!-- ▼▼▼ Canonical URL確認 ▼▼▼ -->
     <link rel="canonical" href="https://tomotravel-pm.com/blog.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- ▼▼▼ CSSを /blog/ ディレクトリから読み込む ▼▼▼ -->
+    <!-- ▼▼▼ CSSを /blog/ ディレクトリから読み込む（変更なし） ▼▼▼ -->
     <link rel="stylesheet" href="blog/style.css">
     <!-- ▲▲▲ CSSを /blog/ ディレクトリから読み込む ▲▲▲ -->
+
+    <!-- ▼▼▼ 構造化データ (CollectionPage & ItemList) ▼▼▼ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "ブログ記事一覧 | とも旅ちゃんねるVLOG",
+      "description": "とも旅ちゃんねるVLOGの公式ブログ。セブ島や東南アジアを中心とした海外一人旅の情報、体験記を最新順にお届けします。",
+      "url": "https://tomotravel-pm.com/blog.html",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://tomotravel-pm.com/",
+        "name": "とも旅ちゃんねるVLOG"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "とも旅ちゃんねるVLOG",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/images/logo.png",
+          "width": 600,
+          "height": 60
+        }
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListOrder": "Descending",
+        "numberOfItems": 10,
+        "itemListElement": [
+          { // 1. cebu2nd4
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/blog/cebu2nd4.html",
+              "headline": "JTVで飲みすぎるとこうなる【セブ島2日目夜前編】",
+              "url": "https://tomotravel-pm.com/blog/cebu2nd4.html", // リンク先を blog/ ディレクトリ下に
+              "datePublished": "2025-04-03",
+              "image": "https://img.youtube.com/vi/ofMvQYhii58/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 2. cebu2nd3
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/blog/cebu2nd3.html",
+              "headline": "お酒と美女…セブ島JTV「Club Blue（クラブ ブルー）」で酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】",
+              "url": "https://tomotravel-pm.com/blog/cebu2nd3.html", // リンク先を blog/ ディレクトリ下に
+              "datePublished": "2025-04-02",
+              "image": "https://img.youtube.com/vi/LNnFkivOQtE/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 3. cebu2nd2
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/cebu2nd2.html", // ★修正: ルート直下のURLに
+              "headline": "【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル",
+              "url": "https://tomotravel-pm.com/cebu2nd2.html", // ★修正: ルート直下のURLに
+              "datePublished": "2025-03-28",
+              "image": "https://img.youtube.com/vi/z5APVNRi0FQ/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 4. cebu2nd1
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/cebu2nd1.html", // ★修正: ルート直下のURLに
+              "headline": "【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？",
+              "url": "https://tomotravel-pm.com/cebu2nd1.html", // ★修正: ルート直下のURLに
+              "datePublished": "2025-03-27",
+              "image": "https://img.youtube.com/vi/V8Q69llrJcY/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 5. cebu1st6
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/blog/cebu1st6",
+              "headline": "【セブ島旅行3日目後半～帰国】やることないから激安マッサージ美女と行ってJTVで飲んだ【海外旅行でホテルはケチるな】",
+              "url": "https://tomotravel-pm.com/blog/cebu1st6", // 絶対パス指定
+              "datePublished": "2025-03-27",
+              "image": "https://img.youtube.com/vi/BM2PLqTeT6w/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 6. cebu1st5
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/blog/cebu1st5",
+              "headline": "【セブ島旅行2日目後半～3日 familiale】偶然？運命！？初めてのJTVが楽しすぎ＆ノリで行ったプールでハプニング続出！",
+              "url": "https://tomotravel-pm.com/blog/cebu1st5", // 絶対パス指定
+              "datePublished": "2025-03-27",
+              "image": "https://i.ytimg.com/vi/Ositw2CX8PI/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 7. cebu1st4
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/blog/cebu1st4.html",
+              "headline": "【セブ島旅行2日目中編】デートに最適！！憧れのルーフトップバーで美女とのデートが楽しすぎたｗｗ【フィリピン一人旅】",
+              "url": "https://tomotravel-pm.com/blog/cebu1st4.html", // リンク先を blog/ ディレクトリ下に
+              "datePublished": "2025-03-26",
+              "image": "https://img.youtube.com/vi/qI4ls-2Bg68/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 8. cebu1st3
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/blog/cebu1st3.html",
+              "headline": "【セブ島旅行2日目前半】衝撃のセブ島偽物市！？パチ物パークモールを散策した後は神様に懺悔しにサントニーニョ教会に行くしかない！？ついでにセブ島スーパーの物価はこんなもん！【フィリピン一人旅】",
+              "url": "https://tomotravel-pm.com/blog/cebu1st3.html", // リンク先を blog/ ディレクトリ下に
+              "datePublished": "2025-03-26",
+              "image": "https://img.youtube.com/vi/khZIpS93W10/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 9. cebu1st2
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/blog/cebu1st2.html",
+              "headline": "【セブ島1日目後半】治安が悪い？マンゴーストリートの夜を散策。ジョリビー、バー、JTV巡り！英語が話せなくても楽しめるか！？【フィリピン】",
+              "url": "https://tomotravel-pm.com/blog/cebu1st2.html", // リンク先を blog/ ディレクトリ下に
+              "datePublished": "2025-03-26",
+              "image": "https://img.youtube.com/vi/pEIZNHzBEq4/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          },
+          { // 10. cebu1st1
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "BlogPosting",
+              "@id": "https://tomotravel-pm.com/blog/cebu1st1.html",
+              "headline": "【セブ島旅行1日目前半】フィリピン・セブ島３泊４日！ビビリな男の海外一人旅！【前途多難】",
+              "url": "https://tomotravel-pm.com/blog/cebu1st1.html", // リンク先を blog/ ディレクトリ下に
+              "datePublished": "2025-03-25",
+              "image": "https://img.youtube.com/vi/hDhjySf4SSI/mqdefault.jpg",
+              "author": { "@type": "Person", "name": "Tomo" },
+              "publisher": { "@type": "Organization", "name": "とも旅ちゃんねるVLOG" }
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    <!-- ▲▲▲ 構造化データ ▲▲▲ -->
 </head>
 <body>
-    <!-- ▼▼▼ ヘッダープレースホルダー (IDを cebu2nd3.html と合わせる) ▼▼▼ -->
+    <!-- ヘッダープレースホルダー -->
     <div id="header-placeholder"></div>
-    <!-- ▲▲▲ ヘッダープレースホルダー ▲▲▲ -->
 
-    <!-- ▼▼▼ ページ全体のラッパー (クラス名を cebu2nd3.html と合わせる) ▼▼▼ -->
-    <!-- container クラスは style.css の設計に応じて必要なら付与 -->
+    <!-- ページ全体のラッパー -->
     <div class="blog-page-wrapper container">
 
-        <!-- ▼▼▼ メインコンテンツエリア (クラス名を cebu2nd3.html と合わせる) ▼▼▼ -->
+        <!-- メインコンテンツエリア -->
         <main class="blog-main-content">
-            <!-- 記事一覧ページ用の見出し (インラインスタイル削除) -->
-            <!-- ▼▼▼ style="..." を削除しました ▼▼▼ -->
+            <!-- 記事一覧ページ用の見出し -->
             <div class="blog-list-header">
-                 <!-- ▼▼▼ style="..." を削除しました ▼▼▼ -->
                  <h1>ブログ記事一覧</h1>
-                 <!-- ▼▼▼ style="..." を削除しました ▼▼▼ -->
-                 <p>セブ島や東南アジア一人旅の体験談をお届けします。</p>
+                 <p>セブ島や東南アジア一人旅の体験談を最新順にお届けします。</p>
              </div>
-            <!-- ▲▲▲ style="..." を削除しました ▲▲▲ -->
 
-            <!-- 元の <main class="page-content"> 内の要素を配置 -->
+            <!-- 記事コンテナ -->
             <div class="posts-container">
 
-                <!-- NEW: セブ島旅行1日目前半 -->
+                <!-- 1. NEW: セブ島2日目夜前編 (cebu2nd4) - 最新 -->
                 <article class="post-card">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/25</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2025/4/3</span>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu1st1.html">
-                            <h2 class="post-title">【セブ島旅行1日目前半】フィリピン・セブ島３泊４日！ビビリな男の海外一人旅！【前途多難】</h2>
+                        <!-- リンク先: blog/cebu2nd4.html -->
+                        <a href="blog/cebu2nd4.html">
+                            <h2 class="post-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</h2>
                         </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/hDhjySf4SSI/mqdefault.jpg" alt="セブ島一人旅初日のサムネイル" loading="lazy">
+                                <img src="https://img.youtube.com/vi/ofMvQYhii58/mqdefault.jpg" alt="セブ島JTVで飲みすぎた体験談のサムネイル" loading="lazy">
                             </div>
                             <div class="post-excerpt">
-                                <p>セブ島への3泊4日一人旅の初日をレポート！成田空港からマニラ経由でセブ島へ。お金のトラブルやホテルでの思わぬハプニング、ゴキブリとの遭遇など、ビビりな男の海外一人旅の失敗と教訓をお届け！</p>
+                                <p>セブ島旅行2日目の夜遊び体験【前編】ネオトーキョーでのマッサージでリフレッシュし、ルーフトップバーで食事を楽しんだ後、Club Kへ…爆美女との再会でテンションが上がり、テキーラを飲みすぎた結果カラオケで熱唱する羽目に…。セブの夜のリアルな楽しさと飲みすぎの顛末をレポートします！</p>
                             </div>
                         </div>
-                         <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu1st1.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+                        <!-- リンク先: blog/cebu2nd4.html -->
+                        <a href="blog/cebu2nd4.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> 一人旅</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> フィリピン</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> トラブル</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> 失敗談</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> マニラ</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> ゴキブリ</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- NEW: セブ島1日目後半 -->
-                <article class="post-card">
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
-                            <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
-                        </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu1st2.html">
-                            <h2 class="post-title">【セブ島1日目後半】治安が悪い？マンゴーストリートの夜を散策。ジョリビー、バー、JTV巡り！英語が話せなくても楽しめるか！？【フィリピン】</h2>
-                        </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
-                        <div class="excerpt-container">
-                            <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/pEIZNHzBEq4/mqdefault.jpg" alt="セブ島マンゴーストリート夜遊びのサムネイル" loading="lazy">
-                            </div>
-                            <div class="post-excerpt">
-                                <p>セブ島の夜を満喫！マンゴーストリートでジョリビーを堪能し、PHILLYやJTVを体験。英語が苦手でも楽しめる夜遊びのリアルレポート。注意点やハプニング、タクシーでのトラブルも公開。</p>
-                            </div>
-                        </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu1st2.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
-                        <div class="post-tags">
-                            <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> マンゴーストリート</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> ジョリビー</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> Club Blue</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> PHILLY</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> タクシー</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> ボったくり</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> Club K</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> Neo Tokyo</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> マッサージ</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> テキーラ</span>
                         </div>
                     </div>
                 </article>
 
-                <!-- NEW: セブ島旅行2日目前半 -->
+                <!-- 2. セブ島夜遊び体験談 (cebu2nd3) -->
                 <article class="post-card">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2025/4/2</span>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu1st3.html">
-                             <h2 class="post-title">【セブ島旅行2日目前半】衝撃のセブ島偽物市！？パチ物パークモールを散策した後は神様に懺悔しにサントニーニョ教会に行くしかない！？ついでにセブ島スーパーの物価はこんなもん！【フィリピン一人旅】</h2>
+                        <!-- リンク先: blog/cebu2nd3.html -->
+                        <a href="blog/cebu2nd3.html">
+                            <h2 class="post-title">お酒と美女…セブ島JTV「Club Blue（クラブ ブルー）」で酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】</h2>
                         </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/khZIpS93W10/mqdefault.jpg" alt="セブ島パークモールとサントニーニョ教会のサムネイル" loading="lazy">
+                                <img src="https://img.youtube.com/vi/LNnFkivOQtE/mqdefault.jpg" alt="セブ島夜遊び動画のサムネイル" loading="lazy">
                             </div>
                             <div class="post-excerpt">
-                                <p>セブ島2日目の冒険！パークモールの偽ブランド天国からサントニーニョ教会まで、ローカル感あふれるセブを探索。コロン・ストリートや138モールでの買い物体験、現地スーパーでの物価調査も公開！</p>
+                                <p>シヌログ祭りの熱気に沸くセブ島で、忘れられない夜遊びを体験！馴染みのクラブ「Club Blue（クラブ ブルー）」では、以前から指名していた女性との久しぶりの再会を果たし、テキーラで乾杯。お祭りムードも相まって、気づけばかなり酔っ払い。さらに深夜、予想外の誘いでマッサージ「Forest Spa」へ。旅の疲れを癒すはずがちょっとしたハプニングも？シヌログ期間ならではの混雑や移動の苦労、興奮と反省が入り混じるセブ島の夜を赤裸々にレポートします。</p>
                             </div>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu1st3.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+                         <!-- リンク先: blog/cebu2nd3.html -->
+                        <a href="blog/cebu2nd3.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> パークモール</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> 偽ブランド</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> コロン・ストリート</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> サントニーニョ教会</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> 物価</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> スーパーマーケット</span>
-                        </div>
-                    </div>
-                </article>
-
-                 <!-- NEW: セブ島旅行2日目中編 -->
-                <article class="post-card">
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
-                            <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
-                        </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu1st4.html">
-                            <h2 class="post-title">【セブ島旅行2日目中編】デートに最適！！憧れのルーフトップバーで美女とのデートが楽しすぎたｗｗ【フィリピン一人旅】</h2>
-                        </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
-                        <div class="excerpt-container">
-                            <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/qI4ls-2Bg68/mqdefault.jpg" alt="セブ島ルーフトップバーデートのサムネイル" loading="lazy">
-                            </div>
-                            <div class="post-excerpt">
-                                <p>セブ島2日目中編！ルーフトップバーでの美女とのデート体験を完全公開。セブITパークの高層ビルから見る絶景、ネオトーキョーでの日本食、現地タクシー事情まで、ロマンチックな夜の冒険をリアルレポート！</p>
-                            </div>
-                        </div>
-                         <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu1st4.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
-                        <div class="post-tags">
-                            <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> ルーフトップバー</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> デート</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> セブITパーク</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> アヤラモール</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> ネオトーキョー</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> タクシー料金</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- 記事：セブ島旅行初日 (cebu2nd1) -->
-                <article class="post-card">
-                   <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/27</span>
-                            <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
-                        </div>
-                         <!-- ▼▼▼ リンク先を ルートディレクトリ直下 に戻す ▼▼▼ -->
-                        <a href="cebu2nd1.html">
-                            <h2 class="post-title">【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</h2>
-                        </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
-                        <div class="excerpt-container">
-                            <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/V8Q69llrJcY/mqdefault.jpg" alt="セブ島旅行動画のサムネイル" loading="lazy">
-                            </div>
-                            <div class="post-excerpt">
-                                <p>セブ島旅行初日の様子をお届け！往復たったの29,400円という格安チケットで行く、セブパシフィック航空の機内の様子、日本のブランドホテル「東横インセブ」のルームツアー、近くのJモールでの食事など、セブ島到着日のリアルな体験をご紹介します。</p>
-                            </div>
-                        </div>
-                         <!-- ▼▼▼ リンク先を ルートディレクトリ直下 に戻す ▼▼▼ -->
-                        <a href="cebu2nd1.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
-                        <div class="post-tags">
-                            <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> シヌログ祭り</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> フィリピン</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> 東横イン</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> 一人旅</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> セブパシフィック</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> クラブBlue</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> マッサージ</span>
                         </div>
                     </div>
                 </article>
 
-                <!-- 記事：セブ島JTVについて (cebu2nd2) -->
+                <!-- 3. 記事：セブ島JTVについて (cebu2nd2) -->
                 <article class="post-card">
                     <div class="post-content">
                         <div class="post-meta">
@@ -257,94 +322,252 @@
                     </div>
                 </article>
 
-                <!-- セブ島夜遊び体験談 (cebu2nd3) -->
+                <!-- 4. 記事：セブ島旅行初日 (cebu2nd1) -->
                 <article class="post-card">
-                    <div class="post-content">
+                   <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/4/2</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2025/3/27</span>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu2nd3.html">
-                            <h2 class="post-title">お酒と美女…セブ島JTV「Club Blue（クラブ ブルー）」で酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】</h2>
+                         <!-- ▼▼▼ リンク先を ルートディレクトリ直下 に戻す ▼▼▼ -->
+                        <a href="cebu2nd1.html">
+                            <h2 class="post-title">【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</h2>
                         </a>
                         <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/LNnFkivOQtE/mqdefault.jpg" alt="セブ島夜遊び動画のサムネイル" loading="lazy">
+                                <img src="https://img.youtube.com/vi/V8Q69llrJcY/mqdefault.jpg" alt="セブ島旅行動画のサムネイル" loading="lazy">
                             </div>
                             <div class="post-excerpt">
-                                <p>シヌログ祭りの熱気に沸くセブ島で、忘れられない夜遊びを体験！馴染みのクラブ「Club Blue（クラブ ブルー）」では、以前から指名していた女性との久しぶりの再会を果たし、テキーラで乾杯。お祭りムードも相まって、気づけばかなり酔っ払い。さらに深夜、予想外の誘いでマッサージ「Forest Spa」へ。旅の疲れを癒すはずがちょっとしたハプニングも？シヌログ期間ならではの混雑や移動の苦労、興奮と反省が入り混じるセブ島の夜を赤裸々にレポートします。</p>
+                                <p>セブ島旅行初日の様子をお届け！往復たったの29,400円という格安チケットで行く、セブパシフィック航空の機内の様子、日本のブランドホテル「東横インセブ」のルームツアー、近くのJモールでの食事など、セブ島到着日のリアルな体験をご紹介します。</p>
                             </div>
                         </div>
-                         <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu2nd3.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                         <!-- ▼▼▼ リンク先を ルートディレクトリ直下 に戻す ▼▼▼ -->
+                        <a href="cebu2nd1.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
                         <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> シヌログ祭り</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> フィリピン</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> クラブBlue</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> マッサージ</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 東横イン</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 一人旅</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> セブパシフィック</span>
                         </div>
                     </div>
                 </article>
 
-                <!-- NEW: セブ島2日目夜前編 (cebu2nd4) -->
+                <!-- 5. NEW: セブ島旅行3日目後半～帰国 (cebu1st6) -->
                 <article class="post-card">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/4/3</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2025/3/27</span>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu2nd4.html">
-                            <h2 class="post-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</h2>
+                        <!-- リンク先: 絶対パス https://tomotravel-pm.com/blog/cebu1st6 -->
+                        <a href="https://tomotravel-pm.com/blog/cebu1st6">
+                            <h2 class="post-title">【セブ島旅行3日目後半～帰国】やることないから激安マッサージ美女と行ってJTVで飲んだ【海外旅行でホテルはケチるな】</h2>
                         </a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/ofMvQYhii58/mqdefault.jpg" alt="セブ島JTVで飲みすぎた体験談のサムネイル" loading="lazy">
+                                <img src="https://img.youtube.com/vi/BM2PLqTeT6w/mqdefault.jpg" alt="セブ島最終日と帰国のサムネイル" loading="lazy">
                             </div>
                             <div class="post-excerpt">
-                                <p>セブ島旅行2日目の夜遊び体験【前編】ネオトーキョーでのマッサージでリフレッシュし、ルーフトップバーで食事を楽しんだ後、Club Kへ…爆美女との再会でテンションが上がり、テキーラを飲みすぎた結果カラオケで熱唱する羽目に…。セブの夜のリアルな楽しさと飲みすぎの顛末をレポートします！</p>
+                                <p>セブ島一人旅最終日レポ！3日目午後、激安マッサージデートからまさかの大渋滞、JTV、ホテルの正直レビュー、そして帰国までのドタバタ劇。偽物問題やホテル選びの教訓も。</p>
                             </div>
                         </div>
-                        <!-- ▼▼▼ リンク先を /blog/ ディレクトリ内のファイルへのパスに修正 ▼▼▼ -->
-                        <a href="blog/cebu2nd4.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
-                        <!-- ▲▲▲ リンク先を修正 ▲▲▲ -->
+                         <!-- リンク先: 絶対パス https://tomotravel-pm.com/blog/cebu1st6 -->
+                        <a href="https://tomotravel-pm.com/blog/cebu1st6" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> Club K</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> Neo Tokyo</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> マッサージ</span>
-                            <span class="post-tag"><i class="fas fa-tag"></i> テキーラ</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 渋滞</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ホテルレビュー</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 帰国</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 偽物</span>
                         </div>
                     </div>
                 </article>
 
+                <!-- 6. NEW: セブ島旅行2日目後半～3日目前半 (cebu1st5) -->
+                <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2025/3/27</span>
+                            <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
+                        </div>
+                        <!-- リンク先: 絶対パス https://tomotravel-pm.com/blog/cebu1st5 -->
+                        <a href="https://tomotravel-pm.com/blog/cebu1st5">
+                            <h2 class="post-title">【セブ島旅行2日目後半～3日 familiale】偶然？運命！？初めてのJTVが楽しすぎ＆ノリで行ったプールでハプニング続出！</h2>
+                        </a>
+                        <div class="excerpt-container">
+                            <div class="post-thumbnail">
+                                <img src="https://i.ytimg.com/vi/Ositw2CX8PI/mqdefault.jpg" alt="セブ島JTVとローカルプールのサムネイル" loading="lazy">
+                            </div>
+                            <div class="post-excerpt">
+                                <p>セブ島旅行2日目夜から3日目昼過ぎのリアル体験記！深夜のJTVでの驚きの出会い、ノリで行ったローカルプールでのハプニング満載な冒険をレポート。セブの夜と昼、両方の魅力をVLOG風にお届け！</p>
+                            </div>
+                        </div>
+                        <!-- リンク先: 絶対パス https://tomotravel-pm.com/blog/cebu1st5 -->
+                        <a href="https://tomotravel-pm.com/blog/cebu1st5" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <div class="post-tags">
+                            <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> Club Wing</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ローカルプール</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ウェスタンラグーン</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ハプニング</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7. NEW: セブ島旅行2日目中編 (cebu1st4) -->
+                <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
+                            <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
+                        </div>
+                        <!-- リンク先: blog/cebu1st4.html -->
+                        <a href="blog/cebu1st4.html">
+                            <h2 class="post-title">【セブ島旅行2日目中編】デートに最適！！憧れのルーフトップバーで美女とのデートが楽しすぎたｗｗ【フィリピン一人旅】</h2>
+                        </a>
+                        <div class="excerpt-container">
+                            <div class="post-thumbnail">
+                                <img src="https://img.youtube.com/vi/qI4ls-2Bg68/mqdefault.jpg" alt="セブ島ルーフトップバーデートのサムネイル" loading="lazy">
+                            </div>
+                            <div class="post-excerpt">
+                                <p>セブ島2日目中編！ルーフトップバーでの美女とのデート体験を完全公開。セブITパークの高層ビルから見る絶景、ネオトーキョーでの日本食、現地タクシー事情まで、ロマンチックな夜の冒険をリアルレポート！</p>
+                            </div>
+                        </div>
+                         <!-- リンク先: blog/cebu1st4.html -->
+                        <a href="blog/cebu1st4.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <div class="post-tags">
+                            <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ルーフトップバー</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> デート</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> セブITパーク</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> アヤラモール</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ネオトーキョー</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> タクシー料金</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8. NEW: セブ島旅行2日目前半 (cebu1st3) -->
+                <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
+                            <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
+                        </div>
+                        <!-- リンク先: blog/cebu1st3.html -->
+                        <a href="blog/cebu1st3.html">
+                             <h2 class="post-title">【セブ島旅行2日目前半】衝撃のセブ島偽物市！？パチ物パークモールを散策した後は神様に懺悔しにサントニーニョ教会に行くしかない！？ついでにセブ島スーパーの物価はこんなもん！【フィリピン一人旅】</h2>
+                        </a>
+                        <div class="excerpt-container">
+                            <div class="post-thumbnail">
+                                <img src="https://img.youtube.com/vi/khZIpS93W10/mqdefault.jpg" alt="セブ島パークモールとサントニーニョ教会のサムネイル" loading="lazy">
+                            </div>
+                            <div class="post-excerpt">
+                                <p>セブ島2日目の冒険！パークモールの偽ブランド天国からサントニーニョ教会まで、ローカル感あふれるセブを探索。コロン・ストリートや138モールでの買い物体験、現地スーパーでの物価調査も公開！</p>
+                            </div>
+                        </div>
+                        <!-- リンク先: blog/cebu1st3.html -->
+                        <a href="blog/cebu1st3.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <div class="post-tags">
+                            <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> パークモール</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 偽ブランド</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> コロン・ストリート</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> サントニーニョ教会</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 物価</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> スーパーマーケット</span>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- 9. NEW: セブ島1日目後半 (cebu1st2) -->
+                 <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
+                            <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
+                        </div>
+                        <!-- リンク先: blog/cebu1st2.html -->
+                        <a href="blog/cebu1st2.html">
+                            <h2 class="post-title">【セブ島1日目後半】治安が悪い？マンゴーストリートの夜を散策。ジョリビー、バー、JTV巡り！英語が話せなくても楽しめるか！？【フィリピン】</h2>
+                        </a>
+                        <div class="excerpt-container">
+                            <div class="post-thumbnail">
+                                <img src="https://img.youtube.com/vi/pEIZNHzBEq4/mqdefault.jpg" alt="セブ島マンゴーストリート夜遊びのサムネイル" loading="lazy">
+                            </div>
+                            <div class="post-excerpt">
+                                <p>セブ島の夜を満喫！マンゴーストリートでジョリビーを堪能し、PHILLYやJTVを体験。英語が苦手でも楽しめる夜遊びのリアルレポート。注意点やハプニング、タクシーでのトラブルも公開。</p>
+                            </div>
+                        </div>
+                        <!-- リンク先: blog/cebu1st2.html -->
+                        <a href="blog/cebu1st2.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <div class="post-tags">
+                            <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> マンゴーストリート</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ジョリビー</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> Club Blue</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> PHILLY</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> タクシー</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ボったくり</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 10. NEW: セブ島旅行1日目前半 (cebu1st1) - 最古 -->
+                <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2025/3/25</span>
+                            <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
+                        </div>
+                        <!-- リンク先: blog/cebu1st1.html -->
+                        <a href="blog/cebu1st1.html">
+                            <h2 class="post-title">【セブ島旅行1日目前半】フィリピン・セブ島３泊４日！ビビリな男の海外一人旅！【前途多難】</h2>
+                        </a>
+                        <div class="excerpt-container">
+                            <div class="post-thumbnail">
+                                <img src="https://img.youtube.com/vi/hDhjySf4SSI/mqdefault.jpg" alt="セブ島一人旅初日のサムネイル" loading="lazy">
+                            </div>
+                            <div class="post-excerpt">
+                                <p>セブ島への3泊4日一人旅の初日をレポート！成田空港からマニラ経由でセブ島へ。お金のトラブルやホテルでの思わぬハプニング、ゴキブリとの遭遇など、ビビりな男の海外一人旅の失敗と教訓をお届け！</p>
+                            </div>
+                        </div>
+                         <!-- リンク先: blog/cebu1st1.html -->
+                        <a href="blog/cebu1st1.html" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <div class="post-tags">
+                            <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 一人旅</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> フィリピン</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> トラブル</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> 失敗談</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> マニラ</span>
+                            <span class="post-tag"><i class="fas fa-tag"></i> ゴキブリ</span>
+                        </div>
+                    </div>
+                </article>
 
             </div> <!-- /.posts-container -->
 
         </main> <!-- /.blog-main-content -->
-        <!-- ▲▲▲ メインコンテンツエリア ▲▲▲ -->
 
-        <!-- ▼▼▼ サイドバープレースホルダー (IDとクラス名を cebu2nd3.html と合わせる) ▼▼▼ -->
+        <!-- サイドバープレースホルダー -->
         <aside id="sidebar-placeholder" class="blog-sidebar"></aside>
-        <!-- ▲▲▲ サイドバープレースホルダー ▲▲▲ -->
 
     </div> <!-- /.blog-page-wrapper -->
-    <!-- ▲▲▲ ページ全体のラッパー ▲▲▲ -->
 
-    <!-- ▼▼▼ フッタープレースホルダー (IDを cebu2nd3.html と合わせる) ▼▼▼ -->
+    <!-- フッタープレースホルダー -->
     <div id="footer-placeholder"></div>
-    <!-- ▲▲▲ フッタープレースホルダー ▲▲▲ -->
 
-    <!-- ▼▼▼ JavaScript を /blog/ ディレクトリから読み込む ▼▼▼ -->
+    <!-- ▼▼▼ JavaScript を /blog/ ディレクトリから読み込む（変更なし） ▼▼▼ -->
     <script src="blog/script.js"></script>
     <!-- ▲▲▲ JavaScript を /blog/ ディレクトリから読み込む ▲▲▲ -->
     <script type='text/javascript' src='//pl26273446.effectiveratecpm.com/c5/10/e1/c510e12d2bf0cf3e4b6d7680c5cca15d.js'></script>
