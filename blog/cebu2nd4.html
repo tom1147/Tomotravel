@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-<head>
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"> <!-- prefixを追加 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JTVで飲みすぎるとこうなる【セブ島2日目夜前編】 | とも旅ちゃんねるVLOG</title>
@@ -11,8 +11,23 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tomotravel-pm.com/blog/cebu2nd4"> <!-- 正式なURL -->
     <meta property="og:image" content="https://tomotravel-pm.com/images/cebu-jtv-nightlife-og.jpg"> <!-- OGP画像 (ルートからのパス想定) -->
+    <meta property="og:site_name" content="とも旅ちゃんねるVLOG"> <!-- og:site_name を追加 -->
+    <meta property="og:locale" content="ja_JP"> <!-- og:locale を追加 -->
+    <meta property="article:published_time" content="2025-04-03T10:00:00+09:00"> <!-- 日付フォーマットを修正 -->
+    <meta property="article:modified_time" content="2025-04-03T10:00:00+09:00"> <!-- 日付フォーマットを修正 -->
+    <meta property="article:author" content="https://tomotravel-pm.com/author/tomo"> <!-- Author URL形式に変更 -->
+    <meta property="article:section" content="海外旅行"> <!-- article:section を追加 -->
+    <meta property="article:tag" content="セブ島"> <!-- article:tag を追加 -->
+    <meta property="article:tag" content="夜遊び">
+    <meta property="article:tag" content="JTV">
+    <meta property="article:tag" content="Club K">
+    <meta property="article:tag" content="Neo Tokyo">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="セブ島JTV飲みすぎ注意報！【2日目夜前編】リアル体験談 | とも旅ちゃんねるVLOG"> <!-- Twitter 用タイトル -->
+    <meta name="twitter:description" content="セブ島旅行2日目の夜遊び体験談。Neo Tokyoでのマッサージ、ルーフトップバーでの食事、Club KでのAYAさんとの再会とテキーラ飲みすぎエピソード。セブの夜のリアルレポート。"> <!-- Twitter 用 description -->
+    <meta name="twitter:image" content="https://tomotravel-pm.com/images/cebu-jtv-nightlife-og.jpg"> <!-- Twitter 用画像 -->
     <link rel="canonical" href="https://tomotravel-pm.com/blog/cebu2nd4"> <!-- 正式なURL -->
+    <link rel="alternate" href="https://tomotravel-pm.com/blog/cebu2nd4" hreflang="ja-jp"> <!-- hreflang を追加 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -21,6 +36,44 @@
 
     <!-- 外部CSSへのリンク (blog/style.css) -->
     <link rel="stylesheet" href="./style.css">
+
+    <style>
+        /* スタイルは変更しない */
+        .blog-content { line-height: 1.8; font-size: 16px; color: #333; }
+        .blog-title { font-size: 2rem; margin-bottom: 1.5rem; line-height: 1.4; color: #222; font-weight: 700; }
+        h2 { font-size: 1.6rem; margin: 2.5rem 0 1.2rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f0f0f0; color: #0066cc; }
+        .blog-img-container { margin: 2rem 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .blog-img-container img { width: 100%; height: auto; transition: transform 0.3s ease; }
+        .blog-img-container:hover img { transform: scale(1.02); }
+        .blog-img-caption { padding: 12px 15px; background: #f8f9fa; color: #555; font-size: 0.9rem; border-top: 1px solid #eee; }
+        blockquote { padding: 1.5rem; background-color: #f9f9f9; border-left: 4px solid #0066cc; margin: 1.5rem 0; font-style: italic; color: #555; border-radius: 0 8px 8px 0; }
+        .alert-box-quote { background-color: #fff8e1; border-left: 4px solid #ffc107; color: #795548; }
+        .affiliate-box { margin: 2rem 0; padding: 0.8rem; background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%); border-radius: 8px; text-align: center; transition: all 0.3s ease; border: 1px solid #e0e0e0; }
+        .affiliate-box:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .affiliate-btn { display: block; padding: 12px 20px; background: #2980b9; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s; }
+        .affiliate-btn:hover { background: #3498db; text-decoration: none; color: white; }
+        /* YouTubeチャンネルボタン用のスタイルを追加 */
+        .youtube-channel-btn { display: inline-block; margin-top: 1rem; padding: 10px 18px; background: #ff0000; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s; }
+        .youtube-channel-btn i { margin-right: 8px; }
+        .youtube-channel-btn:hover { background: #cc0000; text-decoration: none; color: white; }
+        .blog-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #eee; }
+        .blog-tags { margin-bottom: 1.2rem; }
+        .blog-tag { display: inline-block; padding: 4px 10px; margin-right: 8px; margin-bottom: 8px; background: #f0f0f0; color: #555; border-radius: 4px; font-size: 0.85rem; transition: all 0.2s; }
+        .blog-tag:hover { background: #e0e0e0; color: #333; text-decoration: none; }
+        .next-prev-nav { display: flex; flex-wrap: wrap; margin: 2.5rem 0 1rem; gap: 1rem; }
+        .prev-post, .next-post { flex: 1; min-width: 280px; }
+        .prev-post a, .next-post a { display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; color: #333; text-decoration: none; transition: all 0.2s; height: 100%; border: 1px solid #eee; }
+        .prev-post a:hover, .next-post a:hover { background: #f0f2f5; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-decoration: none; }
+        .nav-direction { font-size: 0.85rem; color: #666; display: block; margin-bottom: 5px; }
+        .nav-title { font-weight: 600; color: #222; }
+        .share-button { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: #f0f0f0; color: #555; margin-right: 10px; transition: all 0.2s; }
+        .share-button:hover { transform: translateY(-2px); background: #e0e0e0; color: #333; }
+        .video-container { margin: 2rem 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        ul { padding-left: 1.5rem; margin: 1.5rem 0; }
+        ul li { margin-bottom: 0.8rem; position: relative; }
+        ul li strong { color: #0066cc; }
+    </style>
 
     <script type="application/ld+json">
     {
@@ -32,10 +85,60 @@
       },
       "headline": "JTVで飲みすぎるとこうなる【セブ島2日目夜前編】",
       "description": "セブ島旅行2日目の夜遊び体験談。Neo Tokyoでのマッサージ、ルーフトップバーでの食事、Club KでのAYAさんとの再会とテキーラ飲みすぎエピソード。セブの夜のリアルレポート。",
-      "image": "https://tomotravel-pm.com/images/cebu-jtv-nightlife-main.jpg", // メイン画像 (ルートからのパス想定)
+      "image": [ /* 画像をリスト化 */
+        {
+            "@type": "ImageObject",
+            "url": "https://tomotravel-pm.com/images/cebu2nd4/1.jpg", /* 相対パスを絶対パスに */
+            "width": "1200", /* 画像サイズに合わせてください */
+            "height": "800" /* 画像サイズに合わせてください */
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://tomotravel-pm.com/images/cebu2nd4/2.jpg", /* 相対パスを絶対パスに */
+            "width": "1200", /* 画像サイズに合わせてください */
+            "height": "800" /* 画像サイズに合わせてください */
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://tomotravel-pm.com/images/cebu2nd4/3.jpg", /* 相対パスを絶対パスに */
+            "width": "1200", /* 画像サイズに合わせてください */
+            "height": "800" /* 画像サイズに合わせてください */
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://tomotravel-pm.com/images/cebu2nd4/4.jpg", /* 相対パスを絶対パスに */
+            "width": "1200", /* 画像サイズに合わせてください */
+            "height": "800" /* 画像サイズに合わせてください */
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://tomotravel-pm.com/images/cebu2nd4/5.jpg", /* 相対パスを絶対パスに */
+            "width": "1200", /* 画像サイズに合わせてください */
+            "height": "800" /* 画像サイズに合わせてください */
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://tomotravel-pm.com/images/cebu2nd4/6.jpg", /* 相対パスを絶対パスに */
+            "width": "1200", /* 画像サイズに合わせてください */
+            "height": "800" /* 画像サイズに合わせてください */
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://tomotravel-pm.com/images/cebu2nd4/7.jpg", /* 相対パスを絶対パスに */
+            "width": "1200", /* 画像サイズに合わせてください */
+            "height": "800" /* 画像サイズに合わせてください */
+        },
+        { /* OGP画像も追加 */
+            "@type": "ImageObject",
+            "url": "https://tomotravel-pm.com/images/cebu-jtv-nightlife-og.jpg",
+            "width": "1200", /* OGP画像のサイズに合わせてください */
+            "height": "630" /* OGP画像のサイズに合わせてください */
+        }
+      ],
       "author": {
         "@type": "Person",
-        "name": "Tomo"
+        "name": "Tomo",
+        "url": "https://tomotravel-pm.com/author/tomo" /* Author URL形式に変更 */
       },
       "publisher": {
         "@type": "Organization",
@@ -45,10 +148,46 @@
           "url": "https://tomotravel-pm.com/images/logo.png" // ロゴ画像 (ルートからのパス想定)
         }
       },
-      "datePublished": "2025-04-03",
-      "dateModified": "2025-04-03"
+      "datePublished": "2025-04-03T10:00:00+09:00", /* 日付フォーマットを修正 */
+      "dateModified": "2025-04-03T10:00:00+09:00", /* 日付フォーマットを修正 */
+      "articleSection": "海外旅行", /* article:section を追加 */
+      "keywords": ["セブ島", "夜遊び", "JTV", "Club K", "Neo Tokyo", "マッサージ", "ルーフトップバー", "フィリピン", "海外旅行", "体験談", "Tomo旅", "AYA", "テキーラ", "カラオケ"], /* keywords を追加 */
+      "wordCount": "850", /* 文字数を調整 */
+      "inLanguage": "ja", /* inLanguage を追加 */
+      "isAccessibleForFree": "True", /* isAccessibleForFree を追加 */
+      "video": { /* video 情報を追加 */
+        "@type": "VideoObject",
+        "name": "JTVで飲みすぎるとこうなる【セブ島2日目夜前編】",
+        "description": "セブ島旅行2日目の夜遊び体験談。Neo Tokyoでのマッサージ、ルーフトップバーでの食事、Club Kでの飲みすぎエピソード。",
+        "thumbnailUrl": "https://i.ytimg.com/vi/ofMvQYhii58/hqdefault.jpg", /* サムネイルURL */
+        "uploadDate": "2025-04-03T12:00:00+09:00", /* YouTube公開日時（仮） */
+        "duration": "PT12M00S", /* YouTube動画時間（仮） */
+        "contentUrl": "https://www.youtube.com/watch?v=ofMvQYhii58",
+        "embedUrl": "https://www.youtube.com/embed/ofMvQYhii58"
+      },
+       "potentialAction": { /* potentialAction を追加 */
+        "@type": "ReadAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://tomotravel-pm.com/blog/cebu2nd4"
+        }
+      }
     }
     </script>
+
+     <script type="application/ld+json"> /* パンくずリストの構造化データ */
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://tomotravel-pm.com/" },
+        { "@type": "ListItem", "position": 2, "name": "ブログ", "item": "https://tomotravel-pm.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "セブ島旅行", "item": "https://tomotravel-pm.com/blog/category/cebu" },
+        { "@type": "ListItem", "position": 4, "name": "JTVで飲みすぎるとこうなる【セブ島2日目夜前編】", "item": "https://tomotravel-pm.com/blog/cebu2nd4" }
+      ]
+    }
+    </script>
+
 
 </head>
 <body>
@@ -63,28 +202,44 @@
 
             <!-- ブログ記事ヘッダー -->
             <div class="blog-header">
-                <h1 class="blog-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</h1>
+                <h1 class="blog-title" itemprop="headline">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</h1> <!-- itempropを追加 -->
                 <div class="blog-meta">
-                    <span><i class="fas fa-user"></i> 投稿者: Tomo</span> |
-                    <span><i class="fas fa-calendar-alt"></i> 2025年4月3日</span> |
-                    <span><i class="fas fa-tag"></i> セブ島, 夜遊び, JTV, Club K</span>
+                    <span><i class="fas fa-user"></i> 投稿者: <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Tomo</span></span></span> | <!-- itempropを追加 -->
+                    <span><i class="fas fa-calendar-alt"></i> <time itemprop="datePublished" datetime="2025-04-03T10:00:00+09:00">2025年4月3日</time></span> | <!-- itemprop, datetimeを追加 -->
+                    <span><i class="fas fa-tag"></i> <span itemprop="keywords">セブ島, 夜遊び, JTV, Club K</span></span> <!-- itempropを追加 -->
                 </div>
             </div>
 
             <!-- ブログ記事本文 -->
-            <article class="blog-content"> <!-- articleタグに変更 -->
+            <article class="blog-content" itemprop="articleBody"> <!-- articleタグに変更, itempropを追加 -->
+                <meta itemprop="wordCount" content="850"> <!-- itempropを追加 -->
 
                 <p>セブ島での夜遊びは楽しいけれど、飲みすぎには注意が必要です。前回の記事では初日の体験をお伝えしましたが、今回は2日目の夜がどう展開したのか、その前編をお届けします。JTVでの飲み過ぎた夜の顛末、ぜひ最後までお付き合いください！</p>
 
-                <div class="video-container">
+                <div class="video-container" itemprop="video" itemscope itemtype="https://schema.org/VideoObject"> <!-- itemprop itemscope itemtypeを追加 -->
+                     <meta itemprop="name" content="JTVで飲みすぎるとこうなる【セブ島2日目夜前編】"> <!-- itempropを追加 -->
+                     <meta itemprop="description" content="セブ島旅行2日目の夜遊び体験談。Neo Tokyoでのマッサージ、ルーフトップバーでの食事、Club Kでの飲みすぎエピソード。"> <!-- itempropを追加 -->
+                     <meta itemprop="thumbnailUrl" content="https://i.ytimg.com/vi/ofMvQYhii58/hqdefault.jpg"> <!-- itempropを追加 -->
+                     <meta itemprop="uploadDate" content="2025-04-03T12:00:00+09:00"> <!-- itempropを追加 -->
+                     <meta itemprop="duration" content="PT12M00S"> <!-- itempropを追加 -->
+                     <meta itemprop="contentUrl" content="https://www.youtube.com/watch?v=ofMvQYhii58"> <!-- itempropを追加 -->
+                     <meta itemprop="embedUrl" content="https://www.youtube.com/embed/ofMvQYhii58"> <!-- itempropを追加 -->
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/ofMvQYhii58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
+                 <!-- YouTubeチャンネルボタンを追加 -->
+                 <div style="text-align: center; margin-bottom: 2rem;">
+                      <a href="https://www.youtube.com/@TomoTravel-PM" class="youtube-channel-btn" target="_blank" rel="noopener noreferrer nofollow"><i class="fab fa-youtube"></i> YouTubeチャンネルはこちら</a>
+                 </div>
+
 
                 <h2>遅めの起床</h2>
                 <p>気づいたら午後5時45分になっていました。起きられなくて気づいたらこんな時間に！JTVの開店まであと1時間くらいなので、先にマッサージに行き体をほぐすことにしました。</p>
 
                 <div class="blog-img-container">
-                     <img src="../images/cebu2nd4/1.jpg" alt="セブ島の時計、午後5時45分を示す" loading="lazy">
+                     <img src="/images/cebu2nd4/1.jpg" alt="セブ島の時計、午後5時45分を示す" loading="lazy" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"> <!-- 相対パスを絶対パスに, itemprop itemscope itemtypeを追加 -->
+                      <meta itemprop="url" content="https://tomotravel-pm.com/images/cebu2nd4/1.jpg"> <!-- itempropを追加 -->
+                      <meta itemprop="width" content="1200"> <!-- itempropを追加 -->
+                      <meta itemprop="height" content="800"> <!-- itempropを追加 -->
                     <div class="blog-img-caption">気づけば夕方…！</div>
                 </div>
 
@@ -92,7 +247,10 @@
                 <p>Neo Tokyo内のマッサージ店に入りました。昨日行ったお店より安い！1時間500ペソのコースを選択。普通のマッサージでしたが、とてもリラックスできて良かったです。お店の場所はNeo Tokyoの2階にあり、リーズナブルなのに圧も効いていました。マッサージ中に○○○が大きくなってしまい恥ずかしい思いをしたので皆さんもご注意を。</p>
 
                  <div class="blog-img-container">
-                     <img src="../images/cebu2nd4/2.jpg" alt="Neo Tokyoのマッサージ店の入り口" loading="lazy">
+                     <img src="/images/cebu2nd4/2.jpg" alt="Neo Tokyoのマッサージ店の入り口" loading="lazy" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"> <!-- 相対パスを絶対パスに, itemprop itemscope itemtypeを追加 -->
+                      <meta itemprop="url" content="https://tomotravel-pm.com/images/cebu2nd4/2.jpg"> <!-- itempropを追加 -->
+                      <meta itemprop="width" content="1200"> <!-- itempropを追加 -->
+                      <meta itemprop="height" content="800"> <!-- itempropを追加 -->
                     <div class="blog-img-caption">Neo Tokyo内のマッサージ店へ</div>
                 </div>
 
@@ -108,7 +266,10 @@
                 <p>Neo Tokyoの3階にあるルーフトップバーで食事することに。涼しい夜だったので外で食べるのに最適でした。このバーには日本人マネージャーがいて、週末にイベントがあるみたいなので、セブを訪れる際はぜひ立ち寄ってみてください。スタッフも親切でとても感じがよかったです！</p>
 
                 <div class="blog-img-container">
-                     <img src="../images/cebu2nd4/3.jpg" alt="Neo Tokyoのルーフトップバーの雰囲気" loading="lazy">
+                     <img src="/images/cebu2nd4/3.jpg" alt="Neo Tokyoのルーフトップバーの雰囲気" loading="lazy" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"> <!-- 相対パスを絶対パスに, itemprop itemscope itemtypeを追加 -->
+                      <meta itemprop="url" content="https://tomotravel-pm.com/images/cebu2nd4/3.jpg"> <!-- itempropを追加 -->
+                      <meta itemprop="width" content="1200"> <!-- itempropを追加 -->
+                      <meta itemprop="height" content="800"> <!-- itempropを追加 -->
                     <div class="blog-img-caption">Neo Tokyo 3階のルーフトップバー</div>
                 </div>
 
@@ -116,7 +277,10 @@
                 <p>注文したピザが到着。大きくて、朝から何も食べていなかったので嬉しかったです。「フィリピンタイム」で時間がかかりましたが、待つ価値ありました。手投げではないけれどクリスピーなピザで、薄い生地にたっぷりチーズ。420ペソと手頃な価格でした。テリヤキチキンも注文しましたが、半分食べたところでお腹いっぱいに。</p>
 
                 <div class="blog-img-container">
-                     <img src="../images/cebu2nd4/4.jpg" alt="ルーフトップバーで食べた美味しそうなピザ" loading="lazy">
+                     <img src="/images/cebu2nd4/4.jpg" alt="ルーフトップバーで食べた美味しそうなピザ" loading="lazy" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"> <!-- 相対パスを絶対パスに, itemprop itemscope itemtypeを追加 -->
+                      <meta itemprop="url" content="https://tomotravel-pm.com/images/cebu2nd4/4.jpg"> <!-- itempropを追加 -->
+                      <meta itemprop="width" content="1200"> <!-- itempropを追加 -->
+                      <meta itemprop="height" content="800"> <!-- itempropを追加 -->
                     <div class="blog-img-caption">ボリューム満点のクリスピーピザ！</div>
                 </div>
 
@@ -124,7 +288,10 @@
                 <p>Neo Tokyoのルーフトップバーはナイトライフ好きにはおすすめです。昨日行ったClub Kに再度向かいました。ネオトーキョーからClub Kには徒歩一分ほどの距離です。ネオトーキョー周辺にはClub blueやB-pink、小町など有名なJTVが集まっています。少し怪しい階段を2階まで上がると入口があります。</p>
 
                  <div class="blog-img-container">
-                     <img src="../images/cebu2nd4/5.jpg" alt="Club Kへ続く階段" loading="lazy">
+                     <img src="/images/cebu2nd4/5.jpg" alt="Club Kへ続く階段" loading="lazy" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"> <!-- 相対パスを絶対パスに, itemprop itemscope itemtypeを追加 -->
+                      <meta itemprop="url" content="https://tomotravel-pm.com/images/cebu2nd4/5.jpg"> <!-- itempropを追加 -->
+                      <meta itemprop="width" content="1200"> <!-- itempropを追加 -->
+                      <meta itemprop="height" content="800"> <!-- itempropを追加 -->
                     <div class="blog-img-caption">いざ、Club Kへ！</div>
                 </div>
 
@@ -133,7 +300,10 @@
                 <p>さっそく最初のテキーラを注文して乾杯。テキーラのショットの淵に塩がついていて、しょっぱかったです。日本ではライムを使いますが、ここではカラマンシーというフルーツを使用。試してみましたが、個人的にはあまり美味しくないと感じました。</p>
 
                 <div class="blog-img-container">
-                     <img src="../images/cebu2nd4/6.jpg" alt="Club KでAYAさんと再会" loading="lazy">
+                     <img src="/images/cebu2nd4/6.jpg" alt="Club KでAYAさんと再会" loading="lazy" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"> <!-- 相対パスを絶対パスに, itemprop itemscope itemtypeを追加 -->
+                      <meta itemprop="url" content="https://tomotravel-pm.com/images/cebu2nd4/6.jpg"> <!-- itempropを追加 -->
+                      <meta itemprop="width" content="1200"> <!-- itempropを追加 -->
+                      <meta itemprop="height" content="800"> <!-- itempropを追加 -->
                     <div class="blog-img-caption">Club Kの爆美女と再会！</div>
                 </div>
 
@@ -145,7 +315,10 @@
                 <p>テキーラを飲み続けているうちに、少し調子に乗ってしまいました。酔っぱらってカラオケをして、シャイな私にはとても恥ずかしかったです笑 リスナーさんに声をかけてもらえて嬉しかったです。夜11時30分、お金も使い果たしたので店を出ることにしました。</p>
 
                 <div class="blog-img-container">
-                     <img src="../images/cebu2nd4/7.jpg" alt="カラオケで歌っている様子" loading="lazy">
+                     <img src="/images/cebu2nd4/7.jpg" alt="カラオケで歌っている様子" loading="lazy" itemprop="image" itemscope itemtype="https://schema.org/ImageObject"> <!-- 相対パスを絶対パスに, itemprop itemscope itemtypeを追加 -->
+                      <meta itemprop="url" content="https://tomotravel-pm.com/images/cebu2nd4/7.jpg"> <!-- itempropを追加 -->
+                      <meta itemprop="width" content="1200"> <!-- itempropを追加 -->
+                      <meta itemprop="height" content="800"> <!-- itempropを追加 -->
                     <div class="blog-img-caption">泥酔して歌う男</div>
                 </div>
 
@@ -160,14 +333,14 @@
                 <!-- ブログ記事フッター -->
                 <div class="blog-footer">
                     <div class="blog-tags">
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> セブ島</a>
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> 夜遊び</a>
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> JTV</a>
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> Club K</a>
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> Neo Tokyo</a>
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> マッサージ</a>
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> テキーラ</a>
-                        <a href="#" class="blog-tag"><i class="fas fa-tag"></i> カラオケ</a>
+                        <a href="#" class="blog-tag" itemprop="keywords"><i class="fas fa-tag"></i> セブ島</a> <!-- itempropを追加 -->
+                        <a href="#" class="blog-tag" itemprop="keywords"><i class="fas fa-tag"></i> 夜遊び</a> <!-- itempropを追加 -->
+                        <a href="#" class="blog-tag" itemprop="keywords"><i class="fas fa-tag"></i> JTV</a> <!-- itempropを追加 -->
+                        <a href="#" class="blog-tag" itemprop="keywords"><i class="fas fa-tag"></i> Club K</a> <!-- itempropを追加 -->
+                        <a href="#" class="blog-tag" itemprop="keywords"><i class="fas fa-tag"></i> Neo Tokyo</a> <!-- itempropを追加 -->
+                        <a href="#" class="blog-tag" itemprop="keywords"><i class="fas fa-tag"></i> マッサージ</a> <!-- itempropを追加 -->
+                        <a href="#" class="blog-tag" itemprop="keywords"><i class="fas fa-tag"></i> テキーラ</a> <!-- itempropを追加 -->
+                        <a href="#" class="blog-tag" itemprop="keywords"><i class="fas fa-tag"></i> カラオケ</a> <!-- itempropを追加 -->
                     </div>
                      <div class="blog-share">
                           <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftomotravel-pm.com%2Fblog%2Fcebu2nd4&text=JTV%E3%81%A7%E9%A3%B2%E3%81%BF%E3%81%99%E3%81%8E%E3%82%8B%E3%81%A8%E3%81%93%E3%81%86%E3%81%AA%E3%82%8B%E3%80%90%E3%82%BB%E3%83%96%E5%B3%B62%E6%97%A5%E7%9B%AE%E5%A4%9C%E5%89%8D%E7%B7%A8%E3%80%91" target="_blank" rel="noopener noreferrer nofollow" class="share-button" aria-label="Twitterでシェア"><i class="fab fa-x-twitter"></i></a>
