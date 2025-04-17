@@ -70,12 +70,22 @@
             text-decoration: underline;
         }
 
+        /* ▼▼▼ ヘッダーとの重なり対策 ▼▼▼ */
+        .blog-page-wrapper {
+            /* ヘッダーの高さ分のパディングを追加 */
+            /* 値は実際のヘッダーの高さに合わせて調整してください */
+            padding-top: 80px; /* ★★★ この値を調整してください ★★★ */
+        }
+        /* ▲▲▲ ヘッダーとの重なり対策 ▲▲▲ */
+
+
         /* ブログ記事特有のスタイル */
         .blog-main-content {
             background-color: #fff;
             padding: 20px 30px; /* パディング調整 */
             box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 少し影をつける */
             margin-bottom: 2em;
+            /* margin-top: 80px;  ← こちらで指定しても良いですが、上の.blog-page-wrapperへの指定が推奨 */
         }
         .blog-title {
             font-size: 2.2em; /* タイトルサイズ調整 */
