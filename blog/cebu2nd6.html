@@ -14,7 +14,8 @@
     <meta property="og:description" content="セブ島旅行3日目の昼間の記録。噂のリンガムマッサージ『Kalani Spa』体験レポから、ローカルバス移動、ITパーク散策まで。観光だけじゃないセブの日常。動画未公開シーン。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tomotravel-pm.com/blog/cebu2nd6"> <!-- この記事の公開URL -->
-    <meta property="og:image" content="https://tomotravel-pm.com/images/cebu2nd6/1.jpg"> <!-- 代表画像URL (画像1) -->
+    <!-- OGP画像: 本文で使われている画像に変更 -->
+    <meta property="og:image" content="https://tomotravel-pm.com/images/cebu2nd6/2.jpg"> <!-- 代表画像URL (画像2) -->
     <meta property="og:site_name" content="とも旅ちゃんねるVLOG">
     <meta property="og:locale" content="ja_JP">
     <meta property="article:published_time" content="2025-04-17T10:00:00+09:00"> <!-- 公開日時変更 -->
@@ -34,7 +35,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="セブ島3日目：ローカルマッサージ体験と街歩き記録【動画未公開シーン】">
     <meta name="twitter:description" content="セブ島旅行3日目の昼間の記録。噂のリンガムマッサージ『Kalani Spa』体験レポから、ローカルバス移動、ITパーク散策まで。観光だけじゃないセブの日常。動画未公開シーン。">
-    <meta name="twitter:image" content="https://tomotravel-pm.com/images/cebu2nd6/1.jpg"> <!-- 代表画像URL (画像1) -->
+    <!-- Twitter画像: 本文で使われている画像に変更 -->
+    <meta name="twitter:image" content="https://tomotravel-pm.com/images/cebu2nd6/2.jpg"> <!-- 代表画像URL (画像2) -->
     <!-- Canonical, hreflang -->
     <link rel="canonical" href="https://tomotravel-pm.com/blog/cebu2nd6"> <!-- この記事の公開URL -->
     <link rel="alternate" href="https://tomotravel-pm.com/blog/cebu2nd6" hreflang="ja-jp"> <!-- この記事の公開URL -->
@@ -48,7 +50,7 @@
     <!-- CSSへのリンク (cebu1st6.htmlと同じものを想定) -->
     <link rel="stylesheet" href="./style.css">
 
-    <!-- cebu1st6.html からコピーしたインラインスタイル (変更なし) -->
+    <!-- cebu1st6.html からコピーしたインラインスタイル (変更なし) + video-container スタイル追加 -->
     <style>
         /* スタイルは変更しない */
         .blog-content { line-height: 1.8; font-size: 16px; color: #333; }
@@ -93,6 +95,9 @@
         .course-list ul { list-style: none; padding-left: 0; margin: 1.5rem 0; }
         .course-list li { border: 1px solid #eee; padding: 1rem; margin-bottom: 0.8rem; border-radius: 6px; background-color: #fafafa; }
         .course-list li strong { color: #0066cc; display: block; margin-bottom: 0.3rem; font-size: 1.1em; }
+        /* YouTube動画用スタイル (cebu2nd5.htmlからコピー) */
+        .video-container { margin: 2rem 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     </style>
 
     <!-- 構造化データ (BlogPosting) -->
@@ -106,11 +111,11 @@
       },
       "headline": "セブ島3日目：ローカルマッサージ体験と街歩き記録【動画未公開シーン】",
       "description": "セブ島旅行3日目の昼間の記録。噂のリンガムマッサージ『Kalani Spa』体験レポから、ローカルバス移動、ITパーク散策まで。観光だけじゃないセブの日常。動画未公開シーン。",
-      "image": [ /* 画像リスト（4つ指定）*/
-         { "@type": "ImageObject", "url": "https://tomotravel-pm.com/images/cebu2nd6/1.jpg", "width": "1200", "height": "800" },
+      "image": [ /* 画像リスト（1.jpgを削除し、2.jpgから開始）*/
          { "@type": "ImageObject", "url": "https://tomotravel-pm.com/images/cebu2nd6/2.jpg", "width": "1200", "height": "800" },
          { "@type": "ImageObject", "url": "https://tomotravel-pm.com/images/cebu2nd6/3.jpg", "width": "1200", "height": "800" },
          { "@type": "ImageObject", "url": "https://tomotravel-pm.com/images/cebu2nd6/4.jpg", "width": "1200", "height": "800" }
+         /* 必要なら他の画像も追加 */
       ],
       "author": {
         "@type": "Person",
@@ -135,6 +140,17 @@
       "wordCount": "780", /* 元のテキストに基づく概算文字数 */
       "inLanguage": "ja",
       "isAccessibleForFree": "True",
+       /* 埋め込み動画に対応するVideoObjectを更新 */
+      "video": {
+        "@type": "VideoObject",
+        "name": "セブ島3日目昼【未公開シーン】ローカルマッサージ体験と街歩き", /* 更新 */
+        "description": "セブ島旅行3日目、本編未公開の昼間の様子。リンガムマッサージ『Kalani Spa』体験、ローカルバスでの移動、ITパークでの散策など、まったりとしたセブの日常をお届けします。", /* 更新 */
+        "thumbnailUrl": "https://i.ytimg.com/vi/Q2WSkH83ULs/hqdefault.jpg", /* 更新 */
+        "uploadDate": "2025-04-21T10:00:00+09:00", /* 更新 */
+        "duration": "PT15M20S", /* 更新 (仮の値です。要確認・修正) */
+        "contentUrl": "https://www.youtube.com/watch?v=Q2WSkH83ULs",
+        "embedUrl": "https://www.youtube.com/embed/Q2WSkH83ULs"
+      },
       "potentialAction": {
         "@type": "ReadAction",
         "target": {
@@ -188,13 +204,20 @@
 
                 <p>動画ではカットされた3日目の昼間の様子をお届けします！セブ島で噂のリンガムマッサージ体験から、ITパーク散策まで、セブ島での日常！？を過ごしてきました！</p>
 
-                <!-- 画像挿入箇所 1: Jモール前 -->
-                <div class="blog-img-container">
-                    <img src="https://tomotravel-pm.com/images/cebu2nd6/1.jpg" alt="Jモール前でたたずむ様子" loading="lazy" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                    <meta itemprop="url" content="https://tomotravel-pm.com/images/cebu2nd6/1.jpg">
-                    <meta itemprop="width" content="1200"> <meta itemprop="height" content="800">
-                    <div class="blog-img-caption">Jモール前で次の行き先を思案中。</div> <!-- キャプション変更 -->
+                <!-- === 差し替え箇所 === -->
+                <!-- YouTube動画 (指定された動画IDに更新 + meta情報更新) -->
+                <div class="video-container" itemprop="video" itemscope itemtype="https://schema.org/VideoObject">
+                    <meta itemprop="name" content="セブ島3日目昼【未公開シーン】ローカルマッサージ体験と街歩き"> <!-- 更新 -->
+                    <meta itemprop="description" content="セブ島旅行3日目、本編未公開の昼間の様子。リンガムマッサージ『Kalani Spa』体験、ローカルバスでの移動、ITパークでの散策など、まったりとしたセブの日常をお届けします。"> <!-- 更新 -->
+                    <meta itemprop="thumbnailUrl" content="https://i.ytimg.com/vi/Q2WSkH83ULs/hqdefault.jpg"> <!-- 更新 -->
+                    <meta itemprop="uploadDate" content="2025-04-21T10:00:00+09:00"> <!-- 更新 -->
+                    <meta itemprop="duration" content="PT15M20S"> <!-- 更新 (仮の値です。要確認・修正) -->
+                    <meta itemprop="contentUrl" content="https://www.youtube.com/watch?v=Q2WSkH83ULs"> <!-- 更新 -->
+                    <meta itemprop="embedUrl" content="https://www.youtube.com/embed/Q2WSkH83ULs"> <!-- 更新 -->
+                    <!-- 指定されたYouTube動画 -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q2WSkH83ULs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
+                <!-- === 差し替え箇所ここまで === -->
 
                 <!-- YouTubeチャンネルボタン -->
                 <div style="text-align: center; margin-bottom: 2rem;">
