@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 記事固有のタイトル -->
-    <title>フィリピンのキャバクラでキレて帰る男【セブ島旅行2日目夜後編】 | とも旅ちゃんねるVLOG</title>
+    <title>フィリピンのキャバクラでキレて帰る男【セブ島旅行2日目夜後編】 | とも旅ちゃんねるVLOG</title> <!-- このタイトルは元のままですが、ナビゲーションのリンク先タイトルは変更します -->
     <!-- 記事固有のdescription -->
     <meta name="description" content="セブ島一人旅2日目の夜、飲みすぎ＆JTVのおねだりに耐えきれずまさかのブチギレ！？Club Blueでの事件の顛末と深夜の日本食レビュー。セブの夜遊び失敗談。">
     <!-- 記事固有のkeywords -->
@@ -76,9 +76,9 @@
         .blog-tag:hover { background: #e0e0e0; color: #333; text-decoration: none; }
         .next-prev-nav { display: flex; flex-wrap: wrap; margin: 2.5rem 0 1rem; gap: 1rem; }
         .prev-post, .next-post { flex: 1; min-width: 280px; }
-        .prev-post a, .next-post div { display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; color: #333; text-decoration: none; transition: all 0.2s; height: 100%; border: 1px solid #eee; }
-        .prev-post a:hover { background: #f0f2f5; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-decoration: none; }
-        .next-post div { opacity: 0.5; pointer-events: none; }
+        .prev-post a, .next-post a { display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; color: #333; text-decoration: none; transition: all 0.2s; height: 100%; border: 1px solid #eee; } /* next-post div を next-post a に変更 */
+        .prev-post a:hover, .next-post a:hover { background: #f0f2f5; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-decoration: none; } /* next-post a に hover を追加 */
+        /* .next-post div { opacity: 0.5; pointer-events: none; } このスタイルは不要になるので削除しても良い */
         .nav-direction { font-size: 0.85rem; color: #666; display: block; margin-bottom: 5px; }
         .nav-title { font-weight: 600; color: #222; }
         .share-button { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: #f0f0f0; color: #555; margin-right: 10px; transition: all 0.2s; }
@@ -299,7 +299,7 @@
 
                  <p>※ちょっときつい書き方していますが、全然良い子ですよ！セブ島編最後まで是非ご覧ください！</p>
 
-            
+
 
                 <!-- アフィリエイトボックスは削除 -->
 
@@ -398,11 +398,12 @@
                         </a>
                     </div>
                     <div class="next-post">
-                         <!-- 次の記事リンク (非活性化) -->
-                        <div> <!-- aタグをdivに変更 -->
+                         <!-- ★変更箇所: 次の記事リンク (divをaに変更し、hrefとタイトルを設定) -->
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd6" rel="next">
                             <span class="nav-direction">次の記事 <i class="fas fa-chevron-right"></i></span>
-                            <span class="nav-title">（次の記事は準備中です）</span>
-                        </div>
+                            <!-- ★変更箇所: 次の記事タイトル -->
+                            <span class="nav-title">セブ島3日目：ローカルマッサージ体験と街歩き記録【動画未公開シーン】</span>
+                        </a>
                     </div>
                 </nav>
 
