@@ -77,8 +77,8 @@
         .blog-tag:hover { background: #e0e0e0; color: #333; text-decoration: none; }
         .next-prev-nav { display: flex; flex-wrap: wrap; margin: 2.5rem 0 1rem; gap: 1rem; }
         .prev-post, .next-post { flex: 1; min-width: 280px; }
-        .prev-post a, .next-post span { display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; color: #333; text-decoration: none; transition: all 0.2s; height: 100%; border: 1px solid #eee; }
-        .prev-post a:hover { background: #f0f2f5; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-decoration: none; }
+        .prev-post a, .next-post a, .next-post span { display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; color: #333; text-decoration: none; transition: all 0.2s; height: 100%; border: 1px solid #eee; } /* .next-post a を追加 */
+        .prev-post a:hover, .next-post a:hover { background: #f0f2f5; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-decoration: none; } /* .next-post a:hover を追加 */
         .next-post span { background: #f8f9fa; box-shadow: none; text-decoration: none; color: #aaa; cursor: default; } /* 準備中の見た目調整 */
         .nav-direction { font-size: 0.85rem; color: #666; display: block; margin-bottom: 5px; }
         .nav-title { font-weight: 600; color: #222; }
@@ -234,10 +234,10 @@
 
                 <p>噂のリンガムマッサージに行ってきました！料金体系は3コースあって：</p>
 
-                <ul>
-                    <li>最上級：2,000ペソ、女性2人、90分</li>
-                    <li>中級：女性1人、120分（価格不明）</li>
-                    <li>基本：1,200ペソ、80分</li>
+                <ul class="course-list"> <!-- リストのクラス変更 -->
+                    <li><strong>最上級コース</strong> 2,000ペソ、女性2人、90分</li>
+                    <li><strong>中級コース</strong> 女性1人、120分（価格不明）</li>
+                    <li><strong>基本コース</strong> 1,200ペソ、80分</li>
                 </ul>
 
                 <p>ネットで調べた情報と実際の料金はかなり違っていて、びっくりしました。</p>
@@ -263,12 +263,20 @@
 
                 <h3>不満点</h3>
 
-                <ul>
-                    <li>オイルでベトベトになる</li>
-                    <li>シャワーは水しか出ず、水圧も弱い</li>
-                    <li>ボディソープが切れていて、低品質なシャンプーで体を洗う羽目に</li>
-                    <li>終了後も体がネチョネチョした感じが残り、不快感あり</li>
-                </ul>
+                <div class="review-list"> <!-- リストのクラス追加 -->
+                    <ul>
+                        <li class="bad">オイルでベトベトになる</li>
+                        <li class="bad">シャワーは水しか出ず、水圧も弱い</li>
+                        <li class="bad">ボディソープが切れていて、低品質なシャンプーで体を洗う羽目に</li>
+                        <li class="bad">終了後も体がネチョネチョした感じが残り、不快感あり</li>
+                    </ul>
+                </div>
+
+                <!-- ***** Insta360アフィリエイトボックス挿入 ***** -->
+                <div class="affiliate-box">
+                     <a href="https://rpx.a8.net/svt/ejp?a8mat=2NE1HP+9715R6+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00u6874.2bo11c89.g00u6874.2bo1285d%2Fa16021852584_2NE1HP_9715R6_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Finsta360-shop2%252Finsta360-x5%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Finsta360-shop2%252Fi%252F10000522%252F%26rafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-video"></i> 最新8K！Insta360 X5で旅の思い出を鮮やかに</a>
+                </div>
+                <!-- ***** 挿入箇所ここまで ***** -->
 
                 <h2>交通手段の苦労</h2>
 
@@ -288,7 +296,9 @@
 
                 <p>ITパークに到着後は、アヤラモール周辺をぶらぶら散策。「正直ITパーク来てもやることないんだけど」と思いつつも、カフェで時間を潰そうと考えていました。</p>
 
-                <p>ITパーク内の雰囲気の良い中庭的なスペースを見つけて、そこでひと休み。「めっちゃ好きこの雰囲気」と感じながら、ベンチに座ってのんびり過ごしました。</p>
+                <p class="mind-voice">（心の声：めっちゃ好きこの雰囲気…）</p> <!-- 心の声表現追加 -->
+
+                <p>ITパーク内の雰囲気の良い中庭的なスペースを見つけて、そこでひと休み。ベンチに座ってのんびり過ごしました。</p>
 
                 <!-- 画像挿入箇所 4: ITパークの中庭/ベンチ -->
                  <div class="blog-img-container">
@@ -297,6 +307,14 @@
                      <meta itemprop="width" content="1200"> <meta itemprop="height" content="800">
                      <div class="blog-img-caption">ITパーク内のベンチでひと休み。</div>
                  </div>
+
+                <!-- 他のアフィリエイトリンク -->
+                <div class="affiliate-box">
+                    <a href="https://px.a8.net/svt/ejp?a8mat=44Z7VE+7O9A3M+4TIO+5YJRM" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-mobile-alt"></i> 海外でもスムーズ！ahamoで快適通信</a>
+                </div>
+                <div class="affiliate-box">
+                    <a href="https://px.a8.net/svt/ejp?a8mat=4513V9+1CTP0I+4LSW+5YZ77" class="affiliate-btn" target="_blank" rel="nofollow sponsored"><i class="fas fa-shield-alt"></i> 海外のフリーWi-Fiも安心！Surfshark VPN</a>
+                </div>
 
                 <h2>最後に</h2>
 
@@ -336,11 +354,11 @@
                         </a>
                     </div>
                     <div class="next-post">
-                         <!-- 次の記事 (準備中) -->
-                         <span class="next-post-link-disabled"> <!-- aタグの代わりにspanを使用 -->
+                         <!-- 次の記事へのリンク -->
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd7" rel="next"> <!-- 次の記事 (cebu2nd7) へのリンクを追加 -->
                             <span class="nav-direction">次の記事 <i class="fas fa-chevron-right"></i></span>
-                            <span class="nav-title">準備中</span>
-                        </span>
+                            <span class="nav-title">セブ最大級JTV「Wing」体験談！美女との夜遊び＆ライブ【3日目夜】</span> <!-- 次の記事タイトルを追加 -->
+                        </a>
                     </div>
                 </nav>
 
