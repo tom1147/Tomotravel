@@ -77,9 +77,10 @@
         .blog-tag:hover { background: #e0e0e0; color: #333; text-decoration: none; }
         .next-prev-nav { display: flex; flex-wrap: wrap; margin: 2.5rem 0 1rem; gap: 1rem; }
         .prev-post, .next-post { flex: 1; min-width: 280px; }
-        .prev-post a, .next-post a, .next-post span { display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; color: #333; text-decoration: none; transition: all 0.2s; height: 100%; border: 1px solid #eee; } /* .next-post a を追加 */
-        .prev-post a:hover, .next-post a:hover { background: #f0f2f5; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-decoration: none; } /* .next-post a:hover を追加 */
-        .next-post span { background: #f8f9fa; box-shadow: none; text-decoration: none; color: #aaa; cursor: default; } /* 準備中の見た目調整 */
+        /* --- CSS修正箇所 --- */
+        .prev-post a, .next-post a { display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; color: #333; text-decoration: none; transition: all 0.2s; height: 100%; border: 1px solid #eee; }
+        .prev-post a:hover, .next-post a:hover { background: #f0f2f5; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-decoration: none; }
+        /* --- 修正ここまで (.next-post span のルールを削除) --- */
         .nav-direction { font-size: 0.85rem; color: #666; display: block; margin-bottom: 5px; }
         .nav-title { font-weight: 600; color: #222; }
         .share-button { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: #f0f0f0; color: #555; margin-right: 10px; transition: all 0.2s; }
