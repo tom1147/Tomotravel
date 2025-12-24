@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>期間限定｜旅先で“そのまま”紹介する撮影企画｜とも旅ちゃんねる</title>
+  <meta name="description" content="東南アジア中心。旅の途中で立ち寄るお店・場所を、旅行者目線で“そのまま”紹介する5〜10分枠の撮影企画（試験運用・期間限定）。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    :root{
+      --bg: #f7fbff;
+      --card: #ffffff;
+      --text: #20314a;
+      --muted: #5e728a;
+      --primary: #1E90FF;
+      --primary2:#6aa9ff;
+      --accent: #FF6B6B;
+      --accent2:#ffb199;
+      --line: rgba(32,49,74,.10);
+      --shadow: 0 12px 35px rgba(32,49,74,.10);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1080px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(30,144,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 85% 20%, rgba(255,107,107,.16), transparent 55%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      line-height:1.75;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,.70);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .brand .dot{
+      width:12px; height:12px; border-radius:50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 8px 18px rgba(30,144,255,.25);
+    }
+    .brand span{font-family:"Poppins","Noto Sans JP",sans-serif}
+    .nav{
+      display:flex; gap:14px; align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      font-size:.95rem;
+      text-decoration:none;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+      transition:.2s ease;
+    }
+    .nav a:hover{background:rgba(30,144,255,.08); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:.55rem;
+      border:1px solid transparent;
+      border-radius:999px;
+      padding:12px 18px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.2s ease;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      color:#fff;
+      box-shadow: 0 14px 28px rgba(30,144,255,.22);
+    }
+    .btn-primary:hover{transform: translateY(-2px); box-shadow: 0 18px 38px rgba(30,144,255,.28)}
+    .btn-ghost{
+      background:rgba(255,255,255,.8);
+      border-color:var(--line);
+      color:var(--text);
+    }
+    .btn-ghost:hover{transform: translateY(-2px); background:#fff}
+    .pill{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size:.92rem;
+    }
+    .hero{
+      padding:54px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .hero-card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(900px 380px at 0% 0%, rgba(30,144,255,.20), transparent 55%),
+        radial-gradient(900px 380px at 100% 20%, rgba(255,107,107,.16), transparent 55%);
+      pointer-events:none;
+    }
+    .hero-card > *{position:relative}
+    h1{
+      margin:12px 0 14px;
+      font-family:"Poppins","Noto Sans JP",sans-serif;
+      font-size: clamp(1.75rem, 3.2vw, 2.55rem);
+      line-height:1.2;
+      letter-spacing:.2px;
+    }
+    .lead{
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin:0 0 18px;
+    }
+    .note{
+      margin-top:14px;
+      color: var(--muted);
+      font-size:.94rem;
+    }
+    .kicker{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .side-card{
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .stats{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .stat{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding:14px 14px;
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .stat i{
+      color: var(--primary);
+      margin-top:3px;
+      width:20px;
+      text-align:center;
+    }
+    .stat b{display:block; font-size:1.02rem}
+    .stat small{color:var(--muted); font-size:.9rem}
+    .section{
+      padding:26px 0;
+    }
+    .section h2{
+      margin:0 0 14px;
+      font-size:1.35rem;
+      font-family:"Poppins","Noto Sans JP",sans-serif;
+      letter-spacing:.2px;
+    }
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:14px;
+    }
+    .item{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius: 14px;
+      padding:14px;
+    }
+    .item .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    .item .title i{color:var(--accent)}
+    ul.clean{
+      padding-left:1.2rem;
+      margin:10px 0 0;
+      color:var(--muted);
+    }
+    .muted{color:var(--muted)}
+    .tag{
+      display:inline-flex; align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(30,144,255,.06);
+      color: var(--text);
+      font-size:.92rem;
+      font-weight:700;
+      gap:.4rem;
+    }
+    .tag.hot{
+      background: rgba(255,107,107,.10);
+    }
+
+    /* Fee compare */
+    .compare{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    .plan{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background:#fff;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .plan .head{
+      padding:18px 18px 14px;
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(135deg, rgba(30,144,255,.10), rgba(255,107,107,.08));
+    }
+    .plan .head h3{
+      margin:0 0 6px;
+      font-size:1.12rem;
+      font-family:"Poppins","Noto Sans JP",sans-serif;
+    }
+    .plan .price{
+      display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .plan .price strong{
+      font-size:1.6rem;
+      color: var(--primary);
+      letter-spacing:.2px;
+    }
+    .plan .body{padding:16px 18px}
+    .rows{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+    .row{
+      display:flex; justify-content:space-between; gap:12px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background: #fff;
+    }
+    .row span{color:var(--muted)}
+    .row b{font-weight:800}
+    .plan .foot{
+      padding:14px 18px 18px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+    }
+    .contact-form-container{
+      margin-top:10px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:20px;
+    }
+    .form-group{margin-bottom:14px}
+    label{display:block; font-weight:700; margin:0 0 8px}
+    .required-mark{color:var(--accent); margin-left:4px; font-weight:700}
+    input[type="text"], input[type="email"], textarea{
+      width:100%;
+      padding:12px 14px;
+      border-radius: 12px;
+      border:1px solid rgba(32,49,74,.18);
+      background: rgba(247,251,255,.75);
+      outline:none;
+      font-size:1rem;
+      transition:.2s ease;
+      color:var(--text);
+    }
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus{
+      border-color: rgba(30,144,255,.55);
+      box-shadow: 0 0 0 4px rgba(30,144,255,.16);
+      background:#fff;
+    }
+    textarea{min-height:160px; resize:vertical}
+    .hidden{display:none}
+
+    footer{
+      padding:34px 0 40px;
+      margin-top:12px;
+      color: var(--muted);
+    }
+    .footline{
+      border-top:1px solid var(--line);
+      padding-top:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      font-size:.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .compare{grid-template-columns: 1fr}
+      .nav{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="inner">
+        <a class="brand" href="#top" aria-label="LPトップへ">
+          <span class="dot" aria-hidden="true"></span>
+          <span>とも旅ちゃんねる｜撮影企画</span>
+        </a>
+        <div class="nav" aria-label="ページ内メニュー">
+          <a href="#about">企画について</a>
+          <a href="#policy">スタンス</a>
+          <a href="#fees">費用</a>
+          <a href="#delivery">納期</a>
+          <a href="#contact">お問い合わせ</a>
+        </div>
+        <a class="btn btn-primary" href="#contact"><i class="fa-solid fa-envelope"></i> 相談する</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="wrap">
+    <!-- HERO -->
+    <section class="hero" aria-label="メイン導入">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker">
+            <span class="pill"><i class="fa-solid fa-sparkles" aria-hidden="true"></i> 期間限定・試験企画</span>
+            <span class="pill"><i class="fa-solid fa-video" aria-hidden="true"></i> 5〜10分の紹介枠</span>
+            <span class="pill"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> 東南アジア中心</span>
+          </div>
+
+          <h1>
+            夜遊びスポットも、旅先のお店も。<br/>
+            旅行者目線で「そのまま」紹介する動画を作ります。
+          </h1>
+
+          <p class="lead">
+            海外を中心に、旅の途中で立ち寄ったお店や場所を、旅行者目線で紹介する動画を制作できないかと考えています。<br/>
+            広告的な演出ではなく、実際に訪れて感じた雰囲気や印象を、できるだけそのまま伝える内容を想定しています。
+          </p>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <a class="btn btn-primary" href="#fees"><i class="fa-solid fa-ticket" aria-hidden="true"></i> 費用を見る</a>
+            <a class="btn btn-ghost" href="#about"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> 企画の概要</a>
+          </div>
+
+          <p class="note">
+            ※今回が<strong>初めての試み</strong>です。運用しながら、より良い形に整えていきます。<br/>
+            ※再生回数・集客などの効果を<strong>保証するものではありません</strong>。
+          </p>
+        </div>
+
+        <aside class="side-card" aria-label="信頼情報">
+          <div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+              <span class="tag"><i class="fa-brands fa-youtube" aria-hidden="true"></i> チャンネル実績</span>
+              <span class="muted" style="font-size:.92rem;">2025/12/23 時点</span>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+                <div>
+                  <b>登録者：2,395人</b>
+                  <small>旅系VLOGとして積み上げ中</small>
+                </div>
+              </div>
+
+              <div class="stat">
+                <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                <div>
+                  <b>平均：6,700回 前後</b>
+                  <small>総再生回数ベースの目安</small>
+                </div>
+              </div>
+
+              <div class="stat">
+                <i class="fa-solid fa-ranking-star" aria-hidden="true"></i>
+                <div>
+                  <b>中央値：5,600回 前後</b>
+                  <small>安定感の目安として</small>
+                </div>
+              </div>
+
+              <div class="stat">
+                <i class="fa-solid fa-face-smile" aria-hidden="true"></i>
+                <div>
+                  <b>視聴者の傾向</b>
+                  <small>40代以降の夜遊び好きな男性が中心（“余裕のある層”が多め）</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <a class="btn btn-primary" href="#contact" style="width:100%;"><i class="fa-solid fa-paper-plane"></i> お問い合わせフォームへ</a>
+            <div class="muted" style="font-size:.92rem; margin-top:10px;">
+              ※効果保証ではなく、<strong>リアルな体験の記録</strong>としての企画です。
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-label="企画について">
+      <div class="card">
+        <h2>この企画について</h2>
+        <div class="grid-3">
+          <div class="item">
+            <div class="title"><i class="fa-solid fa-film" aria-hidden="true"></i> 動画尺</div>
+            <div class="muted">通常15〜20分前後の動画の中に、<strong>5〜10分程度</strong>を組み込む想定です。</div>
+          </div>
+          <div class="item">
+            <div class="title"><i class="fa-solid fa-compass" aria-hidden="true"></i> 旅行者目線</div>
+            <div class="muted">観光客・旅行者として「行ってみたらどう感じるか」を軸に構成します。</div>
+          </div>
+          <div class="item">
+            <div class="title"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> 空気感重視</div>
+            <div class="muted">いわゆる広告動画ではなく、<strong>できるだけそのまま</strong>の雰囲気を伝えます。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICY -->
+    <section id="policy" class="section" aria-label="スタンスとご相談">
+      <div class="grid-2">
+        <div class="card">
+          <h2>スタンス（大事にしたいこと）</h2>
+          <ul class="clean">
+            <li>内容や構成、編集は基本的にお任せいただきます。</li>
+            <li>良い点だけでなく、気になった点も正直にお伝えします。</li>
+            <li>ステマや過度な演出は行いません。</li>
+            <li><strong>事実誤認を防ぐため、事前にしっかり打ち合わせ</strong>を行います。</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>ご相談について（視聴者の安心のために）</h2>
+          <ul class="clean">
+            <li>視聴者に、正確で安心できる情報を届けることが前提です。</li>
+            <li>事前の評判や公開情報を確認したうえで、誤解や不安につながる可能性が高いと判断した場合はお断りすることがあります。</li>
+            <li>集客や効果を保証するものではありません。</li>
+            <li>タイミングや状況によっては、ご相談をお受けできないことがあります。</li>
+          </ul>
+          <p class="muted" style="margin:12px 0 0;">
+            ※内容の修正は「事実に関する部分」の確認を中心に、事前打ち合わせで丁寧に詰めていきます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEES -->
+    <section id="fees" class="section" aria-label="費用">
+      <div class="card">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div>
+            <h2 style="margin-bottom:6px;">費用について（基本無料・実費のみ）</h2>
+            <div class="muted">無料パターンと通常パターンを、見比べやすく整理しました。</div>
+          </div>
+          <span class="tag hot"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> 期間限定受付</span>
+        </div>
+
+        <div class="compare" style="margin-top:14px;">
+          <!-- FREE -->
+          <div class="plan" aria-label="無料パターン">
+            <div class="head">
+              <h3><i class="fa-solid fa-gift" aria-hidden="true"></i> 無料対応（期間限定）</h3>
+              <div class="price">
+                <strong>実質0円</strong>
+                <span class="muted">※店舗実費のみ</span>
+              </div>
+              <div class="muted" style="margin-top:6px;">交通費・宿泊費：不要</div>
+            </div>
+            <div class="body">
+              <div class="rows">
+                <div class="row"><span>制作費</span><b>0円</b></div>
+                <div class="row"><span>ご負担</span><b>店舗実費のみ</b></div>
+                <div class="row"><span>対応内容</span><b>15〜20分動画内に5〜10分</b></div>
+                <div class="row"><span>直近エリア</span><b>マニラ / セブ</b></div>
+              </div>
+
+              <div style="margin-top:14px;">
+                <span class="tag"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 直近の無料枠</span>
+                <ul class="clean">
+                  <li><strong>1/22：</strong>フィリピン・マニラ（マラテ／マカティ周辺・夜間）</li>
+                  <li><strong>1/24〜1/26：</strong>セブ市周辺</li>
+                </ul>
+              </div>
+            </div>
+            <div class="foot">
+              ※枠には限りがあります。埋まり次第、受付を終了する可能性があります。
+            </div>
+          </div>
+
+          <!-- NORMAL -->
+          <div class="plan" aria-label="通常パターン">
+            <div class="head">
+              <h3><i class="fa-solid fa-receipt" aria-hidden="true"></i> 通常のご相談（実費のみ）</h3>
+              <div class="price">
+                <strong>制作費0円</strong>
+                <span class="muted">※交通費・宿泊費・店舗実費</span>
+              </div>
+              <div class="muted" style="margin-top:6px;">タイ・ベトナムなど他の東南アジアも対応可（状況次第）</div>
+            </div>
+
+            <div class="body">
+              <div class="rows">
+                <div class="row"><span>制作費</span><b>0円</b></div>
+                <div class="row"><span>ご負担</span><b>交通費＋宿泊費＋店舗実費</b></div>
+                <div class="row"><span>対応内容</span><b>15〜20分動画内に5〜10分</b></div>
+              </div>
+
+              <div style="margin-top:14px;">
+                <span class="tag"><i class="fa-solid fa-calculator" aria-hidden="true"></i> 費用イメージ（参考）</span>
+                <div class="muted" style="margin-top:8px;">成田〜マニラ 往復交通費：約32,000円前後（閑散期目安／時期で大きく変動）</div>
+                <div class="muted">宿泊費：1泊 約5,000円程度</div>
+                <div class="muted">店舗でかかる費用：飲食代・入場料など実費</div>
+              </div>
+            </div>
+
+            <div class="foot">
+              ※航空券・宿泊費は時期や空き状況により変動します。詳細はご相談内容をもとに個別に確認します。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DELIVERY -->
+    <section id="delivery" class="section" aria-label="納期">
+      <div class="card">
+        <h2>納期について</h2>
+        <div class="grid-2">
+          <div class="item">
+            <div class="title"><i class="fa-solid fa-clock" aria-hidden="true"></i> 通常</div>
+            <div class="muted">
+              動画の進行状況によりますが、<strong>撮影から1〜2か月程度</strong>を目安にしてください。
+            </div>
+          </div>
+          <div class="item">
+            <div class="title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> 急ぎの場合</div>
+            <div class="muted">
+              急ぎで出したい場合は、旅程や動画構成の調整が必要です。<strong>必ず事前にご相談</strong>ください。<br/>
+              なお、急ぎ対応は<strong>別途費用が発生</strong>します（他案件との兼ね合いでお受けできない場合もあります）。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-label="お問い合わせ">
+      <div class="card">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div>
+            <h2 style="margin-bottom:6px;">お問い合わせについて</h2>
+            <div class="muted">撮影のご相談・ご依頼は、下記フォームよりご連絡ください。</div>
+          </div>
+          <a class="btn btn-primary" href="#contactForm"><i class="fa-solid fa-pen-to-square"></i> フォームへ</a>
+        </div>
+
+        <div class="contact-grid" style="margin-top:14px;">
+          <div class="item">
+            <div class="title"><i class="fa-solid fa-list-check" aria-hidden="true"></i> 書いてほしい内容（短くてOK）</div>
+            <ul class="clean">
+              <li>店舗名・エリア</li>
+              <li>ご希望の撮影内容（簡単でOK）</li>
+              <li>ご希望の時期・日程感</li>
+              <li>（急ぎの場合）希望公開日や希望スケジュール</li>
+            </ul>
+            <p class="muted" style="margin:10px 0 0;">
+              内容を確認のうえ、対応可否や進め方をご連絡します。<br/>
+              ※スケジュールや内容によっては、お受けできない場合もあります。
+            </p>
+          </div>
+
+          <div class="contact-form-container" aria-label="お問い合わせフォーム">
+            <!-- Netlify用 hidden form（維持） -->
+            <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+              <input type="text" name="name" />
+              <input type="email" name="email" />
+              <input type="text" name="subject" />
+              <textarea name="message"></textarea>
+            </form>
+
+            <form id="contactForm"
+                  name="contact"
+                  method="POST"
+                  action="/?success=true"
+                  netlify
+                  netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="to-email" value="tomotravel.pm@gmail.com" />
+
+              <!-- 表示は消しつつ、honeypot自体は維持（bot対策の“文言”は出しません） -->
+              <input type="text" name="bot-field" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+              <div class="form-group">
+                <label for="name">お名前<span class="required-mark">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="山田 太郎">
+              </div>
+
+              <div class="form-group">
+                <label for="email">メールアドレス<span class="required-mark">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="your-email@example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="subject">件名<span class="required-mark">*</span></label>
+                <input type="text" id="subject" name="subject" required placeholder="お問い合わせ件名">
+              </div>
+
+              <div class="form-group">
+                <label for="message">お問い合わせ内容<span class="required-mark">*</span></label>
+                <textarea id="message" name="message" required placeholder="店舗名・エリア／希望内容／日程感などをご記入ください"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%; padding:14px 18px;">
+                <i class="fa-solid fa-paper-plane"></i> 送信する
+              </button>
+
+              <p class="muted" style="margin:10px 0 0; font-size:.92rem;">
+                ※送信後、内容を確認してご連絡します。返信まで少しお時間をいただく場合があります。
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footline">
+        <div>© 2025 Tomo Travel Channel</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <a class="btn btn-ghost" href="#top"><i class="fa-solid fa-arrow-up"></i> 上へ戻る</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-youtube"></i> YouTube
+          </a>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
