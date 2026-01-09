@@ -439,7 +439,6 @@
   </div>
 
   <main id="top" class="wrap">
-    <!-- HERO -->
     <section class="hero" aria-label="メイン導入">
       <div class="hero-grid">
         <div class="hero-card">
@@ -524,7 +523,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="section" aria-label="企画について">
       <div class="card">
         <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
@@ -552,7 +550,6 @@
       </div>
     </section>
 
-    <!-- POLICY -->
     <section id="policy" class="section" aria-label="スタンス">
       <div class="card">
         <h2>動画のスタンス（大事なところ）</h2>
@@ -593,7 +590,6 @@
       </div>
     </section>
 
-    <!-- FEES -->
     <section id="fees" class="section" aria-label="費用">
       <div class="card">
         <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
@@ -605,7 +601,6 @@
         </div>
 
         <div class="compare" style="margin-top:14px;">
-          <!-- FREE -->
           <div class="plan" aria-label="無料パターン">
             <div class="head">
               <h3><i class="fa-solid fa-gift" aria-hidden="true"></i> 無料対応（期間限定）</h3>
@@ -632,11 +627,20 @@
               </div>
             </div>
             <div class="foot">
-              ※枠には限りがあります。状況により受付終了します。
+              <div style="margin-bottom:12px;">※枠には限りがあります。状況により受付終了します。</div>
+              
+              <div style="background:rgba(30,144,255,.08); padding:12px; border-radius:8px; border:1px dashed var(--primary);">
+                <strong style="color:var(--primary); display:block; margin-bottom:6px;">
+                  <i class="fa-solid fa-clipboard-check"></i> 特別サービス：覆面調査レポート
+                </strong>
+                <span style="font-size:.9rem; color:var(--text); line-height:1.6;">
+                  ご希望の方には、動画撮影と合わせて<strong>「店舗改善用の覆面調査レポート」</strong>も作成いたします。(こちらは店舗責任者様用のレポートです)<br/>
+                  <span class="muted" style="font-size:0.85em;">（通常有料の本格レポートを、本プラン限定で特別にお付けします）</span>
+                </span>
+              </div>
             </div>
           </div>
 
-          <!-- NORMAL -->
           <div class="plan" aria-label="通常パターン">
             <div class="head">
               <h3><i class="fa-solid fa-plane" aria-hidden="true"></i> 通常相談（撮影のために渡航する場合）</h3>
@@ -666,7 +670,6 @@
                   </li>
                   <li><strong>宿泊費：</strong>1泊 約5,000円程度</li>
                   <li><strong>店舗でかかる費用：</strong>飲食代・入場料などの実費</li>
-                  <!-- ✅ ここだけ修正：ぴえん → 文言 -->
                   <li><strong>女の子ドリンク：</strong>（撮影だけで終わるのは申し訳ないので、必要に応じてお願いする場合があります）</li>
                 </ul>
                 <p class="muted" style="margin:10px 0 0;">
@@ -676,7 +679,8 @@
             </div>
 
             <div class="foot">
-              ※「撮影依頼として渡航する」場合は、事前に交通費・ホテル代のご負担をお願いしています。
+              <p style="margin:0 0 8px;">※「撮影依頼として渡航する」場合は、事前に交通費・ホテル代のご負担をお願いしています。</p>
+              <p style="margin:0; font-weight:700;">※調査レポートオプション希望の場合は15,000円発生いたします。</p>
             </div>
           </div>
         </div>
@@ -691,7 +695,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq" class="section" aria-label="よくある質問">
       <div class="card">
         <h2>よくある質問（FAQ）</h2>
@@ -757,7 +760,6 @@
       </div>
     </section>
 
-    <!-- DELIVERY -->
     <section id="delivery" class="section" aria-label="納期">
       <div class="card">
         <h2>納期について</h2>
@@ -769,7 +771,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="section" aria-label="お問い合わせ">
       <div class="card">
         <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
@@ -796,7 +797,6 @@
           </div>
 
           <div class="contact-form-container" aria-label="お問い合わせフォーム">
-            <!-- Netlify用 hidden form（維持） -->
             <form name="contact" netlify netlify-honeypot="bot-field" hidden>
               <input type="text" name="name" />
               <input type="email" name="email" />
@@ -862,4 +862,3 @@
   </main>
 </body>
 </html>
-
