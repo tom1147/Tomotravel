@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Tomo Game - Tropical Merge Puzzle</title>
+    <meta name="description" content="南国の島で仲間を合体させよう！同じ仲間同士がぶつかると進化するパズルゲーム。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Zen+Maru+Gothic:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="assets/tama11.png">
+
+    <script>
+        // Service Worker 登録
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('SW registered'))
+                    .catch(err => console.log('SW registration failed'));
+            });
+        }
+
+        // PWA Install Banner
+        let deferredPrompt = null;
+
+        window.addEventListener('load', () => {
+            // 既にPWAとして起動中なら表示しない
+            if (window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches) return;
+            // インストール済みなら表示しない
+            if (localStorage.getItem('pwa-installed')) return;
+            // 今日既に閉じていたら表示しない（1日1回）
+            const today = new Date().toDateString();
+            if (localStorage.getItem('pwa-install-dismissed') === today) return;
+
+            const banner = document.getElementById('pwa-install-banner');
+            const guide = document.getElementById('pwa-install-guide');
+            const installBtn = document.getElementById('pwa-install-btn');
+            const closeBtn = document.getElementById('pwa-install-close');
+
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            const isAndroid = /Android/.test(navigator.userAgent);
+
+            if (isIOS) {
+                guide.innerHTML = '下の<strong>共有ボタン</strong> <span style="font-size:1.2em">⬆</span> → 「<strong>ホーム画面に追加</strong>」をタップ';
+                banner.classList.remove('hidden');
+            } else if (isAndroid) {
+                // Android: beforeinstallpromptを待つ
+                guide.textContent = 'アプリとしてインストールできます';
+            }
+
+            closeBtn.addEventListener('click', () => {
+                banner.classList.add('hidden');
+                localStorage.setItem('pwa-install-dismissed', today);
+            });
+
+            // Android: beforeinstallprompt
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installBtn.classList.remove('hidden');
+                banner.classList.remove('hidden');
+            });
+
+            installBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+                deferredPrompt.prompt();
+                const result = await deferredPrompt.userChoice;
+                if (result.outcome === 'accepted') {
+                    banner.classList.add('hidden');
+                }
+                deferredPrompt = null;
+            });
+
+            // インストール完了したら永久に非表示
+            window.addEventListener('appinstalled', () => {
+                banner.classList.add('hidden');
+                localStorage.setItem('pwa-installed', '1');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Title Screen -->
+    <div id="title-screen">
+        <div class="title-content">
+            <div class="title-logo">
+                <div class="title-main">
+                    <span class="title-tomo">Tomo</span>
+                    <span class="title-game">Game</span>
+                </div>
+                <div class="title-tagline">Tropical Magic</div>
+            </div>
+
+            <div class="music-box">
+                <div class="music-box-header">MUSIC BOX</div>
+                <div class="music-box-selector">
+                    <button id="bgm-prev" class="music-nav-btn">&lt;</button>
+                    <div class="music-info">
+                        <div id="bgm-name" class="music-name">-</div>
+                        <div id="bgm-counter" class="music-counter">- / -</div>
+                    </div>
+                    <button id="bgm-next" class="music-nav-btn">&gt;</button>
+                </div>
+            </div>
+
+            <button id="start-btn">START</button>
+
+            <!-- PWA Install Banner -->
+            <div id="pwa-install-banner" class="pwa-install-banner hidden">
+                <div class="pwa-install-content">
+                    <div class="pwa-install-icon">📲</div>
+                    <div class="pwa-install-text">
+                        <strong>ホーム画面に追加</strong>
+                        <span id="pwa-install-guide"></span>
+                    </div>
+                    <button id="pwa-install-close" class="pwa-install-close">&times;</button>
+                </div>
+                <!-- Android用 -->
+                <button id="pwa-install-btn" class="pwa-install-btn hidden">インストール</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Container (hidden initially) -->
+    <div id="game-container" class="hidden">
+        <!-- Header -->
+        <header id="game-header">
+            <div class="header-left">
+                <div class="title">Tomo Game</div>
+                <div class="title-sub">～Tropical Magic～</div>
+            </div>
+            <div class="header-right">
+                <div class="score-card">
+                    <span class="score-label">SCORE</span>
+                    <span id="score" class="score-value">0</span>
+                </div>
+                <div class="score-card best">
+                    <span class="score-label">BEST</span>
+                    <span id="best-score" class="score-value">0</span>
+                </div>
+                <div class="score-card max-lv">
+                    <span class="score-label">MAX LV</span>
+                    <span id="max-level" class="score-value">0</span>
+                </div>
+                <button id="settings-btn" class="settings-btn" title="Settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+                    </svg>
+                </button>
+                <button id="cast-btn" class="cast-btn" title="Cast">👧</button>
+            </div>
+        </header>
+
+        <!-- Next Preview -->
+        <div id="next-preview">
+            <div class="next-inner">
+                <span class="next-label">NEXT</span>
+                <div id="next-cat" class="next-cat"></div>
+            </div>
+            <div class="hold-inner">
+                <button id="hold-btn" class="hold-btn">
+                    <span class="hold-label">HOLD</span>
+                    <div id="hold-cat" class="hold-cat"></div>
+                </button>
+                <span id="hold-count" class="hold-count">5</span>
+            </div>
+            <div class="reroll-inner">
+                <button id="reroll-btn" class="reroll-btn">
+                    <span class="reroll-label">REROLL</span>
+                    <span class="reroll-icon">🔄</span>
+                </button>
+                <span id="reroll-count" class="reroll-count">3</span>
+            </div>
+            <div class="skill-inner">
+                <button id="skill-btn" class="skill-btn" disabled>
+                    <span class="skill-label">SKILL</span>
+                    <span class="skill-icon">⚡</span>
+                </button>
+                <span id="skill-count" class="skill-count">0/6</span>
+            </div>
+            <button id="skip-bomb-btn" class="skip-bomb-btn hidden">SKIP</button>
+        </div>
+
+        <!-- Game Canvas -->
+        <div id="game-area">
+            <div id="combo-display" class="combo-badge hidden">x0</div>
+            <div id="danger-line"></div>
+            <canvas id="game-canvas"></canvas>
+            <!-- Skill Video Overlay (game-area内) -->
+            <div id="skill-video-overlay" class="hidden">
+                <video id="skill-video" playsinline></video>
+                <button id="skill-video-skip" class="skill-video-skip-btn">SKIP ▶▶</button>
+            </div>
+        </div>
+
+        <!-- Evolution Guide -->
+        <div id="evolution-guide">
+            <div class="guide-title">EVOLUTION</div>
+            <div id="evolution-chart"></div>
+        </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="hidden">
+        <div class="settings-content">
+            <div class="settings-header">
+                <span class="settings-title">SETTINGS</span>
+                <button id="settings-close" class="settings-close-btn">&times;</button>
+            </div>
+            <div class="settings-section">
+                <div class="settings-section-label">MUSIC</div>
+                <div class="music-box-selector">
+                    <button id="settings-bgm-prev" class="music-nav-btn">&lt;</button>
+                    <div class="music-info">
+                        <div id="settings-bgm-name" class="music-name">-</div>
+                        <div id="settings-bgm-counter" class="music-counter">- / -</div>
+                    </div>
+                    <button id="settings-bgm-next" class="music-nav-btn">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cast Panel (リストのみ) -->
+    <div id="cast-panel" class="hidden">
+        <div class="cast-content">
+            <div class="cast-header">
+                <span class="cast-title">CAST LIST</span>
+                <button id="cast-close" class="cast-close-btn">&times;</button>
+            </div>
+            <div id="cast-list" class="cast-list">
+                <!-- JSで動的に追加 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cast Detail Modal (独立した全画面モーダル) -->
+    <div id="cast-detail-modal" class="hidden">
+        <div class="detail-modal-content">
+            <button id="detail-modal-close" class="detail-modal-close-btn">&times;</button>
+            <div id="detail-image" class="detail-image"></div>
+            <div id="detail-name" class="detail-name">Character Name</div>
+            <div id="detail-level" class="detail-level">Level X</div>
+            <div id="detail-desc" class="detail-desc">
+                南国のビーチで出会った女の子。<br>
+                マージすると更なる進化を遂げるかも！？
+            </div>
+            <div class="detail-links">
+                <!-- JSで動的に追加 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Overlay -->
+    <div id="game-over" class="hidden">
+        <div class="game-over-content">
+            <div class="gameover-icon">GAME OVER</div>
+            <p class="subtitle">仲間があふれちゃった！</p>
+            <div class="result-card">
+                <div class="result-row">
+                    <span class="result-label">SCORE</span>
+                    <span id="final-score" class="result-value">0</span>
+                </div>
+                <div class="result-divider"></div>
+                <div class="result-row">
+                    <span class="result-label">BEST</span>
+                    <span id="highscore" class="result-value best">0</span>
+                </div>
+                <div class="result-divider"></div>
+                <div class="result-row">
+                    <span class="result-label">MAX LEVEL</span>
+                    <span id="final-max-level" class="result-value max-lv-value">-</span>
+                </div>
+                <div id="new-record" class="new-record hidden">NEW RECORD!</div>
+            </div>
+            <div class="share-buttons">
+                <button id="share-twitter" class="share-btn twitter">
+                    <span>Share on X</span>
+                </button>
+                <button id="share-line" class="share-btn line">
+                    <span>LINE</span>
+                </button>
+            </div>
+            <button id="continue-btn" class="continue-btn">
+                <span class="icon">📺</span> CONTINUE (Watch Ad)
+            </button>
+            <div id="countdown-area" class="hidden">
+                <div class="spinner"></div>
+                <p>Loading Ad...</p>
+            </div>
+            <button id="restart-btn">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <!-- Matter.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="js/objects.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>
