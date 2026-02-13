@@ -49,14 +49,13 @@
             const closeBtn = document.getElementById('pwa-install-close');
 
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-            const isAndroid = /Android/.test(navigator.userAgent);
 
             if (isIOS) {
-                guide.innerHTML = '下の<strong>共有ボタン</strong> <span style="font-size:1.2em">⬆</span> → 「<strong>ホーム画面に追加</strong>」をタップ';
+                // iOSはbeforeinstallpromptが使えないのでガイド表示
+                installBtn.style.display = 'none';
+                guide.innerHTML = '⬆ 共有 → 「ホーム画面に追加」';
+                guide.style.display = 'inline';
                 banner.classList.remove('hidden');
-            } else if (isAndroid) {
-                // Android: beforeinstallpromptを待つ
-                guide.textContent = 'アプリとしてインストールできます';
             }
 
             closeBtn.addEventListener('click', () => {
@@ -64,11 +63,12 @@
                 localStorage.setItem('pwa-install-dismissed', today);
             });
 
-            // Android: beforeinstallprompt
+            // Android/Chrome: beforeinstallprompt
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 deferredPrompt = e;
-                installBtn.classList.remove('hidden');
+                installBtn.style.display = 'inline-block';
+                guide.style.display = 'none';
                 banner.classList.remove('hidden');
             });
 
@@ -119,16 +119,9 @@
 
             <!-- PWA Install Banner -->
             <div id="pwa-install-banner" class="pwa-install-banner hidden">
-                <div class="pwa-install-content">
-                    <div class="pwa-install-icon">📲</div>
-                    <div class="pwa-install-text">
-                        <strong>ホーム画面に追加</strong>
-                        <span id="pwa-install-guide"></span>
-                    </div>
-                    <button id="pwa-install-close" class="pwa-install-close">&times;</button>
-                </div>
-                <!-- Android用 -->
-                <button id="pwa-install-btn" class="pwa-install-btn hidden">インストール</button>
+                <button id="pwa-install-btn" class="pwa-install-btn-simple">📲 インストール</button>
+                <span id="pwa-install-guide" class="pwa-install-guide-text"></span>
+                <button id="pwa-install-close" class="pwa-install-close-simple">&times;</button>
             </div>
         </div>
     </div>

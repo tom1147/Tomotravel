@@ -2713,8 +2713,49 @@ function initTitleScreen() {
         switchBgmTrack();
     });
 
+    // 画像プリロード
+    const startBtn = document.getElementById('start-btn');
+    const allImages = [
+        ...CAT_OBJECTS.filter(c => c.image).map(c => c.image),
+        BOMB_OBJECT.image,
+        TAMA12_OBJECT.image,
+        './assets/beach_night_bg.png',
+        './assets/title.png',
+        './assets/tomoend.png',
+        './assets/tomogame.png',
+        './assets/icon512.png',
+        './assets/con1.png',
+        './assets/con2.png',
+        './assets/con3.png',
+        './assets/con4.png'
+    ].filter(Boolean);
+
+    let imagesLoaded = 0;
+    const totalImages = allImages.length;
+    startBtn.disabled = true;
+    startBtn.textContent = 'LOADING...';
+
+    function onImageLoaded() {
+        imagesLoaded++;
+        const pct = Math.floor((imagesLoaded / totalImages) * 100);
+        startBtn.textContent = `LOADING... ${pct}%`;
+        if (imagesLoaded >= totalImages) {
+            startBtn.disabled = false;
+            startBtn.textContent = 'START';
+            startBtn.style.letterSpacing = '8px';
+        }
+    }
+
+    allImages.forEach(src => {
+        const img = new Image();
+        img.onload = onImageLoaded;
+        img.onerror = onImageLoaded;
+        img.src = src;
+    });
+
     // STARTボタン
-    document.getElementById('start-btn').addEventListener('click', () => {
+    startBtn.addEventListener('click', () => {
+        if (startBtn.disabled) return;
         startTitleBgm(); // BGMがまだなら開始
         document.getElementById('title-screen').classList.add('hidden');
         document.getElementById('game-container').classList.remove('hidden');
