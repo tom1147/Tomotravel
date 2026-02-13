@@ -31,60 +31,23 @@
             });
         }
 
-        // PWA Install Banner
-        let deferredPrompt = null;
-
+        // PWA Install Banner (iOS only)
         window.addEventListener('load', () => {
             // 既にPWAとして起動中なら表示しない
             if (window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches) return;
-            // インストール済みなら表示しない
-            if (localStorage.getItem('pwa-installed')) return;
             // 今日既に閉じていたら表示しない（1日1回）
             const today = new Date().toDateString();
             if (localStorage.getItem('pwa-install-dismissed') === today) return;
 
-            const banner = document.getElementById('pwa-install-banner');
-            const iosGuide = document.getElementById('pwa-ios-guide');
-            const installBtn = document.getElementById('pwa-install-btn');
-            const closeBtn = document.getElementById('pwa-install-close');
-
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            if (!isIOS) return;
 
-            if (isIOS) {
-                // iOS: ボタン非表示、ステップガイド表示
-                installBtn.style.display = 'none';
-                iosGuide.style.display = 'block';
-                banner.classList.remove('hidden');
-            }
+            const banner = document.getElementById('pwa-install-banner');
+            banner.classList.remove('hidden');
 
-            closeBtn.addEventListener('click', () => {
+            document.getElementById('pwa-install-close').addEventListener('click', () => {
                 banner.classList.add('hidden');
                 localStorage.setItem('pwa-install-dismissed', today);
-            });
-
-            // Android/Chrome: beforeinstallprompt
-            window.addEventListener('beforeinstallprompt', (e) => {
-                e.preventDefault();
-                deferredPrompt = e;
-                installBtn.style.display = 'inline-block';
-                iosGuide.style.display = 'none';
-                banner.classList.remove('hidden');
-            });
-
-            installBtn.addEventListener('click', async () => {
-                if (!deferredPrompt) return;
-                deferredPrompt.prompt();
-                const result = await deferredPrompt.userChoice;
-                if (result.outcome === 'accepted') {
-                    banner.classList.add('hidden');
-                }
-                deferredPrompt = null;
-            });
-
-            // インストール完了したら永久に非表示
-            window.addEventListener('appinstalled', () => {
-                banner.classList.add('hidden');
-                localStorage.setItem('pwa-installed', '1');
             });
         });
     </script>
@@ -116,12 +79,9 @@
 
             <button id="start-btn">START</button>
 
-            <!-- PWA Install Banner -->
+            <!-- PWA Install Banner (iOS only) -->
             <div id="pwa-install-banner" class="pwa-install-banner hidden">
-                <!-- Android: ワンタップインストール -->
-                <button id="pwa-install-btn" class="pwa-install-btn-inline">📲 アプリをインストール</button>
-                <!-- iOS: ステップガイド -->
-                <div id="pwa-ios-guide" class="pwa-ios-guide" style="display:none;">
+                <div class="pwa-ios-guide">
                     <div class="pwa-ios-title">📲 ホーム画面に追加</div>
                     <div class="pwa-ios-steps">
                         <div class="pwa-ios-step">

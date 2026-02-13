@@ -2568,27 +2568,6 @@ body::before {
     display: none;
 }
 
-/* Android: インラインボタン */
-.pwa-install-btn-inline {
-    padding: 10px 24px;
-    font-size: 0.8rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    background: rgba(255, 107, 157, 0.15);
-    color: var(--accent-pink);
-    border: 1px solid rgba(255, 107, 157, 0.3);
-    border-radius: 24px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    letter-spacing: 0.5px;
-    display: none;
-}
-
-.pwa-install-btn-inline:active {
-    transform: scale(0.96);
-    background: rgba(255, 107, 157, 0.25);
-}
-
 /* iOS: ステップガイド */
 .pwa-ios-guide {
     width: 100%;
