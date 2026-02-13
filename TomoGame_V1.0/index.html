@@ -44,17 +44,16 @@
             if (localStorage.getItem('pwa-install-dismissed') === today) return;
 
             const banner = document.getElementById('pwa-install-banner');
-            const guide = document.getElementById('pwa-install-guide');
+            const iosGuide = document.getElementById('pwa-ios-guide');
             const installBtn = document.getElementById('pwa-install-btn');
             const closeBtn = document.getElementById('pwa-install-close');
 
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
             if (isIOS) {
-                // iOSはbeforeinstallpromptが使えないのでガイド表示
+                // iOS: ボタン非表示、ステップガイド表示
                 installBtn.style.display = 'none';
-                guide.innerHTML = '⬆ 共有 → 「ホーム画面に追加」';
-                guide.style.display = 'inline';
+                iosGuide.style.display = 'block';
                 banner.classList.remove('hidden');
             }
 
@@ -68,7 +67,7 @@
                 e.preventDefault();
                 deferredPrompt = e;
                 installBtn.style.display = 'inline-block';
-                guide.style.display = 'none';
+                iosGuide.style.display = 'none';
                 banner.classList.remove('hidden');
             });
 
@@ -119,9 +118,23 @@
 
             <!-- PWA Install Banner -->
             <div id="pwa-install-banner" class="pwa-install-banner hidden">
-                <button id="pwa-install-btn" class="pwa-install-btn-simple">📲 インストール</button>
-                <span id="pwa-install-guide" class="pwa-install-guide-text"></span>
-                <button id="pwa-install-close" class="pwa-install-close-simple">&times;</button>
+                <!-- Android: ワンタップインストール -->
+                <button id="pwa-install-btn" class="pwa-install-btn-inline">📲 アプリをインストール</button>
+                <!-- iOS: ステップガイド -->
+                <div id="pwa-ios-guide" class="pwa-ios-guide" style="display:none;">
+                    <div class="pwa-ios-title">📲 ホーム画面に追加</div>
+                    <div class="pwa-ios-steps">
+                        <div class="pwa-ios-step">
+                            <span class="pwa-ios-step-num">1</span>
+                            <span>下の <span class="pwa-ios-share-icon">⬆</span> をタップ</span>
+                        </div>
+                        <div class="pwa-ios-step">
+                            <span class="pwa-ios-step-num">2</span>
+                            <span>「ホーム画面に追加」を選択</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="pwa-install-close" class="pwa-install-close-x">&times;</button>
             </div>
         </div>
     </div>
