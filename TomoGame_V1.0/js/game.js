@@ -80,10 +80,10 @@ const SKILL_REQUIRED_COUNT = 6;
 // スキルごとの設定
 const SKILL_CONFIG = {
     normal: {
-        maxSelect: 99,
+        maxSelect: 3,
         freeSelect: true,
         videoSrc: './assets/tama2skill.mp4',
-        announce: 'SKILL READY!\n消したい玉を選んで発動！'
+        announce: 'SKILL READY!\n消したい玉を3個まで選んで発動！'
     },
     yoshiki: {
         maxSelect: 1,
@@ -996,6 +996,7 @@ function initGame() {
     Events.on(engine, 'afterUpdate', () => {
         checkGameOver();
         updateSkillStatus();
+        checkSkill3();
     });
 
     // 開始
