@@ -964,7 +964,7 @@ function initGame() {
 
     // エンジン作成
     engine = Engine.create({
-        gravity: { x: 0, y: 0.5 }
+        gravity: { x: 0, y: 0.35 }
     });
 
     // 新しいキャンバスを作成
@@ -1238,12 +1238,13 @@ function dropCat() {
 
     const cat = currentCat;
     const r = scaledRadius(cat);
+    const isSmall = cat.level <= 3;
     const body = Bodies.circle(dropX, GAME_CONFIG.dropAreaTop + r, r, {
         restitution: 0.08,
-        friction: 0.5,
-        frictionStatic: 0.5,
-        frictionAir: 0.05,
-        density: 0.001,
+        friction: isSmall ? 0.3 : 0.5,
+        frictionStatic: isSmall ? 0.3 : 0.5,
+        frictionAir: isSmall ? 0.12 : 0.05,
+        density: isSmall ? 0.0005 : 0.001,
         render: {
             fillStyle: cat.color,
             strokeStyle: 'rgba(0,0,0,0.2)',
@@ -1396,12 +1397,13 @@ function mergeCats(bodyA, bodyB) {
     const newR = scaledRadius(newCat);
 
     // 新しい猫を作成
+    const isSmallMerge = newCat.level <= 3;
     const newBody = Bodies.circle(newX, newY, newR, {
         restitution: 0.08,
-        friction: 0.5,
-        frictionStatic: 0.5,
-        frictionAir: 0.05,
-        density: 0.001,
+        friction: isSmallMerge ? 0.3 : 0.5,
+        frictionStatic: isSmallMerge ? 0.3 : 0.5,
+        frictionAir: isSmallMerge ? 0.12 : 0.05,
+        density: isSmallMerge ? 0.0005 : 0.001,
         render: {
             fillStyle: newCat.color,
             strokeStyle: 'rgba(0,0,0,0.2)',
