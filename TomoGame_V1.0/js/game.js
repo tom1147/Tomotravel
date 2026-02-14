@@ -964,7 +964,7 @@ function initGame() {
 
     // エンジン作成
     engine = Engine.create({
-        gravity: { x: 0, y: 0.35 }
+        gravity: { x: 0, y: 0.55 }
     });
 
     // 新しいキャンバスを作成
