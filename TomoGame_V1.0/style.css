@@ -503,6 +503,51 @@ body::before {
     }
 }
 
+/* Fever Time */
+#game-area.fever-active {
+    box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.2);
+    animation: feverGlow 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes feverGlow {
+    0% { box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.15); }
+    100% { box-shadow: inset 0 0 40px rgba(255, 107, 157, 0.3), 0 0 25px rgba(255, 107, 157, 0.2); }
+}
+
+.combo-badge.fever {
+    background: linear-gradient(135deg, #ffd700, #ff6b9d);
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+    animation: feverBadgePulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes feverBadgePulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+.fever-announce {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Inter', sans-serif;
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 107, 157, 0.5);
+    pointer-events: none;
+    animation: feverAnnounce 1.5s ease-out forwards;
+}
+
+@keyframes feverAnnounce {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    20% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
 /* Max Level Value in Game Over */
 .result-value.max-lv-value {
     font-size: 1rem;
@@ -2551,94 +2596,4 @@ body::before {
 .skill-video-skip-btn:active {
     transform: scale(0.95);
     background: rgba(255, 255, 255, 0.3);
-}
-
-/* PWA Install Banner */
-.pwa-install-banner {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0;
-    position: relative;
-}
-
-.pwa-install-banner.hidden {
-    display: none;
-}
-
-/* iOS: ステップガイド */
-.pwa-ios-guide {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
-    padding: 14px 16px;
-    text-align: center;
-}
-
-.pwa-ios-title {
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: var(--accent-pink);
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-.pwa-ios-steps {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-}
-
-.pwa-ios-step {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.pwa-ios-step-num {
-    width: 20px;
-    height: 20px;
-    background: var(--accent-cyan);
-    color: #000;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.65rem;
-    font-weight: 800;
-    flex-shrink: 0;
-}
-
-.pwa-ios-share-icon {
-    display: inline-block;
-    background: rgba(0, 122, 255, 0.2);
-    color: #007aff;
-    border-radius: 4px;
-    padding: 1px 4px;
-    font-size: 0.9rem;
-    vertical-align: middle;
-}
-
-/* 閉じるボタン */
-.pwa-install-close-x {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.9rem;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
 }

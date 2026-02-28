@@ -1,0 +1,22 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Dependencies
+node_modules/
+
+# Android build (Capacitor)
+android/
+
+# IDE
+.idea/
+
+# Cache
+caches/
+
+# Build artifacts
+build/
+
+# OS files
+.DS_Store
+Thumbs.db

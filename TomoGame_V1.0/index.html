@@ -12,14 +12,33 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Zen+Maru+Gothic:wght@400;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=5">
 
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ff6b9d">
+    <!-- iOS PWA対応 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="assets/tama11.png">
+    <meta name="apple-mobile-web-app-title" content="Tomo Game">
+    <link rel="apple-touch-icon" href="assets/icon512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon512.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icon512.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icon512.png">
+    <!-- iOS スプラッシュスクリーン用の背景色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- フルスクリーン対応 -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- ローディング中のフラッシュ防止：ゲーム画面を非表示にして背景色を先にセット -->
+    <style>
+        /* 読み込み中のフラッシュ防止用インラインCSS */
+        body { background: #050d18; margin: 0; padding: 0; }
+        #game-container.hidden, #game-over.hidden, #settings-panel.hidden,
+        #cast-panel.hidden, #cast-detail-modal.hidden { display: none !important; }
+        /* Evolution guideを最初は非表示にして画像フラッシュを防ぐ */
+        #evolution-guide { visibility: hidden; }
+    </style>
 
     <script>
         // Service Worker 登録
@@ -30,26 +49,6 @@
                     .catch(err => console.log('SW registration failed'));
             });
         }
-
-        // PWA Install Banner (iOS only)
-        window.addEventListener('load', () => {
-            // 既にPWAとして起動中なら表示しない
-            if (window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches) return;
-            // 今日既に閉じていたら表示しない（1日1回）
-            const today = new Date().toDateString();
-            if (localStorage.getItem('pwa-install-dismissed') === today) return;
-
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-            if (!isIOS) return;
-
-            const banner = document.getElementById('pwa-install-banner');
-            banner.classList.remove('hidden');
-
-            document.getElementById('pwa-install-close').addEventListener('click', () => {
-                banner.classList.add('hidden');
-                localStorage.setItem('pwa-install-dismissed', today);
-            });
-        });
     </script>
 </head>
 
@@ -78,24 +77,6 @@
             </div>
 
             <button id="start-btn">START</button>
-
-            <!-- PWA Install Banner (iOS only) -->
-            <div id="pwa-install-banner" class="pwa-install-banner hidden">
-                <div class="pwa-ios-guide">
-                    <div class="pwa-ios-title">📲 ホーム画面に追加</div>
-                    <div class="pwa-ios-steps">
-                        <div class="pwa-ios-step">
-                            <span class="pwa-ios-step-num">1</span>
-                            <span>下の <span class="pwa-ios-share-icon">⬆</span> をタップ</span>
-                        </div>
-                        <div class="pwa-ios-step">
-                            <span class="pwa-ios-step-num">2</span>
-                            <span>「ホーム画面に追加」を選択</span>
-                        </div>
-                    </div>
-                </div>
-                <button id="pwa-install-close" class="pwa-install-close-x">&times;</button>
-            </div>
         </div>
     </div>
 
@@ -169,7 +150,7 @@
             <canvas id="game-canvas"></canvas>
             <!-- Skill Video Overlay (game-area内) -->
             <div id="skill-video-overlay" class="hidden">
-                <video id="skill-video" playsinline></video>
+                <video id="skill-video" playsinline webkit-playsinline></video>
                 <button id="skill-video-skip" class="skill-video-skip-btn">SKIP ▶▶</button>
             </div>
         </div>

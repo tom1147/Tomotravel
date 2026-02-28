@@ -61,7 +61,7 @@ const CAT_OBJECTS = [
         radius: 56,
         color: '#ff6b9d',
         score: 10,
-        description: 'セブ島のJTV「Club K」で知り合った女の子。<br>今は辞めてしまったがその後も仲は良い。',
+        description: 'セブ島のJTV「Club K」で知り合った女の子。<br>今は辞めてしまったがその後も仲は良い。<br>…実は秘密のスキルがあるらしい？',
         links: {
             youtube: 'https://youtu.be/z5APVNRi0FQ'
         }
@@ -74,7 +74,7 @@ const CAT_OBJECTS = [
         radius: 66,
         color: '#8b6914',
         score: 15,
-        description: 'セブ島のガールズバーCebuBaseで知り合った女の子。<br>もともとWingのNo.1だったらしい。さすが…',
+        description: 'セブ島のガールズバーCebuBaseで知り合った女の子。<br>もともとWingのNo.1だったらしい。さすが…<br>盤面に4つ集めると…',
         links: {
             youtube1: 'https://youtu.be/pVJb3vjQYmQ',
             youtube2: 'https://youtu.be/7Lh9JpyFz-8'

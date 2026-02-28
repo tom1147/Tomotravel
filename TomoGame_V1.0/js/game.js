@@ -68,6 +68,10 @@ let comboCount = 0;
 let comboTimer = null;
 const COMBO_TIMEOUT = 1500; // 1.5秒以内に次の合体でコンボ継続
 
+// フィーバータイム
+let isFever = false;
+const FEVER_COMBO_THRESHOLD = 5; // 5連鎖でフィーバー突入
+
 // スキル（削除）機能
 let isSkillSelectionMode = false;
 let skillSelectionTimeout = null; // スキル選択タイムアウト
@@ -83,7 +87,7 @@ const SKILL_CONFIG = {
         maxSelect: 3,
         freeSelect: true,
         videoSrc: './assets/tama2skill.mp4',
-        announce: 'SKILL READY!\n消したい玉を3個まで選んで発動！'
+        announce: 'SKILL READY!\n消したい玉を選んで発動！\n（最大3個まで）'
     },
     yoshiki: {
         maxSelect: 1,
@@ -335,7 +339,7 @@ function toggleBodySelection(body) {
     const msg = document.getElementById('skill-announce-msg');
     if (msg) {
         if (config.freeSelect) {
-            msg.textContent = `${skillSelectedBodies.length} 個選択中`;
+            msg.textContent = `${skillSelectedBodies.length} / ${config.maxSelect} 個選択中`;
         } else {
             msg.textContent = `あと ${maxSelect - skillSelectedBodies.length} 個選択！`;
         }
@@ -907,9 +911,12 @@ function initGame() {
     isSkillActive = false;
     specialSkillTimer = 0;
     skill3Timer = 0;
+    skill4Timer = 0;
+    skill5Timer = 0;
     skillConditionTimer = 0;
     comboCount = 0;
     if (comboTimer) clearTimeout(comboTimer);
+    endFever();
     if (skillAttractInterval) { clearInterval(skillAttractInterval); skillAttractInterval = null; }
     if (skillTimeout) { clearTimeout(skillTimeout); skillTimeout = null; }
     if (skillSelectionTimeout) { clearTimeout(skillSelectionTimeout); skillSelectionTimeout = null; }
@@ -964,7 +971,7 @@ function initGame() {
 
     // エンジン作成
     engine = Engine.create({
-        gravity: { x: 0, y: 0.65 }
+        gravity: { x: 0, y: 0.55 }
     });
 
     // 新しいキャンバスを作成
@@ -996,7 +1003,9 @@ function initGame() {
     Events.on(engine, 'afterUpdate', () => {
         checkGameOver();
         updateSkillStatus();
-        checkSkill3();
+        removeOutOfBoundsBodies();
+        checkSkill4();
+        checkSkill5();
     });
 
     // 開始
@@ -1239,13 +1248,17 @@ function dropCat() {
 
     const cat = currentCat;
     const r = scaledRadius(cat);
-    const isSmall = cat.level <= 3;
+    // レベルに応じた物理パラメータ（小さい玉は押し出しを弱く、ふわっと落ちるように）
+    const isSmall = cat.level <= 4;
+    const bodyRestitution = isSmall ? 0.03 : 0.08;
+    const bodyFrictionAir = isSmall ? 0.08 : 0.04;
+    const bodyDensity = isSmall ? 0.0015 : 0.001;
     const body = Bodies.circle(dropX, GAME_CONFIG.dropAreaTop + r, r, {
-        restitution: 0.08,
-        friction: isSmall ? 0.3 : 0.5,
-        frictionStatic: isSmall ? 0.3 : 0.5,
-        frictionAir: isSmall ? 0.12 : 0.05,
-        density: isSmall ? 0.0005 : 0.001,
+        restitution: bodyRestitution,
+        friction: 0.5,
+        frictionStatic: 0.5,
+        frictionAir: bodyFrictionAir,
+        density: bodyDensity,
         render: {
             fillStyle: cat.color,
             strokeStyle: 'rgba(0,0,0,0.2)',
@@ -1397,14 +1410,17 @@ function mergeCats(bodyA, bodyB) {
     const newCat = getCatByLevel(newLevel);
     const newR = scaledRadius(newCat);
 
-    // 新しい猫を作成
-    const isSmallMerge = newCat.level <= 3;
+    // 新しい猫を作成（レベルに応じた物理パラメータ）
+    const isSmallMerge = newLevel <= 4;
+    const mergeRestitution = isSmallMerge ? 0.03 : 0.08;
+    const mergeFrictionAir = isSmallMerge ? 0.08 : 0.04;
+    const mergeDensity = isSmallMerge ? 0.0015 : 0.001;
     const newBody = Bodies.circle(newX, newY, newR, {
-        restitution: 0.08,
-        friction: isSmallMerge ? 0.3 : 0.5,
-        frictionStatic: isSmallMerge ? 0.3 : 0.5,
-        frictionAir: isSmallMerge ? 0.12 : 0.05,
-        density: isSmallMerge ? 0.0005 : 0.001,
+        restitution: mergeRestitution,
+        friction: 0.5,
+        frictionStatic: 0.5,
+        frictionAir: mergeFrictionAir,
+        density: mergeDensity,
         render: {
             fillStyle: newCat.color,
             strokeStyle: 'rgba(0,0,0,0.2)',
@@ -1422,8 +1438,9 @@ function mergeCats(bodyA, bodyB) {
 
     Composite.add(engine.world, newBody);
 
-    // スコア加算
-    score += newCat.score;
+    // スコア加算（フィーバー中は2倍）
+    const scoreMultiplier = isFever ? 2 : 1;
+    score += newCat.score * scoreMultiplier;
     updateScore();
 
     // 最高到達レベルを更新し、レベルに応じて背景変更
@@ -1443,12 +1460,18 @@ function mergeCats(bodyA, bodyB) {
     if (comboTimer) clearTimeout(comboTimer);
     comboTimer = setTimeout(() => {
         comboCount = 0;
+        endFever();
         updateComboDisplay();
     }, COMBO_TIMEOUT);
 
-    // コンボボーナス（2コンボ以上で表示＆ボーナス）
+    // フィーバー突入判定（5連鎖で発動）
+    if (!isFever && comboCount >= FEVER_COMBO_THRESHOLD) {
+        startFever();
+    }
+
+    // コンボボーナス（2コンボ以上で表示＆ボーナス、フィーバー中は2倍）
     if (comboCount >= 2) {
-        const comboBonus = comboCount * 2;
+        const comboBonus = comboCount * 2 * scoreMultiplier;
         score += comboBonus;
         updateScore();
         showComboEffect(newX, newY, comboCount);
@@ -1578,6 +1601,8 @@ function gameOver() {
     isSkillActive = false;
     specialSkillTimer = 0;
     skill3Timer = 0;
+    skill4Timer = 0;
+    skill5Timer = 0;
     skillConditionTimer = 0;
     if (isSkillSelectionMode) {
         isSkillSelectionMode = false;
@@ -1595,6 +1620,7 @@ function gameOver() {
 
     // コンボタイマーもクリア
     if (comboTimer) { clearTimeout(comboTimer); comboTimer = null; }
+    endFever();
 
     // BGMはそのまま流し続ける
 
@@ -1889,6 +1915,46 @@ function updateComboDisplay() {
         setTimeout(() => comboEl.classList.remove('combo-active'), 150);
     } else {
         comboEl.classList.add('hidden');
+    }
+}
+
+/**
+ * フィーバータイム開始
+ */
+function startFever() {
+    if (isFever) return;
+    isFever = true;
+
+    const gameArea = document.getElementById('game-area');
+    gameArea.classList.add('fever-active');
+
+    // FEVER!告知
+    const feverAnnounce = document.createElement('div');
+    feverAnnounce.className = 'fever-announce';
+    feverAnnounce.textContent = 'FEVER! SCORE x2';
+    gameArea.appendChild(feverAnnounce);
+    setTimeout(() => feverAnnounce.remove(), 1500);
+
+    // コンボ表示をフィーバー仕様に更新
+    const comboEl = document.getElementById('combo-display');
+    if (comboEl) {
+        comboEl.classList.add('fever');
+    }
+}
+
+/**
+ * フィーバータイム終了
+ */
+function endFever() {
+    if (!isFever) return;
+    isFever = false;
+
+    const gameArea = document.getElementById('game-area');
+    gameArea.classList.remove('fever-active');
+
+    const comboEl = document.getElementById('combo-display');
+    if (comboEl) {
+        comboEl.classList.remove('fever');
     }
 }
 
@@ -2460,6 +2526,305 @@ function resetBackground() {
 }
 
 /**
+ * 画面外に飛んだ玉を消去する
+ */
+function removeOutOfBoundsBodies() {
+    if (!engine || isGameOver) return;
+    const bodies = Composite.allBodies(engine.world);
+    const margin = 200; // 少し余裕を持たせる
+    bodies.forEach(body => {
+        if (!body.plugin?.catLevel) return;
+        if (body.isStatic || body.isRemoved) return;
+        const x = body.position.x;
+        const y = body.position.y;
+        if (x < -margin || x > gameWidth + margin || y < -margin || y > gameHeight + margin) {
+            body.isRemoved = true;
+            Composite.remove(engine.world, body);
+        }
+    });
+}
+
+// ==========================================
+// Skill4: Lv4が6個 → Lv3+Lv4消去 → Lv10出現
+// ==========================================
+let skill4Timer = 0;
+
+function checkSkill4() {
+    if (isSkillActive || isGameOver || isBombMode || isSkillSelectionMode) return;
+
+    const now = Date.now();
+    const bodies = Composite.allBodies(engine.world);
+
+    // Lv10が盤面に存在する場合は発動しない
+    const hasLv10 = bodies.some(b => b.plugin?.catLevel === 10 && !b.isStatic && !b.isRemoved);
+    if (hasLv10) { skill4Timer = 0; return; }
+
+    const level4Bodies = bodies.filter(b =>
+        b.plugin?.catLevel === 4 &&
+        !b.isStatic && !b.isRemoved &&
+        b.plugin.dropTime && (now - b.plugin.dropTime > 1000)
+    );
+
+    // Lv2が盤面に3個以上必要
+    const level2Count = bodies.filter(b =>
+        b.plugin?.catLevel === 2 && !b.isStatic && !b.isRemoved
+    ).length;
+
+    if (level4Bodies.length >= 6 && level2Count >= 3) {
+        if (skill4Timer === 0) {
+            skill4Timer = now;
+        }
+        if (now - skill4Timer > 2000) {
+            skill4Timer = 0;
+            triggerSkill4();
+        }
+    } else {
+        skill4Timer = 0;
+    }
+}
+
+function triggerSkill4() {
+    isSkillActive = true;
+    canDrop = false;
+
+    playGenericVideo('./assets/skill4.mp4', () => {
+        executeSkill4Effect();
+    });
+}
+
+function executeSkill4Effect() {
+    if (isGameOver) {
+        isSkillActive = false;
+        return;
+    }
+
+    const bodies = Composite.allBodies(engine.world);
+    const level3Bodies = bodies.filter(b => b.plugin?.catLevel === 3 && !b.isStatic && !b.isRemoved);
+    const level4Bodies = bodies.filter(b => b.plugin?.catLevel === 4 && !b.isStatic && !b.isRemoved);
+
+    const gameArea = document.getElementById('game-area');
+
+    // 告知テキスト表示
+    const announce = document.createElement('div');
+    announce.className = 'skill-announce';
+    announce.textContent = 'SKILL!';
+    gameArea.appendChild(announce);
+    setTimeout(() => announce.remove(), 1200);
+
+    playSkillSound();
+
+    const allTargets = [...level3Bodies, ...level4Bodies];
+    let removedCount = 0;
+
+    // 宙に浮いて爆散するエフェクト
+    allTargets.forEach((body, index) => {
+        if (body.isRemoved) return;
+        // まず宙に浮かせる
+        Body.setVelocity(body, { x: (Math.random() - 0.5) * 3, y: -8 - Math.random() * 4 });
+        Body.applyForce(body, body.position, { x: 0, y: -0.05 });
+    });
+
+    // 0.6秒後に爆散
+    setTimeout(() => {
+        allTargets.forEach((body, index) => {
+            if (body.isRemoved) return;
+            const delay = index * 80;
+            setTimeout(() => {
+                if (body.isRemoved) return;
+                showMergeEffect(body.position.x, body.position.y, '💥', 0);
+                showMergeEffect(body.position.x + 10, body.position.y - 10, '🔥', 0);
+                playBombSound();
+                body.isRemoved = true;
+                Composite.remove(engine.world, body);
+                removedCount++;
+            }, delay);
+        });
+
+        // 爆散後にLv10の玉を出現
+        const totalDelay = allTargets.length * 80 + 400;
+        skillTimeout = setTimeout(() => {
+            if (isGameOver) { isSkillActive = false; skillTimeout = null; return; }
+
+            // Lv10の玉を出現
+            const lv10Cat = getCatByLevel(10);
+            const lv10R = scaledRadius(lv10Cat);
+            const spawnX = gameWidth / 2;
+            const spawnY = GAME_CONFIG.dangerLineY + lv10R + 50;
+            const lv10Body = Bodies.circle(spawnX, spawnY, lv10R, {
+                restitution: 0.08,
+                friction: 0.5,
+                frictionStatic: 0.5,
+                frictionAir: 0.04,
+                density: 0.001,
+                render: {
+                    fillStyle: lv10Cat.color,
+                    strokeStyle: 'rgba(0,0,0,0.2)',
+                    lineWidth: 2,
+                },
+                label: `cat_${lv10Cat.level}`,
+                plugin: {
+                    catLevel: lv10Cat.level,
+                    dropTime: Date.now(),
+                }
+            });
+            Composite.add(engine.world, lv10Body);
+            showMergeEffect(spawnX, spawnY, '🌟', 'Lv.10!');
+
+            // 最高到達レベルを更新
+            if (10 > maxReachedLevel) {
+                maxReachedLevel = 10;
+                changeBackgroundToAya();
+                updateMaxLevelDisplay();
+            }
+
+            // ボーナススコア
+            if (removedCount > 0) {
+                const bonus = removedCount * 10;
+                score += bonus;
+                updateScore();
+                const scorePop = document.createElement('div');
+                scorePop.className = 'score-pop';
+                scorePop.textContent = `+${bonus} SKILL!`;
+                scorePop.style.cssText = `left:${gameWidth/2}px;top:${gameHeight/2}px;color:#ffd700;`;
+                gameArea.appendChild(scorePop);
+                setTimeout(() => scorePop.remove(), 800);
+            }
+
+            isSkillActive = false;
+            canDrop = true;
+            skillTimeout = null;
+        }, totalDelay);
+    }, 600);
+}
+
+// ==========================================
+// Skill5: Lv5が4個 → Lv5+Lv3消去 → Lv6出現
+// ==========================================
+let skill5Timer = 0;
+
+function checkSkill5() {
+    if (isSkillActive || isGameOver || isBombMode || isSkillSelectionMode) return;
+
+    const now = Date.now();
+    const bodies = Composite.allBodies(engine.world);
+    const level5Bodies = bodies.filter(b =>
+        b.plugin?.catLevel === 5 &&
+        !b.isStatic && !b.isRemoved &&
+        b.plugin.dropTime && (now - b.plugin.dropTime > 1000)
+    );
+
+    if (level5Bodies.length >= 4) {
+        if (skill5Timer === 0) {
+            skill5Timer = now;
+        }
+        if (now - skill5Timer > 2000) {
+            skill5Timer = 0;
+            triggerSkill5();
+        }
+    } else {
+        skill5Timer = 0;
+    }
+}
+
+function triggerSkill5() {
+    isSkillActive = true;
+    canDrop = false;
+
+    playGenericVideo('./assets/skill5.mp4', () => {
+        executeSkill5Effect();
+    });
+}
+
+function executeSkill5Effect() {
+    if (isGameOver) {
+        isSkillActive = false;
+        return;
+    }
+
+    const bodies = Composite.allBodies(engine.world);
+    const level5Bodies = bodies.filter(b => b.plugin?.catLevel === 5 && !b.isStatic && !b.isRemoved);
+    const level3Bodies = bodies.filter(b => b.plugin?.catLevel === 3 && !b.isStatic && !b.isRemoved);
+
+    const gameArea = document.getElementById('game-area');
+
+    // 告知テキスト表示
+    const announce = document.createElement('div');
+    announce.className = 'skill-announce';
+    announce.textContent = 'SKILL!';
+    gameArea.appendChild(announce);
+    setTimeout(() => announce.remove(), 1200);
+
+    playSkillSound();
+
+    const allTargets = [...level5Bodies, ...level3Bodies];
+    let removedCount = 0;
+    let delay = 0;
+
+    // 派手な連鎖爆発エフェクト
+    allTargets.forEach((body, index) => {
+        if (body.isRemoved) return;
+        delay = index * 100;
+        setTimeout(() => {
+            if (body.isRemoved) return;
+            showMergeEffect(body.position.x, body.position.y, '💥', 0);
+            showMergeEffect(body.position.x + 15, body.position.y - 10, '🔥', 0);
+            playBombSound();
+            body.isRemoved = true;
+            Composite.remove(engine.world, body);
+            removedCount++;
+        }, delay);
+    });
+
+    // すべての爆発が終わった後にLv6出現
+    const totalDelay = allTargets.length * 100 + 400;
+    skillTimeout = setTimeout(() => {
+        if (isGameOver) { isSkillActive = false; skillTimeout = null; return; }
+
+        // Lv6の玉を出現
+        const lv6Cat = getCatByLevel(6);
+        const lv6R = scaledRadius(lv6Cat);
+        const spawnX = gameWidth / 2;
+        const spawnY = GAME_CONFIG.dangerLineY + lv6R + 50;
+        const lv6Body = Bodies.circle(spawnX, spawnY, lv6R, {
+            restitution: 0.08,
+            friction: 0.5,
+            frictionStatic: 0.5,
+            frictionAir: 0.04,
+            density: 0.001,
+            render: {
+                fillStyle: lv6Cat.color,
+                strokeStyle: 'rgba(0,0,0,0.2)',
+                lineWidth: 2,
+            },
+            label: `cat_${lv6Cat.level}`,
+            plugin: {
+                catLevel: lv6Cat.level,
+                dropTime: Date.now(),
+            }
+        });
+        Composite.add(engine.world, lv6Body);
+        showMergeEffect(spawnX, spawnY, '🌟', 'Lv.6!');
+
+        // ボーナススコア
+        if (removedCount > 0) {
+            const bonus = removedCount * 8;
+            score += bonus;
+            updateScore();
+            const scorePop = document.createElement('div');
+            scorePop.className = 'score-pop';
+            scorePop.textContent = `+${bonus} SKILL!`;
+            scorePop.style.cssText = `left:${gameWidth/2}px;top:${gameHeight/2}px;color:#ff6b35;`;
+            gameArea.appendChild(scorePop);
+            setTimeout(() => scorePop.remove(), 800);
+        }
+
+        isSkillActive = false;
+        canDrop = true;
+        skillTimeout = null;
+    }, totalDelay);
+}
+
+/**
  * ゲームを直接リスタート（タイトルに戻らない）
  */
 function restartGame() {
@@ -2716,49 +3081,8 @@ function initTitleScreen() {
         switchBgmTrack();
     });
 
-    // 画像プリロード
-    const startBtn = document.getElementById('start-btn');
-    const allImages = [
-        ...CAT_OBJECTS.filter(c => c.image).map(c => c.image),
-        BOMB_OBJECT.image,
-        TAMA12_OBJECT.image,
-        './assets/beach_night_bg.png',
-        './assets/title.png',
-        './assets/tomoend.png',
-        './assets/tomogame.png',
-        './assets/icon512.png',
-        './assets/con1.png',
-        './assets/con2.png',
-        './assets/con3.png',
-        './assets/con4.png'
-    ].filter(Boolean);
-
-    let imagesLoaded = 0;
-    const totalImages = allImages.length;
-    startBtn.disabled = true;
-    startBtn.textContent = 'LOADING...';
-
-    function onImageLoaded() {
-        imagesLoaded++;
-        const pct = Math.floor((imagesLoaded / totalImages) * 100);
-        startBtn.textContent = `LOADING... ${pct}%`;
-        if (imagesLoaded >= totalImages) {
-            startBtn.disabled = false;
-            startBtn.textContent = 'START';
-            startBtn.style.letterSpacing = '8px';
-        }
-    }
-
-    allImages.forEach(src => {
-        const img = new Image();
-        img.onload = onImageLoaded;
-        img.onerror = onImageLoaded;
-        img.src = src;
-    });
-
     // STARTボタン
-    startBtn.addEventListener('click', () => {
-        if (startBtn.disabled) return;
+    document.getElementById('start-btn').addEventListener('click', () => {
         startTitleBgm(); // BGMがまだなら開始
         document.getElementById('title-screen').classList.add('hidden');
         document.getElementById('game-container').classList.remove('hidden');
@@ -2798,6 +3122,9 @@ function initSettingsPanel() {
  * コマーシャル再生開始（コンティニュー）
  * @param {boolean} forceAd - クールダウンを無視して強制的に広告を表示するか
  */
+// ★ テスト用: true にすると広告なしで即コンティニュー（本番では false に戻す）
+const AD_FREE_CONTINUE = true;
+
 async function startContinue(forceAd = false) {
     // 状態更新
     hasContinued = true;
@@ -2809,6 +3136,12 @@ async function startContinue(forceAd = false) {
     document.getElementById('share-twitter').parentElement.classList.add('hidden');
 
     const countdownArea = document.getElementById('countdown-area');
+
+    // テスト用: 広告スキップ
+    if (AD_FREE_CONTINUE) {
+        executeContinue();
+        return;
+    }
 
     // 広告スキップ判定（クールダウン中 or 上限到達）
     // forceAdが指定されている場合はスキップしない
@@ -2898,6 +3231,8 @@ function showAdCancelDialog() {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
         background: rgba(0,0,0,0.7); z-index: 99999;
         display: flex; justify-content: center; align-items: center;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
     `;
     const box = document.createElement('div');
     box.style.cssText = `
@@ -2906,15 +3241,17 @@ function showAdCancelDialog() {
         color: #fff; font-family: 'Inter', sans-serif;
     `;
     box.innerHTML = `
-        <p style="font-size:0.95rem; margin:0 0 8px; font-weight:700;">報酬はもらえません</p>
-        <p style="font-size:0.8rem; margin:0 0 20px; color:rgba(255,255,255,0.6);">コンティニューなしで最初からになります</p>
+        <p style="font-size:0.95rem; margin:0 0 8px; font-weight:700;">広告の視聴が完了していません</p>
+        <p style="font-size:0.8rem; margin:0 0 20px; color:rgba(255,255,255,0.6);">コンティニューするには広告を視聴してください</p>
         <div style="display:flex; gap:12px; justify-content:center;">
-            <button id="ad-cancel-yes" style="flex:1; padding:12px; border-radius:10px; border:none;
-                background:#ff4d4d; color:#fff; font-weight:700; font-size:0.85rem; cursor:pointer;">
-                はい（リスタート）
+            <button id="ad-cancel-continue" style="flex:1; padding:14px; border-radius:10px; border:none;
+                background:linear-gradient(135deg, #ff8c42, #ff6b9d); color:#fff; font-weight:700; font-size:0.85rem; cursor:pointer;
+                touch-action:manipulation; -webkit-tap-highlight-color:transparent; user-select:none;">
+                コンティニュー
             </button>
-            <button id="ad-cancel-no" style="flex:1; padding:12px; border-radius:10px; border:none;
-                background:rgba(255,255,255,0.15); color:#fff; font-weight:700; font-size:0.85rem; cursor:pointer;">
+            <button id="ad-cancel-restart" style="flex:1; padding:14px; border-radius:10px; border:none;
+                background:rgba(255,255,255,0.15); color:#fff; font-weight:700; font-size:0.85rem; cursor:pointer;
+                touch-action:manipulation; -webkit-tap-highlight-color:transparent; user-select:none;">
                 いいえ
             </button>
         </div>
@@ -2922,19 +3259,16 @@ function showAdCancelDialog() {
     overlay.appendChild(box);
     document.body.appendChild(overlay);
 
-    const yesBtn = document.getElementById('ad-cancel-yes');
-    const noBtn = document.getElementById('ad-cancel-no');
+    let dialogHandled = false;
 
-    const handleYes = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        overlay.remove();
-        restartGame();
-    };
+    const continueBtn = document.getElementById('ad-cancel-continue');
+    const restartBtn = document.getElementById('ad-cancel-restart');
 
-    const handleNo = async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+    // コンティニュー → 再度広告を表示
+    const handleContinue = async (e) => {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (dialogHandled) return;
+        dialogHandled = true;
         overlay.remove();
 
         // 再度広告を表示する前にロードを試みる
@@ -2942,10 +3276,10 @@ function showAdCancelDialog() {
             const { AdMob } = window.Capacitor.Plugins;
             try {
                 await AdMob.prepareRewardVideoAd({
-                    adId: 'ca-app-pub-3940256099942544/5224354917', // Test ID
+                    adId: 'ca-app-pub-3940256099942544/5224354917',
                     isTesting: true
                 });
-            } catch (e) { console.warn('Retry prepare failed', e); }
+            } catch (err) { console.warn('Retry prepare failed', err); }
         }
 
         // hasContinuedをリセットして再度広告を表示（強制表示）
@@ -2953,10 +3287,21 @@ function showAdCancelDialog() {
         startContinue(true);
     };
 
-    yesBtn.addEventListener('click', handleYes);
-    yesBtn.addEventListener('touchend', handleYes);
-    noBtn.addEventListener('click', handleNo);
-    noBtn.addEventListener('touchend', handleNo);
+    // いいえ → ゲームをリスタート
+    const handleRestart = (e) => {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (dialogHandled) return;
+        dialogHandled = true;
+        overlay.remove();
+        restartGame();
+    };
+
+    // pointerdownを使用（click/touchendの二重発火を防止）
+    continueBtn.addEventListener('pointerdown', handleContinue);
+    restartBtn.addEventListener('pointerdown', handleRestart);
+    // フォールバック：pointerdown未対応環境用
+    continueBtn.addEventListener('click', handleContinue);
+    restartBtn.addEventListener('click', handleRestart);
 }
 
 /**
@@ -2986,6 +3331,8 @@ function executeContinue() {
     isSkillSelectionMode = false;
     specialSkillTimer = 0;
     skill3Timer = 0;
+    skill4Timer = 0;
+    skill5Timer = 0;
     skillConditionTimer = 0;
     skillSelectedBodies = [];
     if (skillAttractInterval) { clearInterval(skillAttractInterval); skillAttractInterval = null; }
@@ -3568,4 +3915,30 @@ function initEvolutionChart() {
 document.addEventListener('DOMContentLoaded', () => {
     initCastPanel();
     initEvolutionChart();
+    // Evolution guideの画像読み込み完了後に表示（フラッシュ防止）
+    const evoGuide = document.getElementById('evolution-guide');
+    if (evoGuide) {
+        const evoImages = evoGuide.querySelectorAll('img');
+        if (evoImages.length > 0) {
+            let loaded = 0;
+            const showGuide = () => {
+                loaded++;
+                if (loaded >= evoImages.length) {
+                    evoGuide.style.visibility = 'visible';
+                }
+            };
+            evoImages.forEach(img => {
+                if (img.complete) {
+                    showGuide();
+                } else {
+                    img.addEventListener('load', showGuide);
+                    img.addEventListener('error', showGuide);
+                }
+            });
+            // フォールバック：1.5秒後に強制表示
+            setTimeout(() => { evoGuide.style.visibility = 'visible'; }, 1500);
+        } else {
+            evoGuide.style.visibility = 'visible';
+        }
+    }
 });
