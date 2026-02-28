@@ -2049,9 +2049,15 @@ function playGenericVideo(videoSrc, onComplete) {
         video.onended = null;
         video.onerror = null;
         video.removeAttribute('src');
-        video.load();
+        // video.load() はiOS Safariでオーディオセッションを中断しBGMを止めるため呼ばない
         overlay.classList.add('hidden');
-        if (bgm) bgm.volume = originalVolume;
+        if (bgm) {
+            bgm.volume = originalVolume;
+            // iOS Safari対策: video操作後にBGMが止まる場合があるため再開を試みる
+            if (isBgmPlaying) {
+                bgm.play().catch(() => { });
+            }
+        }
         onComplete();
     }
 
