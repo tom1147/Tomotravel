@@ -163,16 +163,21 @@
       const [fullAutoMode, setFullAutoMode] = useState(false);
 
       const [tempoStyle, setTempoStyle] = useState('tiktok');
-      const [textMode, setTextMode] = useState('arrange');  // arrange | caption_lock | strict
+      const [textMode, setTextMode] = useState('arrange');  // arrange | caption_lock | strict | manual
       const [resolutionQuality, setResolutionQuality] = useState('standard');
       const [defaultPosition, setDefaultPosition] = useState('auto');
       const [globalNote, setGlobalNote] = useState('');
+
+      // インポート機能用のState
+      const [showImportModal, setShowImportModal] = useState(false);
+      const [importText, setImportText] = useState('');
 
       const [scenes, setScenes] = useState([
         {
           id: Date.now(),
           noText: false,
           text: '',
+          readText: '', // manualモード用の読み上げテキスト
           emotion: 'auto',
           position: 'center',
           narration: true,
@@ -191,6 +196,7 @@
           id: Date.now() + Math.random(),
           noText: false,
           text: '',
+          readText: '',
           emotion: 'auto',
           position: 'center',
           narration: true,
@@ -209,6 +215,77 @@
 
       const updateScene = (id, field, value) => {
         setScenes(scenes.map(s => s.id === id ? { ...s, [field]: value } : s));
+      };
+
+      // --- スプレッドシート読み込み処理 ---
+      const handleSpreadsheetImport = () => {
+        if (!importText.trim()) {
+          alert('テキストエリアが空です。スプレッドシートからコピーしたデータを貼り付けてください。');
+          return;
+        }
+
+        const lines = importText.trim().split('\n');
+        // ヘッダー行を含めて2行以上あるかチェック
+        if (lines.length < 2) {
+          alert('データが見つかりません。ヘッダー行を含めてコピーしてください。');
+          return;
+        }
+
+        const newScenes = [];
+        // 1行目はヘッダーとみなし、2行目(index 1)から処理
+        for (let i = 1; i < lines.length; i++) {
+          const line = lines[i];
+          if (!line.trim()) continue;
+
+          // タブ区切りで分割
+          const cols = line.split('\t');
+          
+          // 列の割り当て
+          // 0: シーンNo (無視)
+          // 1: テロップ(表示)
+          // 2: 読み上げ(音声)
+          // 3: 備考・指示メモ
+          // 4: 画像ファイルパス（NEW）
+          
+          const displayText = cols[1] ? cols[1].trim() : "";
+          const voiceText = cols[2] ? cols[2].trim() : "";
+          const noteText = cols[3] ? cols[3].trim() : "";
+          const imagePath = cols[4] ? cols[4].trim() : ""; // 5列目を取得
+
+          // 読み上げテキストがある場合はナレーションON、なければOFF（ただしmanualモードなのでreadTextが空なら無音扱い）
+          const hasVoice = voiceText.length > 0;
+
+          // 画像パスがある場合はソースをcustomにする
+          const imageSource = imagePath ? 'custom' : 'ai';
+
+          newScenes.push({
+            id: Date.now() + i + Math.random(),
+            noText: displayText === "",
+            text: displayText,
+            readText: voiceText,
+            emotion: 'auto',
+            position: 'center',
+            narration: true, 
+            imageSource: imageSource, // パスがあればcustom、なければai
+            mediaAuto: '✨AIが自動生成',
+            mediaFile: imagePath ? imagePath.split(/[\\/]/).pop() : '', // ファイル名のみ表示用
+            customImagePath: imagePath, // フルパス
+            bgStyle: 'gradient_dark',
+            sceneNote: noteText
+          });
+        }
+
+        if (newScenes.length > 0) {
+          if(confirm(`${newScenes.length}件のシーンを読み込みますか？\n現在のシーンは上書きされます。\nモードは「✍️ 完全手動」に切り替わります。`)) {
+            setScenes(newScenes);
+            setTextMode('manual'); // 自動で手動モードへ
+            setFullAutoMode(false); // フルオート解除
+            setShowImportModal(false); // モーダル閉じる
+            setImportText(''); // 入力欄クリア
+          }
+        } else {
+          alert('有効なデータが読み取れませんでした。列の形式を確認してください。');
+        }
       };
 
       // --- 感情に応じた演出ヒント ---
@@ -356,10 +433,23 @@
         const sceneHints = sceneList.map((scene, index) => {
           if (fullAutoMode || scene.noText) return "";
           const hasText = scene.text && scene.text.trim();
-          const textNote = hasText && textMode !== 'arrange'
-            ? `\n  ユーザー入力テキスト（${textMode === 'strict' ? '完全固定: テロップ＝ナレーション＝この文字列' : 'テロップ固定: テロップはこの文字列そのまま'}）: 「${scene.text}」`
-            : '';
-          return `シーン${index + 1} [duration:auto（音声長で自動決定） / テロップ最大${guide.maxText}文字 / 最大${guide.maxLines}行]\n  感情指定: ${scene.emotion} (ヒント: ${getEmotionHints(scene.emotion)})${textNote}`;
+          
+          let textNote = '';
+          if (textMode === 'manual') {
+             // Manualモード時のテキスト指定
+             textNote = `\n  表示テキスト（テロップ）: 「${scene.text}」`;
+             textNote += `\n  読み上げ指定（ナレーション）: ${scene.readText ? `「${scene.readText}」` : '※指定なし（ナレーションなし）'}`;
+          } else if (hasText && textMode !== 'arrange') {
+             textNote = `\n  ユーザー入力テキスト（${textMode === 'strict' ? '完全固定: テロップ＝ナレーション＝この文字列' : 'テロップ固定: テロップはこの文字列そのまま'}）: 「${scene.text}」`;
+          }
+          
+          // シーンごとの個別指示メモを最優先として埋め込む処理
+          const noteContent = scene.sceneNote ? scene.sceneNote.trim() : "";
+          const priorityInstruction = noteContent 
+            ? `\n  ⚠️⚠️【最優先・特別指示 (Globalルールより優先)】: "${noteContent}"\n    (※重要: この指示は、全体のテンポ設定・テキストモード・時間ルールなど全てより優先される。例えば「読み上げを変えて」とあればその指示に従う。「4秒静止」とあればテンポを無視して4秒止めること)`
+            : "";
+
+          return `シーン${index + 1} [duration:auto（音声長で自動決定） / テロップ最大${guide.maxText}文字 / 最大${guide.maxLines}行]\n  感情指定: ${scene.emotion} (ヒント: ${getEmotionHints(scene.emotion)})${textNote}${priorityInstruction}`;
         }).filter(Boolean).join("\n");
 
         const tempoInstructions = tempoStyle === 'tiktok' ? `
@@ -373,6 +463,7 @@
 3. **「間」は敵。呼吸の間すら詰める。次のカットが被せ気味に入るくらいでちょうどいい。**
 4. **テロップの文字数はフォーマット別の文字数制限（後述）を厳守。**
 5. **最初の0.5秒で視聴者の指を止める「フック」を必ず入れる。**
+**(※ただし、個別シーンに「最優先・特別指示」がある場合は例外とし、その指示に従うこと)**
 
 ### ナレーション指示:
 - 話速: **${getSpeedMultiplier(voiceSpeed)}倍速**
@@ -423,7 +514,7 @@
 - BGMのムード: ${bgmEnabled ? getBgmLabel(bgmMood) : 'なし'}
 - ナレーション: ${voiceEnabled ? `ON — ${currentSpeaker?.gender}・${voiceCharName}（${currentStyle?.name || 'ノーマル'}）/ Speaker ID: ${voiceSpeakerId} / 話速: ${getSpeedMultiplier(voiceSpeed)}倍速（${voiceSpeed === 'very_fast' ? '超早口' : voiceSpeed === 'fast' ? 'やや早口' : '標準'}）` : 'OFF（ナレーションなし）'}
 - テンポスタイル: ${tempoStyle === 'tiktok' ? 'TikTok超高速テンポ' : '標準テンポ'}
-- テキストモード: ${textMode === 'strict' ? '🔒 完全固定（テロップ＝ナレーション、ユーザー入力をそのまま使用）' : textMode === 'caption_lock' ? '📌 テロップ固定（テロップはユーザー入力そのまま、ナレーションのみアレンジ可）' : '🎨 AIアレンジ（自由にアレンジ可）'}
+- テキストモード: ${textMode === 'manual' ? '✍️ 完全手動（テロップ・読み上げ個別指定）' : textMode === 'strict' ? '🔒 完全固定（テロップ＝ナレーション、ユーザー入力をそのまま使用）' : textMode === 'caption_lock' ? '📌 テロップ固定（テロップはユーザー入力そのまま、ナレーションのみアレンジ可）' : '🎨 AIアレンジ（自由にアレンジ可）'}
 - 画像NSFW: ${nsfwEnabled ? 'ON（セクシー・露出度高めの画像を生成可）' : 'OFF（SFW・健全な画像のみ）'}
 - テロップデフォルト位置: 画面${getPositionLabel(getDefaultSubtitlePosition())}（${getDefaultSubtitlePosition()}）${globalNote ? `\n- 全体備考: ${globalNote}` : ''}
 ※これらの情報から、最適な言葉選びと演出の方向性を決定してください。
@@ -431,17 +522,31 @@
 ${tempoInstructions}
 
 # 編集・演出ルール（絶対厳守）
-${textMode !== 'arrange' ? `
-## ⚠️【最最重要】テキストモード: ${textMode === 'strict' ? '🔒 完全固定' : '📌 テロップ固定'}
 
-${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守ること:**
+## ⚠️【最重要】シーン個別指示（Scene Notes）の優先順位
+各シーン設定にある「**最優先・特別指示 (Globalルールより優先)**」という項目は、この動画生成における**最高位の命令**です。
+- もし個別指示で「読み上げテキストを変更」とあれば、テキストモード（完全固定など）を無視して指示通りに書き換えてください。
+- もし個別指示で「画像を4秒間静止」とあれば、TikTokテンポ設定（1-3秒制限）を無視して4秒間表示してください。
+- もし個別指示で「無音にする」とあれば、ナレーション設定がONでもそのシーンは text="" としてください。
+- **備考・指示メモの内容は、例外処理として最優先で実装してください。**
+
+${textMode !== 'arrange' ? `
+## テキストモード: ${textMode === 'manual' ? '✍️ 完全手動' : textMode === 'strict' ? '🔒 完全固定' : '📌 テロップ固定'}
+
+${textMode === 'manual' ? `**完全手動モード — 以下を絶対に守ること:**
+- **captions[].text** は、入力された「表示テキスト（テロップ）」を**一字一句そのまま**使用すること。アレンジ禁止。
+- **text（ナレーション）** は、入力された「読み上げ指定」を**一字一句そのまま**使用すること。アレンジ禁止。
+- **重要**: 読み上げ指定が「なし」または空文字の場合は、**textフィールドを空文字 ("") にすること（ナレーションなし）。**
+- ユーザーが意図してテロップと読み上げを変えている場合（例: 表示「ヤバい」/ 読み「これは本当に危険です」）は、その通りに出力すること。
+- 空のテキスト（AIにお任せ）のシーンのみ、AIが自由にテキストを生成してよい。` :
+textMode === 'strict' ? `**完全固定モード — 以下を絶対に守ること（※ただしシーン個別指示がある場合はそちらを優先）:**
 - ユーザーが入力したテキストを**一字一句そのまま**使うこと。
 - **captions[].text = text（ナレーション）と完全に同一であること。**
 - テロップもナレーションも**絶対にアレンジ・言い換え・省略・追加をしない**こと。
 - 句読点の追加・削除、語尾の変更、表現の言い換え、体言止めへの変換、すべて禁止。
 - ユーザーが「猫は可愛い動物です。」と書いたなら、テロップもナレーションも「猫は可愛い動物です。」のまま出力すること。
 - 空のテキスト（AIにお任せ）のシーンのみ、AIが自由にテキストを生成してよい。` :
-`**テロップ固定モード — 以下を絶対に守ること:**
+`**テロップ固定モード — 以下を絶対に守ること（※ただしシーン個別指示がある場合はそちらを優先）:**
 - ユーザーが入力したテロップ（captions[].text）は**一字一句そのまま**使うこと。
 - テロップの**アレンジ・言い換え・省略・追加は絶対禁止**。
 - ナレーション（text）のみ、トーンに合わせた自然な話し言葉へのアレンジが許可される。
@@ -451,7 +556,7 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
 ` : ''}
 1. **テロップ配置と構成**:
    - テロップのデフォルト配置は「画面${getPositionLabel(getDefaultSubtitlePosition())}（${getDefaultSubtitlePosition()}）」。${getDefaultSubtitlePosition() === 'bottom' ? '字幕風レイアウトが基本。重要な強調テロップは中央配置も可。' : getDefaultSubtitlePosition() === 'center' ? 'UI被りを避け、画面中央に配置。' : '上部配置。画面下部の情報を遮らない。'}
-   - ${textMode === 'strict' ? 'テキストモードが完全固定のため、ユーザー入力テキストをそのまま出力すること。' : textMode === 'caption_lock' ? 'テロップはユーザー入力そのまま。アレンジ禁止。' : '句読点は使わない。体言止めか「！」で切る。'}
+   - ${textMode === 'strict' || textMode === 'manual' ? 'テキストモードの指示通り、ユーザー入力をそのまま出力すること。' : textMode === 'caption_lock' ? 'テロップはユーザー入力そのまま。アレンジ禁止。' : '句読点は使わない。体言止めか「！」で切る。'}
 
 2. **【最重要】テキストレンダリングルール（フォーマット別）**:
    durationは音声長から自動計算されるため、テロップの文字数制限はフォーマットで決定する。
@@ -679,7 +784,7 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
           resolutionLabel: getResolutionLabel(),
           tempoStyle,
           textMode,
-          textModeLabel: textMode === 'strict' ? '完全固定（テロップ＝読み上げ）' : textMode === 'caption_lock' ? 'テロップ固定（ナレーションのみアレンジ可）' : 'AIアレンジ（自由）',
+          textModeLabel: textMode === 'manual' ? '完全手動（テロップ・読み上げ個別指定）' : textMode === 'strict' ? '完全固定（テロップ＝読み上げ）' : textMode === 'caption_lock' ? 'テロップ固定（ナレーションのみアレンジ可）' : 'AIアレンジ（自由）',
           defaultSubtitlePosition: getDefaultSubtitlePosition(),
           globalNote: globalNote || null,
           voice: {
@@ -711,10 +816,21 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
           ai_prompt: generatedPrompt,
           scenes: fullAutoMode ? [] : scenes.map((scene, index) => {
             let exportText = scene.text;
-            if (scene.noText) {
+            let exportNarration = scene.text;
+
+            // Manualモードの場合、ナレーションはreadTextを使う
+            if (textMode === 'manual') {
+              exportNarration = scene.readText;
+              // readTextが空の場合はナレーションなしとみなす
+              if (!exportNarration || exportNarration.trim() === '') {
+                exportNarration = null; 
+              }
+            } else if (scene.noText) {
               exportText = null;
+              exportNarration = null; // テキストなしモードならナレーションもなし（通常の挙動）
             } else if (!scene.text || scene.text.trim() === '') {
               exportText = "AIにお任せ";
+              exportNarration = "AIにお任せ";
             }
 
             let exportMedia = '';
@@ -737,7 +853,8 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
 
             return {
               sceneNumber: index + 1,
-              text: exportText,
+              text: exportText, // テロップ用
+              readText: exportNarration, // ナレーション用（JSONに追加）
               textLines: textLines,
               preserveLineBreaks: true,
               noText: scene.noText,
@@ -837,15 +954,17 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
 
                 <div>
                   <label className="block text-sm font-bold mb-2 text-gray-700">テキストモード</label>
-                  <select value={textMode} onChange={(e) => setTextMode(e.target.value)} className={`w-full border-2 rounded-lg p-3 font-bold ${textMode === 'strict' ? 'border-red-400 bg-red-50 text-red-700' : textMode === 'caption_lock' ? 'border-amber-400 bg-amber-50 text-amber-700' : 'border-gray-300 bg-white text-gray-700'}`}>
+                  <select value={textMode} onChange={(e) => setTextMode(e.target.value)} className={`w-full border-2 rounded-lg p-3 font-bold ${textMode === 'strict' ? 'border-red-400 bg-red-50 text-red-700' : textMode === 'caption_lock' ? 'border-amber-400 bg-amber-50 text-amber-700' : textMode === 'manual' ? 'border-purple-400 bg-purple-50 text-purple-700' : 'border-gray-300 bg-white text-gray-700'}`}>
                     <option value="arrange">🎨 AIアレンジ（自由）</option>
-                    <option value="caption_lock">📌 テロップ固定</option>
+                    <option value="caption_lock">📌 テロップ固定(読み上げはAI任せ)</option>
                     <option value="strict">🔒 完全固定（テロップ＝読み上げ）</option>
+                    <option value="manual">✍️ 完全手動（コメント＋読み上げを個別指定）</option>
                   </select>
-                  <p className="text-xs mt-2" style={{color: textMode === 'strict' ? '#dc2626' : textMode === 'caption_lock' ? '#d97706' : '#6b7280'}}>
+                  <p className="text-xs mt-2" style={{color: textMode === 'strict' ? '#dc2626' : textMode === 'caption_lock' ? '#d97706' : textMode === 'manual' ? '#7e22ce' : '#6b7280'}}>
                     {textMode === 'arrange' && 'テロップ・ナレーションともにAIが自由にアレンジします'}
                     {textMode === 'caption_lock' && 'テロップは入力テキストそのまま。ナレーションのみAIがアレンジ可'}
                     {textMode === 'strict' && '表示テキスト＝ナレーション。打ち込んだ文字がそのまま表示・読み上げされます'}
+                    {textMode === 'manual' && 'テロップと読み上げを個別に指定します。読み上げが空の場合はナレーションなし'}
                   </p>
                 </div>
 
@@ -983,15 +1102,62 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
             {/* --- 2. シーンエディタ --- */}
             {!fullAutoMode && (
               <section className="mb-10">
-                <h2 className="text-xl font-bold mb-6 flex items-center">
-                  <span className="bg-gray-700 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm shrink-0">2</span>
-                  シーンエディタ
-                  {tempoStyle === 'tiktok' && (
-                    <span className="ml-3 text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold">
-                      ⚡ TikTokモード: 1カット1〜3秒
-                    </span>
-                  )}
-                </h2>
+                <div className="flex justify-between items-end mb-6">
+                  <h2 className="text-xl font-bold flex items-center">
+                    <span className="bg-gray-700 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm shrink-0">2</span>
+                    シーンエディタ
+                    {tempoStyle === 'tiktok' && (
+                      <span className="ml-3 text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold">
+                        ⚡ TikTokモード: 1カット1〜3秒
+                      </span>
+                    )}
+                  </h2>
+                  <button
+                    onClick={() => setShowImportModal(true)}
+                    className="bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center shadow-sm transition-colors"
+                  >
+                    📋 スプレッドシートから一括作成
+                  </button>
+                </div>
+
+                {/* インポート用モーダル */}
+                {showImportModal && (
+                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                      <div className="flex justify-between items-center mb-4 border-b pb-2">
+                        <h3 className="text-lg font-bold text-gray-800">📋 スプレッドシート読み込み (TSV)</h3>
+                        <button onClick={() => setShowImportModal(false)} className="text-gray-500 hover:text-gray-700 font-bold text-xl">×</button>
+                      </div>
+                      <div className="space-y-4">
+                        <p className="text-sm text-gray-600">
+                          ExcelやGoogleスプレッドシートの表をコピーして、ここに貼り付けてください。<br/>
+                          <span className="text-xs text-gray-400">※1行目はヘッダーとして扱われます。2列目:テロップ、3列目:読み上げ、4列目:備考として認識します。</span>
+                        </p>
+                        <textarea
+                          value={importText}
+                          onChange={(e) => setImportText(e.target.value)}
+                          placeholder={`シーン\tテロップ(表示)\t読み上げ(音声)\t備考・指示メモ\n1\tこれマジ！？\tえ、マジ！？\t0.5秒で\n2\t...`}
+                          className="w-full h-64 border-2 border-gray-300 rounded-lg p-3 font-mono text-xs focus:border-green-500 focus:outline-none"
+                        />
+                        <div className="flex justify-end gap-3 pt-2">
+                          <button
+                            onClick={() => setShowImportModal(false)}
+                            className="px-4 py-2 text-gray-600 font-bold hover:bg-gray-100 rounded-lg"
+                          >
+                            キャンセル
+                          </button>
+                          <button
+                            onClick={handleSpreadsheetImport}
+                            className="px-6 py-2 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 shadow-md"
+                          >
+                            読み込んで作成
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="space-y-6">
                   {scenes.map((scene, index) => (
                     <div key={scene.id} className="border-2 border-gray-200 rounded-xl p-5 bg-gray-50 hover:shadow-md transition-shadow">
@@ -1017,7 +1183,7 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
                         <div className={`col-span-1 md:col-span-2 p-4 rounded-lg border-2 transition-colors ${scene.noText ? 'bg-gray-100 border-gray-300' : 'bg-white border-blue-200'}`}>
                           <div className="flex justify-between items-center mb-3">
                             <label className="text-sm font-bold text-gray-700">
-                              表示テキスト
+                              表示テキスト（テロップ）
                               {!scene.noText && (
                                 <span className="text-orange-500 ml-2 text-xs font-bold">
                                   （{getTextGuide().maxText}文字以内推奨 / 最大{getTextGuide().maxLines}行）
@@ -1045,6 +1211,22 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
                             <p className="text-xs text-red-500 font-bold mt-1">
                               ⚠️ {scene.text.length}文字 — {format}では{getTextGuide().maxText}文字以内が推奨です
                             </p>
+                          )}
+
+                          {/* 読み上げテキスト入力（manualモード時のみ表示） */}
+                          {textMode === 'manual' && (
+                            <div className="mt-3 border-t border-gray-200 pt-3">
+                              <label className="block text-sm font-bold text-purple-700 mb-1">
+                                読み上げテキスト（ナレーション）
+                                <span className="text-xs font-normal text-purple-500 ml-2">※空欄の場合はナレーションなし</span>
+                              </label>
+                              <textarea
+                                value={scene.readText}
+                                onChange={(e) => updateScene(scene.id, 'readText', e.target.value)}
+                                placeholder="読み上げ内容を入力（空欄の場合は無音）"
+                                className="w-full border-2 border-purple-300 rounded-lg p-3 h-20 bg-purple-50 focus:border-purple-500 focus:outline-none transition-colors resize-none"
+                              />
+                            </div>
                           )}
                         </div>
 
@@ -1088,8 +1270,12 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
                               checked={scene.narration}
                               onChange={(e) => updateScene(scene.id, 'narration', e.target.checked)}
                               className="mr-3 w-5 h-5 accent-blue-600"
+                              disabled={textMode === 'manual'} // manualモード時はテキストボックスの有無で決まるため無効化または連動
                             />
-                            このシーンを読み上げる
+                            <span className={textMode === 'manual' ? "text-gray-400" : ""}>
+                              このシーンを読み上げる
+                              {textMode === 'manual' && <span className="text-xs ml-2 font-normal">(手動モードでは入力内容で判定)</span>}
+                            </span>
                           </label>
                         </div>
 
@@ -1213,14 +1399,14 @@ ${textMode === 'strict' ? `**完全固定モード — 以下を絶対に守る�
                         {/* 備考・シーン指示メモ */}
                         <div className="col-span-1 md:col-span-2">
                           <label className="block text-sm font-bold mb-2 text-gray-700">
-                            備考・指示メモ
-                            <span className="text-gray-400 font-normal ml-2 text-xs">（任意）</span>
+                            備考・指示メモ（※最重要指示）
+                            <span className="text-gray-400 font-normal ml-2 text-xs">（例: 「読み上げ: こんにちは」でナレーション強制変更 / 「4秒静止」でテンポ無視）</span>
                           </label>
                           <textarea
                             value={scene.sceneNote}
                             onChange={(e) => updateScene(scene.id, 'sceneNote', e.target.value)}
-                            placeholder="例: このシーンだけテンポをゆっくりに / 背景を暗めに / SEを入れたい / ナレーションに間を持たせる..."
-                            className="w-full border-2 border-amber-200 rounded-lg p-3 h-16 bg-amber-50 focus:border-amber-400 focus:outline-none transition-colors resize-none text-sm"
+                            placeholder="ここに書かれた指示は、全体のテンポ設定やテキストルールよりも優先して適用されます。"
+                            className="w-full border-2 border-red-200 rounded-lg p-3 h-16 bg-red-50 focus:border-red-400 focus:outline-none transition-colors resize-none text-sm font-bold text-gray-700"
                           />
                         </div>
                       </div>
