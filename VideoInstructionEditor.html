@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI動画生成 指示書エディタ Pro</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; }
+    /* カスタムスクロールバー */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    // --- VOICEVOX スピーカー定義（APIから取得した正確なデータ） ---
+    const VOICEVOX_SPEAKERS = [
+      // 女性ボイス
+      { name: '四国めたん', gender: '女性', styles: [
+        { name: 'ノーマル', id: 2 }, { name: 'あまあま', id: 0 }, { name: 'ツンツン', id: 6 },
+        { name: 'セクシー', id: 4 }, { name: 'ささやき', id: 36 }, { name: 'ヒソヒソ', id: 37 }
+      ]},
+      { name: '春日部つむぎ', gender: '女性', styles: [{ name: 'ノーマル', id: 8 }] },
+      { name: '雨晴はう', gender: '女性', styles: [{ name: 'ノーマル', id: 10 }] },
+      { name: '波音リツ', gender: '女性', styles: [{ name: 'ノーマル', id: 9 }, { name: 'クイーン', id: 65 }] },
+      { name: '九州そら', gender: '女性', styles: [
+        { name: 'ノーマル', id: 16 }, { name: 'あまあま', id: 15 }, { name: 'ツンツン', id: 18 },
+        { name: 'セクシー', id: 17 }, { name: 'ささやき', id: 19 }
+      ]},
+      { name: 'もち子さん', gender: '女性', styles: [
+        { name: 'ノーマル', id: 20 }, { name: 'セクシー／あん子', id: 66 }, { name: '泣き', id: 77 },
+        { name: '怒り', id: 78 }, { name: '喜び', id: 79 }, { name: 'のんびり', id: 80 }
+      ]},
+      { name: '冥鳴ひまり', gender: '女性', styles: [{ name: 'ノーマル', id: 14 }] },
+      { name: 'WhiteCUL', gender: '女性', styles: [
+        { name: 'ノーマル', id: 23 }, { name: 'たのしい', id: 24 }, { name: 'かなしい', id: 25 }, { name: 'びえーん', id: 26 }
+      ]},
+      { name: '櫻歌ミコ', gender: '女性', styles: [{ name: 'ノーマル', id: 43 }, { name: '第二形態', id: 44 }, { name: 'ロリ', id: 45 }] },
+      { name: '小夜/SAYO', gender: '女性', styles: [{ name: 'ノーマル', id: 46 }] },
+      { name: 'ナースロボ＿タイプＴ', gender: '女性', styles: [
+        { name: 'ノーマル', id: 47 }, { name: '楽々', id: 48 }, { name: '恐怖', id: 49 }, { name: '内緒話', id: 50 }
+      ]},
+      { name: '春歌ナナ', gender: '女性', styles: [{ name: 'ノーマル', id: 54 }] },
+      { name: '猫使アル', gender: '女性', styles: [
+        { name: 'ノーマル', id: 55 }, { name: 'おちつき', id: 56 }, { name: 'うきうき', id: 57 },
+        { name: 'つよつよ', id: 110 }, { name: 'へろへろ', id: 111 }
+      ]},
+      { name: '猫使ビィ', gender: '女性', styles: [
+        { name: 'ノーマル', id: 58 }, { name: 'おちつき', id: 59 }, { name: '人見知り', id: 60 }, { name: 'つよつよ', id: 112 }
+      ]},
+      { name: '中国うさぎ', gender: '女性', styles: [
+        { name: 'ノーマル', id: 61 }, { name: 'おどろき', id: 62 }, { name: 'こわがり', id: 63 }, { name: 'へろへろ', id: 64 }
+      ]},
+      { name: '栗田まろん', gender: '女性', styles: [{ name: 'ノーマル', id: 67 }] },
+      { name: 'あいえるたん', gender: '女性', styles: [{ name: 'ノーマル', id: 68 }] },
+      { name: '満別花丸', gender: '女性', styles: [
+        { name: 'ノーマル', id: 69 }, { name: '元気', id: 70 }, { name: 'ささやき', id: 71 },
+        { name: 'ぶりっ子', id: 72 }, { name: 'ボーイ', id: 73 }
+      ]},
+      { name: '琴詠ニア', gender: '女性', styles: [{ name: 'ノーマル', id: 74 }] },
+      { name: 'ぞん子', gender: '女性', styles: [
+        { name: 'ノーマル', id: 90 }, { name: '低血圧', id: 91 }, { name: '覚醒', id: 92 }, { name: '実況風', id: 93 }
+      ]},
+      { name: '黒沢冴白', gender: '女性', styles: [{ name: 'ノーマル', id: 100 }] },
+      { name: 'ユーレイちゃん', gender: '女性', styles: [
+        { name: 'ノーマル', id: 102 }, { name: '甘々', id: 103 }, { name: '哀しみ', id: 104 },
+        { name: 'ささやき', id: 105 }, { name: 'ツクモちゃん', id: 106 }
+      ]},
+      { name: '東北ずん子', gender: '女性', styles: [{ name: 'ノーマル', id: 107 }] },
+      { name: '東北きりたん', gender: '女性', styles: [{ name: 'ノーマル', id: 108 }] },
+      { name: '東北イタコ', gender: '女性', styles: [{ name: 'ノーマル', id: 109 }] },
+      { name: 'あんこもん', gender: '女性', styles: [
+        { name: 'ノーマル', id: 113 }, { name: 'つよつよ', id: 114 }, { name: 'よわよわ', id: 115 },
+        { name: 'けだるげ', id: 116 }, { name: 'ささやき', id: 117 }
+      ]},
+      // 男性ボイス
+      { name: '玄野武宏', gender: '男性', styles: [
+        { name: 'ノーマル', id: 11 }, { name: '喜び', id: 39 }, { name: 'ツンギレ', id: 40 }, { name: '悲しみ', id: 41 }
+      ]},
+      { name: '白上虎太郎', gender: '男性', styles: [
+        { name: 'ふつう', id: 12 }, { name: 'わーい', id: 32 }, { name: 'びくびく', id: 33 },
+        { name: 'おこ', id: 34 }, { name: 'びえーん', id: 35 }
+      ]},
+      { name: '青山龍星', gender: '男性', styles: [
+        { name: 'ノーマル', id: 13 }, { name: '熱血', id: 81 }, { name: '不機嫌', id: 82 },
+        { name: '喜び', id: 83 }, { name: 'しっとり', id: 84 }, { name: 'かなしみ', id: 85 }, { name: '囁き', id: 86 }
+      ]},
+      { name: '剣崎雌雄', gender: '男性', styles: [{ name: 'ノーマル', id: 21 }] },
+      { name: '†聖騎士 紅桜†', gender: '男性', styles: [{ name: 'ノーマル', id: 51 }] },
+      { name: '雀松朱司', gender: '男性', styles: [{ name: 'ノーマル', id: 52 }] },
+      { name: '麒ヶ島宗麟', gender: '男性', styles: [{ name: 'ノーマル', id: 53 }] },
+      { name: 'ちび式じい', gender: '男性', styles: [{ name: 'ノーマル', id: 42 }] },
+      { name: '中部つるぎ', gender: '男性', styles: [
+        { name: 'ノーマル', id: 94 }, { name: '怒り', id: 95 }, { name: 'ヒソヒソ', id: 96 },
+        { name: 'おどおど', id: 97 }, { name: '絶望と敗北', id: 98 }
+      ]},
+      { name: '離途', gender: '男性', styles: [{ name: 'ノーマル', id: 99 }, { name: 'シリアス', id: 101 }] },
+      // その他・マスコット
+      { name: 'ずんだもん', gender: 'マスコット', styles: [
+        { name: 'ノーマル', id: 3 }, { name: 'あまあま', id: 1 }, { name: 'ツンツン', id: 7 },
+        { name: 'セクシー', id: 5 }, { name: 'ささやき', id: 22 }, { name: 'ヒソヒソ', id: 38 },
+        { name: 'ヘロヘロ', id: 75 }, { name: 'なみだめ', id: 76 }
+      ]},
+      { name: '後鬼', gender: 'その他', styles: [
+        { name: '人間ver.', id: 27 }, { name: 'ぬいぐるみver.', id: 28 }, { name: '人間（怒り）ver.', id: 87 }, { name: '鬼ver.', id: 88 }
+      ]},
+      { name: 'No.7', gender: 'その他', styles: [
+        { name: 'ノーマル', id: 29 }, { name: 'アナウンス', id: 30 }, { name: '読み聞かせ', id: 31 }
+      ]},
+      { name: 'Voidoll', gender: 'その他', styles: [{ name: 'ノーマル', id: 89 }] },
+    ];
+
+    const App = () => {
+      // --- State定義 ---
+      const [theme, setTheme] = useState('');
+      const [format, setFormat] = useState('9:16');
+      const [tone, setTone] = useState('pop');
+      const [target, setTarget] = useState('all');
+
+      const [voiceEnabled, setVoiceEnabled] = useState(true);
+      const [voiceCharName, setVoiceCharName] = useState('四国めたん');
+      const [voiceSpeakerId, setVoiceSpeakerId] = useState(2);
+      const [voiceSpeed, setVoiceSpeed] = useState('fast');
+
+      // 選択中のキャラクター情報
+      const currentSpeaker = useMemo(() => VOICEVOX_SPEAKERS.find(s => s.name === voiceCharName), [voiceCharName]);
+      const currentStyle = useMemo(() => currentSpeaker?.styles.find(st => st.id === voiceSpeakerId) || currentSpeaker?.styles[0], [currentSpeaker, voiceSpeakerId]);
+
+      // キャラ変更時にスタイルをリセット
+      const handleCharChange = (charName) => {
+        setVoiceCharName(charName);
+        const speaker = VOICEVOX_SPEAKERS.find(s => s.name === charName);
+        if (speaker) {
+          setVoiceSpeakerId(speaker.styles[0].id);
+        }
+      };
+
+      // 性別でグループ化
+      const speakersByGender = useMemo(() => {
+        const groups = {};
+        VOICEVOX_SPEAKERS.forEach(s => {
+          if (!groups[s.gender]) groups[s.gender] = [];
+          groups[s.gender].push(s);
+        });
+        return groups;
+      }, []);
+
+      const [bgmEnabled, setBgmEnabled] = useState(true);
+      const [bgmMood, setBgmMood] = useState('upbeat');
+
+      const [imageGenEnabled, setImageGenEnabled] = useState(true);
+      const [nsfwEnabled, setNsfwEnabled] = useState(false);
+      const [fullAutoMode, setFullAutoMode] = useState(false);
+
+      const [tempoStyle, setTempoStyle] = useState('tiktok');
+      const [textMode, setTextMode] = useState('arrange');  // arrange | caption_lock | strict | manual
+      const [resolutionQuality, setResolutionQuality] = useState('standard');
+      const [defaultPosition, setDefaultPosition] = useState('auto');
+      const [globalNote, setGlobalNote] = useState('');
+
+      // インポート機能用のState
+      const [showImportModal, setShowImportModal] = useState(false);
+      const [importText, setImportText] = useState('');
+
+      const [scenes, setScenes] = useState([
+        {
+          id: Date.now(),
+          noText: false,
+          text: '',
+          readText: '', // manualモード用の読み上げテキスト
+          emotion: 'auto',
+          position: 'center',
+          narration: true,
+          imageSource: 'ai',
+          mediaAuto: '✨AIが自動生成',
+          mediaFile: '',
+          customImagePath: '',
+          bgStyle: 'gradient_dark',
+          sceneNote: ''
+        }
+      ]);
+
+      // --- シーン操作 ---
+      const addScene = () => {
+        setScenes([...scenes, {
+          id: Date.now() + Math.random(),
+          noText: false,
+          text: '',
+          readText: '',
+          emotion: 'auto',
+          position: 'center',
+          narration: true,
+          imageSource: 'ai',
+          mediaAuto: '✨AIが自動生成',
+          mediaFile: '',
+          customImagePath: '',
+          bgStyle: 'gradient_dark',
+          sceneNote: ''
+        }]);
+      };
+
+      const removeScene = (id) => {
+        setScenes(scenes.filter(s => s.id !== id));
+      };
+
+      const updateScene = (id, field, value) => {
+        setScenes(scenes.map(s => s.id === id ? { ...s, [field]: value } : s));
+      };
+
+      // --- スプレッドシート読み込み処理 ---
+      const handleSpreadsheetImport = () => {
+        if (!importText.trim()) {
+          alert('テキストエリアが空です。スプレッドシートからコピーしたデータを貼り付けてください。');
+          return;
+        }
+
+        const lines = importText.trim().split('\n');
+        // ヘッダー行を含めて2行以上あるかチェック
+        if (lines.length < 2) {
+          alert('データが見つかりません。ヘッダー行を含めてコピーしてください。');
+          return;
+        }
+
+        const newScenes = [];
+        // 1行目はヘッダーとみなし、2行目(index 1)から処理
+        for (let i = 1; i < lines.length; i++) {
+          const line = lines[i];
+          if (!line.trim()) continue;
+
+          // タブ区切りで分割
+          const cols = line.split('\t');
+          
+          // 列の割り当て
+          // 0: シーンNo (無視)
+          // 1: テロップ(表示)
+          // 2: 読み上げ(音声)
+          // 3: 備考・指示メモ
+          // 4: 画像ファイルパス（NEW）
+          
+          const displayText = cols[1] ? cols[1].trim() : "";
+          const voiceText = cols[2] ? cols[2].trim() : "";
+          const noteText = cols[3] ? cols[3].trim() : "";
+          const imagePath = cols[4] ? cols[4].trim() : ""; // 5列目を取得
+
+          // 読み上げテキストがある場合はナレーションON、なければOFF（ただしmanualモードなのでreadTextが空なら無音扱い）
+          const hasVoice = voiceText.length > 0;
+
+          // 画像パスがある場合はソースをcustomにする
+          const imageSource = imagePath ? 'custom' : 'ai';
+
+          newScenes.push({
+            id: Date.now() + i + Math.random(),
+            noText: displayText === "",
+            text: displayText,
+            readText: voiceText,
+            emotion: 'auto',
+            position: 'center',
+            narration: true, 
+            imageSource: imageSource, // パスがあればcustom、なければai
+            mediaAuto: '✨AIが自動生成',
+            mediaFile: imagePath ? imagePath.split(/[\\/]/).pop() : '', // ファイル名のみ表示用
+            customImagePath: imagePath, // フルパス
+            bgStyle: 'gradient_dark',
+            sceneNote: noteText
+          });
+        }
+
+        if (newScenes.length > 0) {
+          if(confirm(`${newScenes.length}件のシーンを読み込みますか？\n現在のシーンは上書きされます。\nモードは「✍️ 完全手動」に切り替わります。`)) {
+            setScenes(newScenes);
+            setTextMode('manual'); // 自動で手動モードへ
+            setFullAutoMode(false); // フルオート解除
+            setShowImportModal(false); // モーダル閉じる
+            setImportText(''); // 入力欄クリア
+          }
+        } else {
+          alert('有効なデータが読み取れませんでした。列の形式を確認してください。');
+        }
+      };
+
+      // --- 感情に応じた演出ヒント ---
+      const getEmotionHints = (emotionKey) => {
+        switch (emotionKey) {
+          case 'surprise':
+            return '推奨アニメーション: [pop], [bounce], [flash], [shake]\n推奨サイズ: [large], [huge]\n推奨スタイル: [accent_yellow](黄色ピル), [accent_red](赤ピル), [neon_pink](ネオン発光)';
+          case 'sad':
+            return '推奨アニメーション: [fadeIn], [blurIn], [slideUp]\n推奨サイズ: [small], [medium]\n推奨スタイル: [accent_blue](シアン発光), [elegant_style](黒BOX+金枠), [caption_box](字幕風)';
+          case 'horror':
+            return '推奨アニメーション: [waveIn], [shake], [flash], [typewriter]\n推奨サイズ: [medium], [large]\n推奨スタイル: [horror_style](赤黒グロー), [accent_red](赤ピル)';
+          case 'happy':
+            return '推奨アニメーション: [pop], [bounce], [slideIn], [rotateIn]\n推奨サイズ: [medium], [large]\n推奨スタイル: [accent_yellow](黄色ピル), [neon_pink](ネオンピンク), [gradient_pop](ポップ)';
+          case 'angry':
+            return '推奨アニメーション: [shake], [pop], [zoomIn]\n推奨サイズ: [large], [huge]\n推奨スタイル: [accent_red](赤ピル), [horror_style](赤黒グロー)';
+          case 'sexy':
+            return '推奨アニメーション: [fadeIn], [blurIn], [slideUp], [waveIn]\n推奨サイズ: [medium], [large]\n推奨スタイル: [neon_pink](ネオンピンク), [elegant_style](黒BOX+金枠), [accent_blue](シアン発光)';
+          case 'auto':
+          default:
+            return 'テキストの内容に合わせて、最適な組み合わせを自由に選択してください。';
+        }
+      };
+
+      const getSpeedDescription = (speed) => {
+        switch (speed) {
+          case 'very_fast': return '1.4倍速（超早口・畳みかけ）';
+          case 'fast': return '1.2倍速（やや早口・TikTok標準）';
+          case 'normal': return '1.0倍速（通常速度）';
+          default: return '';
+        }
+      };
+
+      // --- フォーマットに応じたテキストガイド ---
+      // duration は音声長から自動計算するため、テキスト制限はフォーマット（9:16 / 16:9）で決定
+      const getTextGuide = () => {
+        if (format === '16:9') {
+          return { maxTitle: 25, maxSubtitle: 28, maxText: 120, maxLines: 4, desc: '16:9横動画: title25文字・text120文字以内' };
+        }
+        return { maxTitle: 15, maxSubtitle: 18, maxText: 80, maxLines: 4, desc: '9:16縦動画: title15文字・text80文字以内' };
+      };
+
+      // --- ラベル変換ヘルパー ---
+      const getTargetLabel = (val) => {
+        const map = { all: '全年齢層', teens: '10代・Z世代', business: 'ビジネスパーソン', kids: '子供・ファミリー' };
+        return map[val] || val;
+      };
+      const getToneLabel = (val) => {
+        const map = { pop: 'ポップ・明るい', horror: 'ホラー・都市伝説', serious: 'シリアス・解説', emotional: 'エモーショナル・感動', high_tension: 'ハイテンション・熱血', sexy: 'セクシー・大人' };
+        return map[val] || val;
+      };
+      const getBgmLabel = (val) => {
+        const map = { upbeat: 'アップテンポ', creepy: '不気味・サスペンス', chill: 'チル・リラックス', dramatic: 'ドラマチック', sexy: 'セクシー' };
+        return map[val] || val;
+      };
+      const getSpeedMultiplier = (speed) => {
+        const map = { very_fast: 1.4, fast: 1.2, normal: 1.0 };
+        return map[speed] || 1.0;
+      };
+      const isLongFormat = () => format === '16:9';
+      const getFormatLabel = () => format === '16:9' ? 'YouTube横動画（16:9）' : 'ショート動画（9:16 / TikTok・Shorts）';
+      const getVideoTypeLabel = () => format === '16:9' ? '動画' : 'ショート動画';
+      const getResolution = () => {
+        if (format === '16:9') {
+          return resolutionQuality === 'high' ? { width: 1920, height: 1080 } : { width: 1280, height: 720 };
+        }
+        return resolutionQuality === 'high' ? { width: 1080, height: 1920 } : { width: 720, height: 1280 };
+      };
+      const getResolutionLabel = () => {
+        if (format === '16:9') {
+          return resolutionQuality === 'high' ? '1920×1080（Full HD）' : '1280×720（HD）';
+        }
+        return resolutionQuality === 'high' ? '1080×1920（Full HD）' : '720×1280（HD）';
+      };
+      const getDefaultSubtitlePosition = () => {
+        if (defaultPosition !== 'auto') return defaultPosition;
+        return format === '16:9' ? 'bottom' : 'center';
+      };
+      const getPositionLabel = (val) => {
+        const map = { center: '中央', bottom: '下部', top: '上部', auto: '自動' };
+        return map[val] || val;
+      };
+
+      // --- 音楽プロンプト生成（ACE Step 1.5用） ---
+      // ACE Stepのtagsフィールドに渡すカンマ区切りタグ形式
+      // 重要: ACE Stepはジャンル名・楽器名・BPM・ムード形容詞をカンマ区切りで並べるのが最も効果的
+      const generateMusicPrompt = (themeText, toneValue, bgmMoodValue) => {
+        const moodTemplates = {
+          upbeat: {
+            tags: "pop, dance pop, funk, synth pop, electronic, upbeat, energetic, happy, bright, catchy, 128bpm, major key, driving beat, claps, synth bass, electric guitar, brass stabs, four on the floor",
+            lyrics: "[intro]\nLa la la...\nDo do do...\n\n[chorus]\nOh yeah...\nLet's go...\n\n[outro]\nYeah...\n",
+            bpm: 128
+          },
+          creepy: {
+            tags: "dark ambient, horror, industrial, cinematic, scary, eerie, tension, suspense, mysterious, 70bpm, minor key, dissonant, low drone, reversed sounds, metallic, sub bass, whisper, atmospheric, film score",
+            lyrics: "[intro]\nOoh...\n\n[verse]\nDarkness...\nShadows...\n\n[outro]\nSilence...\n",
+            bpm: 70
+          },
+          chill: {
+            tags: "lo-fi hip hop, chillhop, jazz hop, mellow, relaxed, calm, cozy, nostalgic, warm, 82bpm, vinyl crackle, soft piano, acoustic guitar, jazz chords, light drums, tape hiss, late night study, bedroom producer",
+            lyrics: "[intro]\nHmm...\n\n[verse]\nFeeling good...\nTake it slow...\n\n[outro]\nMmm...\n",
+            bpm: 82
+          },
+          dramatic: {
+            tags: "cinematic orchestral, epic, film score, trailer music, powerful, emotional, grand, heroic, 100bpm, strings, brass, timpani, choir, piano, crescendo, wide stereo, Hans Zimmer style, blockbuster",
+            lyrics: "[intro]\nOoh...\nAah...\n\n[chorus]\nRise up...\nStand tall...\n\n[outro]\nForever...\n",
+            bpm: 100
+          },
+          sexy: {
+            tags: "R&B, smooth jazz, neo soul, sultry, sensual, seductive, intimate, groovy, 92bpm, minor key, saxophone, Rhodes piano, deep bass, finger snaps, slow hi-hats, silky strings, breathy, late night, bedroom",
+            lyrics: "[intro]\nMmm...\nOoh yeah...\n\n[verse]\nFeel the night...\nSo close...\n\n[chorus]\nOoh...\n\n[outro]\nMmm...\n",
+            bpm: 92
+          }
+        };
+
+        const toneBoost = {
+          pop: ", cheerful, playful, fun, bright synth",
+          horror: ", dark, creepy, unsettling, dread",
+          serious: ", professional, clean, focused, minimal",
+          emotional: ", heartfelt, touching, sentimental, piano melody",
+          high_tension: ", intense, aggressive, powerful, fast drums",
+          sexy: ", smooth, sultry, intimate, sensual groove"
+        };
+
+        const template = moodTemplates[bgmMoodValue] || moodTemplates.upbeat;
+        const boost = toneBoost[toneValue] || '';
+
+        // ACE Step用: tags形式（カンマ区切りタグ列）
+        let tags = template.tags + boost;
+        // instrumental指定（歌なしBGM向け）
+        tags += ', instrumental, no vocals, background music';
+
+        return {
+          tags: tags,
+          lyrics: template.lyrics,
+          bpm: template.bpm,
+          duration: format === '9:16' ? 40 : 120,
+          language: 'en',
+          keyscale: bgmMoodValue === 'upbeat' ? 'C major' : bgmMoodValue === 'creepy' ? 'D minor' : bgmMoodValue === 'chill' ? 'F major' : bgmMoodValue === 'dramatic' ? 'D minor' : 'E minor'
+        };
+      };
+
+      // --- プロンプト生成 ---
+      const generatePrompt = (themeText, toneValue, targetValue, sceneList) => {
+        const guide = getTextGuide();
+        const sceneHints = sceneList.map((scene, index) => {
+          if (fullAutoMode || scene.noText) return "";
+          const hasText = scene.text && scene.text.trim();
+          
+          let textNote = '';
+          if (textMode === 'manual') {
+             // Manualモード時のテキスト指定
+             textNote = `\n  表示テキスト（テロップ）: 「${scene.text}」`;
+             textNote += `\n  読み上げ指定（ナレーション）: ${scene.readText ? `「${scene.readText}」` : '※指定なし（ナレーションなし）'}`;
+          } else if (hasText && textMode !== 'arrange') {
+             textNote = `\n  ユーザー入力テキスト（${textMode === 'strict' ? '完全固定: テロップ＝ナレーション＝この文字列' : 'テロップ固定: テロップはこの文字列そのまま'}）: 「${scene.text}」`;
+          }
+          
+          // シーンごとの個別指示メモを最優先として埋め込む処理
+          const noteContent = scene.sceneNote ? scene.sceneNote.trim() : "";
+          const priorityInstruction = noteContent 
+            ? `\n  ⚠️⚠️【最優先・特別指示 (Globalルールより優先)】: "${noteContent}"\n    (※重要: この指示は、全体のテンポ設定・テキストモード・時間ルールなど全てより優先される。例えば「読み上げを変えて」とあればその指示に従う。「4秒静止」とあればテンポを無視して4秒止めること)`
+            : "";
+
+          return `シーン${index + 1} [duration:auto（音声長で自動決定） / テロップ最大${guide.maxText}文字 / 最大${guide.maxLines}行]\n  感情指定: ${scene.emotion} (ヒント: ${getEmotionHints(scene.emotion)})${textNote}${priorityInstruction}`;
+        }).filter(Boolean).join("\n");
+
+        const tempoInstructions = tempoStyle === 'tiktok' ? `
+## 🔥 TikTokテンポ指示（最重要・絶対厳守）
+
+この${getVideoTypeLabel()}は **TikTokスタイルの超高速テンポ** で制作します。以下を最優先で守ること。
+
+### テンポの鉄則:
+1. **1カット = 1〜3秒が基本。絶対に4秒以上のカットを作らない。**
+2. **ジェットカット（無音・間をすべてカット）を前提に構成する。**
+3. **「間」は敵。呼吸の間すら詰める。次のカットが被せ気味に入るくらいでちょうどいい。**
+4. **テロップの文字数はフォーマット別の文字数制限（後述）を厳守。**
+5. **最初の0.5秒で視聴者の指を止める「フック」を必ず入れる。**
+**(※ただし、個別シーンに「最優先・特別指示」がある場合は例外とし、その指示に従うこと)**
+
+### ナレーション指示:
+- 話速: **${getSpeedMultiplier(voiceSpeed)}倍速**
+- **早口でまくしたてるように話す。句読点の間を極限まで詰める。**
+- **「〜なんですけど」「えーと」等の冗長表現は一切禁止。**
+- **体言止め・倒置法・短文を多用し、リズム感を出す。**
+- 例: ✕「これは実はすごく面白い話なんですけど」→ ○「これ、ヤバい。」
+
+### 構成テンプレート（30秒${getVideoTypeLabel()}）:
+| 区間 | 秒数 | 役割 | ポイント |
+|------|------|------|----------|
+| 0:00〜0:01 | 1秒 | フック | 衝撃ワード1つで掴む |
+| 0:01〜0:03 | 2秒 | 問題提起 | 「知ってた？」系で引き込む |
+| 0:03〜0:12 | 9秒 | 本題（前半）| 事実を矢継ぎ早にテンポよく |
+| 0:12〜0:22 | 10秒 | 本題（後半）| 深掘り＋驚きポイント |
+| 0:22〜0:27 | 5秒 | クライマックス | 最大の衝撃・オチ |
+| 0:27〜0:30 | 3秒 | CTA | フォロー誘導・次回予告 |
+
+### 編集・演出の必須ルール:
+- **カット切替時にSE（効果音）を入れる前提で構成する。**
+- **3カットに1回はエフェクト（ScreenShake / FlashOverlay）を入れる。**
+- **文字サイズの緩急をつける（小→大→特大で畳みかけ）。**
+- **背景画像も1〜2秒で切り替える。同じ画像を3秒以上映さない。**
+` : isLongFormat() ? `
+## 編集テンポ指示（YouTube横動画・長尺向け）:
+- 1カット: ナレーション音声長で自動決定（5〜30秒のカットも可）
+- YouTube横動画（16:9）向けの落ち着いたテンポで構成してください。
+- 解説系・ドキュメンタリー系の場合、1シーンをじっくり見せる構成も可。
+- テロップは字幕風（caption_box）や解説風（elegant_style）を中心に。
+- ナレーション話速: **${getSpeedMultiplier(voiceSpeed)}倍速**
+` : `
+## 編集テンポ指示:
+- 1カット: 2〜5秒
+- 標準的なYouTube${format === '16:9' ? '横動画' : 'ショート'}のテンポで構成してください。
+- ナレーション話速: **${getSpeedMultiplier(voiceSpeed)}倍速**
+`;
+
+        return `
+# 指示
+あなたはプロの${format === '16:9' ? '動画' : 'ショート動画'}クリエイターです。以下の【メタ情報】と【編集・演出ルール】を厳密に守り、視聴者の心をつかむ${format === '16:9' ? '高品質な' : '超テンポの良い'}${getVideoTypeLabel()}の台本を作成してください。
+
+# メタ情報
+- テーマ: ${themeText || 'AIにお任せ'}
+- 動画形式: ${getFormatLabel()}
+- 解像度: ${getResolutionLabel()}
+- ターゲット層: ${getTargetLabel(targetValue)}
+- 動画の全体トーン: ${getToneLabel(toneValue)}
+- BGMのムード: ${bgmEnabled ? getBgmLabel(bgmMood) : 'なし'}
+- ナレーション: ${voiceEnabled ? `ON — ${currentSpeaker?.gender}・${voiceCharName}（${currentStyle?.name || 'ノーマル'}）/ Speaker ID: ${voiceSpeakerId} / 話速: ${getSpeedMultiplier(voiceSpeed)}倍速（${voiceSpeed === 'very_fast' ? '超早口' : voiceSpeed === 'fast' ? 'やや早口' : '標準'}）` : 'OFF（ナレーションなし）'}
+- テンポスタイル: ${tempoStyle === 'tiktok' ? 'TikTok超高速テンポ' : '標準テンポ'}
+- テキストモード: ${textMode === 'manual' ? '✍️ 完全手動（テロップ・読み上げ個別指定）' : textMode === 'strict' ? '🔒 完全固定（テロップ＝ナレーション、ユーザー入力をそのまま使用）' : textMode === 'caption_lock' ? '📌 テロップ固定（テロップはユーザー入力そのまま、ナレーションのみアレンジ可）' : '🎨 AIアレンジ（自由にアレンジ可）'}
+- 画像NSFW: ${nsfwEnabled ? 'ON（セクシー・露出度高めの画像を生成可）' : 'OFF（SFW・健全な画像のみ）'}
+- テロップデフォルト位置: 画面${getPositionLabel(getDefaultSubtitlePosition())}（${getDefaultSubtitlePosition()}）${globalNote ? `\n- 全体備考: ${globalNote}` : ''}
+※これらの情報から、最適な言葉選びと演出の方向性を決定してください。
+
+${tempoInstructions}
+
+# 編集・演出ルール（絶対厳守）
+
+## ⚠️【最重要】シーン個別指示（Scene Notes）の優先順位
+各シーン設定にある「**最優先・特別指示 (Globalルールより優先)**」という項目は、この動画生成における**最高位の命令**です。
+- もし個別指示で「読み上げテキストを変更」とあれば、テキストモード（完全固定など）を無視して指示通りに書き換えてください。
+- もし個別指示で「画像を4秒間静止」とあれば、TikTokテンポ設定（1-3秒制限）を無視して4秒間表示してください。
+- もし個別指示で「無音にする」とあれば、ナレーション設定がONでもそのシーンは text="" としてください。
+- **備考・指示メモの内容は、例外処理として最優先で実装してください。**
+
+${textMode !== 'arrange' ? `
+## テキストモード: ${textMode === 'manual' ? '✍️ 完全手動' : textMode === 'strict' ? '🔒 完全固定' : '📌 テロップ固定'}
+
+${textMode === 'manual' ? `**完全手動モード — 以下を絶対に守ること:**
+- **captions[].text** は、入力された「表示テキスト（テロップ）」を**一字一句そのまま**使用すること。アレンジ禁止。
+- **text（ナレーション）** は、入力された「読み上げ指定」を**一字一句そのまま**使用すること。アレンジ禁止。
+- **重要**: 読み上げ指定が「なし」または空文字の場合は、**textフィールドを空文字 ("") にすること（ナレーションなし）。**
+- ユーザーが意図してテロップと読み上げを変えている場合（例: 表示「ヤバい」/ 読み「これは本当に危険です」）は、その通りに出力すること。
+- 空のテキスト（AIにお任せ）のシーンのみ、AIが自由にテキストを生成してよい。` :
+textMode === 'strict' ? `**完全固定モード — 以下を絶対に守ること（※ただしシーン個別指示がある場合はそちらを優先）:**
+- ユーザーが入力したテキストを**一字一句そのまま**使うこと。
+- **captions[].text = text（ナレーション）と完全に同一であること。**
+- テロップもナレーションも**絶対にアレンジ・言い換え・省略・追加をしない**こと。
+- 句読点の追加・削除、語尾の変更、表現の言い換え、体言止めへの変換、すべて禁止。
+- ユーザーが「猫は可愛い動物です。」と書いたなら、テロップもナレーションも「猫は可愛い動物です。」のまま出力すること。
+- 空のテキスト（AIにお任せ）のシーンのみ、AIが自由にテキストを生成してよい。` :
+`**テロップ固定モード — 以下を絶対に守ること（※ただしシーン個別指示がある場合はそちらを優先）:**
+- ユーザーが入力したテロップ（captions[].text）は**一字一句そのまま**使うこと。
+- テロップの**アレンジ・言い換え・省略・追加は絶対禁止**。
+- ナレーション（text）のみ、トーンに合わせた自然な話し言葉へのアレンジが許可される。
+- ただしナレーションも意味を変えないこと。語順変更・口語化のみ許可。
+- 空のテキスト（AIにお任せ）のシーンのみ、AIが自由にテキストを生成してよい。`}
+
+` : ''}
+1. **テロップ配置と構成**:
+   - テロップのデフォルト配置は「画面${getPositionLabel(getDefaultSubtitlePosition())}（${getDefaultSubtitlePosition()}）」。${getDefaultSubtitlePosition() === 'bottom' ? '字幕風レイアウトが基本。重要な強調テロップは中央配置も可。' : getDefaultSubtitlePosition() === 'center' ? 'UI被りを避け、画面中央に配置。' : '上部配置。画面下部の情報を遮らない。'}
+   - ${textMode === 'strict' || textMode === 'manual' ? 'テキストモードの指示通り、ユーザー入力をそのまま出力すること。' : textMode === 'caption_lock' ? 'テロップはユーザー入力そのまま。アレンジ禁止。' : '句読点は使わない。体言止めか「！」で切る。'}
+
+2. **【最重要】テキストレンダリングルール（フォーマット別）**:
+   durationは音声長から自動計算されるため、テロップの文字数制限はフォーマットで決定する。
+
+   **${format === '16:9' ? '16:9横動画' : '9:16縦動画'}のルール:**
+   | フィールド | 最大文字数 | 最大行数 | 説明 |
+   |-----------|-----------|---------|------|
+   | title | ${format === '16:9' ? '25' : '15'}文字 | 1行 | シーン見出し。大きく太く |
+   | subtitle | ${format === '16:9' ? '28' : '18'}文字 | 1行 | 補足テキスト |
+   | captions[].text | ${format === '16:9' ? '120' : '80'}文字 | ${format === '16:9' ? '4' : '4'}行 | テロップ。短いほどインパクト大 |
+
+   **テキストはみ出し防止ルール:**
+   - テキストが長すぎる場合はRemotionコンポーネントが自動縮小するが、読みにくくなるため文字数制限を守ること。
+   - ${format === '9:16' ? '9:16縦動画は横幅が狭いため、**1行あたり最大12文字**を目安にすること。' : '16:9横動画は1行15〜20文字を目安にすること。'}
+   - 自然な位置で改行（\\n）を入れ、読みやすくすること。
+   - フック・衝撃シーンは短く太く（huge/large）、説明シーンは読みやすく（medium）。
+
+3. **【重要】テキスト演出の多様性**:
+   テキストの感情を最大化するため、以下の3つの要素（アニメーション、サイズ、スタイル）を必ず組み合わせて指定すること。
+
+   **[A] アニメーション (動き)**:
+   * pop (ドン！と飛び出す) ← テンポ重視で最頻出
+   * bounce (楽しげに弾む)
+   * slideIn (横からサッと入る)
+   * slideUp (下からスッと現れる)
+   * waveIn (不気味にゆらめく)
+   * fadeIn (静かに現れる) ← テンポ重視では使用控えめ
+   * blurIn (ぼかしから鮮明に)
+   * typewriter (一文字ずつ表示)
+   * shake (激しく震える)
+   * flash (一瞬発光して強調)
+   * rotateIn (回転しながら出現)
+   * zoomIn (奥から迫ってくる)
+
+   **[B] サイズ**:
+   * small (小さい・補足)
+   * medium (標準)
+   * large (大きい・強調) ← テンポ重視のメイン
+   * huge (特大・叫び・最大の衝撃)
+
+   **[C] スタイル (色・デザイン)**:
+   * default (白文字+強ドロップシャドウ・万能)
+   * accent_yellow (黒文字on黄色ピル背景・バラエティ番組風テロップ) ← 最頻出
+   * accent_red (白文字on赤ピル背景・警告・ヤバい系)
+   * accent_blue (白文字+ネオンシアン発光・サイバーパンク系)
+   * horror_style (赤テキスト+赤黒グロー・恐怖)
+   * elegant_style (白文字on半透明黒BOX+ゴールド枠・高級感)
+   * neon_pink (白文字+ネオンピンク発光・TikTok人気)
+   * gradient_pop (鮮やかオレンジ系テキスト・ポップ)
+   * caption_box (白文字on半透明黒BOX・YouTuber字幕風)
+
+   ---
+   ★ 各シーンの演出指定ヒント:
+   ${sceneHints || '（フルオートモード、またはテキストなしのため指定なし）'}
+   ---
+
+4. **背景画像とビジュアルエフェクト**:
+   - 背景画像用: Stable Diffusionで使える詳細な英語プロンプトをカンマ区切りの羅列で記述。
+   - **【必須】品質タグ**: すべてのプロンプトの先頭に必ず以下の品質タグを付けること:
+     \`score_9, score_8_up, score_7_up, masterpiece, best quality,\`${nsfwEnabled ? `
+   - **NSFW指定**: 品質タグの直後に \`NSFW,\` を追加すること。セクシー・挑発的・露出度の高い画像を生成する。` : ''}
+   - **【必須】ネガティブプロンプト**: 以下を共通ネガティブプロンプトとして使用すること:
+     \`score_1, score_2, score_3, worst quality, low quality, blurry, deformed, ugly, bad anatomy, extra limbs, text, watermark, signature, mutated, disfigured, bad hands, extra fingers\`
+   - **画像生成サイズ: ${getResolutionLabel()}（${format === '16:9' ? '16:9横長' : '9:16縦長'}）** — アスペクト比は必ず厳守。
+   - **使用モデル（checkpoint）**: デフォルトは \`sd\\CyberRealistic_Pony_v16.0.safetensors\`（リアル系）。アニメ調の指示がある場合は適切なアニメ系モデルに切り替えること。
+   - エフェクト: ScreenShake(揺れ), FlashOverlay(発光), PulsingGlow(脈動), None から選択。
+   - **テンポ重視の場合: 3カットに1回以上エフェクトを入れること。**
+
+5. **BGM音楽生成指示（ACE Step 1.5用）**:
+   ${bgmEnabled ? `- BGM生成エンジン: ACE Step 1.5 Turbo AIO（ComfyUI経由）
+   - 選択ムード: ${getBgmLabel(bgmMood)}
+   - 動画トーン: ${getToneLabel(toneValue)}
+   - **以下のJSON設定をそのままACE Stepに渡して音楽を生成すること:**
+   \`\`\`json
+   ${JSON.stringify(generateMusicPrompt(themeText, toneValue, bgmMood), null, 2)}
+   \`\`\`
+   - **tags**: カンマ区切りのスタイルタグ。ジャンル・楽器・ムード・BPMを含む。
+   - **lyrics**: 歌詞構造（[intro][verse][chorus][outro]タグ付き）。インストの場合も雰囲気として使用される。
+   - **注意**: ムードごとにタグ・BPM・キーが大きく異なる。上記設定を改変せずそのまま使用すること。` : '- BGM: なし（音楽生成OFF）'}
+
+# 出力フォーマット（厳格なJSON）
+
+**【最重要】出力は以下のJSON配列のみを出力すること。Markdownや説明文は一切付けない。**
+**コードブロック \`\`\`json ... \`\`\` で囲んで出力すること。**
+※ durationは"auto"固定。テキストはフォーマット別の文字数制限（上記の表）を厳守すること。
+
+## JSONスキーマ
+\`\`\`json
+[
+  {
+    "id": "scene_01",
+    "title": "シーンのタイトル（短い見出し。8文字以内推奨）",
+    "subtitle": "サブタイトル（補足。12文字以内推奨）",
+    "text": "ナレーション用テキスト（読み上げ用の自然な文）",
+    "duration": "auto",
+    "role": "hook | intro | main | climax | cta | outro",
+    "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, ...(SD画像生成プロンプト)",
+    "effect": "None | ScreenShake | FlashOverlay | PulsingGlow",
+    "captions": [
+      {
+        "text": "テロップ文字列",
+        "animation": "pop | bounce | slideIn | slideUp | waveIn | fadeIn | blurIn | typewriter | shake | flash | rotateIn | zoomIn",
+        "size": "small | medium | large | huge",
+        "style": "default | accent_yellow | accent_red | accent_blue | horror_style | elegant_style | neon_pink | gradient_pop | caption_box",
+        "noWrap": true,
+        "maxLines": 1
+      }
+    ]
+  }
+]
+\`\`\`
+
+## フィールド説明
+| フィールド | 型 | 必須 | 説明 |
+|-----------|-----|------|------|
+| id | string | ○ | "scene_01", "scene_02"... の連番 |
+| title | string | ○ | シーン見出し（9:16縦動画は最大8文字） |
+| subtitle | string | ○ | 補足テキスト（9:16縦動画は最大12文字） |
+| text | string | ○ | ナレーション読み上げテキスト。${textMode === 'strict' ? '【完全固定】captions[].textと完全同一にすること' : textMode === 'caption_lock' ? '【テロップ固定】ナレーションのみアレンジ可' : '読み上げ用の自然な文'}。narrationがfalseなら空文字"" |
+| duration | string | ○ | 常に"auto"を指定。実際の秒数はナレーション音声長から自動計算 |
+| role | string | ○ | シーンの役割 |
+| prompt | string | ○ | SD画像生成プロンプト（品質タグ必須） |
+| effect | string | ○ | ビジュアルエフェクト |
+| captions | array | ○ | テロップ配列（1シーンに1〜3個） |
+| captions[].text | string | ○ | テロップ文字列。改行は"\\n"で表現 |
+| captions[].animation | string | ○ | アニメーション種別 |
+| captions[].size | string | ○ | 文字サイズ |
+| captions[].style | string | ○ | テロップスタイル |
+| captions[].noWrap | boolean | ○ | 折り返し禁止フラグ |
+| captions[].maxLines | number | ○ | 最大行数（noWrap:trueなら1） |
+
+## 出力例（30秒ショート動画・7シーン）
+\`\`\`json
+[
+  {
+    "id": "scene_01",
+    "title": "ヤバすぎ",
+    "subtitle": "",
+    "text": "これヤバすぎ！",
+    "duration": "auto",
+    "role": "hook",
+    "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, close up face, shocked expression, dramatic lighting, dark background",
+    "effect": "FlashOverlay",
+    "captions": [
+      {"text": "ヤバすぎ", "animation": "pop", "size": "huge", "style": "accent_yellow", "noWrap": true, "maxLines": 1}
+    ]
+  },
+  {
+    "id": "scene_02",
+    "title": "知ってた？",
+    "subtitle": "この事実",
+    "text": "知ってた？この事実！",
+    "duration": "auto",
+    "role": "intro",
+    "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, mysterious dark room, spotlight, cinematic",
+    "effect": "ScreenShake",
+    "captions": [
+      {"text": "知ってた？", "animation": "slideIn", "size": "large", "style": "default", "noWrap": true, "maxLines": 1},
+      {"text": "この事実", "animation": "pop", "size": "huge", "style": "accent_red", "noWrap": true, "maxLines": 1}
+    ]
+  },
+  {
+    "id": "scene_03",
+    "title": "驚きの数字",
+    "subtitle": "全てを物語る",
+    "text": "実はこの数字が全てを物語っている。驚きの結果がこちら！",
+    "duration": "auto",
+    "role": "main",
+    "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, infographic style, clean background, data visualization",
+    "effect": "None",
+    "captions": [
+      {"text": "実はこの数字が\\n全てを物語っている", "animation": "fadeIn", "size": "medium", "style": "caption_box", "noWrap": false, "maxLines": 2},
+      {"text": "驚きの結果がこちら", "animation": "slideUp", "size": "large", "style": "accent_yellow", "noWrap": true, "maxLines": 1}
+    ]
+  },
+  {
+    "id": "scene_04",
+    "title": "つまり",
+    "subtitle": "全部変わる",
+    "text": "ここで重要なのはこの3つのポイント。第一に品質の違い、第二にコストの差、第三に時間の節約。つまり全部変わる！",
+    "duration": "auto",
+    "role": "climax",
+    "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, documentary style, cinematic, wide shot, epic lighting",
+    "effect": "PulsingGlow",
+    "captions": [
+      {"text": "ここで重要なのは\\nこの3つのポイント", "animation": "slideUp", "size": "medium", "style": "elegant_style", "noWrap": false, "maxLines": 2},
+      {"text": "品質の違い\\nコストの差\\n時間の節約", "animation": "typewriter", "size": "small", "style": "caption_box", "noWrap": false, "maxLines": 3},
+      {"text": "つまり全部変わる", "animation": "pop", "size": "huge", "style": "accent_red", "noWrap": true, "maxLines": 1}
+    ]
+  }
+]
+\`\`\`
+
+**【厳守事項】**
+- JSON配列以外のテキストを出力しない。説明・前置き・後書きは一切不要。
+- \`\`\`json で始め \`\`\` で閉じること。
+- 全てのフィールドを必ず含めること（省略不可）。
+- promptには必ず品質タグ（score_9, score_8_up, score_7_up, masterpiece, best quality）を先頭に含めること。
+- captionsのtextは、フォーマット別の文字数制限を厳守すること（上記テキストレンダリングルール表を参照）。
+- durationは必ず"auto"を指定すること。実際の秒数はナレーション音声長から自動計算される。${textMode === 'strict' ? `
+- **【完全固定モード】ユーザー入力テキストを一字一句変更せずそのまま出力すること。captions[].textとtextは完全同一にすること。アレンジ・言い換え・省略・追加は絶対禁止。**` : textMode === 'caption_lock' ? `
+- **【テロップ固定モード】captions[].textはユーザー入力をそのまま使うこと。アレンジ禁止。textフィールド（ナレーション）のみ自然な話し言葉にアレンジ可。**` : ''}
+        `.trim();
+      };
+
+      // --- JSONエクスポート ---
+      const handleExport = () => {
+        if (!theme && fullAutoMode) {
+          alert("フルオートモードの場合は、少なくともテーマを入力してください。");
+          return;
+        }
+
+        const generatedPrompt = generatePrompt(theme, tone, target, scenes);
+
+        const exportData = {
+          mode: fullAutoMode ? "auto" : "manual",
+          theme,
+          targetAudience: target,
+          targetAudienceLabel: getTargetLabel(target),
+          videoTone: tone,
+          videoToneLabel: getToneLabel(tone),
+          format,
+          formatLabel: getFormatLabel(),
+          resolution: getResolution(),
+          resolutionLabel: getResolutionLabel(),
+          tempoStyle,
+          textMode,
+          textModeLabel: textMode === 'manual' ? '完全手動（テロップ・読み上げ個別指定）' : textMode === 'strict' ? '完全固定（テロップ＝読み上げ）' : textMode === 'caption_lock' ? 'テロップ固定（ナレーションのみアレンジ可）' : 'AIアレンジ（自由）',
+          defaultSubtitlePosition: getDefaultSubtitlePosition(),
+          globalNote: globalNote || null,
+          voice: {
+            enabled: voiceEnabled,
+            character: voiceEnabled ? `${currentSpeaker?.gender}・${voiceCharName}（${currentStyle?.name || 'ノーマル'}）` : null,
+            speakerId: voiceEnabled ? voiceSpeakerId : null,
+            speed: voiceEnabled ? voiceSpeed : null,
+            speedMultiplier: voiceEnabled ? getSpeedMultiplier(voiceSpeed) : null,
+            speedDescription: voiceEnabled ? getSpeedDescription(voiceSpeed) : null
+          },
+          bgm: {
+            enabled: bgmEnabled,
+            type: "ace1.5 (Local)",
+            mood: bgmEnabled ? bgmMood : null,
+            moodLabel: bgmEnabled ? getBgmLabel(bgmMood) : null,
+            musicPrompt: bgmEnabled ? generateMusicPrompt(theme, tone, bgmMood) : null
+          },
+          imageGeneration: {
+            enabled: imageGenEnabled,
+            engine: "Stable Diffusion Local",
+            resolution: getResolution(),
+            resolutionLabel: getResolutionLabel(),
+            nsfw: nsfwEnabled,
+            checkpoint: "sd\\CyberRealistic_Pony_v16.0.safetensors",
+            checkpointNote: "リアル系デフォルト。アニメ系の場合は適切なモデルに変更すること。",
+            qualityPrefix: nsfwEnabled ? "score_9, score_8_up, score_7_up, NSFW, masterpiece, best quality" : "score_9, score_8_up, score_7_up, masterpiece, best quality",
+            negativePrompt: "score_1, score_2, score_3, worst quality, low quality, blurry, deformed, ugly, bad anatomy, extra limbs, text, watermark, signature, mutated, disfigured, bad hands, extra fingers"
+          },
+          ai_prompt: generatedPrompt,
+          scenes: fullAutoMode ? [] : scenes.map((scene, index) => {
+            let exportText = scene.text;
+            let exportNarration = scene.text;
+
+            // Manualモードの場合、ナレーションはreadTextを使う
+            if (textMode === 'manual') {
+              exportNarration = scene.readText;
+              // readTextが空の場合はナレーションなしとみなす
+              if (!exportNarration || exportNarration.trim() === '') {
+                exportNarration = null; 
+              }
+            } else if (scene.noText) {
+              exportText = null;
+              exportNarration = null; // テキストなしモードならナレーションもなし（通常の挙動）
+            } else if (!scene.text || scene.text.trim() === '') {
+              exportText = "AIにお任せ";
+              exportNarration = "AIにお任せ";
+            }
+
+            let exportMedia = '';
+            let imageSourceType = scene.imageSource || 'ai';
+            if (imageSourceType === 'ai') {
+              exportMedia = '✨AIが自動生成';
+            } else if (imageSourceType === 'custom') {
+              exportMedia = scene.customImagePath || scene.mediaFile || 'ファイル未指定';
+            } else if (imageSourceType === 'style') {
+              exportMedia = `スタイル背景: ${scene.bgStyle || 'gradient_dark'}`;
+            } else {
+              exportMedia = 'なし（単色背景）';
+            }
+
+            // 改行を配列として保持（動画側で改行そのまま反映）
+            const hasExplicitBreaks = exportText && exportText !== "AIにお任せ" && exportText.includes('\n');
+            const textLines = hasExplicitBreaks
+              ? exportText.split('\n')
+              : null;
+
+            return {
+              sceneNumber: index + 1,
+              text: exportText, // テロップ用
+              readText: exportNarration, // ナレーション用（JSONに追加）
+              textLines: textLines,
+              preserveLineBreaks: true,
+              noText: scene.noText,
+              position: scene.position,
+              emotion: scene.emotion,
+              emotionLabel: { auto: '自動', surprise: '驚き・衝撃', happy: '楽しさ・ポップ', angry: '怒り・強調', sad: '悲しみ・静か', horror: 'ホラー・恐怖', sexy: 'セクシー' }[scene.emotion] || scene.emotion,
+              narration: scene.narration,
+              duration: 'auto',
+              imageSource: imageSourceType,
+              bgStyle: imageSourceType === 'style' ? (scene.bgStyle || 'gradient_dark') : undefined,
+              media: exportMedia,
+              sceneNote: scene.sceneNote || null
+            };
+          })
+        };
+
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `video_instruction_${Date.now()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+
+      return (
+        <div className="min-h-screen bg-gray-50 p-4 md:p-8 font-sans text-gray-800">
+          <div className="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+            <h1 className="text-3xl font-extrabold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+              AI動画生成 指示書エディタ
+              <span className="text-sm font-normal text-gray-500 block mt-1">Pro Edition - TikTokテンポ対応</span>
+            </h1>
+
+            {/* --- 1. 全体設定 --- */}
+            <section className="mb-10 bg-blue-50 p-6 rounded-xl border border-blue-100">
+              <h2 className="text-xl font-bold mb-6 flex items-center">
+                <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm shrink-0">1</span>
+                全体設定
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="col-span-1 md:col-span-2">
+                  <label className="block text-sm font-bold mb-2 text-gray-700">タイトル（テーマ） <span className="text-red-500">*</span></label>
+                  <input
+                    type="text"
+                    value={theme}
+                    onChange={(e) => setTheme(e.target.value)}
+                    placeholder="例: 高円寺のヤバい歴史 / 30代がやるべき投資..."
+                    className="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-gray-700">動画形式</label>
+                  <select value={format} onChange={(e) => setFormat(e.target.value)} className="w-full border-2 border-gray-300 rounded-lg p-3 bg-white">
+                    <option value="9:16">📱 9:16 (Shorts/TikTok)</option>
+                    <option value="16:9">📺 16:9 (YouTube横動画)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-gray-700">ターゲット層</label>
+                  <select value={target} onChange={(e) => setTarget(e.target.value)} className="w-full border-2 border-gray-300 rounded-lg p-3 bg-white">
+                    <option value="all">👥 全年齢層</option>
+                    <option value="teens">🎉 10代・Z世代</option>
+                    <option value="business">💼 ビジネスパーソン</option>
+                    <option value="kids">🧸 子供・ファミリー</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-gray-700">動画のトーン</label>
+                  <select value={tone} onChange={(e) => setTone(e.target.value)} className="w-full border-2 border-gray-300 rounded-lg p-3 bg-white">
+                    <option value="pop">😄 ポップ・明るい</option>
+                    <option value="horror">👻 ホラー・都市伝説</option>
+                    <option value="serious">🧐 シリアス・解説</option>
+                    <option value="emotional">🥺 エモーショナル・感動</option>
+                    <option value="high_tension">🔥 ハイテンション・熱血</option>
+                    <option value="sexy">💋 セクシー・大人</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-gray-700">テンポスタイル</label>
+                  <select value={tempoStyle} onChange={(e) => setTempoStyle(e.target.value)} className="w-full border-2 border-gray-300 rounded-lg p-3 bg-white">
+                    <option value="tiktok">⚡ TikTok超高速テンポ（推奨）</option>
+                    <option value="normal">🎬 標準テンポ</option>
+                  </select>
+                  {tempoStyle === 'tiktok' && (
+                    <p className="text-xs text-orange-600 font-bold mt-2">
+                      ⚡ 1カット1〜3秒 / ジェットカット / 早口ナレーション / テロップ10文字以内
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-gray-700">テキストモード</label>
+                  <select value={textMode} onChange={(e) => setTextMode(e.target.value)} className={`w-full border-2 rounded-lg p-3 font-bold ${textMode === 'strict' ? 'border-red-400 bg-red-50 text-red-700' : textMode === 'caption_lock' ? 'border-amber-400 bg-amber-50 text-amber-700' : textMode === 'manual' ? 'border-purple-400 bg-purple-50 text-purple-700' : 'border-gray-300 bg-white text-gray-700'}`}>
+                    <option value="arrange">🎨 AIアレンジ（自由）</option>
+                    <option value="caption_lock">📌 テロップ固定(読み上げはAI任せ)</option>
+                    <option value="strict">🔒 完全固定（テロップ＝読み上げ）</option>
+                    <option value="manual">✍️ 完全手動（コメント＋読み上げを個別指定）</option>
+                  </select>
+                  <p className="text-xs mt-2" style={{color: textMode === 'strict' ? '#dc2626' : textMode === 'caption_lock' ? '#d97706' : textMode === 'manual' ? '#7e22ce' : '#6b7280'}}>
+                    {textMode === 'arrange' && 'テロップ・ナレーションともにAIが自由にアレンジします'}
+                    {textMode === 'caption_lock' && 'テロップは入力テキストそのまま。ナレーションのみAIがアレンジ可'}
+                    {textMode === 'strict' && '表示テキスト＝ナレーション。打ち込んだ文字がそのまま表示・読み上げされます'}
+                    {textMode === 'manual' && 'テロップと読み上げを個別に指定します。読み上げが空の場合はナレーションなし'}
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-gray-700">解像度</label>
+                  <select value={resolutionQuality} onChange={(e) => setResolutionQuality(e.target.value)} className="w-full border-2 border-gray-300 rounded-lg p-3 bg-white">
+                    <option value="standard">📺 標準 ({format === '16:9' ? '1280×720' : '720×1280'})</option>
+                    <option value="high">🎬 高画質 ({format === '16:9' ? '1920×1080' : '1080×1920'})</option>
+                  </select>
+                  <p className="text-xs text-gray-500 mt-2">
+                    {resolutionQuality === 'high' ? '⚠️ 高画質: 画像生成に時間がかかる場合があります' : `アスペクト比: ${format}`}
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold mb-2 text-gray-700">テロップ表示位置（デフォルト）</label>
+                  <select value={defaultPosition} onChange={(e) => setDefaultPosition(e.target.value)} className="w-full border-2 border-gray-300 rounded-lg p-3 bg-white">
+                    <option value="auto">✨ 自動（フォーマットに合わせる）</option>
+                    <option value="center">中央</option>
+                    <option value="bottom">下部</option>
+                    <option value="top">上部</option>
+                  </select>
+                  <p className="text-xs text-gray-500 mt-2">
+                    {defaultPosition === 'auto'
+                      ? `自動: ${format === '16:9' ? '横動画 → 下部' : 'ショート → 中央'}`
+                      : 'シーンごとに個別変更も可能です'}
+                  </p>
+                </div>
+
+                {/* トグル系 */}
+                <div className="space-y-3 bg-white p-4 rounded-lg border border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <label className="font-bold cursor-pointer flex items-center">
+                      <input type="checkbox" checked={voiceEnabled} onChange={(e) => setVoiceEnabled(e.target.checked)} className="mr-3 w-5 h-5 accent-blue-600" />
+                      ナレーション (VOICEVOX)
+                    </label>
+                  </div>
+
+                  {voiceEnabled && (
+                    <div className="space-y-2 pl-8">
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-medium text-gray-600 shrink-0 mr-2">キャラ</label>
+                        <select value={voiceCharName} onChange={(e) => handleCharChange(e.target.value)} className="border-2 rounded-lg p-2 text-sm flex-1 min-w-0">
+                          {Object.entries(speakersByGender).map(([gender, speakers]) => (
+                            <optgroup key={gender} label={`── ${gender} ──`}>
+                              {speakers.map(s => (
+                                <option key={s.name} value={s.name}>{s.name}</option>
+                              ))}
+                            </optgroup>
+                          ))}
+                        </select>
+                      </div>
+
+                      {currentSpeaker && currentSpeaker.styles.length > 1 && (
+                        <div className="flex items-center justify-between">
+                          <label className="text-sm font-medium text-gray-600 shrink-0 mr-2">スタイル</label>
+                          <select value={voiceSpeakerId} onChange={(e) => setVoiceSpeakerId(Number(e.target.value))} className="border-2 rounded-lg p-2 text-sm flex-1 min-w-0">
+                            {currentSpeaker.styles.map(st => (
+                              <option key={st.id} value={st.id}>{st.name} (ID:{st.id})</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
+                      {currentSpeaker && (
+                        <p className="text-xs text-blue-600">
+                          {currentSpeaker.gender}・{voiceCharName}{currentStyle ? `（${currentStyle.name}）` : ''} — Speaker ID: {voiceSpeakerId}
+                        </p>
+                      )}
+
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-medium text-gray-600 shrink-0 mr-2">話速</label>
+                        <select value={voiceSpeed} onChange={(e) => setVoiceSpeed(e.target.value)} className="border-2 rounded-lg p-2 text-sm flex-1 min-w-0">
+                          <option value="very_fast">🔥 超早口 (1.4x)</option>
+                          <option value="fast">⚡ やや早口 (1.2x) - TikTok推奨</option>
+                          <option value="normal">🎙️ 標準 (1.0x)</option>
+                        </select>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex items-center justify-between">
+                    <label className="font-bold cursor-pointer flex items-center">
+                      <input type="checkbox" checked={bgmEnabled} onChange={(e) => setBgmEnabled(e.target.checked)} className="mr-3 w-5 h-5 accent-blue-600" />
+                      音楽 (ACE 1.5 Local)
+                    </label>
+                    {bgmEnabled && (
+                      <select value={bgmMood} onChange={(e) => setBgmMood(e.target.value)} className="border-2 rounded-lg p-2 text-sm">
+                        <option value="upbeat">🎵 アップテンポ</option>
+                        <option value="creepy">😨 不気味・サスペンス</option>
+                        <option value="chill">☕️ チル・リラックス</option>
+                        <option value="dramatic">🎻 ドラマチック</option>
+                        <option value="sexy">💋 セクシー</option>
+                      </select>
+                    )}
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <label className="font-bold cursor-pointer flex items-center">
+                      <input type="checkbox" checked={imageGenEnabled} onChange={(e) => setImageGenEnabled(e.target.checked)} className="mr-3 w-5 h-5 accent-blue-600" />
+                      画像生成 (Stable Diffusion)
+                    </label>
+                    {imageGenEnabled && (
+                      <label className={`flex items-center cursor-pointer text-sm font-bold px-3 py-1 rounded-lg border-2 transition-all ${nsfwEnabled ? 'bg-pink-600 text-white border-pink-600' : 'bg-white text-gray-500 border-gray-300 hover:border-pink-300'}`}>
+                        <input type="checkbox" checked={nsfwEnabled} onChange={(e) => setNsfwEnabled(e.target.checked)} className="mr-2 w-4 h-4 accent-pink-600" />
+                        NSFW
+                      </label>
+                    )}
+                  </div>
+                </div>
+
+                <div className="col-span-1 md:col-span-2 mt-2">
+                  <label className={`flex items-center font-bold cursor-pointer p-4 rounded-lg border-2 transition-all ${fullAutoMode ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100'}`}>
+                    <input type="checkbox" checked={fullAutoMode} onChange={(e) => setFullAutoMode(e.target.checked)} className="mr-4 w-6 h-6" />
+                    🚀 完全AIお任せモード (フルオート)
+                  </label>
+                  <p className="text-xs text-gray-500 mt-2 ml-10">ONにすると、以下のシーン設定をスキップし、テーマのみで一括生成します。</p>
+                </div>
+
+                <div className="col-span-1 md:col-span-2 mt-2">
+                  <label className="block text-sm font-bold mb-2 text-gray-700">
+                    全体備考・指示メモ
+                    <span className="text-gray-400 font-normal ml-2 text-xs">（任意）</span>
+                  </label>
+                  <textarea
+                    value={globalNote}
+                    onChange={(e) => setGlobalNote(e.target.value)}
+                    placeholder="例: 全体的にダークな雰囲気で / ナレーションはゆっくりめに / エンディングにチャンネル登録誘導を入れて / 背景は全シーン統一感を出して..."
+                    className="w-full border-2 border-amber-200 rounded-lg p-3 h-20 bg-amber-50 focus:border-amber-400 focus:outline-none transition-colors resize-none text-sm"
+                  />
+                </div>
+              </div>
+            </section>
+
+            {/* --- 2. シーンエディタ --- */}
+            {!fullAutoMode && (
+              <section className="mb-10">
+                <div className="flex justify-between items-end mb-6">
+                  <h2 className="text-xl font-bold flex items-center">
+                    <span className="bg-gray-700 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm shrink-0">2</span>
+                    シーンエディタ
+                    {tempoStyle === 'tiktok' && (
+                      <span className="ml-3 text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold">
+                        ⚡ TikTokモード: 1カット1〜3秒
+                      </span>
+                    )}
+                  </h2>
+                  <button
+                    onClick={() => setShowImportModal(true)}
+                    className="bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center shadow-sm transition-colors"
+                  >
+                    📋 スプレッドシートから一括作成
+                  </button>
+                </div>
+
+                {/* インポート用モーダル */}
+                {showImportModal && (
+                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                      <div className="flex justify-between items-center mb-4 border-b pb-2">
+                        <h3 className="text-lg font-bold text-gray-800">📋 スプレッドシート読み込み (TSV)</h3>
+                        <button onClick={() => setShowImportModal(false)} className="text-gray-500 hover:text-gray-700 font-bold text-xl">×</button>
+                      </div>
+                      <div className="space-y-4">
+                        <p className="text-sm text-gray-600">
+                          ExcelやGoogleスプレッドシートの表をコピーして、ここに貼り付けてください。<br/>
+                          <span className="text-xs text-gray-400">※1行目はヘッダーとして扱われます。2列目:テロップ、3列目:読み上げ、4列目:備考として認識します。</span>
+                        </p>
+                        <textarea
+                          value={importText}
+                          onChange={(e) => setImportText(e.target.value)}
+                          placeholder={`シーン\tテロップ(表示)\t読み上げ(音声)\t備考・指示メモ\n1\tこれマジ！？\tえ、マジ！？\t0.5秒で\n2\t...`}
+                          className="w-full h-64 border-2 border-gray-300 rounded-lg p-3 font-mono text-xs focus:border-green-500 focus:outline-none"
+                        />
+                        <div className="flex justify-end gap-3 pt-2">
+                          <button
+                            onClick={() => setShowImportModal(false)}
+                            className="px-4 py-2 text-gray-600 font-bold hover:bg-gray-100 rounded-lg"
+                          >
+                            キャンセル
+                          </button>
+                          <button
+                            onClick={handleSpreadsheetImport}
+                            className="px-6 py-2 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 shadow-md"
+                          >
+                            読み込んで作成
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="space-y-6">
+                  {scenes.map((scene, index) => (
+                    <div key={scene.id} className="border-2 border-gray-200 rounded-xl p-5 bg-gray-50 hover:shadow-md transition-shadow">
+                      <div className="flex justify-between items-center mb-4 pb-3 border-b border-gray-200">
+                        <h3 className="font-bold text-lg flex items-center text-gray-700">
+                          <span className="bg-gray-300 text-gray-800 rounded px-2 py-1 text-sm mr-3">#{index + 1}</span>
+                          シーン設定
+                        </h3>
+                        <div className="flex items-center gap-3">
+                          <span className="border-2 border-green-300 rounded-lg px-3 py-2 text-sm bg-green-50 font-bold text-green-700">
+                            ⏱ 自動（音声長で決定）
+                          </span>
+                          <button
+                            onClick={() => removeScene(scene.id)}
+                            className="text-red-500 hover:text-white hover:bg-red-500 border border-red-500 rounded px-3 py-1 text-sm font-semibold transition-colors"
+                          >
+                            削除 ✕
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div className={`col-span-1 md:col-span-2 p-4 rounded-lg border-2 transition-colors ${scene.noText ? 'bg-gray-100 border-gray-300' : 'bg-white border-blue-200'}`}>
+                          <div className="flex justify-between items-center mb-3">
+                            <label className="text-sm font-bold text-gray-700">
+                              表示テキスト（テロップ）
+                              {!scene.noText && (
+                                <span className="text-orange-500 ml-2 text-xs font-bold">
+                                  （{getTextGuide().maxText}文字以内推奨 / 最大{getTextGuide().maxLines}行）
+                                </span>
+                              )}
+                            </label>
+                            <label className="flex items-center text-sm cursor-pointer font-medium text-gray-600">
+                              <input
+                                type="checkbox"
+                                checked={scene.noText}
+                                onChange={(e) => updateScene(scene.id, 'noText', e.target.checked)}
+                                className="mr-2 w-4 h-4"
+                              />
+                              テキストなし
+                            </label>
+                          </div>
+                          <textarea
+                            value={scene.text}
+                            onChange={(e) => updateScene(scene.id, 'text', e.target.value)}
+                            disabled={scene.noText}
+                            placeholder={scene.noText ? "このシーンはテキストが表示されません" : `テロップ文字列（最大${getTextGuide().maxText}文字）短いほどインパクト大！`}
+                            className="w-full border-2 border-gray-300 rounded-lg p-3 h-20 focus:border-blue-500 focus:outline-none disabled:bg-gray-200 disabled:text-gray-400 transition-colors resize-none"
+                          />
+                          {!scene.noText && scene.text.length > getTextGuide().maxText && (
+                            <p className="text-xs text-red-500 font-bold mt-1">
+                              ⚠️ {scene.text.length}文字 — {format}では{getTextGuide().maxText}文字以内が推奨です
+                            </p>
+                          )}
+
+                          {/* 読み上げテキスト入力（manualモード時のみ表示） */}
+                          {textMode === 'manual' && (
+                            <div className="mt-3 border-t border-gray-200 pt-3">
+                              <label className="block text-sm font-bold text-purple-700 mb-1">
+                                読み上げテキスト（ナレーション）
+                                <span className="text-xs font-normal text-purple-500 ml-2">※空欄の場合はナレーションなし</span>
+                              </label>
+                              <textarea
+                                value={scene.readText}
+                                onChange={(e) => updateScene(scene.id, 'readText', e.target.value)}
+                                placeholder="読み上げ内容を入力（空欄の場合は無音）"
+                                className="w-full border-2 border-purple-300 rounded-lg p-3 h-20 bg-purple-50 focus:border-purple-500 focus:outline-none transition-colors resize-none"
+                              />
+                            </div>
+                          )}
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-bold mb-2 text-gray-700">感情・演出の方向性</label>
+                          <select
+                            value={scene.emotion}
+                            onChange={(e) => updateScene(scene.id, 'emotion', e.target.value)}
+                            className="w-full border-2 border-gray-300 rounded-lg p-3 bg-white disabled:bg-gray-100 disabled:text-gray-400"
+                            disabled={scene.noText}
+                          >
+                            <option value="auto">✨ 自動 (AIにお任せ)</option>
+                            <option value="surprise">😲 驚き・衝撃</option>
+                            <option value="happy">😄 楽しさ・ポップ</option>
+                            <option value="angry">😡 怒り・強調</option>
+                            <option value="sad">😢 悲しみ・静か</option>
+                            <option value="horror">👻 ホラー・恐怖</option>
+                            <option value="sexy">💋 セクシー</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-bold mb-2 text-gray-700">表示位置</label>
+                          <select
+                            value={scene.position}
+                            onChange={(e) => updateScene(scene.id, 'position', e.target.value)}
+                            className="w-full border-2 border-gray-300 rounded-lg p-3 bg-white disabled:bg-gray-100 disabled:text-gray-400"
+                            disabled={scene.noText}
+                          >
+                            <option value="center">中央 (推奨)</option>
+                            <option value="auto">自動</option>
+                            <option value="top">上部</option>
+                            <option value="bottom">下部 (非推奨)</option>
+                          </select>
+                        </div>
+
+                        <div className="flex items-center p-3 bg-white rounded-lg border-2 border-gray-200">
+                          <label className="flex items-center font-bold cursor-pointer w-full">
+                            <input
+                              type="checkbox"
+                              checked={scene.narration}
+                              onChange={(e) => updateScene(scene.id, 'narration', e.target.checked)}
+                              className="mr-3 w-5 h-5 accent-blue-600"
+                              disabled={textMode === 'manual'} // manualモード時はテキストボックスの有無で決まるため無効化または連動
+                            />
+                            <span className={textMode === 'manual' ? "text-gray-400" : ""}>
+                              このシーンを読み上げる
+                              {textMode === 'manual' && <span className="text-xs ml-2 font-normal">(手動モードでは入力内容で判定)</span>}
+                            </span>
+                          </label>
+                        </div>
+
+                        <div className="col-span-1 md:col-span-2">
+                          <label className="block text-sm font-bold mb-2 text-gray-700">背景画像ソース</label>
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {imageGenEnabled && (
+                              <button
+                                onClick={() => updateScene(scene.id, 'imageSource', 'ai')}
+                                className={`flex-1 min-w-[120px] py-2 px-3 rounded-lg text-sm font-bold border-2 transition-all ${scene.imageSource === 'ai' ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-blue-700 border-blue-200 hover:bg-blue-50'}`}
+                              >
+                                ✨ AI自動生成
+                              </button>
+                            )}
+                            <button
+                              onClick={() => updateScene(scene.id, 'imageSource', 'custom')}
+                              className={`flex-1 min-w-[120px] py-2 px-3 rounded-lg text-sm font-bold border-2 transition-all ${scene.imageSource === 'custom' ? 'bg-green-600 text-white border-green-600' : 'bg-white text-green-700 border-green-200 hover:bg-green-50'}`}
+                            >
+                              🖼️ 自分の画像
+                            </button>
+                            <button
+                              onClick={() => updateScene(scene.id, 'imageSource', 'style')}
+                              className={`flex-1 min-w-[120px] py-2 px-3 rounded-lg text-sm font-bold border-2 transition-all ${scene.imageSource === 'style' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-purple-700 border-purple-200 hover:bg-purple-50'}`}
+                            >
+                              🎨 スタイル背景
+                            </button>
+                            <button
+                              onClick={() => updateScene(scene.id, 'imageSource', 'none')}
+                              className={`flex-1 min-w-[120px] py-2 px-3 rounded-lg text-sm font-bold border-2 transition-all ${scene.imageSource === 'none' ? 'bg-gray-600 text-white border-gray-600' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'}`}
+                            >
+                              ⬛ 単色のみ
+                            </button>
+                          </div>
+
+                          {scene.imageSource === 'custom' && (
+                            <div className="space-y-2">
+                              <input
+                                type="text"
+                                value={scene.customImagePath}
+                                onChange={(e) => updateScene(scene.id, 'customImagePath', e.target.value)}
+                                placeholder="画像ファイルのパスを入力（例: C:\Users\...\image.png）"
+                                className="w-full border-2 border-green-300 rounded-lg p-3 bg-green-50 focus:border-green-500 focus:outline-none"
+                              />
+                              <div className="flex items-center gap-2">
+                                <label className="flex items-center justify-center flex-1 h-12 border-2 border-green-300 border-dashed rounded-lg cursor-pointer bg-green-50 hover:bg-green-100 transition-colors">
+                                  <span className="font-medium text-green-700 text-sm">{scene.mediaFile ? `📎 ${scene.mediaFile}` : "または ファイルを選択..."}</span>
+                                  <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                                    const file = e.target.files[0];
+                                    if (file) {
+                                      updateScene(scene.id, 'mediaFile', file.name);
+                                      updateScene(scene.id, 'customImagePath', file.name);
+                                    }
+                                  }} />
+                                </label>
+                              </div>
+                            </div>
+                          )}
+
+                          {scene.imageSource === 'style' && (
+                            <div className="space-y-2">
+                              <select
+                                value={scene.bgStyle}
+                                onChange={(e) => updateScene(scene.id, 'bgStyle', e.target.value)}
+                                className="w-full border-2 border-purple-300 rounded-lg p-3 bg-purple-50 font-medium text-purple-800"
+                              >
+                                <optgroup label="グラデーション">
+                                  <option value="gradient_dark">🌑 ダークグラデーション（黒→紫）</option>
+                                  <option value="gradient_sunset">🌅 サンセット（オレンジ→ピンク）</option>
+                                  <option value="gradient_ocean">🌊 オーシャン（青→シアン）</option>
+                                  <option value="gradient_neon">💜 ネオン（ピンク→紫→青）</option>
+                                  <option value="gradient_fire">🔥 ファイア（赤→オレンジ→黄）</option>
+                                  <option value="gradient_forest">🌲 フォレスト（緑→ダーク）</option>
+                                </optgroup>
+                                <optgroup label="パターン・テクスチャ">
+                                  <option value="pattern_grid">📐 サイバーグリッド</option>
+                                  <option value="pattern_particles">✨ パーティクル（キラキラ）</option>
+                                  <option value="pattern_smoke">💨 スモーク・霧</option>
+                                  <option value="pattern_geometric">🔷 ジオメトリック</option>
+                                </optgroup>
+                                <optgroup label="感情・テーマ連動">
+                                  <option value="mood_danger">⚠️ 危険・警告（赤黒＋点滅）</option>
+                                  <option value="mood_exciting">🎉 興奮・盛り上がり（派手グラデ＋光）</option>
+                                  <option value="mood_calm">🌙 穏やか・夜（ダークブルー＋星）</option>
+                                  <option value="mood_cute">🩷 かわいい・ポップ（ピンク＋ハート）</option>
+                                  <option value="mood_serious">📰 シリアス・解説（ダーク＋テクスチャ）</option>
+                                </optgroup>
+                              </select>
+                              <div className="rounded-lg h-16 border-2 border-purple-200 overflow-hidden" style={{
+                                background:
+                                  scene.bgStyle === 'gradient_dark' ? 'linear-gradient(135deg, #0a0a0a, #1a0033, #2d1b69)' :
+                                  scene.bgStyle === 'gradient_sunset' ? 'linear-gradient(135deg, #ff6b35, #f7418c, #fc5c9c)' :
+                                  scene.bgStyle === 'gradient_ocean' ? 'linear-gradient(135deg, #0077b6, #00b4d8, #48cae4)' :
+                                  scene.bgStyle === 'gradient_neon' ? 'linear-gradient(135deg, #ff006e, #8338ec, #3a86ff)' :
+                                  scene.bgStyle === 'gradient_fire' ? 'linear-gradient(135deg, #dc2f02, #e85d04, #ffba08)' :
+                                  scene.bgStyle === 'gradient_forest' ? 'linear-gradient(135deg, #2d6a4f, #40916c, #1b4332)' :
+                                  scene.bgStyle === 'pattern_grid' ? 'linear-gradient(135deg, #0a0a2e, #1a1a4e)' :
+                                  scene.bgStyle === 'pattern_particles' ? 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' :
+                                  scene.bgStyle === 'pattern_smoke' ? 'linear-gradient(135deg, #2c3e50, #4a6741, #2c3e50)' :
+                                  scene.bgStyle === 'pattern_geometric' ? 'linear-gradient(135deg, #141e30, #243b55)' :
+                                  scene.bgStyle === 'mood_danger' ? 'linear-gradient(135deg, #1a0000, #8b0000, #1a0000)' :
+                                  scene.bgStyle === 'mood_exciting' ? 'linear-gradient(135deg, #ff0844, #ffb199, #ff0844)' :
+                                  scene.bgStyle === 'mood_calm' ? 'linear-gradient(135deg, #0c1445, #1a237e, #0d1b3e)' :
+                                  scene.bgStyle === 'mood_cute' ? 'linear-gradient(135deg, #ff9a9e, #fecfef, #ffdde1)' :
+                                  scene.bgStyle === 'mood_serious' ? 'linear-gradient(135deg, #1a1a2e, #2d2d44, #16213e)' :
+                                  '#000'
+                              }}>
+                                <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100%',color:'white',fontSize:12,fontWeight:'bold',textShadow:'0 1px 4px rgba(0,0,0,0.8)'}}>プレビュー</div>
+                              </div>
+                              <p className="text-xs text-purple-600">画像なしでテキストの雰囲気に合った背景スタイルを適用します</p>
+                            </div>
+                          )}
+
+                          {scene.imageSource === 'ai' && (
+                            <p className="text-xs text-blue-600 mt-1">Stable Diffusionが自動でシーンに合った画像を生成します</p>
+                          )}
+                          {scene.imageSource === 'none' && (
+                            <p className="text-xs text-gray-500 mt-1">単色黒背景のみで表示されます</p>
+                          )}
+                        </div>
+
+                        {/* 備考・シーン指示メモ */}
+                        <div className="col-span-1 md:col-span-2">
+                          <label className="block text-sm font-bold mb-2 text-gray-700">
+                            備考・指示メモ（※最重要指示）
+                            <span className="text-gray-400 font-normal ml-2 text-xs">（例: 「読み上げ: こんにちは」でナレーション強制変更 / 「4秒静止」でテンポ無視）</span>
+                          </label>
+                          <textarea
+                            value={scene.sceneNote}
+                            onChange={(e) => updateScene(scene.id, 'sceneNote', e.target.value)}
+                            placeholder="ここに書かれた指示は、全体のテンポ設定やテキストルールよりも優先して適用されます。"
+                            className="w-full border-2 border-red-200 rounded-lg p-3 h-16 bg-red-50 focus:border-red-400 focus:outline-none transition-colors resize-none text-sm font-bold text-gray-700"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  <button
+                    onClick={addScene}
+                    className="w-full border-2 border-dashed border-gray-300 text-gray-600 font-bold py-4 rounded-xl hover:bg-gray-100 hover:border-gray-400 transition-all flex items-center justify-center"
+                  >
+                    <span className="text-2xl mr-2">+</span> シーンを追加する
+                  </button>
+                </div>
+              </section>
+            )}
+
+            {/* --- 3. エクスポート --- */}
+            <section className="text-center mt-12 pb-8">
+              <button
+                onClick={handleExport}
+                className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-extrabold py-5 px-16 rounded-full shadow-xl hover:shadow-2xl hover:from-blue-700 hover:to-indigo-800 transform hover:scale-105 transition-all text-xl inline-flex items-center justify-center"
+              >
+                <span className="mr-3">⚡️</span> AIへ指示を出す (JSON保存)
+              </button>
+              <p className="text-gray-500 mt-4 text-sm">設定に基づいた詳細なプロンプトを含むJSONファイルがダウンロードされます。</p>
+            </section>
+          </div>
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
