@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -157,8 +158,11 @@
 
       const [bgmEnabled, setBgmEnabled] = useState(true);
       const [bgmMood, setBgmMood] = useState('upbeat');
+      const [seEnabled, setSeEnabled] = useState(true); // ★追加機能1: 効果音のオンオフ機能
+      const [tachieEnabled, setTachieEnabled] = useState(false); // ★改修: 立ち絵ムービーのオンオフ機能
 
       const [imageGenEnabled, setImageGenEnabled] = useState(true);
+
       const [nsfwEnabled, setNsfwEnabled] = useState(false);
       const [fullAutoMode, setFullAutoMode] = useState(false);
 
@@ -166,11 +170,36 @@
       const [textMode, setTextMode] = useState('arrange');  // arrange | caption_lock | strict | manual
       const [resolutionQuality, setResolutionQuality] = useState('standard');
       const [defaultPosition, setDefaultPosition] = useState('auto');
+      const [advStyleCaption, setAdvStyleCaption] = useState(false); // ADV解説テロップ設定
       const [globalNote, setGlobalNote] = useState('');
+
+      // ★追加: テンプレート定型文 ＆ 猫キャラモード用のState
+      const [nekoMode, setNekoMode] = useState(false);
+      const [opEnabled, setOpEnabled] = useState(false);
+      const [opText, setOpText] = useState('こんにちわ！話題のニュースちゃんねるです！本日の話題は…');
+      const [edEnabled, setEdEnabled] = useState(false);
+      const [edText, setEdText] = useState('ご視聴いただきありがとうございました！今後も最新のホットなニュースを毎日配信して行きますので是非ちゃんねる登録、高評価よろしくお願いします！');
+
+      // 猫モードの切り替え時にデフォルトテキストを書き換える処理
+      const handleNekoModeChange = (checked) => {
+        setNekoMode(checked);
+        if (checked) {
+          if (opText === 'こんにちわ！話題のニュースちゃんねるです！本日の話題は…') setOpText('こんにちにゃ！話題のニャースちゃんねるです！本日のトピックは…');
+          if (edText === 'ご視聴いただきありがとうございました！今後も最新のホットなニュースを毎日配信して行きますので是非ちゃんねる登録、高評価よろしくお願いします！') setEdText('ご視聴いただきありがとうございました！今後も最新のホットなニャースを毎日配信して行きますので、ぜひちゃんねる登録、高評価よろしくにゃん！');
+        } else {
+          if (opText === 'こんにちにゃ！話題のニャースちゃんねるです！本日のトピックは…') setOpText('こんにちわ！話題のニュースちゃんねるです！本日の話題は…');
+          if (edText === 'ご視聴いただきありがとうございました！今後も最新のホットなニャースを毎日配信して行きますので、ぜひちゃんねる登録、高評価よろしくにゃん！') setEdText('ご視聴いただきありがとうございました！今後も最新のホットなニュースを毎日配信して行きますので是非ちゃんねる登録、高評価よろしくお願いします！');
+        }
+      };
 
       // インポート機能用のState
       const [showImportModal, setShowImportModal] = useState(false);
       const [importText, setImportText] = useState('');
+
+      // JSON->TSV変換機能用のState
+      const [showJsonToTsvModal, setShowJsonToTsvModal] = useState(false);
+      const [jsonInput, setJsonInput] = useState('');
+      const [tsvOutput, setTsvOutput] = useState('');
 
       const [scenes, setScenes] = useState([
         {
@@ -186,7 +215,15 @@
           mediaFile: '',
           customImagePath: '',
           bgStyle: 'gradient_dark',
-          sceneNote: ''
+          sceneNote: '',
+          // --- 追加機能: シーン個別ボイス設定 ---
+          voiceOverride: false,
+          voiceCharName: 'ずんだもん',
+          voiceSpeakerId: 3,
+          voiceSpeed: 'fast',
+          // --- 追加機能: 立ち絵個別設定 ---
+          tachieOverride: false,
+          sceneTachieEnabled: true
         }
       ]);
 
@@ -205,7 +242,15 @@
           mediaFile: '',
           customImagePath: '',
           bgStyle: 'gradient_dark',
-          sceneNote: ''
+          sceneNote: '',
+          // --- 追加機能: シーン個別ボイス設定 ---
+          voiceOverride: false,
+          voiceCharName: 'ずんだもん',
+          voiceSpeakerId: 3,
+          voiceSpeed: 'fast',
+          // --- 追加機能: 立ち絵個別設定 ---
+          tachieOverride: false,
+          sceneTachieEnabled: true
         }]);
       };
 
@@ -215,6 +260,21 @@
 
       const updateScene = (id, field, value) => {
         setScenes(scenes.map(s => s.id === id ? { ...s, [field]: value } : s));
+      };
+
+      // シーン個別のキャラクター変更時のスタイルリセット
+      const handleSceneCharChange = (sceneId, charName) => {
+        const speaker = VOICEVOX_SPEAKERS.find(s => s.name === charName);
+        setScenes(scenes.map(s => {
+          if (s.id === sceneId) {
+             return {
+               ...s,
+               voiceCharName: charName,
+               voiceSpeakerId: speaker ? speaker.styles[0].id : s.voiceSpeakerId
+             };
+          }
+          return s;
+        }));
       };
 
       // --- スプレッドシート読み込み処理 ---
@@ -245,12 +305,12 @@
           // 1: テロップ(表示)
           // 2: 読み上げ(音声)
           // 3: 備考・指示メモ
-          // 4: 画像ファイルパス（NEW）
+          // 4: 画像ファイルパス
           
           const displayText = cols[1] ? cols[1].trim() : "";
           const voiceText = cols[2] ? cols[2].trim() : "";
           const noteText = cols[3] ? cols[3].trim() : "";
-          const imagePath = cols[4] ? cols[4].trim() : ""; // 5列目を取得
+          const imagePath = cols[4] ? cols[4].trim() : "";
 
           // 読み上げテキストがある場合はナレーションON、なければOFF（ただしmanualモードなのでreadTextが空なら無音扱い）
           const hasVoice = voiceText.length > 0;
@@ -271,7 +331,15 @@
             mediaFile: imagePath ? imagePath.split(/[\\/]/).pop() : '', // ファイル名のみ表示用
             customImagePath: imagePath, // フルパス
             bgStyle: 'gradient_dark',
-            sceneNote: noteText
+            sceneNote: noteText,
+            // --- 追加機能: シーン個別ボイス設定初期値 ---
+            voiceOverride: false,
+            voiceCharName: 'ずんだもん',
+            voiceSpeakerId: 3,
+            voiceSpeed: 'fast',
+            // --- 追加機能: 立ち絵個別設定 ---
+            tachieOverride: false,
+            sceneTachieEnabled: true
           });
         }
 
@@ -285,6 +353,89 @@
           }
         } else {
           alert('有効なデータが読み取れませんでした。列の形式を確認してください。');
+        }
+      };
+
+      // --- JSONファイルアップロード処理 ---
+      const handleJsonFileUpload = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const content = event.target.result;
+          setJsonInput(content); // テキストエリアに反映
+          handleJsonToTsvConvert(content); // 自動で変換を実行
+        };
+        reader.readAsText(file);
+        
+        // 同じファイルを再度選べるようにリセット
+        e.target.value = '';
+      };
+
+      // --- JSONからTSVへの変換処理（直接テキストを渡せるように改良） ---
+      const handleJsonToTsvConvert = (inputText = jsonInput) => {
+        if (!inputText.trim()) {
+          alert('JSONテキストを入力するか、ファイルをアップロードしてください。');
+          return;
+        }
+        try {
+          // markdownのコードブロックが含まれている場合の処理
+          let cleanJson = inputText.trim();
+          if (cleanJson.startsWith('```')) {
+            cleanJson = cleanJson.replace(/^```(json)?/, '').replace(/```$/, '').trim();
+          }
+          const data = JSON.parse(cleanJson);
+
+          let targetArray = [];
+
+          // AIが出力した「配列」か、アプリのエクスポートした「指示書」か判定して適切に処理
+          if (Array.isArray(data)) {
+            targetArray = data; // AIが生成した台本JSON
+          } else if (data && Array.isArray(data.scenes)) {
+            targetArray = data.scenes; // エディタから保存した設定データの場合
+            if (targetArray.length === 0) {
+               alert('エラー: 読み込んだファイルには「シーンデータ」が入っていません。\nAIが生成した「台本JSON」ではなく、エディタから出力した「指示書（設定ファイル）」を読み込んでいませんか？');
+               return;
+            }
+          } else {
+            alert('エラー: 変換できるシーンデータ（配列）が見つかりませんでした。');
+            return;
+          }
+
+          let tsv = "シーン\tテロップ(表示)\t読み上げ(音声)\t備考・指示メモ\t画像ファイルパス\n";
+
+          targetArray.forEach((scene, index) => {
+            let telop = "";
+            if (scene.captions && Array.isArray(scene.captions)) {
+              telop = scene.captions.map(c => c.text.replace(/\r?\n/g, ' ')).join(' ');
+            } else if (scene.text && typeof scene.text === 'string') {
+              telop = scene.text.replace(/\r?\n/g, ' ');
+            }
+            
+            let voice = "";
+            if (scene.readText !== undefined) { // 手動モード等での読み上げテキスト
+               voice = scene.readText ? scene.readText.replace(/\r?\n/g, ' ') : "";
+            } else if (scene.text && typeof scene.text === 'string') {
+               voice = scene.text.replace(/\r?\n/g, ' ');
+            }
+            
+            let note = "";
+            if (scene.title) note += `Title: ${scene.title} `;
+            if (scene.effect && scene.effect !== 'None') note += `Effect: ${scene.effect} `;
+            if (scene.sceneNote) note += `Note: ${scene.sceneNote}`;
+
+            // TSV用にタブ文字をスペースに置換
+            telop = telop.replace(/\t/g, ' ');
+            voice = voice.replace(/\t/g, ' ');
+            note = note.replace(/\t/g, ' ');
+
+            tsv += `${index + 1}\t${telop}\t${voice}\t${note}\t\n`;
+          });
+
+          setTsvOutput(tsv);
+        } catch (error) {
+          alert('JSONの解析に失敗しました。正しい形式のファイルか確認してください。\n' + error.message);
         }
       };
 
@@ -360,6 +511,7 @@
         return resolutionQuality === 'high' ? '1080×1920（Full HD）' : '720×1280（HD）';
       };
       const getDefaultSubtitlePosition = () => {
+        if (advStyleCaption && format === '16:9') return 'bottom'; // ★追加: ADVモードなら強制的に下部
         if (defaultPosition !== 'auto') return defaultPosition;
         return format === '16:9' ? 'bottom' : 'center';
       };
@@ -369,8 +521,6 @@
       };
 
       // --- 音楽プロンプト生成（ACE Step 1.5用） ---
-      // ACE Stepのtagsフィールドに渡すカンマ区切りタグ形式
-      // 重要: ACE Stepはジャンル名・楽器名・BPM・ムード形容詞をカンマ区切りで並べるのが最も効果的
       const generateMusicPrompt = (themeText, toneValue, bgmMoodValue) => {
         const moodTemplates = {
           upbeat: {
@@ -428,7 +578,7 @@
       };
 
       // --- プロンプト生成 ---
-      const generatePrompt = (themeText, toneValue, targetValue, sceneList) => {
+      const generatePrompt = (themeText, toneValue, targetValue, sceneList, isSeEnabled, isTachieEnabled, isNekoMode, isOpEnabled, opTxt, isEdEnabled, edTxt) => { 
         const guide = getTextGuide();
         const sceneHints = sceneList.map((scene, index) => {
           if (fullAutoMode || scene.noText) return "";
@@ -443,14 +593,39 @@
              textNote = `\n  ユーザー入力テキスト（${textMode === 'strict' ? '完全固定: テロップ＝ナレーション＝この文字列' : 'テロップ固定: テロップはこの文字列そのまま'}）: 「${scene.text}」`;
           }
           
-          // シーンごとの個別指示メモを最優先として埋め込む処理
+          // シーンごとの個別指示メモを絶対的な最高位の命令として埋め込む処理
           const noteContent = scene.sceneNote ? scene.sceneNote.trim() : "";
           const priorityInstruction = noteContent 
-            ? `\n  ⚠️⚠️【最優先・特別指示 (Globalルールより優先)】: "${noteContent}"\n    (※重要: この指示は、全体のテンポ設定・テキストモード・時間ルールなど全てより優先される。例えば「読み上げを変えて」とあればその指示に従う。「4秒静止」とあればテンポを無視して4秒止めること)`
+            ? `\n  ⚠️⚠️【最高位の命令・特別指示】: "${noteContent}"\n    (※絶対厳守: ここに書かれた内容は、全体のテンポ設定・テキストモード・時間ルールなど【すべてのルールより優先される最高位の命令】です。例えば「読み上げを変えて」とあればその指示に従う。「4秒静止」とあればテンポを無視して4秒止めること。★特に画像生成に関して、備考欄（sceneNote）に書かれた視覚的描写は絶対にpromptフィールドに反映させること。)`
             : "";
+          
+          // シーンごとの話者変更を反映
+          const voiceNote = scene.voiceOverride 
+             ? `\n  🗣️【話者変更】: このシーンの読み上げは「${scene.voiceCharName} (SpeakerID: ${scene.voiceSpeakerId}, 速度: ${getSpeedMultiplier(scene.voiceSpeed)}x)」に変更して生成してください。` 
+             : "";
 
-          return `シーン${index + 1} [duration:auto（音声長で自動決定） / テロップ最大${guide.maxText}文字 / 最大${guide.maxLines}行]\n  感情指定: ${scene.emotion} (ヒント: ${getEmotionHints(scene.emotion)})${textNote}${priorityInstruction}`;
+          // ★改修: 立ち絵の個別設定（JSONではnullにする）を反映
+          const tachieNote = isTachieEnabled && scene.tachieOverride && scene.sceneTachieEnabled === false
+             ? `\n  🐈【立ち絵非表示】: このシーンは個別設定により立ち絵を非表示（tachie=null）にすること。` 
+             : "";
+
+          return `シーン${index + 1} [duration:auto（音声長で自動決定） / テロップ最大${guide.maxText}文字 / 最大${guide.maxLines}行]\n  感情指定: ${scene.emotion} (ヒント: ${getEmotionHints(scene.emotion)})${textNote}${voiceNote}${tachieNote}${priorityInstruction}`;
         }).filter(Boolean).join("\n");
+
+        // ★追加: テンプレート定型文 ＆ 猫キャラモードのAIへのプロンプト指示
+        let opEdInstruction = "";
+        if (isOpEnabled || isEdEnabled || isNekoMode) {
+          opEdInstruction += `\n## 📝 テンプレート・キャラクター設定（絶対厳守）\n`;
+          if (isNekoMode) {
+             opEdInstruction += `- **【キャラクター設定】語尾に「〜にゃ」「〜にゃん」をつけて、元気な猫のキャラクターとして全編通して解説すること。**\n`;
+          }
+          if (isOpEnabled) {
+             opEdInstruction += `- **【オープニング必須】シーン1の冒頭（ナレーションおよびテロップ）は必ず「${opTxt}」から開始すること。アレンジ禁止。**\n`;
+          }
+          if (isEdEnabled) {
+             opEdInstruction += `- **【エンディング必須】最終シーンの末尾（ナレーションおよびテロップ）は必ず「${edTxt}」で締めること。アレンジ禁止。**\n`;
+          }
+        }
 
         const tempoInstructions = tempoStyle === 'tiktok' ? `
 ## 🔥 TikTokテンポ指示（最重要・絶対厳守）
@@ -463,7 +638,7 @@
 3. **「間」は敵。呼吸の間すら詰める。次のカットが被せ気味に入るくらいでちょうどいい。**
 4. **テロップの文字数はフォーマット別の文字数制限（後述）を厳守。**
 5. **最初の0.5秒で視聴者の指を止める「フック」を必ず入れる。**
-**(※ただし、個別シーンに「最優先・特別指示」がある場合は例外とし、その指示に従うこと)**
+**(※ただし、個別シーンに【最高位の命令】がある場合は例外とし、そちらの指示に従うこと)**
 
 ### ナレーション指示:
 - 話速: **${getSpeedMultiplier(voiceSpeed)}倍速**
@@ -487,12 +662,22 @@
 - **3カットに1回はエフェクト（ScreenShake / FlashOverlay）を入れる。**
 - **文字サイズの緩急をつける（小→大→特大で畳みかけ）。**
 - **背景画像も1〜2秒で切り替える。同じ画像を3秒以上映さない。**
+
+### 🎭 感情設計（台本の絶対ルール）:
+視聴者の感情を以下の順序で動かすこと。この流れを崩さないこと。
+1. **「え、なにこれ？」**（好奇心・違和感）← 冒頭0〜1秒で必ず作る
+2. **「やばい、続き見たい」**（不安・期待・焦り）← 本題前半で煽る
+3. **「そういうことか！」**（納得・カタルシス）← クライマックスで解放
+4. **「人に話したい」**（拡散衝動）← オチに驚き・笑い・共感のどれかを必ず入れる
+- **答えや結論は絶対に途中で明かさない。**「〇〇秒後に衝撃の事実が」「実はこの続きが本当にヤバい」などの引きを必ず入れること。
+- **数字・固有名詞・ランキングは最強のフック。**「99%の人が知らない」「日本1位」「たった3秒で」等を積極的に使うこと。
 ` : isLongFormat() ? `
-## 編集テンポ指示（YouTube横動画・長尺向け）:
-- 1カット: ナレーション音声長で自動決定（5〜30秒のカットも可）
-- YouTube横動画（16:9）向けの落ち着いたテンポで構成してください。
-- 解説系・ドキュメンタリー系の場合、1シーンをじっくり見せる構成も可。
-- テロップは字幕風（caption_box）や解説風（elegant_style）を中心に。
+## 🎬 編集テンポ・構成指示（YouTube横動画・長尺向け）:
+- **視聴維持率を下げないため、同じ画面（画像やテロップ）がずっと続く状態は絶対に避けること。**
+- 1カットの秒数は長め（5〜15秒など）でも良いが、その中で**テロップをこまめに切り替えたり、出現アニメーションを連続させて画面に動きを出し続けること。**
+- 長いナレーションを話す場合は、1つのシーン内で \`captions\` を複数用意し、話の展開（読点や意味の区切り）に合わせて順番にテロップを出していく構成にすること。
+- 1つの話題でも、長すぎる場合は細かくシーンを分割し、背景画像やカメラワーク（zoom_in等）を切り替えて視覚的な変化を常につけること。
+- テロップは字幕風（[caption_box]）や解説風（[elegant_style]）をベースとしつつ、重要なキーワードは大きく色を変えて（[accent_yellow]等）強調すること。
 - ナレーション話速: **${getSpeedMultiplier(voiceSpeed)}倍速**
 ` : `
 ## 編集テンポ指示:
@@ -501,12 +686,50 @@
 - ナレーション話速: **${getSpeedMultiplier(voiceSpeed)}倍速**
 `;
 
+        const advStyleInstruction = (advStyleCaption && format === '16:9') ? `
+## 🎮 【特別仕様】アドベンチャーゲーム風 解説テロップモード（最優先）
+- この動画は、アドベンチャーゲーム（ノベルゲーム）の会話シーンのような「解説テロップスタイル」で制作します。
+- **テロップは全て画面下部（bottom）に固定**し、メッセージウィンドウのように配置すること。
+- スタイルは必ず、背景の映像が透けて見える **半透明の黒BOX**（[caption_box] または [elegant_style]）を使用すること。
+- アニメーションは激しいものを避け、**[fadeIn]** や **[typewriter]** を基本とすること。
+- テロップがウィンドウからはみ出さないよう、適切な文字数で改行（\\n）を入れること。
+` : "";
+
+        // ★改修: 立ち絵（画像フォルダ指定＋口パク判定＋位置・テロップ被り回避）設定指示
+        const tachieInstruction = isTachieEnabled ? `
+## 🐈 立ち絵（リップシンク・瞬き）設定（最優先）
+- 画面右下（**右端ギリギリに寄せる**）に立ち絵キャラクターを固定配置します。下部が少し見切れるように配置すること。
+- **【リップシンクの絶対ルール】** \`is_speaking\` が \`true\` の場合は音声に合わせて口を動かし、\`false\` の場合（無音時）は**【必ず口を閉じた状態で静止】**させること。ずっと口をパクパクさせないこと。
+- **【最重要レイヤー順】**描画の重ね順は、奥から「1.背景画像」→「2.立ち絵」→「3.テロップ（最前面）」の順番を絶対厳守すること。テロップが立ち絵の下に隠れることは絶対に避けてください。
+- 各シーンの \`tachie\` フィールドには、以下のJSONオブジェクトを出力すること（個別指示で非表示設定がある場合はnullを指定すること）。
+  \`"tachie": { "folder": "C:\\\\Users\\\\tommi\\\\Desktop\\\\videoEditor\\\\neko", "is_speaking": true または false }\`
+- \`is_speaking\` は、そのシーンでナレーション（textフィールド）が存在する場合は \`true\`、無音なら \`false\` を指定すること。
+` : `
+## 立ち絵設定
+- 全体設定で無効化されているため、すべてのシーンの \`tachie\` フィールドは \`null\` に固定すること。
+`;
+
+        // ★改修: ネガティブプロンプト強化およびSDプロンプト厳格化・シネマティック演出のルール
+        const imageGenerationRules = `
+   - **使用モデル**: Forge (SDXL/Pony)
+   - **【絶対厳守】プロンプトのフォーマット（システムエラー防止）**: promptフィールドは必ず「1行のカンマ区切り英単語タグ（Danbooruタグ）」のみで構成すること。改行コード（\\nや\\r）、ピリオド（.）、日本語、および "a man is standing" のような自然言語の文章表現は、画像生成エンジンの致命的なエラーを引き起こすため【絶対に使用禁止】。
+   - **構成の義務化**: prompt は必ず以下の順序で構成すること: [必須品質タグ], [照明・カメラアングルタグ], [背景・世界観タグ], [キャラクターの特徴・服装タグ], [表情・アクションタグ]。
+   - **キャラクターと背景の一貫性**: 動画全体を通して主人公となるキャラクターの特徴（例: 1girl, business suit 等）と背景を文脈から定義し、全シーンで共通して使用すること（場面転換を意図的に抑え、人物をコロコロ変えない）。
+   - **感情に合わせた演出**: シーンの emotion（感情指定）やテキスト内容に合わせて、最適なライティングとアングル（例：ホラーなら from below, dark ambient、ポップなら cowboy shot, bright lighting 等）をプロンプトに必ず含めること。
+   - **【必須】品質タグ**: すべてのプロンプトの先頭に必ず以下の品質タグを付けること:
+     \`score_9, score_8_up, score_7_up, masterpiece, best quality,\`${nsfwEnabled ? `
+   - **NSFW指定**: 品質タグの直後に \`NSFW,\` を追加すること。セクシー・挑発的・露出度の高い画像を生成する。` : ''}
+   - **【必須】ネガティブプロンプト**: 以下を共通ネガティブプロンプトとして使用すること:
+     \`${nsfwEnabled ? 'score_1, score_2, score_3, worst quality, low quality, blurry, deformed, ugly, bad anatomy, extra limbs, text, watermark, signature, mutated, disfigured, bad hands, extra fingers' : 'nsfw, nude, explicit, cleavage, exposed skin, score_1, score_2, score_3, worst quality, low quality, blurry, deformed, ugly, bad anatomy, extra limbs, text, watermark, signature, mutated, disfigured, bad hands, extra fingers'}\`
+   - **【最重要】シーン個別指示の反映**: 「sceneNote」に記述された画像指示がある場合は、それを最優先でプロンプトに変換して反映すること。`;
+
         return `
 # 指示
 あなたはプロの${format === '16:9' ? '動画' : 'ショート動画'}クリエイターです。以下の【メタ情報】と【編集・演出ルール】を厳密に守り、視聴者の心をつかむ${format === '16:9' ? '高品質な' : '超テンポの良い'}${getVideoTypeLabel()}の台本を作成してください。
 
 # メタ情報
 - テーマ: ${themeText || 'AIにお任せ'}
+- 画像生成エンジン: Stable Diffusion (Forge)
 - 動画形式: ${getFormatLabel()}
 - 解像度: ${getResolutionLabel()}
 - ターゲット層: ${getTargetLabel(targetValue)}
@@ -519,16 +742,19 @@
 - テロップデフォルト位置: 画面${getPositionLabel(getDefaultSubtitlePosition())}（${getDefaultSubtitlePosition()}）${globalNote ? `\n- 全体備考: ${globalNote}` : ''}
 ※これらの情報から、最適な言葉選びと演出の方向性を決定してください。
 
+${opEdInstruction}
 ${tempoInstructions}
+${advStyleInstruction}
+${tachieInstruction}
 
 # 編集・演出ルール（絶対厳守）
 
 ## ⚠️【最重要】シーン個別指示（Scene Notes）の優先順位
-各シーン設定にある「**最優先・特別指示 (Globalルールより優先)**」という項目は、この動画生成における**最高位の命令**です。
+各シーン設定にある「**最高位の命令・特別指示**」という項目は、この動画生成における**最高位の命令**です。
 - もし個別指示で「読み上げテキストを変更」とあれば、テキストモード（完全固定など）を無視して指示通りに書き換えてください。
 - もし個別指示で「画像を4秒間静止」とあれば、TikTokテンポ設定（1-3秒制限）を無視して4秒間表示してください。
 - もし個別指示で「無音にする」とあれば、ナレーション設定がONでもそのシーンは text="" としてください。
-- **備考・指示メモの内容は、例外処理として最優先で実装してください。**
+- **備考・指示メモの内容は、例外処理として最優先で実装してください。特に画像生成に関する指示は必ずプロンプトに含めてください。**
 
 ${textMode !== 'arrange' ? `
 ## テキストモード: ${textMode === 'manual' ? '✍️ 完全手動' : textMode === 'strict' ? '🔒 完全固定' : '📌 テロップ固定'}
@@ -556,6 +782,7 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
 ` : ''}
 1. **テロップ配置と構成**:
    - テロップのデフォルト配置は「画面${getPositionLabel(getDefaultSubtitlePosition())}（${getDefaultSubtitlePosition()}）」。${getDefaultSubtitlePosition() === 'bottom' ? '字幕風レイアウトが基本。重要な強調テロップは中央配置も可。' : getDefaultSubtitlePosition() === 'center' ? 'UI被りを避け、画面中央に配置。' : '上部配置。画面下部の情報を遮らない。'}
+   ${isTachieEnabled ? `- **【立ち絵回避レイアウト】右下に立ち絵が存在するため、テロップが立ち絵に被りすぎないよう配慮すること。1行あたりの文字数を通常より少なくして早めに改行（\\n）を入れるか、あるいは全体の配置バランスを少し左寄りに想定してテキストを構成すること（多少の被りは許容）。**` : ''}
    - ${textMode === 'strict' || textMode === 'manual' ? 'テキストモードの指示通り、ユーザー入力をそのまま出力すること。' : textMode === 'caption_lock' ? 'テロップはユーザー入力そのまま。アレンジ禁止。' : '句読点は使わない。体言止めか「！」で切る。'}
 
 2. **【最重要】テキストレンダリングルール（フォーマット別）**:
@@ -614,19 +841,26 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
    ---
 
 4. **背景画像とビジュアルエフェクト**:
-   - 背景画像用: Stable Diffusionで使える詳細な英語プロンプトをカンマ区切りの羅列で記述。
-   - **【必須】品質タグ**: すべてのプロンプトの先頭に必ず以下の品質タグを付けること:
-     \`score_9, score_8_up, score_7_up, masterpiece, best quality,\`${nsfwEnabled ? `
-   - **NSFW指定**: 品質タグの直後に \`NSFW,\` を追加すること。セクシー・挑発的・露出度の高い画像を生成する。` : ''}
-   - **【必須】ネガティブプロンプト**: 以下を共通ネガティブプロンプトとして使用すること:
-     \`score_1, score_2, score_3, worst quality, low quality, blurry, deformed, ugly, bad anatomy, extra limbs, text, watermark, signature, mutated, disfigured, bad hands, extra fingers\`
+   - 背景画像用: Stable Diffusionで使える詳細な英語プロンプトを記述。
+   ${imageGenerationRules}
    - **画像生成サイズ: ${getResolutionLabel()}（${format === '16:9' ? '16:9横長' : '9:16縦長'}）** — アスペクト比は必ず厳守。
-   - **使用モデル（checkpoint）**: デフォルトは \`sd\\CyberRealistic_Pony_v16.0.safetensors\`（リアル系）。アニメ調の指示がある場合は適切なアニメ系モデルに切り替えること。
+   - **使用モデル（checkpoint）**: \`sd\\CyberRealistic_Pony_v16.0.safetensors\`
+   - **カメラワーク**: 画像のカメラワーク（Ken Burns効果）を "zoom_in", "zoom_out", "pan_left", "pan_right", "static" の中から選択すること。重要なシーンはじわじわズームインさせるなど、文脈に合わせて演出すること。
+   - **【カメラワーク必須ルール】** staticは原則禁止。すべてのシーンに必ず動きをつけること。感情ピーク時は必ず zoom_in + SE(impact) を組み合わせること。衝撃ワードのテロップは画面中央・huge・accent_red または accent_yellow で1秒だけ出す「一点集中型テロップ」を使うこと。カメラワークの選び方: 緊張・恐怖 → zoom_in / 解放・驚き → zoom_out / 時間経過・移動 → pan_left or pan_right。
    - エフェクト: ScreenShake(揺れ), FlashOverlay(発光), PulsingGlow(脈動), None から選択。
    - **テンポ重視の場合: 3カットに1回以上エフェクトを入れること。**
+   ${isSeEnabled ? `- **効果音（SE）**: シーンの文脈に合わせて "impact", "swoosh", "glitch", "bell", "none" から選択すること。衝撃的なテロップにはimpact、画面切り替えにはswooshなどを指定する。` : `- **【重要】効果音（SE）**: 全体設定で効果音が無効化されているため、すべてのシーンの "se" フィールドは必ず "none" に固定すること。`}
 
-5. **BGM音楽生成指示（ACE Step 1.5用）**:
+5. **🏆 プロ品質チェックリスト（全シーン必須）**:
+   - **フォント統一**: テロップのフォントは全編で太ゴシック系1種のみを使用。見出しと本文でサイズに差をつけること。
+   - **テロップ視認性**: すべてのテロップに必ず黒縁取り（stroke）を2px以上つけること。背景に関わらず必ず読めるようにすること。
+   - **BGM音量の感情曲線**: BGMは台本の感情曲線に合わせて3段階で変化させること（通常70% → 盛り上がり100% → オチ後50%）。
+   - **サムネイル候補フレーム**: シーン3〜4に「この動画で最も衝撃的・印象的な1フレーム」を必ず配置すること。サムネイルとして使えるクオリティの画像プロンプトにすること。
+   - **冒頭の耳フック**: 動画の最初の1秒はBGMなしまたはSE一発（impact）のみにして、無音の緊張感で耳を引くこと。
+
+6. **BGM音楽生成指示（ACE Step 1.5用）**:
    ${bgmEnabled ? `- BGM生成エンジン: ACE Step 1.5 Turbo AIO（ComfyUI経由）
+   - **【重要: VRAM保護・順次実行】**: 画像生成と音楽生成は共にVRAMを大量に消費するため、**絶対に同時に実行しないこと**。必ず「画像生成」が完了しVRAMが解放された後に「音楽生成」を開始するフローで実行すること。
    - 選択ムード: ${getBgmLabel(bgmMood)}
    - 動画トーン: ${getToneLabel(toneValue)}
    - **以下のJSON設定をそのままACE Stepに渡して音楽を生成すること:**
@@ -653,8 +887,14 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
     "text": "ナレーション用テキスト（読み上げ用の自然な文）",
     "duration": "auto",
     "role": "hook | intro | main | climax | cta | outro",
-    "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, ...(SD画像生成プロンプト)",
+    "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, ... (タグ列)",
+    "camera": "zoom_in | zoom_out | pan_left | pan_right | static",
     "effect": "None | ScreenShake | FlashOverlay | PulsingGlow",
+    "se": "impact | swoosh | glitch | bell | none",
+    "tachie": {
+      "folder": "C:\\\\Users\\\\tommi\\\\Desktop\\\\videoEditor\\\\neko",
+      "is_speaking": true
+    },
     "captions": [
       {
         "text": "テロップ文字列",
@@ -678,8 +918,11 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
 | text | string | ○ | ナレーション読み上げテキスト。${textMode === 'strict' ? '【完全固定】captions[].textと完全同一にすること' : textMode === 'caption_lock' ? '【テロップ固定】ナレーションのみアレンジ可' : '読み上げ用の自然な文'}。narrationがfalseなら空文字"" |
 | duration | string | ○ | 常に"auto"を指定。実際の秒数はナレーション音声長から自動計算 |
 | role | string | ○ | シーンの役割 |
-| prompt | string | ○ | SD画像生成プロンプト（品質タグ必須） |
+| prompt | string | ○ | SD画像生成プロンプト（品質タグ必須・単語タグのみ） |
+| camera | string | ○ | カメラワーク（zoom_in, zoom_out, pan_left, pan_right, static） |
 | effect | string | ○ | ビジュアルエフェクト |
+| se | string | ○ | 効果音（impact, swoosh, glitch, bell, none）※SE無効時はnone固定 |
+| tachie | object/null | ○ | 立ち絵（フォルダパスと口パク判定）。無効な場合はnull |
 | captions | array | ○ | テロップ配列（1シーンに1〜3個） |
 | captions[].text | string | ○ | テロップ文字列。改行は"\\n"で表現 |
 | captions[].animation | string | ○ | アニメーション種別 |
@@ -699,7 +942,13 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
     "duration": "auto",
     "role": "hook",
     "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, close up face, shocked expression, dramatic lighting, dark background",
+    "camera": "zoom_in",
     "effect": "FlashOverlay",
+    "se": "impact",
+    "tachie": {
+      "folder": "C:\\\\Users\\\\tommi\\\\Desktop\\\\videoEditor\\\\neko",
+      "is_speaking": true
+    },
     "captions": [
       {"text": "ヤバすぎ", "animation": "pop", "size": "huge", "style": "accent_yellow", "noWrap": true, "maxLines": 1}
     ]
@@ -712,7 +961,13 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
     "duration": "auto",
     "role": "intro",
     "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, mysterious dark room, spotlight, cinematic",
+    "camera": "pan_left",
     "effect": "ScreenShake",
+    "se": "swoosh",
+    "tachie": {
+      "folder": "C:\\\\Users\\\\tommi\\\\Desktop\\\\videoEditor\\\\neko",
+      "is_speaking": true
+    },
     "captions": [
       {"text": "知ってた？", "animation": "slideIn", "size": "large", "style": "default", "noWrap": true, "maxLines": 1},
       {"text": "この事実", "animation": "pop", "size": "huge", "style": "accent_red", "noWrap": true, "maxLines": 1}
@@ -726,7 +981,13 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
     "duration": "auto",
     "role": "main",
     "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, infographic style, clean background, data visualization",
+    "camera": "zoom_out",
     "effect": "None",
+    "se": "none",
+    "tachie": {
+      "folder": "C:\\\\Users\\\\tommi\\\\Desktop\\\\videoEditor\\\\neko",
+      "is_speaking": true
+    },
     "captions": [
       {"text": "実はこの数字が\\n全てを物語っている", "animation": "fadeIn", "size": "medium", "style": "caption_box", "noWrap": false, "maxLines": 2},
       {"text": "驚きの結果がこちら", "animation": "slideUp", "size": "large", "style": "accent_yellow", "noWrap": true, "maxLines": 1}
@@ -740,7 +1001,13 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
     "duration": "auto",
     "role": "climax",
     "prompt": "score_9, score_8_up, score_7_up, masterpiece, best quality, documentary style, cinematic, wide shot, epic lighting",
+    "camera": "zoom_in",
     "effect": "PulsingGlow",
+    "se": "bell",
+    "tachie": {
+      "folder": "C:\\\\Users\\\\tommi\\\\Desktop\\\\videoEditor\\\\neko",
+      "is_speaking": true
+    },
     "captions": [
       {"text": "ここで重要なのは\\nこの3つのポイント", "animation": "slideUp", "size": "medium", "style": "elegant_style", "noWrap": false, "maxLines": 2},
       {"text": "品質の違い\\nコストの差\\n時間の節約", "animation": "typewriter", "size": "small", "style": "caption_box", "noWrap": false, "maxLines": 3},
@@ -754,6 +1021,7 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
 - JSON配列以外のテキストを出力しない。説明・前置き・後書きは一切不要。
 - \`\`\`json で始め \`\`\` で閉じること。
 - 全てのフィールドを必ず含めること（省略不可）。
+- promptには、**シーンの個別指示（sceneNote）の内容を必ず反映させること**。
 - promptには必ず品質タグ（score_9, score_8_up, score_7_up, masterpiece, best quality）を先頭に含めること。
 - captionsのtextは、フォーマット別の文字数制限を厳守すること（上記テキストレンダリングルール表を参照）。
 - durationは必ず"auto"を指定すること。実際の秒数はナレーション音声長から自動計算される。${textMode === 'strict' ? `
@@ -769,7 +1037,7 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
           return;
         }
 
-        const generatedPrompt = generatePrompt(theme, tone, target, scenes);
+        const generatedPrompt = generatePrompt(theme, tone, target, scenes, seEnabled, tachieEnabled, nekoMode, opEnabled, opText, edEnabled, edText);
 
         const exportData = {
           mode: fullAutoMode ? "auto" : "manual",
@@ -785,6 +1053,7 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
           tempoStyle,
           textMode,
           textModeLabel: textMode === 'manual' ? '完全手動（テロップ・読み上げ個別指定）' : textMode === 'strict' ? '完全固定（テロップ＝読み上げ）' : textMode === 'caption_lock' ? 'テロップ固定（ナレーションのみアレンジ可）' : 'AIアレンジ（自由）',
+          advStyleCaption: format === '16:9' ? advStyleCaption : false,
           defaultSubtitlePosition: getDefaultSubtitlePosition(),
           globalNote: globalNote || null,
           voice: {
@@ -802,16 +1071,24 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
             moodLabel: bgmEnabled ? getBgmLabel(bgmMood) : null,
             musicPrompt: bgmEnabled ? generateMusicPrompt(theme, tone, bgmMood) : null
           },
+          se: {
+            enabled: seEnabled
+          },
+          tachie: { 
+            enabled: tachieEnabled
+          },
           imageGeneration: {
             enabled: imageGenEnabled,
-            engine: "Stable Diffusion Local",
+            engine: "Forge",
             resolution: getResolution(),
             resolutionLabel: getResolutionLabel(),
             nsfw: nsfwEnabled,
             checkpoint: "sd\\CyberRealistic_Pony_v16.0.safetensors",
             checkpointNote: "リアル系デフォルト。アニメ系の場合は適切なモデルに変更すること。",
             qualityPrefix: nsfwEnabled ? "score_9, score_8_up, score_7_up, NSFW, masterpiece, best quality" : "score_9, score_8_up, score_7_up, masterpiece, best quality",
-            negativePrompt: "score_1, score_2, score_3, worst quality, low quality, blurry, deformed, ugly, bad anatomy, extra limbs, text, watermark, signature, mutated, disfigured, bad hands, extra fingers"
+            negativePrompt: nsfwEnabled 
+              ? "score_1, score_2, score_3, worst quality, low quality, blurry, deformed, ugly, bad anatomy, extra limbs, text, watermark, signature, mutated, disfigured, bad hands, extra fingers" 
+              : "nsfw, nude, explicit, cleavage, exposed skin, score_1, score_2, score_3, worst quality, low quality, blurry, deformed, ugly, bad anatomy, extra limbs, text, watermark, signature, mutated, disfigured, bad hands, extra fingers"
           },
           ai_prompt: generatedPrompt,
           scenes: fullAutoMode ? [] : scenes.map((scene, index) => {
@@ -833,6 +1110,23 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
               exportNarration = "AIにお任せ";
             }
 
+            // --- テンプレート定型文の自動結合処理 (完全手動・完全固定モード時) ---
+            // ※ AIアレンジが許可されているモード（arrange, caption_lock）はAIプロンプトで指示するためここでは何もしない
+            const shouldAppendOpEd = (textMode === 'strict' || textMode === 'manual');
+            
+            if (shouldAppendOpEd) {
+               // オープニング: 第1シーンに結合
+               if (index === 0 && opEnabled && opText) {
+                  exportText = exportText && !scene.noText && exportText !== "AIにお任せ" ? `${opText}\n${exportText}` : opText;
+                  exportNarration = exportNarration && exportNarration !== "AIにお任せ" ? `${opText}。${exportNarration}` : opText;
+               }
+               // エンディング: 最終シーンに結合
+               if (index === scenes.length - 1 && edEnabled && edText) {
+                  exportText = exportText && !scene.noText && exportText !== "AIにお任せ" ? `${exportText}\n${edText}` : edText;
+                  exportNarration = exportNarration && exportNarration !== "AIにお任せ" ? `${exportNarration}。${edText}` : edText;
+               }
+            }
+
             let exportMedia = '';
             let imageSourceType = scene.imageSource || 'ai';
             if (imageSourceType === 'ai') {
@@ -851,6 +1145,22 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
               ? exportText.split('\n')
               : null;
 
+            // --- 立ち絵個別設定の判定 ---
+            let isSpeaking = false;
+            if (exportNarration && exportNarration !== "AIにお任せ" && exportNarration.trim() !== "") {
+              isSpeaking = true;
+            }
+            
+            let tachieData = undefined;
+            if (tachieEnabled) {
+              if (!scene.tachieOverride || scene.sceneTachieEnabled !== false) {
+                tachieData = {
+                  folder: "C:\\Users\\tommi\\Desktop\\videoEditor\\neko",
+                  is_speaking: isSpeaking
+                };
+              }
+            }
+
             return {
               sceneNumber: index + 1,
               text: exportText, // テロップ用
@@ -866,7 +1176,15 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
               imageSource: imageSourceType,
               bgStyle: imageSourceType === 'style' ? (scene.bgStyle || 'gradient_dark') : undefined,
               media: exportMedia,
-              sceneNote: scene.sceneNote || null
+              sceneNote: scene.sceneNote || null,
+              voice: scene.voiceOverride ? {
+                character: scene.voiceCharName,
+                speakerId: scene.voiceSpeakerId,
+                speed: scene.voiceSpeed,
+                speedMultiplier: getSpeedMultiplier(scene.voiceSpeed)
+              } : null,
+              // 立ち絵データ（オブジェクトまたはundefined）
+              tachie: tachieData || undefined
             };
           })
         };
@@ -1062,17 +1380,87 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mt-3 border-t border-gray-100 pt-3">
                     <label className="font-bold cursor-pointer flex items-center">
-                      <input type="checkbox" checked={imageGenEnabled} onChange={(e) => setImageGenEnabled(e.target.checked)} className="mr-3 w-5 h-5 accent-blue-600" />
-                      画像生成 (Stable Diffusion)
+                      <input type="checkbox" checked={seEnabled} onChange={(e) => setSeEnabled(e.target.checked)} className="mr-3 w-5 h-5 accent-blue-600" />
+                      効果音 (SE) の自動付与
                     </label>
-                    {imageGenEnabled && (
-                      <label className={`flex items-center cursor-pointer text-sm font-bold px-3 py-1 rounded-lg border-2 transition-all ${nsfwEnabled ? 'bg-pink-600 text-white border-pink-600' : 'bg-white text-gray-500 border-gray-300 hover:border-pink-300'}`}>
-                        <input type="checkbox" checked={nsfwEnabled} onChange={(e) => setNsfwEnabled(e.target.checked)} className="mr-2 w-4 h-4 accent-pink-600" />
-                        NSFW
+                  </div>
+
+                  {/* 立ち絵設定 */}
+                  <div className="flex items-center justify-between mt-3 border-t border-gray-100 pt-3">
+                    <label className="font-bold cursor-pointer flex items-center">
+                      <input type="checkbox" checked={tachieEnabled} onChange={(e) => setTachieEnabled(e.target.checked)} className="mr-3 w-5 h-5 accent-pink-600" />
+                      右下に立ち絵キャラクターを配置する（リップシンク連動・テロップ回避考慮）
+                    </label>
+                  </div>
+
+                  {/* --- 画像生成設定セクション --- */}
+                  <div className="space-y-2 mt-3 border-t border-gray-100 pt-3">
+                    <div className="flex items-center justify-between">
+                      <label className="font-bold cursor-pointer flex items-center">
+                        <input type="checkbox" checked={imageGenEnabled} onChange={(e) => setImageGenEnabled(e.target.checked)} className="mr-3 w-5 h-5 accent-blue-600" />
+                        画像生成 (Stable Diffusion)
                       </label>
-                    )}
+                      {imageGenEnabled && (
+                        <label className={`flex items-center cursor-pointer text-sm font-bold px-3 py-1 rounded-lg border-2 transition-all ${nsfwEnabled ? 'bg-pink-600 text-white border-pink-600' : 'bg-white text-gray-500 border-gray-300 hover:border-pink-300'}`}>
+                          <input type="checkbox" checked={nsfwEnabled} onChange={(e) => setNsfwEnabled(e.target.checked)} className="mr-2 w-4 h-4 accent-pink-600" />
+                          NSFW
+                        </label>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* --- テンプレート・キャラクター設定 --- */}
+                <div className="col-span-1 md:col-span-2 mt-4 bg-orange-50 p-4 rounded-xl border border-orange-200">
+                  <h3 className="text-md font-bold text-orange-800 mb-3 flex items-center">
+                    <span className="mr-2">🐾</span> テンプレート・キャラクター設定
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    {/* 猫モードトグル */}
+                    <label className={`flex items-center font-bold cursor-pointer p-3 rounded-lg border-2 transition-all ${nekoMode ? 'bg-orange-500 text-white border-orange-600 shadow-sm' : 'bg-white text-orange-700 border-orange-300 hover:bg-orange-100'}`}>
+                      <input type="checkbox" checked={nekoMode} onChange={(e) => handleNekoModeChange(e.target.checked)} className="mr-3 w-5 h-5 accent-orange-700" />
+                      🐈 猫キャラ（ニャースちゃんねる）モード
+                      <span className="ml-2 text-xs font-normal">（語尾に「〜にゃ」を付け、元気な猫として解説します）</span>
+                    </label>
+
+                    {/* OP設定 */}
+                    <div className="bg-white p-3 rounded-lg border border-orange-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="font-bold cursor-pointer flex items-center text-gray-700">
+                          <input type="checkbox" checked={opEnabled} onChange={(e) => setOpEnabled(e.target.checked)} className="mr-3 w-4 h-4 accent-blue-600" />
+                          🎬 オープニング定型文を第1シーンに挿入
+                        </label>
+                      </div>
+                      {opEnabled && (
+                        <textarea
+                          value={opText}
+                          onChange={(e) => setOpText(e.target.value)}
+                          className="w-full border-2 border-gray-300 rounded-lg p-2 text-sm focus:border-blue-500 focus:outline-none"
+                          rows="2"
+                        />
+                      )}
+                    </div>
+
+                    {/* ED設定 */}
+                    <div className="bg-white p-3 rounded-lg border border-orange-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="font-bold cursor-pointer flex items-center text-gray-700">
+                          <input type="checkbox" checked={edEnabled} onChange={(e) => setEdEnabled(e.target.checked)} className="mr-3 w-4 h-4 accent-blue-600" />
+                          🏁 エンディング定型文を最終シーンに挿入
+                        </label>
+                      </div>
+                      {edEnabled && (
+                        <textarea
+                          value={edText}
+                          onChange={(e) => setEdText(e.target.value)}
+                          className="w-full border-2 border-gray-300 rounded-lg p-2 text-sm focus:border-blue-500 focus:outline-none"
+                          rows="2"
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -1083,6 +1471,16 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                   </label>
                   <p className="text-xs text-gray-500 mt-2 ml-10">ONにすると、以下のシーン設定をスキップし、テーマのみで一括生成します。</p>
                 </div>
+
+                {format === '16:9' && (
+                  <div className="col-span-1 md:col-span-2 mt-2">
+                    <label className={`flex items-center font-bold cursor-pointer p-4 rounded-lg border-2 transition-all ${advStyleCaption ? 'bg-amber-600 text-white border-amber-600 shadow-md' : 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100'}`}>
+                      <input type="checkbox" checked={advStyleCaption} onChange={(e) => setAdvStyleCaption(e.target.checked)} className="mr-4 w-6 h-6" />
+                      🎮 アドベンチャーゲーム風 解説テロップモード (16:9専用)
+                    </label>
+                    <p className="text-xs text-gray-500 mt-2 ml-10">ONにすると、画面下部に背景が透ける半透明の黒帯（メッセージウィンドウ）を配置し、テキストがはみ出ないよう視認性良く表示するようAIに指示を出します。</p>
+                  </div>
+                )}
 
                 <div className="col-span-1 md:col-span-2 mt-2">
                   <label className="block text-sm font-bold mb-2 text-gray-700">
@@ -1112,13 +1510,87 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                       </span>
                     )}
                   </h2>
-                  <button
-                    onClick={() => setShowImportModal(true)}
-                    className="bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center shadow-sm transition-colors"
-                  >
-                    📋 スプレッドシートから一括作成
-                  </button>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => setShowJsonToTsvModal(true)}
+                      className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center shadow-sm transition-colors"
+                    >
+                      🔄 AI生成JSON → TSV変換
+                    </button>
+                    <button
+                      onClick={() => setShowImportModal(true)}
+                      className="bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center shadow-sm transition-colors"
+                    >
+                      📋 スプレッドシートから一括作成
+                    </button>
+                  </div>
                 </div>
+
+                {/* JSON → TSV変換用モーダル */}
+                {showJsonToTsvModal && (
+                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+                      <div className="flex justify-between items-center mb-4 border-b pb-2">
+                        <h3 className="text-lg font-bold text-gray-800">🔄 AI生成JSON → スプレッドシート(TSV) 変換</h3>
+                        <button onClick={() => { setShowJsonToTsvModal(false); setJsonInput(''); setTsvOutput(''); }} className="text-gray-500 hover:text-gray-700 font-bold text-xl">×</button>
+                      </div>
+                      
+                      <div className="space-y-4 text-sm text-gray-600 bg-blue-50 p-4 rounded-lg border border-blue-100 mb-4">
+                        <p className="font-bold text-blue-800">💡 使い方</p>
+                        <p>
+                          AI（ChatGPT等）が考えて出力してくれた**「台本データのJSONファイル（またはテキスト）」**を入力してください。<br/>
+                          自動でスプレッドシート用の表（TSV）に変換されます。
+                        </p>
+                      </div>
+
+                      {/* ファイルアップロードエリア */}
+                      <div className="mb-4">
+                        <label className="flex items-center justify-center w-full h-16 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors">
+                          <span className="font-bold text-blue-700">📁 JSONファイルをアップロードして変換する</span>
+                          <input type="file" accept=".json" className="hidden" onChange={handleJsonFileUpload} />
+                        </label>
+                      </div>
+
+                      <div className="flex items-center justify-center mb-4">
+                        <span className="text-gray-400 font-bold">—— またはテキストを直接貼り付け ——</span>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-bold text-gray-700 mb-2">1. AIが出力したJSONを貼り付け</label>
+                          <textarea
+                            value={jsonInput}
+                            onChange={(e) => setJsonInput(e.target.value)}
+                            placeholder='[ { "id": "scene_01", "text": "...", "captions": [...] } ]'
+                            className="w-full h-48 border-2 border-gray-300 rounded-lg p-3 font-mono text-xs focus:border-blue-500 focus:outline-none"
+                          />
+                          <button
+                            onClick={() => handleJsonToTsvConvert()}
+                            className="mt-3 w-full px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 shadow-md transition-colors"
+                          >
+                            テキストからTSVに変換 ➔
+                          </button>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-bold text-gray-700 mb-2">2. 変換結果 (スプレッドシートにコピペ)</label>
+                          <textarea
+                            value={tsvOutput}
+                            readOnly
+                            placeholder="ここに変換されたTSVデータが表示されます"
+                            className="w-full h-48 border-2 border-green-300 rounded-lg p-3 font-mono text-xs bg-green-50 focus:outline-none"
+                          />
+                          <button
+                            onClick={() => { navigator.clipboard.writeText(tsvOutput); alert('クリップボードにコピーしました！\nスプレッドシートに貼り付けてください。'); }}
+                            className="mt-3 w-full px-4 py-2 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 shadow-md transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                            disabled={!tsvOutput}
+                          >
+                            📋 クリップボードにコピー
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* インポート用モーダル */}
                 {showImportModal && (
@@ -1159,7 +1631,10 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                 )}
 
                 <div className="space-y-6">
-                  {scenes.map((scene, index) => (
+                  {scenes.map((scene, index) => {
+                    // シーン固有のキャラデータ取得（UI表示用）
+                    const currentSceneSpeaker = VOICEVOX_SPEAKERS.find(s => s.name === scene.voiceCharName);
+                    return (
                     <div key={scene.id} className="border-2 border-gray-200 rounded-xl p-5 bg-gray-50 hover:shadow-md transition-shadow">
                       <div className="flex justify-between items-center mb-4 pb-3 border-b border-gray-200">
                         <h3 className="font-bold text-lg flex items-center text-gray-700">
@@ -1279,6 +1754,102 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                           </label>
                         </div>
 
+                        {/* --- シーン個別ボイス設定UI --- */}
+                        <div className="col-span-1 md:col-span-2">
+                          <div className={`mt-1 p-3 rounded-lg border-2 transition-colors ${scene.voiceOverride ? 'bg-indigo-50 border-indigo-300' : 'bg-white border-gray-200'}`}>
+                            <label className="flex items-center text-sm font-bold cursor-pointer mb-2">
+                              <input
+                                type="checkbox"
+                                checked={scene.voiceOverride || false}
+                                onChange={(e) => updateScene(scene.id, 'voiceOverride', e.target.checked)}
+                                className="mr-2 w-4 h-4 accent-indigo-600"
+                              />
+                              <span className={scene.voiceOverride ? "text-indigo-700" : "text-gray-500"}>
+                                🗣️ このシーンの話者を変更する（掛け合い用）
+                              </span>
+                            </label>
+                            
+                            {scene.voiceOverride && (
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2 pl-4 border-l-4 border-indigo-200">
+                                <div>
+                                  <label className="text-xs font-bold text-gray-500">キャラクター</label>
+                                  <select 
+                                    value={scene.voiceCharName} 
+                                    onChange={(e) => handleSceneCharChange(scene.id, e.target.value)}
+                                    className="w-full border rounded p-1 text-sm"
+                                  >
+                                    {Object.entries(speakersByGender).map(([gender, speakers]) => (
+                                      <optgroup key={gender} label={`── ${gender} ──`}>
+                                        {speakers.map(s => (
+                                          <option key={s.name} value={s.name}>{s.name}</option>
+                                        ))}
+                                      </optgroup>
+                                    ))}
+                                  </select>
+                                </div>
+                                <div>
+                                  <label className="text-xs font-bold text-gray-500">スタイル</label>
+                                  <select 
+                                    value={scene.voiceSpeakerId} 
+                                    onChange={(e) => updateScene(scene.id, 'voiceSpeakerId', Number(e.target.value))}
+                                    className="w-full border rounded p-1 text-sm"
+                                  >
+                                    {currentSceneSpeaker?.styles.map(st => (
+                                      <option key={st.id} value={st.id}>{st.name} (ID:{st.id})</option>
+                                    ))}
+                                  </select>
+                                </div>
+                                <div>
+                                  <label className="text-xs font-bold text-gray-500">速度</label>
+                                  <select 
+                                    value={scene.voiceSpeed} 
+                                    onChange={(e) => updateScene(scene.id, 'voiceSpeed', e.target.value)}
+                                    className="w-full border rounded p-1 text-sm"
+                                  >
+                                    <option value="very_fast">🔥 超早口 (1.4x)</option>
+                                    <option value="fast">⚡ やや早口 (1.2x)</option>
+                                    <option value="normal">🎙️ 標準 (1.0x)</option>
+                                  </select>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* --- 立ち絵個別設定UI --- */}
+                        <div className="col-span-1 md:col-span-2">
+                          <div className={`mt-1 p-3 rounded-lg border-2 transition-colors ${scene.tachieOverride ? 'bg-pink-50 border-pink-300' : 'bg-white border-gray-200'}`}>
+                            <label className="flex items-center text-sm font-bold cursor-pointer mb-2">
+                              <input
+                                type="checkbox"
+                                checked={scene.tachieOverride || false}
+                                onChange={(e) => updateScene(scene.id, 'tachieOverride', e.target.checked)}
+                                className="mr-2 w-4 h-4 accent-pink-600"
+                              />
+                              <span className={scene.tachieOverride ? "text-pink-700" : "text-gray-500"}>
+                                🐈 このシーンの「立ち絵」を個別設定する
+                              </span>
+                            </label>
+                            
+                            {scene.tachieOverride && (
+                              <div className="mt-2 pl-4 border-l-4 border-pink-200">
+                                <label className="flex items-center text-sm font-bold cursor-pointer">
+                                  <input
+                                    type="checkbox"
+                                    checked={scene.sceneTachieEnabled !== false}
+                                    onChange={(e) => updateScene(scene.id, 'sceneTachieEnabled', e.target.checked)}
+                                    className="mr-2 w-4 h-4 accent-pink-600"
+                                  />
+                                  <span className={scene.sceneTachieEnabled !== false ? "text-pink-700" : "text-gray-400 line-through"}>
+                                    立ち絵を表示する
+                                  </span>
+                                </label>
+                                <p className="text-xs text-gray-500 mt-1">チェックを外すとこのシーンのみ立ち絵が消えます</p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
                         <div className="col-span-1 md:col-span-2">
                           <label className="block text-sm font-bold mb-2 text-gray-700">背景画像ソース</label>
                           <div className="flex flex-wrap gap-2 mb-3">
@@ -1389,29 +1960,28 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                           )}
 
                           {scene.imageSource === 'ai' && (
-                            <p className="text-xs text-blue-600 mt-1">Stable Diffusionが自動でシーンに合った画像を生成します</p>
+                            <p className="text-xs text-blue-600 mt-1">Stable Diffusion (Forge) がタグベースで画像を生成します</p>
                           )}
                           {scene.imageSource === 'none' && (
                             <p className="text-xs text-gray-500 mt-1">単色黒背景のみで表示されます</p>
                           )}
                         </div>
 
-                        {/* 備考・シーン指示メモ */}
                         <div className="col-span-1 md:col-span-2">
                           <label className="block text-sm font-bold mb-2 text-gray-700">
-                            備考・指示メモ（※最重要指示）
+                            備考・指示メモ（※最高位の命令）
                             <span className="text-gray-400 font-normal ml-2 text-xs">（例: 「読み上げ: こんにちは」でナレーション強制変更 / 「4秒静止」でテンポ無視）</span>
                           </label>
                           <textarea
                             value={scene.sceneNote}
                             onChange={(e) => updateScene(scene.id, 'sceneNote', e.target.value)}
-                            placeholder="ここに書かれた指示は、全体のテンポ設定やテキストルールよりも優先して適用されます。"
+                            placeholder="ここに書かれた指示は、全体のテンポ設定やテキストルールなど【すべてのルールよりも優先】して絶対的に適用されます。画像生成の細かい指示もここに記述してください。"
                             className="w-full border-2 border-red-200 rounded-lg p-3 h-16 bg-red-50 focus:border-red-400 focus:outline-none transition-colors resize-none text-sm font-bold text-gray-700"
                           />
                         </div>
                       </div>
                     </div>
-                  ))}
+                  )})}
 
                   <button
                     onClick={addScene}
