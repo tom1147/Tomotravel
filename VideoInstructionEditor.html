@@ -21,7 +21,7 @@
   <div id="root"></div>
 
   <script type="text/babel">
-    const { useState, useMemo } = React;
+    const { useState, useMemo, useEffect } = React;
 
     // --- VOICEVOX スピーカー定義（APIから取得した正確なデータ） ---
     const VOICEVOX_SPEAKERS = [
@@ -121,16 +121,151 @@
     ];
 
     const App = () => {
+      // --- GASから画像リストを取得する処理 ---
+      const gasWebAppUrl = 'https://script.google.com/macros/s/AKfycby3_ZuRq9X4pxNVfKMJyO7IUhGjfzuAwg7FJObbHE_UCux6okUGBBgY_-jTqX2U3qQY6A/exec';
+      const [driveImages, setDriveImages] = useState([]);
+      const [driveImagesError, setDriveImagesError] = useState('');
+
+      useEffect(() => {
+        if(!gasWebAppUrl) return;
+        fetch(gasWebAppUrl)
+          .then(res => {
+            if(!res.ok) throw new Error("ネットワークエラーが発生しました");
+            return res.json();
+          })
+          .then(data => {
+            setDriveImages(data);
+            setDriveImagesError('');
+          })
+          .catch(err => {
+            console.error('画像リスト取得エラー:', err);
+            setDriveImagesError('リストが取得できませんでした。GASのデプロイが最新か確認してください。');
+          });
+      }, []);
+
       // --- State定義 ---
+      const [driveBasePath, setDriveBasePath] = useState('C:\\Users\\tommi\\Desktop\\GoogleDrive\\video'); 
       const [theme, setTheme] = useState('');
       const [format, setFormat] = useState('9:16');
       const [tone, setTone] = useState('pop');
       const [target, setTarget] = useState('all');
-
       const [voiceEnabled, setVoiceEnabled] = useState(true);
       const [voiceCharName, setVoiceCharName] = useState('四国めたん');
       const [voiceSpeakerId, setVoiceSpeakerId] = useState(2);
       const [voiceSpeed, setVoiceSpeed] = useState('fast');
+      const [bgmEnabled, setBgmEnabled] = useState(true);
+      const [bgmMood, setBgmMood] = useState('upbeat');
+      const [seEnabled, setSeEnabled] = useState(true);
+      const [tachieEnabled, setTachieEnabled] = useState(false);
+      const [imageGenEnabled, setImageGenEnabled] = useState(true);
+      const [nsfwEnabled, setNsfwEnabled] = useState(false);
+      const [fullAutoMode, setFullAutoMode] = useState(false);
+      const [tempoStyle, setTempoStyle] = useState('tiktok');
+      const [textMode, setTextMode] = useState('arrange');
+      const [resolutionQuality, setResolutionQuality] = useState('standard');
+      const [defaultPosition, setDefaultPosition] = useState('auto');
+      const [advStyleCaption, setAdvStyleCaption] = useState(false);
+      const [globalNote, setGlobalNote] = useState('');
+      const [nekoMode, setNekoMode] = useState(false);
+      const [opEnabled, setOpEnabled] = useState(false);
+      const [opText, setOpText] = useState('こんにちわ！話題のニュースちゃんねるです！本日の話題は…');
+      const [edEnabled, setEdEnabled] = useState(false);
+      const [edText, setEdText] = useState('ご視聴いただきありがとうございました！今後も最新のホットなニュースを毎日配信して行きますので是非ちゃんねる登録、高評価よろしくお願いします！');
+
+      const [scenes, setScenes] = useState([
+        {
+          id: Date.now(),
+          noText: false,
+          text: '',
+          readText: '',
+          emotion: 'auto',
+          position: 'center',
+          narration: true,
+          imageSource: 'ai',
+          mediaAuto: '✨AIが自動生成',
+          mediaFile: '',
+          customImagePath: '',
+          bgStyle: 'gradient_dark',
+          sceneNote: '',
+          voiceOverride: false,
+          voiceCharName: 'ずんだもん',
+          voiceSpeakerId: 3,
+          voiceSpeed: 'fast',
+          tachieOverride: false,
+          sceneTachieEnabled: true
+        }
+      ]);
+
+      // ★★★ 追加: オートセーブ（一時保存）機能 ★★★
+      const [isRestored, setIsRestored] = useState(false);
+
+      // 初回起動時: 保存データがあれば復元
+      useEffect(() => {
+        const savedData = localStorage.getItem('videoEditorSaveData');
+        if (savedData) {
+          // 少しだけ遅延させてから確認ダイアログを出す（画面が白くなるのを防ぐため）
+          setTimeout(() => {
+            if (window.confirm('💾 前回の作業データが残っています。復元しますか？\n（キャンセルを選ぶとデータを破棄して新規作成します）')) {
+              try {
+                const data = JSON.parse(savedData);
+                if (data.theme !== undefined) setTheme(data.theme);
+                if (data.format) setFormat(data.format);
+                if (data.tone) setTone(data.tone);
+                if (data.target) setTarget(data.target);
+                if (data.voiceEnabled !== undefined) setVoiceEnabled(data.voiceEnabled);
+                if (data.voiceCharName) setVoiceCharName(data.voiceCharName);
+                if (data.voiceSpeakerId !== undefined) setVoiceSpeakerId(data.voiceSpeakerId);
+                if (data.voiceSpeed) setVoiceSpeed(data.voiceSpeed);
+                if (data.bgmEnabled !== undefined) setBgmEnabled(data.bgmEnabled);
+                if (data.bgmMood) setBgmMood(data.bgmMood);
+                if (data.seEnabled !== undefined) setSeEnabled(data.seEnabled);
+                if (data.tachieEnabled !== undefined) setTachieEnabled(data.tachieEnabled);
+                if (data.imageGenEnabled !== undefined) setImageGenEnabled(data.imageGenEnabled);
+                if (data.nsfwEnabled !== undefined) setNsfwEnabled(data.nsfwEnabled);
+                if (data.fullAutoMode !== undefined) setFullAutoMode(data.fullAutoMode);
+                if (data.tempoStyle) setTempoStyle(data.tempoStyle);
+                if (data.textMode) setTextMode(data.textMode);
+                if (data.resolutionQuality) setResolutionQuality(data.resolutionQuality);
+                if (data.defaultPosition) setDefaultPosition(data.defaultPosition);
+                if (data.advStyleCaption !== undefined) setAdvStyleCaption(data.advStyleCaption);
+                if (data.globalNote !== undefined) setGlobalNote(data.globalNote);
+                if (data.nekoMode !== undefined) setNekoMode(data.nekoMode);
+                if (data.opEnabled !== undefined) setOpEnabled(data.opEnabled);
+                if (data.opText !== undefined) setOpText(data.opText);
+                if (data.edEnabled !== undefined) setEdEnabled(data.edEnabled);
+                if (data.edText !== undefined) setEdText(data.edText);
+                if (data.driveBasePath !== undefined) setDriveBasePath(data.driveBasePath);
+                if (data.scenes) setScenes(data.scenes);
+              } catch(e) {
+                console.error("セーブデータの復元に失敗しました", e);
+              }
+            } else {
+              localStorage.removeItem('videoEditorSaveData');
+            }
+            setIsRestored(true);
+          }, 100);
+        } else {
+          setIsRestored(true);
+        }
+      }, []);
+
+      // 状態が変更されるたびに自動保存
+      useEffect(() => {
+        if (!isRestored) return; // 復元が完了するまでは上書き保存しない
+        const saveData = {
+          theme, format, tone, target, voiceEnabled, voiceCharName, voiceSpeakerId, voiceSpeed,
+          bgmEnabled, bgmMood, seEnabled, tachieEnabled, imageGenEnabled, nsfwEnabled, fullAutoMode,
+          tempoStyle, textMode, resolutionQuality, defaultPosition, advStyleCaption, globalNote,
+          nekoMode, opEnabled, opText, edEnabled, edText, driveBasePath, scenes
+        };
+        localStorage.setItem('videoEditorSaveData', JSON.stringify(saveData));
+      }, [
+        theme, format, tone, target, voiceEnabled, voiceCharName, voiceSpeakerId, voiceSpeed,
+        bgmEnabled, bgmMood, seEnabled, tachieEnabled, imageGenEnabled, nsfwEnabled, fullAutoMode,
+        tempoStyle, textMode, resolutionQuality, defaultPosition, advStyleCaption, globalNote,
+        nekoMode, opEnabled, opText, edEnabled, edText, driveBasePath, scenes, isRestored
+      ]);
+      // ★★★ 追加ここまで ★★★
 
       // 選択中のキャラクター情報
       const currentSpeaker = useMemo(() => VOICEVOX_SPEAKERS.find(s => s.name === voiceCharName), [voiceCharName]);
@@ -155,30 +290,6 @@
         return groups;
       }, []);
 
-      const [bgmEnabled, setBgmEnabled] = useState(true);
-      const [bgmMood, setBgmMood] = useState('upbeat');
-      const [seEnabled, setSeEnabled] = useState(true); // ★追加機能1: 効果音のオンオフ機能
-      const [tachieEnabled, setTachieEnabled] = useState(false); // ★改修: 立ち絵ムービーのオンオフ機能
-
-      const [imageGenEnabled, setImageGenEnabled] = useState(true);
-
-      const [nsfwEnabled, setNsfwEnabled] = useState(false);
-      const [fullAutoMode, setFullAutoMode] = useState(false);
-
-      const [tempoStyle, setTempoStyle] = useState('tiktok');
-      const [textMode, setTextMode] = useState('arrange');  // arrange | caption_lock | strict | manual
-      const [resolutionQuality, setResolutionQuality] = useState('standard');
-      const [defaultPosition, setDefaultPosition] = useState('auto');
-      const [advStyleCaption, setAdvStyleCaption] = useState(false); // ADV解説テロップ設定
-      const [globalNote, setGlobalNote] = useState('');
-
-      // ★追加: テンプレート定型文 ＆ 猫キャラモード用のState
-      const [nekoMode, setNekoMode] = useState(false);
-      const [opEnabled, setOpEnabled] = useState(false);
-      const [opText, setOpText] = useState('こんにちわ！話題のニュースちゃんねるです！本日の話題は…');
-      const [edEnabled, setEdEnabled] = useState(false);
-      const [edText, setEdText] = useState('ご視聴いただきありがとうございました！今後も最新のホットなニュースを毎日配信して行きますので是非ちゃんねる登録、高評価よろしくお願いします！');
-
       // 猫モードの切り替え時にデフォルトテキストを書き換える処理
       const handleNekoModeChange = (checked) => {
         setNekoMode(checked);
@@ -191,42 +302,12 @@
         }
       };
 
-      // インポート機能用のState
       const [showImportModal, setShowImportModal] = useState(false);
       const [importText, setImportText] = useState('');
-
-      // JSON->TSV変換機能用のState
       const [showJsonToTsvModal, setShowJsonToTsvModal] = useState(false);
       const [jsonInput, setJsonInput] = useState('');
       const [tsvOutput, setTsvOutput] = useState('');
 
-      const [scenes, setScenes] = useState([
-        {
-          id: Date.now(),
-          noText: false,
-          text: '',
-          readText: '', // manualモード用の読み上げテキスト
-          emotion: 'auto',
-          position: 'center',
-          narration: true,
-          imageSource: 'ai',
-          mediaAuto: '✨AIが自動生成',
-          mediaFile: '',
-          customImagePath: '',
-          bgStyle: 'gradient_dark',
-          sceneNote: '',
-          // --- 追加機能: シーン個別ボイス設定 ---
-          voiceOverride: false,
-          voiceCharName: 'ずんだもん',
-          voiceSpeakerId: 3,
-          voiceSpeed: 'fast',
-          // --- 追加機能: 立ち絵個別設定 ---
-          tachieOverride: false,
-          sceneTachieEnabled: true
-        }
-      ]);
-
-      // --- シーン操作 ---
       const addScene = () => {
         setScenes([...scenes, {
           id: Date.now() + Math.random(),
@@ -242,12 +323,10 @@
           customImagePath: '',
           bgStyle: 'gradient_dark',
           sceneNote: '',
-          // --- 追加機能: シーン個別ボイス設定 ---
           voiceOverride: false,
           voiceCharName: 'ずんだもん',
           voiceSpeakerId: 3,
           voiceSpeed: 'fast',
-          // --- 追加機能: 立ち絵個別設定 ---
           tachieOverride: false,
           sceneTachieEnabled: true
         }]);
@@ -261,7 +340,6 @@
         setScenes(scenes.map(s => s.id === id ? { ...s, [field]: value } : s));
       };
 
-      // シーン個別のキャラクター変更時のスタイルリセット
       const handleSceneCharChange = (sceneId, charName) => {
         const speaker = VOICEVOX_SPEAKERS.find(s => s.name === charName);
         setScenes(scenes.map(s => {
@@ -276,7 +354,6 @@
         }));
       };
 
-      // --- スプレッドシート読み込み処理 ---
       const handleSpreadsheetImport = () => {
         if (!importText.trim()) {
           alert('テキストエリアが空です。スプレッドシートからコピーしたデータを貼り付けてください。');
@@ -284,37 +361,24 @@
         }
 
         const lines = importText.trim().split('\n');
-        // ヘッダー行を含めて2行以上あるかチェック
         if (lines.length < 2) {
           alert('データが見つかりません。ヘッダー行を含めてコピーしてください。');
           return;
         }
 
         const newScenes = [];
-        // 1行目はヘッダーとみなし、2行目(index 1)から処理
         for (let i = 1; i < lines.length; i++) {
           const line = lines[i];
           if (!line.trim()) continue;
 
-          // タブ区切りで分割
           const cols = line.split('\t');
-          
-          // 列の割り当て
-          // 0: シーンNo (無視)
-          // 1: テロップ(表示)
-          // 2: 読み上げ(音声)
-          // 3: 備考・指示メモ
-          // 4: 画像ファイルパス
           
           const displayText = cols[1] ? cols[1].trim() : "";
           const voiceText = cols[2] ? cols[2].trim() : "";
           const noteText = cols[3] ? cols[3].trim() : "";
           const imagePath = cols[4] ? cols[4].trim() : "";
 
-          // 読み上げテキストがある場合はナレーションON、なければOFF（ただしmanualモードなのでreadTextが空なら無音扱い）
           const hasVoice = voiceText.length > 0;
-
-          // 画像パスがある場合はソースをcustomにする
           const imageSource = imagePath ? 'custom' : 'ai';
 
           newScenes.push({
@@ -325,18 +389,16 @@
             emotion: 'auto',
             position: 'center',
             narration: true, 
-            imageSource: imageSource, // パスがあればcustom、なければai
+            imageSource: imageSource,
             mediaAuto: '✨AIが自動生成',
-            mediaFile: imagePath ? imagePath.split(/[\\/]/).pop() : '', // ファイル名のみ表示用
-            customImagePath: imagePath, // フルパス
+            mediaFile: imagePath ? imagePath.split(/[\\/]/).pop() : '',
+            customImagePath: imagePath,
             bgStyle: 'gradient_dark',
             sceneNote: noteText,
-            // --- 追加機能: シーン個別ボイス設定初期値 ---
             voiceOverride: false,
             voiceCharName: 'ずんだもん',
             voiceSpeakerId: 3,
             voiceSpeed: 'fast',
-            // --- 追加機能: 立ち絵個別設定 ---
             tachieOverride: false,
             sceneTachieEnabled: true
           });
@@ -345,17 +407,16 @@
         if (newScenes.length > 0) {
           if(confirm(`${newScenes.length}件のシーンを読み込みますか？\n現在のシーンは上書きされます。\nモードは「✍️ 完全手動」に切り替わります。`)) {
             setScenes(newScenes);
-            setTextMode('manual'); // 自動で手動モードへ
-            setFullAutoMode(false); // フルオート解除
-            setShowImportModal(false); // モーダル閉じる
-            setImportText(''); // 入力欄クリア
+            setTextMode('manual');
+            setFullAutoMode(false);
+            setShowImportModal(false);
+            setImportText('');
           }
         } else {
           alert('有効なデータが読み取れませんでした。列の形式を確認してください。');
         }
       };
 
-      // --- JSONファイルアップロード処理 ---
       const handleJsonFileUpload = (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -363,23 +424,20 @@
         const reader = new FileReader();
         reader.onload = (event) => {
           const content = event.target.result;
-          setJsonInput(content); // テキストエリアに反映
-          handleJsonToTsvConvert(content); // 自動で変換を実行
+          setJsonInput(content);
+          handleJsonToTsvConvert(content);
         };
         reader.readAsText(file);
         
-        // 同じファイルを再度選べるようにリセット
         e.target.value = '';
       };
 
-      // --- JSONからTSVへの変換処理（直接テキストを渡せるように改良） ---
       const handleJsonToTsvConvert = (inputText = jsonInput) => {
         if (!inputText.trim()) {
           alert('JSONテキストを入力するか、ファイルをアップロードしてください。');
           return;
         }
         try {
-          // markdownのコードブロックが含まれている場合の処理
           let cleanJson = inputText.trim();
           if (cleanJson.startsWith('```')) {
             cleanJson = cleanJson.replace(/^```(json)?/, '').replace(/```$/, '').trim();
@@ -388,11 +446,10 @@
 
           let targetArray = [];
 
-          // AIが出力した「配列」か、アプリのエクスポートした「指示書」か判定して適切に処理
           if (Array.isArray(data)) {
-            targetArray = data; // AIが生成した台本JSON
+            targetArray = data;
           } else if (data && Array.isArray(data.scenes)) {
-            targetArray = data.scenes; // エディタから保存した設定データの場合
+            targetArray = data.scenes;
             if (targetArray.length === 0) {
                alert('エラー: 読み込んだファイルには「シーンデータ」が入っていません。\nAIが生成した「台本JSON」ではなく、エディタから出力した「指示書（設定ファイル）」を読み込んでいませんか？');
                return;
@@ -413,7 +470,7 @@
             }
             
             let voice = "";
-            if (scene.readText !== undefined) { // 手動モード等での読み上げテキスト
+            if (scene.readText !== undefined) {
                voice = scene.readText ? scene.readText.replace(/\r?\n/g, ' ') : "";
             } else if (scene.text && typeof scene.text === 'string') {
                voice = scene.text.replace(/\r?\n/g, ' ');
@@ -424,7 +481,6 @@
             if (scene.effect && scene.effect !== 'None') note += `Effect: ${scene.effect} `;
             if (scene.sceneNote) note += `Note: ${scene.sceneNote}`;
 
-            // TSV用にタブ文字をスペースに置換
             telop = telop.replace(/\t/g, ' ');
             voice = voice.replace(/\t/g, ' ');
             note = note.replace(/\t/g, ' ');
@@ -438,7 +494,6 @@
         }
       };
 
-      // --- 感情に応じた演出ヒント ---
       const getEmotionHints = (emotionKey) => {
         switch (emotionKey) {
           case 'surprise':
@@ -468,8 +523,6 @@
         }
       };
 
-      // --- フォーマットに応じたテキストガイド ---
-      // duration は音声長から自動計算するため、テキスト制限はフォーマット（9:16 / 16:9）で決定
       const getTextGuide = () => {
         if (format === '16:9') {
           return { maxTitle: 25, maxSubtitle: 28, maxText: 120, maxLines: 4, desc: '16:9横動画: title25文字・text120文字以内' };
@@ -477,7 +530,6 @@
         return { maxTitle: 15, maxSubtitle: 18, maxText: 80, maxLines: 4, desc: '9:16縦動画: title15文字・text80文字以内' };
       };
 
-      // --- ラベル変換ヘルパー ---
       const getTargetLabel = (val) => {
         const map = { all: '全年齢層', teens: '10代・Z世代', business: 'ビジネスパーソン', kids: '子供・ファミリー' };
         return map[val] || val;
@@ -510,7 +562,7 @@
         return resolutionQuality === 'high' ? '1080×1920（Full HD）' : '720×1280（HD）';
       };
       const getDefaultSubtitlePosition = () => {
-        if (advStyleCaption && format === '16:9') return 'bottom'; // ★追加: ADVモードなら強制的に下部
+        if (advStyleCaption && format === '16:9') return 'bottom';
         if (defaultPosition !== 'auto') return defaultPosition;
         return format === '16:9' ? 'bottom' : 'center';
       };
@@ -519,7 +571,6 @@
         return map[val] || val;
       };
 
-      // --- 音楽プロンプト生成（ACE Step 1.5用） ---
       const generateMusicPrompt = (themeText, toneValue, bgmMoodValue) => {
         const moodTemplates = {
           upbeat: {
@@ -561,9 +612,7 @@
         const template = moodTemplates[bgmMoodValue] || moodTemplates.upbeat;
         const boost = toneBoost[toneValue] || '';
 
-        // ACE Step用: tags形式（カンマ区切りタグ列）
         let tags = template.tags + boost;
-        // instrumental指定（歌なしBGM向け）
         tags += ', instrumental, no vocals, background music';
 
         return {
@@ -576,7 +625,6 @@
         };
       };
 
-      // --- プロンプト生成 ---
       const generatePrompt = (themeText, toneValue, targetValue, sceneList, isSeEnabled, isTachieEnabled, isNekoMode, isOpEnabled, opTxt, isEdEnabled, edTxt) => { 
         const guide = getTextGuide();
         const sceneHints = sceneList.map((scene, index) => {
@@ -585,25 +633,21 @@
           
           let textNote = '';
           if (textMode === 'manual') {
-             // Manualモード時のテキスト指定
              textNote = `\n  表示テキスト（テロップ）: 「${scene.text}」`;
              textNote += `\n  読み上げ指定（ナレーション）: ${scene.readText ? `「${scene.readText}」` : '※指定なし（ナレーションなし）'}`;
           } else if (hasText && textMode !== 'arrange') {
              textNote = `\n  ユーザー入力テキスト（${textMode === 'strict' ? '完全固定: テロップ＝ナレーション＝この文字列' : 'テロップ固定: テロップはこの文字列そのまま'}）: 「${scene.text}」`;
           }
           
-          // シーンごとの個別指示メモを絶対的な最高位の命令として埋め込む処理
           const noteContent = scene.sceneNote ? scene.sceneNote.trim() : "";
           const priorityInstruction = noteContent 
             ? `\n  ⚠️⚠️【最高位の命令・特別指示】: "${noteContent}"\n    (※絶対厳守: ここに書かれた内容は、全体のテンポ設定・テキストモード・時間ルールなど【すべてのルールより優先される最高位の命令】です。例えば「読み上げを変えて」とあればその指示に従う。「4秒静止」とあればテンポを無視して4秒止めること。★特に画像生成に関して、備考欄（sceneNote）に書かれた視覚的描写は絶対にpromptフィールドに反映させること。)`
             : "";
           
-          // シーンごとの話者変更を反映
           const voiceNote = scene.voiceOverride 
              ? `\n  🗣️【話者変更】: このシーンの読み上げは「${scene.voiceCharName} (SpeakerID: ${scene.voiceSpeakerId}, 速度: ${getSpeedMultiplier(scene.voiceSpeed)}x)」に変更して生成してください。` 
              : "";
 
-          // ★改修: 立ち絵の個別設定（JSONではnullにする）を反映
           const tachieNote = isTachieEnabled && scene.tachieOverride && scene.sceneTachieEnabled === false
              ? `\n  🐈【立ち絵非表示】: このシーンは個別設定により立ち絵を非表示（tachie=null）にすること。` 
              : "";
@@ -611,7 +655,6 @@
           return `シーン${index + 1} [duration:auto（音声長で自動決定） / テロップ最大${guide.maxText}文字 / 最大${guide.maxLines}行]\n  感情指定: ${scene.emotion} (ヒント: ${getEmotionHints(scene.emotion)})${textNote}${voiceNote}${tachieNote}${priorityInstruction}`;
         }).filter(Boolean).join("\n");
 
-        // ★追加: テンプレート定型文 ＆ 猫キャラモードのAIへのプロンプト指示
         let opEdInstruction = "";
         if (isOpEnabled || isEdEnabled || isNekoMode) {
           opEdInstruction += `\n## 📝 テンプレート・キャラクター設定（絶対厳守）\n`;
@@ -664,7 +707,7 @@
 
 ### 🎭 感情設計（台本の絶対ルール）:
 視聴者の感情を以下の順序で動かすこと。この流れを崩さないこと。
-1. **「え、なにこれ？」**（好奇心・違和感）← 冒頭0〜1秒で必ず作る
+1. **「え、なにこれ？」**（好奇心・違意感）← 冒頭0〜1秒で必ず作る
 2. **「やばい、続き見たい」**（不安・期待・焦り）← 本題前半で煽る
 3. **「そういうことか！」**（納得・カタルシス）← クライマックスで解放
 4. **「人に話したい」**（拡散衝動）← オチに驚き・笑い・共感のどれかを必ず入れる
@@ -686,15 +729,15 @@
 `;
 
         const advStyleInstruction = (advStyleCaption && format === '16:9') ? `
-## 🎮 【特別仕様】アドベンチャーゲーム風 解説テロップモード（最優先）
+## 🎮 【第2位の絶対命令】アドベンチャーゲーム風 解説テロップモード（個別指示の次に優先）
 - この動画は、アドベンチャーゲーム（ノベルゲーム）の会話シーンのような「解説テロップスタイル」で制作します。
+- **テンポ指示や標準のテロップルールよりも、このスタイル指定を優先してください。**
 - **テロップは全て画面下部（bottom）に固定**し、メッセージウィンドウのように配置すること。
 - スタイルは必ず、背景の映像が透けて見える **半透明の黒BOX**（[caption_box] または [elegant_style]）を使用すること。
 - アニメーションは激しいものを避け、**[fadeIn]** や **[typewriter]** を基本とすること。
 - テロップがウィンドウからはみ出さないよう、適切な文字数で改行（\\n）を入れること。
 ` : "";
 
-        // ★改修: 立ち絵（画像フォルダ指定＋口パク判定＋位置・テロップ被り回避）設定指示
         const tachieInstruction = isTachieEnabled ? `
 ## 🐈 立ち絵（リップシンク・瞬き）設定（最優先）
 - 画面右下（**右端ギリギリに寄せる**）に立ち絵キャラクターを固定配置します。下部が少し見切れるように配置すること。
@@ -708,7 +751,6 @@
 - 全体設定で無効化されているため、すべてのシーンの \`tachie\` フィールドは \`null\` に固定すること。
 `;
 
-        // ★改修: ネガティブプロンプト強化およびSDプロンプト厳格化・シネマティック演出のルール
         const imageGenerationRules = `
    - **使用モデル**: Forge (SDXL/Pony)
    - **【絶対厳守】プロンプトのフォーマット（システムエラー防止）**: promptフィールドは必ず「1行のカンマ区切り英単語タグ（Danbooruタグ）」のみで構成すること。改行コード（\\nや\\r）、ピリオド（.）、日本語、および "a man is standing" のような自然言語の文章表現は、画像生成エンジンの致命的なエラーを引き起こすため【絶対に使用禁止】。
@@ -743,7 +785,6 @@
 
 ${opEdInstruction}
 ${tempoInstructions}
-${advStyleInstruction}
 ${tachieInstruction}
 
 # 編集・演出ルール（絶対厳守）
@@ -754,6 +795,8 @@ ${tachieInstruction}
 - もし個別指示で「画像を4秒間静止」とあれば、TikTokテンポ設定（1-3秒制限）を無視して4秒間表示してください。
 - もし個別指示で「無音にする」とあれば、ナレーション設定がONでもそのシーンは text="" としてください。
 - **備考・指示メモの内容は、例外処理として最優先で実装してください。特に画像生成に関する指示は必ずプロンプトに含めてください。**
+
+${advStyleInstruction}
 
 ${textMode !== 'arrange' ? `
 ## テキストモード: ${textMode === 'manual' ? '✍️ 完全手動' : textMode === 'strict' ? '🔒 完全固定' : '📌 テロップ固定'}
@@ -1029,7 +1072,6 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
         `.trim();
       };
 
-      // --- JSONエクスポート ---
       const handleExport = () => {
         if (!theme && fullAutoMode) {
           alert("フルオートモードの場合は、少なくともテーマを入力してください。");
@@ -1094,32 +1136,26 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
             let exportText = scene.text;
             let exportNarration = scene.text;
 
-            // Manualモードの場合、ナレーションはreadTextを使う
             if (textMode === 'manual') {
               exportNarration = scene.readText;
-              // readTextが空の場合はナレーションなしとみなす
               if (!exportNarration || exportNarration.trim() === '') {
                 exportNarration = null; 
               }
             } else if (scene.noText) {
               exportText = null;
-              exportNarration = null; // テキストなしモードならナレーションもなし（通常の挙動）
+              exportNarration = null; 
             } else if (!scene.text || scene.text.trim() === '') {
               exportText = "AIにお任せ";
               exportNarration = "AIにお任せ";
             }
 
-            // --- テンプレート定型文の自動結合処理 (完全手動・完全固定モード時) ---
-            // ※ AIアレンジが許可されているモード（arrange, caption_lock）はAIプロンプトで指示するためここでは何もしない
             const shouldAppendOpEd = (textMode === 'strict' || textMode === 'manual');
             
             if (shouldAppendOpEd) {
-               // オープニング: 第1シーンに結合
                if (index === 0 && opEnabled && opText) {
                   exportText = exportText && !scene.noText && exportText !== "AIにお任せ" ? `${opText}\n${exportText}` : opText;
                   exportNarration = exportNarration && exportNarration !== "AIにお任せ" ? `${opText}。${exportNarration}` : opText;
                }
-               // エンディング: 最終シーンに結合
                if (index === scenes.length - 1 && edEnabled && edText) {
                   exportText = exportText && !scene.noText && exportText !== "AIにお任せ" ? `${exportText}\n${edText}` : edText;
                   exportNarration = exportNarration && exportNarration !== "AIにお任せ" ? `${exportNarration}。${edText}` : edText;
@@ -1138,13 +1174,11 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
               exportMedia = 'なし（単色背景）';
             }
 
-            // 改行を配列として保持（動画側で改行そのまま反映）
             const hasExplicitBreaks = exportText && exportText !== "AIにお任せ" && exportText.includes('\n');
             const textLines = hasExplicitBreaks
               ? exportText.split('\n')
               : null;
 
-            // --- 立ち絵個別設定の判定 ---
             let isSpeaking = false;
             if (exportNarration && exportNarration !== "AIにお任せ" && exportNarration.trim() !== "") {
               isSpeaking = true;
@@ -1162,8 +1196,8 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
 
             return {
               sceneNumber: index + 1,
-              text: exportText, // テロップ用
-              readText: exportNarration, // ナレーション用（JSONに追加）
+              text: exportText, 
+              readText: exportNarration, 
               textLines: textLines,
               preserveLineBreaks: true,
               noText: scene.noText,
@@ -1182,7 +1216,6 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                 speed: scene.voiceSpeed,
                 speedMultiplier: getSpeedMultiplier(scene.voiceSpeed)
               } : null,
-              // 立ち絵データ（オブジェクトまたはundefined）
               tachie: tachieData || undefined
             };
           })
@@ -1215,6 +1248,22 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                {/* ★追加: Googleドライブのベースパス設定欄 */}
+                <div className="col-span-1 md:col-span-2 bg-blue-100/50 p-4 rounded-lg border border-blue-200 mb-2">
+                  <label className="block text-sm font-bold mb-2 text-blue-800">
+                    ☁️ GoogleドライブのPCローカルパス (パソコン版Googleドライブのフォルダパス)
+                  </label>
+                  <input
+                    type="text"
+                    value={driveBasePath}
+                    onChange={(e) => setDriveBasePath(e.target.value)}
+                    placeholder="例: G:\マイドライブ\画像フォルダ"
+                    className="w-full border-2 border-blue-300 rounded-lg p-3 bg-white focus:border-blue-500 focus:outline-none"
+                  />
+                  <p className="text-xs text-blue-600 mt-2 font-bold">※ ドライブ画像選択時、このパスとファイル名が自動結合されてJSONに出力されます。</p>
+                </div>
+
                 <div className="col-span-1 md:col-span-2">
                   <label className="block text-sm font-bold mb-2 text-gray-700">タイトル（テーマ） <span className="text-red-500">*</span></label>
                   <input
@@ -1418,14 +1467,12 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                   </h3>
                   
                   <div className="space-y-4">
-                    {/* 猫モードトグル */}
                     <label className={`flex items-center font-bold cursor-pointer p-3 rounded-lg border-2 transition-all ${nekoMode ? 'bg-orange-500 text-white border-orange-600 shadow-sm' : 'bg-white text-orange-700 border-orange-300 hover:bg-orange-100'}`}>
                       <input type="checkbox" checked={nekoMode} onChange={(e) => handleNekoModeChange(e.target.checked)} className="mr-3 w-5 h-5 accent-orange-700" />
                       🐈 猫キャラ（ニャースちゃんねる）モード
                       <span className="ml-2 text-xs font-normal">（語尾に「〜にゃ」を付け、元気な猫として解説します）</span>
                     </label>
 
-                    {/* OP設定 */}
                     <div className="bg-white p-3 rounded-lg border border-orange-200">
                       <div className="flex items-center justify-between mb-2">
                         <label className="font-bold cursor-pointer flex items-center text-gray-700">
@@ -1443,7 +1490,6 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                       )}
                     </div>
 
-                    {/* ED設定 */}
                     <div className="bg-white p-3 rounded-lg border border-orange-200">
                       <div className="flex items-center justify-between mb-2">
                         <label className="font-bold cursor-pointer flex items-center text-gray-700">
@@ -1542,7 +1588,6 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                         </p>
                       </div>
 
-                      {/* ファイルアップロードエリア */}
                       <div className="mb-4">
                         <label className="flex items-center justify-center w-full h-16 border-2 border-blue-300 border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors">
                           <span className="font-bold text-blue-700">📁 JSONファイルをアップロードして変換する</span>
@@ -1631,7 +1676,6 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
 
                 <div className="space-y-6">
                   {scenes.map((scene, index) => {
-                    // シーン固有のキャラデータ取得（UI表示用）
                     const currentSceneSpeaker = VOICEVOX_SPEAKERS.find(s => s.name === scene.voiceCharName);
                     return (
                     <div key={scene.id} className="border-2 border-gray-200 rounded-xl p-5 bg-gray-50 hover:shadow-md transition-shadow">
@@ -1687,7 +1731,6 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                             </p>
                           )}
 
-                          {/* 読み上げテキスト入力（manualモード時のみ表示） */}
                           {textMode === 'manual' && (
                             <div className="mt-3 border-t border-gray-200 pt-3">
                               <label className="block text-sm font-bold text-purple-700 mb-1">
@@ -1744,7 +1787,7 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                               checked={scene.narration}
                               onChange={(e) => updateScene(scene.id, 'narration', e.target.checked)}
                               className="mr-3 w-5 h-5 accent-blue-600"
-                              disabled={textMode === 'manual'} // manualモード時はテキストボックスの有無で決まるため無効化または連動
+                              disabled={textMode === 'manual'} 
                             />
                             <span className={textMode === 'manual' ? "text-gray-400" : ""}>
                               このシーンを読み上げる
@@ -1881,25 +1924,57 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
                           </div>
 
                           {scene.imageSource === 'custom' && (
-                            <div className="space-y-2">
-                              <input
-                                type="text"
-                                value={scene.customImagePath}
-                                onChange={(e) => updateScene(scene.id, 'customImagePath', e.target.value)}
-                                placeholder="画像ファイルのパスを入力（例: C:\Users\...\image.png）"
-                                className="w-full border-2 border-green-300 rounded-lg p-3 bg-green-50 focus:border-green-500 focus:outline-none"
-                              />
-                              <div className="flex items-center gap-2">
-                                <label className="flex items-center justify-center flex-1 h-12 border-2 border-green-300 border-dashed rounded-lg cursor-pointer bg-green-50 hover:bg-green-100 transition-colors">
-                                  <span className="font-medium text-green-700 text-sm">{scene.mediaFile ? `📎 ${scene.mediaFile}` : "または ファイルを選択..."}</span>
-                                  <input type="file" accept="image/*" className="hidden" onChange={(e) => {
-                                    const file = e.target.files[0];
-                                    if (file) {
-                                      updateScene(scene.id, 'mediaFile', file.name);
-                                      updateScene(scene.id, 'customImagePath', file.name);
+                            <div className="space-y-4">
+                              <div className="bg-green-50 p-3 rounded-lg border border-green-200">
+                                <label className="block text-xs font-bold text-green-800 mb-2">📁 PCのローカル画像を指定</label>
+                                <input
+                                  type="text"
+                                  value={scene.customImagePath}
+                                  onChange={(e) => updateScene(scene.id, 'customImagePath', e.target.value)}
+                                  placeholder="画像ファイルのパスを入力（例: C:\Users\...\image.png）"
+                                  className="w-full border-2 border-green-300 rounded-lg p-2 bg-white focus:border-green-500 focus:outline-none mb-2 text-sm"
+                                />
+                                <div className="flex items-center gap-2">
+                                  <label className="flex items-center justify-center w-full h-10 border-2 border-green-300 border-dashed rounded-lg cursor-pointer bg-white hover:bg-green-100 transition-colors">
+                                    <span className="font-medium text-green-700 text-sm">{scene.mediaFile ? `📎 ${scene.mediaFile}` : "または ファイルを選択..."}</span>
+                                    <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                                      const file = e.target.files[0];
+                                      if (file) {
+                                        updateScene(scene.id, 'mediaFile', file.name);
+                                        updateScene(scene.id, 'customImagePath', file.name);
+                                      }
+                                    }} />
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                                <label className="block text-xs font-bold text-blue-800 mb-2">☁️ Googleドライブから選択（API経由）</label>
+                                
+                                <select
+                                  value={scene.customImagePath.includes(driveBasePath.replace(/\\$/, '')) ? scene.customImagePath.split('\\').pop() : ""}
+                                  onChange={(e) => {
+                                    const selectedName = e.target.value;
+                                    if (!selectedName) {
+                                      updateScene(scene.id, 'customImagePath', '');
+                                      updateScene(scene.id, 'mediaFile', '');
+                                      return;
                                     }
-                                  }} />
-                                </label>
+                                    const base = driveBasePath.replace(/\\$/, '');
+                                    const fullPath = `${base}\\${selectedName}`;
+                                    updateScene(scene.id, 'customImagePath', fullPath);
+                                    updateScene(scene.id, 'mediaFile', selectedName);
+                                  }}
+                                  className="w-full border-2 border-blue-300 rounded-lg p-2 bg-white font-bold text-blue-800 focus:border-blue-500 focus:outline-none text-sm"
+                                >
+                                  <option value="">画像を選択してください...</option>
+                                  {driveImages.map(img => (
+                                    <option key={img.id} value={img.name}>{img.name}</option>
+                                  ))}
+                                </select>
+                                {driveImagesError && (
+                                  <p className="text-xs text-red-500 font-bold mt-1">取得エラー: {driveImagesError}</p>
+                                )}
                               </div>
                             </div>
                           )}
@@ -2012,4 +2087,3 @@ textMode === 'strict' ? `**完全固定モード — 以下を絶対に守るこ
   </script>
 </body>
 </html>
-
