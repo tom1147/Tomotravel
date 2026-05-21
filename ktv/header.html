@@ -1,0 +1,268 @@
+<!-- 共通ヘッダー：newkaimoana.html / indexktv.html と同じ階層に header.html として配置 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style id="tomotabi-shared-header-style">
+  #site-header {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 3000 !important;
+  }
+
+  #header {
+    position: relative !important;
+    top: auto !important;
+    z-index: 3000 !important;
+    width: 100% !important;
+    border-bottom: 1px solid rgba(72, 178, 255, 0.22) !important;
+    background: rgba(2, 8, 20, 0.88) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25) !important;
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  }
+
+  #header * {
+    box-sizing: border-box;
+  }
+
+  #header .container {
+    width: min(1180px, calc(100% - 32px)) !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  #header .header-content {
+    min-height: 72px !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 22px !important;
+    padding: 0 !important;
+    position: relative !important;
+  }
+
+  #header .logo-center {
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    line-height: 1 !important;
+    flex: 0 0 auto !important;
+  }
+
+  #header .logo-center::after {
+    display: none !important;
+  }
+
+  #header a.logo-text {
+    display: inline-flex !important;
+    align-items: baseline !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #f4f7ff !important;
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    font-size: clamp(18px, 2.1vw, 25px) !important;
+    line-height: 1.1 !important;
+    text-decoration: none !important;
+    text-shadow: 0 0 18px rgba(65, 199, 255, 0.22) !important;
+    white-space: nowrap !important;
+    transform: none !important;
+  }
+
+  #header a.logo-text:hover {
+    color: #ffffff !important;
+    transform: none !important;
+  }
+
+  #header .vlog-text {
+    color: #41c7ff !important;
+    font-size: 0.72em !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  #header nav {
+    width: auto !important;
+    flex: 1 1 auto !important;
+  }
+
+  #header .nav-menu {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  #header .nav-menu li {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  #header .nav-menu a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 10px 9px !important;
+    border-radius: 999px !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: #dbe7fb !important;
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease !important;
+    overflow: visible !important;
+    position: relative !important;
+  }
+
+  #header .nav-menu a::before,
+  #header .nav-menu a::after {
+    display: none !important;
+  }
+
+  #header .nav-menu a:hover {
+    color: #ffffff !important;
+    background: rgba(65, 199, 255, 0.12) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  #header .nav-icon,
+  #header .nav-menu i {
+    color: #9de4ff !important;
+    margin: 0 !important;
+    width: 1.1em !important;
+    text-align: center !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+  }
+
+  #header .menu-toggle {
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    border: 1px solid rgba(72, 178, 255, 0.36) !important;
+    border-radius: 12px !important;
+    color: #dbe7fb !important;
+    background: rgba(65, 199, 255, 0.08) !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    position: static !important;
+    transform: none !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  #header .menu-toggle:hover {
+    color: #ffffff !important;
+    background: rgba(65, 199, 255, 0.16) !important;
+  }
+
+  @media (max-width: 920px) {
+    #header .container {
+      width: min(100% - 28px, 720px) !important;
+    }
+
+    #header .header-content {
+      min-height: 64px !important;
+      gap: 14px !important;
+    }
+
+    #header nav#main-nav {
+      position: absolute !important;
+      left: 0 !important;
+      right: 0 !important;
+      top: calc(100% + 8px) !important;
+      display: none !important;
+      width: auto !important;
+      border: 1px solid rgba(72, 178, 255, 0.28) !important;
+      border-radius: 18px !important;
+      background: rgba(3, 11, 26, 0.97) !important;
+      box-shadow: 0 18px 36px rgba(0,0,0,0.36) !important;
+      overflow: hidden !important;
+      padding: 0 !important;
+      max-height: none !important;
+    }
+
+    #header nav#main-nav.is-open,
+    #header nav#main-nav.active {
+      display: block !important;
+    }
+
+    #header .nav-menu {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      justify-content: stretch !important;
+      gap: 0 !important;
+      padding: 10px !important;
+    }
+
+    #header .nav-menu a {
+      width: 100% !important;
+      justify-content: flex-start !important;
+      padding: 13px 12px !important;
+      border-radius: 12px !important;
+      font-size: 13px !important;
+    }
+
+    #header .menu-toggle {
+      display: inline-flex !important;
+    }
+  }
+
+  @media (max-width: 520px) {
+    #header .container {
+      width: min(100% - 22px, 480px) !important;
+    }
+
+    #header a.logo-text {
+      font-size: 17px !important;
+      letter-spacing: 0.04em !important;
+    }
+
+    #header .vlog-text {
+      font-size: 0.68em !important;
+    }
+
+    #header .nav-menu {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<header id="header">
+  <div class="container">
+    <div class="header-content">
+      <div class="logo-center" aria-label="サイトロゴ">
+        <a href="https://tomotravel-pm.com/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
+      </div>
+      <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
+        <ul class="nav-menu">
+          <li><a href="https://tomotravel-pm.com/" aria-label="トップページへ"><i class="fas fa-house nav-icon" aria-hidden="true"></i>トップページ</a></li>
+          <li><a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer" aria-label="YouTubeチャンネルへ"><i class="fab fa-youtube nav-icon" aria-hidden="true"></i>YouTubeチャンネル</a></li>
+          <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
+          <li><a href="https://tomotravel-pm.com/tomogame_v1.0/" aria-label="ゲームへ"><i class="fas fa-gamepad nav-icon" aria-hidden="true"></i>ゲーム</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle" id="menu-toggle" aria-label="メニューを開閉" role="button" tabindex="0">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</header>
