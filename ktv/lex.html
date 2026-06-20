@@ -18,7 +18,17 @@
   <meta name="twitter:title" content="LEX Music Lounge｜マニラ・マラテの日本式KTV（JTV）" />
   <meta name="twitter:description" content="マニラ・マラテの日本式KTV（JTV）「LEX Music Lounge」の雰囲気、料金、メニュー、アクセスを紹介。" />
   <meta name="twitter:image" content="https://tomotravel-pm.com/ktv/assets/party.webp" />
+  <meta property="og:video" content="https://www.youtube.com/embed/5mqi8FUpd6g" />
+  <meta property="og:video:secure_url" content="https://www.youtube.com/embed/5mqi8FUpd6g" />
+  <meta property="og:video:type" content="text/html" />
+  <meta property="og:video:width" content="1280" />
+  <meta property="og:video:height" content="720" />
+  <meta name="twitter:player" content="https://www.youtube.com/embed/5mqi8FUpd6g" />
+  <meta name="twitter:player:width" content="1280" />
+  <meta name="twitter:player:height" content="720" />
   <meta name="theme-color" content="#0b0614" />
+  <link rel="preconnect" href="https://www.youtube.com" />
+  <link rel="preconnect" href="https://i.ytimg.com" />
   <link rel="preload" as="image" href="assets/party.webp" />
   <style>
     :root{
@@ -501,51 +511,131 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "NightClub",
-    "name": "LEX Music Lounge",
-    "alternateName": "LEX Music Lounge Malate",
-    "description": "フィリピン・マニラのマラテにある日本式KTV（JTV）。ブルーネオンが印象的な店内で、音楽、お酒、マラテの夜の雰囲気を楽しめる店舗です。",
-    "url": "https://tomotravel-pm.com/ktv/lex.html",
-    "image": "https://tomotravel-pm.com/ktv/assets/party.webp",
-    "telephone": "09530650690",
-    "priceRange": "₱₱",
-    "servesCuisine": "Drinks",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "522 Alonzo St, Malate",
-      "addressLocality": "Manila",
-      "addressRegion": "Metro Manila",
-      "postalCode": "1004",
-      "addressCountry": "PH"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "address": "522 Alonzo St, Malate, Manila, 1004 Metro Manila, Philippines"
-    },
-    "areaServed": [
-      "Malate",
-      "Manila",
-      "Metro Manila"
-    ],
-    "openingHoursSpecification": [
+    "@graph": [
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
+        "@type": "WebPage",
+        "@id": "https://tomotravel-pm.com/ktv/lex.html#webpage",
+        "url": "https://tomotravel-pm.com/ktv/lex.html",
+        "name": "LEX Music Lounge｜マニラ・マラテの日本式KTV（JTV）紹介",
+        "description": "フィリピン・マニラのマラテにある日本式KTV（JTV）「LEX Music Lounge」の紹介ページ。ブルーネオンが印象的な店内の雰囲気、料金システム、ドリンクメニュー、アクセス、公式SNS情報をまとめています。",
+        "inLanguage": "ja",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://tomotravel-pm.com/ktv/assets/party.webp"
+        },
+        "about": {
+          "@id": "https://tomotravel-pm.com/ktv/lex.html#business"
+        },
+        "breadcrumb": {
+          "@id": "https://tomotravel-pm.com/ktv/lex.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://tomotravel-pm.com/ktv/lex.html#video-5mqi8FUpd6g"
+        }
+      },
+      {
+        "@type": "NightClub",
+        "@id": "https://tomotravel-pm.com/ktv/lex.html#business",
+        "name": "LEX Music Lounge",
+        "alternateName": "LEX Music Lounge Malate",
+        "description": "フィリピン・マニラのマラテにある日本式KTV（JTV）。ブルーネオンが印象的な店内で、音楽、お酒、マラテの夜の雰囲気を楽しめる店舗です。",
+        "url": "https://tomotravel-pm.com/ktv/lex.html",
+        "image": [
+          "https://tomotravel-pm.com/ktv/assets/party.webp",
+          "https://tomotravel-pm.com/ktv/assets/lounge-01.webp",
+          "https://tomotravel-pm.com/ktv/assets/lounge-02.webp",
+          "https://tomotravel-pm.com/ktv/assets/exterior.webp",
+          "https://tomotravel-pm.com/ktv/assets/drinks.webp"
         ],
-        "opens": "19:00",
-        "closes": "03:00"
+        "telephone": "09530650690",
+        "priceRange": "₱₱",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "522 Alonzo St, Malate",
+          "addressLocality": "Manila",
+          "addressRegion": "Metro Manila",
+          "postalCode": "1004",
+          "addressCountry": "PH"
+        },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=522%20Alonzo%20St%2C%20Malate%2C%20Manila%2C%201004%20Metro%20Manila%2C%20Philippines",
+        "areaServed": [
+          "Malate",
+          "Manila",
+          "Metro Manila"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "19:00",
+            "closes": "03:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.tiktok.com/@lex.music.lounge",
+          "https://www.facebook.com/profile.php?id=61581105310403",
+          "https://line.me/ti/p/Mm56vaXdLX"
+        ],
+        "mainEntityOfPage": {
+          "@id": "https://tomotravel-pm.com/ktv/lex.html#webpage"
+        }
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://tomotravel-pm.com/ktv/lex.html#video-5mqi8FUpd6g",
+        "name": "【マニラ夜遊び】これは惚れる…マラテのKTVの実態とは！？【LEX Music Lounge】",
+        "description": "とも旅ちゃんねるによる、マニラ・マラテの日本式KTV（JTV）「LEX Music Lounge」の紹介動画です。",
+        "thumbnailUrl": "https://i.ytimg.com/vi/5mqi8FUpd6g/maxresdefault.jpg",
+        "uploadDate": "2026-06-20T02:00:01-07:00",
+        "duration": "PT23M27S",
+        "embedUrl": "https://www.youtube.com/embed/5mqi8FUpd6g",
+        "url": "https://youtu.be/5mqi8FUpd6g",
+        "inLanguage": "ja",
+        "isFamilyFriendly": true,
+        "author": {
+          "@type": "Organization",
+          "name": "とも旅ちゃんねる【海外ひとり旅】Tomo travel (Purple Moon)",
+          "url": "https://www.youtube.com/@TomoTravel-PM"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://tomotravel-pm.com/ktv/lex.html#webpage"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://tomotravel-pm.com/ktv/lex.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "ホーム",
+            "item": "https://tomotravel-pm.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "フィリピンKTV紹介",
+            "item": "https://tomotravel-pm.com/ktv/indexktv"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "LEX Music Lounge",
+            "item": "https://tomotravel-pm.com/ktv/lex.html"
+          }
+        ],
+        "mainEntityOfPage": {
+          "@id": "https://tomotravel-pm.com/ktv/lex.html#webpage"
+        }
       }
-    ],
-    "sameAs": [
-      "https://www.tiktok.com/@lex.music.lounge",
-      "https://www.facebook.com/profile.php?id=61581105310403"
     ]
   }
   </script>
@@ -593,7 +683,7 @@
           </div>
         </div>
         <aside class="hero-video" id="movie" aria-label="LEX Music Lounge YouTube video">
-          <div class="youtube-embed" data-youtube-id="">
+          <div class="youtube-embed" data-youtube-id="5mqi8FUpd6g">
             <div class="video-placeholder">
               <div>
                 <span class="play-mark" aria-hidden="true"></span>
