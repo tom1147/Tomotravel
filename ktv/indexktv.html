@@ -576,6 +576,174 @@
       color: #9af4ff;
     }
 
+    .map-section {
+      margin: 34px 0 8px;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid rgba(72, 178, 255, 0.46);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(244, 114, 182, 0.13), transparent 34%),
+        radial-gradient(circle at 82% 14%, rgba(65, 199, 255, 0.15), transparent 36%),
+        linear-gradient(135deg, rgba(8, 22, 42, 0.96), rgba(4, 12, 26, 0.98));
+      box-shadow:
+        var(--shadow),
+        inset 0 0 35px rgba(65, 199, 255, 0.05);
+    }
+
+    .map-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .map-kicker {
+      margin: 0 0 8px;
+      color: #77dfff;
+      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .map-intro h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      line-height: 1.35;
+    }
+
+    .map-intro p {
+      margin: 10px 0 0;
+      color: #cbd8ef;
+      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 14.5px;
+      line-height: 1.8;
+    }
+
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    }
+
+    .map-legend a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 9px 13px;
+      border: 1px solid rgba(72, 178, 255, 0.34);
+      border-radius: 999px;
+      background: rgba(2, 8, 20, 0.54);
+      color: #eef7ff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .map-legend a:hover,
+    .map-legend a:focus-visible {
+      border-color: rgba(72, 178, 255, 0.86);
+      box-shadow: 0 0 18px rgba(65, 199, 255, 0.22);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .map-scroll {
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-color: rgba(72, 178, 255, 0.7) rgba(255, 255, 255, 0.08);
+    }
+
+    .map-frame {
+      position: relative;
+      width: min(100%, 1040px);
+      min-width: 760px;
+      margin: 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #020814;
+      box-shadow:
+        0 22px 46px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(72, 178, 255, 0.32);
+      aspect-ratio: 1 / 1;
+    }
+
+    .map-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .map-hotspot {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      min-width: var(--tap-w, 78px);
+      min-height: 32px;
+      padding: 0 10px;
+      border: 1px solid color-mix(in srgb, var(--hotspot, #4ee4ff) 78%, white 10%);
+      border-radius: 999px;
+      background: rgba(2, 8, 20, 0.82);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.14),
+        0 0 18px color-mix(in srgb, var(--hotspot, #4ee4ff) 54%, transparent),
+        inset 0 0 14px color-mix(in srgb, var(--hotspot, #4ee4ff) 18%, transparent);
+      color: #ffffff;
+      font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-shadow: 0 0 9px rgba(255, 255, 255, 0.48);
+      transform: translate(-50%, -50%);
+      transition:
+        background 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+    }
+
+    .map-hotspot::before {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border: 1px solid color-mix(in srgb, var(--hotspot, #4ee4ff) 58%, transparent);
+      border-radius: inherit;
+      box-shadow:
+        0 0 12px color-mix(in srgb, var(--hotspot, #4ee4ff) 42%, transparent),
+        inset 0 0 10px color-mix(in srgb, var(--hotspot, #4ee4ff) 12%, transparent);
+      pointer-events: none;
+    }
+
+    .map-hotspot::after {
+      content: attr(data-label);
+      position: relative;
+      z-index: 1;
+    }
+
+    .map-hotspot:hover,
+    .map-hotspot:focus-visible {
+      background: color-mix(in srgb, var(--hotspot, #4ee4ff) 30%, rgba(2, 8, 20, 0.86));
+      box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.34),
+        0 0 28px color-mix(in srgb, var(--hotspot, #4ee4ff) 74%, transparent),
+        inset 0 0 18px color-mix(in srgb, var(--hotspot, #4ee4ff) 26%, transparent);
+      transform: translate(-50%, -50%) scale(1.06);
+      outline: none;
+    }
+
     .section-head {
       display: flex;
       align-items: center;
@@ -1000,6 +1168,19 @@
         padding-top: 46px;
       }
 
+      .map-intro {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .map-legend {
+        justify-content: flex-start;
+      }
+
+      .map-frame {
+        min-width: 720px;
+      }
+
       .featured-card {
         grid-template-columns: 1fr;
         gap: 22px;
@@ -1035,6 +1216,21 @@
 
       .featured-card {
         padding: 12px;
+      }
+
+      .map-section {
+        margin-top: 26px;
+        padding: 14px;
+      }
+
+      .map-frame {
+        min-width: 680px;
+      }
+
+      .map-legend a {
+        min-height: 36px;
+        padding: 8px 11px;
+        font-size: 12px;
       }
 
       .thumb-main {
@@ -1121,6 +1317,69 @@
         </a>
       </div>
     </article>
+
+    <section class="map-section" aria-labelledby="malate-map-heading">
+      <div class="map-intro">
+        <div>
+          <p class="map-kicker">MALATE JTV MAP</p>
+          <h2 id="malate-map-heading">マラテの地図からお店を選ぶ</h2>
+          <p>
+            地図上の光っている店舗名をクリックすると、紹介記事や公式サイトへ移動できます。
+            位置関係を見ながら気になるお店をチェックしてみてください。
+          </p>
+        </div>
+        <nav class="map-legend" aria-label="地図から選べる店舗">
+          <a href="https://tomotravel-pm.com/ktv/newkaimoana">NEW KAI</a>
+          <a href="https://tomotravel-pm.com/ktv/lex.html">LEX KTV</a>
+          <a href="https://tomotravel-pm.com/ktv/charm">CHARM</a>
+          <a href="https://k-amigo.com/" target="_blank" rel="noopener noreferrer">K.AMIGO</a>
+        </nav>
+      </div>
+
+      <div class="map-scroll" aria-label="マラテJTV地図">
+        <div class="map-frame">
+          <img
+            src="assets/maps/malate-jtv-map-neon.png"
+            alt="マラテJTVマップ。NEW KAI、LEX KTV、CHARM、K.AMIGOの位置をクリックできます。"
+            loading="lazy"
+          >
+          <a
+            class="map-hotspot"
+            href="https://k-amigo.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="K.AMIGO公式HPを見る"
+            title="K.AMIGO公式HPを見る"
+            data-label="K.AMIGO"
+            style="--x:68.9%; --y:25.6%; --tap-w:82px; --hotspot:#ff4fb8;"
+          ></a>
+          <a
+            class="map-hotspot"
+            href="https://tomotravel-pm.com/ktv/newkaimoana"
+            aria-label="New Kai Moana紹介記事を読む"
+            title="New Kai Moana紹介記事を読む"
+            data-label="NEW KAI"
+            style="--x:69.0%; --y:54.2%; --tap-w:78px; --hotspot:#ff4fb8;"
+          ></a>
+          <a
+            class="map-hotspot"
+            href="https://tomotravel-pm.com/ktv/lex.html"
+            aria-label="LEX Music Lounge紹介記事を読む"
+            title="LEX Music Lounge紹介記事を読む"
+            data-label="LEX KTV"
+            style="--x:43.4%; --y:60.5%; --tap-w:82px; --hotspot:#b9d7ff;"
+          ></a>
+          <a
+            class="map-hotspot"
+            href="https://tomotravel-pm.com/ktv/charm"
+            aria-label="Charm Music Lounge紹介記事を読む"
+            title="Charm Music Lounge紹介記事を読む"
+            data-label="CHARM"
+            style="--x:64.7%; --y:68.2%; --tap-w:76px; --hotspot:#ffd45a;"
+          ></a>
+        </div>
+      </div>
+    </section>
 
     <section class="articles" aria-label="新着・おすすめ記事">
       <div class="section-head">
@@ -1231,7 +1490,7 @@
           >
             <img
               class="site-thumb-img"
-              src="/ktv/images/amigo.jpg"
+              src="images/amigo.jpg"
               alt="K.AMIGO 公式HPのメイン画像"
               loading="lazy"
             >
