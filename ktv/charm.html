@@ -119,14 +119,6 @@
         animation: heroDrift 18s ease-in-out infinite alternate;
       }
 
-      .youtube-frame::before {
-        animation: scanGlow 4.8s ease-in-out infinite;
-      }
-
-      .play-mark {
-        animation: playPulse 2.8s ease-in-out infinite;
-      }
-
       .mood-photo.one,
       .mood-photo.three {
         animation: photoFloat 7s ease-in-out infinite alternate;
@@ -141,16 +133,6 @@
     @keyframes heroDrift {
       from { transform: scale(1.02) translate3d(0, 0, 0); }
       to { transform: scale(1.06) translate3d(-14px, 8px, 0); }
-    }
-
-    @keyframes scanGlow {
-      0%, 100% { opacity: .18; transform: translateX(-38%); }
-      50% { opacity: .48; transform: translateX(34%); }
-    }
-
-    @keyframes playPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 28px rgba(214,170,77,.24); }
-      50% { transform: scale(1.045); box-shadow: 0 0 48px rgba(255,226,167,.34), 0 0 40px rgba(9,43,120,.42); }
     }
 
     @keyframes photoFloat {
@@ -366,111 +348,85 @@
     .youtube-showcase {
       position: relative;
       align-self: center;
+      margin: 0;
+      padding: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 226, 167, .36);
+      border-radius: calc(var(--radius) + 8px);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.025)),
+        rgba(2,5,18,.78);
+      box-shadow: 0 34px 90px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(18px);
+    }
+
+    .youtube-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 8px 8px 16px;
+    }
+
+    .youtube-heading-copy { min-width: 0; }
+
+    .youtube-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--gold-soft);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .youtube-heading h2 {
+      margin: 0;
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(20px, 2vw, 29px);
+      line-height: 1.2;
+      word-break: keep-all;
+    }
+
+    .youtube-open {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 15px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(255,255,255,.07);
+      font-size: 12px;
+      font-weight: 900;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .youtube-open:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 226, 167, .62);
+      background: rgba(255, 226, 167, .12);
     }
 
     .youtube-frame {
       position: relative;
       overflow: hidden;
-      min-height: 390px;
+      aspect-ratio: 16 / 9;
+      min-height: 0;
       border-radius: var(--radius);
-      border: 1px solid rgba(255, 226, 167, .35);
-      box-shadow: 0 34px 90px rgba(0,0,0,.48);
+      border: 1px solid rgba(255, 226, 167, .28);
+      box-shadow: 0 22px 52px rgba(0,0,0,.46);
       background: var(--black);
     }
 
-    .youtube-frame img {
+    .youtube-frame iframe {
+      display: block;
       width: 100%;
       height: 100%;
-      min-height: 390px;
-      object-fit: cover;
-      filter: saturate(1.18) contrast(1.04);
-    }
-
-    .youtube-frame::before {
-      content: "";
-      position: absolute;
-      inset: -20% -45%;
-      z-index: 1;
-      pointer-events: none;
-      background: linear-gradient(100deg, transparent 0 43%, rgba(255,226,167,.2) 49%, transparent 56% 100%);
-      opacity: .22;
-      mix-blend-mode: screen;
-    }
-
-    .youtube-frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(90deg, rgba(5,1,11,.82), rgba(5,1,11,.28) 58%, rgba(5,1,11,.55)),
-        linear-gradient(180deg, rgba(5,1,11,.12), rgba(5,1,11,.82));
-    }
-
-    .youtube-copy {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 28px;
-      z-index: 2;
-      max-width: 590px;
-    }
-
-    .youtube-label {
-      color: var(--gold-soft);
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .youtube-copy h2 {
-      margin: 8px 0 0;
-      color: #fff;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 38px;
-      line-height: 1.02;
-      word-break: keep-all;
-      text-shadow: 0 10px 34px rgba(0,0,0,.64);
-    }
-
-    .youtube-copy p {
-      margin: 14px 0 0;
-      color: #eadff2;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .youtube-actions {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .play-mark {
-      position: absolute;
-      z-index: 3;
-      right: 28px;
-      top: 28px;
-      width: 78px;
-      height: 78px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.52);
-      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
-      box-shadow: 0 0 38px rgba(214,170,77,.3), 0 0 28px rgba(9,43,120,.32);
-    }
-
-    .play-mark::before {
-      content: "";
-      position: absolute;
-      left: 31px;
-      top: 24px;
-      width: 0;
-      height: 0;
-      border-top: 15px solid transparent;
-      border-bottom: 15px solid transparent;
-      border-left: 22px solid #150018;
+      border: 0;
     }
 
     .section-pad { padding: 98px 0; }
@@ -978,8 +934,6 @@
         grid-template-columns: 1fr;
       }
       h1 { font-size: 76px; }
-      .youtube-frame,
-      .youtube-frame img { min-height: 430px; }
       .mood-collage { min-height: 1100px; }
       .mood-photo.one { width: 58%; height: 560px; }
       .mood-photo.two { left: auto; right: 0; width: 38%; height: 380px; }
@@ -1000,26 +954,14 @@
       .hero-subtitle { font-size: 14px; }
       .hero-lead { font-size: 14px; }
       .hero-actions .btn { width: 100%; }
-      .youtube-frame,
-      .youtube-frame img { min-height: 340px; }
-      .youtube-copy {
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
+      .youtube-showcase { padding: 8px; }
+      .youtube-heading {
+        align-items: flex-start;
+        padding: 7px 6px 13px;
       }
-      .youtube-copy h2 { font-size: 31px; }
-      .play-mark {
-        width: 60px;
-        height: 60px;
-        right: 18px;
-        top: 18px;
-      }
-      .play-mark::before {
-        left: 24px;
-        top: 18px;
-        border-top-width: 12px;
-        border-bottom-width: 12px;
-        border-left-width: 18px;
+      .youtube-open {
+        min-height: 36px;
+        padding-inline: 12px;
       }
       .section-pad,
       .article,
@@ -1073,7 +1015,10 @@
     @media (max-width: 420px) {
       h1 { font-size: 42px; }
       .hero-logo { width: 52px; height: 52px; }
-      .youtube-copy h2 { font-size: 28px; }
+      .youtube-heading {
+        flex-direction: column;
+        gap: 10px;
+      }
       .section-intro h2,
       .article-body h2,
       .access-copy h2,
@@ -1130,7 +1075,7 @@
       "description": "マニラ・マラテのKTV/JTV（日本式KTV）「Charm KTV Malate（Charm Music Lounge）」を紹介。料金システム、店内写真、LINE問い合わせ、アクセス、Manila Crown Palace Hotel 3階の場所を案内します。",
       "inLanguage": "ja",
       "datePublished": "2026-06-04T18:00:00+09:00",
-      "dateModified": "2026-06-05T18:00:00+09:00",
+      "dateModified": "2026-08-08T18:00:00+09:00",
       "isPartOf": {
         "@id": "https://tomotravel-pm.com/#website"
       },
@@ -1178,7 +1123,7 @@
       "description": "マニラ・マラテのKTV/JTV（日本式KTV）「Charm KTV Malate（Charm Music Lounge）」を紹介。料金システム、店内写真、LINE問い合わせ、アクセスをまとめています。",
       "inLanguage": "ja",
       "datePublished": "2026-06-04T18:00:00+09:00",
-      "dateModified": "2026-06-05T18:00:00+09:00",
+      "dateModified": "2026-08-08T18:00:00+09:00",
       "author": {
         "@id": "https://tomotravel-pm.com/#organization"
       },
@@ -1499,22 +1444,24 @@
           </div>
         </div>
 
-        <div class="youtube-showcase" id="youtube" aria-label="YouTube動画紹介枠" data-animate style="--delay: 120ms">
-          <div class="youtube-frame" data-youtube-slot>
-            <!-- YouTube動画公開後は、この枠にiframeを差し込みます。 -->
-            <img src="assets2/6.png" alt="ステージとバーカウンターが見えるCharm Music Lounge（マラテKTV）の店内" />
-            <span class="play-mark" aria-hidden="true"></span>
-            <div class="youtube-copy">
+        <figure class="youtube-showcase" id="youtube" aria-labelledby="youtube-title" data-animate style="--delay: 120ms">
+          <figcaption class="youtube-heading">
+            <div class="youtube-heading-copy">
               <span class="youtube-label">Tomo Travel Channel</span>
-              <h2>とも旅ちゃんねるで紹介予定です。</h2>
-              <p>動画では、店内の雰囲気やアクセスをわかりやすく紹介予定です。</p>
-              <div class="youtube-actions" aria-label="YouTubeリンク">
-                <a class="btn blue" href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener">チャンネルを見る</a>
-                <span class="btn ghost" aria-disabled="true">紹介動画は準備中</span>
-              </div>
+              <h2 id="youtube-title">Charm Music Loungeを動画で紹介</h2>
             </div>
+            <a class="youtube-open" href="https://youtu.be/uf67dP5Cg70" target="_blank" rel="noopener noreferrer" aria-label="Charm Music Loungeの紹介動画をYouTubeで開く">YouTubeで見る ↗</a>
+          </figcaption>
+          <div class="youtube-frame" data-youtube-slot>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/uf67dP5Cg70?rel=0"
+              title="Charm Music Lounge（マラテKTV）紹介動画"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
           </div>
-        </div>
+        </figure>
       </div>
     </section>
 
