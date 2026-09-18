@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // placeholderId: HTMLを挿入する要素のID
     // callback: 読み込み完了後に実行する関数
     const loadHTML = (url, placeholderId, callback) => {
+        const existing = document.getElementById(placeholderId);
+        if (existing && existing.children.length) {
+            if (callback) callback();
+            return;
+        }
         console.log(`Attempting to load: ${url} into #${placeholderId}`);
         // fetchは指定されたURL(絶対パス)でファイルをリクエストする
         fetch(url)
