@@ -1,0 +1,27 @@
+# Shared HTML fragments are still fetchable but are not standalone search results.
+/blog/header*
+  X-Robots-Tag: noindex, follow
+/blog/footer*
+  X-Robots-Tag: noindex, follow
+/blog/sidebar*
+  X-Robots-Tag: noindex, follow
+/ktv/header*
+  X-Robots-Tag: noindex, follow
+/test
+  X-Robots-Tag: noindex, follow
+/test.html
+  X-Robots-Tag: noindex, follow
+/shinsa
+  X-Robots-Tag: noindex, follow
+/shinsa.html
+  X-Robots-Tag: noindex, follow
+/404.html
+  X-Robots-Tag: noindex, follow
+/scripts/*
+  X-Robots-Tag: noindex, nofollow
+/artifacts/*
+  X-Robots-Tag: noindex, nofollow
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+/llms.txt
+  Content-Type: text/plain; charset=utf-8

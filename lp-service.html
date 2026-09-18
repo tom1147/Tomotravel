@@ -12,15 +12,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LP作成サービス詳細 | とも旅ちゃんねるVLOG</title>
-    <meta name="description" content="月額無料のLP作成サービス。あなたのビジネスに最適なランディングページを作成します。">
+
     <meta name="keywords" content="LP作成, ランディングページ, GitHub, 無料LP, ウェブ制作">
-    <meta property="og:title" content="LP作成サービス詳細 | とも旅ちゃんねるVLOG">
-    <meta property="og:description" content="月額無料のLP作成代行サービス。あなたのビジネスに最適なランディングページを作成します。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tomotabi-channel.com/lp-service.html">
-    <meta property="og:image" content="https://tomotabi-channel.com/images/ogp.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="https://tomotabi-channel.com/lp-service.html">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -43,17 +37,17 @@
             --transition-fast: 0.3s ease;
             --transition-medium: 0.5s ease;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         .hidden {
             display: none;
         }
-        
+
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
@@ -61,19 +55,19 @@
             font-family: 'Noto Sans JP', sans-serif;
             overflow-x: hidden;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: var(--container-padding);
         }
-        
+
         /* ===== TYPOGRAPHY ===== */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', 'Noto Sans JP', sans-serif;
             line-height: 1.3;
         }
-        
+
         h2 {
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
@@ -81,7 +75,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         h2::after {
             content: '';
             position: absolute;
@@ -93,17 +87,17 @@
             border-radius: 2px;
             transition: width var(--transition-medium);
         }
-        
+
         section:hover h2::after {
             width: 100%;
         }
-        
+
         p {
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
             color: var(--text-dark);
         }
-        
+
 /* ===== HEADER ===== */
 header {
     background-color: rgba(255, 255, 255, 0.95);
@@ -203,7 +197,7 @@ header.scrolled {
 nav {
     width: 100%;
 }
-        
+
 nav ul {
     display: flex;
     list-style: none;
@@ -259,38 +253,38 @@ nav ul li a:hover::before {
     .header-content {
         position: relative;
     }
-    
+
     .menu-toggle {
         display: block;
     }
-    
+
     nav#main-nav {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease;
         width: 100%;
     }
-    
+
     nav#main-nav.active {
         max-height: 500px;
     }
-    
+
     nav ul.nav-menu {
         flex-direction: column;
         padding: 10px 0;
     }
-    
+
     nav ul.nav-menu li {
         width: 100%;
         text-align: center;
     }
-    
+
     nav ul.nav-menu li a {
         padding: 12px;
         width: 100%;
         display: block;
     }
-    
+
     .logo-center {
         margin-bottom: 5px;
     }
@@ -306,50 +300,50 @@ nav ul li a:hover::before {
             margin-bottom: var(--section-space);
             position: relative;
         }
-        
+
         .page-header h1 {
             font-size: 2.8rem;
             margin-bottom: 20px;
             color: white;
             text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        
+
         .page-header p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 30px;
             color: rgba(255,255,255,0.9);
         }
-        
+
         .breadcrumb {
             display: flex;
             justify-content: center;
             list-style: none;
             margin-bottom: 20px;
         }
-        
+
         .breadcrumb li {
             display: flex;
             align-items: center;
             color: rgba(255,255,255,0.8);
         }
-        
+
         .breadcrumb li:not(:last-child)::after {
             content: '›';
             margin: 0 10px;
             color: rgba(255,255,255,0.6);
         }
-        
+
         .breadcrumb a {
             color: white;
             text-decoration: none;
             transition: all var(--transition-fast);
         }
-        
+
         .breadcrumb a:hover {
             color: var(--accent);
         }
-        
+
         /* ===== SECTIONS ===== */
         section {
             margin-bottom: var(--section-space);
@@ -361,12 +355,12 @@ nav ul li a:hover::before {
             position: relative;
             overflow: hidden;
         }
-        
+
         section:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
-        
+
         section::before {
             content: '';
             position: absolute;
@@ -377,7 +371,7 @@ nav ul li a:hover::before {
             background: linear-gradient(to bottom, var(--primary), var(--accent));
             opacity: 0.8;
         }
-        
+
         .section-bg-icon {
             position: absolute;
             bottom: -50px;
@@ -387,7 +381,7 @@ nav ul li a:hover::before {
             transform: rotate(-10deg);
             z-index: 0;
         }
-        
+
         .section-content {
             position: relative;
             z-index: 1;
@@ -401,7 +395,7 @@ nav ul li a:hover::before {
             justify-content: center;
             margin-top: 40px;
         }
-        
+
         .plan-card {
             background: white;
             border-radius: var(--border-radius);
@@ -414,22 +408,22 @@ nav ul li a:hover::before {
             border: 2px solid transparent;
             overflow: hidden;
         }
-        
+
         .plan-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             border-color: var(--primary);
         }
-        
+
         .plan-card.featured {
             border-color: var(--accent);
             transform: scale(1.05);
         }
-        
+
         .plan-card.featured:hover {
             transform: scale(1.05) translateY(-10px);
         }
-        
+
         .plan-card.featured::before {
             content: 'おすすめ';
             position: absolute;
@@ -441,27 +435,27 @@ nav ul li a:hover::before {
             font-size: 0.8rem;
             transform: rotate(45deg);
         }
-        
+
         .plan-header {
             text-align: center;
             margin-bottom: 25px;
             padding-bottom: 25px;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        
+
         .plan-title {
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 10px;
         }
-        
+
         .plan-price {
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 5px;
         }
-        
+
         .original-price {
             text-decoration: line-through;
             color: var(--text-muted);
@@ -469,11 +463,11 @@ nav ul li a:hover::before {
             font-weight: normal;
             margin-right: 10px;
         }
-        
+
         .sale-price {
             color: var(--accent);
         }
-        
+
         .limited-offer {
             display: inline-block;
             background-color: var(--accent);
@@ -483,23 +477,23 @@ nav ul li a:hover::before {
             border-radius: 20px;
             margin-top: 5px;
         }
-        
+
         .plan-period {
             font-size: 0.9rem;
             color: var(--text-muted);
         }
-        
+
         .plan-features {
             list-style: none;
             margin-bottom: 30px;
         }
-        
+
         .plan-features li {
             padding: 10px 0;
             position: relative;
             padding-left: 28px;
         }
-        
+
         .plan-features li::before {
             content: '✓';
             color: var(--accent);
@@ -507,21 +501,21 @@ nav ul li a:hover::before {
             left: 0;
             font-weight: bold;
         }
-        
+
         .plan-features li.disabled {
             color: var(--text-muted);
             text-decoration: line-through;
         }
-        
+
         .plan-features li.disabled::before {
             content: '✕';
             color: var(--text-muted);
         }
-        
+
         .plan-cta {
             text-align: center;
         }
-        
+
         .plan-button {
             display: inline-block;
             background: var(--primary);
@@ -536,7 +530,7 @@ nav ul li a:hover::before {
             text-align: center;
             box-shadow: 0 5px 15px rgba(30,144,255,0.3);
         }
-        
+
         .plan-button:hover {
             background: transparent;
             border-color: var(--primary);
@@ -544,12 +538,12 @@ nav ul li a:hover::before {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(30,144,255,0.2);
         }
-        
+
         .plan-card.featured .plan-button {
             background: var(--accent);
             box-shadow: 0 5px 15px rgba(255,107,107,0.3);
         }
-        
+
         .plan-card.featured .plan-button:hover {
             background: transparent;
             border-color: var(--accent);
@@ -560,7 +554,7 @@ nav ul li a:hover::before {
         .features-list {
             margin: 20px 0 30px;
         }
-        
+
         .feature-item {
             display: flex;
             margin-bottom: 25px;
@@ -571,13 +565,13 @@ nav ul li a:hover::before {
             transition: all var(--transition-fast);
             border: 1px solid rgba(0,0,0,0.03);
         }
-        
+
         .feature-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             background: white;
         }
-        
+
         .feature-icon {
             flex-shrink: 0;
             width: 60px;
@@ -592,17 +586,17 @@ nav ul li a:hover::before {
             margin-right: 20px;
             box-shadow: 0 5px 15px rgba(30,144,255,0.3);
         }
-        
+
         .feature-content {
             flex: 1;
         }
-        
+
         .feature-title {
             font-size: 1.25rem;
             margin-bottom: 10px;
             color: var(--primary);
         }
-        
+
         .feature-description {
             color: var(--text-dark);
             font-size: 1rem;
@@ -615,7 +609,7 @@ nav ul li a:hover::before {
             margin: 50px 0;
             padding-left: 30px;
         }
-        
+
         .process-steps::before {
             content: '';
             position: absolute;
@@ -625,16 +619,16 @@ nav ul li a:hover::before {
             width: 2px;
             background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        
+
         .step {
             position: relative;
             margin-bottom: 40px;
         }
-        
+
         .step:last-child {
             margin-bottom: 0;
         }
-        
+
         .step-number {
             position: absolute;
             left: -30px;
@@ -652,7 +646,7 @@ nav ul li a:hover::before {
             box-shadow: 0 5px 10px rgba(30,144,255,0.3);
             z-index: 1;
         }
-        
+
         .step-content {
             background: white;
             padding: 25px;
@@ -660,18 +654,18 @@ nav ul li a:hover::before {
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all var(--transition-fast);
         }
-        
+
         .step:hover .step-content {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
         }
-        
+
         .step-title {
             font-size: 1.3rem;
             margin-bottom: 15px;
             color: var(--primary);
         }
-        
+
         .step-description {
             margin-bottom: 0;
         }
@@ -680,7 +674,7 @@ nav ul li a:hover::before {
         .faq-list {
             margin: 30px 0;
         }
-        
+
         .faq-item {
             margin-bottom: 20px;
             border-radius: var(--border-radius);
@@ -689,11 +683,11 @@ nav ul li a:hover::before {
             transition: all var(--transition-fast);
             border: 1px solid rgba(0,0,0,0.03);
         }
-        
+
         .faq-item:hover {
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
-        
+
         .faq-question {
             padding: 20px;
             background: white;
@@ -706,26 +700,26 @@ nav ul li a:hover::before {
             justify-content: space-between;
             transition: all var(--transition-fast);
         }
-        
+
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
             color: var(--primary);
         }
-        
+
         .faq-item.active .faq-question::after {
             content: '−';
         }
-        
+
         .faq-item.active .faq-question {
             background: var(--primary);
             color: white;
         }
-        
+
         .faq-item.active .faq-question::after {
             color: white;
         }
-        
+
         .faq-answer {
             padding: 0 20px;
             max-height: 0;
@@ -733,7 +727,7 @@ nav ul li a:hover::before {
             background: white;
             transition: all var(--transition-fast);
         }
-        
+
         .faq-item.active .faq-answer {
             padding: 20px;
             max-height: 1000px;
@@ -750,7 +744,7 @@ nav ul li a:hover::before {
             position: relative;
             overflow: hidden;
         }
-        
+
         .cta-section::before {
             content: '';
             position: absolute;
@@ -762,21 +756,21 @@ nav ul li a:hover::before {
             background-size: 100% 100%;
             opacity: 0.1;
         }
-        
+
         .cta-title {
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: white;
             text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        
+
         .cta-description {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 30px;
             color: rgba(255,255,255,0.9);
         }
-        
+
         .cta-button {
             display: inline-block;
             background: white;
@@ -790,14 +784,14 @@ nav ul li a:hover::before {
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             border: 2px solid white;
         }
-        
+
         .cta-button:hover {
             background: transparent;
             color: white;
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
-        
+
         /* ===== FOOTER ===== */
         footer {
             background-color: #222;
@@ -808,7 +802,7 @@ nav ul li a:hover::before {
             position: relative;
             overflow: hidden;
         }
-        
+
         footer::before {
             content: '';
             position: absolute;
@@ -818,26 +812,26 @@ nav ul li a:hover::before {
             height: 5px;
             background: linear-gradient(to right, var(--primary), var(--accent));
         }
-        
+
         .footer-content {
             position: relative;
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .footer-content p {
             text-align: center;
             margin-bottom: 1rem;
         }
-        
+
         .footer-links {
             display: flex;
             justify-content: center;
             margin: 20px 0;
             flex-wrap: wrap;
         }
-        
+
         .footer-links a {
             color: rgba(255,255,255,0.7);
             margin: 0 6px;
@@ -847,16 +841,16 @@ nav ul li a:hover::before {
             white-space: nowrap;
             font-size: 0.95rem;
         }
-        
+
         .footer-links a:hover {
             color: white;
             transform: translateY(-3px);
         }
-        
+
         .social-links {
             margin: 20px 0;
         }
-        
+
         .social-links a {
             display: inline-flex;
             align-items: center;
@@ -871,22 +865,22 @@ nav ul li a:hover::before {
             font-size: 18px;
             transition: all var(--transition-fast);
         }
-        
+
         .social-links a:hover {
             background: var(--primary);
             transform: translateY(-3px);
         }
-        
+
         .footer-bottom {
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-        
+
         .footer-bottom p {
             margin-bottom: 0;
         }
-        
+
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
@@ -898,126 +892,236 @@ nav ul li a:hover::before {
                 transform: translateY(0);
             }
         }
-        
+
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        
+
         .fade-in.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         /* ===== MEDIA QUERIES ===== */
         @media (max-width: 992px) {
             .page-header h1 {
                 font-size: 2.3rem;
             }
-            
+
             .cta-title {
                 font-size: 2rem;
             }
-            
+
             section {
                 padding: 30px;
             }
         }
-        
+
         @media (max-width: 768px) {
             .page-header {
                 padding-top: 120px;
                 padding-bottom: 40px;
             }
-            
+
             .page-header h1 {
                 font-size: 2rem;
             }
-            
+
             .page-header p {
                 font-size: 1rem;
             }
-            
+
             .plans-container {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .plan-card {
                 max-width: 100%;
                 width: 100%;
             }
-            
+
             .plan-card.featured {
                 transform: scale(1);
             }
-            
+
             .plan-card.featured:hover {
                 transform: translateY(-10px);
             }
-            
+
             .feature-item {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
-            
+
             .feature-icon {
                 margin-right: 0;
                 margin-bottom: 15px;
             }
-            
+
             .cta-section {
                 padding: 50px 20px;
             }
-            
+
             .cta-title {
                 font-size: 1.8rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .page-header h1 {
                 font-size: 1.8rem;
             }
-            
+
             section {
                 padding: 25px 20px;
             }
-            
+
             .step {
                 padding-left: 5px;
             }
-            
+
             .step-number {
                 left: -25px;
                 width: 25px;
                 height: 25px;
                 font-size: 0.8rem;
             }
-            
+
             .process-steps::before {
                 left: 12px;
             }
-            
+
             .cta-title {
                 font-size: 1.5rem;
             }
-            
+
             .cta-button {
                 padding: 12px 30px;
                 font-size: 1rem;
             }
         }
     </style>
+<style id="seo-image-layout">.blog-content img, .blog-sidebar img, .post-thumbnail img { height: auto; }</style>
+
+    <link rel="canonical" href="https://tomotravel-pm.com/lp-service">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="description" content="月額無料のLP作成サービス。あなたのビジネスに最適なランディングページを作成します。">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta property="og:title" content="LP作成サービス詳細 | とも旅ちゃんねるVLOG">
+    <meta property="og:description" content="月額無料のLP作成サービス。あなたのビジネスに最適なランディングページを作成します。">
+    <meta property="og:url" content="https://tomotravel-pm.com/lp-service">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="とも旅ちゃんねるVLOG">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:image" content="https://tomotravel-pm.com/images/tomoicon.png">
+    <meta property="og:image:alt" content="とも旅ちゃんねるVLOG">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LP作成サービス詳細 | とも旅ちゃんねるVLOG">
+    <meta name="twitter:description" content="月額無料のLP作成サービス。あなたのビジネスに最適なランディングページを作成します。">
+    <meta name="twitter:image" content="https://tomotravel-pm.com/images/tomoicon.png">
+    <meta name="twitter:image:alt" content="とも旅ちゃんねるVLOG">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+<script type="application/ld+json" id="site-structured-data">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tomotravel-pm.com/#organization",
+      "name": "とも旅ちゃんねるVLOG",
+      "url": "https://tomotravel-pm.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://tomotravel-pm.com/#logo",
+        "url": "https://tomotravel-pm.com/images/tomoicon.png",
+        "width": 500,
+        "height": 500
+      },
+      "sameAs": [
+        "https://www.youtube.com/@TomoTravel-PM",
+        "https://x.com/tomotravel_pm"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tomotravel-pm.com/#website",
+      "url": "https://tomotravel-pm.com/",
+      "name": "とも旅ちゃんねるVLOG",
+      "inLanguage": "ja",
+      "publisher": {
+        "@id": "https://tomotravel-pm.com/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tomotravel-pm.com/lp-service#webpage",
+      "url": "https://tomotravel-pm.com/lp-service",
+      "name": "LP作成サービス詳細 | とも旅ちゃんねるVLOG",
+      "description": "月額無料のLP作成サービス。あなたのビジネスに最適なランディングページを作成します。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@id": "https://tomotravel-pm.com/#website"
+      },
+      "publisher": {
+        "@id": "https://tomotravel-pm.com/#organization"
+      },
+      "dateModified": "2026-09-19",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "@id": "https://tomotravel-pm.com/lp-service#primaryimage",
+        "url": "https://tomotravel-pm.com/images/tomoicon.png"
+      },
+      "breadcrumb": {
+        "@id": "https://tomotravel-pm.com/lp-service#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://tomotravel-pm.com/lp-service#service"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tomotravel-pm.com/lp-service#service",
+      "name": "LP作成サービス",
+      "url": "https://tomotravel-pm.com/lp-service",
+      "serviceType": "ランディングページ制作",
+      "provider": {
+        "@id": "https://tomotravel-pm.com/#organization"
+      },
+      "description": "月額無料のLP作成サービス。あなたのビジネスに最適なランディングページを作成します。"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://tomotravel-pm.com/lp-service#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://tomotravel-pm.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "LP作成サービス詳細 | とも旅ちゃんねるVLOG",
+          "item": "https://tomotravel-pm.com/lp-service"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <header id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo-center" aria-label="サイトロゴ">
-                    <a href="/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
+                    <a href="https://tomotravel-pm.com/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
                 </div>
                 <!-- ハンバーガーメニューボタンを追加 -->
                 <div class="menu-toggle" id="menu-toggle">
@@ -1025,13 +1129,13 @@ nav ul li a:hover::before {
                 </div>
                 <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
                     <ul class="nav-menu">
-                        <li><a href="/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
-                        <li><a href="/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
-                        <li><a href="/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
-                        <li><a href="/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
-                        <li><a href="/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
-                        <li><a href="/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
-                        <li><a href="/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
+                        <li><a href="https://tomotravel-pm.com/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
+                        <li><a href="https://tomotravel-pm.com/#videos" aria-label="最新動画へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>最新動画</a></li>
+                        <li><a href="https://tomotravel-pm.com/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
+                        <li><a href="https://tomotravel-pm.com/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
+                        <li><a href="https://tomotravel-pm.com/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
+                        <li><a href="https://tomotravel-pm.com/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
+                        <li><a href="https://tomotravel-pm.com/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
                         <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
                         <li><a href="https://x.com/tomotravel_pm" target="_blank" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
                     </ul>
@@ -1042,14 +1146,14 @@ nav ul li a:hover::before {
 <div class="page-header">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/">ホーム</a></li>
+                <li><a href="https://tomotravel-pm.com/">ホーム</a></li>
                 <li>LP作成サービス</li>
             </ul>
             <h1>LP作成サービス詳細</h1>
             <p>月額費用ゼロ円のランディングページ制作</p>
         </div>
     </div>
-    
+
     <div class="container">
         <section class="fade-in">
             <div class="section-bg-icon">
@@ -1058,9 +1162,9 @@ nav ul li a:hover::before {
             <div class="section-content">
                 <h2>サービス概要</h2>
                 <p><i class="fas fa-check-circle"></i> 当サービスでは、高品質なランディングページを代行制作します。従来のレンタルサーバーやWordPressと異なり、<strong>月額費用が0円</strong>で運用できるのが最大の特徴。独自ドメインをご希望の場合は、ドメイン代（年間1,000〜2,000円程度）のみご負担いただくだけで、ホスティング料金は一切かかりません。</p>
-                
+
                 <p><i class="fas fa-lightbulb"></i> このLP作成サービスは、広告運用やマーケティングを実施している方、新規事業を始める方、個人でビジネスをしている方に特におすすめです。費用を抑えながらも、プロフェッショナルな見た目と機能性を兼ね備えたウェブサイトを手に入れることができます。</p>
-                
+
                 <div class="features-list">
                     <div class="feature-item">
                         <div class="feature-icon">
@@ -1071,7 +1175,7 @@ nav ul li a:hover::before {
                             <p class="feature-description">従来のレンタルサーバーなどでは毎月数千円のコストがかかりますが、当サービスでは月額費用をゼロにしています。</p>
                         </div>
                     </div>
-                    
+
                     <div class="feature-item">
                         <div class="feature-icon">
                             <i class="fas fa-tachometer-alt"></i>
@@ -1081,7 +1185,7 @@ nav ul li a:hover::before {
                             <p class="feature-description">高速CDNにより素早くサイトが表示されます。また、静的サイトは読み込み速度が速く、Googleの検索順位アルゴリズムで有利に働きます。</p>
                         </div>
                     </div>
-                    
+
                     <div class="feature-item">
                         <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
@@ -1094,7 +1198,7 @@ nav ul li a:hover::before {
                 </div>
             </div>
         </section>
-        
+
         <section class="fade-in">
             <div class="section-bg-icon">
                 <i class="fas fa-tasks"></i>
@@ -1102,7 +1206,7 @@ nav ul li a:hover::before {
             <div class="section-content">
                 <h2>制作の流れ</h2>
                 <p>LP制作から公開まで、スムーズな流れでご提供します。</p>
-                
+
                 <div class="process-steps">
                     <div class="step">
                         <div class="step-number">1</div>
@@ -1111,7 +1215,7 @@ nav ul li a:hover::before {
                             <p class="step-description">ビジネスの目的、ターゲット層、掲載したい内容などについて詳しくお伺いします。メールでのやり取りを基本としています。</p>
                         </div>
                     </div>
-                    
+
                     <div class="step">
                         <div class="step-number">2</div>
                         <div class="step-content">
@@ -1119,7 +1223,7 @@ nav ul li a:hover::before {
                             <p class="step-description">ヒアリング内容をもとに、最適なデザイン案を作成します。モバイルファーストを意識したレスポンシブデザインで、スマホでもPC画面でも美しく表示されるよう設計します。</p>
                         </div>
                     </div>
-                    
+
                     <div class="step">
                         <div class="step-number">3</div>
                         <div class="step-content">
@@ -1127,7 +1231,7 @@ nav ul li a:hover::before {
                             <p class="step-description">承認されたデザイン案をもとに、HTML/CSS/JavaScriptでコーディングを行います。SEO対策やページ表示速度の最適化も同時に実施します。</p>
                         </div>
                     </div>
-                    
+
                     <div class="step">
                         <div class="step-number">4</div>
                         <div class="step-content">
@@ -1135,7 +1239,7 @@ nav ul li a:hover::before {
                             <p class="step-description">テスト環境でLPを公開し、デザインや機能の確認をしていただきます。</p>
                         </div>
                     </div>
-                    
+
                     <div class="step">
                         <div class="step-number">5</div>
                         <div class="step-content">
@@ -1146,7 +1250,7 @@ nav ul li a:hover::before {
                 </div>
             </div>
         </section>
-        
+
         <section class="fade-in">
             <div class="section-bg-icon">
                 <i class="fas fa-money-bill-wave"></i>
@@ -1154,7 +1258,7 @@ nav ul li a:hover::before {
             <div class="section-content">
                 <h2>料金プラン</h2>
                 <p>お客様のニーズに合わせた最適なプランをご用意しています。</p>
-                
+
                 <div class="plans-container">
                     <div class="plan-card">
                         <div class="plan-header">
@@ -1176,10 +1280,10 @@ nav ul li a:hover::before {
                             <li class="disabled">定期更新サポート</li>
                         </ul>
                         <div class="plan-cta">
-                            <a href="/#contact" class="plan-button">お問い合わせ</a>
+                            <a href="https://tomotravel-pm.com/#contact" class="plan-button">お問い合わせ</a>
                         </div>
                     </div>
-                    
+
                     <div class="plan-card featured">
                         <div class="plan-header">
                             <h3 class="plan-title">スタンダードプラン</h3>
@@ -1200,15 +1304,15 @@ nav ul li a:hover::before {
                             <li class="disabled">定期更新サポート</li>
                         </ul>
                         <div class="plan-cta">
-                            <a href="/#contact" class="plan-button">お問い合わせ</a>
+                            <a href="https://tomotravel-pm.com/#contact" class="plan-button">お問い合わせ</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <p style="margin-top: 30px; text-align: center; font-style: italic;">※ 独自ドメインをご希望の場合は、ドメイン代（年間1,000〜2,000円程度）が別途かかります。<br></p>
             </div>
         </section>
-        
+
         <section class="fade-in">
             <div class="section-bg-icon">
                 <i class="fas fa-question-circle"></i>
@@ -1229,21 +1333,21 @@ nav ul li a:hover::before {
                             <p>はい、無料プランを活用しているため、月額費用は一切かかりません。独自ドメインをご希望の場合のみ、ドメイン代（年間1,000〜2,000円程度）がかかります。サーバー代、保守費用などは一切かかりません。</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">制作期間はどのくらいかかりますか？</div>
                         <div class="faq-answer">
                             <p>おおよそヒアリング終了から2週間くらいを目安にしています。ただし、私の状況によってはもう少しお時間をいただく場合もございます。いただいたご依頼はなるべく早く対応させていただきますのでご安心ください！</p>
 </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">自分で更新することはできますか？</div>
                         <div class="faq-answer">
                             <p>GitHubの使い方をご存知であれば、自由に更新いただくことが可能です。GitHub操作の知識がない場合は、更新保守サポートプラン（月1回更新・別途月額5,000円）もご用意しています。希望される場合はご相談ください。</p>
                         </div>
                     </div>
-                    
+
                     <div class="faq-item">
                         <div class="faq-question">どんな機能が実装できますか？</div>
                         <div class="faq-answer">
@@ -1253,13 +1357,13 @@ nav ul li a:hover::before {
                 </div>
             </div>
         </section>
-        
+
     <div class="cta-section">
     <h2 class="cta-title">月額費用0円のLPで、ビジネスを加速させませんか？</h2>
     <p class="cta-description">ランニングコストを気にせず、プロフェッショナルなウェブサイトを手に入れましょう。<br>お気軽にお問い合わせください。</p>
 </div>
     </div>
-    
+
     <footer>
     <div class="container">
         <div class="footer-content">
@@ -1281,7 +1385,7 @@ nav ul li a:hover::before {
         </div>
     </div>
 </footer>
-    
+
     <script>
         // スクロール時のヘッダー変更
         window.addEventListener('scroll', function() {
