@@ -276,7 +276,9 @@ def main():
         for k, v in values.items():
             text = meta(text, k, v)
         dates = [x.get('datetime') for x in Document(text).select('time') if x.get('datetime')]
-        published = dates[0] if dates else previous.get('datePublished') if source.startswith('ktv/') else None
+        # An update notice may contain the first <time> on the page. Keep the
+        # explicit publication date instead of treating that notice as publication.
+        published = md.get('article:published_time') or previous.get('datePublished') or (dates[0] if blog_article and dates else None)
         git_date = subprocess.run(['git', 'log', '-1', '--format=%as', '--', source], cwd=ROOT, capture_output=True, text=True).stdout.strip()
         modified = args.date or max([v[:10] for v in [previous.get('dateModified'), md.get('article:modified_time'), git_date] + [n.get('dateModified') for n in old] if v] or ['2026-09-19'])
         graph = common_nodes()
@@ -322,7 +324,13 @@ def main():
                     return obj
                 node = fix_urls(node)
                 if kind == 'Article':
+                    node['description'] = description
+                    if published:
+                        node['datePublished'] = published
                     node['dateModified'] = modified
+                    text = meta(text, 'article:modified_time', modified)
+                    if md.get('og:updated_time'):
+                        text = meta(text, 'og:updated_time', modified)
                     node['publisher'] = {'@id': ORIGIN + '/#organization'}
                     node['mainEntityOfPage'] = {'@id': url + '#webpage'}
                     page['mainEntity'] = {'@id': node['@id']}
