@@ -43,7 +43,7 @@ def inventory():
     pages = []
     missing = {}
     for p in sorted(ROOT.rglob('*.html')):
-        if '.git' in p.parts:
+        if '.git' in p.parts or 'artifacts' in p.parts:
             continue
         rel = p.relative_to(ROOT).as_posix()
         text = p.read_text(encoding='utf-8-sig')

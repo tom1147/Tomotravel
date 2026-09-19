@@ -28,6 +28,15 @@ Python 3とPillowを使います。Pillowは既存画像の寸法取得だけに
 
 新しいHTMLは自動検出されます。公開対象外の断片は`build_seo.py`のFRAGMENTSと`_headers`へ追加してください。新しい公開カテゴリを作った場合は、HTMLサイトマップのグループ分類にも追加します。リンクから到達できないページは検証で検出されます。
 
+## 店舗の休業情報・追記を反映するとき
+
+- 一覧と記事冒頭のお知らせに加え、descriptionと店舗JSON-LDも同じ状況に更新します。KTV記事のArticle、OGP、Twitterカードの説明文は生成処理でdescriptionに揃います。
+- New Kai Moanaは2026年9月19日の追記でリニューアル休業中と案内しています。旧記事本文は維持し、店舗JSON-LDの通常営業時間・料金範囲・料金オファーは現在の営業情報として出力しないよう除去しました。再開情報が確認できたら、お知らせ、description、店舗JSON-LD、一覧のItemListを合わせて更新してください。
+- 追記の`time`を公開日として扱わず、`article:published_time`と既存の`datePublished`を優先します。元の公開日を維持し、更新日と区別してください。
+- `verify_seo.py`では公開日・更新日・説明文のメタタグと記事JSON-LDの一致も確認します。
+
+判断の参照先: [Googleの構造化データガイドライン](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)。本文に見える情報と構造化データを一致させ、休業前の営業時間を現行情報として残さない方針です。
+
 ## 検証と証跡
 
 - `python scripts/audit_seo.py --live --output artifacts/seo/live.json`: 公開HTTP応答を読み取る監査。

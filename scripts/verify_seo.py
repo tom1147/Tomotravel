@@ -66,6 +66,17 @@ def main():
         ids = [n['@id'] for n in graph if '@id' in n]
         if len(ids) != len(set(ids)):
             errors.append(f'{source}: duplicate graph identifiers')
+        metadata = {a.get('name', a.get('property', '')): a.get('content', '') for a in doc.select('meta')}
+        page_node = next((n for n in graph if n.get('@id') == url + '#webpage'), {})
+        for article in (n for n in graph if n.get('@type') in ('Article', 'BlogPosting')):
+            if article.get('description') != metadata.get('description'):
+                errors.append(f'{source}: article description differs from page metadata')
+            published = metadata.get('article:published_time')
+            if published and any(n.get('datePublished') != published for n in (article, page_node)):
+                errors.append(f'{source}: publication date differs between metadata and schema')
+            modified = metadata.get('article:modified_time')
+            if modified and any(n.get('dateModified', '')[:10] != modified[:10] for n in (article, page_node)):
+                errors.append(f'{source}: modification date differs between metadata and schema')
         for key, value in walk(graph):
             if isinstance(value, dict) and value.get('@type') == 'VideoObject':
                 video_count += 1
