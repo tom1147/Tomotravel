@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://tomotravel-pm.com/blog</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/cebu2nd1</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd/cebu2nd2.png</image:loc>
     </image:image>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/cebu2nd2</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd2/21.png</image:loc>
     </image:image>
@@ -67,13 +67,13 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://i.ytimg.com/vi/z5APVNRi0FQ/hqdefault.jpg</video:thumbnail_loc>
-      <video:title>【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル</video:title>
-      <video:description>フィリピン・東南アジア一人旅のリアルな様子を紹介するVLOG動画。</video:description>
-      <video:player_loc>https://www.youtube.com/embed/z5APVNRi0FQ</video:player_loc>
-      <video:publication_date>2025-03-01T17:30:28-08:00</video:publication_date>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/uf67dP5Cg70/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【甘すぎ♡】マニラ夜遊び！ホテル内の隠れ家KTVへ【Charm Music Lounge】</video:title>
+      <video:description>とも旅ちゃんねるVLOGでは、フィリピン・東南アジア一人旅のリアルな体験、KTV/JTVなど夜のお店情報、料金システム、旅の準備、撮影機材まで実体験ベースで紹介します。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/uf67dP5Cg70</video:player_loc>
+      <video:publication_date>2026-08-08T02:00:37-07:00</video:publication_date>
     </video:video>
   </url>
   <url>
@@ -94,7 +94,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st1</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st1/1.jpg</image:loc>
     </image:image>
@@ -117,7 +117,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st2</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st2/1.jpg</image:loc>
     </image:image>
@@ -143,7 +143,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st3</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st3/1.jpg</image:loc>
     </image:image>
@@ -175,7 +175,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st4</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st4/1.jpg</image:loc>
     </image:image>
@@ -213,7 +213,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st5</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st5/1.jpg</image:loc>
     </image:image>
@@ -248,7 +248,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st6</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st6/1.jpg</image:loc>
     </image:image>
@@ -277,7 +277,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd3</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd3/blog1.jpg</image:loc>
     </image:image>
@@ -300,7 +300,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd4</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd4/1.jpg</image:loc>
     </image:image>
@@ -332,7 +332,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd5</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd5/1.jpg</image:loc>
     </image:image>
@@ -358,7 +358,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd6</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd6/2.jpg</image:loc>
     </image:image>
@@ -378,7 +378,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd7</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd7/1.jpg</image:loc>
     </image:image>
@@ -404,7 +404,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd8</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd8/1.jpg</image:loc>
     </image:image>
@@ -430,7 +430,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd1</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd1/1.jpg</image:loc>
     </image:image>
@@ -453,7 +453,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd2</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd2/1.jpg</image:loc>
     </image:image>
@@ -479,7 +479,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd3</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd3/1.jpg</image:loc>
     </image:image>
@@ -505,7 +505,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd4</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd4/1.jpg</image:loc>
     </image:image>
@@ -531,7 +531,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd5</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd5/1.jpg</image:loc>
     </image:image>
@@ -557,7 +557,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd6</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd6/1.jpg</image:loc>
     </image:image>
@@ -583,11 +583,11 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/insta360x4</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/charm</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/ktv/assets2/charmlogo.jpg</image:loc>
     </image:image>
@@ -625,9 +625,9 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/indexktv</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
-      <image:loc>https://tomotravel-pm.com/ktv/assets2/7.png</image:loc>
+      <image:loc>https://tomotravel-pm.com/ktv/assets2/charm-featured.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://tomotravel-pm.com/ktv/assets/maps/malate-jtv-map-neon.png?v=ksayuri-20260919</image:loc>
@@ -641,7 +641,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/lex</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/ktv/assets/lounge-01.webp</image:loc>
     </image:image>
@@ -682,7 +682,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/newkaimoana</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/ktv/images/1.jpg</image:loc>
     </image:image>
@@ -703,6 +703,43 @@
   <url>
     <loc>https://tomotravel-pm.com/tomogame_v1.0/</loc>
     <lastmod>2026-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/videos/cebu-jtv</loc>
+    <lastmod>2026-09-21</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/z5APVNRi0FQ/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル</video:title>
+      <video:description>セブ島旅行初日の夜、とも旅ちゃんねるがJTVのB-pinkとClub Kを訪れた体験動画です。お店の雰囲気や会話、現地で過ごした夜の様子を紹介。動画とあわせて体験記事も読めます。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/z5APVNRi0FQ</video:player_loc>
+      <video:publication_date>2025-03-01T17:30:28-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/videos/charm</loc>
+    <lastmod>2026-09-21</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/uf67dP5Cg70/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【甘すぎ♡】マニラ夜遊び！ホテル内の隠れ家KTVへ【Charm Music Lounge】</video:title>
+      <video:description>マニラ・マラテのホテル内にあるCharm Music Loungeを、とも旅ちゃんねるの動画で紹介。ステージやソファ席、青紫の照明が広がる店内の雰囲気をご覧いただけます。料金とアクセスは紹介記事にまとめています。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/uf67dP5Cg70</video:player_loc>
+      <video:publication_date>2026-08-08T02:00:37-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/videos/</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/videos/new-kai-moana</loc>
+    <lastmod>2026-09-21</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/T4Azkowjg14/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【フィリピン】マラテのJTVに潜入！マニラの夜遊びでおすすめのお店！【New Kai Moana】</video:title>
+      <video:description>マニラ・マラテのNew Kai Moanaを訪れた動画です。休業前の店内、ランウェイ式ショーアップ、ローテーションの様子を紹介しています。現在はリニューアルのためクローズ中とのことです。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/T4Azkowjg14</video:player_loc>
+      <video:publication_date>2026-02-15T01:00:39-08:00</video:publication_date>
+    </video:video>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/website/memorylog/</loc>
@@ -761,6 +798,6 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/sitemap</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-21</lastmod>
   </url>
 </urlset>

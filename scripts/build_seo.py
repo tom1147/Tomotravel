@@ -19,6 +19,7 @@ from urllib.parse import urljoin, urlsplit, urlunsplit
 import xml.etree.ElementTree as ET
 
 from audit_seo import Document, LD, ORIGIN, ROOT, resolve_file
+from site_files import write_text
 from PIL import Image
 
 NAME = 'とも旅ちゃんねるVLOG'
@@ -149,6 +150,8 @@ def breadcrumbs(url, title, source):
         rows.append(('ブログ', ORIGIN + '/blog'))
     elif source.startswith('ktv/') and source != 'ktv/indexktv.html':
         rows.append(('フィリピンKTV紹介', ORIGIN + '/ktv/indexktv'))
+    elif source.startswith('videos/') and source != 'videos/index.html':
+        rows.append(('動画一覧', ORIGIN + '/videos/'))
     rows.append((title, url))
     return {'@type': 'BreadcrumbList', '@id': url + '#breadcrumb', 'itemListElement': [
         {'@type': 'ListItem', 'position': i + 1, 'name': name, 'item': link} for i, (name, link) in enumerate(rows)
@@ -197,7 +200,7 @@ def main():
                 value = value.replace('<!-- ▼▼▼', '<a href="/sitemap">サイトマップ</a>\n                <!-- ▼▼▼', 1)
         value = normalize_links(value, name, pages)
         fragments[name] = value
-        (ROOT / name).write_text(value, encoding='utf-8', newline='\n')
+        write_text(ROOT / name, value)
 
     records = []
     for source, original in list(pages.items()):
@@ -234,7 +237,7 @@ def main():
         text = normalize_links(text, source, pages)
         for ident, fragment in [('header-placeholder', 'blog/header.html'), ('footer-placeholder', 'blog/footer.html'), ('sidebar-placeholder', 'blog/sidebar.html')]:
             text = static_include(text, ident, fragments[fragment])
-        if source.startswith('ktv/'):
+        if source.startswith(('ktv/', 'videos/')):
             text = static_include(text, 'site-header', fragments['ktv/header.html'])
         # JSON-LD is the single source of structured data. Legacy microdata had incomplete
         # VideoObjects and ImageObjects, plus conflicting author/date values.
@@ -243,9 +246,10 @@ def main():
         text = re.sub(r'\s+itemscope(?:\s*=\s*([\"\']).*?\1)?', '', text, flags=re.I)
         images = image_urls(text.split('seo-include:sidebar-placeholder:start')[0], source)
         image = urljoin(ORIGIN + '/' + source, md.get('og:image', ''))
-        if urlsplit(image).netloc != urlsplit(ORIGIN).netloc or not resolve_file(image):
+        remote_thumbnail = urlsplit(image).scheme == 'https' and urlsplit(image).netloc in ('i.ytimg.com', 'img.youtube.com') and re.fullmatch(r'/vi/[\w-]{11}/hqdefault\.jpg', urlsplit(image).path)
+        if not remote_thumbnail and (urlsplit(image).netloc != urlsplit(ORIGIN).netloc or not resolve_file(image)):
             image = images[0] if images else LOGO
-        if not image.lower().endswith(('.jpg', '.jpeg', '.png', '.webp', '.gif')):
+        if not urlsplit(image).path.lower().endswith(('.jpg', '.jpeg', '.png', '.webp', '.gif')):
             image = images[0] if images else LOGO
         # Image geometry prevents avoidable layout shifts; files are not rewritten.
         def fix_image(m):
@@ -271,6 +275,8 @@ def main():
                   'og:site_name': NAME, 'og:locale': 'ja_JP', 'og:image': image, 'og:image:alt': title if image != LOGO else NAME,
                   'twitter:card': 'summary_large_image', 'twitter:title': title, 'twitter:description': description, 'twitter:image': image, 'twitter:image:alt': title if image != LOGO else NAME}
         size = dimensions(image)
+        if remote_thumbnail:
+            size = (480, 360)
         if size:
             values.update({'og:image:width': size[0], 'og:image:height': size[1]})
         for k, v in values.items():
@@ -282,7 +288,7 @@ def main():
         git_date = subprocess.run(['git', 'log', '-1', '--format=%as', '--', source], cwd=ROOT, capture_output=True, text=True).stdout.strip()
         modified = args.date or max([v[:10] for v in [previous.get('dateModified'), md.get('article:modified_time'), git_date] + [n.get('dateModified') for n in old] if v] or ['2026-09-19'])
         graph = common_nodes()
-        page = {'@type': 'CollectionPage' if source in ('blog.html', 'ktv/indexktv.html', 'website/memorylog/index.html') else 'WebPage',
+        page = {'@type': 'CollectionPage' if source in ('blog.html', 'ktv/indexktv.html', 'website/memorylog/index.html', 'videos/index.html') else 'WebPage',
                 '@id': url + '#webpage', 'url': url, 'name': title, 'description': description, 'inLanguage': 'ja',
                 'isPartOf': {'@id': ORIGIN + '/#website'}, 'publisher': {'@id': ORIGIN + '/#organization'}, 'dateModified': modified,
                 'primaryImageOfPage': {'@type': 'ImageObject', '@id': url + '#primaryimage', 'url': image}}
@@ -340,6 +346,11 @@ def main():
             business = next((n for n in graph if n.get('@type') == 'NightClub' or isinstance(n.get('@type'), list)), None)
             if business:
                 page['about'] = {'@id': business['@id']}
+        elif source.startswith('videos/'):
+            for node in old:
+                if node.get('@type') == 'ItemList':
+                    graph.append(copy.deepcopy(node))
+                    page['mainEntity'] = {'@id': node['@id']}
         elif source == 'lp-service.html':
             service = {'@type': 'Service', '@id': url + '#service', 'name': 'LP作成サービス', 'url': url,
                        'serviceType': 'ランディングページ制作', 'provider': {'@id': ORIGIN + '/#organization'}, 'description': description}
@@ -348,8 +359,9 @@ def main():
         # Keep only existing video metadata that describes a video actually present on this page.
         body = original.split('</head>', 1)[-1]
         seen_video = set()
+        embedded_video_ids = set(re.findall(r'(?:youtube(?:-nocookie)?\.com/embed/|data-youtube-id=[\"\'])([\w-]{11})', body))
         video_candidates = [n for n in walk(old) if n.get('@type') == 'VideoObject']
-        for video_id in re.findall(r'(?:youtube(?:-nocookie)?\.com/embed/|data-youtube-id=[\"\'])([\w-]{11})', body):
+        for video_id in sorted(embedded_video_ids):
             verified = video_metadata.get(video_id, {})
             if verified.get('uploadDate'):
                 video_candidates.append({'@type': 'VideoObject', 'name': verified['title'], 'description': description,
@@ -359,7 +371,7 @@ def main():
                 continue
             embed = node.get('embedUrl', '')
             vid = re.search(r'/embed/([\w-]{11})', embed)
-            if not vid or vid[1] not in body or vid[1] in seen_video:
+            if not vid or vid[1] not in embedded_video_ids or vid[1] in seen_video:
                 continue
             seen_video.add(vid[1])
             video = {k: copy.deepcopy(node[k]) for k in ('name', 'description', 'uploadDate', 'duration') if k in node}
@@ -371,6 +383,9 @@ def main():
             if verified.get('uploadDate'):
                 video.update({'name': verified['title'], 'uploadDate': verified['uploadDate'], 'duration': verified['duration']})
             graph.append(video)
+            if source.startswith('videos/') and source != 'videos/index.html':
+                page['mainEntity'] = {'@id': video['@id']}
+                video['mainEntityOfPage'] = {'@id': url + '#webpage'}
             if blog_article:
                 article['video'] = {'@id': video['@id']}
             # Preserve stable cross-references in existing store Article / business objects.
@@ -400,12 +415,13 @@ def main():
         # These existing applications use CRLF in Git; preserve their established
         # convention rather than changing thousands of unrelated application lines.
         newline = '\r\n' if source in {'VideoInstructionEditor.html', 'traveltest.html', 'website/memorylog/index.html'} else '\n'
-        (ROOT / source).write_text(text, encoding='utf-8', newline=newline)
+        write_text(ROOT / source, text, newline=newline)
         records.append({'source': source, 'url': url, 'title': title, 'description': description, 'lastmod': modified, 'images': images, 'graph': graph})
 
     # A human-readable directory also provides plain HTML paths to every public page.
     groups = [('主要ページ', lambda r: r['source'] in ['index.html', 'blog.html', 'ktv/indexktv.html', 'traveltest.html', 'lp-service.html', 'privacy-policy.html']),
               ('KTV・JTV紹介', lambda r: r['source'].startswith('ktv/') and r['source'] != 'ktv/indexktv.html'),
+              ('動画で見るフィリピン', lambda r: r['source'].startswith('videos/')),
               ('旅ブログ・機材', lambda r: r['source'].startswith(('blog/', 'cebu'))),
               ('その他のページ・ツール', lambda r: r['source'] in ['TomoGame_V1.0/index.html', 'VideoInstructionEditor.html', 'website/memorylog/index.html'])]
     sections = ''.join('<section><h2>' + label + '</h2><ul>' + ''.join('<li><a href="' + r['url'] + '">' + html.escape(r['title']) + '</a></li>' for r in records if predicate(r)) + '</ul></section>' for label, predicate in groups)
@@ -413,7 +429,7 @@ def main():
     directory = '<!DOCTYPE html>\n<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>サイトマップ | ' + NAME + '</title><meta name="description" content="とも旅ちゃんねるの旅ブログ、KTV・JTV紹介、サービスとツールのページ一覧。"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="' + ORIGIN + '/sitemap"><link rel="icon" href="/favicon.ico"><style>body{font-family:system-ui,sans-serif;background:#070b18;color:#e5e7eb;line-height:1.8;margin:0}main{max-width:960px;margin:auto;padding:40px 24px}a{color:#93c5fd}h1{font-size:2rem}h2{font-size:1.25rem;margin-top:2rem}li{margin:.6rem 0}footer{border-top:1px solid #334155;margin-top:2rem;padding-top:1rem}</style></head><body><main><nav aria-label="パンくず"><a href="/">ホーム</a> / サイトマップ</nav><h1>サイトマップ</h1>' + sections + '<footer><a href="/">とも旅ちゃんねるVLOG</a> · <a href="/privacy-policy">プライバシーポリシー</a></footer></main></body></html>\n'
     directory_graph = common_nodes() + [{'@type': 'CollectionPage', '@id': ORIGIN + '/sitemap#webpage', 'url': ORIGIN + '/sitemap', 'name': 'サイトマップ | ' + NAME, 'inLanguage': 'ja', 'isPartOf': {'@id': ORIGIN + '/#website'}, 'breadcrumb': {'@id': ORIGIN + '/sitemap#breadcrumb'}}, breadcrumbs(ORIGIN + '/sitemap', 'サイトマップ', 'sitemap.html')]
     directory = directory.replace('</head>', '<script type="application/ld+json">' + json.dumps({'@context': 'https://schema.org', '@graph': directory_graph}, ensure_ascii=False) + '</script></head>')
-    (ROOT / 'sitemap.html').write_text(directory, encoding='utf-8', newline='\n')
+    write_text(ROOT / 'sitemap.html', directory)
     records.append({'source': 'sitemap.html', 'url': ORIGIN + '/sitemap', 'title': 'サイトマップ', 'lastmod': sitemap_date, 'images': [], 'graph': []})
     ns, img_ns, video_ns = 'http://www.sitemaps.org/schemas/sitemap/0.9', 'http://www.google.com/schemas/sitemap-image/1.1', 'http://www.google.com/schemas/sitemap-video/1.1'
     ET.register_namespace('', ns); ET.register_namespace('image', img_ns); ET.register_namespace('video', video_ns)
@@ -431,9 +447,9 @@ def main():
                 for key, target in [('thumbnailUrl', 'thumbnail_loc'), ('name', 'title'), ('description', 'description'), ('embedUrl', 'player_loc'), ('uploadDate', 'publication_date')]:
                     ET.SubElement(vd, '{' + video_ns + '}' + target).text = v[key]
     ET.indent(root, space='  ')
-    ET.ElementTree(root).write(ROOT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
+    write_text(ROOT / 'sitemap.xml', ET.tostring(root, encoding='utf-8', xml_declaration=True).decode('utf-8'))
     llms = '# とも旅ちゃんねるVLOG\n\n> フィリピン・東南アジアの一人旅の体験、KTV・JTV紹介、旅の準備を発信する日本語サイト。\n\n運営者の体験をもとにした記事です。店舗の営業時間・料金などは各ページに記載した時点の情報であり、最新情報は店舗公式窓口をご確認ください。\n\n## ページ一覧\n\n' + '\n'.join('- [' + r['title'].replace('[', '［').replace(']', '］') + '](' + r['url'] + ')' for r in records) + '\n\n## 公式チャンネル\n\n- [YouTube](' + SOCIAL[0] + ')\n- [X](' + SOCIAL[1] + ')\n'
-    (ROOT / 'llms.txt').write_text(llms, encoding='utf-8', newline='\n')
+    write_text(ROOT / 'llms.txt', llms)
     redirects = ['# Exact permanent redirects; do not redirect all missing URLs to the home page.', '/index.html / 301!', '/index / 301!']
     for r in records:
         src, dest = '/' + r['source'], urlsplit(r['url']).path
@@ -444,7 +460,7 @@ def main():
     redirects += [src + ' ' + dest + ' 301!' for src, dest in ALIASES.items() if not src.endswith('/')]
     # The legacy game folder uses uppercase locally; Netlify serves its public URL lowercase.
     redirects += ['/tomogame_v1.0/index.html /tomogame_v1.0/ 301!', '/scripts/* /404.html 404!', '/artifacts/* /404.html 404!', '/docs/* /404.html 404!', '/readme /404.html 404!']
-    (ROOT / '_redirects').write_text('\n'.join(redirects) + '\n', encoding='utf-8', newline='\n')
+    write_text(ROOT / '_redirects', '\n'.join(redirects) + '\n')
     out = ROOT / 'artifacts/seo/generated.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')

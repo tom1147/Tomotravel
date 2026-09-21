@@ -37,6 +37,19 @@ Python 3とPillowを使います。Pillowは既存画像の寸法取得だけに
 
 判断の参照先: [Googleの構造化データガイドライン](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)。本文に見える情報と構造化データを一致させ、休業前の営業時間を現行情報として残さない方針です。
 
+## 動画からの検索流入・視聴導線（2026-09-21）
+
+- `/videos/` は、既存の確認済み23動画をエリア別に探す一覧です。各カードは専用の視聴ページ、または既存記事の動画位置へ移動します。
+- `/videos/charm`、`/videos/new-kai-moana`、`/videos/cebu-jtv` は動画が主なコンテンツのページです。プレーヤーを冒頭に置き、関連する記事・動画へリンクしています。New Kai Moanaの休業告知も維持します。
+- 更新順序は `python scripts/build_video_discovery.py` → `python scripts/build_seo.py` → `python scripts/verify_seo.py` です。動画情報は `scripts/video_metadata.json`、専用ページの説明文は `build_video_discovery.py` の `WATCH` で管理します。
+- `VideoObject` は、単にサムネイルやリンクがあるだけの動画には生成しません。実際のiframeまたは既存の埋め込みスロットに対応する動画だけを出力します。
+- 動画への案内リンクのクリックを、既存のGA4へ `video_link_click` として送信します。項目は `video_id`、`destination`（site / youtube）、`source_page` です。検索語・氏名・メール等は追加送信しません。localhostではこのクリック計測を無効にしています。
+- クリック数は動画の再生回数ではありません。Search Consoleのクリック・表示回数、GA4の動画リンククリック、YouTube Studioの外部流入・再生回数を同じ期間で比較します。検索順位や再生回数の増加を保証する変更ではありません。
+- 変更前の検索実績は `artifacts/seo/growth-baseline-20260921.json` に記録。公開対象・Git管理からは除外しています。
+- KTV一覧の注目画像は、画素が同一のWebPへ変換し約23%軽量化しました。原本は残しています。
+
+参照: [Googleの動画SEO](https://developers.google.com/search/docs/appearance/video)、[動画構造化データ](https://developers.google.com/search/docs/appearance/structured-data/video)。
+
 ## 検証と証跡
 
 - `python scripts/audit_seo.py --live --output artifacts/seo/live.json`: 公開HTTP応答を読み取る監査。

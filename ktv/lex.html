@@ -506,6 +506,8 @@
 
 <style id="seo-image-layout">.blog-content img, .blog-sidebar img, .post-thumbnail img { height: auto; }</style>
 
+<link id="video-discovery-styles" rel="stylesheet" href="/assets/video-discovery.css">
+
     <link rel="canonical" href="https://tomotravel-pm.com/ktv/lex">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta name="description" content="フィリピン・マニラのマラテにある日本式KTV（JTV）「LEX Music Lounge」の紹介ページ。ブルーネオンが印象的な店内の雰囲気、料金システム、ドリンクメニュー、アクセス、公式SNS情報をまとめています。">
@@ -569,7 +571,7 @@
       "publisher": {
         "@id": "https://tomotravel-pm.com/#organization"
       },
-      "dateModified": "2026-09-19",
+      "dateModified": "2026-09-21",
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "@id": "https://tomotravel-pm.com/ktv/lex#primaryimage",
@@ -947,6 +949,7 @@
         <ul class="nav-menu">
           <li><a href="https://tomotravel-pm.com/" aria-label="トップページへ"><i class="fas fa-house nav-icon" aria-hidden="true"></i>トップページ</a></li>
           <li><a href="https://tomotravel-pm.com/ktv/indexktv" aria-label="KTV(JTV)紹介へ"><i class="fas fa-microphone nav-icon" aria-hidden="true"></i>KTV(JTV)紹介</a></li>
+          <li><a href="https://tomotravel-pm.com/videos/" aria-label="動画一覧へ"><i class="fas fa-play nav-icon" aria-hidden="true"></i>動画一覧</a></li>
           <li><a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer" aria-label="YouTubeチャンネルへ"><i class="fab fa-youtube nav-icon" aria-hidden="true"></i>YouTubeチャンネル</a></li>
           <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
           <li><a href="https://tomotravel-pm.com/tomogame_v1.0/" aria-label="ゲームへ"><i class="fas fa-gamepad nav-icon" aria-hidden="true"></i>ゲーム</a></li>
@@ -979,6 +982,10 @@
             LEX
             <span>マラテの路地に浮かぶブルーのネオン<br>今宵は素敵な音楽と美女に酔いしれましょう</span>
           </h1>
+<!-- video-discovery:start -->
+<nav class="video-discovery" aria-label="この記事の動画"><a href="#article-video">記事の動画へ</a><a href="https://www.youtube.com/watch?v=5mqi8FUpd6g" target="_blank" rel="noopener noreferrer" data-video-id="5mqi8FUpd6g" data-video-platform="youtube">YouTubeで見る</a><a href="https://tomotravel-pm.com/videos/">動画一覧</a></nav>
+<!-- video-discovery:end -->
+
           <p class="hero-lead">
             フィリピン・マニラのマラテで、夜のご予定はお決まりですか？
             LEX Music Loungeは、マラテの中でもアクセスしやすい中心地に位置する、KTV（JTV）スタイルの日本式KTVです。美しいネオンと音楽が店内を彩り、明るいスタッフや豊富なドリンク、美しい美女たちが魅力のお店です。
@@ -997,7 +1004,7 @@
           </div>
         </div>
         <aside class="hero-video" id="movie" aria-label="LEX Music Lounge YouTube video">
-          <div class="youtube-embed" data-youtube-id="5mqi8FUpd6g">
+          <div id="article-video" class="youtube-embed" data-youtube-id="5mqi8FUpd6g">
             <div class="video-placeholder">
               <div>
                 <span class="play-mark" aria-hidden="true"></span>
@@ -1360,5 +1367,6 @@
       if (e.key === 'Escape') lightbox?.classList.remove('open');
     });
   </script>
+<script id="video-discovery-script" src="/assets/video-discovery.js" defer></script>
 </body>
 </html>
