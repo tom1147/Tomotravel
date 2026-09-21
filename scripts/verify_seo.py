@@ -41,6 +41,8 @@ def main():
         source = path.relative_to(ROOT).as_posix()
         text = path.read_text(encoding='utf-8-sig')
         doc = Document(text)
+        if len(re.findall(r'<script\b', text, re.I)) != len(re.findall(r'</script\s*>', text, re.I)):
+            errors.append(f'{source}: unclosed script element')
         md = [a for a in doc.select('meta') if a.get('name') == 'description']
         canonical = [a.get('href') for a in doc.select('link') if a.get('rel') == 'canonical']
         if canonical != [url]:
@@ -68,6 +70,17 @@ def main():
             errors.append(f'{source}: duplicate graph identifiers')
         metadata = {a.get('name', a.get('property', '')): a.get('content', '') for a in doc.select('meta')}
         page_node = next((n for n in graph if n.get('@id') == url + '#webpage'), {})
+        if source.startswith('videos/'):
+            if source == 'videos/index.html':
+                listing = next((n for n in graph if n.get('@type') == 'ItemList'), {})
+                cards = [a for a in doc.select('a') if a.get('data-video-platform') == 'site']
+                if listing.get('numberOfItems') != len(cards) or len(cards) != len({a.get('data-video-id') for a in cards}):
+                    errors.append(f'{source}: video directory and schema counts differ')
+            else:
+                players = [a for a in doc.select('iframe') if 'youtube.com/embed/' in a.get('src', '')]
+                main = next((n for n in graph if n.get('@id') == page_node.get('mainEntity', {}).get('@id')), {})
+                if len(players) != 1 or players[0].get('loading') == 'lazy' or main.get('@type') != 'VideoObject':
+                    errors.append(f'{source}: watch page must feature one immediately discoverable video')
         for article in (n for n in graph if n.get('@type') in ('Article', 'BlogPosting')):
             if article.get('description') != metadata.get('description'):
                 errors.append(f'{source}: article description differs from page metadata')
@@ -86,14 +99,19 @@ def main():
                 if 'contentUrl' in value and 'youtube.com/watch' in value['contentUrl']:
                     errors.append(f'{source}: watch URL used as video file')
                 vid = value['embedUrl'].split('/embed/')[-1]
-                if vid not in text.split('</head>', 1)[-1]:
+                body = text.split('</head>', 1)[-1]
+                embedded_video_ids = set(re.findall(r'(?:youtube(?:-nocookie)?\.com/embed/|data-youtube-id=[\"\'])([\w-]{11})', body))
+                if vid not in embedded_video_ids:
                     errors.append(f'{source}: marked-up video is not present')
             if isinstance(value, str) and value.startswith(ORIGIN) and key in ['url', 'contentUrl', 'image', 'logo', 'item']:
                 if not resolve_file(value):
                     errors.append(f'{source}: broken schema URL {value}')
         for a in doc.select('meta'):
             if a.get('property') == 'og:image' or a.get('name') == 'twitter:image':
-                if not a.get('content', '').startswith('https://') or not resolve_file(a['content']):
+                image_url = a.get('content', '')
+                image_parts = urlsplit(image_url)
+                youtube_thumbnail = image_parts.netloc in ('i.ytimg.com', 'img.youtube.com') and re.fullmatch(r'/vi/[\w-]{11}/hqdefault\.jpg', image_parts.path)
+                if image_parts.scheme != 'https' or not (resolve_file(image_url) if image_parts.netloc == urlsplit(ORIGIN).netloc else youtube_thumbnail):
                     errors.append(f'{source}: invalid social image {a.get("content")}')
         outgoing = set()
         for tag, attr in [('a', 'href'), ('img', 'src'), ('script', 'src'), ('link', 'href')]:
@@ -107,6 +125,11 @@ def main():
                         errors.append(f'{source}: broken {tag} target {target}')
                     if tag == 'a':
                         outgoing.add(target.split('#')[0].split('?')[0])
+                        fragment = urlsplit(target).fragment
+                        if a.get('data-video-id') and fragment:
+                            target_file = resolve_file(target)
+                            if target_file and fragment not in {attrs.get('id') for _, attrs in Document(target_file.read_text(encoding='utf-8-sig')).tags}:
+                                errors.append(f'{source}: missing video destination anchor {target}')
         link_graph[url] = outgoing
         for ident in ['header-placeholder', 'footer-placeholder', 'sidebar-placeholder', 'site-header']:
             if f'id="{ident}"' in text and f'seo-include:{ident}:start' not in text:

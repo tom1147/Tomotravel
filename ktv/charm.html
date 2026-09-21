@@ -1022,6 +1022,8 @@
 
 <style id="seo-image-layout">.blog-content img, .blog-sidebar img, .post-thumbnail img { height: auto; }</style>
 
+<link id="video-discovery-styles" rel="stylesheet" href="/assets/video-discovery.css">
+
     <link rel="canonical" href="https://tomotravel-pm.com/ktv/charm">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta name="description" content="マニラ・マラテのKTV/JTV（日本式KTV）「Charm KTV Malate（Charm Music Lounge）」を紹介。料金システム、店内写真、LINE問い合わせ、アクセス、Manila Crown Palace Hotel 3階の場所を案内します。">
@@ -1041,8 +1043,8 @@
     <meta name="twitter:image:alt" content="Charm KTV Malate（チャーム）｜マラテKTV/JTV料金・アクセス">
     <meta property="og:image:width" content="1448">
     <meta property="og:image:height" content="1086">
-    <meta property="article:modified_time" content="2026-09-19">
-    <meta property="og:updated_time" content="2026-09-19">
+    <meta property="article:modified_time" content="2026-09-21">
+    <meta property="og:updated_time" content="2026-09-21">
 <script type="application/ld+json" id="site-structured-data">
 {
   "@context": "https://schema.org",
@@ -1087,7 +1089,7 @@
       "publisher": {
         "@id": "https://tomotravel-pm.com/#organization"
       },
-      "dateModified": "2026-09-19",
+      "dateModified": "2026-09-21",
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "@id": "https://tomotravel-pm.com/ktv/charm#primaryimage",
@@ -1114,7 +1116,7 @@
       "description": "マニラ・マラテのKTV/JTV（日本式KTV）「Charm KTV Malate（Charm Music Lounge）」を紹介。料金システム、店内写真、LINE問い合わせ、アクセス、Manila Crown Palace Hotel 3階の場所を案内します。",
       "inLanguage": "ja",
       "datePublished": "2026-06-04T18:00:00+09:00",
-      "dateModified": "2026-09-19",
+      "dateModified": "2026-09-21",
       "author": {
         "@id": "https://tomotravel-pm.com/#organization"
       },
@@ -1674,6 +1676,7 @@
         <ul class="nav-menu">
           <li><a href="https://tomotravel-pm.com/" aria-label="トップページへ"><i class="fas fa-house nav-icon" aria-hidden="true"></i>トップページ</a></li>
           <li><a href="https://tomotravel-pm.com/ktv/indexktv" aria-label="KTV(JTV)紹介へ"><i class="fas fa-microphone nav-icon" aria-hidden="true"></i>KTV(JTV)紹介</a></li>
+          <li><a href="https://tomotravel-pm.com/videos/" aria-label="動画一覧へ"><i class="fas fa-play nav-icon" aria-hidden="true"></i>動画一覧</a></li>
           <li><a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer" aria-label="YouTubeチャンネルへ"><i class="fab fa-youtube nav-icon" aria-hidden="true"></i>YouTubeチャンネル</a></li>
           <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
           <li><a href="https://tomotravel-pm.com/tomogame_v1.0/" aria-label="ゲームへ"><i class="fas fa-gamepad nav-icon" aria-hidden="true"></i>ゲーム</a></li>
@@ -1703,6 +1706,10 @@
             <span>Manila Crown Palace Hotel 3F</span>
           </div>
           <h1 id="hero-title">Charm<br>Music<br>Lounge</h1>
+<!-- video-discovery:start -->
+<nav class="video-discovery" aria-label="この記事の動画"><a href="https://tomotravel-pm.com/videos/charm" data-video-id="uf67dP5Cg70" data-video-platform="site">動画を大きく見る</a><a href="https://www.youtube.com/watch?v=uf67dP5Cg70" target="_blank" rel="noopener noreferrer" data-video-id="uf67dP5Cg70" data-video-platform="youtube">YouTubeで見る</a><a href="https://tomotravel-pm.com/videos/">動画一覧</a></nav>
+<!-- video-discovery:end -->
+
           <div class="hero-subtitle">濃紺、ピンク、ゴールドがつくる上品な夜のラウンジ。</div>
           <p class="hero-lead">
             <span>Charm Music Loungeは、</span>
@@ -1732,7 +1739,7 @@
             <a class="youtube-open" href="https://youtu.be/uf67dP5Cg70" target="_blank" rel="noopener noreferrer" aria-label="Charm Music Loungeの紹介動画をYouTubeで開く">YouTubeで見る ↗</a>
           </figcaption>
           <div class="youtube-frame" data-youtube-slot>
-            <iframe
+            <iframe id="article-video"
               src="https://www.youtube-nocookie.com/embed/uf67dP5Cg70?rel=0"
               title="Charm Music Lounge（マラテKTV）紹介動画"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -2212,5 +2219,6 @@
     initFluidCanvas();
     initPageMotion();
   </script>
+<script id="video-discovery-script" src="/assets/video-discovery.js" defer></script>
 </body>
 </html>

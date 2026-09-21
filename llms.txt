@@ -6,10 +6,10 @@
 
 ## ページ一覧
 
-- [ブログ記事一覧 | とも旅ちゃんねるVLOG](https://tomotravel-pm.com/blog)
+- [セブ島旅行・JTV体験記｜動画付きブログ｜とも旅ちゃんねる](https://tomotravel-pm.com/blog)
 - [【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？ | とも旅ちゃんねるVLOG](https://tomotravel-pm.com/cebu2nd1)
 - [【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル | とも旅ちゃんねるVLOG](https://tomotravel-pm.com/cebu2nd2)
-- [とも旅ちゃんねるVLOG | フィリピン・東南アジア旅とKTV/JTV夜遊び情報](https://tomotravel-pm.com/)
+- [マニラ・セブ島のKTV/JTVと一人旅動画｜とも旅ちゃんねる](https://tomotravel-pm.com/)
 - [LP作成サービス詳細 | とも旅ちゃんねるVLOG](https://tomotravel-pm.com/lp-service)
 - [プライバシーポリシー | とも旅ちゃんねるVLOG](https://tomotravel-pm.com/privacy-policy)
 - [お仕事のご依頼 | とも旅ちゃんねる](https://tomotravel-pm.com/traveltest)
@@ -34,10 +34,14 @@
 - [【感動の別れ】マクタン空港で観光客がハマる“罠”とは【注意】 | とも旅ちゃんねるVLOG](https://tomotravel-pm.com/blog/cebu3rd6)
 - [Insta360 X4 完全ガイド：［第1部］ 実使用レビュー＆［第2部］ 詳細解説 | とも旅ちゃんねるVLOG](https://tomotravel-pm.com/blog/insta360x4)
 - [Charm KTV Malate（チャーム）｜マラテKTV/JTV料金・アクセス](https://tomotravel-pm.com/ktv/charm)
-- [フィリピンKTV紹介｜マニラ・マラテ・エルミタの店舗・公式HP｜とも旅ちゃんねる](https://tomotravel-pm.com/ktv/indexktv)
+- [マラテKTV・JTVマップ｜マニラの店舗・店内動画｜とも旅ちゃんねる](https://tomotravel-pm.com/ktv/indexktv)
 - [LEX Music Lounge｜マニラ・マラテの日本式KTV（JTV）紹介](https://tomotravel-pm.com/ktv/lex)
 - [New Kai Moana（ニューカイモアナ）｜マラテKTV/JTV料金・アクセス](https://tomotravel-pm.com/ktv/newkaimoana)
 - [Tomo Game - Tropical Merge Puzzle](https://tomotravel-pm.com/tomogame_v1.0/)
+- [セブ島JTV体験動画｜B-pink・Club Kと初日の夜遊び｜とも旅ちゃんねる](https://tomotravel-pm.com/videos/cebu-jtv)
+- [Charm Music Loungeの店内動画｜マニラ・マラテKTV｜とも旅ちゃんねる](https://tomotravel-pm.com/videos/charm)
+- [フィリピン旅行・KTV動画一覧｜マニラ・セブ島｜とも旅ちゃんねる](https://tomotravel-pm.com/videos/)
+- [New Kai Moanaの紹介動画｜マラテJTV・休業前の店内｜とも旅ちゃんねる](https://tomotravel-pm.com/videos/new-kai-moana)
 - [Tomo Travel Memories | 旅の記録](https://tomotravel-pm.com/website/memorylog/)
 - [サイトマップ](https://tomotravel-pm.com/sitemap)
 
