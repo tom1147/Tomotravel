@@ -3,6 +3,7 @@
   const root = document.documentElement;
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('main-nav');
+  const guide = nav?.querySelector('.nav-guide');
   const desktop = window.matchMedia('(min-width: 1000px)');
   root.classList.add('cinematic-ready');
 
@@ -15,15 +16,32 @@
   }
   toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   nav?.addEventListener('click', event => {
-    if (event.target.closest('a')) setMenu(false);
+    if (event.target.closest('a')) {
+      setMenu(false);
+      if (desktop.matches && guide) guide.open = false;
+    }
   });
   document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && desktop.matches && guide?.open) {
+      guide.open = false;
+      guide.querySelector('summary').focus();
+    }
     if (event.key === 'Escape' && nav?.classList.contains('active')) setMenu(false, true);
   });
   document.addEventListener('click', event => {
     if (nav?.classList.contains('active') && !event.target.closest('#header')) setMenu(false);
+    if (desktop.matches && guide?.open && !guide.contains(event.target)) guide.open = false;
   });
-  desktop.addEventListener('change', () => setMenu(false));
+  guide?.addEventListener('focusout', event => {
+    if (desktop.matches && event.relatedTarget && !guide.contains(event.relatedTarget)) guide.open = false;
+  });
+  function syncNavigation() {
+    setMenu(false);
+    // Native details still works without JS. Mobile starts with all guide links visible.
+    if (guide) guide.open = !desktop.matches;
+  }
+  desktop.addEventListener('change', syncNavigation);
+  syncNavigation();
 
   // Preserve native hash URLs/history; move keyboard focus to the destination as well.
   document.addEventListener('click', event => {
