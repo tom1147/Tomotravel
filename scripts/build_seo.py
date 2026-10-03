@@ -152,7 +152,7 @@ def breadcrumbs(url, title, source):
         rows.append(('フィリピンKTV紹介', ORIGIN + '/ktv/indexktv'))
     elif source.startswith('videos/') and source != 'videos/index.html':
         rows.append(('動画一覧', ORIGIN + '/videos/'))
-    rows.append((title, url))
+    rows.append(('ブログ' if source == 'blog.html' else title, url))
     return {'@type': 'BreadcrumbList', '@id': url + '#breadcrumb', 'itemListElement': [
         {'@type': 'ListItem', 'position': i + 1, 'name': name, 'item': link} for i, (name, link) in enumerate(rows)
     ]}
@@ -174,6 +174,27 @@ def static_include(text, ident, content):
         return re.sub(re.escape(start) + r'.*?' + re.escape(end), lambda _: start + '\n' + content + '\n' + end, text, flags=re.S)
     pattern = r'(<(?P<tag>div|aside)\b[^>]*\bid=[\"\']' + re.escape(ident) + r'[\"\'][^>]*>)\s*(</(?P=tag)>)'
     return re.sub(pattern, lambda m: m[1] + start + '\n' + content + '\n' + end + m[3], text, count=1, flags=re.S)
+
+
+def blog_listing(text, url):
+    """Describe the actual article cards, not unrelated header or footer links."""
+    items = []
+    seen = set()
+    cards = re.findall(r'<article\b[^>]*class=[\"\'][^\"\']*\bpost-card\b[^\"\']*[\"\'][^>]*>(.*?)</article>', text, re.S)
+    for card in cards:
+        heading = re.search(r'<h2\b[^>]*>(.*?)</h2>', card, re.S)
+        links = Document(card).select('a')
+        if not heading or not links:
+            continue
+        target = urljoin(url, links[0].get('href', ''))
+        if target in seen:
+            continue
+        seen.add(target)
+        items.append({'@type': 'ListItem', 'position': len(items) + 1,
+                      'name': text_content(heading[1]), 'url': target})
+    return {'@type': 'ItemList', '@id': url + '#articles', 'name': 'ブログ記事一覧',
+            'itemListOrder': 'https://schema.org/ItemListOrderDescending',
+            'numberOfItems': len(items), 'itemListElement': items}
 
 
 def main():
@@ -251,6 +272,8 @@ def main():
             image = images[0] if images else LOGO
         if not urlsplit(image).path.lower().endswith(('.jpg', '.jpeg', '.png', '.webp', '.gif')):
             image = images[0] if images else LOGO
+        if source in ('index.html', 'blog.html') and image not in images:
+            images.insert(0, image)
         # Image geometry prevents avoidable layout shifts; files are not rewritten.
         def fix_image(m):
             tag = m[0]
@@ -292,6 +315,8 @@ def main():
                 '@id': url + '#webpage', 'url': url, 'name': title, 'description': description, 'inLanguage': 'ja',
                 'isPartOf': {'@id': ORIGIN + '/#website'}, 'publisher': {'@id': ORIGIN + '/#organization'}, 'dateModified': modified,
                 'primaryImageOfPage': {'@type': 'ImageObject', '@id': url + '#primaryimage', 'url': image}}
+        if size:
+            page['primaryImageOfPage'].update({'width': size[0], 'height': size[1]})
         if source != 'index.html':
             page['breadcrumb'] = {'@id': url + '#breadcrumb'}
         if published:
@@ -396,15 +421,7 @@ def main():
         if source != 'index.html':
             graph.append(breadcrumbs(url, title, source))
         if source == 'blog.html':
-            targets = []
-            for a in Document(text.split('seo-include:sidebar-placeholder:start')[0]).select('a'):
-                link = a.get('href', '')
-                f = resolve_file(link) if link.startswith(ORIGIN) else None
-                rel = f.relative_to(ROOT).as_posix() if f else ''
-                if rel in pages and (rel.startswith('blog/') or rel.startswith('cebu')) and canonical(rel) not in targets:
-                    targets.append(canonical(rel))
-            listing = {'@type': 'ItemList', '@id': url + '#articles', 'numberOfItems': len(targets),
-                       'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': v} for i, v in enumerate(targets)]}
+            listing = blog_listing(text, url)
             graph.append(listing)
             page['mainEntity'] = {'@id': listing['@id']}
         payload = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, indent=2).replace('</', '<\\/')

@@ -3,6 +3,9 @@
   <url>
     <loc>https://tomotravel-pm.com/blog</loc>
     <lastmod>2026-10-03</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/blog-f1-hero.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/cebu2nd1</loc>
@@ -75,6 +78,9 @@
       <video:player_loc>https://www.youtube.com/embed/uf67dP5Cg70</video:player_loc>
       <video:publication_date>2026-08-08T02:00:37-07:00</video:publication_date>
     </video:video>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/hero-night.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/lp-service</loc>
