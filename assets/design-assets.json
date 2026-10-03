@@ -1,0 +1,149 @@
+{
+  "version": "20261003-c1",
+  "directory": "_design-assets/20261003-c1",
+  "archive_url": "https://raw.githubusercontent.com/tom1147/Tomotravel/358e67583f40970274669e8fb63929f57e0b5e1a/design-assets-20261003.zip",
+  "archive_sha256": "475f46640d9106b82af221dfe2b442fef8a19a756cac504a59f4553aaca737ca",
+  "archive_bytes": 580416,
+  "files": {
+    "booking-expedia": {
+      "file": "booking-expedia.webp",
+      "width": 128,
+      "height": 40,
+      "bytes": 1980,
+      "sha256": "f6babe46959ba005f1e7c1817a8180d609517b1e8304c2ed5eca72c2913ba526"
+    },
+    "booking-flights": {
+      "file": "booking-flights.webp",
+      "width": 128,
+      "height": 40,
+      "bytes": 1192,
+      "sha256": "e093d5e2719044f68eaab3264d492b2e94aababbab0a562c4fe125831f2bdd1b"
+    },
+    "booking-jtb": {
+      "file": "booking-jtb.webp",
+      "width": 128,
+      "height": 40,
+      "bytes": 2300,
+      "sha256": "019961382a623967eafca143bbc2459fd0f5371d19b33d8d739eb362c79a5c19"
+    },
+    "booking-trip": {
+      "file": "booking-trip.webp",
+      "width": 128,
+      "height": 37,
+      "bytes": 1866,
+      "sha256": "a357f45fba51cb6a9ee1668683e9799b515017cfa487714c560e80469bf0093b"
+    },
+    "camera": {
+      "file": "camera.webp",
+      "width": 107,
+      "height": 108,
+      "bytes": 1090,
+      "sha256": "4fc5c1105f0e715e2704d283b5780367cafc96ff1bba6688acd7e05d1ad98130"
+    },
+    "cards": {
+      "file": "cards.webp",
+      "width": 99,
+      "height": 59,
+      "bytes": 1636,
+      "sha256": "00b70ff8f59835f5f851ab1f26fc7364dcbaa62c1717a0e557f939515e9a77c8"
+    },
+    "clothes": {
+      "file": "clothes.webp",
+      "width": 99,
+      "height": 53,
+      "bytes": 1798,
+      "sha256": "d48e3c88e2e10992d4f7cbbe7bbcb9740b95a86bcb9bcf4af48851d6df7a2ee0"
+    },
+    "contact-scene": {
+      "file": "contact-scene.webp",
+      "width": 793,
+      "height": 410,
+      "bytes": 48964,
+      "sha256": "b1bdf1e9d47e3890317d9ad3ea6db182f4080c69b868facdeaf4532285d6fc8f"
+    },
+    "jacket": {
+      "file": "jacket.webp",
+      "width": 90,
+      "height": 67,
+      "bytes": 1264,
+      "sha256": "11d4dba8467c5983c592563ddf6aae764d4be7751c7eedac79099f6de08b462d"
+    },
+    "passport": {
+      "file": "passport.webp",
+      "width": 98,
+      "height": 66,
+      "bytes": 1468,
+      "sha256": "315e4647e0e56da39ea7eb95c44d46739de9bc158185ca9d74c62b388a3a7596"
+    },
+    "philippines": {
+      "file": "philippines.webp",
+      "width": 236,
+      "height": 73,
+      "bytes": 7732,
+      "sha256": "fcb227167f4bfd1f78a353675a756c6e55f070ff5031205a89136e751975437d"
+    },
+    "phone": {
+      "file": "phone.webp",
+      "width": 74,
+      "height": 107,
+      "bytes": 1742,
+      "sha256": "13157bfcb32e1de9f41b138a9a32767c321c2726f458d75554aa4c7e6c175cac"
+    },
+    "prep-1": {
+      "file": "prep-1.webp",
+      "width": 135,
+      "height": 85,
+      "bytes": 3608,
+      "sha256": "46c946d6153d9dfd81b240f0cde8824cc757f418f0ca246e3b8a7bde72da8f62"
+    },
+    "prep-2": {
+      "file": "prep-2.webp",
+      "width": 135,
+      "height": 85,
+      "bytes": 3412,
+      "sha256": "f0395dfe559bb6e80dcd5d7d0467a92513db309e8699be92c9ce020062feb6d6"
+    },
+    "story": {
+      "file": "story.webp",
+      "width": 288,
+      "height": 249,
+      "bytes": 21748,
+      "sha256": "0a3c14b7c1f50a8dd639d887039ba84ecf4906740137d810cda867c404660f2f"
+    },
+    "thailand": {
+      "file": "thailand.webp",
+      "width": 235,
+      "height": 73,
+      "bytes": 5608,
+      "sha256": "9c7bae4fb7bd9ca821cff7216f1af918fa10b7b8eb252111aab0a74cae408c29"
+    },
+    "tissues": {
+      "file": "tissues.webp",
+      "width": 95,
+      "height": 49,
+      "bytes": 1406,
+      "sha256": "eeb060e3593be8daca14ad8b90503d38ae7c9b06b3bb1386da68c2f131dfbfcc"
+    },
+    "vietnam": {
+      "file": "vietnam.webp",
+      "width": 235,
+      "height": 73,
+      "bytes": 9722,
+      "sha256": "08acf39bfb7b9cf92f489f0e3bd04d5d5f550ddb5023e3117280a4d244aeb09c"
+    },
+    "vpn": {
+      "file": "vpn.webp",
+      "width": 72,
+      "height": 65,
+      "bytes": 1182,
+      "sha256": "881998121ddd14d6dfe1635999c1391b1ba7fa3ace64f3c6a3c7ca9a312b7681"
+    },
+    "hero-night": {
+      "file": "hero-night.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 458374,
+      "sha256": "0288c38fa4e2106c943239019f888b90f08170a77507d401bfe5bc43a486075e"
+    }
+  }
+}

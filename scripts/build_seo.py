@@ -448,7 +448,7 @@ def main():
                     ET.SubElement(vd, '{' + video_ns + '}' + target).text = v[key]
     ET.indent(root, space='  ')
     write_text(ROOT / 'sitemap.xml', ET.tostring(root, encoding='utf-8', xml_declaration=True).decode('utf-8'))
-    llms = '# とも旅ちゃんねるVLOG\n\n> フィリピン・東南アジアの一人旅の体験、KTV・JTV紹介、旅の準備を発信する日本語サイト。\n\n運営者の体験をもとにした記事です。店舗の営業時間・料金などは各ページに記載した時点の情報であり、最新情報は店舗公式窓口をご確認ください。\n\n## ページ一覧\n\n' + '\n'.join('- [' + r['title'].replace('[', '［').replace(']', '］') + '](' + r['url'] + ')' for r in records) + '\n\n## 公式チャンネル\n\n- [YouTube](' + SOCIAL[0] + ')\n- [X](' + SOCIAL[1] + ')\n'
+    llms = '# とも旅ちゃんねるVLOG\n\n> タイ・ベトナム・フィリピンなど東南アジアの一人旅の体験、KTV・JTV紹介、旅の準備を発信する日本語サイト。\n\n運営者の体験をもとにした記事です。店舗の営業時間・料金などは各ページに記載した時点の情報であり、最新情報は店舗公式窓口をご確認ください。\n\n## ページ一覧\n\n' + '\n'.join('- [' + r['title'].replace('[', '［').replace(']', '］') + '](' + r['url'] + ')' for r in records) + '\n\n## 公式チャンネル\n\n- [YouTube](' + SOCIAL[0] + ')\n- [X](' + SOCIAL[1] + ')\n'
     write_text(ROOT / 'llms.txt', llms)
     redirects = ['# Exact permanent redirects; do not redirect all missing URLs to the home page.', '/index.html / 301!', '/index / 301!']
     for r in records:
