@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /scripts/
-Disallow: /artifacts/
-
-Sitemap: https://tomotravel-pm.com/sitemap.xml

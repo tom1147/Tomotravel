@@ -1,3 +1,0 @@
-サイトマップとSEOデータは scripts/build_seo.py で生成します。
-公開前に python scripts/verify_seo.py を実行してください。
-詳しい更新手順: docs/seo-maintenance.md
