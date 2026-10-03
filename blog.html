@@ -25,16 +25,15 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
     <!-- ▼▼▼ CSSを /blog/ ディレクトリから読み込む（変更なし） ▼▼▼ -->
-    <link rel="stylesheet" href="blog/style.css">
+    <link rel="stylesheet" href="assets/blog-daylight.css?v=daylight-f1">
     <!-- ▲▲▲ CSSを /blog/ ディレクトリから読み込む ▲▲▲ -->
 
     <!-- ▼▼▼ 構造化データ (CollectionPage & ItemList) 更新 ▼▼▼ -->
 
     <!-- ▲▲▲ 構造化データ 更新 ▲▲▲ -->
-<style id="seo-image-layout">.blog-content img, .blog-sidebar img, .post-thumbnail img { height: auto; }</style>
+
 
     <link rel="canonical" href="https://tomotravel-pm.com/blog">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -99,7 +98,7 @@
       "publisher": {
         "@id": "https://tomotravel-pm.com/#organization"
       },
-      "dateModified": "2026-09-21",
+      "dateModified": "2026-10-03",
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "@id": "https://tomotravel-pm.com/blog#primaryimage",
@@ -240,79 +239,53 @@
   ]
 }
 </script>
+
+<link rel="preload" as="image" href="/_design-assets/20261003-c1/blog-f1-hero.webp" type="image/webp" fetchpriority="high">
 </head>
-<body>
-    <!-- ヘッダープレースホルダー -->
-    <div id="header-placeholder"><!-- seo-include:header-placeholder:start -->
-    <!-- ヘッダー部分 -->
-    <!-- このファイルが blog/header.html として配置されている想定 -->
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-center" aria-label="サイトロゴ">
-                    <!-- トップページへのリンク: blog/ から抜ける必要があるので ../ -->
-                    <a href="https://tomotravel-pm.com/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
-                </div>
-                <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
-                    <ul class="nav-menu">
-                        <!-- 各セクションへのリンク: blog/ から抜けてルートの #id を指すので ../#id -->
-                        <li><a href="https://tomotravel-pm.com/#about" aria-label="チャンネル概要へ"><i class="fas fa-info-circle nav-icon" aria-hidden="true"></i>チャンネル概要</a></li>
-                        <li><a href="https://tomotravel-pm.com/ktv/indexktv" aria-label="KTV(JTV)情報へ"><i class="fas fa-martini-glass nav-icon" aria-hidden="true"></i>KTV(JTV)情報</a></li>
-                        <li><a href="https://tomotravel-pm.com/videos/" aria-label="動画一覧へ"><i class="fas fa-video nav-icon" aria-hidden="true"></i>動画一覧</a></li>
-                        <li><a href="https://tomotravel-pm.com/#travel" aria-label="旅の魅力へ"><i class="fas fa-plane nav-icon" aria-hidden="true"></i>旅の魅力</a></li>
-                        <li><a href="https://tomotravel-pm.com/#equipment" aria-label="撮影機材へ"><i class="fas fa-camera nav-icon" aria-hidden="true"></i>撮影機材</a></li>
-                        <li><a href="https://tomotravel-pm.com/#booking" aria-label="旅の予約へ"><i class="fas fa-hotel nav-icon" aria-hidden="true"></i>旅の予約</a></li>
-                        <li><a href="https://tomotravel-pm.com/#preparation" aria-label="事前準備へ"><i class="fas fa-clipboard-check nav-icon" aria-hidden="true"></i>事前準備</a></li>
-                        <li><a href="https://tomotravel-pm.com/#contact" aria-label="お問い合わせへ"><i class="fas fa-envelope nav-icon" aria-hidden="true"></i>お問い合わせ</a></li>
-                        <!-- ブログトップへのリンク: 同じ blog/ ディレクトリ内を指すので ./ または blog (blog/index.html がある場合) -->
-                        <!-- もしブログトップが /blog/ でアクセスできるならこれでOK -->
-                        <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログトップへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
-                        <!-- 外部リンクはそのまま -->
-                        <li><a href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-                    </ul>
-                </nav>
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-
-<!-- seo-include:header-placeholder:end --></div>
-
-    <!-- ページ全体のラッパー -->
-    <div class="blog-page-wrapper container">
-
-        <!-- メインコンテンツエリア -->
-        <main class="blog-main-content">
-            <!-- 記事一覧ページ用の見出し -->
-            <div class="blog-list-header">
-                 <h1>ブログ記事一覧</h1>
-                 <p>セブ島のJTV、ホテル、街歩き、一人旅の体験を動画と記事で紹介します。<a href="https://tomotravel-pm.com/videos/">動画から探す</a>こともできます。</p>
-             </div>
-
-            <!-- 記事コンテナ -->
-            <div class="posts-container">
-
-                <!-- 1. NEW: セブ島「夢の島編」最終回 (cebu3rd6) - 最新 -->
-                <article class="post-card">
+<body class="blog-daylight">
+<svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><defs>
+<symbol id="icon-palm" viewBox="0 0 36 44"><path d="M14 40c1-10 4-22 8-30M21 12C17 4 10 3 5 7c6-1 10 2 15 7M21 12C20 3 25 1 31 4c-5 1-7 4-9 10M22 12c7-6 13-1 13 5-4-4-7-5-13-3M20 13C12 8 7 14 7 20c3-4 7-6 13-5M21 14c6 0 9 4 9 10-3-4-5-6-9-8M3 42c9-2 18-2 29 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+<symbol id="icon-youtube" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="4" fill="currentColor"/><path d="M10 8v8l6-4-6-4Z" fill="var(--day-paper)"/></symbol>
+<symbol id="icon-x" viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.2 22H17l-4.9-7.4L5.6 22H2.4l7.3-8.4L1.8 2h6.3l4.5 6.8L18.9 2Zm-1.1 18h1.7L7.2 3.9H5.4L17.8 20Z" fill="currentColor"/></symbol>
+</defs></svg>
+<a class="skip-link" href="#blog-main">本文へ移動</a>
+<header class="daylight-header" id="daylight-header"><div class="daylight-header-inner">
+<a class="daylight-brand" href="https://tomotravel-pm.com/"><svg class="icon brand-palm" aria-hidden="true" focusable="false"><use href="#icon-palm"></use></svg><span><span class="brand-name">とも旅ちゃんねる<span class="brand-vlog">VLOG</span></span><span class="brand-tagline">一人旅で見つける、やさしい世界</span></span></a>
+<nav class="daylight-nav" id="daylight-nav" aria-label="メインナビゲーション"><ul>
+<li><a href="https://tomotravel-pm.com/videos/">動画一覧</a></li>
+<li class="guide-item"><details class="daylight-guide"><summary>旅のガイド<span class="chevron" aria-hidden="true"></span></summary><div class="guide-links">
+<a href="https://tomotravel-pm.com/#about">チャンネル概要</a><a href="https://tomotravel-pm.com/#travel">旅の魅力</a><a href="https://tomotravel-pm.com/#equipment">撮影機材</a><a href="https://tomotravel-pm.com/#booking">旅の予約</a><a href="https://tomotravel-pm.com/#preparation">事前準備</a></div></details></li>
+<li><a href="https://tomotravel-pm.com/ktv/indexktv">KTV(JTV)情報</a></li><li><a href="https://tomotravel-pm.com/blog" aria-current="page">ブログ</a></li><li><a href="https://tomotravel-pm.com/#contact">お問い合わせ</a></li>
+<li class="header-socials"><a class="social-link youtube" href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer" aria-label="YouTubeチャンネル"><svg class="icon " aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg></a><a class="social-link" href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X（旧Twitter）"><svg class="icon " aria-hidden="true" focusable="false"><use href="#icon-x"></use></svg></a></li></ul></nav>
+<button class="header-search" type="button" data-search-toggle aria-label="記事を検索" aria-controls="article-search" aria-expanded="false" hidden><svg class="icon " aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg></button>
+<button class="daylight-menu-toggle" type="button" aria-label="メニューを開く" aria-controls="daylight-nav" aria-expanded="false" hidden><span></span><span></span><small>MENU</small></button>
+</div></header>
+<main id="blog-main" tabindex="-1">
+<section class="daylight-hero" aria-labelledby="blog-title"><img class="daylight-scene" src="/_design-assets/20261003-c1/blog-f1-hero.webp" alt="" width="1800" height="600" fetchpriority="high" decoding="async"><div class="hero-wash" aria-hidden="true"></div><div class="daylight-container hero-content">
+<h1 id="blog-title">ブログ記事一覧</h1><p class="hero-description">セブ島のJTV、ホテル、街歩き、一人旅の体験を<br class="wide-break">動画と記事で紹介します。</p><a class="daylight-button" href="https://tomotravel-pm.com/videos/">動画から探す <span aria-hidden="true">→</span></a><p class="hero-location">Cebu, Philippines</p><p class="hero-caption">ひとりだから、見える景色がある。</p></div><p class="hero-note" aria-hidden="true">まだ見ぬセブの<br>好きに出会いに</p><p class="street-note" aria-hidden="true">CEBU<br>GOOD<br>PEOPLE.<br>GOOD<br>TRIP.</p></section>
+<section class="daylight-container topics-section" aria-labelledby="topics-title"><div class="section-heading"><h2 id="topics-title">テーマから探す</h2><span class="heading-rule" aria-hidden="true"></span><p>気になるテーマから、セブの旅をもっと深く <span aria-hidden="true">›</span></p></div><div class="topic-grid"><a class="topic-card topic-walk" href="#articles" data-topic="walk" aria-label="街歩きの記事を表示"><span class="topic-picture" aria-hidden="true"></span><span class="topic-label">街歩き<span aria-hidden="true">→</span></span></a><a class="topic-card topic-hotel" href="#articles" data-topic="hotel" aria-label="ホテルの記事を表示"><span class="topic-picture" aria-hidden="true"></span><span class="topic-label">ホテル<span aria-hidden="true">→</span></span></a><a class="topic-card topic-night" href="#articles" data-topic="night" aria-label="夜遊び・JTVの記事を表示"><span class="topic-picture" aria-hidden="true"></span><span class="topic-label">夜遊び・JTV<span aria-hidden="true">→</span></span></a><a class="topic-card topic-tips" href="#articles" data-topic="tips" aria-label="旅の注意点の記事を表示"><span class="topic-picture" aria-hidden="true"></span><span class="topic-label">旅の注意点<span aria-hidden="true">→</span></span></a></div></section>
+<section class="daylight-container articles-section" id="articles" aria-labelledby="articles-title"><div class="section-heading articles-heading"><h2 id="articles-title" tabindex="-1">最新記事</h2><span class="heading-rule" aria-hidden="true"></span><div class="filter-tabs" role="group" aria-label="記事のテーマ" hidden><button type="button" data-topic="all" aria-pressed="true">すべて</button><button type="button" data-topic="walk" aria-pressed="false">街歩き</button><button type="button" data-topic="hotel" aria-pressed="false">ホテル</button><button type="button" data-topic="night" aria-pressed="false">夜遊び・JTV</button><button type="button" data-topic="tips" aria-pressed="false">旅の注意点</button></div></div>
+<form class="article-search" id="article-search" role="search" hidden><label for="article-query">記事を検索</label><div class="search-field"><svg class="icon " aria-hidden="true" focusable="false"><use href="#icon-search"></use></svg><input id="article-query" type="search" placeholder="記事名・場所・キーワード" autocomplete="off" aria-controls="article-list"><button type="submit">検索</button><button type="button" class="clear-search">クリア</button></div></form>
+<p class="filter-status" role="status" aria-live="polite" hidden></p><div class="posts-container" id="article-list">
+<article class="post-card" id="post-1" data-topics="tips night">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/6/28</span>
+                            <time datetime="2025-06-28">2025.06.28</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu3rd6">
                             <h2 class="post-title">【感動の別れ】マクタン空港で観光客がハマる“罠”とは【注意】</h2>
                         </a>
                         <div class="excerpt-container">
-                            <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/eFv3Q2sQUpw/mqdefault.jpg" alt="セブ島旅行最終回、空港での注意喚起サムネイル" loading="lazy" decoding="async">
+                            <div class="post-thumbnail"><span class="pickup-label">PICK UP</span>
+                                <img src="https://i.ytimg.com/vi/eFv3Q2sQUpw/mqdefault.jpg" alt="セブ島旅行最終回、空港での注意喚起サムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行最終章！AYAちゃんとの別れ、ネオトーキョーでの危険な遭遇、そしてマクタン空港での注意点まで。最後まで気の抜けない旅のフィナーレを赤裸々にレポート。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu3rd6" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu3rd6" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> マクタン空港</span>
@@ -322,13 +295,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> 危険</span>
                         </div>
                     </div>
-                </article>
-
-                <!-- 2. NEW: セブ島最終日 (cebu3rd5) -->
-                <article class="post-card">
+                </article><article class="post-card" id="post-2" data-topics="walk">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/6/27</span>
+                            <time datetime="2025-06-27">2025.06.27</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu3rd5">
@@ -336,13 +306,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/9aDFQ46hqMM/mqdefault.jpg" alt="セブ島最終日プールデートと恋の結末サムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/9aDFQ46hqMM/mqdefault.jpg" alt="セブ島最終日プールデートと恋の結末サムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行最終日、AYAちゃんと最高のプールデート！巨大スライダーやプールサイドでの食事を満喫し、旅の締めは格安マッサージへ。そして迎えた別れの時、僕の告白の結末は…？</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu3rd5" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu3rd5" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 最終日</span>
@@ -352,13 +322,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> 恋の結末</span>
                         </div>
                     </div>
-                </article>
-
-                <!-- 3. NEW: フィリピン選挙と禁酒令 (cebu3rd4) -->
-                <article class="post-card">
+                </article><article class="post-card" id="post-3" data-topics="tips night">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/6/26</span>
+                            <time datetime="2025-06-26">2025.06.26</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu3rd4">
@@ -366,13 +333,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/jAzACOONKEE/mqdefault.jpg" alt="フィリピン禁酒令体験談サムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/jAzACOONKEE/mqdefault.jpg" alt="フィリピン禁酒令体験談サムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>日本食レストランでAYAちゃんとのデート後、夜の街に繰り出すとJTVが全滅！？フィリピンの選挙期間中に発令される「禁酒令」に遭遇。旅行計画で注意すべきポイントを体験談と共に解説します。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu3rd4" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu3rd4" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
@@ -382,13 +349,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> フィリピン</span>
                         </div>
                     </div>
-                </article>
-
-                <!-- 4. NEW: トラブル続出デート (cebu3rd3) -->
-                <article class="post-card">
+                </article><article class="post-card" id="post-4" data-topics="walk tips">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/6/25</span>
+                            <time datetime="2025-06-25">2025.06.25</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu3rd3">
@@ -396,13 +360,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/-1uny6EVRbM/mqdefault.jpg" alt="セブ島トラブルデート体験談サムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/-1uny6EVRbM/mqdefault.jpg" alt="セブ島トラブルデート体験談サムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行2日目、元JTV嬢のAYAちゃんとのデートはトラブル続き！プールに入れない、マッサージは満員、ラーメン屋は閉店…。次々と降りかかる災難に振り回される、うまくいかない一日の全貌をレポート。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu3rd3" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu3rd3" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> AYA</span>
@@ -411,13 +375,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> マンゴーストリート</span>
                         </div>
                     </div>
-                </article>
-
-                <!-- 5. NEW: ITパークデート (cebu3rd2) -->
-                <article class="post-card">
+                </article><article class="post-card" id="post-5" data-topics="walk hotel">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/6/24</span>
+                            <time datetime="2025-06-24">2025.06.24</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu3rd2">
@@ -425,13 +386,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/NBb_lL0VOa4/mqdefault.jpg" alt="セブ島ITパークデートサムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/NBb_lL0VOa4/mqdefault.jpg" alt="セブ島ITパークデートサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島初日後半、AYAちゃんとITパークのアヤラモールで水着ショッピング！その後はマッサージで癒され、セダホテルのルーフトップバーで夜景を堪能。ロマンチックなデートの様子と、僕の旅の持ち物も大公開！</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu3rd2" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu3rd2" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> AYA</span>
@@ -440,13 +401,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> 持ち物紹介</span>
                         </div>
                     </div>
-                </article>
-
-                <!-- 6. NEW: 「夢の島編」スタート (cebu3rd1) -->
-                <article class="post-card">
+                </article><article class="post-card" id="post-6" data-topics="hotel walk night">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/5/22</span>
+                            <time datetime="2025-05-22">2025.05.22</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu3rd1">
@@ -454,13 +412,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/jwd2WxvLPkg/mqdefault.jpg" alt="セブ島JTV美女と再会デートサムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/jwd2WxvLPkg/mqdefault.jpg" alt="セブ島JTV美女と再会デートサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行「夢の島編」スタート！前回JTVで出会った美女AYAちゃんと感動の再会。ベイフロントホテルのルームツアーから、「カーサヴェルデ」でのステーキディナーまで、初日デートの様子をレポートします。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu3rd1" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu3rd1" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> AYA</span>
@@ -469,13 +427,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
                         </div>
                     </div>
-                </article>
-
-                <!-- 7. cebu2nd8 (旧1番目) -->
-                <article class="post-card">
+                </article><article class="post-card" id="post-7" data-topics="night tips">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/5/8</span>
+                            <time datetime="2025-05-08">2025.05.08</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu2nd8">
@@ -483,13 +438,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/dfEUSp-BXNM/mqdefault.jpg" alt="セブ島JTVハシゴ酒とトラブル体験談のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/dfEUSp-BXNM/mqdefault.jpg" alt="セブ島JTVハシゴ酒とトラブル体験談のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行3日目の夜、JTVハシゴ酒で泥酔！Club KとClub Blueでの美女との出会い、ぼったくりタクシー被害、そして帰りの飛行機での大失態までを赤裸々レポート。セブの夜の楽しさと危険が詰まった体験談です。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu2nd8" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd8" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
@@ -500,13 +455,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> トラブル</span>
                         </div>
                     </div>
-                </article>
-
-                <!-- 8. cebu2nd7 (旧2番目) -->
-                <article class="post-card">
+                </article><article class="post-card" id="post-8" data-topics="night hotel">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/5/1</span>
+                            <time datetime="2025-05-01">2025.05.01</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu2nd7">
@@ -514,13 +466,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/oONFOnW9cY0/mqdefault.jpg" alt="セブ島JTV Wing体験談のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/oONFOnW9cY0/mqdefault.jpg" alt="セブ島JTV Wing体験談のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行3日目の夜。最大級JTV「Wing」での美女ローズさんとの出会い、プロのライブパフォーマンス体験、東横インセブのレビューまで詳細レポート。セブの夜をさらに満喫！</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu2nd7" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd7" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
@@ -530,13 +482,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> ライブショー</span>
                         </div>
                     </div>
-                </article>
-
-                <!-- (以下、既存の記事カードが続く) -->
-                <article class="post-card">
+                </article><article class="post-card" id="post-9" data-topics="walk">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/4/17</span>
+                            <time datetime="2025-04-17">2025.04.17</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu2nd6">
@@ -544,13 +493,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/Q2WSkH83ULs/mqdefault.jpg" alt="セブ島ローカルマッサージと街歩きのサムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/Q2WSkH83ULs/mqdefault.jpg" alt="セブ島ローカルマッサージと街歩きのサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行3日目の昼間の記録【動画未公開シーン】。噂のリンガムマッサージ『Kalani Spa』での体験レポート、ローカルバスでの移動の苦労、近代的なITパークでの散策と休息まで。観光地巡りとは違う、セブのローカルな一面とまったりとした時間の過ごし方をご紹介します。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu2nd6" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd6" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> マッサージ</span>
@@ -559,11 +508,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> リンガムマッサージ</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-10" data-topics="night tips">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/4/15</span>
+                            <time datetime="2025-04-15">2025.04.15</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu2nd5">
@@ -571,13 +519,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/D51AdCFznis/mqdefault.jpg" alt="セブ島JTVでキレた体験談のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/D51AdCFznis/mqdefault.jpg" alt="セブ島JTVでキレた体験談のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島一人旅2日目の夜【後編】。飲みすぎとJTVのおねだり攻撃に耐えきれず、まさかのブチギレ！？Club Blueでの一部始終と、深夜にたどり着いた救いの日本食「富士山」のレビューをお届け。酔っ払いトラブルと自己嫌悪、そして翌日への反省と期待が入り混じる、リアルなセブの夜遊び失敗談です。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu2nd5" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd5" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
@@ -586,11 +534,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> Club Blue</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-11" data-topics="night walk">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/4/3</span>
+                            <time datetime="2025-04-03">2025.04.03</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu2nd4">
@@ -598,13 +545,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/ofMvQYhii58/mqdefault.jpg" alt="セブ島JTVで飲みすぎた体験談のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/ofMvQYhii58/mqdefault.jpg" alt="セブ島JTVで飲みすぎた体験談のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行2日目の夜遊び体験【前編】ネオトーキョーでのマッサージでリフレッシュし、ルーフトップバーで食事を楽しんだ後、Club Kへ…爆美女との再会でテンションが上がり、テキーラを飲みすぎた結果カラオケで熱唱する羽目に…。セブの夜のリアルな楽しさと飲みすぎの顛末をレポートします！</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu2nd4" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd4" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
@@ -612,11 +559,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> Club K</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-12" data-topics="night walk">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/4/2</span>
+                            <time datetime="2025-04-02">2025.04.02</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu2nd3">
@@ -624,13 +570,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/LNnFkivOQtE/mqdefault.jpg" alt="セブ島夜遊び動画のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/LNnFkivOQtE/mqdefault.jpg" alt="セブ島夜遊び動画のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>シヌログ祭りの熱気に沸くセブ島で、忘れられない夜遊びを体験！馴染みのクラブ「Club Blue（クラブ ブルー）」では、以前から指名していた女性との久しぶりの再会を果たし、テキーラで乾杯。お祭りムードも相まって、気づけばかなり酔っ払い。さらに深夜、予想外の誘いでマッサージ「Forest Spa」へ。旅の疲れを癒すはずがちょっとしたハプニングも？シヌログ期間ならではの混雑や移動の苦労、興奮と反省が入り混じるセブ島の夜を赤裸々にレポートします。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu2nd3" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu2nd3" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
@@ -638,11 +584,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-13" data-topics="night">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/28</span>
+                            <time datetime="2025-03-28">2025.03.28</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/cebu2nd2">
@@ -650,13 +595,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/z5APVNRi0FQ/mqdefault.jpg" alt="セブ島JTVのサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/z5APVNRi0FQ/mqdefault.jpg" alt="セブ島JTVのサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島のJTVを実際に体験！B-pinkとClub Kの雰囲気や料金、スタッフとのコミュニケーションについて詳しくレポート。ショータイムやドリンク料金など、セブ島の夜遊びを楽しむためのリアルな情報をお届けします。初めての方でも安心して楽しめる情報満載です。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/cebu2nd2" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/cebu2nd2" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
@@ -665,11 +610,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> Club K</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-14" data-topics="hotel tips walk">
                    <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/27</span>
+                            <time datetime="2025-03-27">2025.03.27</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/cebu2nd1">
@@ -677,13 +621,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/V8Q69llrJcY/mqdefault.jpg" alt="セブ島旅行動画のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/V8Q69llrJcY/mqdefault.jpg" alt="セブ島旅行動画のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行初日の様子をお届け！往復たったの29,400円という格安チケットで行く、セブパシフィック航空の機内の様子、日本のブランドホテル「東横インセブ」のルームツアー、近くのJモールでの食事など、セブ島到着日のリアルな体験をご紹介します。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/cebu2nd1" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/cebu2nd1" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 東横イン</span>
@@ -691,11 +635,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> セブパシフィック</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-15" data-topics="hotel tips night">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/27</span>
+                            <time datetime="2025-03-27">2025.03.27</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu1st6">
@@ -703,13 +646,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/BM2PLqTeT6w/mqdefault.jpg" alt="セブ島最終日と帰国のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/BM2PLqTeT6w/mqdefault.jpg" alt="セブ島最終日と帰国のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島一人旅最終日レポ！3日目午後、激安マッサージデートからまさかの大渋滞、JTV、ホテルの正直レビュー、そして帰国までのドタバタ劇。偽物問題やホテル選びの教訓も。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu1st6" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu1st6" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> マッサージ</span>
@@ -717,11 +660,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> 帰国</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-16" data-topics="night walk">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/27</span>
+                            <time datetime="2025-03-27">2025.03.27</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu1st5">
@@ -729,13 +671,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://i.ytimg.com/vi/Ositw2CX8PI/mqdefault.jpg" alt="セブ島JTVとローカルプールのサムネイル" loading="lazy" decoding="async">
+                                <img src="https://i.ytimg.com/vi/Ositw2CX8PI/mqdefault.jpg" alt="セブ島JTVとローカルプールのサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島旅行2日目夜から3日目昼過ぎのリアル体験記！深夜のJTVでの驚きの出会い、ノリで行ったローカルプールでのハプニング満載な冒険をレポート。セブの夜と昼、両方の魅力をVLOG風にお届け！</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu1st5" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu1st5" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> JTV</span>
@@ -743,11 +685,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> ハプニング</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-17" data-topics="walk night">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
+                            <time datetime="2025-03-26">2025.03.26</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu1st4">
@@ -755,13 +696,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/qI4ls-2Bg68/mqdefault.jpg" alt="セブ島ルーフトップバーデートのサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/qI4ls-2Bg68/mqdefault.jpg" alt="セブ島ルーフトップバーデートのサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島2日目中編！ルーフトップバーでの美女とのデート体験を完全公開。セブITパークの高層ビルから見る絶景、ネオトーキョーでの日本食、現地タクシー事情まで、ロマンチックな夜の冒険をリアルレポート！</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu1st4" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu1st4" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> ルーフトップバー</span>
@@ -769,11 +710,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> セブITパーク</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-18" data-topics="walk tips">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
+                            <time datetime="2025-03-26">2025.03.26</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu1st3">
@@ -781,13 +721,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/khZIpS93W10/mqdefault.jpg" alt="セブ島パークモールとサントニーニョ教会のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/khZIpS93W10/mqdefault.jpg" alt="セブ島パークモールとサントニーニョ教会のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島2日目の冒険！パークモールの偽ブランド天国からサントニーニョ教会まで、ローカル感あふれるセブを探索。コロン・ストリートや138モールでの買い物体験、現地スーパーでの物価調査も公開！</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu1st3" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu1st3" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> パークモール</span>
@@ -795,11 +735,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> サントニーニョ教会</span>
                         </div>
                     </div>
-                </article>
-                 <article class="post-card">
+                </article><article class="post-card" id="post-19" data-topics="walk night tips">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/26</span>
+                            <time datetime="2025-03-26">2025.03.26</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu1st2">
@@ -807,13 +746,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/pEIZNHzBEq4/mqdefault.jpg" alt="セブ島マンゴーストリート夜遊びのサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/pEIZNHzBEq4/mqdefault.jpg" alt="セブ島マンゴーストリート夜遊びのサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島の夜を満喫！マンゴーストリートでジョリビーを堪能し、PHILLYやJTVを体験。英語が苦手でも楽しめる夜遊びのリアルレポート。注意点やハプニング、タクシーでのトラブルも公開。</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu1st2" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu1st2" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> マンゴーストリート</span>
@@ -821,11 +760,10 @@
                             <span class="post-tag"><i class="fas fa-tag"></i> 夜遊び</span>
                         </div>
                     </div>
-                </article>
-                <article class="post-card">
+                </article><article class="post-card" id="post-20" data-topics="hotel tips walk">
                     <div class="post-content">
                         <div class="post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025/3/25</span>
+                            <time datetime="2025-03-25">2025.03.25</time>
                             <span><i class="fas fa-map-marker-alt"></i> フィリピン・セブ島</span>
                         </div>
                         <a href="https://tomotravel-pm.com/blog/cebu1st1">
@@ -833,13 +771,13 @@
                         </a>
                         <div class="excerpt-container">
                             <div class="post-thumbnail">
-                                <img src="https://img.youtube.com/vi/hDhjySf4SSI/mqdefault.jpg" alt="セブ島一人旅初日のサムネイル" loading="lazy" decoding="async">
+                                <img src="https://img.youtube.com/vi/hDhjySf4SSI/mqdefault.jpg" alt="セブ島一人旅初日のサムネイル" width="320" height="180" loading="lazy" decoding="async">
                             </div>
                             <div class="post-excerpt">
                                 <p>セブ島への3泊4日一人旅の初日をレポート！成田空港からマニラ経由でセブ島へ。お金のトラブルやホテルでの思わぬハプニング、ゴキブリとの遭遇など、ビビりな男の海外一人旅の失敗と教訓をお届け！</p>
                             </div>
                         </div>
-                        <a href="https://tomotravel-pm.com/blog/cebu1st1" class="post-link">記事を読む <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://tomotravel-pm.com/blog/cebu1st1" class="post-link">記事を読む <span aria-hidden="true">→</span></a>
                         <div class="post-tags">
                             <span class="post-tag"><i class="fas fa-tag"></i> セブ島</span>
                             <span class="post-tag"><i class="fas fa-tag"></i> 一人旅</span>
@@ -848,107 +786,15 @@
                         </div>
                     </div>
                 </article>
-
-            </div> <!-- /.posts-container -->
-
-        </main> <!-- /.blog-main-content -->
-
-        <!-- サイドバープレースホルダー -->
-        <aside id="sidebar-placeholder" class="blog-sidebar"><!-- seo-include:sidebar-placeholder:start -->
-    <!-- サイドバー -->
-    <!-- このファイルが blog/sidebar.html として配置されている想定 -->
-
-    <!-- サイドバー プロフィール -->
-    <div class="sidebar-profile">
-        <div class="profile-icon">
-            <!-- 画像パス修正: blog/ から一つ上の階層の images/ を参照 -->
-            <img src="../images/tomoicon.png" alt="とも プロフィールアイコン" width="100" height="100" decoding="async">
-        </div>
-        <div class="profile-info">
-            <h4>とも (Tomo)</h4>
-            <p>30代以上の一人旅をリアルに発信する旅系YouTubeチャンネル＆ブログ。観光だけでなく、移動・物価・食事・夜の遊び・失敗談まで包み隠さず紹介。LCCや日系ホテル、JTVでの出会いなど、無理せず楽しむ“リアルな一人旅”をそのまま届けています。</p>
-        </div>
-    </div>
-
-    <!-- サイドバー おすすめ記事 -->
-    <div class="sidebar-recommended">
-        <h4>おすすめ記事</h4>
-        <ul class="recommended-list">
-            <li class="recommended-item">
-                <!-- リンク先は絶対パスなので変更不要 -->
-                <a href="https://tomotravel-pm.com/cebu2nd1" class="recommended-link">
-                    <i class="fas fa-plane-departure"></i> 【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？
-                </a>
-            </li>
-            <li class="recommended-item">
-                <a href="https://tomotravel-pm.com/cebu2nd2" class="recommended-link">
-                    <i class="fas fa-cocktail"></i> 【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル
-                </a>
-            </li>
-            <li class="recommended-item">
-                <a href="https://tomotravel-pm.com/blog/cebu2nd3" class="recommended-link">
-                    <i class="fas fa-glass-cheers"></i> お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】
-                </a>
-            </li>
-            <li class="recommended-item">
-                <a href="https://tomotravel-pm.com/blog/cebu2nd4" class="recommended-link">
-                    <i class="fas fa-dizzy"></i> JTVで飲みすぎるとこうなる【セブ島2日目夜前編】
-                </a>
-            </li>
-        </ul>
-        <!-- ▼▼▼ 追加 ▼▼▼ -->
-        <div class="sidebar-action">
-            <a href="https://tomotravel-pm.com/blog" class="sidebar-button" target="_blank" rel="noopener"><i class="fas fa-blog"></i> ブログ記事一覧へ</a>
-        </div>
-        <!-- ▲▲▲ 追加 ▲▲▲ -->
-    </div>
-
-    <!-- サイドバー カテゴリ（例） -->
-    <!--
-    <div class="sidebar-categories"> ... </div>
-    -->
-
-    <!-- サイドバー タグ（例） -->
-    <!--
-    <div class="sidebar-tags"> ... </div>
-    -->
-
-<!-- seo-include:sidebar-placeholder:end --></aside>
-
-    </div> <!-- /.blog-page-wrapper -->
-
-    <!-- フッタープレースホルダー -->
-    <div id="footer-placeholder"><!-- seo-include:footer-placeholder:start -->
-    <!-- フッター部分 -->
-    <!-- このファイルが blog/footer.html として配置されている想定 -->
-    <footer>
-    <div class="container">
-        <div class="footer-content">
-            <h3>とも旅ちゃんねるVLOG</h3>
-            <p>東南アジアを中心に海外一人旅の魅力をお届け</p>
-            <div class="social-links">
-                <a href="https://www.youtube.com/@TomoTravel-PM" aria-label="YouTubeチャンネル" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-                <a href="https://x.com/tomotravel_pm" aria-label="X(旧Twitter)アカウント" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-            <div class="footer-links">
+</div><div class="empty-state" hidden><p>該当する記事が見つかりませんでした。</p><button class="daylight-button" type="button" data-reset-filters>すべての記事を表示 <span aria-hidden="true">→</span></button></div><div class="more-articles" hidden><button class="daylight-button" type="button" id="show-more">続きを読む <span aria-hidden="true">↓</span></button></div></section>
+<section class="daylight-container recommended-section" aria-labelledby="recommended-title"><div class="section-heading"><h2 id="recommended-title">おすすめ記事</h2><span class="heading-rule" aria-hidden="true"></span><a class="text-link" href="https://tomotravel-pm.com/blog">ブログ記事一覧へ <span aria-hidden="true">→</span></a></div><div class="recommended-grid"><a class="recommended-story" href="https://tomotravel-pm.com/cebu2nd1"><img src="https://img.youtube.com/vi/V8Q69llrJcY/mqdefault.jpg" alt="セブ島旅行動画のサムネイル" width="320" height="180" loading="lazy" decoding="async"><span class="recommended-copy"><time datetime="2025-03-27">2025.03.27</time><span class="recommended-title">【セブ島旅行初日】セブパシフィックでセブ島へ！東横インセブってどうなの？</span></span><span class="story-arrow" aria-hidden="true">→</span></a><a class="recommended-story" href="https://tomotravel-pm.com/cebu2nd2"><img src="https://img.youtube.com/vi/z5APVNRi0FQ/mqdefault.jpg" alt="セブ島JTVのサムネイル" width="320" height="180" loading="lazy" decoding="async"><span class="recommended-copy"><time datetime="2025-03-28">2025.03.28</time><span class="recommended-title">【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル</span></span><span class="story-arrow" aria-hidden="true">→</span></a><a class="recommended-story" href="https://tomotravel-pm.com/blog/cebu2nd3"><img src="https://img.youtube.com/vi/LNnFkivOQtE/mqdefault.jpg" alt="セブ島夜遊び動画のサムネイル" width="320" height="180" loading="lazy" decoding="async"><span class="recommended-copy"><time datetime="2025-04-02">2025.04.02</time><span class="recommended-title">お酒と美女…酔っ払いすぎた男の夜遊びのリアル！【1日目夜後半】</span></span><span class="story-arrow" aria-hidden="true">→</span></a><a class="recommended-story" href="https://tomotravel-pm.com/blog/cebu2nd4"><img src="https://img.youtube.com/vi/ofMvQYhii58/mqdefault.jpg" alt="セブ島JTVで飲みすぎた体験談のサムネイル" width="320" height="180" loading="lazy" decoding="async"><span class="recommended-copy"><time datetime="2025-04-03">2025.04.03</time><span class="recommended-title">JTVで飲みすぎるとこうなる【セブ島2日目夜前編】</span></span><span class="story-arrow" aria-hidden="true">→</span></a></div></section>
+<aside class="author-band" aria-labelledby="author-title"><div class="daylight-container author-inner"><div class="author-intro"><img src="/images/tomoicon.png" alt="とも プロフィールアイコン" width="84" height="84" loading="lazy" decoding="async"><div><h2 id="author-title">とも (Tomo)</h2><p>リアルな海外一人旅を、動画と記事で。</p></div></div><div class="author-description"><p>30代以上の一人旅をリアルに発信する旅系YouTubeチャンネル＆ブログ。観光だけでなく、移動・物価・食事・夜の遊び・失敗談まで包み隠さず紹介。LCCや日系ホテル、JTVでの出会いなど、無理せず楽しむ“リアルな一人旅”をそのまま届けています。</p></div><p class="author-note" aria-hidden="true">Good Travel,<br>Better Me.</p></div></aside>
+</main><footer class="daylight-footer"><div class="daylight-container footer-main"><a class="daylight-brand" href="https://tomotravel-pm.com/"><svg class="icon brand-palm" aria-hidden="true" focusable="false"><use href="#icon-palm"></use></svg><span><span class="brand-name">とも旅ちゃんねる<span class="brand-vlog">VLOG</span></span><span class="brand-tagline">一人旅で見つける、やさしい世界</span></span></a><div class="footer-socials"><a class="social-link youtube" href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer" aria-label="YouTubeチャンネル"><svg class="icon " aria-hidden="true" focusable="false"><use href="#icon-youtube"></use></svg></a><a class="social-link" href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X（旧Twitter）"><svg class="icon " aria-hidden="true" focusable="false"><use href="#icon-x"></use></svg></a></div><a href="https://tomotravel-pm.com/#contact">お問い合わせ</a><a href="https://tomotravel-pm.com/privacy-policy">プライバシーポリシー</a><p>© 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p></div><div class="daylight-container footer-details"><p>東南アジアを中心に海外一人旅の魅力をお届け</p><details><summary>サイト内のリンク</summary><nav aria-label="フッターナビゲーション">
                 <a href="https://tomotravel-pm.com/#about">チャンネル概要</a> <a href="https://tomotravel-pm.com/#videos">最新動画</a> <a href="https://tomotravel-pm.com/#travel">旅の魅力</a> <a href="https://tomotravel-pm.com/#equipment">撮影機材</a> <a href="https://tomotravel-pm.com/#booking">旅の予約</a> <a href="https://tomotravel-pm.com/#preparation">事前準備</a> <a href="https://tomotravel-pm.com/#contact">お問い合わせ</a>
                 <a href="https://tomotravel-pm.com/blog" target="_blank" rel="noopener noreferrer">ブログ</a>
                 <a href="https://tomotravel-pm.com/sitemap">サイトマップ</a>
-                <!-- ▼▼▼ 追加: プライバシーポリシーへのリンク ▼▼▼ -->
+
                 <a href="https://tomotravel-pm.com/privacy-policy">プライバシーポリシー</a>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 とも旅ちゃんねるVLOG All Rights Reserved.</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- seo-include:footer-placeholder:end --></div>
-
-    <!-- ▼▼▼ JavaScript を /blog/ ディレクトリから読み込む（変更なし） ▼▼▼ -->
-    <script src="blog/script.js"></script>
-    <!-- ▲▲▲ JavaScript を /blog/ ディレクトリから読み込む ▲▲▲ -->
-
-</body>
-</html>
+            </nav></details></div></footer>
+<script src="assets/blog-daylight.js?v=daylight-f1" defer></script>
+</body></html>

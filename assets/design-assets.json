@@ -1,9 +1,9 @@
 {
-  "version": "20261003-c1",
+  "version": "20261003-c1-blog-f1",
   "directory": "_design-assets/20261003-c1",
-  "archive_url": "https://raw.githubusercontent.com/tom1147/Tomotravel/358e67583f40970274669e8fb63929f57e0b5e1a/design-assets-20261003.zip",
-  "archive_sha256": "475f46640d9106b82af221dfe2b442fef8a19a756cac504a59f4553aaca737ca",
-  "archive_bytes": 580416,
+  "archive_url": "https://raw.githubusercontent.com/tom1147/Tomotravel/eab8163f697eea3ec855517cc02a0574e9ee1458/design-assets-blog-f1.zip",
+  "archive_sha256": "185dbf1702d345e18a113495a09b76e4d5cdbd23b24dbac938d88ffc8d53fd11",
+  "archive_bytes": 864254,
   "files": {
     "booking-expedia": {
       "file": "booking-expedia.webp",
@@ -144,6 +144,20 @@
       "height": 941,
       "bytes": 458374,
       "sha256": "0288c38fa4e2106c943239019f888b90f08170a77507d401bfe5bc43a486075e"
+    },
+    "blog-f1-hero": {
+      "file": "blog-f1-hero.webp",
+      "width": 1800,
+      "height": 600,
+      "bytes": 160566,
+      "sha256": "48ec0ad574b7e9504214f58aa8e888fa89de9fb4856ac76ecfb7cdb8123b377d"
+    },
+    "blog-f1-topics": {
+      "file": "blog-f1-topics.webp",
+      "width": 1280,
+      "height": 640,
+      "bytes": 122958,
+      "sha256": "6339a49cb70ae1a62e18e4f75590f262749ecc92bc73a2b1ef6434a6a444f14e"
     }
   }
 }
