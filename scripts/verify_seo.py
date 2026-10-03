@@ -1,6 +1,7 @@
 """Regression checks for crawlability, JSON-LD and the generated sitemap."""
 import json
 import argparse
+import html
 from pathlib import Path
 import re
 import sys
@@ -71,6 +72,30 @@ def main(output=None):
             errors.append(f'{source}: duplicate graph identifiers')
         metadata = {a.get('name', a.get('property', '')): a.get('content', '') for a in doc.select('meta')}
         page_node = next((n for n in graph if n.get('@id') == url + '#webpage'), {})
+        if source in ('index.html', 'blog.html'):
+            title = re.search(r'<title[^>]*>(.*?)</title>', text, re.S | re.I)
+            if not title or page_node.get('name') != html.unescape(title[1]).strip():
+                errors.append(f'{source}: page name differs from title')
+            if page_node.get('description') != metadata.get('description'):
+                errors.append(f'{source}: page description differs from metadata')
+            social_image = metadata.get('og:image')
+            if social_image != metadata.get('twitter:image') or social_image != page_node.get('primaryImageOfPage', {}).get('url'):
+                errors.append(f'{source}: social and structured page images differ')
+        if source == 'blog.html':
+            listing = next((n for n in graph if n.get('@id') == page_node.get('mainEntity', {}).get('@id')), {})
+            cards = re.findall(r'<article\b[^>]*class=[\"\'][^\"\']*\bpost-card\b[^\"\']*[\"\'][^>]*>(.*?)</article>', text, re.S)
+            expected = []
+            for card in cards:
+                heading = re.search(r'<h2\b[^>]*>(.*?)</h2>', card, re.S)
+                links = Document(card).select('a')
+                if heading and links:
+                    name = ' '.join(html.unescape(re.sub('<[^>]+>', '', heading[1])).split())
+                    expected.append((links[0].get('href'), name))
+            items = listing.get('itemListElement', [])
+            if listing.get('@type') != 'ItemList' or listing.get('numberOfItems') != len(cards) or [(i.get('url'), i.get('name')) for i in items] != expected:
+                errors.append(f'{source}: article cards and ItemList names, URLs or counts differ')
+            if [i.get('position') for i in items] != list(range(1, len(cards) + 1)):
+                errors.append(f'{source}: article list positions are not sequential')
         if source.startswith('videos/'):
             if source == 'videos/index.html':
                 listing = next((n for n in graph if n.get('@type') == 'ItemList'), {})
