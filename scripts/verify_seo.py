@@ -1,5 +1,6 @@
 """Regression checks for crawlability, JSON-LD and the generated sitemap."""
 import json
+import argparse
 from pathlib import Path
 import re
 import sys
@@ -20,7 +21,7 @@ def walk(value, key=''):
             yield from walk(v, key)
 
 
-def main():
+def main(output=None):
     errors = []
     ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9', 'i': 'http://www.google.com/schemas/sitemap-image/1.1', 'v': 'http://www.google.com/schemas/sitemap-video/1.1'}
     sitemap = ET.parse(ROOT / 'sitemap.xml').getroot()
@@ -163,7 +164,7 @@ def main():
         if status.startswith('30') and source.rstrip('/') == target.rstrip('/'):
             errors.append('Netlify trailing-slash redirect loop: ' + line)
     report['errors'] = sorted(set(errors))
-    out = ROOT / 'artifacts/seo/verification.json'
+    out = Path(output) if output else ROOT / 'artifacts/seo/verification.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps(report, ensure_ascii=False, indent=2))
@@ -172,4 +173,7 @@ def main():
 
 if __name__ == '__main__':
     sys.stdout.reconfigure(encoding='utf-8')
-    sys.exit(main())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, help='Report path (can be outside the clone).')
+    args = parser.parse_args()
+    sys.exit(main(args.output))

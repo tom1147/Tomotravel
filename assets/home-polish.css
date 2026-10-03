@@ -1,0 +1,73 @@
+/* Light motion and readable controls for the approved cinematic / C design. */
+.home-cinematic { --polish-time:240ms; --tap-target:44px; }
+.home-cinematic a.logo-text { transition:color var(--polish-time) var(--ease-out); }
+.home-cinematic .journey-atlas .atlas-sprite { display:block; object-fit:fill; }
+.home-cinematic .journey-atlas :is(.booking-picture,.prep-picture,.country-picture) > .atlas-sprite { object-fit:cover; }
+.home-cinematic .journey-atlas .gear-art > .atlas-sprite { object-fit:contain; }
+.home-cinematic .country-picture, .home-cinematic .gear-art { transition:transform var(--polish-time) var(--ease-out); transform-origin:center; }
+.home-cinematic .journey-country, .home-cinematic .journey-gear { perspective:900px; }
+.journey-atlas .journey-route path { opacity:.45; }
+.journey-atlas .journey-route path.journey-route-progress { opacity:1; stroke:var(--color-gold-edge); stroke-dasharray:none; stroke-width:1.5; transition:stroke-dashoffset 650ms var(--ease-out); }
+.journey-atlas .journey-marker { transition:opacity var(--polish-time) var(--ease-out),transform var(--polish-time) var(--ease-out); opacity:.55; }
+.journey-atlas .is-reached .journey-marker { opacity:.9; }
+.journey-atlas .is-current .journey-marker { opacity:1; transform:scale(1.2); }
+.journey-atlas .journey-marker::after { content:''; position:absolute; inset:-6px; border:1px solid var(--color-accent); border-radius:50%; opacity:0; }
+.journey-atlas .is-current .journey-marker::after { animation:journey-arrival 650ms var(--ease-out) both; }
+@keyframes journey-arrival { from{opacity:.7;transform:scale(.75)} to{opacity:0;transform:scale(1.7)} }
+
+/* Details keep native keyboard and no-JavaScript behavior; only their contents fade in. */
+.home-cinematic .journey-atlas .journey-details summary { min-height:32px; display:flex; align-items:center; gap:8px; font-size:max(12px,calc(9 * var(--jc))); color:var(--color-muted); }
+.home-cinematic .journey-atlas .journey-details summary::after { content:'＋'; display:inline-block; flex:none; margin-left:4px; color:var(--color-accent); transform:rotate(0); transition:transform var(--polish-time) var(--ease-out); }
+.home-cinematic .journey-atlas .journey-details[open] > summary::after { content:'＋'; transform:rotate(45deg); }
+.home-cinematic .journey-atlas .gear-details:not([open]) { position:static; grid-column:2; padding-top:3px; }
+.home-cinematic .journey-atlas .gear-details:not([open]) summary { font-size:max(12px,calc(9 * var(--jc))); margin:0; }
+.home-cinematic .journey-atlas .gear-details:not([open]) summary::after { padding:0; font-size:16px; line-height:1; }
+.home-cinematic .journey-atlas .gear-details[open] { grid-column:1 / -1; }
+.home-cinematic .journey-atlas .gear-copy .gear-brief { font-size:max(14px,calc(10 * var(--jc))); line-height:1.75; }
+.home-cinematic .journey-atlas .gear-copy h3 { font-size:max(15px,calc(12 * var(--jc))); }
+.home-cinematic .journey-atlas .gear-actions .journey-button,
+.home-cinematic .journey-atlas .booking-ticket > .journey-button { font-size:max(13px,calc(10 * var(--jc))); min-height:40px; }
+.home-cinematic .journey-atlas .gear-actions { flex-wrap:wrap; }
+.home-cinematic .journey-atlas .gear-actions .journey-button { flex:1 1 90px; }
+.home-cinematic .journey-atlas .booking-details summary { font-size:max(13px,calc(10 * var(--jc))); }
+.home-cinematic .journey-atlas .gear-original .purchase-link-item { min-width:0; }
+.home-cinematic .journey-atlas .gear-original :is(.buy-title,.affiliate-note) { max-width:100%; overflow-wrap:anywhere; }
+.home-cinematic .journey-atlas .gear-original .buttons-container { flex-wrap:wrap; min-width:0; }
+
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .home-cinematic .journey-country:is(:hover,:focus-visible) .country-picture { transform:rotateX(1deg) rotateY(-1.5deg) translateY(-3px) scale(1.01); }
+  .home-cinematic .journey-gear:is(:hover,:focus-within) .gear-art { transform:rotateY(-2deg) translateY(-2px); }
+}
+@media (max-width:999px) {
+  .home-cinematic .journey-atlas .gear-ahamo .sprite-phone { display:none; }
+  .home-cinematic .journey-atlas .journey-button { font-size:14px; min-height:var(--tap-target); }
+  .home-cinematic .journey-atlas .journey-details summary { min-height:var(--tap-target); font-size:13px; }
+  .home-cinematic .journey-atlas .gear-details:not([open]) summary { font-size:13px; }
+  #journey-atlas .journey-intro, #journey-atlas .prep-copy p { font-size:14px; line-height:1.85; }
+  #journey-atlas .gear-copy .gear-brief { font-size:15px; line-height:1.8; }
+  #journey-atlas .gear-copy h3 { font-size:16px; }
+  #journey-atlas .gear-actions .journey-button, #journey-atlas .booking-ticket > .journey-button { font-size:14px; min-height:var(--tap-target); }
+  #journey-atlas #contact label { font-size:14px; }
+  #journey-atlas #contact .form-submit-row p { font-size:12px; }
+}
+@media (max-width:639px) {
+  .home-cinematic .journey-atlas .ahamo-wordmark { font-size:22px; }
+  .home-cinematic .journey-atlas .journey-country p { font-size:15px; line-height:1.8; }
+  .home-cinematic .journey-atlas .journey-gear { grid-template-columns:76px minmax(0,1fr); padding:12px; }
+  .home-cinematic .journey-atlas .gear-feature { min-height:180px; }
+  .home-cinematic .journey-atlas .gear-pr { bottom:8px; left:10px; right:auto; }
+  .home-cinematic .journey-atlas .booking-ticket { grid-template-columns:60px minmax(0,1fr); padding:0 10px 10px 0; }
+  .home-cinematic .journey-atlas .booking-picture { grid-row:1 / span 2; }
+  .home-cinematic .journey-atlas .booking-ticket > .journey-button { grid-column:1 / -1; grid-row:3; margin:0 0 0 10px; }
+  .home-cinematic .journey-atlas .booking-details summary { font-size:13px; }
+  .home-cinematic .journey-atlas .journey-affiliate { font-size:12px; line-height:1.8; }
+  .home-cinematic .hero .btn { font-size:14px; min-height:var(--tap-target); }
+}
+@media (max-width:374px) {
+  .home-cinematic .hero-actions { flex-wrap:wrap; }
+  .home-cinematic .hero-actions .btn { flex:1 1 170px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .home-cinematic .country-picture, .home-cinematic .gear-art, .journey-atlas .journey-route path, .journey-atlas .journey-marker, .journey-atlas .journey-details summary::after { transition:none; transform:none; }
+  .journey-atlas .journey-marker::after { animation:none; }
+}

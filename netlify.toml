@@ -1,0 +1,8 @@
+[build]
+  command = "python3 scripts/build_production.py --output dist"
+  publish = "dist"
+
+[[headers]]
+  for = "/_design-assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

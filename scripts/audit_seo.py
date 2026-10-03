@@ -32,6 +32,14 @@ class Document(HTMLParser):
 
 def resolve_file(url):
     path = unquote(urlsplit(url).path)
+    if path.startswith('/_design-assets/'):
+        from external_assets import cached_asset
+        return cached_asset(url)
+    # Match the canonical public casing on both Windows and the Linux build host.
+    if path == '/videoinstructioneditor':
+        path = '/VideoInstructionEditor.html'
+    elif path == '/tomogame_v1.0' or path.startswith('/tomogame_v1.0/'):
+        path = '/TomoGame_V1.0' + path[len('/tomogame_v1.0'):]
     p = ROOT / path.lstrip('/')
     for candidate in [p, Path(str(p).rstrip('/') + '.html'), p / 'index.html']:
         if candidate.is_file():
