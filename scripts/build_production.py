@@ -20,11 +20,18 @@ def build(output, asset_directory=None):
         raise ValueError('Choose a dedicated build output directory')
     if output.is_relative_to(ROOT) and os.environ.get('NETLIFY') != 'true':
         raise ValueError('Local build output must be outside the clone; use --output with an external directory')
-    if output.exists() and any(output.iterdir()):
+    # Netlify restores the previous publish directory between builds. Only its
+    # exact, resolved <repo>/dist output is disposable; local outputs stay protected.
+    rebuild = os.environ.get('NETLIFY') == 'true' and output == ROOT / 'dist'
+    if output.exists() and not output.is_dir():
+        raise ValueError('Build output must be a directory: ' + str(output))
+    if output.exists() and any(output.iterdir()) and not rebuild:
         raise ValueError('Build output must be empty: ' + str(output))
     assets, data = ensure_assets(asset_directory)
     with tempfile.TemporaryDirectory(prefix='tomotravel-seo-') as checks:
         subprocess.run([sys.executable, str(ROOT / 'scripts/verify_seo.py'), '--output', str(Path(checks) / 'seo.json')], check=True, env=dict(os.environ, TOMO_DESIGN_ASSET_DIR=str(assets)))
+    if rebuild and output.exists():
+        shutil.rmtree(output)
     output.mkdir(parents=True, exist_ok=True)
     count = 0
     for base, dirs, files in os.walk(ROOT):
