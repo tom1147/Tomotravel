@@ -1,6 +1,10 @@
 # Exact permanent redirects; do not redirect all missing URLs to the home page.
 /index.html / 301!
 /index / 301!
+/tomogame_v1.0 https://tomo-travel-game.pages.dev/ 301!
+/tomogame_v1.0/* https://tomo-travel-game.pages.dev/:splat 301!
+/TomoGame_V1.0 https://tomo-travel-game.pages.dev/ 301!
+/TomoGame_V1.0/* https://tomo-travel-game.pages.dev/:splat 301!
 /blog.html /blog 301!
 /cebu2nd1.html /cebu2nd1 301!
 /cebu2nd2.html /cebu2nd2 301!

@@ -10,7 +10,7 @@ import tempfile
 from external_assets import ROOT, ensure_assets
 
 EXCLUDED = {'.git', '.netlify', '.codex', '.agents', '.aws', 'artifacts', 'docs', 'scripts',
-            'node_modules', '__pycache__', 'dist', 'output', 'tests', '.github'}
+            'node_modules', '__pycache__', 'dist', 'output', 'tests', '.github', 'TomoGame_V1.0'}
 CONFIG_FILES = {'.gitignore', 'netlify.toml', 'readme', 'package.json', 'package-lock.json'}
 
 
@@ -44,10 +44,8 @@ def build(output, asset_directory=None):
             if path.suffix in ('.py', '.pyc', '.log', '.toml'):
                 continue
             target = output / relative
-            # These legacy source names differ from their published canonical URLs.
-            if relative.parts[0] == 'TomoGame_V1.0':
-                target = output / 'tomogame_v1.0' / Path(*relative.parts[1:])
-            elif relative.as_posix() == 'VideoInstructionEditor.html':
+            # The remaining legacy tool differs from its published canonical URL.
+            if relative.as_posix() == 'VideoInstructionEditor.html':
                 target = output / 'videoinstructioneditor.html'
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(path, target)

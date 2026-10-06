@@ -57,6 +57,16 @@ class BuildProductionTests(unittest.TestCase):
             self.build()
         self.assertEqual((self.output / 'index.html').read_text(), 'first version')
 
+    def test_cloudflare_game_is_not_copied_to_netlify(self):
+        game = self.root / 'TomoGame_V1.0'
+        game.mkdir()
+        (game / 'index.html').write_text('Cloudflare-only game', encoding='utf-8')
+        (self.root / '_redirects').write_text('/tomogame_v1.0 https://tomo-travel-game.pages.dev/ 301!\n', encoding='utf-8')
+        self.build()
+        self.assertFalse((self.output / 'TomoGame_V1.0').exists())
+        self.assertFalse((self.output / 'tomogame_v1.0').exists())
+        self.assertIn('tomo-travel-game.pages.dev', (self.output / '_redirects').read_text())
+
     def test_netlify_does_not_clear_other_directories(self):
         for output in [self.root, self.root / 'other', Path(self.temp.name) / 'local-output']:
             with self.subTest(output=output):

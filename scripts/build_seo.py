@@ -26,6 +26,13 @@ NAME = 'とも旅ちゃんねるVLOG'
 LOGO = ORIGIN + '/images/tomoicon.png'
 FRAGMENTS = {'blog/header.html', 'blog/footer.html', 'blog/sidebar.html', 'ktv/header.html', 'test.html', 'shinsa.html', '404.html'}
 SOCIAL = ['https://www.youtube.com/@TomoTravel-PM', 'https://x.com/tomotravel_pm']
+GAME_HOSTING = json.loads((ROOT / 'assets/game-hosting.json').read_text(encoding='utf-8'))
+
+
+def directory_url(record):
+    return GAME_HOSTING['public_url'] if record['source'] == GAME_HOSTING['source'] else record['url']
+
+
 ALIASES = {
     '/blog/cebu-day1.html': '/cebu2nd1', '/blog/cebu-day1': '/cebu2nd1',
     '/blog/cebu2nd1': '/cebu2nd1', '/blog/cebu2nd1.html': '/cebu2nd1',
@@ -93,6 +100,8 @@ def normalized_url(value, source, pages):
     file = resolve_file(absolute)
     if file:
         rel = file.relative_to(ROOT).as_posix()
+        if rel == GAME_HOSTING['source']:
+            return GAME_HOSTING['public_url']
         if rel in pages:
             return canonical(rel) + (('?' + u.query) if u.query else '') + (('#' + u.fragment) if u.fragment else '')
     return absolute
@@ -441,7 +450,7 @@ def main():
               ('動画で見るフィリピン', lambda r: r['source'].startswith('videos/')),
               ('旅ブログ・機材', lambda r: r['source'].startswith(('blog/', 'cebu'))),
               ('その他のページ・ツール', lambda r: r['source'] in ['TomoGame_V1.0/index.html', 'VideoInstructionEditor.html', 'website/memorylog/index.html'])]
-    sections = ''.join('<section><h2>' + label + '</h2><ul>' + ''.join('<li><a href="' + r['url'] + '">' + html.escape(r['title']) + '</a></li>' for r in records if predicate(r)) + '</ul></section>' for label, predicate in groups)
+    sections = ''.join('<section><h2>' + label + '</h2><ul>' + ''.join('<li><a href="' + directory_url(r) + '">' + html.escape(r['title']) + '</a></li>' for r in records if predicate(r)) + '</ul></section>' for label, predicate in groups)
     sitemap_date = max(r['lastmod'] for r in records)
     directory = '<!DOCTYPE html>\n<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>サイトマップ | ' + NAME + '</title><meta name="description" content="とも旅ちゃんねるの旅ブログ、KTV・JTV紹介、サービスとツールのページ一覧。"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="' + ORIGIN + '/sitemap"><link rel="icon" href="/favicon.ico"><style>body{font-family:system-ui,sans-serif;background:#070b18;color:#e5e7eb;line-height:1.8;margin:0}main{max-width:960px;margin:auto;padding:40px 24px}a{color:#93c5fd}h1{font-size:2rem}h2{font-size:1.25rem;margin-top:2rem}li{margin:.6rem 0}footer{border-top:1px solid #334155;margin-top:2rem;padding-top:1rem}</style></head><body><main><nav aria-label="パンくず"><a href="/">ホーム</a> / サイトマップ</nav><h1>サイトマップ</h1>' + sections + '<footer><a href="/">とも旅ちゃんねるVLOG</a> · <a href="/privacy-policy">プライバシーポリシー</a></footer></main></body></html>\n'
     directory_graph = common_nodes() + [{'@type': 'CollectionPage', '@id': ORIGIN + '/sitemap#webpage', 'url': ORIGIN + '/sitemap', 'name': 'サイトマップ | ' + NAME, 'inLanguage': 'ja', 'isPartOf': {'@id': ORIGIN + '/#website'}, 'breadcrumb': {'@id': ORIGIN + '/sitemap#breadcrumb'}}, breadcrumbs(ORIGIN + '/sitemap', 'サイトマップ', 'sitemap.html')]
@@ -452,6 +461,9 @@ def main():
     ET.register_namespace('', ns); ET.register_namespace('image', img_ns); ET.register_namespace('video', video_ns)
     root = ET.Element('{' + ns + '}urlset')
     for r in records:
+        # The migrated game has its own Cloudflare sitemap; do not index its redirect here.
+        if r['source'] == GAME_HOSTING['source']:
+            continue
         node = ET.SubElement(root, '{' + ns + '}url')
         ET.SubElement(node, '{' + ns + '}loc').text = r['url']
         ET.SubElement(node, '{' + ns + '}lastmod').text = r['lastmod']
@@ -466,8 +478,13 @@ def main():
     ET.indent(root, space='  ')
     write_text(ROOT / 'sitemap.xml', ET.tostring(root, encoding='utf-8', xml_declaration=True).decode('utf-8'))
     llms = '# とも旅ちゃんねるVLOG\n\n> タイ・ベトナム・フィリピンなど東南アジアの一人旅の体験、KTV・JTV紹介、旅の準備を発信する日本語サイト。\n\n運営者の体験をもとにした記事です。店舗の営業時間・料金などは各ページに記載した時点の情報であり、最新情報は店舗公式窓口をご確認ください。\n\n## ページ一覧\n\n' + '\n'.join('- [' + r['title'].replace('[', '［').replace(']', '］') + '](' + r['url'] + ')' for r in records) + '\n\n## 公式チャンネル\n\n- [YouTube](' + SOCIAL[0] + ')\n- [X](' + SOCIAL[1] + ')\n'
+    llms = llms.replace(canonical(GAME_HOSTING['source']), GAME_HOSTING['public_url'])
     write_text(ROOT / 'llms.txt', llms)
     redirects = ['# Exact permanent redirects; do not redirect all missing URLs to the home page.', '/index.html / 301!', '/index / 301!']
+    # Keep old bookmarks, installs and asset URLs working after the game-only migration.
+    for prefix in ['/tomogame_v1.0', '/TomoGame_V1.0']:
+        redirects += [prefix + ' ' + GAME_HOSTING['public_url'] + ' 301!',
+                      prefix + '/* ' + GAME_HOSTING['public_url'] + ':splat 301!']
     for r in records:
         src, dest = '/' + r['source'], urlsplit(r['url']).path
         if src != dest and r['source'] != 'index.html':
