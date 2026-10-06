@@ -1,0 +1,6 @@
+{
+  "provider": "cloudflare-pages",
+  "project": "tomo-travel-game",
+  "public_url": "https://tomo-travel-game.pages.dev/",
+  "source": "TomoGame_V1.0/index.html"
+}
