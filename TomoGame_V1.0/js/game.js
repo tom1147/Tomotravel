@@ -66,7 +66,94 @@ let skill3Timer = 0; // Lv3スキル条件達成からの遅延タイマー
 // コンボカウンター
 let comboCount = 0;
 let comboTimer = null;
-const COMBO_TIMEOUT = 1500; // 1.5秒以内に次の合体でコンボ継続
+const COMBO_TIMEOUT = 2400; // 狙って次の玉を落とせる連鎖猶予
+let comboDeadline = 0;
+let runMaxCombo = 0;
+let runMerges = 0;
+let gameplayPaused = false;
+let pausedAt = 0;
+let milestoneTimeout = null;
+const gamePreferences = { sound: true, reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches };
+try { Object.assign(gamePreferences, JSON.parse(localStorage.getItem('tomogame_preferences') || '{}')); } catch (_) { /* Storage can be unavailable. */ }
+
+function resetComboClock() {
+    clearTimeout(comboTimer);
+    comboCount = 0;
+    comboDeadline = 0;
+    endFever();
+    updateComboDisplay();
+}
+
+function updateArcadeHUD() {
+    const label = document.getElementById('chain-label');
+    if (!label) return;
+    const text = isFever ? `${comboCount}連鎖！ FEVER` : comboCount ? `${comboCount}連鎖！` : '連鎖をつなごう';
+    if (label.textContent !== text) label.textContent = text;
+    const goal = document.getElementById('chain-goal');
+    const goalText = isFever ? '合体スコア ×2' : '5連鎖で FEVER ×2';
+    if (goal.textContent !== goalText) goal.textContent = goalText;
+    document.querySelectorAll('.chain-segments i').forEach((el, i) => el.classList.toggle('lit', i < comboCount));
+    const remaining = comboDeadline ? Math.max(0, comboDeadline - (gameplayPaused ? pausedAt : Date.now())) : 0;
+    document.getElementById('chain-time').style.width = `${Math.min(100, remaining / COMBO_TIMEOUT * 100)}%`;
+}
+
+function announceMilestone(message) {
+    const el = document.getElementById('milestone');
+    el.textContent = message;
+    el.classList.add('visible');
+    clearTimeout(milestoneTimeout);
+    milestoneTimeout = setTimeout(() => { el.classList.remove('visible'); el.textContent = ''; }, 1600);
+}
+
+function clampDropPosition() {
+    const radius = scaledRadius(currentCat || CAT_OBJECTS[0]);
+    dropX = Math.max(GAME_CONFIG.wallThickness + radius + 5, Math.min(gameWidth - GAME_CONFIG.wallThickness - radius - 5, dropX));
+}
+
+function isGamePanelOpen() {
+    return ['settings-panel', 'cast-panel', 'cast-detail-modal'].some(id => !document.getElementById(id).classList.contains('hidden'));
+}
+
+function syncGameplayPause() {
+    const shouldPause = document.hidden || isGamePanelOpen();
+    document.getElementById('game-container').inert = isGamePanelOpen();
+    if (shouldPause === gameplayPaused) return;
+    gameplayPaused = shouldPause;
+    if (runner) runner.enabled = !shouldPause;
+    if (shouldPause) {
+        pausedAt = Date.now();
+        clearTimeout(comboTimer);
+    } else {
+        const elapsed = Date.now() - pausedAt;
+        if (engine) Composite.allBodies(engine.world).forEach(body => {
+            if (body.plugin?.dropTime) body.plugin.dropTime += elapsed;
+        });
+        if (specialSkillTimer) specialSkillTimer += elapsed;
+        if (skill3Timer) skill3Timer += elapsed;
+        if (skill4Timer) skill4Timer += elapsed;
+        if (skill5Timer) skill5Timer += elapsed;
+        if (skillConditionTimer) skillConditionTimer += elapsed;
+        if (comboDeadline) {
+            comboDeadline += elapsed;
+            comboTimer = setTimeout(resetComboClock, Math.max(0, comboDeadline - Date.now()));
+        }
+    }
+}
+
+function applyGamePreferences() {
+    document.body.classList.toggle('reduced-motion', gamePreferences.reducedMotion);
+    document.querySelectorAll('.sound-toggle').forEach(btn => {
+        btn.textContent = `サウンド ${gamePreferences.sound ? 'ON' : 'OFF'}`;
+        btn.setAttribute('aria-pressed', String(!gamePreferences.sound));
+    });
+    const motion = document.getElementById('motion-toggle');
+    motion.textContent = `演出 ${gamePreferences.reducedMotion ? 'ひかえめ' : 'たっぷり'}`;
+    motion.setAttribute('aria-pressed', String(gamePreferences.reducedMotion));
+    if (bgm) bgm.muted = !gamePreferences.sound;
+    if (previewBgm) previewBgm.muted = !gamePreferences.sound;
+    document.querySelectorAll('video').forEach(video => { video.muted = !gamePreferences.sound; });
+    try { localStorage.setItem('tomogame_preferences', JSON.stringify(gamePreferences)); } catch (_) { /* Session settings still work. */ }
+}
 
 // フィーバータイム
 let isFever = false;
@@ -539,11 +626,11 @@ let highScore = 0;
 const HIGHSCORE_KEY = 'tomogame_highscore';
 
 // ゲームURL（シェア用）- YouTube Channel
-const GAME_URL = 'https://www.youtube.com/@TomoTravel-PM';
+const GAME_URL = 'https://tomotravel-pm.com/tomogame_v1.0/';
 const GAME_CONFIG = {
     wallThickness: 15,
     dangerLineY: 80, // 基準値（scaleHで調整される）
-    dropCooldown: 400,
+    dropCooldown: 300,
     gameOverDelay: 2000,
     dropAreaTop: 30, // 基準値（scaleHで調整される）
 };
@@ -583,8 +670,7 @@ function preloadImages() {
  * ハイスコアを読み込む
  */
 function loadHighScore() {
-    const saved = localStorage.getItem(HIGHSCORE_KEY);
-    highScore = saved ? parseInt(saved, 10) : 0;
+    try { highScore = Math.max(0, parseInt(localStorage.getItem(HIGHSCORE_KEY), 10) || 0); } catch (_) { highScore = 0; }
     updateHighScoreDisplay();
 }
 
@@ -592,7 +678,7 @@ function loadHighScore() {
  * ハイスコアを保存する
  */
 function saveHighScore() {
-    localStorage.setItem(HIGHSCORE_KEY, highScore.toString());
+    try { localStorage.setItem(HIGHSCORE_KEY, highScore.toString()); } catch (_) { /* Keep the session record. */ }
 }
 
 /**
@@ -604,6 +690,7 @@ function updateHighScoreDisplay() {
 
     if (bestScoreEl) bestScoreEl.textContent = highScore.toLocaleString();
     if (highscoreEl) highscoreEl.textContent = highScore.toLocaleString();
+    document.getElementById('title-best-score').textContent = highScore.toLocaleString();
 }
 
 /**
@@ -651,6 +738,7 @@ function initAudio() {
     bgm = new Audio(bgmFile);
     bgm.loop = true;
     bgm.volume = 0.3;
+    bgm.muted = !gamePreferences.sound;
 }
 
 /**
@@ -688,6 +776,7 @@ function switchBgmTrack() {
     bgm = new Audio(bgmFile);
     bgm.loop = true;
     bgm.volume = 0.3;
+    bgm.muted = !gamePreferences.sound;
 
     if (wasPlaying) {
         bgm.play().catch(() => { });
@@ -715,7 +804,7 @@ function initSoundContext() {
  * 落下音（ポトン）- かわいい音
  */
 function playDropSound() {
-    if (!audioContext) return;
+    if (!audioContext || !gamePreferences.sound) return;
 
     const osc = audioContext.createOscillator();
     const gain = audioContext.createGain();
@@ -738,7 +827,7 @@ function playDropSound() {
  * 合体音（ポン！キラキラ）- かわいい音
  */
 function playMergeSound(level) {
-    if (!audioContext) return;
+    if (!audioContext || !gamePreferences.sound) return;
 
     // メインの「ポン」音
     const osc1 = audioContext.createOscillator();
@@ -783,7 +872,7 @@ function playMergeSound(level) {
  * ゲームオーバー音
  */
 function playGameOverSound() {
-    if (!audioContext) return;
+    if (!audioContext || !gamePreferences.sound) return;
 
     // 下降する「ぽよよ〜ん」
     const osc = audioContext.createOscillator();
@@ -807,7 +896,7 @@ function playGameOverSound() {
  * 爆弾音（ドーン！）
  */
 function playBombSound() {
-    if (!audioContext) return;
+    if (!audioContext || !gamePreferences.sound) return;
 
     // 低音のドーン
     const osc = audioContext.createOscillator();
@@ -900,6 +989,14 @@ function initGame() {
 
     // スコアリセット
     score = 0;
+    runMerges = 0;
+    runMaxCombo = 0;
+    comboDeadline = 0;
+    gameplayPaused = false;
+    document.getElementById('play-hint').classList.remove('used');
+    document.getElementById('milestone').classList.remove('visible');
+    document.getElementById('milestone').textContent = '';
+    clearTimeout(milestoneTimeout);
     updateScore();
     isGameOver = false;
     canDrop = true;
@@ -989,6 +1086,7 @@ function initGame() {
             width: gameWidth,
             height: gameHeight,
             wireframes: false,
+            pixelRatio: Math.min(window.devicePixelRatio || 1, 2),
             background: 'transparent',
         }
     });
@@ -1001,6 +1099,7 @@ function initGame() {
 
     // 毎フレームチェック
     Events.on(engine, 'afterUpdate', () => {
+        updateArcadeHUD();
         checkGameOver();
         updateSkillStatus();
         removeOutOfBoundsBodies();
@@ -1010,7 +1109,7 @@ function initGame() {
 
     // 開始
     Render.run(render);
-    runner = Runner.create({ delta: 1000 / 30, isFixed: true });
+    runner = Runner.create({ delta: 1000 / 60, isFixed: true });
     Runner.run(runner, engine);
 
     // 最初の猫を準備
@@ -1029,6 +1128,8 @@ function initGame() {
     // UI初期表示
     updateMaxLevelDisplay();
     updateComboDisplay();
+    syncGameplayPause();
+    document.getElementById('game-area').focus({ preventScroll: true });
 }
 
 /**
@@ -1137,11 +1238,12 @@ function rollNextCat() {
  * 爆弾をスキップ（通常の猫に差し替え）
  */
 function skipBomb() {
-    if (!isBombMode || !canDrop || isGameOver) return;
+    if (!isBombMode || !canDrop || isGameOver || gameplayPaused || isGamePanelOpen()) return;
 
     // 爆弾をスキップ: NEXTに表示されていた猫を現在の猫にし、新たにNEXTを決定
-    isBombMode = false;
     currentCat = nextCat;
+    isBombMode = Boolean(currentCat.isBomb);
+    clampDropPosition();
     nextCat = rollNextCat();
 
     // UI更新
@@ -1149,8 +1251,8 @@ function skipBomb() {
     const skipBtn = document.getElementById('skip-bomb-btn');
     const nextCatEl = document.getElementById('next-cat');
 
-    nextPreview.classList.remove('bomb-mode');
-    skipBtn.classList.add('hidden');
+    nextPreview.classList.toggle('bomb-mode', isBombMode);
+    skipBtn.classList.toggle('hidden', !isBombMode);
 
     // NEXT枠の表示を更新
     if (nextCat.image) {
@@ -1164,7 +1266,9 @@ function skipBomb() {
  * 猫を落とす
  */
 function dropCat() {
-    if (!canDrop || isGameOver) return;
+    if (!canDrop || isGameOver || gameplayPaused || isGamePanelOpen() || !currentCat) return;
+    clampDropPosition();
+    document.getElementById('play-hint').classList.add('used');
 
     // 危険状態の場合、落下カウントを増やしてゲームオーバー判定
     if (isInDangerZone) {
@@ -1439,13 +1543,14 @@ function mergeCats(bodyA, bodyB) {
     Composite.add(engine.world, newBody);
 
     // スコア加算（フィーバー中は2倍）
-    const scoreMultiplier = isFever ? 2 : 1;
+    const scoreMultiplier = isFever || comboCount + 1 >= FEVER_COMBO_THRESHOLD ? 2 : 1;
     score += newCat.score * scoreMultiplier;
     updateScore();
 
     // 最高到達レベルを更新し、レベルに応じて背景変更
     if (newLevel > maxReachedLevel) {
         maxReachedLevel = newLevel;
+        announceMilestone(`LEVEL UP!  Lv.${newLevel} ${newCat.name.split('(')[0]}`);
         if (maxReachedLevel >= 11) {
             changeBackgroundToTomoend();
         } else if (maxReachedLevel >= 10) {
@@ -1457,12 +1562,11 @@ function mergeCats(bodyA, bodyB) {
 
     // コンボカウンター更新
     comboCount++;
+    runMerges++;
+    runMaxCombo = Math.max(runMaxCombo, comboCount);
     if (comboTimer) clearTimeout(comboTimer);
-    comboTimer = setTimeout(() => {
-        comboCount = 0;
-        endFever();
-        updateComboDisplay();
-    }, COMBO_TIMEOUT);
+    comboDeadline = Date.now() + COMBO_TIMEOUT;
+    comboTimer = setTimeout(resetComboClock, COMBO_TIMEOUT);
 
     // フィーバー突入判定（5連鎖で発動）
     if (!isFever && comboCount >= FEVER_COMBO_THRESHOLD) {
@@ -1486,7 +1590,7 @@ function mergeCats(bodyA, bodyB) {
     playMergeSound(newLevel);
 
     // エフェクト表示
-    showMergeEffect(newX, newY, newCat.emoji, newCat.score);
+    showMergeEffect(newX, newY, newCat.emoji, newCat.score * scoreMultiplier);
 }
 
 /**
@@ -1494,6 +1598,23 @@ function mergeCats(bodyA, bodyB) {
  */
 function showMergeEffect(x, y, emoji, points) {
     const gameArea = document.getElementById('game-area');
+    if (!gamePreferences.reducedMotion && gameArea.querySelectorAll('.merge-spark').length < 60) {
+        const ring = document.createElement('div');
+        ring.className = 'merge-ring';
+        ring.style.left = `${x}px`;
+        ring.style.top = `${y}px`;
+        gameArea.appendChild(ring);
+        setTimeout(() => ring.remove(), 550);
+        const count = isFever ? 12 : 8;
+        for (let i = 0; i < count; i++) {
+            const spark = document.createElement('div');
+            spark.className = 'merge-spark';
+            const angle = i / count * Math.PI * 2;
+            spark.style.cssText = `left:${x}px;top:${y}px;--spark-x:${Math.cos(angle) * 65}px;--spark-y:${Math.sin(angle) * 65}px`;
+            gameArea.appendChild(spark);
+            setTimeout(() => spark.remove(), 700);
+        }
+    }
 
     // 絵文字エフェクト
     const effect = document.createElement('div');
@@ -1588,6 +1709,8 @@ function checkGameOver() {
  * ゲームオーバー処理
  */
 function gameOver() {
+    document.getElementById('result-combo').textContent = runMaxCombo;
+    document.getElementById('result-merges').textContent = runMerges;
     if (isGameOver) return;
 
     isGameOver = true;
@@ -1619,8 +1742,7 @@ function gameOver() {
     if (videoOverlay) videoOverlay.classList.add('hidden');
 
     // コンボタイマーもクリア
-    if (comboTimer) { clearTimeout(comboTimer); comboTimer = null; }
-    endFever();
+    resetComboClock();
 
     // BGMはそのまま流し続ける
 
@@ -1643,11 +1765,8 @@ function gameOver() {
     const continueBtn = document.getElementById('continue-btn');
     if (!hasContinued) {
         continueBtn.classList.remove('hidden');
-        if (shouldSkipAd()) {
-            continueBtn.innerHTML = '<span class="icon">FREE</span> CONTINUE';
-        } else {
-            continueBtn.innerHTML = '<span class="icon">📺</span> CONTINUE (Watch Ad)';
-        }
+        continueBtn.textContent = window.Capacitor?.Plugins?.AdMob && !AD_FREE_CONTINUE && !shouldSkipAd()
+            ? '広告を見て、1回復活する' : '1回だけ復活する';
     } else {
         continueBtn.classList.add('hidden');
     }
@@ -1664,49 +1783,70 @@ function gameOver() {
 function setupInputEvents() {
     const gameArea = document.getElementById('game-area');
 
-    // マウス/タッチ移動
-    const handleMove = (clientX) => {
-        if (isGameOver) return;
-        // スキル選択モード中は落下位置を動かさない（誤操作防止）
-        if (isSkillSelectionMode) return;
-
+    // One pointer path avoids synthetic click + touch double drops.
+    let activePointer = null;
+    const move = (clientX) => {
+        if (isGameOver || gameplayPaused || isGamePanelOpen() || isSkillSelectionMode) return;
         const rect = gameArea.getBoundingClientRect();
-        const x = clientX - rect.left;
-
-        // 壁にぶつからないように制限
-        const cat = currentCat || CAT_OBJECTS[0];
-        const cr = scaledRadius(cat);
-        const minX = GAME_CONFIG.wallThickness + cr + 5;
-        const maxX = gameWidth - GAME_CONFIG.wallThickness - cr - 5;
-
-        dropX = Math.max(minX, Math.min(maxX, x));
+        dropX = (clientX - rect.left) * gameWidth / rect.width;
+        clampDropPosition();
     };
-
-    // マウスイベント
-    gameArea.addEventListener('mousemove', (e) => handleMove(e.clientX));
-    gameArea.addEventListener('click', (e) => {
+    gameArea.addEventListener('pointerdown', (event) => {
+        if (!event.isPrimary || event.button !== 0 || event.target.closest('button, video, #skill-video-overlay, #skill-execute-btn')) return;
+        if (isGameOver || gameplayPaused || isGamePanelOpen() || isSkillActive) return;
+        activePointer = event.pointerId;
+        gameArea.setPointerCapture(event.pointerId);
+        gameArea.focus({ preventScroll: true });
+        move(event.clientX);
+    });
+    gameArea.addEventListener('pointermove', (event) => {
+        if (event.isPrimary && (event.pointerType === 'mouse' || activePointer === event.pointerId)) move(event.clientX);
+    });
+    gameArea.addEventListener('pointerup', (event) => {
+        if (activePointer !== event.pointerId) return;
+        activePointer = null;
+        if (gameArea.hasPointerCapture(event.pointerId)) gameArea.releasePointerCapture(event.pointerId);
+        if (gameplayPaused || isGamePanelOpen() || isGameOver) return;
+        const rect = gameArea.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) return;
         if (isSkillSelectionMode) {
-            const rect = gameArea.getBoundingClientRect();
-            handleSkillTap(e.clientX - rect.left, e.clientY - rect.top);
+            handleSkillTap((event.clientX - rect.left) * gameWidth / rect.width, (event.clientY - rect.top) * gameHeight / rect.height);
         } else {
+            move(event.clientX);
             dropCat();
         }
     });
-
-    // タッチイベント
-    gameArea.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-        handleMove(e.touches[0].clientX);
-    }, { passive: false });
-
-    gameArea.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        if (isSkillSelectionMode) {
-            const touch = e.changedTouches[0];
-            const rect = gameArea.getBoundingClientRect();
-            handleSkillTap(touch.clientX - rect.left, touch.clientY - rect.top);
-        } else {
-            dropCat();
+    const cancelPointer = () => { activePointer = null; };
+    gameArea.addEventListener('pointercancel', cancelPointer);
+    gameArea.addEventListener('lostpointercapture', cancelPointer);
+    document.addEventListener('keydown', (event) => {
+        if (document.getElementById('game-container').classList.contains('hidden') || isGameOver) return;
+        if (isGamePanelOpen() && event.key === 'Tab') {
+            const panel = ['cast-detail-modal', 'cast-panel', 'settings-panel'].map(id => document.getElementById(id)).find(el => !el.classList.contains('hidden'));
+            const controls = [...panel.querySelectorAll('button:not(:disabled), a[href], [tabindex="0"]')].filter(el => el.getClientRects().length);
+            if (controls.length) {
+                const first = controls[0], last = controls[controls.length - 1];
+                if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) { event.preventDefault(); last.focus(); }
+                else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
+            }
+            return;
+        }
+        if (event.key === 'Escape' && !isSkillActive && !isSkillSelectionMode) {
+            if (!isGamePanelOpen() || isSettingsOpen) toggleSettings();
+            return;
+        }
+        if (gameplayPaused || isGamePanelOpen() || isSkillSelectionMode || isSkillActive || event.target.closest('button, a, input, select, textarea')) return;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            dropX += (event.key === 'ArrowLeft' ? -1 : 1) * 18 * scaleW;
+            clampDropPosition();
+        } else if (event.code === 'Space' || event.key === 'Enter') {
+            event.preventDefault();
+            if (!event.repeat) dropCat();
+        } else if (!event.repeat && event.key.toLowerCase() === 'h') {
+            useHold();
+        } else if (!event.repeat && event.key.toLowerCase() === 'r') {
+            useReroll();
         }
     });
 
@@ -1714,7 +1854,7 @@ function setupInputEvents() {
     document.getElementById('restart-btn').addEventListener('click', restartGame);
 
     // コンティニューボタン
-    document.getElementById('continue-btn').addEventListener('click', startContinue);
+    document.getElementById('continue-btn').addEventListener('click', () => startContinue());
 
     // 爆弾スキップボタン
     document.getElementById('skip-bomb-btn').addEventListener('click', skipBomb);
@@ -1835,13 +1975,31 @@ function setupCustomRender() {
 
             ctx.save();
 
+            clampDropPosition();
+            let landingY = gameHeight - GAME_CONFIG.wallThickness - dr;
+            if (!cat.isBomb && !cat.isYoshiki) {
+                bodies.forEach(body => {
+                    if (!body.plugin?.catLevel || body.isRemoved || body.isStatic || body.position.y < y) return;
+                    const distanceX = Math.abs(body.position.x - dropX);
+                    const radii = body.circleRadius + dr;
+                    if (distanceX < radii) landingY = Math.min(landingY, body.position.y - Math.sqrt(radii * radii - distanceX * distanceX));
+                });
+                landingY = Math.max(y, landingY);
+                ctx.beginPath();
+                ctx.arc(dropX, landingY, dr, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(218, 255, 111, 0.10)';
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(218, 255, 111, 0.55)';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            }
             // ガイドライン（点線）- 爆弾の場合はオレンジ色
             ctx.beginPath();
             ctx.strokeStyle = cat.isBomb ? 'rgba(255, 100, 50, 0.6)' : 'rgba(255, 140, 66, 0.4)';
             ctx.setLineDash([8, 8]);
             ctx.lineWidth = cat.isBomb ? 3 : 2;
             ctx.moveTo(dropX, y + dr + 10);
-            ctx.lineTo(dropX, gameHeight - 50);
+            ctx.lineTo(dropX, Math.max(y + dr + 10, landingY - dr));
             ctx.stroke();
             ctx.setLineDash([]);
 
@@ -1905,6 +2063,7 @@ function showComboEffect(x, y, combo) {
  * コンボ表示を更新
  */
 function updateComboDisplay() {
+    updateArcadeHUD();
     const comboEl = document.getElementById('combo-display');
     if (!comboEl) return;
 
@@ -2086,7 +2245,7 @@ function playGenericVideo(videoSrc, onComplete) {
             if (!finished) finish();
         }, 15000);
 
-        video.muted = false;
+        video.muted = !gamePreferences.sound;
         video.play().then(() => {
             // 再生成功
         }).catch(() => {
@@ -2103,7 +2262,7 @@ function playGenericVideo(videoSrc, onComplete) {
     video.muted = true;
     video.play().then(() => {
         // autoplay成功 → ミュート解除して継続
-        video.muted = false;
+        video.muted = !gamePreferences.sound;
 
         video.onended = finish;
         video.onerror = finish;
@@ -2426,7 +2585,7 @@ function executeSkill3Effect() {
  * スキル効果音
  */
 function playSkillSound() {
-    if (!audioContext) return;
+    if (!audioContext || !gamePreferences.sound) return;
 
     // 上昇する「キラーン」音
     const osc = audioContext.createOscillator();
@@ -2866,9 +3025,12 @@ function toggleSettings() {
     if (isSettingsOpen) {
         updateSettingsMusicDisplay();
         panel.classList.remove('hidden');
+        document.getElementById('settings-close').focus();
     } else {
         panel.classList.add('hidden');
     }
+    syncGameplayPause();
+    if (!isSettingsOpen) document.getElementById('game-area').focus({ preventScroll: true });
 }
 
 /**
@@ -2904,14 +3066,15 @@ function changeGameBgm(newIndex) {
  * BGMインデックスをlocalStorageに保存
  */
 function saveBgmIndex() {
-    localStorage.setItem(BGM_INDEX_KEY, selectedBgmIndex.toString());
+    try { localStorage.setItem(BGM_INDEX_KEY, selectedBgmIndex.toString()); } catch (_) { /* Keep session selection. */ }
 }
 
 /**
  * BGMインデックスをlocalStorageから読み込み
  */
 function loadBgmIndex() {
-    const saved = localStorage.getItem(BGM_INDEX_KEY);
+    let saved = null;
+    try { saved = localStorage.getItem(BGM_INDEX_KEY); } catch (_) { /* Use default track. */ }
     if (saved !== null) {
         const idx = parseInt(saved, 10);
         if (idx >= 0 && idx < BGM_LIST.length) {
@@ -2951,6 +3114,7 @@ function previewSelectedBgm() {
 
     previewBgm = new Audio(BGM_LIST[selectedBgmIndex].file);
     previewBgm.volume = 0.2;
+    previewBgm.muted = !gamePreferences.sound;
     previewBgm.play().catch(() => { });
 }
 
@@ -3046,6 +3210,22 @@ function shouldSkipAd() {
 }
 
 function initTitleScreen() {
+    loadHighScore();
+    applyGamePreferences();
+    document.querySelectorAll('.sound-toggle').forEach(btn => btn.addEventListener('click', () => {
+        gamePreferences.sound = !gamePreferences.sound;
+        applyGamePreferences();
+    }));
+    document.getElementById('motion-toggle').addEventListener('click', () => {
+        gamePreferences.reducedMotion = !gamePreferences.reducedMotion;
+        applyGamePreferences();
+    });
+    document.getElementById('resume-btn').addEventListener('click', toggleSettings);
+    const panelObserver = new MutationObserver(syncGameplayPause);
+    ['settings-panel', 'cast-panel', 'cast-detail-modal'].forEach(id => panelObserver.observe(document.getElementById(id), { attributes: true, attributeFilter: ['class'] }));
+    document.addEventListener('visibilitychange', syncGameplayPause);
+    const continueButton = document.getElementById('continue-btn');
+    continueButton.textContent = window.Capacitor?.Plugins?.AdMob && !AD_FREE_CONTINUE ? '広告を見て、1回復活する' : '1回だけ復活する';
     // AdMob初期化
     initAdMob();
 
@@ -3466,8 +3646,9 @@ window.addEventListener('resize', () => {
             if (render) {
                 render.options.width = gameWidth;
                 render.options.height = gameHeight;
-                render.canvas.width = gameWidth;
-                render.canvas.height = gameHeight;
+                render.bounds.max.x = gameWidth;
+                render.bounds.max.y = gameHeight;
+                Render.setPixelRatio(render, Math.min(window.devicePixelRatio || 1, 2));
             }
 
             // 壁と床を新しいサイズで再作成
@@ -3506,7 +3687,7 @@ window.addEventListener('resize', () => {
  */
 function useHold() {
     // ゲームオーバー中、落下中、残り回数0なら使えない
-    if (isGameOver || !canDrop || holdCount <= 0) return;
+    if (isGameOver || gameplayPaused || isGamePanelOpen() || !canDrop || holdCount <= 0) return;
 
     // 爆弾モード中は使えない
     if (isBombMode) return;
@@ -3529,6 +3710,10 @@ function useHold() {
     // UI更新
     updateNextDisplay();
     updateHoldDisplay();
+    clampDropPosition();
+    isBombMode = Boolean(currentCat.isBomb);
+    document.getElementById('next-preview').classList.toggle('bomb-mode', isBombMode);
+    document.getElementById('skip-bomb-btn').classList.toggle('hidden', !isBombMode);
 
     // 効果音
     playClickSound();
@@ -3582,7 +3767,7 @@ function updateNextDisplay() {
  * クリック音
  */
 function playClickSound() {
-    if (!audioContext) return;
+    if (!audioContext || !gamePreferences.sound) return;
 
     const osc = audioContext.createOscillator();
     const gain = audioContext.createGain();
@@ -3634,7 +3819,7 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function useReroll() {
     // ゲームオーバー中、落下中、残り回数0なら使えない
-    if (isGameOver || !canDrop || rerollCount <= 0) return;
+    if (isGameOver || gameplayPaused || isGamePanelOpen() || !canDrop || rerollCount <= 0) return;
 
     // 爆弾モード中は使えない
     if (isBombMode) return;
@@ -3644,6 +3829,7 @@ function useReroll() {
 
     // 現在のボールを引き直し
     currentCat = getRandomDroppableCat();
+    clampDropPosition();
 
     // UI更新
     updateRerollDisplay();

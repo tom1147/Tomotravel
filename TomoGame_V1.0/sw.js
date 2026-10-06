@@ -1,10 +1,13 @@
-// Service Worker for Tomo Game PWA v5
-const CACHE_NAME = 'tomo-game-v5';
+// Service Worker for Tomo Game PWA v6
+const CACHE_NAME = 'tomo-game-v6';
 const urlsToCache = [
     './',
     './index.html',
     './style.css',
+    './style.css?v=6',
+    './tokens.css?v=6',
     './js/game.js',
+    './js/game.js?v=6',
     './js/objects.js',
     './manifest.json',
     './assets/tama1.png',
@@ -51,7 +54,7 @@ self.addEventListener('activate', (event) => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if (cacheName !== CACHE_NAME) {
+                    if (cacheName.startsWith('tomo-game-') && cacheName !== CACHE_NAME) {
                         return caches.delete(cacheName);
                     }
                 })
