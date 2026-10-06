@@ -4,15 +4,30 @@
   const nav = document.getElementById('daylight-nav');
   const toggle = document.querySelector('.daylight-menu-toggle');
   const guide = document.querySelector('.daylight-guide');
-  const desktop = matchMedia('(min-width:1000px)');
+  const desktop = matchMedia('(min-width:1200px)');
+  const header = document.querySelector('.daylight-header');
+  const backdrop = document.createElement('div');
+  backdrop.className = 'mobile-nav-backdrop';
+  backdrop.hidden = true;
+  backdrop.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(backdrop);
   root.classList.add('daylight-ready');
   function setMenu(open, restoreFocus = false) {
     nav.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    toggle.querySelector('small').textContent = open ? '閉じる' : 'メニュー';
+    const mobileOpen = open && !desktop.matches;
+    root.classList.toggle('mobile-nav-open', mobileOpen);
+    backdrop.hidden = !mobileOpen;
+    if (mobileOpen) {
+      root.style.setProperty('--mobile-nav-top', `${header.getBoundingClientRect().bottom}px`);
+      nav.scrollTop = 0;
+    }
     if (restoreFocus) toggle.focus();
   }
-  function syncMenu() { setMenu(false); guide.open = !desktop.matches; }
+  backdrop.addEventListener('click', () => setMenu(false, true));
+  function syncMenu() { setMenu(false); guide.open = false; }
   toggle.hidden = false;
   toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   desktop.addEventListener('change', syncMenu);
@@ -24,6 +39,12 @@
   });
   guide.addEventListener('focusout', event => { if (desktop.matches && event.relatedTarget && !guide.contains(event.relatedTarget)) guide.open = false; });
   document.addEventListener('keydown', event => {
+    if (event.key === 'Tab' && !desktop.matches && nav.classList.contains('is-open')) {
+      const items = [toggle, ...nav.querySelectorAll('a, summary')].filter(el => el.getClientRects().length && (el.tagName === 'SUMMARY' || !el.closest('details:not([open])')));
+      const index = items.indexOf(document.activeElement);
+      event.preventDefault();
+      items[(index + (event.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+    }
     if (event.key !== 'Escape') return;
     if (desktop.matches && guide.open) { guide.open = false; guide.querySelector('summary').focus(); }
     if (nav.classList.contains('is-open')) setMenu(false, true);

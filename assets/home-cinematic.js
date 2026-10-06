@@ -4,7 +4,14 @@
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('main-nav');
   const guide = nav?.querySelector('.nav-guide');
-  const desktop = window.matchMedia('(min-width: 1000px)');
+  const desktop = window.matchMedia('(min-width: 1200px)');
+  const header = document.getElementById('header');
+  const menuLabel = toggle?.querySelector('.menu-label');
+  const backdrop = document.createElement('div');
+  backdrop.className = 'mobile-nav-backdrop';
+  backdrop.hidden = true;
+  backdrop.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(backdrop);
   root.classList.add('cinematic-ready');
 
   function setMenu(open, returnFocus = false) {
@@ -12,8 +19,17 @@
     nav.classList.toggle('active', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    if (menuLabel) menuLabel.textContent = open ? '閉じる' : 'メニュー';
+    const mobileOpen = open && !desktop.matches;
+    root.classList.toggle('mobile-nav-open', mobileOpen);
+    backdrop.hidden = !mobileOpen;
+    if (mobileOpen) {
+      root.style.setProperty('--mobile-nav-top', `${header.getBoundingClientRect().bottom}px`);
+      nav.scrollTop = 0;
+    }
     if (returnFocus) toggle.focus();
   }
+  backdrop.addEventListener('click', () => setMenu(false, true));
   toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   nav?.addEventListener('click', event => {
     if (event.target.closest('a')) {
@@ -22,6 +38,12 @@
     }
   });
   document.addEventListener('keydown', event => {
+    if (event.key === 'Tab' && !desktop.matches && nav?.classList.contains('active')) {
+      const items = [toggle, ...nav.querySelectorAll('a, summary')].filter(el => el.getClientRects().length && (el.tagName === 'SUMMARY' || !el.closest('details:not([open])')));
+      const index = items.indexOf(document.activeElement);
+      event.preventDefault();
+      items[(index + (event.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+    }
     if (event.key === 'Escape' && desktop.matches && guide?.open) {
       guide.open = false;
       guide.querySelector('summary').focus();
@@ -37,8 +59,8 @@
   });
   function syncNavigation() {
     setMenu(false);
-    // Native details still works without JS. Mobile starts with all guide links visible.
-    if (guide) guide.open = !desktop.matches;
+    // Keep secondary destinations folded until requested; native details works without JS.
+    if (guide) guide.open = false;
   }
   desktop.addEventListener('change', syncNavigation);
   syncNavigation();

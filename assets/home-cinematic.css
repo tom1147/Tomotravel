@@ -501,3 +501,46 @@ html.cinematic-ready .home-cinematic .hero-actions { animation-delay: 180ms; }
   .home-cinematic .author-cutout { width: 180px; height: 180px; }
   .home-cinematic a.logo-text { font-size: 16px; }
 }
+
+/* Hallmark · navigation repair · existing cinematic tokens · P4 H5 E5 S4 R5 V4 */
+.home-cinematic .nav-game-note { display: none; }
+.mobile-nav-backdrop[hidden] { display: none; }
+.home-cinematic .mobile-nav-backdrop { position: fixed; inset: var(--mobile-nav-top, 76px) 0 0; z-index: 199; background: var(--color-overlay); }
+html.mobile-nav-open, html.mobile-nav-open body { overflow-y: hidden; }
+@media (max-width: 1199px) {
+  .home-cinematic #header > .container { padding-inline: 20px; }
+  html.cinematic-ready .home-cinematic #header { background: var(--color-paper); backdrop-filter: none; }
+  html.cinematic-ready .home-cinematic .header-content { min-height: 76px; padding-block: 12px; gap: 12px; flex-wrap: nowrap; }
+  .home-cinematic .logo-center { min-width: 0; }
+  .home-cinematic a.logo-text { font-size: clamp(16px, 4.7vw, 23px); }
+  .home-cinematic .brand-caption { font-size: 9px; line-height: 1.6; margin-top: 4px; }
+  html.cinematic-ready .home-cinematic .menu-toggle { display: grid; grid-template-columns: 20px auto; grid-template-rows: 5px 5px; align-content: center; align-items: center; column-gap: 8px; row-gap: 5px; flex: none; min-width: 96px; min-height: 48px; padding: 12px; border: 1px solid var(--color-rule); border-radius: 8px; background: var(--color-panel); color: var(--color-ink); }
+  .home-cinematic .menu-toggle > span:not(.menu-label) { width: 20px; height: 2px; }
+  .home-cinematic .menu-toggle .menu-label { grid-column: 2; grid-row: 1 / 3; font: 700 12px/1 var(--font-body); letter-spacing: 0; white-space: nowrap; }
+  .home-cinematic .menu-toggle[aria-expanded="true"] > span:first-child { transform: translateY(5px) rotate(45deg); }
+  .home-cinematic .menu-toggle[aria-expanded="true"] > span:nth-child(2) { transform: translateY(-5px) rotate(-45deg); }
+  .home-cinematic .menu-toggle:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+  .home-cinematic .menu-toggle:active { background: var(--color-raised); }
+  html.cinematic-ready .home-cinematic nav#main-nav { display: none; position: fixed; inset: var(--mobile-nav-top, 76px) 0 auto; width: 100%; padding: 12px 20px max(20px, env(safe-area-inset-bottom)); max-height: calc(100dvh - var(--mobile-nav-top, 76px)); overflow-y: auto; overscroll-behavior: contain; background: var(--color-paper); border-bottom: 1px solid var(--color-rule); box-shadow: 0 12px 24px var(--color-overlay); }
+  html.cinematic-ready .home-cinematic nav#main-nav.active { display: block; }
+  html.cinematic-ready .home-cinematic nav ul.nav-menu { display: flex; flex-direction: column; align-items: stretch; gap: 0; width: 100%; }
+  .home-cinematic nav ul.nav-menu > li { width: 100%; text-align: left; border-bottom: 1px solid var(--color-rule); }
+  html.cinematic-ready .home-cinematic #main-nav .nav-menu > li:not(.nav-socials) > a, .home-cinematic .nav-guide summary { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 54px; padding: 12px; font: 500 16px/1.5 var(--font-body); color: var(--color-ink); border: 0; border-radius: 4px; text-decoration: none; }
+  .home-cinematic #main-nav .nav-menu > li > a::after { display: none; }
+  .home-cinematic #main-nav .nav-menu > li > a:active, .home-cinematic .nav-guide summary:active { background: var(--color-raised); }
+  .home-cinematic #main-nav a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -3px; }
+  .home-cinematic #main-nav .nav-game > a { color: var(--color-accent); font-weight: 700; background: var(--color-panel); }
+  .home-cinematic .nav-game-note { display: inline; font-size: 12px; color: var(--color-muted); }
+  .home-cinematic .nav-guide-list { position: static; inset: auto; transform: none; width: 100%; padding: 0 0 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; border: 0; background: none; box-shadow: none; backdrop-filter: none; }
+  html.cinematic-ready .home-cinematic #main-nav .nav-guide-list a { min-height: 48px; font-size: 14px; background: var(--color-panel); padding: 10px 12px; }
+  .home-cinematic #main-nav .nav-contact a { color: var(--color-ink); }
+  .home-cinematic #main-nav .nav-socials { display: flex; width: 100%; margin: 0; padding: 12px 0 0; gap: 12px; border: 0; }
+  .home-cinematic #main-nav .nav-socials .social-nav-link { width: 48px; min-width: 48px; height: 48px; border: 1px solid var(--color-rule); padding: 0; color: var(--color-ink); border-radius: 8px; }
+  html:not(.cinematic-ready) .home-cinematic .header-content { flex-wrap: wrap; }
+}
+@media (max-width: 359px) {
+  .home-cinematic #header > .container { padding-inline: 12px; }
+  html.cinematic-ready .home-cinematic .header-content { gap: 6px; }
+  .home-cinematic .brand-caption { font-size: 8px; }
+  .home-cinematic a.logo-text { font-size: 15px; }
+}
