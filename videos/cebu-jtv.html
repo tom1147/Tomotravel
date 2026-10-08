@@ -282,6 +282,40 @@
     transform: translateY(-1px) !important;
   }
 
+  #header .nav-menu .nav-games details { position: relative !important; }
+  #header .nav-menu .nav-games summary {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 10px 9px !important;
+    border-radius: 999px !important;
+    color: #dbe7fb !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    list-style: none !important;
+    cursor: pointer !important;
+  }
+  #header .nav-menu .nav-games summary::-webkit-details-marker { display: none; }
+  #header .nav-menu .nav-games summary:hover,
+  #header .nav-menu .nav-games details[open] summary { color: #fff !important; background: rgba(65, 199, 255, 0.12) !important; }
+  #header .nav-menu .nav-games summary:focus-visible,
+  #header .nav-menu .game-links a:focus-visible { outline: 2px solid #9de4ff !important; outline-offset: 2px !important; }
+  #header .nav-menu .game-links {
+    position: absolute !important;
+    z-index: 10 !important;
+    top: calc(100% + 8px) !important;
+    right: 0 !important;
+    min-width: 240px !important;
+    padding: 8px !important;
+    border: 1px solid rgba(72, 178, 255, 0.28) !important;
+    border-radius: 12px !important;
+    background: #081529 !important;
+    box-shadow: 0 18px 36px rgba(0,0,0,0.36) !important;
+  }
+  #header .nav-menu .game-links a { display: flex !important; justify-content: flex-start !important; padding: 13px 12px !important; border-radius: 8px !important; }
+
   #header .nav-icon,
   #header .nav-menu i {
     color: #9de4ff !important;
@@ -362,6 +396,10 @@
       font-size: 13px !important;
     }
 
+    #header .nav-menu .nav-games { grid-column: 1 / -1 !important; }
+    #header .nav-menu .nav-games summary { display: flex !important; width: 100% !important; padding: 13px 12px !important; border-radius: 12px !important; }
+    #header .nav-menu .game-links { position: static !important; min-width: 0 !important; margin: 0 0 8px !important; box-shadow: none !important; }
+
     #header .menu-toggle {
       display: inline-flex !important;
     }
@@ -400,7 +438,7 @@
           <li><a href="https://tomotravel-pm.com/videos/" aria-label="動画一覧へ"><i class="fas fa-play nav-icon" aria-hidden="true"></i>動画一覧</a></li>
           <li><a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer" aria-label="YouTubeチャンネルへ"><i class="fab fa-youtube nav-icon" aria-hidden="true"></i>YouTubeチャンネル</a></li>
           <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
-          <li><a href="https://tomo-travel-game.pages.dev/" aria-label="ゲームへ"><i class="fas fa-gamepad nav-icon" aria-hidden="true"></i>ゲーム</a></li>
+          <li class="nav-games"><details><summary><i class="fas fa-gamepad nav-icon" aria-hidden="true"></i>ゲーム <span aria-hidden="true">⌄</span></summary><div class="game-links"><a href="https://tomo-travel-game.pages.dev/">Tomo Game</a><a href="https://tomo-nightwalker.pages.dev/">とも旅ナイトウォーカー</a></div></details></li>
         </ul>
       </nav>
       <div class="menu-toggle" id="menu-toggle" aria-label="メニューを開閉" role="button" tabindex="0">
@@ -409,7 +447,6 @@
     </div>
   </div>
 </header>
-
 <!-- seo-include:site-header:end --></div>
 <main id="video-main" class="video-shell"><nav class="video-breadcrumb" aria-label="パンくず"><a href="https://tomotravel-pm.com/">ホーム</a><a href="https://tomotravel-pm.com/videos/">動画一覧</a></nav>
 <h1>セブ島JTV体験動画｜B-pink・Club Kと初日の夜遊び</h1><p class="video-meta">とも旅ちゃんねる · 22:29 · <time datetime="2025-03-01T17:30:28-08:00">2025-03-01</time> 公開</p>
