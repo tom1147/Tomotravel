@@ -1,0 +1,12 @@
+{
+  "name": "tomo-nightwalker-apk",
+  "main": "./worker.mjs",
+  "compatibility_date": "2026-10-08",
+  "workers_dev": true,
+  "r2_buckets": [
+    {
+      "binding": "APK_BUCKET",
+      "bucket_name": "tomo-nightwalker-downloads"
+    }
+  ]
+}

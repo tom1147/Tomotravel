@@ -209,6 +209,9 @@ body.blog-daylight{margin:0;overflow-x:clip;color:var(--day-ink);background:var(
 /* Hallmark · navigation repair · existing daylight tokens · P4 H5 E5 S4 R5 V4 */
 .blog-daylight .games-item .guide-links { grid-template-columns: 1fr; width: 280px; }
 .blog-daylight .games-item .guide-links a:first-child { grid-column: auto; border: 0; margin: 0; }
+.blog-daylight .nav-game-choice { display: grid; gap: 4px; padding-top: 8px; border-top: 1px solid var(--day-rule); }
+.blog-daylight .nav-game-title { padding: 4px 10px; color: var(--day-accent); font-size: 12px; font-weight: 700; }
+.blog-daylight .nav-game-choice a span { margin-left: auto; }
 .mobile-nav-backdrop[hidden] { display: none; }
 .blog-daylight .mobile-nav-backdrop { position: fixed; inset: var(--mobile-nav-top, 76px) 0 0; z-index: 199; background: var(--day-ink); opacity: .4; }
 html.mobile-nav-open, html.mobile-nav-open body { overflow-y: hidden; }
