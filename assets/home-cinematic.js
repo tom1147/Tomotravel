@@ -3,7 +3,7 @@
   const root = document.documentElement;
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('main-nav');
-  const guide = nav?.querySelector('.nav-guide');
+  const guides = [...(nav?.querySelectorAll('.nav-guide') || [])];
   const desktop = window.matchMedia('(min-width: 1200px)');
   const header = document.getElementById('header');
   const menuLabel = toggle?.querySelector('.menu-label');
@@ -34,7 +34,7 @@
   nav?.addEventListener('click', event => {
     if (event.target.closest('a')) {
       setMenu(false);
-      if (desktop.matches && guide) guide.open = false;
+      if (desktop.matches) guides.forEach(guide => { guide.open = false; });
     }
   });
   document.addEventListener('keydown', event => {
@@ -44,23 +44,29 @@
       event.preventDefault();
       items[(index + (event.shiftKey ? -1 : 1) + items.length) % items.length].focus();
     }
-    if (event.key === 'Escape' && desktop.matches && guide?.open) {
-      guide.open = false;
-      guide.querySelector('summary').focus();
+    const openGuide = guides.find(guide => guide.open);
+    if (event.key === 'Escape' && desktop.matches && openGuide) {
+      openGuide.open = false;
+      openGuide.querySelector('summary').focus();
     }
     if (event.key === 'Escape' && nav?.classList.contains('active')) setMenu(false, true);
   });
   document.addEventListener('click', event => {
     if (nav?.classList.contains('active') && !event.target.closest('#header')) setMenu(false);
-    if (desktop.matches && guide?.open && !guide.contains(event.target)) guide.open = false;
+    if (desktop.matches) guides.forEach(guide => { if (guide.open && !guide.contains(event.target)) guide.open = false; });
   });
-  guide?.addEventListener('focusout', event => {
-    if (desktop.matches && event.relatedTarget && !guide.contains(event.relatedTarget)) guide.open = false;
+  guides.forEach(guide => {
+    guide.addEventListener('focusout', event => {
+      if (desktop.matches && event.relatedTarget && !guide.contains(event.relatedTarget)) guide.open = false;
+    });
+    guide.addEventListener('toggle', () => {
+      if (guide.open) guides.forEach(other => { if (other !== guide) other.open = false; });
+    });
   });
   function syncNavigation() {
     setMenu(false);
     // Keep secondary destinations folded until requested; native details works without JS.
-    if (guide) guide.open = false;
+    guides.forEach(guide => { guide.open = false; });
   }
   desktop.addEventListener('change', syncNavigation);
   syncNavigation();

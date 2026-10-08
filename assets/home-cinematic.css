@@ -503,7 +503,7 @@ html.cinematic-ready .home-cinematic .hero-actions { animation-delay: 180ms; }
 }
 
 /* Hallmark · navigation repair · existing cinematic tokens · P4 H5 E5 S4 R5 V4 */
-.home-cinematic .nav-game-note { display: none; }
+.home-cinematic .nav-games .nav-guide-list { grid-template-columns: 1fr; width: 280px; }
 .mobile-nav-backdrop[hidden] { display: none; }
 .home-cinematic .mobile-nav-backdrop { position: fixed; inset: var(--mobile-nav-top, 76px) 0 0; z-index: 199; background: var(--color-overlay); }
 html.mobile-nav-open, html.mobile-nav-open body { overflow-y: hidden; }
@@ -529,9 +529,8 @@ html.mobile-nav-open, html.mobile-nav-open body { overflow-y: hidden; }
   .home-cinematic #main-nav .nav-menu > li > a::after { display: none; }
   .home-cinematic #main-nav .nav-menu > li > a:active, .home-cinematic .nav-guide summary:active { background: var(--color-raised); }
   .home-cinematic #main-nav a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -3px; }
-  .home-cinematic #main-nav .nav-game > a { color: var(--color-accent); font-weight: 700; background: var(--color-panel); }
-  .home-cinematic .nav-game-note { display: inline; font-size: 12px; color: var(--color-muted); }
   .home-cinematic .nav-guide-list { position: static; inset: auto; transform: none; width: 100%; padding: 0 0 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; border: 0; background: none; box-shadow: none; backdrop-filter: none; }
+  .home-cinematic .nav-games .nav-guide-list { width: 100%; }
   html.cinematic-ready .home-cinematic #main-nav .nav-guide-list a { min-height: 48px; font-size: 14px; background: var(--color-panel); padding: 10px 12px; }
   .home-cinematic #main-nav .nav-contact a { color: var(--color-ink); }
   .home-cinematic #main-nav .nav-socials { display: flex; width: 100%; margin: 0; padding: 12px 0 0; gap: 12px; border: 0; }

@@ -3,7 +3,7 @@
   const root = document.documentElement;
   const nav = document.getElementById('daylight-nav');
   const toggle = document.querySelector('.daylight-menu-toggle');
-  const guide = document.querySelector('.daylight-guide');
+  const guides = [...document.querySelectorAll('.daylight-guide')];
   const desktop = matchMedia('(min-width:1200px)');
   const header = document.querySelector('.daylight-header');
   const backdrop = document.createElement('div');
@@ -27,17 +27,20 @@
     if (restoreFocus) toggle.focus();
   }
   backdrop.addEventListener('click', () => setMenu(false, true));
-  function syncMenu() { setMenu(false); guide.open = false; }
+  function syncMenu() { setMenu(false); guides.forEach(guide => { guide.open = false; }); }
   toggle.hidden = false;
   toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   desktop.addEventListener('change', syncMenu);
   syncMenu();
-  nav.addEventListener('click', event => { if (event.target.closest('a')) { setMenu(false); if (desktop.matches) guide.open = false; } });
+  nav.addEventListener('click', event => { if (event.target.closest('a')) { setMenu(false); if (desktop.matches) guides.forEach(guide => { guide.open = false; }); } });
   document.addEventListener('click', event => {
     if (!event.target.closest('.daylight-header')) setMenu(false);
-    if (desktop.matches && !guide.contains(event.target)) guide.open = false;
+    if (desktop.matches) guides.forEach(guide => { if (guide.open && !guide.contains(event.target)) guide.open = false; });
   });
-  guide.addEventListener('focusout', event => { if (desktop.matches && event.relatedTarget && !guide.contains(event.relatedTarget)) guide.open = false; });
+  guides.forEach(guide => {
+    guide.addEventListener('focusout', event => { if (desktop.matches && event.relatedTarget && !guide.contains(event.relatedTarget)) guide.open = false; });
+    guide.addEventListener('toggle', () => { if (guide.open) guides.forEach(other => { if (other !== guide) other.open = false; }); });
+  });
   document.addEventListener('keydown', event => {
     if (event.key === 'Tab' && !desktop.matches && nav.classList.contains('is-open')) {
       const items = [toggle, ...nav.querySelectorAll('a, summary')].filter(el => el.getClientRects().length && (el.tagName === 'SUMMARY' || !el.closest('details:not([open])')));
@@ -46,7 +49,8 @@
       items[(index + (event.shiftKey ? -1 : 1) + items.length) % items.length].focus();
     }
     if (event.key !== 'Escape') return;
-    if (desktop.matches && guide.open) { guide.open = false; guide.querySelector('summary').focus(); }
+    const openGuide = guides.find(guide => guide.open);
+    if (desktop.matches && openGuide) { openGuide.open = false; openGuide.querySelector('summary').focus(); }
     if (nav.classList.contains('is-open')) setMenu(false, true);
   });
 
