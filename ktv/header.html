@@ -174,6 +174,9 @@
     box-shadow: 0 18px 36px rgba(0,0,0,0.36) !important;
   }
   #header .nav-menu .game-links a { display: flex !important; justify-content: flex-start !important; padding: 13px 12px !important; border-radius: 8px !important; }
+  #header .nav-menu .nav-game-choice { display: grid !important; gap: 2px !important; margin-top: 4px !important; padding-top: 8px !important; border-top: 1px solid rgba(72, 178, 255, 0.28) !important; }
+  #header .nav-menu .nav-game-title { padding: 4px 12px !important; color: #9de4ff !important; font-size: 12px !important; font-weight: 700 !important; }
+  #header .nav-menu .nav-game-choice a span { margin-left: auto !important; }
 
   #header .nav-icon,
   #header .nav-menu i {
@@ -297,7 +300,7 @@
           <li><a href="https://tomotravel-pm.com/videos/" aria-label="動画一覧へ"><i class="fas fa-play nav-icon" aria-hidden="true"></i>動画一覧</a></li>
           <li><a href="https://www.youtube.com/@TomoTravel-PM" target="_blank" rel="noopener noreferrer" aria-label="YouTubeチャンネルへ"><i class="fab fa-youtube nav-icon" aria-hidden="true"></i>YouTubeチャンネル</a></li>
           <li><a href="https://tomotravel-pm.com/blog" aria-label="ブログへ"><i class="fas fa-blog nav-icon" aria-hidden="true"></i>ブログ</a></li>
-          <li class="nav-games"><details><summary><i class="fas fa-gamepad nav-icon" aria-hidden="true"></i>ゲーム <span aria-hidden="true">⌄</span></summary><div class="game-links"><a href="https://tomo-travel-game.pages.dev/">Tomo Game</a><a href="https://tomo-nightwalker.pages.dev/">とも旅ナイトウォーカー</a></div></details></li>
+          <li class="nav-games"><details><summary><i class="fas fa-gamepad nav-icon" aria-hidden="true"></i>ゲーム <span aria-hidden="true">⌄</span></summary><div class="game-links"><a href="https://tomo-travel-game.pages.dev/">Tomo Game</a><div class="nav-game-choice" role="group" aria-label="とも旅ナイトウォーカー"><span class="nav-game-title">とも旅ナイトウォーカー</span><a href="https://tomo-nightwalker.pages.dev/" aria-label="とも旅ナイトウォーカーをWebで遊ぶ">Webで遊ぶ <span aria-hidden="true">↗</span></a><a href="https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-v31.apk" aria-label="とも旅ナイトウォーカーのAndroid版をダウンロード">Android版をダウンロード <span aria-hidden="true">↓</span></a></div></div></details></li>
         </ul>
       </nav>
       <div class="menu-toggle" id="menu-toggle" aria-label="メニューを開閉" role="button" tabindex="0">

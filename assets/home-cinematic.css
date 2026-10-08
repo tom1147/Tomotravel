@@ -504,6 +504,9 @@ html.cinematic-ready .home-cinematic .hero-actions { animation-delay: 180ms; }
 
 /* Hallmark · navigation repair · existing cinematic tokens · P4 H5 E5 S4 R5 V4 */
 .home-cinematic .nav-games .nav-guide-list { grid-template-columns: 1fr; width: 280px; }
+.home-cinematic .nav-game-choice { display: grid; gap: 4px; padding-top: 8px; border-top: 1px solid var(--color-rule); }
+.home-cinematic .nav-game-title { padding: 4px 12px; color: var(--color-accent); font: 700 12px/1.5 var(--font-body); }
+.home-cinematic .nav-game-choice a span { margin-left: auto; }
 .mobile-nav-backdrop[hidden] { display: none; }
 .home-cinematic .mobile-nav-backdrop { position: fixed; inset: var(--mobile-nav-top, 76px) 0 0; z-index: 199; background: var(--color-overlay); }
 html.mobile-nav-open, html.mobile-nav-open body { overflow-y: hidden; }
