@@ -1,6 +1,6 @@
-const FILE = 'TomoNightwalker-Android-v36.0.0.apk';
+const FILE = 'TomoNightwalker-Android-v37.0.0.apk';
 const LATEST = '/TomoNightwalker-Android-latest.apk';
-const PREVIOUS = '/TomoNightwalker-Android-v31.apk';
+const PREVIOUS = ['/TomoNightwalker-Android-v31.apk', '/TomoNightwalker-Android-v36.0.0.apk'];
 
 function downloadHeaders(object) {
   return new Headers({
@@ -18,7 +18,7 @@ function downloadHeaders(object) {
 export default {
   async fetch(request, env) {
     const path = new URL(request.url).pathname;
-    if (path !== `/${FILE}` && path !== LATEST && path !== PREVIOUS) {
+    if (path !== `/${FILE}` && path !== LATEST && !PREVIOUS.includes(path)) {
       return new Response('Not found', { status: 404 });
     }
     if (request.method !== 'GET' && request.method !== 'HEAD') {
@@ -27,7 +27,7 @@ export default {
         headers: { Allow: 'GET, HEAD' },
       });
     }
-    if (path === LATEST || path === PREVIOUS) {
+    if (path === LATEST || PREVIOUS.includes(path)) {
       return new Response(null, {
         status: 302,
         headers: {
