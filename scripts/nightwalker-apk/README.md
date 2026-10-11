@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v38.0.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v38.0.0.apk`
-- サイズ: 360,277,500 bytes
-- SHA-256: `21ab78728c4e6899303c08f9e6e3211b1a5377fc475d653adeabf1af7b6e02ef`
+- 現行の配布キー: `TomoNightwalker-Android-v38.0.1.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v38.0.1.apk`
+- サイズ: 360,281,857 bytes
+- SHA-256: `e977f8f66a03f2f7c00da462ddbaa4a60eba0dde004cdc0d6bcb03c414b1a023`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -21,3 +21,6 @@ v37の公開確認：HEAD・Range・配布ファイル全体のSHA-256を元APK�
 
 
 v38はリンゴの等身統一、単独覚醒の強化、同時編成時の守護干渉、REXへの改名を含む。同一署名・packageで既存セーブを引き継ぐ。
+
+
+v38.0.1は総力戦・10人編成・ワンタップ交代・ボス向き・再生と長期戦強化・追加護衛と代替防御武器を修正。既存セーブを維持。
