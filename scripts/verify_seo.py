@@ -81,7 +81,9 @@ def main(output=None):
             social_image = metadata.get('og:image')
             if social_image != metadata.get('twitter:image') or social_image != page_node.get('primaryImageOfPage', {}).get('url'):
                 errors.append(f'{source}: social and structured page images differ')
-        if source == 'blog.html':
+        if source == 'blog.html' or metadata.get('travel-page-type') == 'series':
+            if page_node.get('@type') != 'CollectionPage' or any(n.get('@type') == 'BlogPosting' for n in graph):
+                errors.append(f'{source}: article directories must be CollectionPage, not BlogPosting')
             listing = next((n for n in graph if n.get('@id') == page_node.get('mainEntity', {}).get('@id')), {})
             cards = re.findall(r'<article\b[^>]*class=[\"\'][^\"\']*\bpost-card\b[^\"\']*[\"\'][^>]*>(.*?)</article>', text, re.S)
             expected = []
@@ -90,7 +92,7 @@ def main(output=None):
                 links = Document(card).select('a')
                 if heading and links:
                     name = ' '.join(html.unescape(re.sub('<[^>]+>', '', heading[1])).split())
-                    expected.append((links[0].get('href'), name))
+                    expected.append((urljoin(url, links[0].get('href')), name))
             items = listing.get('itemListElement', [])
             if listing.get('@type') != 'ItemList' or listing.get('numberOfItems') != len(cards) or [(i.get('url'), i.get('name')) for i in items] != expected:
                 errors.append(f'{source}: article cards and ItemList names, URLs or counts differ')

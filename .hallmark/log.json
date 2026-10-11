@@ -1,0 +1,43 @@
+[
+  {
+    "date": "2026-10-11",
+    "macrostructure": "Long Document (series structure explicitly preserved)",
+    "theme": "Tomo journal; oxblood, forest, brown, burgundy and dusk-blue episode variations",
+    "enrichment": "five new illustrated covers and video-frame cleanups",
+    "nav": "shared masthead with Games link",
+    "footer": "Ft1 plus previous/next and six-part series index",
+    "scope": "blog/hochiminh2.html through blog/hochiminh6.html",
+    "brief": "Continue the authorized series through episode 6 and repair Games navigation in existing articles",
+    "validation": "30 responsive checks; all article images and local references passed"
+  },
+  {
+    "date": "2026-10-11",
+    "macrostructure": "Long Document",
+    "theme": "existing Tomo night palette with scoped paper reading surface",
+    "enrichment": "generated travel-notebook illustration and seven documentary video frames",
+    "nav": "N6 masthead, compact two-row adaptation",
+    "footer": "Ft1 mast-headed",
+    "brief": "Ho Chi Minh first-day article; preserve Cebu article sequence; local review only",
+    "scope": "blog/hochiminh1.html",
+    "userConstraint": "Preserve the same basic article structure; choose a readable professional design"
+  },
+  {
+    "date": "2026-10-12",
+    "macrostructure": "Photo-led long documents; title, intro, video, chronological story, source notes and series navigation",
+    "theme": "Ten series palettes, seven editorial layouts; generated full-page design references before implementation",
+    "enrichment": "Reviewed documentary video frames with digital caption/flag removal; privacy blur retained",
+    "nav": "Compact masthead with Blog, Videos and Games",
+    "footer": "Source attribution, previous/next and series directory",
+    "scope": "64 travel stories, 11 series hubs and the 85-story blog index",
+    "brief": "Publish the requested 58 source videos as articles and integrate six earlier local drafts",
+    "validation": "All seven layouts checked at 320/375/414/768px; search, filtering, show-more, Games navigation and video poster controls exercised",
+    "scores": {
+      "philosophy": 4,
+      "hierarchy": 4,
+      "execution": 4,
+      "specificity": 5,
+      "restraint": 5,
+      "variety": 4
+    }
+  }
+]
