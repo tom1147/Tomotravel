@@ -11,6 +11,7 @@ import copy
 from datetime import date
 import html
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -107,13 +108,15 @@ def normalized_url(value, source, pages):
     return absolute
 
 
-def normalize_links(text, source, pages):
+def normalize_links(text, source, pages, *, local_links=False):
     def link(m):
         tag = m[0]
         a = Document(tag).select('a')[0]
         value = a.get('href', '')
         if value and not value.startswith(('#', 'mailto:', 'tel:', 'javascript:')):
             target = normalized_url(value, source, pages)
+            if local_links and target.startswith(ORIGIN + '/'):
+                target = target[len(ORIGIN):]
             tag = re.sub(r'\bhref\s*=\s*([\"\']).*?\1', lambda _: 'href="' + html.escape(target, quote=True) + '"', tag, count=1, flags=re.S)
         if re.search(r'(?:a8\.net|afi-b\.com|af\.moshimo\.com)', value) or ('trip.com' in value and 'Allianceid' in value):
             rel = set(a.get('rel', '').split()) | {'sponsored', 'nofollow', 'noopener'}
@@ -136,7 +139,11 @@ def dimensions(url):
 
 def image_urls(text, source):
     urls = []
-    for a in Document(text).select('img'):
+    candidates = Document(text).select('img')
+    editorial = [a for a in candidates if 'data-editorial-image' in a]
+    # Article photos are explicitly marked so author/related-card art is not
+    # presented as imagery depicting this trip in structured data and sitemaps.
+    for a in editorial or candidates:
         src = urljoin(ORIGIN + '/' + source, a.get('src', ''))
         if urlsplit(src).netloc == urlsplit(ORIGIN).netloc and resolve_file(src) and src != LOGO:
             if src not in urls:
@@ -153,7 +160,7 @@ def common_nodes():
     ]
 
 
-def breadcrumbs(url, title, source):
+def breadcrumbs(url, title, source, series_name=None, series_url=None):
     rows = [('ホーム', ORIGIN + '/')]
     if source.startswith('blog/') or source.startswith('cebu'):
         rows.append(('ブログ', ORIGIN + '/blog'))
@@ -161,6 +168,8 @@ def breadcrumbs(url, title, source):
         rows.append(('フィリピンKTV紹介', ORIGIN + '/ktv/indexktv'))
     elif source.startswith('videos/') and source != 'videos/index.html':
         rows.append(('動画一覧', ORIGIN + '/videos/'))
+    if series_name and series_url and series_url != url:
+        rows.append((series_name, series_url))
     rows.append(('ブログ' if source == 'blog.html' else title, url))
     return {'@type': 'BreadcrumbList', '@id': url + '#breadcrumb', 'itemListElement': [
         {'@type': 'ListItem', 'position': i + 1, 'name': name, 'item': link} for i, (name, link) in enumerate(rows)
@@ -185,7 +194,7 @@ def static_include(text, ident, content):
     return re.sub(pattern, lambda m: m[1] + start + '\n' + content + '\n' + end + m[3], text, count=1, flags=re.S)
 
 
-def blog_listing(text, url):
+def blog_listing(text, url, *, series=False):
     """Describe the actual article cards, not unrelated header or footer links."""
     items = []
     seen = set()
@@ -201,15 +210,21 @@ def blog_listing(text, url):
         seen.add(target)
         items.append({'@type': 'ListItem', 'position': len(items) + 1,
                       'name': text_content(heading[1]), 'url': target})
-    return {'@type': 'ItemList', '@id': url + '#articles', 'name': 'ブログ記事一覧',
-            'itemListOrder': 'https://schema.org/ItemListOrderDescending',
+    return {'@type': 'ItemList', '@id': url + '#articles', 'name': 'シリーズ記事一覧' if series else 'ブログ記事一覧',
+            'itemListOrder': 'https://schema.org/ItemListOrderAscending' if series else 'https://schema.org/ItemListUnordered',
             'numberOfItems': len(items), 'itemListElement': items}
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--date', help='Actual date of this significant technical update, YYYY-MM-DD')
+    parser.add_argument('--design-assets', type=Path, help='Optional verified external asset pack')
     args = parser.parse_args()
+    # Metadata must see the same pinned images as the production build. Without
+    # the pack, a valid homepage hero could be silently replaced by a store photo.
+    from external_assets import ensure_assets
+    assets, _ = ensure_assets(args.design_assets)
+    os.environ['TOMO_DESIGN_ASSET_DIR'] = str(assets)
     video_metadata_path = ROOT / 'scripts/video_metadata.json'
     video_metadata = json.loads(video_metadata_path.read_text(encoding='utf-8')) if video_metadata_path.exists() else {}
     if args.date:
@@ -241,7 +256,8 @@ def main():
         md = metadata(text)
         title = text_content(re.search(r'<title[^>]*>(.*?)</title>', text, re.S | re.I)[1])
         url = canonical(source)
-        blog_article = source.startswith('blog/') or source.startswith('cebu')
+        series_hub = md.get('travel-page-type') == 'series'
+        blog_article = (source.startswith('blog/') or source.startswith('cebu')) and not series_hub
         previous = next((x for x in old if x.get('@type') in ('BlogPosting', 'Article')), {})
         description = md.get('description') or md.get('og:description') or {
             'traveltest.html': 'とも旅ちゃんねるのお仕事のご依頼・店舗紹介・取材に関するご案内とお問い合わせ。',
@@ -264,7 +280,7 @@ def main():
             text = re.sub(r'<link\b[^>]*href=[\"\'](?:\./)?style.css[\"\'][^>]*>', '', text)
         if source == 'blog/insta360x4.html':
             text = re.sub(r'<img\b[^>]*src=[\"\']\./images/insta360-x4-intro.jpg[\"\'][^>]*>', '', text)
-        text = normalize_links(text, source, pages)
+        text = normalize_links(text, source, pages, local_links=md.get('travel-page-type') in ('article', 'series', 'index'))
         for ident, fragment in [('header-placeholder', 'blog/header.html'), ('footer-placeholder', 'blog/footer.html'), ('sidebar-placeholder', 'blog/sidebar.html')]:
             text = static_include(text, ident, fragments[fragment])
         if source.startswith(('ktv/', 'videos/')):
@@ -320,7 +336,7 @@ def main():
         git_date = subprocess.run(['git', 'log', '-1', '--format=%as', '--', source], cwd=ROOT, capture_output=True, text=True).stdout.strip()
         modified = args.date or max([v[:10] for v in [previous.get('dateModified'), md.get('article:modified_time'), git_date] + [n.get('dateModified') for n in old] if v] or ['2026-09-19'])
         graph = common_nodes()
-        page = {'@type': 'CollectionPage' if source in ('blog.html', 'ktv/indexktv.html', 'website/memorylog/index.html', 'videos/index.html') else 'WebPage',
+        page = {'@type': 'CollectionPage' if series_hub or source in ('blog.html', 'ktv/indexktv.html', 'website/memorylog/index.html', 'videos/index.html') else 'WebPage',
                 '@id': url + '#webpage', 'url': url, 'name': title, 'description': description, 'inLanguage': 'ja',
                 'isPartOf': {'@id': ORIGIN + '/#website'}, 'publisher': {'@id': ORIGIN + '/#organization'}, 'dateModified': modified,
                 'primaryImageOfPage': {'@type': 'ImageObject', '@id': url + '#primaryimage', 'url': image}}
@@ -339,6 +355,9 @@ def main():
                        'publisher': {'@id': ORIGIN + '/#organization'}, 'inLanguage': 'ja', 'isAccessibleForFree': True, 'dateModified': modified}
             if images:
                 article['image'] = images
+            if md.get('travel-series-name'):
+                article['articleSection'] = md['travel-series-name']
+                article['isPartOf'] = {'@id': md['travel-series-url'] + '#webpage'}
             if published:
                 article['datePublished'] = published
                 text = meta(text, 'article:published_time', published)
@@ -428,9 +447,9 @@ def main():
                     if isinstance(obj.get(k), dict) and obj[k].get('@id', '').endswith('#video'):
                         obj[k] = {'@id': video['@id']}
         if source != 'index.html':
-            graph.append(breadcrumbs(url, title, source))
-        if source == 'blog.html':
-            listing = blog_listing(text, url)
+            graph.append(breadcrumbs(url, title, source, md.get('travel-series-name'), md.get('travel-series-url')))
+        if source == 'blog.html' or series_hub:
+            listing = blog_listing(text, url, series=series_hub)
             graph.append(listing)
             page['mainEntity'] = {'@id': listing['@id']}
         payload = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, indent=2).replace('</', '<\\/')
@@ -448,6 +467,7 @@ def main():
     groups = [('主要ページ', lambda r: r['source'] in ['index.html', 'blog.html', 'ktv/indexktv.html', 'traveltest.html', 'lp-service.html', 'privacy-policy.html']),
               ('KTV・JTV紹介', lambda r: r['source'].startswith('ktv/') and r['source'] != 'ktv/indexktv.html'),
               ('動画で見るフィリピン', lambda r: r['source'].startswith('videos/')),
+              ('ゲームで遊ぶ', lambda r: r['source'].startswith('games/')),
               ('旅ブログ・機材', lambda r: r['source'].startswith(('blog/', 'cebu'))),
               ('その他のページ・ツール', lambda r: r['source'] in ['TomoGame_V1.0/index.html', 'VideoInstructionEditor.html', 'website/memorylog/index.html'])]
     sections = ''.join('<section><h2>' + label + '</h2><ul>' + ''.join('<li><a href="' + directory_url(r) + '">' + html.escape(r['title']) + '</a></li>' for r in records if predicate(r)) + '</ul></section>' for label, predicate in groups)
@@ -477,7 +497,23 @@ def main():
                     ET.SubElement(vd, '{' + video_ns + '}' + target).text = v[key]
     ET.indent(root, space='  ')
     write_text(ROOT / 'sitemap.xml', ET.tostring(root, encoding='utf-8', xml_declaration=True).decode('utf-8'))
-    llms = '# とも旅ちゃんねるVLOG\n\n> タイ・ベトナム・フィリピンなど東南アジアの一人旅の体験、KTV・JTV紹介、旅の準備を発信する日本語サイト。\n\n運営者の体験をもとにした記事です。店舗の営業時間・料金などは各ページに記載した時点の情報であり、最新情報は店舗公式窓口をご確認ください。\n\n## ページ一覧\n\n' + '\n'.join('- [' + r['title'].replace('[', '［').replace(']', '］') + '](' + r['url'] + ')' for r in records) + '\n\n## 公式チャンネル\n\n- [YouTube](' + SOCIAL[0] + ')\n- [X](' + SOCIAL[1] + ')\n'
+    llms = '# とも旅ちゃんねるVLOG\n\n> タイ・ベトナム・フィリピンと日本のひとり旅を、本人の動画・写真・体験記で紹介する日本語サイト。運営・書き手はTomo（とも）。\n\n料金・設備・利用条件は撮影時点の記録です。撮影日、動画公開日、記事公開日は別の情報です。個人の感想を都市・店舗全体の客観的評価として扱わないでください。\n\n## はじめに\n\n- [旅ブログとシリーズ一覧](' + ORIGIN + '/blog): 旅先、シリーズ、テーマから検索できます。\n- [旅行記の本文と出典](' + ORIGIN + '/llms-full.txt): 新規64記事の本文、公開動画、撮影日が確認できる場合の記録。\n- [XMLサイトマップ](' + ORIGIN + '/sitemap.xml)\n\n'
+    catalog = ROOT / 'docs/travel-articles.json'
+    listed = set()
+    if catalog.exists():
+        from build_travel_articles import SERIES, hub_path, route
+        stories = json.loads(catalog.read_text(encoding='utf-8'))['articles']
+        for key, info in SERIES.items():
+            group = [r for r in stories if r['series'] == key]
+            if not group:
+                continue
+            llms += '## ' + info[0] + '\n\n' + info[5] + '\n\n- [シリーズ一覧](' + ORIGIN + route(hub_path(key)) + ')\n'
+            listed.add(hub_path(key))
+            for story in group:
+                llms += '- [' + story['youtubeTitle'].replace('[', '［').replace(']', '］') + '](' + ORIGIN + route(story['file']) + '): ' + story['summary'] + '\n'
+                listed.add(story['file'])
+            llms += '\n'
+    llms += '## その他のページ\n\n' + '\n'.join('- [' + r['title'].replace('[', '［').replace(']', '］') + '](' + r['url'] + ')' for r in records if r['source'] not in listed) + '\n\n## 公式チャンネル\n\n- [YouTube](' + SOCIAL[0] + ')\n- [X](' + SOCIAL[1] + ')\n'
     llms = llms.replace(canonical(GAME_HOSTING['source']), GAME_HOSTING['public_url'])
     write_text(ROOT / 'llms.txt', llms)
     redirects = ['# Exact permanent redirects; do not redirect all missing URLs to the home page.', '/index.html / 301!', '/index / 301!']

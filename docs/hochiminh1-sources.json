@@ -1,0 +1,70 @@
+{
+  "status": "Reviewed for publication with the travel archive on 2026-10-12",
+  "video": "F:\\ホーチミン編1\\ホーチミン編1完成.mp4",
+  "subtitles": "F:\\ホーチミン編1\\日本語字幕.srt",
+  "filmedOn": "2025-06-14",
+  "youtube": {
+    "url": "https://www.youtube.com/watch?v=7xOr6yXy8E8",
+    "title": "【最高のカフェ】ベトナム初心者がホーチミンに行くとこんな感じ【ひとり旅初日】",
+    "publishedOn": "2025-07-12",
+    "duration": "PT25M26S",
+    "verifiedBy": "Official channel search and expanded YouTube description, 2026-10-11"
+  },
+  "images": [
+    {
+      "file": "images/hochiminh1/saigon-notebook.webp",
+      "kind": "generated-editorial-illustration",
+      "timestamp": null,
+      "prompt": "Use case: illustration-story. Asset type: small editorial header illustration for a Japanese first-person Ho Chi Minh travel journal. Create one landscape 3:2 hand-drawn colored-pencil and gouache illustration, like a beautifully art-directed travel notebook with slightly naive, charming childlike sketch lines. On a uniform deep ink navy background, a compact composition shows Ben Thanh Market's recognizable low warm-ivory clock-tower facade, one small turquoise city bus, a Vietnamese iced milk coffee in a clear glass, a tiny slice of tiramisu, loose palm leaves and a few small cream pencil stars. The scene is symbolic, not a factual nighttime photo. Rich warm cream, dusty jade, restrained ochre, dry pencil texture. The main cluster fills the image but ample navy breathing room at all edges; no enclosing card, no border. Elegant editorial restraint, cute yet professional, imperfect strokes and subtle paper grain. Absolutely NO text, lettering, flags, numbers, logos, captions, watermark, photo textures, maps, UI, or gradients. Deliver a finished flat raster illustration.",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "file": "images/hochiminh1/airport-bus.webp",
+      "kind": "frame-overlay-removal",
+      "timestamp": "04:34",
+      "prompt": "Use case: precise-object-edit. This is an authentic travel video frame and must remain documentary. Edit ONLY the digitally overlaid red Vietnam flag rectangle and white location titles across the upper left/top, and the large blue-outlined Japanese subtitle along the bottom. Completely remove those digital overlays by restoring the small patches of ceiling, man's forearm, bag and bus upholstery behind them. Keep the same man, exact identity, face, pose, hairstyle, shirt artwork, tattoo, bus seats, windows, signage actually in the scene, exposure, photographic texture, framing and perspective unchanged. Do NOT beautify, redesign, replace objects, sharpen heavily, or add new text. Keep 16:9 landscape. Return a single clean natural photograph without any added overlay text or borders.",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "file": "images/hochiminh1/ben-thanh-market.webp",
+      "kind": "frame-overlay-removal",
+      "timestamp": "06:04",
+      "prompt": "Use case: precise-object-edit. Edit this authentic Ben Thanh Market travel video frame. Remove ONLY the digitally overlaid red flag rectangle and white Japanese/English location label in the upper left, and the blue-outlined Japanese subtitle at the bottom. Fill those areas naturally with the actual continuation of roof, shop fronts and floor tiles. Preserve all real shop signage, every person, exact faces, poses, clothes, bags, stalls, ceiling lights, aisle perspective and framing. Keep the candid photographic softness, original colors and lighting. Do not invent products, do not change faces, do not make the scene look renovated, do not crop. Output a single 16:9 photograph with no added text or graphics.",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "file": "images/hochiminh1/chidori-beds.webp",
+      "kind": "frame-overlay-removal",
+      "timestamp": "15:03",
+      "prompt": "Use case: precise-object-edit. Authentic Chidori cafe video frame, documentary retouch only. Remove only the digital Vietnam flag and the two white location-title lines in the upper left. Reconstruct that patch of gray ceiling, cream arch and wood naturally. Absolutely preserve the rest of the photo: original crooked camera angle and wide perspective, dark wooden bunk beds and ladders, cushions, railing, columns, lamps, windows, flooring and exact light levels. Do not make the room newer or cleaner, do not add objects, people, lettering or decorations. Keep the same 16:9 framing. No border or overlay.",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "file": "images/hochiminh1/chidori-coffee.webp",
+      "kind": "frame-overlay-removal",
+      "timestamp": "17:01",
+      "prompt": "Use case: precise-object-edit. Retouch the supplied authentic travel frame. Remove ONLY the digitally superimposed Vietnam flag and two white location-title lines at upper left, and the large blue-bordered Japanese subtitle along the bottom. Restore plain wooden wall and table beneath these overlays. Keep the man absolutely identical: same face, expression, eyes, skin texture, hair, hands holding the metal straw, tattoo, shirt and seated pose. Preserve the iced milk coffee, exact glass and liquid layers, metal straw, tiramisu in its original plastic container, blue stirrer, table, wood walls, brick wall, picture and lighting as they are. Do not replace dessert, do not turn the photo into styled food photography, do not change objects or framing, do not retouch imperfections. Output the same natural wide-angle 16:9 photo with the digital overlays removed.",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "file": "images/hochiminh1/shop213.webp",
+      "kind": "frame-overlay-removal",
+      "timestamp": "19:54",
+      "prompt": "Use case: precise-object-edit. Documentary cleanup of the supplied Shop 213 video frame. Remove ONLY the digital red flag plus white location label in the upper-left corner and the blue-bordered Japanese subtitle at the bottom. Reconstruct the small obscured areas of dark awning, pavement and lower yellow shirt. Preserve ALL real scene information exactly, especially the actual SHOP 213 signage and physical price sign 'VIETNAM T.SHIRTS: 90,000VND', all shirt designs, real flag printed on merchandise, hanging bags, hats, scooters and furniture. Do not improve the store, do not change products or prices, do not brighten dramatically or make a different camera view. Keep original photographic exposure and 16:9 framing. No digital overlay or border.",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "file": "images/hochiminh1/felix-hotel.webp",
+      "kind": "frame-overlay-removal",
+      "timestamp": "21:40",
+      "prompt": "Use case: precise-object-edit. Retouch this real hotel-room video frame only to remove the digital Vietnam flag and the Japanese/English Felix Hotel label at the upper left. Fill that patch with the original plain off-white wall/ceiling. All other image content must stay exactly the same, including worn surfaces, hanging cables, bed and cushions, original wall marks, floor, refrigerator, television, wall fan, bags, slippers and perspective. Do NOT beautify or renovate the hotel; this is an honest travel review and all imperfections must remain visible. Do not change lighting, crop or add objects. Single 16:9 natural photograph without digital text overlays.",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "file": "images/hochiminh1/chidori-entrance.webp",
+      "kind": "unaltered-frame",
+      "timestamp": "11:07",
+      "note": "This cut contains no digital flag, subtitle or title; extracted from original video."
+    }
+  ]
+}

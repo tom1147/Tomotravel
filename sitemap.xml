@@ -2,14 +2,203 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://tomotravel-pm.com/blog</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/blog-f1-hero.webp</image:loc>
+      <image:loc>https://tomotravel-pm.com/images/travel/takanawa-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila3-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-06/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-08/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-09/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-01/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-08/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-09/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-10/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-11/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-03/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-07/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-08/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-09/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-06/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/chidori-coffee.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh2/bui-vien-night.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh3/concept-games.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh4/grandmalu-room.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh5/takumi-conversation.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh6/airport-departure.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-03/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-08/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-04/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/kanazawa-01/scene-01.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/cebu2nd1</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd/cebu2nd2.png</image:loc>
     </image:image>
@@ -47,7 +236,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/cebu2nd2</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd2/21.png</image:loc>
     </image:image>
@@ -70,7 +259,79 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/hero-night.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/ktv/assets2/charm-featured.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/cebu2nd/cebu2nd7.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/cebu2nd2/22.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/cebu2nd3/blog2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/thailand.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/vietnam.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/philippines.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/story.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/camera.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/phone.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/clothes.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/tissues.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/jacket.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/passport.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/cards.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/vpn.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/booking-expedia.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/booking-trip.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/booking-jtb.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/booking-flights.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/prep-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/prep-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/contact-scene.webp</image:loc>
+    </image:image>
     <video:video>
       <video:thumbnail_loc>https://i.ytimg.com/vi/uf67dP5Cg70/hqdefault.jpg</video:thumbnail_loc>
       <video:title>【甘すぎ♡】マニラ夜遊び！ホテル内の隠れ家KTVへ【Charm Music Lounge】</video:title>
@@ -78,29 +339,26 @@
       <video:player_loc>https://www.youtube.com/embed/uf67dP5Cg70</video:player_loc>
       <video:publication_date>2026-08-08T02:00:37-07:00</video:publication_date>
     </video:video>
-    <image:image>
-      <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/hero-night.webp</image:loc>
-    </image:image>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/lp-service</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/privacy-policy</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/traveltest</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/videoinstructioneditor</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st1</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st1/1.jpg</image:loc>
     </image:image>
@@ -123,7 +381,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st2</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st2/1.jpg</image:loc>
     </image:image>
@@ -149,7 +407,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st3</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st3/1.jpg</image:loc>
     </image:image>
@@ -181,7 +439,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st4</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st4/1.jpg</image:loc>
     </image:image>
@@ -219,7 +477,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st5</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st5/1.jpg</image:loc>
     </image:image>
@@ -254,7 +512,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu1st6</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu1st6/1.jpg</image:loc>
     </image:image>
@@ -283,7 +541,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd3</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd3/blog1.jpg</image:loc>
     </image:image>
@@ -306,7 +564,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd4</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd4/1.jpg</image:loc>
     </image:image>
@@ -338,7 +596,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd5</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd5/1.jpg</image:loc>
     </image:image>
@@ -364,7 +622,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd6</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd6/2.jpg</image:loc>
     </image:image>
@@ -384,7 +642,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd7</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd7/1.jpg</image:loc>
     </image:image>
@@ -410,7 +668,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu2nd8</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu2nd8/1.jpg</image:loc>
     </image:image>
@@ -436,7 +694,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd1</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd1/1.jpg</image:loc>
     </image:image>
@@ -459,7 +717,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd2</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd2/1.jpg</image:loc>
     </image:image>
@@ -485,7 +743,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd3</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd3/1.jpg</image:loc>
     </image:image>
@@ -511,7 +769,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd4</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd4/1.jpg</image:loc>
     </image:image>
@@ -537,7 +795,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd5</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd5/1.jpg</image:loc>
     </image:image>
@@ -563,7 +821,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/blog/cebu3rd6</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/images/cebu3rd6/1.jpg</image:loc>
     </image:image>
@@ -588,12 +846,1526 @@
     </video:video>
   </url>
   <url>
+    <loc>https://tomotravel-pm.com/blog/cebu4-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/NW-vRtzslXc/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【海外ひとり旅】出会い系アプリで知り合った子に部屋で◯◯を触られまくった挙句…【セブ島】</video:title>
+      <video:description>寝坊と台風の遅延をくぐり抜け、予定を決めないセブ島3泊5日の旅へ。空港では743ペソの提示を見送り、303ペソのメータータクシーでITパーク近くのコンドミニアムに到着。初めての待ち合わせは、撮影と相手の気持ちの難しさを知る夜になりました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/NW-vRtzslXc</video:player_loc>
+      <video:publication_date>2025-11-23T03:30:31-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/cebu4-02</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-02/scene-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/PVQVnra14jk/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【美人局疑惑】金を盗まれた男、JTVで夜遊びする【フィリピン】</video:title>
+      <video:description>初日の夜、部屋に置いたはずの現金が見当たらず落ち着かないまま、近所に滞在していたトトさんと合流。ネオトーキョーのえびすうどんからASフォーチュナ周辺を歩き、初訪問のコラッセへ。賑やかな席と英会話への戸惑いが入り混じる夜を過ごしました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/PVQVnra14jk</video:player_loc>
+      <video:publication_date>2025-11-29T01:00:45-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/cebu4-03</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-03/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/Ot5hZDzn-Ng/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【フィリピン】セブ島での夜遊びに悩んだらJTV Wingで飲むのがいい！【飲んだ後は…】</video:title>
+      <video:description>トトさんとWingへ移動した初日の深夜。テキーラの賑やかな席から、男女7人で韓国料理を食べる流れになりました。宿に戻ったのは朝4時47分。楽しい出会いの余韻が残る一方、探しても見当たらない財布のことが、長い一日の最後まで気にかかります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/Ot5hZDzn-Ng</video:player_loc>
+      <video:publication_date>2025-12-06T01:00:41-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/cebu4-04</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-04/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/UhVU2hn7VtY/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【海外旅行】楽しいはずのセブ島一人旅、2日目で少し様子がおかしい</video:title>
+      <video:description>朝まで過ごした翌日は14時からゆっくり始動。リアラのプールで冷たい水に驚き、Miau Cafeでは猫との15分に癒されました。壊れた靴をパークモールで買い替え、夜はラーメンとマッサージへ。休むつもりが、また朝まで話し込むセブ2日目です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/UhVU2hn7VtY</video:player_loc>
+      <video:publication_date>2025-12-20T01:00:52-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/cebu4-05</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-05/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-05/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/pVJb3vjQYmQ/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>1時間飲み放題500ペソ!? セブ島の新店ガールズバーが良心的すぎた【海外ひとり旅】</video:title>
+      <video:description>セブ3日目は遅い昼ご飯から。イナサルのチキンで腹ごしらえし、宿の下のUMEで足と頭をほぐしてもらいました。夜は視聴者さんに教わったCebubaseへ。ショー、四つ並べのゲーム、具だくさんのホットドッグと、人の温かさに出会う一日です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/pVJb3vjQYmQ</video:player_loc>
+      <video:publication_date>2025-12-28T02:01:15-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/cebu4-06</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-06/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-06/scene-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/lwEzqPnYdHE/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【JTV/KTV】撮影NGだらけ…それでも楽しかったセブ島の夜遊び【フィリピン】</video:title>
+      <video:description>Cebubaseを出たあとは、隣の富士山で食事をしてBlue、Full Moonへ。撮影できない場面が多い夜でしたが、静かな店での会話やゴルモックでの韓国料理が記憶に残りました。朝5時13分に宿へ戻り、最終日を前にセブでの新しい出会いを振り返ります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/lwEzqPnYdHE</video:player_loc>
+      <video:publication_date>2026-01-10T01:01:23-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/cebu4-07</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-07/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-07/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/7Lh9JpyFz-8/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【セブ島夜遊び】帰国直前、体調不良でダウン…それでもJTV飲み歩き【限界】</video:title>
+      <video:description>セブ最終日は喉の痛みと疲れを抱えながら、リアラの宿泊を振り返って街へ。Cebubaseに再訪し、トトさんとAriesへ向かいました。途中で休憩を挟み、豪雨のFull Moonから空港へ。波乱もあった3泊5日を、新しい出会いの記憶とともに締めくくります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/7Lh9JpyFz-8</video:player_loc>
+      <video:publication_date>2026-01-17T01:00:09-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hanoi-hochiminh-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/FvYrEfrj-6c/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ハノイ初心者】ちょっと大人なひとり旅、始めます【ベトナム】</video:title>
+      <video:description>2026年8月28日、成田からハノイへ。ノイバイ空港の両替で枚数を確認し、知人との偶然の再会を喜んだあと、109番バスに乗れずGrabへ変更しました。ミーディンのE13アパートメントに入り、Sammyのパスタで一息。初めてのハノイの到着日です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/FvYrEfrj-6c</video:player_loc>
+      <video:publication_date>2026-09-11T03:00:30-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hanoi-hochiminh-02</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-02/scene-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/Otb5rmwjyUI/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ハノイ】美女だらけのマッサージ店を取材したら想像以上だった…【海外旅行】</video:title>
+      <video:description>ハノイ到着日の夕方、ミーディンの宿からマッサージ店の取材へ。受付から上階へ案内され、月の装飾がある部屋で話を聞き、二人による短い施術を体験しました。撮影用に服装を整えてもらい、緊張しながら初めて店内を見た夜の記録です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/Otb5rmwjyUI</video:player_loc>
+      <video:publication_date>2026-09-19T02:00:19-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hanoi-hochiminh-03</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-03/scene-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/5q52WmEzeVw/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【完全予約制の秘密部屋】ハノイの美女と飲める夜遊びスポットに潜入｜ベトナム</video:title>
+      <video:description>ハノイ初日の夜、宿の近くにあるCUN CUN LOUNGE BARへ。撮影の了承を得て上階の個室を見せてもらい、スタッフと話しながらソジュとカラオケを楽しみました。ネオンと大きなステージに驚いた取材のあと、知人との食事へ向かうまでの記録です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/5q52WmEzeVw</video:player_loc>
+      <video:publication_date>2026-09-26T02:00:19-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hanoi-hochiminh-04</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-04/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/YPNb68PVSYA/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ハノイ初心者】美女が集まる噂のカフェへ…その後人気マッサージ店を体験【ベトナム】</video:title>
+      <video:description>ハノイ2日目、教えてもらったForemostミーディンへ。写真を撮る人が多いきれいなカフェで、ソーセージ入りのパンとアイスラテを楽しみました。午後は98Spaを取材し、広い部屋と設備を見学して短いマッサージを体験。近所をゆっくり知る昼の記録です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/YPNb68PVSYA</video:player_loc>
+      <video:publication_date>2026-10-03T02:00:09-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/chidori-coffee.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh2/bui-vien-night.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh3/concept-games.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh4/grandmalu-room.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh5/takumi-conversation.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh6/airport-departure.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh1</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/chidori-coffee.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/airport-bus.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/ben-thanh-market.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/chidori-entrance.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/chidori-beds.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/shop213.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/felix-hotel.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/7xOr6yXy8E8/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【最高のカフェ】ベトナム初心者がホーチミンに行くとこんな感じ【ひとり旅初日】</video:title>
+      <video:description>初めてのホーチミンひとり旅。空港から5,000ドンの152番バスで市内へ。ベンタイン市場の値段交渉、ベッドで眠れるChidori、Shop213、Felix Hotelまで、2025年6月の実体験を写真と動画で紹介します。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/7xOr6yXy8E8</video:player_loc>
+      <video:publication_date>2025-07-12T02:00:06-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/1mDMSTezImU/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ホーチミン】マッサージ嬢とデートするためにベトナムへ飛んだ男【海外ひとり旅】</video:title>
+      <video:description>8月29日、成田から4泊5日のホーチミン旅へ。入国審査は約39分で通過し、ベンタイン市場の両替所の混雑を見て宿へ直行しました。雨の中で両替を済ませ、移転した味仙の醤油ラーメンとEnjoyでの再会へ。予定が変わっても、初日の夜はまだ続きます。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/1mDMSTezImU</video:player_loc>
+      <video:publication_date>2025-09-13T02:00:03-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-02</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-02/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/Qxv9PbKnzjo/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ベトナム夜遊び】ホーチミンの夜はレタントン！美女とカラオケで酔いしれる夜</video:title>
+      <video:description>初日の夜はレタントンのB2 Lounge Barで、日本語の会話とカラオケを満喫。豪華な個室に恐縮しながら過ごしたあとは、ファンビッチャン、ブイビエンへ移動します。目当ての人に会えない夜の終わりに、宿の近くでMelioraという新しい店を見つけました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/Qxv9PbKnzjo</video:player_loc>
+      <video:publication_date>2025-09-20T02:00:40-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-03</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-03/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-03/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/aQuaj411_d4/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ホーチミン】かわいい猫に囲まれて幸せな時間…のはずだった</video:title>
+      <video:description>予定のないホーチミン2日目は、9月23日公園を歩き、ベンタイン市場近くのPizza 4P’sでハーフ＆ハーフを堪能。Meo Meo Cat Cafeの猫たちに癒されました。穏やかな午後の終わりにはカメラの電池トラブルが発生し、夜の撮影に悩むことになります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/aQuaj411_d4</video:player_loc>
+      <video:publication_date>2025-09-27T04:00:02-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-04</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-04/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/CsEtxh15GTI/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【夜遊び】ホーチミン老舗のカラオケスナックでの出会いに運命を感じた夜【Forte】</video:title>
+      <video:description>昼に閉まっていたForteへ夜に再訪すると、思いがけない縁が待っていました。日本語で歌うタムさん、そして前日に味仙のエレベーターで会ったオーナーのケンさん。カラオケから1階のスナックへ移り、1時間のつもりが4時間になる、ホーチミンの忘れがたい夜です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/CsEtxh15GTI</video:player_loc>
+      <video:publication_date>2025-10-11T02:00:29-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-05</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-05/scene-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/KrAYuoXVLjw/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ホーチミン】ブイビエン通りの健全なガールズバーで飲む！【夜遊び】</video:title>
+      <video:description>Forteを出たあと、夜の公園を抜けてブイビエン周辺へ。前日話した人を探してMelioraを訪ね、系列と紹介されたIVENUSではシーさんとケニーさんが撮影に協力してくれました。日本語と簡単な英語で笑い合い、宿の近くにまた寄りたい店が増えた夜です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/KrAYuoXVLjw</video:player_loc>
+      <video:publication_date>2025-10-18T02:00:29-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-06</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-06/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-06/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/RdrRtoxYv_w/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【男4人旅】ホーチミンで大物Youtuberに出会うとこうなる【旅行vlog】</video:title>
+      <video:description>初コラボを控えた3日目、故障したカメラの代わりを探してホーチミンの街へ。髙島屋で元気寿司を食べ、東京カメラでInsta360 X5を購入しました。理髪店で身だしなみを整えたら、さかしんさん、HiroTABIさん、視聴者さんとRAKTHAIで食事です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/RdrRtoxYv_w</video:player_loc>
+      <video:publication_date>2025-10-25T02:00:48-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-07</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-07/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-07/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-07/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/SmyUMEp8Azo/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>ベトナム美女に恋するおぢの結末は…【ホーチミン観光】</video:title>
+      <video:description>さかしんさん、HiroTABIさん、視聴者さんと歩くホーチミンの夜。初めてのグエンフエ通りからサイゴン川周辺へ向かい、味仙で再び食事しました。最後はファンビッチャンのわいんばーでハァさんと再会。仲間に背中を押され、ひとり旅とは違う思い出ができました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/SmyUMEp8Azo</video:player_loc>
+      <video:publication_date>2025-11-01T02:00:43-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-08</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-08/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-08/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-08/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/N0FtW9i7V00/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>ホーチミンの地下鉄ってどうなの？【海外ひとり旅】</video:title>
+      <video:description>9月1日のホーチミン4日目は、着替えを抱えてSESAで洗濯。乾燥を待つ間に髪を洗い、夕方はベンタイン駅から初めてのメトロに乗りました。高架区間の景色を見てタンカンで折り返し、バソンで下車。適当に買った切符で困った経験まで含めて残す街の一日です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/N0FtW9i7V00</video:player_loc>
+      <video:publication_date>2025-11-08T01:00:30-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2-09</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-09/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-09/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-09/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/acFVLuU_Ego/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ベトナム】ホーチミンのバーで美女に罵られる夜【海外ひとり旅】</video:title>
+      <video:description>雨のバソン駅からファンビッチャンまで歩き、最後の夜はわいんばーとForteへ。翌朝はジャスミンホテルの使い勝手を振り返り、元気寿司を食べて空港へ向かいました。予定変更もカメラの故障もあった4泊5日を、新しい知り合いが増えた喜びとともに締めくくります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/acFVLuU_Ego</video:player_loc>
+      <video:publication_date>2025-11-15T01:00:02-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh2</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh2/bui-vien-night.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh2/sake-winebar.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh2/winebar-meal.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh2/winebar-conversation.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/6qQDsV-Hco0/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ホーチミン】ブイビエン通りの裏路地のマッサージに入った結果…【ひとり旅】</video:title>
+      <video:description>予定通りにはいかない、初めての夜。路地裏で戸惑ったあとに見つけたのは、お寿司と梅酒がおいしい、小さなわいんばーでした。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/6qQDsV-Hco0</video:player_loc>
+      <video:publication_date>2025-07-19T02:00:10-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh3</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh3/concept-games.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh3/cafe777.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh3/misen-ramen.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh3/concept-interior.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/dBa2MZrDyLA/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【初体験】ベトナムのDJカフェとコンカフェに潜入！【ホーチミンひとり旅】</video:title>
+      <video:description>起きたら、もう15時。場所を探し直したDJカフェ、おいしい醤油ラーメン、そしてゲームで笑ったコンカフェ。遅く始まった2日目の記録です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/dBa2MZrDyLA</video:player_loc>
+      <video:publication_date>2025-07-26T02:01:00-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh4</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh4/grandmalu-room.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh1/felix-hotel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh4/grandmalu-entrance.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh4/miyabi-vip.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/8kUN9mQad7w/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ホーチミン】1泊1000円宿はアリ？ナシ？第二の日本人街での夜遊びは…【海外ひとり旅】</video:title>
+      <video:description>最終泊を前に、急きょホテルを変更。1,100円ほどの小さな部屋に移り、夜はファンビッチャンへ。安い宿とVIPルーム、振れ幅の大きな一日でした。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/8kUN9mQad7w</video:player_loc>
+      <video:publication_date>2025-08-02T02:00:12-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh5</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh5/takumi-conversation.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh5/enjoy-entrance.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh5/takumi-counter.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh5/takumi-karaoke.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/qWZj225B5uU/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ホーチミン夜遊び】レタントンの×××なマッサージとガールズバー「匠」に潜入！【海外ひとり旅】</video:title>
+      <video:description>最後の夜は、まだ続く。もう一度受けたかったマッサージと、日本語でゆっくり話せた「匠」。料金の説明から、帰り道の話まで聞いてきました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/qWZj225B5uU</video:player_loc>
+      <video:publication_date>2025-08-09T02:01:19-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/hochiminh6</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh6/airport-departure.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh6/grandmalu-review.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh6/enjoy-farewell.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh6/misen-taiwan-ramen.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/hochiminh6/haneda-arrival.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/cwyNmj6or5g/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【ホーチミン】3回通ったマッサージ美女と…【海外ひとり旅】</video:title>
+      <video:description>気に入った場所にもう一度寄って、空港へ。小さな宿の宿泊レビュー、味仙の台湾ラーメン、混み合う出国手続きまで。初めてのホーチミン、最終回です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/cwyNmj6or5g</video:player_loc>
+      <video:publication_date>2025-08-16T02:01:00-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
     <loc>https://tomotravel-pm.com/blog/insta360x4</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/kanazawa-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/kanazawa-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/kanazawa-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/kanazawa-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/A3LjSHSgwOs/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【国内旅行】冬の金沢は男ひとりでも楽しめるか？【寿司】</video:title>
+      <video:description>大雪の金沢で、駅周辺の寿司を少しずつ食べ歩き。まいもん寿司、輝らり、すし食いねぇでマグロとサーモンを味わい、混雑するもりもり寿司は見送りました。雪を眺める旅の締めは、ホテルの無料ラーメン。食の好みも飲み過ぎもそのままの、冬の一人旅です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/A3LjSHSgwOs</video:player_loc>
+      <video:publication_date>2025-02-14T22:00:11-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/992cQDweFOw/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ旅行1日目】マラテで詐欺師に声かけられた【フィリピン男ひとり旅】</video:title>
+      <video:description>成田からZIPAIRで昼のマニラへ。Grabでレメディオスサークルに向かい、マラテを歩いてロビンソン、ジョリビー、LAカフェへ立ち寄りました。突然の声かけや撮影制限に戸惑った一方、広いホテルの部屋に安堵。窓の外は夕方から激しい雨になりました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/992cQDweFOw</video:player_loc>
+      <video:publication_date>2024-10-04T23:00:10-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-02</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-02/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/dZzJxISSdIg/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ旅行1日目後半～】マラテの夜の街並みはこんな感じ【計画性のない男】</video:title>
+      <video:description>昼の疲れを休めてマラテの夜へ。パロパロGアルファと真理子で飲んだ翌日は、トロピカーナスイーツからリサール公園を目指しました。ところが暑さに負け、観光は途中で断念。鶴丸うどんで食事をし、休憩後にベニスのモールへ向かう、予定変更の多い回です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/dZzJxISSdIg</video:player_loc>
+      <video:publication_date>2024-10-11T23:00:31-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-03</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-03/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/SzCfcC_28HY/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ旅行2日目中編】ガチでカップルにお勧め！マニラのロマンチックな水上デート【ベニスグランドキャナルモール】</video:title>
+      <video:description>ベニス・グランド・キャナル・モールでジャスさんと待ち合わせ。雨が止むのを待ってカフェと買い物を楽しみ、1人500ペソのゴンドラへ乗りました。運河の景色と船上の歌に気分が上がり、最後はKFCで休憩。マニラでようやく観光を満喫できた午後です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/SzCfcC_28HY</video:player_loc>
+      <video:publication_date>2024-10-18T23:00:12-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-04</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-04/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-04/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/HQNbV7agt8U/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ旅行2日目後半】外国でベロベロになる男【フィリピン男ひとり旅】</video:title>
+      <video:description>ベニスのモールからジャスさんと真理子へ。90分だけのつもりが延長し、約3,000ペソの予定は会計約9,000ペソに。酔った勢いでマラテへ戻り、現地の日本人に話を聞きながらもう一軒へ寄りました。楽しかった2日目の終わりは、予算と判断の反省も残ります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/HQNbV7agt8U</video:player_loc>
+      <video:publication_date>2024-10-28T02:00:22-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-05</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-05/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-05/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/epaSkda5tvk/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ旅行3日目前半】マニラのディープな激安モールに行ってみた【危険な治安のディビソリア】</video:title>
+      <video:description>マニラ3日目はトロピカーナスイーツのプールで休息。昼食はロビンソンの吉野家へ行き、暑さで一度ホテルへ戻ったあと、ディビソリアの168モールへ向かいました。ぎっしり並ぶ衣類に驚き、Tシャツを1枚100ペソで3枚購入。地元の買い物風景が楽しい午後です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/epaSkda5tvk</video:player_loc>
+      <video:publication_date>2024-11-11T01:00:49-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-06</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-06/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-06/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/2suGzjt8qL4/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ旅行3日目後半】夜のマラテの道で…マジでビビった【危険】</video:title>
+      <video:description>168モールを出て、ディビソリアの路上市場へ。タオルを買って歩くうちに雨が降り、Grabを約1時間待つことになりました。夜はマラテへ戻り、鶴丸うどん、LAカフェ、パロパロG、ZZYZXへ。市場の活気と夜の店の違いを感じた、3日目後半の記録です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/2suGzjt8qL4</video:player_loc>
+      <video:publication_date>2024-11-16T22:00:03-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-07</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-07/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-07/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/bJzDDgnTFwY/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ旅行最終日】ホテル出発→ラーメン→空港へ！帰国直前のリアルな1日【プチ総集編】</video:title>
+      <video:description>マニラ最終日は、気に入ったトロピカーナスイーツをチェックアウト。混雑するジョリビーを諦め、とんこつラーメンを食べて空港へ向かいました。Grabの移動、ターミナル1での手続きを経て帰国。ベニスのゴンドラとディビソリアが印象に残る、3泊4日の締めくくりです。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/bJzDDgnTFwY</video:player_loc>
+      <video:publication_date>2024-11-22T00:30:12-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-01/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-01/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/yI30hULTkbk/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ】治安悪い？日本人が消えたらしいマラテへひとり旅する【フィリピン旅行】</video:title>
+      <video:description>約1年4か月ぶりのマニラへ。空港でGrab乗り場を探し、視聴者さんに教わったロスマンホテルへチェックイン。広いベッドに喜んだのも束の間、両替所の列が動かず、19時の約束に向けてマラテを汗だくで走り回る初日です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/yI30hULTkbk</video:player_loc>
+      <video:publication_date>2026-02-07T01:01:17-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-02</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-02/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/T4Azkowjg14/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【フィリピン】マラテのJTVに潜入！マニラの夜遊びでおすすめのお店！【New Kai Moana】</video:title>
+      <video:description>マニラ初日の夜、撮影の約束をしていたNew Kai Moanaへ。気さくなオーナーのカズヤさんに迎えられ、ランウェイのある店内に驚きます。英語と日本語を交えた会話を楽しみ、最後は想像より軽かった会計にもう一度びっくりしました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/T4Azkowjg14</video:player_loc>
+      <video:publication_date>2026-02-15T01:00:39-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-03</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-03/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/zeFtdtCWBQ4/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ夜遊び】マラテのハシゴ酒！最後は絶品チャーハンで締める</video:title>
+      <video:description>視聴者さんと過ごしたマラテの夜、空腹のまま飲んだあとにたどり着いた居酒屋ドンちゃん。おいしい卵チャーハンにも胃が追いつかず、翌朝は気になっていた洋服店へ寄り道します。短いマニラ滞在を終え、次はセブへ向かいます。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/zeFtdtCWBQ4</video:player_loc>
+      <video:publication_date>2026-02-21T01:01:20-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-04</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-04/scene-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/1Y8eGLcjuKg/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【海外旅】4つ星ホテルで美女と再会！【セブ島旅行】</video:title>
+      <video:description>マニラを一泊で離れた理由は、連絡が途絶えていたAYAさんからの知らせでした。マクタン・セブ空港からバイホテルへ向かい、荷物を置いたらすぐ再会。予定していたルームツアーも後回しになるほど、落ち着かないセブ到着の日です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/1Y8eGLcjuKg</video:player_loc>
+      <video:publication_date>2026-02-28T01:00:04-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-05</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-05/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-05/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/UiR5Un0WFbg/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【Bai Hotel】セブ島の大人気4つ星ホテルの紹介！フィリピン美女と過ごす特別な一日</video:title>
+      <video:description>AYAさんとパークモールで寿司を探したあとは、バイホテルの館内巡りへ。21階のプールバーから見る夜景に感動し、二人でジェラートを楽しみます。部屋や宿泊費の話、ライブ配信、閉店間際のジョリビーまで続く、盛りだくさんのセブ初日です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/UiR5Un0WFbg</video:player_loc>
+      <video:publication_date>2026-03-14T02:00:40-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-06</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-06/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-06/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/Gw1HCdacuTg/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【悲報】Agodaでホテル予約、海外旅行では使っちゃダメだ…【やめとけ】</video:title>
+      <video:description>バイホテルを出てITパークへ移った旅3日目。予約したつもりの棟と違うコンドミニアムに案内され、部屋の状態にも納得できず、急きょモリヤマホテルへ移動します。両替所の表示差、シャワーの修理、帰国後まで続いた返金交渉も振り返ります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/Gw1HCdacuTg</video:player_loc>
+      <video:publication_date>2026-03-28T02:00:00-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-07</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-07/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-07/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/bfFQKmEAKgM/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>セブ島の夜遊び いくらで楽しめる？ガールズバー&amp;日系居酒屋のリアルな料金【2026年】</video:title>
+      <video:description>宿の変更で疲れた旅3日目の夜は、NeoTokyoの松之家で鍋と寿司から再出発。満員で入れなかったマッサージ店をあとにAYAさんを見送り、Pinkで一杯、パンを差し入れてCebubaseへ。落ち着かなかった昼とは違う、楽しい夜になりました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/bfFQKmEAKgM</video:player_loc>
+      <video:publication_date>2026-04-11T02:00:54-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-08</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-08/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-08/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-08/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/03-PgB4_bGA/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【センシティブ注意】フィリピン美女との待ち合わせでの展開…セブ島ひとり旅</video:title>
+      <video:description>着るTシャツがなくなり、セブで初めてのランドリーへ。午後はAYAさんと友人に会うためITパークへ向かい、マッサージチェアやシュウマイで待ち時間を過ごします。しかし渋滞と合流の行き違いが続き、楽しいはずの約束が苦い別れになりました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/03-PgB4_bGA</video:player_loc>
+      <video:publication_date>2026-04-25T02:00:03-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-09</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-09/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-09/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-09/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/-g40tdk8IRQ/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【セブ島ひとり旅】美女にキレた後に新店のクラブに行った</video:title>
+      <video:description>待ち合わせで気まずくなったあと、Jモールで誕生日ケーキを買い、Cebubaseへ。カレーうどんを食べても気持ちは晴れず、ホテルで休んでから初訪問のBonitaへ向かいます。歌と冷えたビールに少し救われながら、AYAさんとの関係を考えた夜です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/-g40tdk8IRQ</video:player_loc>
+      <video:publication_date>2026-05-02T02:00:00-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-10</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-10/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-10/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-10/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/uaYKy_rDkGE/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【気まずい別れ】セブ島最後の夜はKTVへ…そして空港でまさかの展開【フィリピンひとり旅】</video:title>
+      <video:description>セブ最終日は15時近くまでホテルで休み、Jモールのステーキで遅い食事。NeoTokyoで連絡を待ち、マッサージとWingで残りの時間を過ごします。AYAさんとは再会できないまま空港へ。成田に戻ると、機内で知り合った二人から新しい頼まれ事がありました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/uaYKy_rDkGE</video:player_loc>
+      <video:publication_date>2026-05-16T02:00:17-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila-cebu-11</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-11/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-11/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/RW74Ci5XJL0/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【セブ島最終回】帰国便でフィリピン女性に声をかけられた結果…</video:title>
+      <video:description>セブからの帰国便で隣になったフィリピンの二人を、新宿まで案内することに。日高屋でラーメンを食べ、SIMカードを探し、ホテルのチェックインまでカラオケへ。富士山には同行できなかったけれど、少し傷んだ心がほぐれる帰国日の番外編です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/RW74Ci5XJL0</video:player_loc>
+      <video:publication_date>2026-05-21T02:00:10-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/l4wZmpjWOeE/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【2026年最新】フィリピン・マニラの空港からマラテ中心地へ！ホテル・両替・治安や注意点まで完全ガイド【初心者必見】</video:title>
+      <video:description>久しぶりのマニラへ、成田第3ターミナルから出発。空港では変わったGrab乗り場を探し、マビニ通りのレッドプラネットへ向かいました。客室の設備を確認したあと、EDZENで両替。到着後の手順と、小さな戸惑いをたどるマラテ滞在の初日です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/l4wZmpjWOeE</video:player_loc>
+      <video:publication_date>2026-06-05T02:30:11-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-02</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-02/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/wo2QqnR2_Ro/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ】フィリピン1の繁華街・マラテの治安は？【海外ひとり旅】</video:title>
+      <video:description>レメディオスサークルを起点に、ボコボ、アドリアティコ、マビニの三つの通りを歩きました。以前の宿や店を見つけ、教会側との雰囲気の差も実感。汗を流してから「ドンちゃん」でエビチャーハンを食べ、店の人との出会いが次の夜の予定へつながります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/wo2QqnR2_Ro</video:player_loc>
+      <video:publication_date>2026-06-13T02:00:08-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-03</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-03/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/5mqi8FUpd6g/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ夜遊び】これは惚れる…マラテのKTVの実態とは！？【LEX Music Lounge】</video:title>
+      <video:description>マラテ初日の夜、ホテル近くのLEX Music Loungeへ。料金の説明を受け、アップルさんとチェリーさんと飲みながらショーを楽しみました。混み合う店内は音楽も会話も賑やかで、90分が短く感じるほど。店の内装と、その夜の会計も振り返ります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/5mqi8FUpd6g</video:player_loc>
+      <video:publication_date>2026-06-20T02:00:01-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-04</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-04/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/7qmk7Awc-7o/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【危険な激安街】マニラ巨大問屋街ディビソリアで仕入れしたらヤバすぎた</video:title>
+      <video:description>前回見きれなかったディビソリアへ、今度は朝から再訪。168モールの衣類を比べ、九十九ラーメンで休憩し、40ペソの袋を買ってTシャツをまとめ買いしました。値札と現在の価格の違い、素材の差、帰りの配車待ちまで、約3時間の買い物を振り返ります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/7qmk7Awc-7o</video:player_loc>
+      <video:publication_date>2026-07-04T02:00:13-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-05</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-05/scene-01.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/8FFl37RWo5g/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ夜遊び】マラテKTVで出会った美女にBANの予感…【K.Amigo】</video:title>
+      <video:description>昼のディビソリアから戻って休み、夜はロビンソン向かいのK.Amigoへ。ピンクのネオンがある広い店内で、ハートさんと動画を見ながら少しずつ会話を楽しみました。滞在は約1時間、会計は約2,500ペソ。ライブ配信の準備へ、雨のマラテを急いで戻ります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/8FFl37RWo5g</video:player_loc>
+      <video:publication_date>2026-07-11T02:00:05-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-06</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-06/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-06/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/RM3Q2PNGPqw/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ】ちいかわ着て夜遊びしてみた</video:title>
+      <video:description>レッドプラネットの部屋から始めたライブ配信が、視聴者の声でマラテの外歩きへ。持参したちいかわの着ぐるみでLEXを再訪しました。暑さと通信の不調に戸惑いながら、アップルさんと画面越しの質問に答える、いつもの撮影とは違う夜の記録です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/RM3Q2PNGPqw</video:player_loc>
+      <video:publication_date>2026-07-18T02:00:01-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-07</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-07/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-07/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/KO8KFlJdHOA/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ】帰国前に絶対やるべきこと…本気でおすすめです</video:title>
+      <video:description>帰国日の昼は、着替えをまとめてランドリー探し。ロビンソンでうどんを食べ、露店で靴下を補充し、Fantasy前の店へ洗濯物を預けました。午後はYJKさんと会い、Captain’s Nookでレチョンを食事。ホテルへ戻ると、予定外の清掃にも少し戸惑います。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/KO8KFlJdHOA</video:player_loc>
+      <video:publication_date>2026-08-01T02:00:16-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-08</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-08/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-08/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-08/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/uf67dP5Cg70/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【甘すぎ♡】マニラ夜遊び！ホテル内の隠れ家KTVへ【Charm Music Lounge】</video:title>
+      <video:description>視聴者とのカフェと洗濯物の受け取りを済ませ、最終日の夜はCharm Music Loungeへ。ホテル3階にある店は、ピンクとゴールドの内装にDAMのカラオケ付き。短く立ち寄るつもりが約90分楽しみ、会計2,304ペソを支払って次の店へ向かいました。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/uf67dP5Cg70</video:player_loc>
+      <video:publication_date>2026-08-08T02:00:37-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila2-09</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-09/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-09/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-09/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/Y2tN7WX6OjU/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【マニラ】夜遊びして危険地帯を抜けてそのまま空港へ…【治安】</video:title>
+      <video:description>帰国前のマラテでKISS MEを訪ね、日本語が堪能なジャスミンさんと会話。ホテルの設備を振り返り、G-styleにも寄ってから空港へ向かいました。最後は買い物袋の預け入れでラッピングが必要になり、250ペソの追加出費。深夜まで動いた旅の最終回です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/Y2tN7WX6OjU</video:player_loc>
+      <video:publication_date>2026-08-22T02:00:16-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/manila3-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila3-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila3-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila3-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/UqfJzTgl2eY/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【出発前に38℃】体調不良のままフィリピンへ…波乱のマニラひとり旅が始まる</video:title>
+      <video:description>出発前に38度ほどの熱があり、体調が戻りきらないまま始まったマニラの旅。深夜の空港からレッドプラネットへ直行し、翌朝はEDZENで両替しました。昼はロイヤルサクラで会食。撮影の予定を増やしすぎず、休憩を挟んで進めたい4泊5日の初回です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/UqfJzTgl2eY</video:player_loc>
+      <video:publication_date>2026-10-10T02:00:18-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-cebu4</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-06/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/cebu4-07/scene-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-hanoi-hochiminh</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hanoi-hochiminh-04/scene-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-hochiminh2</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-03/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-07/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-08/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/hochiminh2-09/scene-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-kanazawa</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/kanazawa-01/scene-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-manila-cebu</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-01/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-08/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-09/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-10/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-cebu-11/scene-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-manila</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-03/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-04/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila-07/scene-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-manila2</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-05/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-06/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-08/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila2-09/scene-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-manila3</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/manila3-01/scene-01.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-takanawa</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/takanawa-01/scene-02.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/series-thailand</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-03/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-08/scene-03.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/takanawa-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/takanawa-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/takanawa-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/takanawa-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/T8fWpREZLpY/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【高輪ゲートウェイ】MoN Takanawa 完全ガイド｜デートや旅行にガチお勧めの都内最新スポット！</video:title>
+      <video:description>高輪ゲートウェイ駅前でIINOに乗り、MoN Takanawaの畳の空間や屋上をのんびり散歩。テラスの水辺と走る新幹線に気分が上がり、最後は冷たい水に足をつけて休憩します。NEWoManのLuftbaumは混雑で見送りとなった、春の日曜日の街歩きです。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/T8fWpREZLpY</video:player_loc>
+      <video:publication_date>2026-04-17T02:00:44-07:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/thailand-01</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-01/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-01/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-01/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/EAHLqpQsGxs/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【タイバンコク・パタヤ】タイ旅行初心者が乗り継ぎありの激安航空券で行くとこうなる【ひとり旅1日目】</video:title>
+      <video:description>往復3万6,000円の航空券で、羽田から北京を経由してバンコクへ。出発の遅延で乗り継ぎに気をもみ、深夜の空港からGrabで宿へ向かいました。羽田の絵馬から機内食、タイのコンビニ、約3,000円の客室まで、初めてのタイ旅行の長い初日です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/EAHLqpQsGxs</video:player_loc>
+      <video:publication_date>2024-12-06T22:00:11-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/thailand-02</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-02/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-02/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-02/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/MCZ9gv3rpgk/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【タイ・パタヤ2日目前半】初めてのパタヤ移動で凡ミス？ アホな男のリアルな旅【バンコク・パタヤ編】</video:title>
+      <video:description>バンコクからエカマイのバスでパタヤへ。初めてのバイクタクシー、情報と違った窓口番号、車内での日本人との出会いを経て、プール付きのパラダイスランドリゾートに到着しました。55バーツを聞き違えた失敗も含め、移動とホテル選びを振り返ります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/MCZ9gv3rpgk</video:player_loc>
+      <video:publication_date>2024-12-13T23:00:11-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/thailand-03</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-03/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-03/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-03/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/g9L0xUo6axQ/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【タイ・パタヤ2日目後半】パタヤは本当にセンシティブな街なのか？Soi6とソイブッカオの現状【海外ひとり旅】</video:title>
+      <video:description>ホテルのプールから午後のソイ6へ。財布を忘れて両替できず、ソンテウでは思った道を進めず、それでもナイトバザールとソイブッカオを歩きました。夜は再びソイ6でバー巡り。翌日のラン島へ誰かを誘いたかった僕の、長くにぎやかなパタヤ2日目です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/g9L0xUo6axQ</video:player_loc>
+      <video:publication_date>2024-12-22T00:00:33-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/thailand-04</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-04/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-04/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-04/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/x2oLHu6-hVE/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【タイ・パタヤ3日目前半】ラン島初心者徹底ガイド！一人でも楽しいタイのリゾート【タイ初心者ひとり旅】</video:title>
+      <video:description>寝坊して出発したラン島への一人旅。30バーツのフェリーでナーバーン埠頭へ渡り、白い砂浜のサマエビーチで泳ぎました。パラセーリングではターウェンへ移動し、高さと船酔いに大苦戦。帰りの船探しまで、島で迷いながら楽しんだ一日を記録します。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/x2oLHu6-hVE</video:player_loc>
+      <video:publication_date>2024-12-30T00:50:00-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/thailand-05</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-05/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-05/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-05/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/734w8hE4l9s/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【タイ・パタヤ3日目後半】パタヤで出会った子と楽しいデートのはずが…【パタヤの夜】</video:title>
+      <video:description>ラン島から戻って眠り、21時過ぎから再びパタヤの夜へ。バーで出会ったビアさんと屋台へ行き、翻訳アプリを挟んで食事をしました。大きなドリンク、辛いイカ、途中で加わった友人とほかの客。思うように会話が続かなくても、記憶に残った夜です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/734w8hE4l9s</video:player_loc>
+      <video:publication_date>2025-01-11T00:00:05-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/thailand-06</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-06/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-06/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-06/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/EsFT0CzWxGw/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【海外ひとり旅】タイに来たら絶対に行け！トラを触れるタイガーパーク【タイ・パタヤ4日目前半】</video:title>
+      <video:description>パタヤ最終日は、ホテルをチェックアウトしてタイガーパークへ。大きなトラに初めて触れ、想像と違う毛の硬さや前足の大きさに驚きました。ココナッツジュースは好みに合わず、記念写真は思わず購入。午後は北パタヤのバスターミナルからバンコクへ戻ります。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/EsFT0CzWxGw</video:player_loc>
+      <video:publication_date>2025-01-17T22:05:00-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/thailand-07</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-07/scene-02.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-07/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-07/scene-03.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/KbJUj6xKnuo/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【昇天】タイ旅行最終日…倒れる！？【タイ旅行4日目中編】</video:title>
+      <video:description>パタヤから戻り、バンコクで初めて電車に乗ってナナへ。駅近くの山形ラーメンと揚げ餃子、都会の街歩きを楽しみました。途中の大麻店では、摂取後の強いふらつきや不安を経験。帰国前の短いバンコク滞在で、予定どおりには進まなかった時間です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/KbJUj6xKnuo</video:player_loc>
+      <video:publication_date>2025-01-25T00:00:13-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/blog/thailand-08</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-08/scene-03.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-08/scene-01.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/images/travel/thailand-08/scene-02.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/mFFM41k-4LU/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>【総集編】ガチでタイ旅行は楽しい【タイ・バンコクパタヤ4日目後半最終回】</video:title>
+      <video:description>バンコク最後の夜は、肩と足のマッサージ、日系ラーメン店、空港までの電車移動へ。パヤタイで乗り換え、45バーツのトークンを手にスワンナプーム空港へ向かいました。羽田に戻っても余韻が残った、3泊5日のバンコク・パタヤ一人旅の最終回です。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/mFFM41k-4LU</video:player_loc>
+      <video:publication_date>2025-02-01T00:00:43-08:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/games/</loc>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/charm</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/ktv/assets2/charmlogo.jpg</image:loc>
     </image:image>
@@ -631,7 +2403,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/indexktv</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/ktv/assets2/charm-featured.webp</image:loc>
     </image:image>
@@ -647,7 +2419,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/lex</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/ktv/assets/lounge-01.webp</image:loc>
     </image:image>
@@ -688,7 +2460,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/newkaimoana</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/ktv/images/1.jpg</image:loc>
     </image:image>
@@ -708,7 +2480,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/videos/cebu-jtv</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <video:video>
       <video:thumbnail_loc>https://i.ytimg.com/vi/z5APVNRi0FQ/hqdefault.jpg</video:thumbnail_loc>
       <video:title>【セブ島旅行初日夜前編】セブ島JTVってどんな感じ？夜遊びのリアル</video:title>
@@ -719,7 +2491,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/videos/charm</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <video:video>
       <video:thumbnail_loc>https://i.ytimg.com/vi/uf67dP5Cg70/hqdefault.jpg</video:thumbnail_loc>
       <video:title>【甘すぎ♡】マニラ夜遊び！ホテル内の隠れ家KTVへ【Charm Music Lounge】</video:title>
@@ -730,11 +2502,11 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/videos/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/videos/new-kai-moana</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <video:video>
       <video:thumbnail_loc>https://i.ytimg.com/vi/T4Azkowjg14/hqdefault.jpg</video:thumbnail_loc>
       <video:title>【フィリピン】マラテのJTVに潜入！マニラの夜遊びでおすすめのお店！【New Kai Moana】</video:title>
@@ -745,7 +2517,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/website/memorylog/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/website/memorylog/images/user_03.jpg</image:loc>
     </image:image>
@@ -800,6 +2572,6 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/sitemap</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </url>
 </urlset>

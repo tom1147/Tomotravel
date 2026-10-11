@@ -9,6 +9,12 @@ from external_assets import ensure_assets
 
 
 class Handler(SimpleHTTPRequestHandler):
+    # Windows registry MIME associations can label .webp as an application.
+    # Serve the same standard types as the production static host.
+    extensions_map = {**SimpleHTTPRequestHandler.extensions_map,
+                      '.webp': 'image/webp', '.svg': 'image/svg+xml',
+                      '.css': 'text/css', '.js': 'text/javascript',
+                      '.json': 'application/json', '.woff2': 'font/woff2'}
     design_assets = None
     asset_manifest = None
     site_root = ROOT

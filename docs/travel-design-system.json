@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "created": "2026-10-11",
+  "note": "AI-generated full-page layout studies preceded implementation. Study copy and photos are illustrative only; public articles use verified transcripts and retouched footage frames.",
+  "series": [
+    {
+      "series": "thailand",
+      "prompt": "Use case: ui-mockup. Create a polished, realistic desktop WEBSITE PAGE DESIGN for a Japanese first-person travel magazine, 1440px-wide visual language, landscape 3:2 canvas showing the top 1.5 screens of an article. This is a design reference for actual implementation, not a decorative hero illustration. Brand text exactly \"とも旅ちゃんねる\". Nav: \"旅のブログ\", \"動画\", \"ゲーム\". Article about a first solo trip from Japan to Bangkok and Pattaya on a budget flight. Visible headline \"初めてのバンコク・パタヤへ。\" with small section label \"タイ旅行記\". The article sequence is title, concise introduction, prominent YouTube video poster with clear play control, chronological prose with documentary photos. Art direction: truly professional Japanese travel editorial, airy warm-white paper, ink-black Japanese sans typography and restrained large roman Japanese serif headline, thin cobalt-blue rules, small warm-yellow accent, outstanding clear hierarchy, excellent readable Japanese typesetting. Real-looking documentary Bangkok street photography featuring a tuk-tuk at blue hour, natural human scale, imperfect real scenes. At the top, a compact masthead, then wide editorial title above a large scenic YouTube poster, then a narrow reading column and slim useful table-of-contents rail. Picture occupies 50% of design. Elegant asymmetry; no card piles, no giant centered slogan, no gradient blobs, no sepia or watercolor illustrations, no sticker/doodle travel scrapbook, no rounded pill explosion, no fake browser/phone chrome. Make the result look like a real high-end independent travel publication, not a generic tourism brochure. Body copy should be modest and visually secondary. Show a fully composed page, no annotations outside the design.",
+      "file": "artifacts/travel-archive/design/thailand.png",
+      "layout": "wide-editorial",
+      "palette": "cobalt-paper"
+    },
+    {
+      "series": "manila",
+      "layout": "night-journal",
+      "palette": "navy-amber",
+      "topic": "A first solo trip in Manila, Malate streets, a modest hotel and vivid evening street scenes",
+      "headline": "初めてのマニラ、夜の街へ。",
+      "direction": "Deep navy editorial canvas with warm ivory reading column, a large cinematic documentary street photo above the text, restrained amber rules, compact white modern sans navigation. Bold Japanese sans headings, relaxed legible serif only for a short quote. A strong full-width photo-led upper fold; a practical prices-and-places margin beside prose.",
+      "prompt": "Use case: ui-mockup. Create a finished professional desktop website design reference for a Japanese travel article, landscape 3:2 canvas, 1440px-wide visual language showing the top of an actual web article. Brand exactly \"とも旅ちゃんねる\". Navigation labels: \"旅のブログ\", \"動画\", \"ゲーム\". Main headline exactly \"初めてのマニラ、夜の街へ。\". Subject: A first solo trip in Manila, Malate streets, a modest hotel and vivid evening street scenes. Art direction: Deep navy editorial canvas with warm ivory reading column, a large cinematic documentary street photo above the text, restrained amber rules, compact white modern sans navigation. Bold Japanese sans headings, relaxed legible serif only for a short quote. A strong full-width photo-led upper fold; a practical prices-and-places margin beside prose. Article sequence: headline and concise introduction, a prominent YouTube video/photo poster, chronological prose with documentary photographs. Show an implementable editorial website, NOT a standalone illustration. Clear Japanese typography, strong readable hierarchy, enough breathing room, excellent photographic art direction. Body text should be visually secondary. No fake browser or phone chrome, no annotations, no watermarks, no painted/sepia illustrations, no random decorative stickers, no invented ratings or big statistics, no 3-column feature-card grid. Real photographic subject matter is a visual placeholder for actual video stills in the implementation.",
+      "file": "artifacts/travel-archive/design/manila.png"
+    },
+    {
+      "series": "kanazawa",
+      "layout": "heritage",
+      "palette": "ivory-vermilion",
+      "topic": "A winter solo trip in Kanazawa, Omicho Market, local sushi and snow-dusted historic streets",
+      "headline": "冬の金沢、ひとりで歩く。",
+      "direction": "Japanese cultural magazine, warm ivory and restrained vermilion, beautifully typeset roman Japanese Mincho titles and clean sans body. Off-center title with small vertical location note, an expansive real winter street photograph, small food photograph aligned with the first paragraph. Minimal traditional linework, sophisticated and contemporary, no scrapbook decorations.",
+      "prompt": "Use case: ui-mockup. Create a finished professional desktop Japanese travel-article website design, landscape 3:2, representing a 1440px wide viewport and the beginning of the article body. Brand exactly \"とも旅ちゃんねる\". Nav: \"旅のブログ\", \"動画\", \"ゲーム\". Headline \"冬の金沢、ひとりで歩く。\". Subject: A winter solo trip in Kanazawa, Omicho Market, local sushi and snow-dusted historic streets. Japanese cultural magazine, warm ivory and restrained vermilion, beautifully typeset roman Japanese Mincho titles and clean sans body. Off-center title with small vertical location note, an expansive real winter street photograph, small food photograph aligned with the first paragraph. Minimal traditional linework, sophisticated and contemporary, no scrapbook decorations. Preserve title/introduction/YouTube video/chronological story/photos/related-article structure. Make the opening look editorial, crafted and immediately readable, with beautiful documentary photography and Japanese typography. This is the actual webpage layout design, not a standalone hero illustration. Do not paint an illustration; show a realistic interface. No fake browser chrome, no fake mobile device, no annotations, no big fabricated statistics, no review ratings, no neon gradients, no generic cards or excessive badges. Photographs are visual placeholders only; implementation will use the user's actual video frames.",
+      "file": "artifacts/travel-archive/design/kanazawa.png"
+    },
+    {
+      "series": "cebu4",
+      "layout": "night-journal",
+      "palette": "ink-teal",
+      "topic": "A new Cebu solo trip, hotel check-in, JTV nightlife and candid personal mishaps",
+      "headline": "セブ島、もう一度この街へ。",
+      "direction": "Cinematic independent travel journal, near-black ink and deep teal, very large documentary night-street photo, quiet cream text, a narrow reading column and unobtrusive sticky contents. Clear price notes. Wide left-aligned title below a compact masthead, dominant photo/video area immediately afterward. Restrained, factual, photograph-driven.",
+      "prompt": "Use case: ui-mockup. Design a professional Japanese travel-article website, landscape 3:2 desktop screenshot, no device/browser frame. Brand exactly \"とも旅ちゃんねる\". Nav includes \"旅のブログ\", \"動画\", \"ゲーム\". Headline \"セブ島、もう一度この街へ。\". Subject: A new Cebu solo trip, hotel check-in, JTV nightlife and candid personal mishaps. Art direction: Cinematic independent travel journal, near-black ink and deep teal, very large documentary night-street photo, quiet cream text, a narrow reading column and unobtrusive sticky contents. Clear price notes. Wide left-aligned title below a compact masthead, dominant photo/video area immediately afterward. Restrained, factual, photograph-driven. Show a truly implementable high-end editorial page, compact navigation, a deliberate title composition, introduction, prominent YouTube viewing area and beginning of chronological article. Large realistic documentary photographs, sharp readable Japanese typography. Do not render a standalone illustration. No generic hero/card/CTA template, no glowing gradients, no fantasy travel art, no fake reviews or fabricated metrics. Small practical facts in the margin, generous reading whitespace. Any pictured scenery is layout-reference photography only; actual implementation uses the owner's video stills.",
+      "file": "artifacts/travel-archive/design/cebu4.png"
+    },
+    {
+      "series": "hochiminh2",
+      "layout": "city-notes",
+      "palette": "jade-paper",
+      "topic": "Returning to Ho Chi Minh City, streets of Le Thanh Ton, a cat-friendly budget hotel, ramen and local cafes",
+      "headline": "また会いたい街、ホーチミン。",
+      "direction": "A refined urban field-notes magazine on light warm paper with deep jade accents. Modern Japanese sans bold title and carefully spaced body. Compact two-column opening with title taking two-thirds and a small factual visit note one-third; very wide actual street-photo YouTube poster beneath. Elegant hairline dividers; no illustration hero and no generic boxes.",
+      "prompt": "Use case: ui-mockup. A finished sophisticated Japanese travel-article website design reference, landscape 3:2 desktop canvas, no browser/device frame. Brand \"とも旅ちゃんねる\"; navigation \"旅のブログ\", \"動画\", \"ゲーム\". Main headline \"また会いたい街、ホーチミン。\". Story: Returning to Ho Chi Minh City, streets of Le Thanh Ton, a cat-friendly budget hotel, ramen and local cafes. A refined urban field-notes magazine on light warm paper with deep jade accents. Modern Japanese sans bold title and carefully spaced body. Compact two-column opening with title taking two-thirds and a small factual visit note one-third; very wide actual street-photo YouTube poster beneath. Elegant hairline dividers; no illustration hero and no generic boxes. Realistic editorial web UI with title, short introduction, prominent YouTube poster, chronological prose and real documentary-style photographs. Keep it uniquely crafted and very readable for adults; sensible line length, beautiful Japanese typography. This is the web page composition, not an illustration asset. No watercolor/sepia artwork, random doodles, giant card grids, generic gradient background, invented scores/statistics, fake reviews or chrome. Any photographed scenery is a design reference only.",
+      "file": "artifacts/travel-archive/design/hochiminh2.png"
+    },
+    {
+      "series": "manila-cebu",
+      "layout": "photo-essay",
+      "palette": "graphite-copper",
+      "topic": "A connected Manila and Cebu journey: airports, hotels, food and last-night conversations",
+      "headline": "マニラからセブへ、旅の続き。",
+      "direction": "Professional black-and-white photo-essay website with muted copper accent. Short issue line, large left-aligned Japanese Mincho heading, a broad documentary airport-and-city photo/video poster, slim series navigation, generous white reading area. The feeling of a premium independent travel magazine, with compact logistical notes in the margin.",
+      "prompt": "Use case: ui-mockup. Build a polished desktop design reference for a real Japanese independent travel publication, landscape 3:2, no browser frame. Brand \"とも旅ちゃんねる\"; menu \"旅のブログ\", \"動画\", \"ゲーム\". Headline \"マニラからセブへ、旅の続き。\". Subject A connected Manila and Cebu journey: airports, hotels, food and last-night conversations. Professional black-and-white photo-essay website with muted copper accent. Short issue line, large left-aligned Japanese Mincho heading, a broad documentary airport-and-city photo/video poster, slim series navigation, generous white reading area. The feeling of a premium independent travel magazine, with compact logistical notes in the margin. Show the full opening composition: concise editorial title and intro, dominant YouTube poster/photography area, chronological article beginning, useful contents and related-series navigation. Restrained typography, excellent Japanese readability, intentional column proportions, actual-looking candid travel photography. No painted illustration, no generic feature grid, no template-like centered hero, no fabricated ratings or numerical claims, no annotations or watermarks. This is a website page mockup, not a poster. Photo content is only a design reference.",
+      "file": "artifacts/travel-archive/design/manila-cebu.png"
+    },
+    {
+      "series": "takanawa",
+      "layout": "architecture",
+      "palette": "white-cobalt",
+      "topic": "A walk around Takanawa Gateway and MoN Takanawa, contemporary Tokyo architecture and public terraces",
+      "headline": "高輪ゲートウェイを歩く。",
+      "direction": "Contemporary architectural editorial, white and pale cool grey with restrained cobalt. Strong clean Japanese grotesk typography, precise spacing, a dramatic broad architecture photograph, a small factual access strip, then video and numbered visit sections. Photographic composition showing a curved, landscaped cultural building and open terrace. Sophisticated proportions, airy and sparse, no ornamental doodles.",
+      "prompt": "Use case: ui-mockup. A polished desktop Japanese travel article WEBSITE DESIGN reference, landscape 3:2 canvas showing an implementable page opening and start of body. Brand \"とも旅ちゃんねる\". Navigation \"旅のブログ\", \"動画\", \"ゲーム\". Headline \"高輪ゲートウェイを歩く。\". Topic: A walk around Takanawa Gateway and MoN Takanawa, contemporary Tokyo architecture and public terraces. Contemporary architectural editorial, white and pale cool grey with restrained cobalt. Strong clean Japanese grotesk typography, precise spacing, a dramatic broad architecture photograph, a small factual access strip, then video and numbered visit sections. Photographic composition showing a curved, landscaped cultural building and open terrace. Sophisticated proportions, airy and sparse, no ornamental doodles. Keep a clear title and short intro, a prominent YouTube video area and chronological story with useful contents. Excellent readable Japanese typography, authentic documentary photographs as temporary design references. No standalone illustration, no invented review ratings/statistics, no generic feature cards, no browser/device chrome or annotations. Composition and type should be the focus, not decorative effects.",
+      "file": "artifacts/travel-archive/design/takanawa.png"
+    },
+    {
+      "series": "manila2",
+      "layout": "city-notes",
+      "palette": "paper-saffron",
+      "topic": "Returning to Manila: airport transport, Malate hotel, Divisoria markets and KTV nights",
+      "headline": "マニラの街を、もう少し深く。",
+      "direction": "Warm-white, ink-black and small saffron accents, documentary travel magazine. Asymmetric broad street market photograph with a quiet reading column below; strong modern Japanese sans headings. A compact series indicator and useful table of contents, small price annotations, no card grids or generic tourism slogans.",
+      "prompt": "Use case: ui-mockup. Finished editorial Japanese travel article WEB PAGE, landscape 3:2 showing the first 1.5 screens of an implementable desktop site. Brand \"とも旅ちゃんねる\". Nav \"旅のブログ\", \"動画\", \"ゲーム\". Headline \"マニラの街を、もう少し深く。\". Story: Returning to Manila: airport transport, Malate hotel, Divisoria markets and KTV nights. Warm-white, ink-black and small saffron accents, documentary travel magazine. Asymmetric broad street market photograph with a quiet reading column below; strong modern Japanese sans headings. A compact series indicator and useful table of contents, small price annotations, no card grids or generic tourism slogans. A compact masthead, clear headline/intro, very prominent YouTube photo poster and beginning of chronological article with useful table of contents. Beautiful Japanese typography with thoughtful line spacing, documentary real-looking travel photography. No fake browser chrome or outside annotations, no standalone illustration, no fictional reviews or stats, no tourist brochure slogans, no generic cards. Photographs are only design-reference placeholders for owner-provided video stills.",
+      "file": "artifacts/travel-archive/design/manila2.png"
+    },
+    {
+      "series": "manila3",
+      "layout": "travel-diary",
+      "palette": "paper-coral",
+      "topic": "A chaotic solo Manila trip starting with a fever before departure, airport travel and an honest personal diary",
+      "headline": "波乱のマニラひとり旅。",
+      "direction": "Honest personal travel diary presented like a high-end Japanese longread. Light ivory, charcoal and restrained coral, strong editorial type, large authentic-looking airport photo/video poster, a compact time-and-place note, left-aligned prose, a subtle vertical date rail. Warm but practical, neither childish nor glossy corporate.",
+      "prompt": "Use case: ui-mockup. Design the opening of a polished Japanese travel WEB ARTICLE, landscape 3:2 desktop, real interface without browser chrome. Brand \"とも旅ちゃんねる\", nav \"旅のブログ\", \"動画\", \"ゲーム\". Headline \"波乱のマニラひとり旅。\". Subject A chaotic solo Manila trip starting with a fever before departure, airport travel and an honest personal diary. Honest personal travel diary presented like a high-end Japanese longread. Light ivory, charcoal and restrained coral, strong editorial type, large authentic-looking airport photo/video poster, a compact time-and-place note, left-aligned prose, a subtle vertical date rail. Warm but practical, neither childish nor glossy corporate. First title and concise introduction, then a dominant YouTube documentary photo area and start of chronological prose, small numbered contents rail. Professional Japanese typography with highly readable text. No standalone illustration, generic card grids, overdecorated badges, fake reviews, or invented quantitative claims. The photography is solely a design placeholder for actual footage stills.",
+      "file": "artifacts/travel-archive/design/manila3.png"
+    },
+    {
+      "series": "hanoi-hochiminh",
+      "layout": "heritage",
+      "palette": "ivory-lacquer",
+      "topic": "Hanoi and Ho Chi Minh solo travel, old-quarter streets, coffee, nightlife and meaningful encounters",
+      "headline": "ハノイから、旅を始めよう。",
+      "direction": "Contemporary Japanese travel magazine with warm ivory, deep lacquer red and subtle forest green. Large documentary Hanoi old-quarter photo above a compact YouTube control, bold carefully set roman Japanese serif heading and sans body, narrow captions, an elegant small contents rail. Refined urban atmosphere, real photography as the primary visual, no painted travel postcard.",
+      "prompt": "Use case: ui-mockup. A professional Japanese independent travel article website design, landscape 3:2, desktop page opening and beginning of body. Brand \"とも旅ちゃんねる\", navigation \"旅のブログ\", \"動画\", \"ゲーム\". Headline \"ハノイから、旅を始めよう。\". Subject Hanoi and Ho Chi Minh solo travel, old-quarter streets, coffee, nightlife and meaningful encounters. Contemporary Japanese travel magazine with warm ivory, deep lacquer red and subtle forest green. Large documentary Hanoi old-quarter photo above a compact YouTube control, bold carefully set roman Japanese serif heading and sans body, narrow captions, an elegant small contents rail. Refined urban atmosphere, real photography as the primary visual, no painted travel postcard. Real implementable editorial web page: title and concise introduction, dominant YouTube video photograph, chronological text, useful narrow contents rail. Exquisite readable Japanese typesetting and real candid street photography as references. No browser/device chrome, no painting or standalone illustration, no generic cards, giant centered slogans, random decorations, fabricated reviews/metrics or outside annotations.",
+      "file": "artifacts/travel-archive/design/hanoi-hochiminh.png"
+    }
+  ]
+}

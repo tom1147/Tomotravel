@@ -1,0 +1,10 @@
+{
+  "scannedOn": "2026-10-11",
+  "scope": "blog/hochiminh1.html only; existing site and Cebu article preserved",
+  "framework": "Static HTML, CSS and JavaScript; no package installation needed",
+  "fontSources": ["tokens.css: Noto Serif JP, Noto Sans JP, Klee One", "blog/style.css: existing article uses Noto Sans JP and Poppins"],
+  "paletteSource": "tokens.css: existing night surfaces and warm gold accents",
+  "motion": "No motion library. Static prose with native links and minimal play-button feedback",
+  "structure": "Title, introduction, YouTube, chronological prose and photos, conclusion, related links, author/sidebar, footer",
+  "changes": "Add scoped warm-paper reading tokens; night title area; generated travel illustration; compact headings; responsive photos; video timestamps"
+}

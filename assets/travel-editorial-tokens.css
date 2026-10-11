@@ -1,0 +1,29 @@
+/* Shared geometry; each series owns its paper, ink, accent and display face. */
+:root {
+  --font-body: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  --font-serif: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  --font-display: var(--font-body);
+  --paper: #faf9f5;
+  --surface: #f1f0e9;
+  --ink: #182026;
+  --muted: #606966;
+  --line: #d5d8cf;
+  --accent: #234b9d;
+  --accent-soft: #e8edf7;
+  --white: #ffffff;
+  --video-black: #101317;
+  --overlay: #101820c9;
+  --photo-shadow: #10182070;
+  --on-accent: #ffffff;
+  --shell: 1184px;
+}
+.palette-cobalt-paper { --accent: #234b9d; --accent-soft: #e8edf7; }
+.palette-navy-amber { --paper: #f8f7f3; --ink: #172431; --surface: #eeece4; --accent: #855725; --accent-soft: #f1e5cf; }
+.palette-ivory-vermilion { --paper: #f8f6ef; --surface: #eeebe2; --accent: #993e2d; --accent-soft: #f2e4dd; --font-display: var(--font-serif); }
+.palette-ink-teal { --paper: #111e20; --surface: #1c2d30; --ink: #f0f1e9; --muted: #afc3c1; --line: #3f5756; --accent: #9ed3c7; --accent-soft: #29443f; --on-accent: #112321; }
+.palette-jade-paper { --paper: #f9faf5; --surface: #ecefe4; --ink: #1d3029; --muted: #5f6d63; --line: #d1d9cf; --accent: #276347; --accent-soft: #e5eee0; }
+.palette-graphite-copper { --paper: #faf9f7; --surface: #eeebe7; --ink: #292725; --muted: #6c635c; --accent: #895336; --accent-soft: #efe4dd; --font-display: var(--font-serif); }
+.palette-white-cobalt { --paper: #ffffff; --surface: #eff3f7; --ink: #14233b; --muted: #5d697b; --line: #ced6e3; --accent: #2456a5; --accent-soft: #e5edf7; }
+.palette-paper-saffron { --paper: #faf9f4; --surface: #f1edde; --ink: #24261f; --muted: #666653; --accent: #79611b; --accent-soft: #f4ebc8; }
+.palette-paper-coral { --paper: #fbf8f5; --surface: #f0e9e2; --ink: #2f2828; --muted: #756461; --accent: #a64c3d; --accent-soft: #f5e4df; --font-display: var(--font-serif); }
+.palette-ivory-lacquer { --paper: #faf8f2; --surface: #f0ece2; --ink: #292f29; --muted: #686c61; --line: #d6d5c8; --accent: #7b302b; --accent-soft: #f1e1d9; --font-display: var(--font-serif); }

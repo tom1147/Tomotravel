@@ -1,0 +1,49 @@
+/* Hallmark · scoped travel-journal tokens; existing root tokens.css is preserved. */
+@import url('../tokens.css');
+.travel-journal {
+  --color-paper: oklch(98% 0.009 85);
+  --color-paper-alt: oklch(94% 0.015 85);
+  --color-ink: oklch(25% 0.020 248);
+  --color-muted: oklch(47% 0.018 248);
+  --color-accent: oklch(43% 0.075 169);
+  --color-accent-hover: oklch(34% 0.064 169);
+  --color-rule: oklch(84% 0.019 85);
+  --color-focus: oklch(45% 0.14 169);
+  --color-night: oklch(24% 0.048 250);
+  --color-night-panel: oklch(30% 0.048 250);
+  --color-night-ink: oklch(96% 0.016 85);
+  --color-night-muted: oklch(79% 0.023 85);
+  --color-night-rule: oklch(44% 0.04 250);
+  --color-gold: oklch(81% 0.10 80);
+  --color-note: oklch(93% 0.035 85);
+  --color-play: oklch(24% 0.035 250 / 0.88);
+  --color-photo-shade: oklch(15% 0.025 250 / 0.72);
+  --color-photo-clear: oklch(15% 0.025 250 / 0);
+  --color-success: oklch(39% 0.075 169);
+  --color-error: oklch(43% 0.12 30);
+  --color-disabled: oklch(58% 0.02 85);
+  --text-journal-title: clamp(1.65rem, 2.7vw, 2.55rem);
+  --text-journal-heading: clamp(1.4rem, 2.2vw, 1.9rem);
+  --text-journal-body: 1.025rem;
+  --text-caption: 0.8125rem;
+  --space-article: clamp(3rem, 6vw, 5rem);
+  --radius-photo: 3px;
+  --space-j4: 4px;
+  --space-j8: 8px;
+  --space-j12: 12px;
+  --space-j16: 16px;
+  --space-j20: 20px;
+  --space-j24: 24px;
+  --space-j28: 28px;
+  --space-j32: 32px;
+  --space-j36: 36px;
+  --space-j40: 40px;
+  --space-j48: 48px;
+  --space-j56: 56px;
+  --space-j72: 72px;
+}
+.travel-journal.episode-2 { --color-night: oklch(23% 0.035 25); --color-night-rule: oklch(43% 0.035 25); }
+.travel-journal.episode-3 { --color-night: oklch(24% 0.035 172); --color-night-rule: oklch(43% 0.035 172); }
+.travel-journal.episode-4 { --color-night: oklch(25% 0.025 65); --color-night-rule: oklch(43% 0.025 65); }
+.travel-journal.episode-5 { --color-night: oklch(23% 0.045 15); --color-night-rule: oklch(43% 0.040 15); }
+.travel-journal.episode-6 { --color-night: oklch(25% 0.040 265); --color-night-rule: oklch(43% 0.035 265); }

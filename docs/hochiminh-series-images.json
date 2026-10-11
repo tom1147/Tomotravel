@@ -1,0 +1,252 @@
+{
+  "tool": "image_gen.imagegen (built-in)",
+  "status": "Reviewed for publication with the travel archive on 2026-10-12",
+  "notes": [
+    "Photographs are frames from the user's completed videos. Digital captions/flags were removed; real signage retained.",
+    "Existing privacy mosaic on episode 2's background customer is preserved.",
+    "Episode 3 concept-interior is an unaltered 08:42 frame; episode 4 reuses episode 1's Felix Hotel photograph.",
+    "Responsive outputs live in images/hochiminh2 through images/hochiminh6, each in 1440 and 720 pixel widths."
+  ],
+  "images": [
+    {
+      "episode": 2,
+      "src": "bar-front",
+      "name": "sake-winebar",
+      "time": 715,
+      "extra": "Remove the digitally pasted mini-map and its arrow/text in the lower left as well. Preserve the real SAKE Bar & Food / わいんばー facade signage and surrounding buildings exactly.",
+      "prompt": "Use case: precise-object-edit. Clean this authentic travel video frame for an editorial blog. Remove only digitally added country-flag icons, Japanese/English location labels, subtitles and caption graphics. Remove the digitally pasted mini-map and its arrow/text in the lower left as well. Preserve the real SAKE Bar & Food / わいんばー facade signage and surrounding buildings exactly. Fill only the overlay areas with natural continuation of the underlying scene. Preserve all people, identities, poses, real signage, architecture, furniture, camera perspective, and documentary imperfections. No beauty retouching, no renovation, no invented objects or readable signs. Keep a natural 16:9 photograph and the night atmosphere. Slightly lift dark shadows only if needed to make the photograph readable. No new text, watermark or border.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-9c9b7b1f-0039-4d05-812e-128ca88f9990.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 2,
+      "src": "haa",
+      "name": "winebar-conversation",
+      "time": 700,
+      "extra": "Remove only the pink Japanese caption strip at the bottom. Preserve the young adult woman's exact face, identity, hair, black uniform and pose. Crucially KEEP the pixelated privacy mosaic on the person at the right completely intact: never reconstruct, reveal or guess the obscured face.",
+      "prompt": "Use case: precise-object-edit. Clean this authentic travel video frame for an editorial blog. Remove only digitally added country-flag icons, Japanese/English location labels, subtitles and caption graphics. Remove only the pink Japanese caption strip at the bottom. Preserve the young adult woman's exact face, identity, hair, black uniform and pose. Crucially KEEP the pixelated privacy mosaic on the person at the right completely intact: never reconstruct, reveal or guess the obscured face. Fill only the overlay areas with natural continuation of the underlying scene. Preserve all people, identities, poses, real signage, architecture, furniture, camera perspective, and documentary imperfections. No beauty retouching, no renovation, no invented objects or readable signs. Keep a natural 16:9 photograph and the night atmosphere. Slightly lift dark shadows only if needed to make the photograph readable. No new text, watermark or border.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-25a533c0-8a09-4ede-bb51-83ea342cd974.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 2,
+      "src": "sushi-close",
+      "name": "winebar-meal",
+      "time": 505,
+      "extra": "Keep the man, countertop, meal, dishes, drink and woman serving at the left unchanged.",
+      "prompt": "Use case: precise-object-edit. Authentic travel video frame cleanup for a blog. Remove digitally added flag icons, location-title labels, captions and Japanese subtitles; restore only the obscured patches. Keep the man, countertop, meal, dishes, drink and woman serving at the left unchanged. Preserve actual people and identities, all real scene text, original composition, natural camera softness and night atmosphere. No beautifying people, no new objects, no renovations. Very subtle shadow lift is allowed to improve readability; keep the real lighting. Output a single clean 16:9 photograph with no borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-c498eab0-2e0f-4ddc-ab42-3195ab7f4d1f.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 2,
+      "src": "bui-vien",
+      "name": "bui-vien-night",
+      "time": 835,
+      "extra": "Keep the man in the red printed T-shirt, all motorcycles, pedestrians, neon shop signs, street lighting and perspective unchanged. Remove only overlaid upper-left flag/title and bottom subtitles, not real signs or the shirt graphic.",
+      "prompt": "Use case: precise-object-edit. Authentic travel video frame cleanup for a blog. Remove digitally added flag icons, location-title labels, captions and Japanese subtitles; restore only the obscured patches. Keep the man in the red printed T-shirt, all motorcycles, pedestrians, neon shop signs, street lighting and perspective unchanged. Remove only overlaid upper-left flag/title and bottom subtitles, not real signs or the shirt graphic. Preserve actual people and identities, all real scene text, original composition, natural camera softness and night atmosphere. No beautifying people, no new objects, no renovations. Very subtle shadow lift is allowed to improve readability; keep the real lighting. Output a single clean 16:9 photograph with no borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-bc4dde60-1e7f-4b3f-a921-905c001f4850.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 3,
+      "src": "cafe777",
+      "name": "cafe777",
+      "time": 190,
+      "extra": "Preserve the real CAFE 777 entrance and man's blue shirt.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the real CAFE 777 entrance and man's blue shirt. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-13bb5d72-1632-455c-8cb6-eb33d4d704fb.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 3,
+      "src": "ramen-close",
+      "name": "misen-ramen",
+      "time": 449,
+      "extra": "Also remove the small digitally added cyan/blue commentary label to the right. Preserve the bowl of ramen, food, drinks, man and all real restaurant signs exactly.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Also remove the small digitally added cyan/blue commentary label to the right. Preserve the bowl of ramen, food, drinks, man and all real restaurant signs exactly. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-8487aa5e-2a56-4f94-bc1c-0c766239f7e0.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 3,
+      "src": "game",
+      "name": "concept-games",
+      "time": 771,
+      "extra": "Preserve the adults at the table, their exact faces and the toy game. Keep the original colored club lighting and dark atmosphere; modest shadow lift only. Never alter age or clothing.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the adults at the table, their exact faces and the toy game. Keep the original colored club lighting and dark atmosphere; modest shadow lift only. Never alter age or clothing. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-9cf0f69c-68f9-421c-9408-39b3b4a9a3c5.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 4,
+      "src": "new-hotel-front",
+      "name": "grandmalu-entrance",
+      "time": 364,
+      "extra": "Preserve real physical signs and entrance architecture. Do not invent the hotel's sign.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve real physical signs and entrance architecture. Do not invent the hotel's sign. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-bb0635a6-6458-4701-af2c-0500d730aaaf.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 4,
+      "src": "new-room-wide",
+      "name": "grandmalu-room",
+      "time": 505,
+      "extra": "Preserve the exact tiny room dimensions, narrow bed, desk, window blind, walls and imperfections. Do not make the room larger, newer or cleaner.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the exact tiny room dimensions, narrow bed, desk, window blind, walls and imperfections. Do not make the room larger, newer or cleaner. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-a560dd33-b604-4b2b-b5f6-c00771e12c21.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 4,
+      "src": "vip-wide",
+      "name": "miyabi-vip",
+      "time": 781,
+      "extra": "Preserve the man, sofa, wooden walls, round mirror and television. Do not change real furniture.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the man, sofa, wooden walls, round mirror and television. Do not change real furniture. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-23ada31f-b230-4d12-8626-82e1fa0bb3a7.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 5,
+      "src": "massage-front",
+      "name": "enjoy-entrance",
+      "time": 66,
+      "extra": "Also remove the small red digital arrow and Japanese annotation near the top-right. Preserve actual ENJOY FOOT & BODY MASSAGE THERAPY shop signage and neon lighting. No additional people.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Also remove the small red digital arrow and Japanese annotation near the top-right. Preserve actual ENJOY FOOT & BODY MASSAGE THERAPY shop signage and neon lighting. No additional people. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-800d4b7d-4981-48e4-ae95-7930614a4a11.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 5,
+      "src": "counter",
+      "name": "takumi-counter",
+      "time": 408,
+      "extra": "Preserve the actual bar, bottles, seats and people. Modest shadow lift to see the room without changing its night atmosphere.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the actual bar, bottles, seats and people. Modest shadow lift to see the room without changing its night atmosphere. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-1019f581-5ad2-43ac-bc5e-e969e1456f9a.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 5,
+      "src": "large-room",
+      "name": "takumi-karaoke",
+      "time": 468,
+      "extra": "Keep the dark green sofa, acoustic wall padding, screen and exact camera angle. No room improvements.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Keep the dark green sofa, acoustic wall padding, screen and exact camera angle. No room improvements. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-a7546c97-8fbf-4bbd-94de-28549b4f69b1.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 5,
+      "src": "kasumi",
+      "name": "takumi-conversation",
+      "time": 541,
+      "extra": "Keep both adults' exact identities, faces, clothes, poses and the green sofa. Remove only the top-left digital flag/title and bottom blue-bordered subtitle. Preserve the dark lighting but gently lift shadows enough to see the faces.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Keep both adults' exact identities, faces, clothes, poses and the green sofa. Remove only the top-left digital flag/title and bottom blue-bordered subtitle. Preserve the dark lighting but gently lift shadows enough to see the faces. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-1be761cb-a734-4f38-896f-281509309ef0.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 2,
+      "scene": "a tiny warmly lit Vietnamese neighborhood wine bar window with two bar stools, two pieces of salmon nigiri on a ceramic plate and a small glass of plum wine with ice, with a lively Ho Chi Minh alley implied behind it",
+      "palette": "deep warm oxblood-brown background, amber gold, cream, jade and restrained coral",
+      "name": "cover",
+      "kind": "generated-illustration",
+      "prompt": "Use case: illustration-story. Create one finished landscape 3:2 editorial illustration for a Japanese Ho Chi Minh travel journal. The scene contains a tiny warmly lit Vietnamese neighborhood wine bar window with two bar stools, two pieces of salmon nigiri on a ceramic plate and a small glass of plum wine with ice, with a lively Ho Chi Minh alley implied behind it. Palette: deep warm oxblood-brown background, amber gold, cream, jade and restrained coral. Style: beautifully art-directed colored-pencil and gouache travel sketch, charming slightly naive hand drawing, imperfect pencil edges, delicate paper grain and generous background breathing room. Elegant, warm, quiet and professional, not a corporate flat illustration. Compact asymmetrical arrangement of 3–4 meaningful objects. This is clearly symbolic illustration rather than factual photography. Absolutely no text, letters, numbers, prices, flags, logos, badges, borders, watermarks or UI. No photorealistic people. Flat raster image.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-50001230-09f9-4561-ae84-a04f2040fe93.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 3,
+      "scene": "an iced coffee, a pair of DJ headphones, a steaming bowl of soy-sauce ramen with chopsticks, and a small friendly wooden pop-up pirate-barrel toy, beside a stylized cafe doorway with a few neon-colored pencil strokes",
+      "palette": "deep forest green background, cream, warm gold, restrained dusty pink and teal",
+      "name": "cover",
+      "kind": "generated-illustration",
+      "prompt": "Use case: illustration-story. Create one finished landscape 3:2 editorial illustration for a Japanese Ho Chi Minh travel journal. The scene contains an iced coffee, a pair of DJ headphones, a steaming bowl of soy-sauce ramen with chopsticks, and a small friendly wooden pop-up pirate-barrel toy, beside a stylized cafe doorway with a few neon-colored pencil strokes. Palette: deep forest green background, cream, warm gold, restrained dusty pink and teal. Style: beautifully art-directed colored-pencil and gouache travel sketch, charming slightly naive hand drawing, imperfect pencil edges, delicate paper grain and generous background breathing room. Elegant, warm, quiet and professional, not a corporate flat illustration. Compact asymmetrical arrangement of 3–4 meaningful objects. This is clearly symbolic illustration rather than factual photography. Absolutely no text, letters, numbers, prices, flags, logos, badges, borders, watermarks or UI. No photorealistic people. Flat raster image.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-8313a264-8305-49cd-9ed3-0677fd8c168f.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 6,
+      "src": "room",
+      "name": "grandmalu-review",
+      "time": 88,
+      "extra": "Keep the exact narrow room and unmade bed, personal belongings and all imperfections. Do not renovate or clean.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Keep the exact narrow room and unmade bed, personal belongings and all imperfections. Do not renovate or clean. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-0cb3ec0b-31b3-4ea7-af59-90096fd29c8d.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 6,
+      "src": "massage-lobby",
+      "name": "enjoy-farewell",
+      "time": 337,
+      "extra": "Preserve the staircase, entry, doors and real people in the distance. Remove only the digital upper-left label and flag.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the staircase, entry, doors and real people in the distance. Remove only the digital upper-left label and flag. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-bb1b27e0-0a77-4270-af9b-d5eb659f7a04.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 4,
+      "scene": "an intimate tiny hotel room with a narrow single bed viewed through an open doorway, a brass room key, a folded umbrella with raindrops, and a small karaoke microphone. A rainy Ho Chi Minh street is suggested off to one side",
+      "palette": "deep smoky warm-brown background, warm cream, ochre, dusty blue-green",
+      "name": "cover",
+      "kind": "generated-illustration",
+      "prompt": "Use case: illustration-story. Create one finished landscape 3:2 editorial illustration for a Japanese Ho Chi Minh travel journal. The scene contains an intimate tiny hotel room with a narrow single bed viewed through an open doorway, a brass room key, a folded umbrella with raindrops, and a small karaoke microphone. A rainy Ho Chi Minh street is suggested off to one side. Palette: deep smoky warm-brown background, warm cream, ochre, dusty blue-green. Style: beautifully art-directed colored-pencil and gouache travel sketch, charming slightly naive hand drawing, imperfect pencil edges, delicate paper grain and generous background breathing room. Elegant, warm, quiet and professional, not a corporate flat illustration. Compact asymmetrical arrangement of 3–4 meaningful objects. This is clearly symbolic illustration rather than factual photography. Absolutely no text, letters, numbers, prices, flags, logos, badges, borders, watermarks or UI. No photorealistic people. Flat raster image.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-63688837-a702-409e-8b78-3fee6ac7333a.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 5,
+      "scene": "a quiet karaoke lounge with a curved deep green velvet sofa, one microphone, a glass of tropical cocktail and a small warm lamp, with narrow Japanese-influenced Saigon shopfronts suggested in the background. No people",
+      "palette": "deep warm burgundy background, cream, muted jade and warm golden light",
+      "name": "cover",
+      "kind": "generated-illustration",
+      "prompt": "Use case: illustration-story. Create one finished landscape 3:2 editorial illustration for a Japanese Ho Chi Minh travel journal. The scene contains a quiet karaoke lounge with a curved deep green velvet sofa, one microphone, a glass of tropical cocktail and a small warm lamp, with narrow Japanese-influenced Saigon shopfronts suggested in the background. No people. Palette: deep warm burgundy background, cream, muted jade and warm golden light. Style: beautifully art-directed colored-pencil and gouache travel sketch, charming slightly naive hand drawing, imperfect pencil edges, delicate paper grain and generous background breathing room. Elegant, warm, quiet and professional, not a corporate flat illustration. Compact asymmetrical arrangement of 3–4 meaningful objects. This is clearly symbolic illustration rather than factual photography. Absolutely no text, letters, numbers, prices, flags, logos, badges, borders, watermarks or UI. No photorealistic people. Flat raster image.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-64d1e8c6-d206-469f-a163-591ef76640cc.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 6,
+      "src": "ramen",
+      "name": "misen-taiwan-ramen",
+      "time": 492,
+      "extra": "Preserve the exact man and identity, bowl of Taiwanese ramen, red restaurant benches, food posters and drink.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the exact man and identity, bowl of Taiwanese ramen, red restaurant benches, food posters and drink. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-e0547cd2-0931-41e3-ab62-8da3ecd26dcc.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 6,
+      "src": "airport-queue",
+      "name": "airport-departure",
+      "time": 841,
+      "extra": "Preserve the man, check-in counters and airport passengers behind him. Remove the digital flag/title and Japanese subtitle only.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the man, check-in counters and airport passengers behind him. Remove the digital flag/title and Japanese subtitle only. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-4a0ef8f6-4e9e-45b4-95a8-887a8bc6e8ef.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 6,
+      "src": "haneda",
+      "name": "haneda-arrival",
+      "time": 895,
+      "extra": "Preserve the man, black shirt, camera angle and the actual Haneda terminal signs and interiors.",
+      "prompt": "Use case: precise-object-edit. This is a real travel video frame. Remove ONLY digitally superimposed country-flag graphics, location title text and subtitles/captions. Restore only the small covered patches naturally. Preserve the man, black shirt, camera angle and the actual Haneda terminal signs and interiors. Preserve all other people and their exact identities, faces, poses, clothes, real signage, architecture, composition and documentary imperfections. Preserve any existing privacy blur/mosaic absolutely; never reconstruct an obscured face. No invented objects, no beauty retouching, no crop. A slight shadow lift is allowed for readability. Return one natural 16:9 photo without new overlays or borders.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-3b482292-cdad-40a6-8fee-7d4f5c2d42b3.png",
+      "tool": "image_gen.imagegen (built-in)"
+    },
+    {
+      "episode": 6,
+      "scene": "a carry-on travel bag beside an airport terminal window with a passenger airplane far outside, a small bowl of Taiwanese ramen with chopsticks in the foreground and one little paper airplane drawn in pencil. A wistful but happy end-of-trip feeling",
+      "palette": "deep dusk navy-blue background, warm cream, muted ochre, sage and soft dusty blue",
+      "name": "cover",
+      "kind": "generated-illustration",
+      "prompt": "Use case: illustration-story. Create one finished landscape 3:2 editorial illustration for a Japanese Ho Chi Minh travel journal. The scene contains a carry-on travel bag beside an airport terminal window with a passenger airplane far outside, a small bowl of Taiwanese ramen with chopsticks in the foreground and one little paper airplane drawn in pencil. A wistful but happy end-of-trip feeling. Palette: deep dusk navy-blue background, warm cream, muted ochre, sage and soft dusty blue. Style: beautifully art-directed colored-pencil and gouache travel sketch, charming slightly naive hand drawing, imperfect pencil edges, delicate paper grain and generous background breathing room. Elegant, warm, quiet and professional, not a corporate flat illustration. Compact asymmetrical arrangement of 3–4 meaningful objects. This is clearly symbolic illustration rather than factual photography. Absolutely no text, letters, numbers, prices, flags, logos, badges, borders, watermarks or UI. No photorealistic people. Flat raster image.",
+      "generatedPath": "generated_images/01a12956-32d7-7581-96b7-ba91517fd456/exec-f7fccb1b-f5b3-429a-9062-46ca54e515db.png",
+      "tool": "image_gen.imagegen (built-in)"
+    }
+  ]
+}
