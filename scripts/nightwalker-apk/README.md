@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v38.0.2.apk`
-- 元ファイル: `C:/Users/tommi/Desktop/インクリメンタルゲーム/TomoNightwalker-Android-v38.0.2.apk`
-- サイズ: 360,285,953 bytes
-- SHA-256: `35ed73a7e2658d18373c2690f4e38adee221642da12994803bb7a75523bdc416`
+- 現行の配布キー: `TomoNightwalker-Android-v39.0.1.apk`
+- 元ファイル: `C:/Users/tommi/Desktop/インクリメンタルゲーム/TomoNightwalker-Android-v39.0.1.apk`
+- サイズ: 377,995,203 bytes
+- SHA-256: `5ca01330fa8dca488b24cc75c33f0c593db07db9ad667acc05c5bd2cc6afc401`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -27,3 +27,9 @@ v38.0.1は総力戦・10人編成・ワンタップ交代・ボス向き・再�
 
 
 v38.0.2は交代ボタンの背景を透過し、全キャラの攻撃・回復・支援の実績を常時表示。横画面は3列、縦画面は3行で表示し、ワンタップ交代を維持。
+
+
+v39.0.0はセブ編14戦線、4体の新ボス、段階的なLv105–120解放、クリスタル育成、超越技Ⅰ/Ⅱ、結晶の回廊・無限IIを追加。Lv100大島の瞬間火力を緩和し、旧育成周回のペソを約17%調整。既存セーブ・同一署名を維持。
+
+
+v39.0.1はセブ背景・ボス・魔法画像の配布パスを修正。通常5人とレイド10人の編集・編成継承・セブへの復帰を修正し、説明を折りたたんで文字のはみ出しを解消。結晶の獲得と後半育成費を調整し、新レイドの瞬間火力には反応できる余地を追加。ルナ・ジャス・パメトニの専用モーション、立体的な斬撃・残像・盾、10人の待機表示とスマホ比率を改善。旧セーブと所持金・結晶・育成は保持。
