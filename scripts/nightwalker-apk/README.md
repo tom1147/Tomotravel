@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v39.0.2.apk`
-- 元ファイル: `C:/Users/tommi/Desktop/インクリメンタルゲーム/TomoNightwalker-Android-v39.0.2.apk`
-- サイズ: 377,995,203 bytes
-- SHA-256: `e34a42c71351b0352b97a4f4b493c00183409bd94a1985649b0b40cdafcd9317`
+- 現行の配布キー: `TomoNightwalker-Android-v40.0.0.apk`
+- 元ファイル: `C:/Users/tommi/Desktop/インクリメンタルゲーム/TomoNightwalker-Android-v40.0.0.apk`
+- サイズ: 379,806,300 bytes
+- SHA-256: `597cf386038995f59cef6b55b043d80f124dac7331bf9e3772747c8b0a4b815d`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -36,3 +36,6 @@ v39.0.1はセブ背景・ボス・魔法画像の配布パスを修正。通常5
 
 
 v39.0.2は10人戦闘の英語案内を整えた最終版。39.0.1の演出・バランス・報酬・セーブ互換性を維持。
+
+
+v40.0.0 / Android47：現在の編成で直接出撃・再挑戦、確認なしの撤退と移動。セブの道中と専用ボス、全ボスの召喚・挟撃・短い結界を追加。ミイ/ネネの魔法を交換、育成上限付近で攻略する試練へ調整。旧セーブを保持。
