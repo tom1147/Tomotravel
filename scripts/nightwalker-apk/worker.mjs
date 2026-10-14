@@ -1,6 +1,6 @@
-const FILE = 'TomoNightwalker-Android-v40.3.0.apk';
+const FILE = 'TomoNightwalker-Android-v40.3.1.apk';
 const LATEST = '/TomoNightwalker-Android-latest.apk';
-const PREVIOUS = ['/TomoNightwalker-Android-v31.apk', '/TomoNightwalker-Android-v36.0.0.apk', '/TomoNightwalker-Android-v37.0.0.apk', '/TomoNightwalker-Android-v37.0.1.apk', '/TomoNightwalker-Android-v38.0.0.apk', '/TomoNightwalker-Android-v38.0.1.apk', '/TomoNightwalker-Android-v38.0.2.apk', '/TomoNightwalker-Android-v39.0.0.apk', '/TomoNightwalker-Android-v39.0.1.apk', '/TomoNightwalker-Android-v39.0.2.apk', '/TomoNightwalker-Android-v40.0.0.apk', '/TomoNightwalker-Android-v40.1.0.apk', '/TomoNightwalker-Android-v40.2.0.apk'];
+const PREVIOUS = ['/TomoNightwalker-Android-v31.apk', '/TomoNightwalker-Android-v36.0.0.apk', '/TomoNightwalker-Android-v37.0.0.apk', '/TomoNightwalker-Android-v37.0.1.apk', '/TomoNightwalker-Android-v38.0.0.apk', '/TomoNightwalker-Android-v38.0.1.apk', '/TomoNightwalker-Android-v38.0.2.apk', '/TomoNightwalker-Android-v39.0.0.apk', '/TomoNightwalker-Android-v39.0.1.apk', '/TomoNightwalker-Android-v39.0.2.apk', '/TomoNightwalker-Android-v40.0.0.apk', '/TomoNightwalker-Android-v40.1.0.apk', '/TomoNightwalker-Android-v40.2.0.apk', '/TomoNightwalker-Android-v40.3.0.apk'];
 
 function downloadHeaders(object) {
   return new Headers({

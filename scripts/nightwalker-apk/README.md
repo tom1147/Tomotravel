@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v40.3.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v40.3.0.apk`
+- 現行の配布キー: `TomoNightwalker-Android-v40.3.1.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v40.3.1.apk`
 - サイズ: 389,569,154 bytes
-- SHA-256: `1edc3a5b173b4545f64c852c8556e92ac3ed069472afea531b12c8b48c907386`
+- SHA-256: `f79d0a7f69b339513e3a8a571691422f953e05064d394c0c706ca4193d1af66d`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -48,3 +48,6 @@ v40.2.0 / Android49：魔法の基礎火力を16%調整し、序盤の必殺と�
 
 
 v40.3.0 / Android50：後半の魔法職を基本12%、突出したネネを22%調整し、ミイを6%強化。Lv47までは従来どおり。悪魔大島はHP18%・攻撃8%増、65%・30%で護壁再展開。後半の中断不可の大技と回復封印を追加し、日英の予告・状態説明も対応。旧セーブ・初期の大島・既存演出を維持。
+
+
+v40.3.1 / Android51：ネネの後半ダメージ補正を−22%から−15%へ緩和（Lv100以降はv40.3.0比で約9%増）。Lv47まで・ミイ・エマ・他の魔法職・悪魔大島の数値は維持。既存セーブ互換。
