@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v40.0.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v40.0.0.apk`
-- サイズ: 379,806,300 bytes
-- SHA-256: `597cf386038995f59cef6b55b043d80f124dac7331bf9e3772747c8b0a4b815d`
+- 現行の配布キー: `TomoNightwalker-Android-v40.1.0.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v40.1.0.apk`
+- サイズ: 389,560,448 bytes
+- SHA-256: `a56fe988f244bdb0ae8c208c74f9887def8a7c16081e2739e5906cc132058b13`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -39,3 +39,6 @@ v39.0.2は10人戦闘の英語案内を整えた最終版。39.0.1の演出・�
 
 
 v40.0.0 / Android47：現在の編成で直接出撃・再挑戦、確認なしの撤退と移動。セブの道中と専用ボス、全ボスの召喚・挟撃・短い結界を追加。ミイ/ネネの魔法を交換、育成上限付近で攻略する試練へ調整。旧セーブを保持。
+
+
+v40.1.0 / Android48：後半100体・同時20体のラッシュ、範囲魔法と単体最強ルナの役割分担、７種の属性連携。補助職と超越スキルの具体的な数値説明を改善。日英ストーリー補強、全レイドのBGM割当てと７曲追加、最終戦はManilaの夜。旧セーブと現在編成を保持。
