@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v40.3.1.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v40.3.1.apk`
-- サイズ: 389,569,154 bytes
-- SHA-256: `f79d0a7f69b339513e3a8a571691422f953e05064d394c0c706ca4193d1af66d`
+- 現行の配布キー: `TomoNightwalker-Android-v41.0.0.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v41.0.0.apk`
+- サイズ: 399,241,138 bytes
+- SHA-256: `2ddfcda7aed97d3c7263f79aea3c964cf5b19564ed35c863d00d51f8bfd13380`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -51,3 +51,6 @@ v40.3.0 / Android50：後半の魔法職を基本12%、突出したネネを22%�
 
 
 v40.3.1 / Android51：ネネの後半ダメージ補正を−22%から−15%へ緩和（Lv100以降はv40.3.0比で約9%増）。Lv47まで・ミイ・エマ・他の魔法職・悪魔大島の数値は維持。既存セーブ互換。
+
+
+v41.0.0 / Android52：第３レイド後のJTV 魅了救援とシークレット物理アタッカー・ユキを追加。範囲連蹴り・解毒・リンゴと18%火力連携。３話の日英ストーリー、専用ボスと背景、独立した各技モーション。加入時の編成維持と隠し戦の誤処理、攻撃付き解毒覚醒AUTOを修正。
