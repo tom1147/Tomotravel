@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.0.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v41.0.0.apk`
-- サイズ: 399,241,138 bytes
-- SHA-256: `2ddfcda7aed97d3c7263f79aea3c964cf5b19564ed35c863d00d51f8bfd13380`
+- 現行の配布キー: `TomoNightwalker-Android-v41.0.1.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v41.0.1.apk`
+- サイズ: 399,241,227 bytes
+- SHA-256: `f518f7d28a81d2420507f0b505b08eb6f7452d88b2eb16b02839067f85ee9ff3`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -54,3 +54,6 @@ v40.3.1 / Android51：ネネの後半ダメージ補正を−22%から−15%へ�
 
 
 v41.0.0 / Android52：第３レイド後のJTV 魅了救援とシークレット物理アタッカー・ユキを追加。範囲連蹴り・解毒・リンゴと18%火力連携。３話の日英ストーリー、専用ボスと背景、独立した各技モーション。加入時の編成維持と隠し戦の誤処理、攻撃付き解毒覚醒AUTOを修正。
+
+
+v41.0.1 / Android53：新キャラの表示名をチャム／Chamへ変更。自己紹介・加入・相性説明も統一。セブ準備・地図・メニューへ「マニラへ戻る」を追加し、前のセブ目的地を記憶。性能・画像・既存の育成と編成を維持。
