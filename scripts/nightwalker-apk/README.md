@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.0.2.apk`
-- 元ファイル: `C:/Users/tommi/Desktop/インクリメンタルゲーム/TomoNightwalker-Android-v41.0.2.apk`
-- サイズ: 399,241,227 bytes
-- SHA-256: `8906a2303aec5929fd4a6156924860c245f3f762073c6b511ac14e46611f4c1d`
+- 現行の配布キー: `TomoNightwalker-Android-v41.1.0.apk`
+- 元ファイル: `C:/Users/tommi/Desktop/インクリメンタルゲーム/TomoNightwalker-Android-v41.1.0.apk`
+- サイズ: 415,040,162 bytes
+- SHA-256: `c22afc2fcfd01178aed5f5eaa0dbb606cdd1adf06270af17c9f02a3db014b04b`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -60,3 +60,6 @@ v41.0.1 / Android53：新キャラの表示名をチャム／Chamへ変更。自
 
 
 v41.0.2 / Android54：総力戦・KISS YOUの退出で途中進行を解除し、勝敗に関係なく次は1戦目から。前回出撃時の全編成・装備・技を復元して編集でき、最新の育成で出撃。戻る・閉じる・Androidの戻るを修正。確定済みの報酬・育成・過去のクリア記録を保持。
+
+
+v41.1.0 / Android55：指定7曲を差し替え、通常画面BGMを追加。総力戦の最終ボスをマダムへ変更し日英ストーリーを局所改稿。湾岸大島はHP+5%・攻撃+2%、65%/30%で増援・背面連撃・時間差雷撃。旧セーブと育成・編成を保持。
