@@ -1,0 +1,14 @@
+---
+import ContactActions from './ContactActions.astro';
+import { useI18n } from '../i18n';
+const { t } = useI18n(Astro.url);
+---
+<section class="contact-band" aria-labelledby="contact-band-title">
+  <div class="wrap contact-band__grid">
+    <div>
+      <h2 id="contact-band-title">{t.contactBand.title}</h2>
+      <p>{t.contactBand.body}</p>
+    </div>
+    <ContactActions variant="band" />
+  </div>
+</section>

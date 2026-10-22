@@ -1,0 +1,15 @@
+---
+/** タッチ端末用：ページを流して見るボタン（ホバーできない端末でのみ表示） */
+import Icon from './Icon.astro';
+import { useI18n } from '../i18n';
+interface Props { label: string }
+const { label } = Astro.props;
+const { t, paren } = useI18n(Astro.url);
+---
+<button type="button" class="playbtn" data-play aria-pressed="false">
+  <span class="when-paused"><Icon name="play" /></span>
+  <span class="when-playing"><Icon name="pause" /></span>
+  <span class="when-paused">{t.common.scrollPage}</span>
+  <span class="when-playing">{t.common.stopPage}</span>
+  <span class="visually-hidden">{paren(label)}</span>
+</button>

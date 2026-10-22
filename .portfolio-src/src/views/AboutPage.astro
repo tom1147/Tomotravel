@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import ExtLink from '../components/ExtLink.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { useI18n } from '../i18n';
+import { site } from '../config/site';
+import { img, getWork } from '../data/works';
+
+const { t, u, lang, paren } = useI18n(Astro.url);
+
+const p = t.aboutPage;
+const travel = getWork('tomo-travel', 'en');
+---
+<Base title={p.title} description={p.intro[0]} og="about.jpg">
+  <div class="wrap page-head">
+    <h1>{p.title}</h1>
+  </div>
+
+  <section class="wrap about" aria-label={p.name}>
+    <div class="moonframe">
+      <div class="moonframe__moon" aria-hidden="true"></div>
+      <Image src={img('about/tomo.webp')} alt={t.a11y.photoAlt} widths={[400, 500]} sizes="(min-width: 900px) 460px, 86vw" loading="eager" />
+    </div>
+    <div>
+      <p class="about__name en">{p.name}</p>
+      <p class="about__role">{p.role}</p>
+      <div class="prose" style="margin-top:28px">
+        {p.intro.map((x) => <p>{x}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="do-title">
+    <div class="wrap split">
+      <h2 class="sh__title" id="do-title">{p.doLabel}</h2>
+      <ul class="featurelist featurelist--1">
+        {p.do.map((x) => <li>{x}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section band" aria-labelledby="why-title">
+    <div class="wrap why">
+      <div class="why__head"><h2 class="sh__title" id="why-title">{p.whyLabel}</h2></div>
+      <ul class="points">
+        {p.why.map((x) => <li><h3>{x.title}</h3><p>{x.body}</p></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="ai-title">
+    <div class="wrap split">
+      <h2 class="sh__title" id="ai-title">{p.aiLabel}</h2>
+      <div class="prose"><p>{p.ai}</p></div>
+    </div>
+  </section>
+
+  <section class="section section--flush" aria-labelledby="links-title">
+    <div class="wrap split">
+      <h2 class="sh__title" id="links-title">{p.linksLabel}</h2>
+      <ul class="linklist">
+        <li><a class="textlink" href={u('works/')}>{t.nav.works}</a></li>
+        {site.social.youtube && <li><ExtLink href={site.social.youtube}>{p.linkYoutube}</ExtLink></li>}
+        {travel.url && <li><ExtLink href={travel.url}>{p.linkTravel}</ExtLink></li>}
+        {site.social.x && <li><ExtLink href={site.social.x}>X</ExtLink></li>}
+        {site.social.linkedin && <li><ExtLink href={site.social.linkedin}>LinkedIn</ExtLink></li>}
+      </ul>
+    </div>
+  </section>
+
+  <ContactBand />
+</Base>

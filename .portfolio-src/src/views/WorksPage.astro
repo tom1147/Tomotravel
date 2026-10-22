@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Browser from '../components/Browser.astro';
+import Phone from '../components/Phone.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { useI18n } from '../i18n';
+import { worksFor, webWorksFor, isLatin } from '../data/works';
+
+const { t, u, lang, paren } = useI18n(Astro.url);
+
+const p = t.worksPage;
+const webWorks = webWorksFor(lang);
+const beyond = worksFor(lang).filter((w) => w.kind !== 'web');
+---
+<Base title={p.title} description={p.lead} og="works.jpg">
+  <div class="wrap page-head">
+    <h1>{p.title}</h1>
+    <p class="page-head__lead">{p.lead}</p>
+  </div>
+
+  <section class="wrap" aria-labelledby="web-title">
+    <h2 class="group-title" id="web-title">{p.webTitle}</h2>
+    <ul class="wgrid">
+      {webWorks.map((w) => (
+        <li>
+          <a class="wcard" href={u(`works/${w.slug}/`)}>
+            <div class="wcard__stage" style={`--tint:${w.tint};--glow:${w.glow}`}>
+              <Browser shot={w.desktop!} title={w.t.tabTitle} sizes="(min-width: 1320px) 520px, (min-width: 900px) 40vw, 80vw" widths={[480, 800, 1200]} />
+              <Phone shot={w.mobile!} sizes="(min-width: 900px) 130px, 22vw" />
+            </div>
+            <div>
+              <p class="wcard__genre">{w.t.genre}</p>
+              <h3 class="wcard__name en">{w.t.name}</h3>
+              <p class="wcard__short">{w.t.short}</p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="wrap section" aria-labelledby="beyond-title">
+    <h2 class="group-title" id="beyond-title">{p.beyondTitle}</h2>
+    <ul class="wgrid">
+      {beyond.map((w) => (
+        <li>
+          <a class="wcard" href={u(`works/${w.slug}/`)}>
+            <div class="wcard__stage wcard__stage--plain" style={`--tint:${w.tint};--glow:${w.glow}`}>
+              <div class="wcard__img">
+                <Image src={w.cover.src} alt={w.cover.alt} widths={[480, 800, 1200].filter((x) => x <= w.cover.src.width)} sizes="(min-width: 1320px) 560px, (min-width: 900px) 42vw, 85vw" loading="lazy" decoding="async" />
+              </div>
+            </div>
+            <div>
+              <p class="wcard__genre">{w.t.genre}</p>
+              <h3 class:list={['wcard__name', { en: isLatin(w.t.name) }]}>{w.t.name}</h3>
+              <p class="wcard__short">{w.t.short}</p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <ContactBand />
+</Base>

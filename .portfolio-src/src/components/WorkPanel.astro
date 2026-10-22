@@ -1,0 +1,33 @@
+---
+/** トップページ用：作品ごとに画面いっぱいのパネル。スクロールで重なりながら切り替わる */
+import Browser from './Browser.astro';
+import Phone from './Phone.astro';
+import PlayButton from './PlayButton.astro';
+import ExtLink from './ExtLink.astro';
+import type { LocalizedWork } from '../data/works';
+import { useI18n } from '../i18n';
+
+interface Props { work: LocalizedWork; i: number }
+const { work, i } = Astro.props;
+const { t, u, sep } = useI18n(Astro.url);
+const detail = u(`works/${work.slug}/`);
+const id = `wp-${work.slug}`;
+---
+<article class="panel" style={`--tint:${work.tint};--glow:${work.glow};--i:${i}`} aria-labelledby={id}>
+  <div class="panel__grid">
+    <div>
+      <p class="panel__genre">{work.t.genre}</p>
+      <h3 class="panel__name en" id={id}><a href={detail}>{work.t.name}</a></h3>
+      <p class="panel__summary">{work.t.short}</p>
+      <div class="actions">
+        <a class="btn" href={detail}>{t.common.viewDetail}<span class="visually-hidden">{sep}{work.t.name}</span></a>
+        {work.url && <ExtLink href={work.url} class="btn btn--ghost">{t.common.viewSite}<span class="visually-hidden">{sep}{work.t.name}</span></ExtLink>}
+      </div>
+    </div>
+    <div class="panel__devices" data-scrollstage>
+      <Browser shot={work.desktopFull!} title={work.t.tabTitle} scroll sizes="(min-width: 1400px) 760px, (min-width: 1000px) 52vw, 86vw" widths={[640, 960, 1280]} />
+      <Phone shot={work.mobileFull!} scroll class="panel__phone" sizes="(min-width: 1000px) 180px, 22vw" />
+      <PlayButton label={work.t.name} />
+    </div>
+  </div>
+</article>

@@ -1,0 +1,34 @@
+---
+import ExtLink from './ExtLink.astro';
+import Brand from './Brand.astro';
+import LangSwitch from './LangSwitch.astro';
+import { useI18n } from '../i18n';
+import { site } from '../config/site';
+const { t, u } = useI18n(Astro.url);
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <Brand />
+        <p>{t.footer.tagline}</p>
+      </div>
+      <nav class="footer-nav" aria-label={t.a11y.footerNav}>
+        <a href={u('works/')}>{t.nav.works}</a>
+        <a href={u('services/')}>{t.nav.services}</a>
+        <a href={u('pricing/')}>{t.nav.pricing}</a>
+        <a href={u('about/')}>{t.nav.about}</a>
+        <a href={u('contact/')}>{t.nav.contact}</a>
+      </nav>
+      <div class="footer-nav">
+        {site.social.youtube && <ExtLink href={site.social.youtube} class="textlink">YouTube</ExtLink>}
+        {site.social.x && <ExtLink href={site.social.x} class="textlink">X</ExtLink>}
+        {site.social.linkedin && <ExtLink href={site.social.linkedin} class="textlink">LinkedIn</ExtLink>}
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <small>{t.footer.copyright}</small>
+      <LangSwitch id="lang-footer" />
+    </div>
+  </div>
+</footer>

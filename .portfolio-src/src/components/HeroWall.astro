@@ -1,0 +1,33 @@
+---
+/**
+ * Heroの背景：実際に制作したサイトのページ全体が、斜めの壁としてゆっくり流れ続ける。
+ * 装飾なので aria-hidden。動きを減らす設定の人には静止画として表示。
+ */
+import { Image } from 'astro:assets';
+import { getWork, img } from '../data/works';
+import type { ImageMetadata } from 'astro';
+
+const w = (slug: string) => getWork(slug, 'en');
+// 店舗サイトは、料金・メニュー・店内など「サイトのつくり」が伝わる画面を中心に選んでいます
+const cols: { dir: 'up' | 'down'; speed: string; imgs: ImageMetadata[] }[] = [
+  { dir: 'up', speed: '120s', imgs: [w('k-sayuri').desktopFull!.src, w('tomo-travel').mobileFull!.src, img('works/tomo-nightwalker/title.webp')] },
+  { dir: 'down', speed: '90s', imgs: [w('kiss-me').desktop!.src, img('works/tomo-travel/blog-d0.webp'), img('works/k-amigo/d1.webp'), img('works/kiss-me/d0.webp')] },
+  { dir: 'up', speed: '105s', imgs: [w('tomo-travel').desktopFull!.src, w('k-sayuri').mobileFull!.src] },
+  { dir: 'down', speed: '95s', imgs: [img('works/k-amigo/d0.webp'), img('works/tomo-nightwalker/battle-rift.webp'), img('works/tomo-travel/article-d0.webp'), img('works/k-sayuri/res-d0.webp'), img('works/kiss-me/m0.webp')] },
+];
+---
+<div class="wall" aria-hidden="true">
+  <div class="wall__plane">
+    {cols.map((c, ci) => (
+      <div class:list={['wall__col', `wall__col--${c.dir}`]} style={`--speed:${c.speed}`}>
+        <div class="wall__track">
+          {[0, 1].map((copy) =>
+            c.imgs.map((src) => (
+              <Image src={src} alt="" widths={[320, 480].filter((x) => x <= src.width)} sizes="(min-width: 900px) 18vw, 34vw" loading={copy === 0 && ci < 3 ? 'eager' : 'lazy'} decoding="async" fetchpriority="low" />
+            ))
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

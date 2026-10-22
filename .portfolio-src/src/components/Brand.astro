@@ -1,0 +1,18 @@
+---
+/** ロゴ：自分のアイコン＋名前＋肩書き（ヘッダーとフッターで共通） */
+import { Image } from 'astro:assets';
+import icon from '../assets/brand/tomoicon.png';
+import { useI18n } from '../i18n';
+import { site } from '../config/site';
+
+interface Props { label?: string; class?: string }
+const { label, class: cls } = Astro.props;
+const { t, u } = useI18n(Astro.url);
+---
+<a class:list={['brand', cls]} href={u('')} aria-label={label}>
+  <Image class="brand__icon" src={icon} alt="" widths={[48, 96]} sizes="44px" loading="eager" />
+  <span class="brand__text">
+    <span class="brand__name">{site.brand}</span>
+    <span class="brand__role">{t.brand.role}</span>
+  </span>
+</a>

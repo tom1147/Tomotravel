@@ -1,0 +1,170 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import HeroWall from '../components/HeroWall.astro';
+import WorkPanel from '../components/WorkPanel.astro';
+import SectionHead from '../components/SectionHead.astro';
+import VideoCard from '../components/VideoCard.astro';
+import ExtLink from '../components/ExtLink.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { useI18n } from '../i18n';
+import { site } from '../config/site';
+import { webWorksFor, getWork, videosFor, img } from '../data/works';
+
+const { t, u, lang, paren } = useI18n(Astro.url);
+
+const h = t.home;
+const webWorks = webWorksFor(lang);
+const videos = videosFor(lang);
+const s = h.services;
+
+// サービス一覧の小さな画像（何を頼めるかが一目でわかるもの）
+const rowThumbs = {
+  web: getWork('tomo-travel', 'en').desktop!.src,
+  care: img('works/k-amigo/d1.webp'),
+  video: img('video/T8fWpREZLpY.webp'),
+  digital: img('works/tomo-nightwalker/battle-rift.webp'),
+} as const;
+---
+<Base>
+  <!-- Hero：左に言葉、右に実際のサイトが流れる壁。最初の画面から実績へ移動できる -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__media" aria-hidden="true"><HeroWall /></div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        {site.available && <p class="status"><i aria-hidden="true"></i>{h.hero.status}</p>}
+        <h1 class="hero__title" id="hero-title">{h.hero.title.map((line) => <span>{line}</span>)}</h1>
+        <p class="hero__lead">{h.hero.lead}</p>
+        <div class="actions">
+          <a class="btn" href="#works">{h.hero.ctaWorks}</a>
+          <a class="btn btn--ghost" href={u('pricing/')}>{h.hero.ctaPricing}</a>
+        </div>
+      </div>
+      <nav class="quick" aria-label={h.hero.quickLabel}>
+        <ul>
+          {webWorks.map((w) => (
+            <li>
+              <a href={u(`works/${w.slug}/`)}>
+                <Image src={w.desktop!.src} alt="" widths={[200, 400, 640]} sizes="(min-width: 1500px) 340px, (min-width: 901px) 22vw, 100px" loading="eager" />
+                <span><strong>{w.t.name}</strong><small>{w.t.genre}</small></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- 制作実績 -->
+  <section class="section section--works" id="works" aria-labelledby="works-title">
+    <div class="wrap">
+      <SectionHead title={h.works.title} lead={h.works.lead} id="works-title">
+        <a class="textlink" href={u('works/')}>{h.works.more}</a>
+      </SectionHead>
+      <div class="stack">
+        {webWorks.map((w, i) => <WorkPanel work={w} i={i} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ご依頼いただけること（料金は控えめに添え、詳しくは料金ページへ） -->
+  <section class="section" aria-labelledby="services-title">
+    <div class="wrap">
+      <SectionHead title={s.title} lead={s.lead} id="services-title" />
+      <ul class="svc-index">
+        {s.rows.map((r) => (
+          <li class="svc-row">
+            <div class="svc-row__thumb">
+              <Image src={rowThumbs[r.key as keyof typeof rowThumbs]} alt="" widths={[240, 400]} sizes="200px" loading="lazy" />
+            </div>
+            <div class="svc-row__text">
+              <h3><a href={u(r.href)}>{r.title}</a></h3>
+              <p>{r.body}</p>
+            </div>
+            <p class="svc-row__price">
+              {r.pre && <span class="price-pre">{r.pre}</span>}
+              {r.amount && <span class="price-num">{r.amount}</span>}
+              {r.unit && <span class:list={['price-unit', { 'price-unit--alone': !r.amount }]}>{r.unit}</span>}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <div class="svc-foot">
+        <p>{s.priceNote}</p>
+        <div class="actions">
+          <a class="btn" href={u('pricing/')}>{s.pricing}</a>
+          <a class="btn btn--ghost" href={u('services/')}>{s.more}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 依頼しやすい理由 -->
+  <section class="section band" aria-labelledby="why-title">
+    <div class="wrap why">
+      <div class="why__head">
+        <h2 class="sh__title" id="why-title">{h.why.title}</h2>
+        <p class="sh__lead">{h.why.lead}</p>
+      </div>
+      <ul class="points">
+        {h.why.points.map((p) => <li><h3>{p.title}</h3><p>{p.body}</p></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 動画 -->
+  <section class="section" aria-labelledby="video-title">
+    <div class="wrap split">
+      <div class="split__sticky">
+        <h2 class="sh__title" id="video-title">{h.video.title}</h2>
+        <p class="sh__lead" style="margin-top:20px">{h.video.lead}</p>
+        <div class="actions" style="margin-top:32px">
+          <ExtLink href={site.social.youtube} class="btn">{h.video.ctaChannel}</ExtLink>
+          <a class="btn btn--ghost" href={u('works/tomo-travel-channel/')}>{h.video.ctaDetail}</a>
+        </div>
+      </div>
+      <div class="videos">
+        {videos.map((v) => <VideoCard video={v} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ゲーム -->
+  <section class="section section--flush" aria-labelledby="game-title">
+    <div class="wrap">
+      <div class="gameband">
+        <div class="gameband__bg">
+          <Image src={img('works/tomo-nightwalker/title.webp')} alt={getWork('tomo-nightwalker', lang).cover.alt} widths={[640, 1280]} sizes="(min-width: 1400px) 1400px, 100vw" loading="lazy" />
+        </div>
+        <div class="gameband__inner">
+          <p class="gameband__label">{h.game.label}</p>
+          <h2 id="game-title">{h.game.title}</h2>
+          <p>{h.game.body}</p>
+          <p class="pitch">{h.game.pitch}</p>
+          <div class="actions">
+            <a class="btn" href={u('works/tomo-nightwalker/')}>{h.game.ctaDetail}</a>
+            <ExtLink href={site.game.web} class="btn btn--ghost">{h.game.ctaPlay}</ExtLink>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- プロフィール -->
+  <section class="section" aria-labelledby="about-title">
+    <div class="wrap about">
+      <div class="moonframe">
+        <div class="moonframe__moon" aria-hidden="true"></div>
+        <Image src={img('about/tomo.webp')} alt={t.a11y.photoAlt} widths={[400, 500]} sizes="(min-width: 900px) 420px, 80vw" loading="lazy" />
+      </div>
+      <div>
+        <h2 class="sh__title" id="about-title">{h.about.title}</h2>
+        <p class="about__body">{h.about.body}</p>
+        <dl class="facts-inline">{h.about.facts.map((f) => <div><dt>{f.k}</dt><dd>{f.v}</dd></div>)}</dl>
+        <div class="actions"><a class="btn btn--ghost" href={u('about/')}>{h.about.more}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <ContactBand />
+</Base>

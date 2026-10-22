@@ -1,0 +1,110 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { useI18n } from '../i18n';
+import { img, getWork } from '../data/works';
+import { money, pricing } from '../config/pricing';
+
+const { t, u, lang, paren } = useI18n(Astro.url);
+
+const p = t.servicesPage;
+const s = t.services;
+const why = t.home.why;
+
+const others = [
+  { ...s.care, href: 'pricing/', image: img('works/k-amigo/d1.webp'), alt: '' },
+  { ...s.video, href: 'works/tomo-travel-channel/', image: img('video/T8fWpREZLpY.webp'), alt: '' },
+  { ...s.digital, href: 'works/tomo-nightwalker/', image: img('works/tomo-nightwalker/battle-rift.webp'), alt: '' },
+];
+---
+<Base title={p.title} description={p.lead} og="services.jpg">
+  <div class="wrap page-head">
+    <h1>{p.title}</h1>
+    <p class="page-head__lead">{p.lead}</p>
+  </div>
+
+  <!-- メイン：Webサイト・LP制作 -->
+  <section class="wrap" aria-labelledby="svc-web">
+    <div class="svc-main">
+      <div class="svc-main__text">
+        <h2 class="sh__title" id="svc-web">{s.web.title}</h2>
+        <p class="sh__lead" style="margin-top:20px">{s.web.body}</p>
+        <p class="price-line">
+          <span class="price-line__label">{s.web.priceLabel}</span>
+          {t.common.fromPre && <span class="price-pre">{t.common.fromPre}</span>}<span class="price-num">{money(pricing.websiteFrom)}</span>{t.common.from && <span class="price-unit">{t.common.from}</span>}
+        </p>
+        <div class="actions" style="margin-top:28px">
+          <a class="btn" href={u('pricing/')}>{s.priceButton}</a>
+          <a class="btn btn--ghost" href={u('contact/')}>{t.workDetail.ctaContact}</a>
+        </div>
+        <div class="svc-main__sites" aria-hidden="true">
+          {['tomo-travel', 'k-amigo', 'k-sayuri'].map((slug) => (
+            <Image src={getWork(slug, 'en').desktop!.src} alt="" widths={[320, 480]} sizes="(min-width: 1000px) 14vw, 30vw" loading="lazy" />
+          ))}
+        </div>
+      </div>
+      <div class="svc-specs">
+        <div>
+          <h3>{s.web.targetsLabel}</h3>
+          <ul class="checks">{s.web.targets.map((x) => <li>{x}</li>)}</ul>
+        </div>
+        <div>
+          <h3>{s.web.scopeLabel}</h3>
+          <ul class="checks">{s.web.scope.map((x) => <li>{x}</li>)}</ul>
+        </div>
+        <p class="svc-specs__note">{s.web.extra}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- そのほかのご依頼 -->
+  <section class="section" aria-labelledby="other-title">
+    <div class="wrap">
+      <SectionHead title={p.otherTitle} id="other-title" />
+      <ul class="cards3">
+        {others.map((o) => (
+          <li class="card">
+            <div class="card__media"><Image src={o.image} alt={o.alt} widths={[480, 800]} sizes="(min-width: 900px) 30vw, 90vw" loading="lazy" /></div>
+            <div class="card__body">
+              <h3>{o.title}</h3>
+              <p>{o.body}</p>
+              <ul class="checks checks--sm">{o.items.map((i) => <li>{i}</li>)}</ul>
+              <a class="textlink" href={u(o.href)}>{o.link}</a>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div class="callout">
+        <h3>{p.combo.title}</h3>
+        <p>{p.combo.body}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 依頼しやすい理由 -->
+  <section class="section band" aria-labelledby="svc-why">
+    <div class="wrap why">
+      <div class="why__head">
+        <h2 class="sh__title" id="svc-why">{p.whyTitle}</h2>
+        <p class="sh__lead">{why.lead}</p>
+      </div>
+      <ul class="points">
+        {why.points.map((x) => <li><h3>{x.title}</h3><p>{x.body}</p></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 制作の流れ -->
+  <section class="section" aria-labelledby="process-title">
+    <div class="wrap">
+      <SectionHead title={p.process.title} id="process-title" />
+      <ol class="steps">
+        {p.process.steps.map((x) => <li><h3>{x.title}</h3><p>{x.body}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <ContactBand />
+</Base>

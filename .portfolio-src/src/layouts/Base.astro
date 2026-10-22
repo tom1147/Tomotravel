@@ -1,0 +1,154 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource/zen-kaku-gothic-new/400.css';
+import '@fontsource/zen-kaku-gothic-new/700.css';
+import '@fontsource/zen-kaku-gothic-new/900.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { useI18n, locales, langMeta, localePath, pagePath, defaultLang } from '../i18n';
+import { asset } from '../lib/url';
+import { site } from '../config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** public/og/<言語>/ 以下の画像ファイル名 */
+  og?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  /** ページ全体の差し色（実績ページで作品の色に合わせる） */
+  glow?: string;
+}
+const { t, lang, meta } = useI18n(Astro.url);
+const { title, description = t.meta.defaultDescription, og = 'default.jpg', type = 'website', noindex = false, glow } = Astro.props;
+const fullTitle = title ? `${title}${t.meta.titleSuffix}` : t.meta.defaultTitle;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(asset(`og/${lang}/${og}`), Astro.site).href;
+const path = pagePath(Astro.url.pathname);
+const alternates = locales.map((l) => ({ hreflang: langMeta[l].html, href: new URL(localePath(l, path), Astro.site).href }));
+const xDefault = new URL(localePath(defaultLang, path), Astro.site).href;
+---
+<!doctype html>
+<html lang={meta.html} data-theme={site.theme}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={xDefault} />}
+    <meta name="theme-color" content={site.theme === 'light' ? '#f5f5f8' : '#0d0e18'} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <link rel="icon" href={asset('favicon.png')} type="image/png" sizes="64x64" />
+    <link rel="icon" href={asset('favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={asset('apple-touch-icon.png')} />
+    <link rel="sitemap" href={asset('sitemap-index.xml')} />
+
+    <!-- OGP / LinkedIn -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={t.meta.siteName} />
+    <meta property="og:locale" content={meta.og} />
+    {locales.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={langMeta[l].og} />)}
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#main">{t.nav.skip}</a>
+    <Header />
+    <main id="main" style={glow ? `--glow:${glow}` : undefined}>
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // ヘッダーの境界線
+      const header = document.querySelector('[data-header]');
+      const onScroll = () => header?.toggleAttribute('data-scrolled', window.scrollY > 8);
+      addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // スマートフォンのメニュー
+      const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+      const label = document.querySelector<HTMLElement>('[data-menu-label]');
+      const setMenu = (open: boolean) => {
+        document.documentElement.toggleAttribute('data-menu-open', open);
+        toggle?.setAttribute('aria-expanded', String(open));
+        if (label) label.textContent = open ? label.dataset.close! : label.dataset.open!;
+      };
+      toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+      document.querySelectorAll('#site-nav a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+      addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+      matchMedia('(min-width: 861px)').addEventListener('change', () => setMenu(false));
+
+      // 見出しなどをスクロールに合わせて表示
+      const revealTargets = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        revealTargets.forEach((el) => io.observe(el));
+      } else {
+        revealTargets.forEach((el) => el.classList.add('is-in'));
+      }
+
+      // メールアドレスのコピー
+      document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const status = btn.closest('[data-mailbox]')?.querySelector('[data-copy-status]');
+          try {
+            await navigator.clipboard.writeText(btn.dataset.copy || '');
+            if (status) status.textContent = btn.dataset.copied || '';
+          } catch {
+            if (status) status.textContent = btn.dataset.copy || '';
+          }
+        });
+      });
+
+      // お問い合わせフォーム：ページを移動せずに送信して、その場で結果を表示する
+      // （JavaScriptが無効な場合は、通常の送信で Tomo Travel 側の完了ページに移動します）
+      document.querySelectorAll<HTMLFormElement>('[data-cform]').forEach((form) => {
+        const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+        const done = form.querySelector<HTMLElement>('[data-cform-done]');
+        const error = form.querySelector<HTMLElement>('[data-cform-error]');
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!btn) return;
+          const label = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = btn.dataset.sending || label;
+          if (error) error.hidden = true;
+          try {
+            const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString();
+            await fetch(form.action, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+            form.querySelectorAll<HTMLElement>('[data-cform-field]').forEach((el) => (el.hidden = true));
+            if (done) { done.hidden = false; done.focus(); }
+          } catch {
+            if (error) error.hidden = false;
+            btn.disabled = false;
+            btn.textContent = label;
+          }
+        });
+      });
+
+      // タッチ端末：ページを流して見る
+      document.querySelectorAll<HTMLButtonElement>('[data-play]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const stage = btn.closest('[data-scrollstage]');
+          const on = !stage?.classList.contains('is-playing');
+          stage?.classList.toggle('is-playing', on);
+          btn.setAttribute('aria-pressed', String(on));
+        });
+      });
+    </script>
+  </body>
+</html>

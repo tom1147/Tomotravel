@@ -1,0 +1,10 @@
+---
+/** 実績の詳細ページ（英語）。中身は src/views/WorkDetailPage.astro */
+import WorkDetailPage from '../../views/WorkDetailPage.astro';
+import { workSlugs } from '../../data/works';
+export function getStaticPaths() {
+  return workSlugs.map((slug) => ({ params: { slug } }));
+}
+const { slug } = Astro.params;
+---
+<WorkDetailPage slug={slug!} />
