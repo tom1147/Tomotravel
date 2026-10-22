@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.1.2.apk`
-- 元ファイル: `C:/Users/tommi/Desktop/インクリメンタルゲーム/TomoNightwalker-Android-v41.1.2.apk`
-- サイズ: 419,116,191 bytes
-- SHA-256: `ad8001404c5514f12912c9b0d56a1538b31e48cf491e0f7a5f82ac395b137788`
+- 現行の配布キー: `TomoNightwalker-Android-v41.2.0.apk`
+- 元ファイル: `C:/Users/tommi/Desktop/インクリメンタルゲーム/TomoNightwalker-Android-v41.2.0.apk`
+- サイズ: 437,668,820 bytes
+- SHA-256: `79bb246e334e53b31f55bdd21c64959014da487cc312e95337326e11342d840d`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -69,3 +69,6 @@ v41.1.1 / Android56：指定BGM・マダム・湾岸大島の更新を含み、�
 
 
 v41.1.2 / Android57：英語版の戦闘曲を差し替え前へ復元。マダム戦の新曲、日本語版、通常画面BGM、ゲームバランス・セーブは維持。
+
+
+v41.2.0 / Android58：人物と会話を改稿、全120話・地域ボス14人・隠し戦を強化。導線修正を統合。育成・通貨・既読・加入は維持。
