@@ -517,7 +517,7 @@ const works: RawWork[] = [
         name: 'Tomo Nightwalker',
         short: '以我的YouTube频道为题材的塔防游戏。',
         genre: '塔防游戏（浏览器 / 安卓）',
-        headline: '我的YouTube频道变成了游戏。首个可玩版本仅用4天完成。',
+        headline: '我的YouTube频道\u200b变成了游戏。\u200b首个可玩版本\u200b仅用4天完成。',
         summary:
           '以我的YouTube频道为题材的原创塔防游戏。借助AI在4天内完成首个可玩版本，上线后不断加入角色、关卡和剧情，至今仍在持续改进和扩展。支持日语和英语。',
         role: '策划・开发・发布（运用AI）',

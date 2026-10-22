@@ -7,6 +7,7 @@ import SectionHead from '../components/SectionHead.astro';
 import VideoCard from '../components/VideoCard.astro';
 import ExtLink from '../components/ExtLink.astro';
 import ContactBand from '../components/ContactBand.astro';
+import Icon from '../components/Icon.astro';
 import { useI18n } from '../i18n';
 import { site } from '../config/site';
 import { webWorksFor, getWork, videosFor, img } from '../data/works';
@@ -144,7 +145,9 @@ const rowThumbs = {
           <div class="actions">
             <a class="btn" href={u('works/tomo-nightwalker/')}>{h.game.ctaDetail}</a>
             <ExtLink href={site.game.web} class="btn btn--ghost">{h.game.ctaPlay}</ExtLink>
+            {site.game.apk && <a class="btn btn--ghost" href={site.game.apk} rel="noopener">{h.game.ctaApk}<Icon name="download" /></a>}
           </div>
+          {site.game.apk && <p class="gameband__note">{h.game.apkNote}</p>}
         </div>
       </div>
     </div>
