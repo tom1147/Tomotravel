@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { useI18n } from '../i18n';
+
+const { t, u, lang, paren } = useI18n(Astro.url);
+
+const p = t.pricingPage;
+const plans = [
+  { id: 'website', featured: true, ...p.plans.website },
+  { id: 'care', featured: false, ...p.plans.care },
+];
+const steps = t.servicesPage.process;
+---
+<Base title={p.title} description={p.lead} og="pricing.jpg">
+  <div class="wrap page-head">
+    <h1>{p.headline}</h1>
+    <p class="page-head__lead">{p.lead}</p>
+  </div>
+
+  <section class="wrap" aria-label={p.title}>
+    <div class="plans">
+      {plans.map((x) => (
+        <article class:list={['plan', { 'plan--featured': x.featured }]} aria-labelledby={`plan-${x.id}`}>
+          <h2 class="plan__name" id={`plan-${x.id}`}>{x.name}</h2>
+          <p class="plan__sub">{x.sub}</p>
+          <p class="plan__price">{x.pre && <span class="price-pre">{x.pre}</span>}<span class="price-num">{x.price}</span>{x.unit && <span class="price-unit">{x.unit}</span>}</p>
+          <p class="plan__term">{x.term}</p>
+          <p class="plan__body">{x.body}</p>
+          <ul class="checks plan__list">{x.includes.map((i) => <li>{i}</li>)}</ul>
+          <p class="plan__note">{x.note}</p>
+          <a class:list={['btn', { 'btn--ghost': !x.featured }]} href={u('contact/')}>{x.cta}</a>
+        </article>
+      ))}
+    </div>
+
+    <article class="plan-row" aria-labelledby="plan-fix">
+      <h2 class="plan-row__name" id="plan-fix">{p.fix.name}</h2>
+      <p class="plan-row__price">{p.fix.price}</p>
+      <p class="plan-row__body">{p.fix.body}</p>
+      <a class="btn btn--ghost" href={u('contact/')}>{p.fix.cta}</a>
+    </article>
+
+    <div class="pricing-notes">
+      <div>
+        <h2>{p.extraTitle}</h2>
+        <ul class="dashes">{p.extras.map((x) => <li>{x}</li>)}</ul>
+      </div>
+      <div>
+        <h2>{p.notesTitle}</h2>
+        <ul class="dashes">{p.notes.map((x) => <li>{x}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="own-title">
+    <div class="wrap">
+      <div class="callout callout--split">
+        <h2 id="own-title">{p.ownership.title}</h2>
+        <p>{p.ownership.body}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--flush" aria-labelledby="flow-title">
+    <div class="wrap">
+      <SectionHead title={steps.title} id="flow-title" />
+      <ol class="steps">
+        {steps.steps.map((x) => <li><h3>{x.title}</h3><p>{x.body}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="faq-title">
+    <div class="wrap faq">
+      <h2 class="sh__title" id="faq-title">{p.faqTitle}</h2>
+      <div class="faq__list">
+        {p.faq.map((x) => (
+          <details>
+            <summary>{x.q}</summary>
+            <p>{x.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactBand />
+</Base>

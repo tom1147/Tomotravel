@@ -1,0 +1,37 @@
+---
+/**
+ * ページ下の「お問い合わせ」帯に置くボタン。
+ * フォームを使う設定（site.contact.formAction）なら、お問い合わせページのフォームへ案内します。
+ * フォームを使わない場合は、メールアドレス（email）か、既存のフォーム（url）に切り替わります。
+ */
+import Icon from './Icon.astro';
+import { useI18n } from '../i18n';
+import { site } from '../config/site';
+
+const { t, u, paren } = useI18n(Astro.url);
+const c = t.contactPage;
+const email = site.contact.email;
+---
+{site.contact.formAction ? (
+  <div>
+    <a class="btn btn--lg" href={u('contact/')}>{t.contactBand.button}</a>
+    <p class="note">{c.form.note}</p>
+  </div>
+) : email ? (
+  <div class="mailbox" data-mailbox>
+    <p class="mailbox__label">{c.emailLabel}</p>
+    <p class="mailbox__addr">{email}</p>
+    <div class="actions">
+      <button type="button" class="btn btn--lg" data-copy={email} data-copied={c.copied}>{c.copy}</button>
+      <a class="textlink" href={`mailto:${email}`}>{c.openMail}</a>
+    </div>
+    <p class="note" role="status" aria-live="polite" data-copy-status></p>
+  </div>
+) : site.contact.url ? (
+  <div>
+    <a class="btn btn--lg" href={site.contact.url} target="_blank" rel="noopener">{c.button}<span class="visually-hidden">{paren(t.common.external)}</span><Icon name="external" /></a>
+    <p class="note">{c.hostNote(site.contact.hostLabel)}</p>
+  </div>
+) : (
+  <p class="note">{c.unavailable}</p>
+)}

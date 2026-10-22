@@ -1,0 +1,43 @@
+---
+/**
+ * PC表示のモックアップ。
+ * scroll を渡すと、ホバー（タッチ端末は再生ボタン）でページ全体をスクロール表示します。
+ */
+import { Image } from 'astro:assets';
+import type { Shot } from '../data/works';
+
+interface Props {
+  shot: Shot;
+  title?: string;
+  scroll?: boolean;
+  sizes?: string;
+  widths?: number[];
+  eager?: boolean;
+  class?: string;
+  /** 画面の縦横比（既定 16 / 10） */
+  ratio?: string;
+}
+const { shot, title, scroll = false, sizes = '(min-width: 1200px) 1000px, 90vw', widths = [640, 960, 1280, 1600], eager = false, class: cls, ratio } = Astro.props;
+
+// 16:10 の画面に対して何画面分あるかで、スクロール時間を決める
+const screens = (shot.src.height / shot.src.width) / (10 / 16);
+const dur = Math.min(14, Math.max(4, screens * 1.15)).toFixed(1);
+const w = widths.filter((x) => x <= shot.src.width);
+---
+<figure class:list={['browser', cls]}>
+  <div class="browser__bar" aria-hidden="true">
+    <span class="browser__dots"><i></i><i></i><i></i></span>
+    {title && <span class="browser__tab">{title}</span>}
+  </div>
+  <div class:list={['screen', { 'screen--scroll': scroll }]} style={[scroll ? `--dur:${dur}s` : '', ratio ? `aspect-ratio:${ratio}` : ''].filter(Boolean).join(';') || undefined}>
+    <Image
+      src={shot.src}
+      alt={shot.alt}
+      widths={w.length ? w : [shot.src.width]}
+      sizes={sizes}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding={eager ? 'auto' : 'async'}
+      fetchpriority={eager ? 'high' : undefined}
+    />
+  </div>
+</figure>

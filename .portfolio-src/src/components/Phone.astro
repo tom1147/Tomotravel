@@ -1,0 +1,29 @@
+---
+/** スマートフォン表示のモックアップ */
+import { Image } from 'astro:assets';
+import type { Shot } from '../data/works';
+
+interface Props {
+  shot: Shot;
+  scroll?: boolean;
+  sizes?: string;
+  eager?: boolean;
+  class?: string;
+}
+const { shot, scroll = false, sizes = '(min-width: 1000px) 260px, 30vw', eager = false, class: cls } = Astro.props;
+const screens = (shot.src.height / shot.src.width) / (844 / 390);
+const dur = Math.min(14, Math.max(4, screens * 1.1)).toFixed(1);
+const widths = [300, 480, 600, 780].filter((x) => x <= shot.src.width);
+---
+<figure class:list={['phone', cls]}>
+  <div class:list={['screen', { 'screen--scroll': scroll }]} style={scroll ? `--dur:${dur}s` : undefined}>
+    <Image
+      src={shot.src}
+      alt={shot.alt}
+      widths={widths}
+      sizes={sizes}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding={eager ? 'auto' : 'async'}
+    />
+  </div>
+</figure>

@@ -1,0 +1,11 @@
+---
+/** 実績の詳細ページ（日本語・中国語）。中身は英語版と共通 */
+import WorkDetailPage from '../../../views/WorkDetailPage.astro';
+import { workSlugs } from '../../../data/works';
+import { otherLangs } from '../../../i18n';
+export function getStaticPaths() {
+  return otherLangs.flatMap((lang) => workSlugs.map((slug) => ({ params: { lang, slug } })));
+}
+const { slug } = Astro.params;
+---
+<WorkDetailPage slug={slug!} />

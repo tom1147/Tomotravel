@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { useI18n } from '../i18n';
+
+const { t, u, lang, paren } = useI18n(Astro.url);
+const p = t.notFound;
+---
+<Base title={p.title} noindex>
+  <div class="wrap page-head" style="min-height:60svh">
+    <p class="page-head__code en" aria-hidden="true">404</p>
+    <h1>{p.title}</h1>
+    <p class="page-head__lead">{p.body}</p>
+    <div class="actions" style="margin-top:32px">
+      <a class="btn" href={u('')}>{p.home}</a>
+      <a class="btn btn--ghost" href={u('works/')}>{t.common.backToWorks}</a>
+    </div>
+  </div>
+</Base>

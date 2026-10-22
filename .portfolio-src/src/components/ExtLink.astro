@@ -1,0 +1,13 @@
+---
+/** 外部サイトへのリンク。新しいタブで開くことをスクリーンリーダーにも伝える */
+import Icon from './Icon.astro';
+import { useI18n } from '../i18n';
+interface Props { href: string; class?: string; download?: boolean }
+const { href, class: cls = 'textlink' } = Astro.props;
+const { t, paren } = useI18n(Astro.url);
+---
+{href && (
+  <a href={href} class={cls} target="_blank" rel="noopener">
+    <slot /><span class="visually-hidden">{paren(t.common.external)}</span><Icon name="external" class="ext-icon" />
+  </a>
+)}

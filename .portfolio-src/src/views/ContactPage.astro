@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ContactActions from '../components/ContactActions.astro';
+import { useI18n } from '../i18n';
+import { site } from '../config/site';
+
+const { t, u, lang, paren } = useI18n(Astro.url);
+
+const p = t.contactPage;
+---
+<Base title={p.title} description={p.lead} og="default.jpg">
+  <div class="wrap page-head">
+    <h1>{p.title}</h1>
+    <p class="page-head__lead">{p.lead}</p>
+  </div>
+
+  <section class="wrap section section--flush" aria-label={p.title}>
+    <div class="contact-layout">
+      <div class="contact-main">
+        {site.contact.formAction ? <ContactForm /> : <div class="contact-card"><ContactActions /></div>}
+      </div>
+      <aside class="contact-side">
+        <h2>{p.checklistLabel}</h2>
+        <ul class="checks">
+          {p.checklist.map((x) => <li>{x}</li>)}
+        </ul>
+        <p class="contact-side__link"><a class="textlink" href={u('pricing/')}>{t.services.priceButton}</a></p>
+      </aside>
+    </div>
+  </section>
+</Base>

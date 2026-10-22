@@ -1,0 +1,9 @@
+---
+/** 日本語（/ja/）・中国語（/zh/）のページ。中身は英語版と共通（src/views/HomePage.astro） */
+import HomePage from '../../views/HomePage.astro';
+import { otherLangs } from '../../i18n';
+export function getStaticPaths() {
+  return otherLangs.map((lang) => ({ params: { lang } }));
+}
+---
+<HomePage />

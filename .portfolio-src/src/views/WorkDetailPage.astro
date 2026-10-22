@@ -1,0 +1,228 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Browser from '../components/Browser.astro';
+import Phone from '../components/Phone.astro';
+import PlayButton from '../components/PlayButton.astro';
+import ExtLink from '../components/ExtLink.astro';
+import VideoCard from '../components/VideoCard.astro';
+import Icon from '../components/Icon.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { useI18n } from '../i18n';
+import { site } from '../config/site';
+import { worksFor, videosFor, img, isLatin } from '../data/works';
+
+interface Props { slug: string }
+const { slug } = Astro.props;
+const { t, u, lang, paren } = useI18n(Astro.url);
+const all = worksFor(lang);
+const index = all.findIndex((w) => w.slug === slug);
+const work = all[index];
+const next = all[(index + 1) % all.length];
+const videos = videosFor(lang);
+const d = t.workDetail;
+const g = t.gameDetail;
+const v = t.videoDetail;
+const w = work.t;
+const isWeb = work.kind === 'web';
+const isGame = work.kind === 'game';
+const isVideo = work.kind === 'video';
+const nameIsLatin = isLatin(w.name);
+const max = lang === 'en' ? 200 : 110;
+const description = w.summary.length > max ? `${w.summary.slice(0, max - 2)}…` : w.summary;
+---
+<Base title={`${w.name}${paren(w.genre)}`} description={description} og={`${work.slug}.jpg`} type="article" glow={work.glow}>
+  <div class="wrap page-head" style={`--glow:${work.glow}`}>
+    <nav aria-label={t.a11y.breadcrumb}>
+      <ol class="crumbs">
+        <li><a href={u('')}>{t.nav.home}</a></li>
+        <li><a href={u('works/')}>{t.nav.works}</a></li>
+        <li aria-current="page">{w.name}</li>
+      </ol>
+    </nav>
+
+    <div class="detail-head">
+      <div>
+        <p class="detail-head__genre">{w.genre}</p>
+        <h1 class:list={{ en: nameIsLatin, 'is-long': nameIsLatin && w.name.length > 11, 'is-ja': !nameIsLatin }}>{w.name}</h1>
+        {w.headline && <p class="detail-head__headline">{w.headline}</p>}
+        <p class="detail-head__summary">{w.summary}</p>
+      </div>
+      <div>
+        <dl class="facts">
+          <div><dt>{d.genre}</dt><dd>{w.genre}</dd></div>
+          {w.audience && <div><dt>{d.audience}</dt><dd>{w.audience}</dd></div>}
+          <div><dt>{d.role}</dt><dd>{w.role}</dd></div>
+          {work.urlLabel && <div><dt>{d.url}</dt><dd>{work.urlLabel}</dd></div>}
+        </dl>
+        <div class="actions">
+          {isWeb && work.url && (
+            <a class="btn" href={work.url} target="_blank" rel="noopener">{t.common.viewSite}<span class="visually-hidden">{paren(t.common.external)}</span><Icon name="external" /></a>
+          )}
+          {isGame && (
+            <>
+              <a class="btn" href={site.game.web} target="_blank" rel="noopener">{g.play}<span class="visually-hidden">{paren(t.common.external)}</span><Icon name="external" /></a>
+              {site.game.apk && <a class="btn btn--ghost" href={site.game.apk} rel="noopener">{g.apk}<Icon name="download" /></a>}
+              {site.game.itch && <ExtLink href={site.game.itch}>{g.itch}</ExtLink>}
+            </>
+          )}
+          {isVideo && (
+            <a class="btn" href={site.social.youtube} target="_blank" rel="noopener">{v.channel}<span class="visually-hidden">{paren(t.common.external)}</span><Icon name="external" /></a>
+          )}
+        </div>
+        {isGame && site.game.apk && <p class="domain-note">{g.apkNote}</p>}
+        {work.sharedDomain && <p class="domain-note">{d.sharedDomainNote}</p>}
+      </div>
+    </div>
+
+    {isWeb && (
+      <div class="detail-stage">
+        <div class="exhibit__stage" style={`--tint:${work.tint};--glow:${work.glow}`} data-scrollstage>
+          <div class="exhibit__devices">
+            <Browser shot={work.desktopFull!} title={w.tabTitle} scroll eager sizes="(min-width: 1280px) 900px, 80vw" widths={[640, 960, 1280]} />
+            <Phone shot={work.mobileFull!} scroll class="exhibit__phone" sizes="(min-width: 1280px) 220px, 20vw" />
+          </div>
+          <PlayButton label={w.name} />
+        </div>
+        <p class="domain-note" style="margin-top:16px">
+          <span class="hint-hover">{t.common.hoverHint}</span><span class="hint-tap">{t.common.tapHint}</span>
+        </p>
+      </div>
+    )}
+
+    {isGame && (
+      <div class="detail-stage">
+        <Browser shot={work.cover} title="Tomo Nightwalker" ratio="16 / 9" eager sizes="(min-width: 1320px) 1320px, 94vw" widths={[640, 960, 1280]} />
+      </div>
+    )}
+
+    {isVideo && (
+      <div class="detail-stage">
+        <div class="videos" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">
+          {videos.map((v) => <VideoCard video={v} />)}
+        </div>
+        <p class="domain-note" style="margin-top:16px">{v.titleNote}</p>
+      </div>
+    )}
+  </div>
+
+  {w.design && (
+    <section class="section" aria-labelledby="design-title">
+      <div class="wrap">
+        <h2 class="sub-h" id="design-title">{d.designLabel}</h2>
+        <ul class="features3">
+          {w.design.map((x) => <li><h3>{x.title}</h3><p>{x.body}</p></li>)}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {isWeb && work.gallery && (
+    <section class="section section--tight" aria-label={t.a11y.gallery}>
+      <div class="wrap">
+        <h2 class="sub-h">{d.pcLabel}</h2>
+        <div class:list={['gallery-pc', { 'gallery-pc--2': work.gallery.pc.length > 1 }]}>
+          {work.gallery.pc.map((s) => (
+            <figure>
+              <Browser shot={s} title={w.tabTitle} sizes="(min-width: 1320px) 640px, (min-width: 900px) 46vw, 92vw" widths={[640, 960, 1280]} />
+              <figcaption>{s.alt}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <h2 class="sub-h mt-l">{d.spLabel}</h2>
+        <div class="gallery-panel" style={`--tint:${work.tint};--glow:${work.glow}`}>
+          <div class="gallery-sp" style="margin-inline:auto">
+            {work.gallery.sp.map((s) => (
+              <figure>
+                <Phone shot={s} sizes="(min-width: 1000px) 280px, 60vw" />
+                <figcaption>{s.alt}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {isGame && work.gallery && (
+    <section class="section section--tight" aria-labelledby="shots-title">
+      <div class="wrap">
+        <h2 class="sub-h" id="shots-title">{g.screens}</h2>
+        <div class="shotgrid">
+          {work.gallery.pc.map((s) => (
+            <figure>
+              <div class="shot"><Image src={s.src} alt={s.alt} widths={[640, 960, 1280]} sizes="(min-width: 1320px) 650px, (min-width: 760px) 46vw, 92vw" loading="lazy" decoding="async" /></div>
+              <figcaption class="domain-note">{s.alt}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section section--tight" aria-labelledby="features-title">
+    <div class="wrap">
+      <h2 class="sub-h" id="features-title">{isWeb ? d.featuresLabel : isGame ? g.gameplay : v.skills}</h2>
+      <ul class="featurelist">
+        {w.features.map((f) => <li>{f}</li>)}
+      </ul>
+      <div class="detail-cta">
+        <p>{isWeb ? d.ctaTitle : isGame ? d.ctaGame : d.ctaVideo}</p>
+        <div class="actions">
+          <a class="btn" href={u('contact/')}>{d.ctaContact}</a>
+          <a class="btn btn--ghost" href={u('pricing/')}>{d.ctaServices}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {isGame && (
+    <section class="section section--tight" aria-labelledby="ai-title">
+      <div class="wrap split">
+        <h2 class="sh__title" id="ai-title">{g.aiTitle}</h2>
+        <div class="prose">
+          {g.aiBody.map((x) => <p>{x}</p>)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {isGame && (
+    <section class="section band" aria-labelledby="minigame-title">
+      <div class="wrap split">
+        <h2 class="sh__title" id="minigame-title">{g.yourTitle}</h2>
+        <div>
+          <ul class="featurelist featurelist--1">
+            {g.ideas.map((x) => <li>{x}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {isVideo && (
+    <section class="section section--tight" aria-labelledby="combo-title">
+      <div class="wrap">
+        <div class="combo">
+          <div>
+            <h2 id="combo-title">{t.servicesPage.combo.title}</h2>
+            <p>{t.servicesPage.combo.body}</p>
+          </div>
+          <Image src={img('video/beach-night.webp')} alt={v.imageAlt} widths={[640, 1000]} sizes="(min-width: 900px) 560px, 90vw" loading="lazy" style="border-radius:12px" />
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section--tight" aria-label={t.a11y.nextWork}>
+    <div class="wrap">
+      <a class="nextwork" href={u(`works/${next.slug}/`)}>
+        <span>{t.common.next}</span>
+        <strong class:list={{ en: isLatin(next.t.name), 'is-ja': !isLatin(next.t.name) }}>{next.t.name}</strong>
+      </a>
+    </div>
+  </section>
+
+  <ContactBand />
+</Base>

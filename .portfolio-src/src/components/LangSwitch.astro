@@ -1,0 +1,21 @@
+---
+/** 言語の切り替え（今見ているページの、別の言語版へ移動する） */
+import { useI18n, locales, langMeta, localePath, pagePath } from '../i18n';
+interface Props { id?: string }
+const { id } = Astro.props;
+const { t, lang } = useI18n(Astro.url);
+// 404ページなど、他の言語に同じページがないときは各言語のトップへ
+const raw = pagePath(Astro.url.pathname);
+const path = /^404(\.html|\/)?$/.test(raw) ? '' : raw;
+---
+<nav class="langs" aria-label={t.lang.label} id={id}>
+  {locales.map((l) => (
+    <a
+      href={localePath(l, path)}
+      hreflang={langMeta[l].html}
+      lang={langMeta[l].html}
+      aria-current={l === lang ? 'true' : undefined}
+      title={langMeta[l].name}
+    >{langMeta[l].label}</a>
+  ))}
+</nav>

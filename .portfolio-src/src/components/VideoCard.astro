@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import { useI18n } from '../i18n';
+import type { LocalizedVideo } from '../data/works';
+interface Props { video: LocalizedVideo }
+const { video } = Astro.props;
+const { t, paren } = useI18n(Astro.url);
+---
+<a class="vcard" href={video.url} target="_blank" rel="noopener">
+  <span class="vcard__thumb">
+    <Image src={video.thumb} alt="" widths={[400, 800]} sizes="(min-width: 1000px) 340px, (min-width: 640px) 45vw, 90vw" loading="lazy" decoding="async" />
+    <span class="vcard__len">{video.length}</span>
+  </span>
+  <span class="vcard__meta">{video.t.tag}</span>
+  <span class="vcard__title">{video.t.title}</span>
+  <span class="visually-hidden">{paren(`${t.common.watchOnYoutube}, ${t.common.external}`)}</span>
+</a>

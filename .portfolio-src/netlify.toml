@@ -1,0 +1,8 @@
+# Netlify で公開する場合の設定（Cloudflare Pages では使われません）
+# キャッシュなどのヘッダーは public/_headers に書いてあり、Netlify・Cloudflare Pages の両方で有効です。
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
