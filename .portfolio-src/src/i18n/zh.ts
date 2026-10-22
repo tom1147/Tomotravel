@@ -132,11 +132,13 @@ const zh: Dict = {
     },
     game: {
       label: 'Tomo Nightwalker',
-      title: '我的YouTube频道变成了游戏。首个可玩版本仅用4天完成。',
+      title: '我的YouTube频道\u200b变成了游戏。\u200b首个可玩版本\u200b仅用4天完成。',
       body: '以我的频道为题材的原创塔防游戏。首个版本4天完成，之后不断加入新角色和关卡，至今仍在持续更新。',
       pitch: '也可以为你或你的品牌制作原创小游戏。',
       ctaDetail: '了解这款游戏',
       ctaPlay: '在浏览器中游玩',
+      ctaApk: '安卓版（APK）',
+      apkNote: 'APK文件较大，建议在Wi-Fi环境下下载。',
     },
     about: {
       title: '从咨询到上线，全部亲手完成。',

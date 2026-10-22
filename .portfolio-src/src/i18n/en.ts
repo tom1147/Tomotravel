@@ -137,6 +137,8 @@ const en: Dict = {
       pitch: 'I can also create an original mini game starring you or your brand.',
       ctaDetail: 'About the game',
       ctaPlay: 'Play in your browser',
+      ctaApk: 'Android app (APK)',
+      apkNote: 'The APK is a large file, so downloading over Wi-Fi is recommended.',
     },
     about: {
       title: 'One person, from first message to launch.',
