@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.2.1.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v41.2.1.apk`
-- サイズ: 437,668,820 bytes
-- SHA-256: `f55076fe3dc4f379447851f88bc77044f022451dfc654241a592a3445becf1b5`
+- 現行の配布キー: `TomoNightwalker-Android-v41.3.0.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v41.3.0.apk`
+- サイズ: 437,677,095 bytes
+- SHA-256: `fb0a84b31bbf98e4ca2c0a89af675b110da1f3731b6951b22bb5a6657eefce1e`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -75,3 +75,6 @@ v41.2.0 / Android58：人物と会話を改稿、全120話・地域ボス14人�
 
 
 v41.2.1 / Android59：三階からのSOSとリンゴ隠し戦の出撃に最新の育成を反映。旧セーブと再挑戦も対応。チャム基礎火力約9%UP、地域ボスの向きとモーションを統合。
+
+
+v41.3.0 / Android60：全9レイドボスHP1.5倍と予告付き特殊行動。大島2体は毒と巻き戻し回復。長期戦激化を約1.3倍へ延長し、レイド・総力戦は編成画面からスタート。
