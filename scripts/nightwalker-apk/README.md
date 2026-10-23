@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.2.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v41.2.0.apk`
+- 現行の配布キー: `TomoNightwalker-Android-v41.2.1.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v41.2.1.apk`
 - サイズ: 437,668,820 bytes
-- SHA-256: `79bb246e334e53b31f55bdd21c64959014da487cc312e95337326e11342d840d`
+- SHA-256: `f55076fe3dc4f379447851f88bc77044f022451dfc654241a592a3445becf1b5`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -72,3 +72,6 @@ v41.1.2 / Android57：英語版の戦闘曲を差し替え前へ復元。マダ�
 
 
 v41.2.0 / Android58：人物と会話を改稿、全120話・地域ボス14人・隠し戦を強化。導線修正を統合。育成・通貨・既読・加入は維持。
+
+
+v41.2.1 / Android59：三階からのSOSとリンゴ隠し戦の出撃に最新の育成を反映。旧セーブと再挑戦も対応。チャム基礎火力約9%UP、地域ボスの向きとモーションを統合。
