@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.3.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v41.3.0.apk`
-- サイズ: 437,677,095 bytes
-- SHA-256: `fb0a84b31bbf98e4ca2c0a89af675b110da1f3731b6951b22bb5a6657eefce1e`
+- 現行の配布キー: `TomoNightwalker-Android-v41.4.0.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v41.4.0.apk`
+- サイズ: 437,677,180 bytes
+- SHA-256: `a0655a25035e1441c9b92620d2278384e546d2f065332ef203dd1eba45083c55`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -78,3 +78,6 @@ v41.2.1 / Android59：三階からのSOSとリンゴ隠し戦の出撃に最新�
 
 
 v41.3.0 / Android60：全9レイドボスHP1.5倍と予告付き特殊行動。大島2体は毒と巻き戻し回復。長期戦激化を約1.3倍へ延長し、レイド・総力戦は編成画面からスタート。
+
+
+v41.4.0 / Android61：武器に合う仲間の攻撃・回復を5～6%補助。マダムHP90%と連射ダメージ上限、湾岸大島HP1.3倍。
