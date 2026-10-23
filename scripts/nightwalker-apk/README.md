@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.6.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v41.6.0.apk`
+- 現行の配布キー: `TomoNightwalker-Android-v41.6.1.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v41.6.1.apk`
 - サイズ: 437,697,986 bytes
-- SHA-256: `4e878bce1188b4bc5e092f0ab9e00263d2bba794d26f23f6e308a9fa75becdc1`
+- SHA-256: `191e9a748df48e3406552c9ea51e3a5166af669818b8d2981ef3cd61dd91b4e9`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -87,3 +87,6 @@ v41.5.0 / Android62：リンゴの盾で仲間の威力+8%、大技防御で5秒
 
 
 v41.6.0 / Android63：全40個のアクセサリーを追加。ともに2枠装備、ボスのまれなドロップ、図鑑と称号。既存のリンゴ調整を継承。
+
+
+v41.6.1 / Android64：アクセ66個へ拡張。全26人の役割別・絆のお守り、レイド品強化、旧アクセ8個の所持・装備を自動移行。
