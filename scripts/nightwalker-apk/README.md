@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.5.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v41.5.0.apk`
-- サイズ: 437,681,357 bytes
-- SHA-256: `052bbed7ce1bee458e8612ff0834f694dc8c1b01ee2b139e7457e18013d22def`
+- 現行の配布キー: `TomoNightwalker-Android-v41.6.0.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v41.6.0.apk`
+- サイズ: 437,697,986 bytes
+- SHA-256: `4e878bce1188b4bc5e092f0ab9e00263d2bba794d26f23f6e308a9fa75becdc1`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -84,3 +84,6 @@ v41.4.0 / Android61：武器に合う仲間の攻撃・回復を5～6%補助。�
 
 
 v41.5.0 / Android62：リンゴの盾で仲間の威力+8%、大技防御で5秒間アンコール+10%。ロスマン号令36%・総攻撃12%へ微調整、ジャス威力+8%。
+
+
+v41.6.0 / Android63：全40個のアクセサリーを追加。ともに2枠装備、ボスのまれなドロップ、図鑑と称号。既存のリンゴ調整を継承。
