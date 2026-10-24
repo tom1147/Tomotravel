@@ -4,10 +4,10 @@ Cloudflare R2 の非公開バケット `tomo-nightwalker-downloads` に APK を�
 
 - ダウンロード URL: `https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk`
 
-- 現行の配布キー: `TomoNightwalker-Android-v41.7.0.apk`
-- 元ファイル: `output/TomoNightwalker-Android-v41.7.0.apk`
-- サイズ: 435,457,214 bytes
-- SHA-256: `7c881ee6e4ddb7a80bca24b177b4f83e39111d78a226003a7a394183666fa1d6`
+- 現行の配布キー: `TomoNightwalker-Android-v41.7.1.apk`
+- 元ファイル: `output/TomoNightwalker-Android-v41.7.1.apk`
+- サイズ: 440,020,294 bytes
+- SHA-256: `0809d25d8f011a8d74512b2969abed61091e3a08c82d37dbe51f071f1cd8ce4f`
 - APK 署名: v2・v3 検証済み
 
 R2 は Standard ストレージクラスを使い、公開用の `r2.dev` URL は有効にしない。Worker は GET と HEAD のみを許可し、部分取得に対応する。旧v31・v36・v37の直接URLと `latest.apk` のURLは、現行版にリダイレクトする。旧v31オブジェクトは非公開バケット内に保管する。
@@ -93,3 +93,6 @@ v41.6.1 / Android64：アクセ66個へ拡張。全26人の役割別・絆のお
 
 
 v41.7.0 / Android65：隠し仲間ブラックと専用作戦を追加。ナギを同じIDの新タイプsleightへ刷新し、旧育成・装備・編成を移行。新画像35枚を同梱。
+
+
+v41.7.1 / Android66：ユーザー承認済みのナギ頭身を全身8ポーズとCGへ反映。足元と演出位置を調整し、性能・セーブは維持。
