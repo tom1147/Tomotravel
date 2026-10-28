@@ -9,6 +9,7 @@ import Footer from '../components/Footer.astro';
 import { useI18n, locales, langMeta, localePath, pagePath, defaultLang } from '../i18n';
 import { asset } from '../lib/url';
 import { site } from '../config/site';
+import { pricing } from '../config/pricing';
 
 interface Props {
   title?: string;
@@ -24,7 +25,11 @@ const { t, lang, meta } = useI18n(Astro.url);
 const { title, description = t.meta.defaultDescription, og = 'default.jpg', type = 'website', noindex = false, glow } = Astro.props;
 const fullTitle = title ? `${title}${t.meta.titleSuffix}` : t.meta.defaultTitle;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = new URL(asset(`og/${lang}/${og}`), Astro.site).href;
+const ogImageUrl = new URL(asset(`og/${lang}/${og}`), Astro.site);
+if (og === 'default.jpg' || og === 'pricing.jpg') {
+  ogImageUrl.searchParams.set('price', String(pricing.websiteFrom));
+}
+const ogImage = ogImageUrl.href;
 const path = pagePath(Astro.url.pathname);
 const alternates = locales.map((l) => ({ hreflang: langMeta[l].html, href: new URL(localePath(l, path), Astro.site).href }));
 const xDefault = new URL(localePath(defaultLang, path), Astro.site).href;
