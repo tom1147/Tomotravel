@@ -34,7 +34,7 @@ Tomo Travel 側のファイルや設定は一切変更していません。
 | `/portfolio/works/` | 制作実績の一覧 |
 | `/portfolio/works/tomo-travel/` ほか | 実績ごとの詳細ページ（LinkedIn から直接リンクできる独立URL） |
 | `/portfolio/services/` | サービス |
-| `/portfolio/pricing/` | 料金（制作 $100〜、月額保守 $30、単発の修正は応相談、よくある質問） |
+| `/portfolio/pricing/` | 料金（制作 $150〜、月額保守 $30、単発の修正は応相談、よくある質問） |
 | `/portfolio/about/` | プロフィール |
 | `/portfolio/contact/` | お問い合わせフォーム（Tomo Travel の Netlify フォームに届きます） |
 
@@ -63,7 +63,7 @@ Node.js 20.3 以上が必要です。
 | --- | --- |
 | 文章・見出し・ボタンの文言 | `src/i18n/en.ts`（英語）・`src/i18n/ja.ts`（日本語）・`src/i18n/zh.ts`（中国語）。3つとも同じ場所を直します |
 | 実績の内容（説明・機能・画像・URL） | `src/data/works.ts`（文章と画像の説明は3言語で書いています） |
-| 料金の数字（$100・$30・月2回） | `src/config/pricing.ts`（全ページ・全言語に反映） |
+| 料金の数字（$150・$30・月2回） | `src/config/pricing.ts`（全ページ・全言語に反映） |
 | お問い合わせフォームの送信先・SNS・ゲームのリンク | `src/config/site.ts` |
 | 左上のロゴのアイコン | `src/assets/brand/tomoicon.png`（ブラウザのタブのアイコンは `public/favicon.png` など） |
 | 色・文字サイズ・余白 | `src/styles/global.css` の先頭（`:root`）。言語ごとの文字組みも同じファイル（`html:lang(en)` など） |

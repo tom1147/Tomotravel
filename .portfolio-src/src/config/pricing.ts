@@ -6,7 +6,7 @@ export const pricing = {
   currency: 'USD',
   symbol: '$',
   /** Webサイト・LP制作（1回払い）の開始価格 */
-  websiteFrom: 100,
+  websiteFrom: 150,
   /** 月額保守 */
   careMonthly: 30,
   /** 月額保守で受け付ける軽微な更新の回数（月あたり） */

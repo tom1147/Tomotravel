@@ -36,7 +36,7 @@ const ja = {
     backToWorks: '制作実績の一覧へ',
     next: '次の実績',
     watchOnYoutube: 'YouTubeで見る',
-    /** 「$100から」の「から」。英語は前に付く（From $100）ので fromPre を使います */
+    /** 「$150から」の「から」。英語は前に付く（From $150）ので fromPre を使います */
     fromPre: '',
     from: 'から',
     perMonth: '/月',
