@@ -54,7 +54,7 @@ const en: Dict = {
     },
     works: {
       title: 'Selected work',
-      lead: 'I design, build and run my own travel media site, Tomo Travel — every page, every article and both of its games. Here are a few of the websites I’ve made.',
+      lead: 'I design and run Tomo Travel, write its articles and make its three games. Here are a few of the websites I’ve built.',
       more: 'View all work',
     },
     services: {
@@ -95,7 +95,7 @@ const en: Dict = {
           pre: '',
           amount: '',
           unit: 'Quote on request',
-          href: 'works/tomo-nightwalker/',
+          href: 'works/#games',
         },
       ],
       priceNote: 'All prices are in US dollars.',
@@ -195,7 +195,7 @@ const en: Dict = {
       title: 'Mini games and interactive content',
       body: 'Browser mini games and interactive web content — projects that go beyond a standard website.',
       items: ['Original mini games', 'Interactive web content', 'AI-assisted images and video'],
-      link: 'See the game',
+      link: 'Explore the games',
     },
     priceButton: 'View pricing',
   },
@@ -304,7 +304,7 @@ const en: Dict = {
     role: 'Freelance web designer and video creator',
     intro: [
       'I’m an independent creator based in Japan. I design and build websites and landing pages for individuals, creators and small businesses, handling everything myself from design to launch.',
-      'I also run a travel YouTube channel, Tomo Travel Channel, where I plan, film and edit every video. I built the channel’s travel media website and two browser games based on it, too.',
+      'I also plan, film and edit the videos on my YouTube channel, Tomo Travel Channel. My travels inspired the channel’s website and three browser games spanning merge puzzles, tower defense and rhythm games.',
     ],
     doLabel: 'What I do',
     do: [
@@ -380,7 +380,8 @@ const en: Dict = {
     title: 'Work',
     lead: 'A selection of the websites, videos and games I’ve made. Open any project for details and a link to the live site.',
     webTitle: 'Websites',
-    beyondTitle: 'Video and games',
+    gamesTitle: (count: number) => `Original games (${count})`,
+    videoTitle: 'Video',
   },
 
   workDetail: {

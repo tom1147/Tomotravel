@@ -59,18 +59,18 @@ const description = w.summary.length > max ? `${w.summary.slice(0, max - 2)}…`
           {isWeb && work.url && (
             <a class="btn" href={work.url} target="_blank" rel="noopener">{t.common.viewSite}<span class="visually-hidden">{paren(t.common.external)}</span><Icon name="external" /></a>
           )}
-          {isGame && (
+          {isGame && work.url && (
             <>
-              <a class="btn" href={site.game.web} target="_blank" rel="noopener">{g.play}<span class="visually-hidden">{paren(t.common.external)}</span><Icon name="external" /></a>
-              {site.game.apk && <a class="btn btn--ghost" href={site.game.apk} rel="noopener">{g.apk}<Icon name="download" /></a>}
-              {site.game.itch && <ExtLink href={site.game.itch}>{g.itch}</ExtLink>}
+              <ExtLink href={work.url} class="btn">{g.play}</ExtLink>
+              {work.apk && <a class="btn btn--ghost" href={work.apk} rel="noopener">{g.apk}<Icon name="download" /></a>}
+              {work.itch && <ExtLink href={work.itch}>{g.itch}</ExtLink>}
             </>
           )}
           {isVideo && (
             <a class="btn" href={site.social.youtube} target="_blank" rel="noopener">{v.channel}<span class="visually-hidden">{paren(t.common.external)}</span><Icon name="external" /></a>
           )}
         </div>
-        {isGame && site.game.apk && <p class="domain-note">{g.apkNote}</p>}
+        {isGame && work.apk && <p class="domain-note">{g.apkNote}</p>}
         {work.sharedDomain && <p class="domain-note">{d.sharedDomainNote}</p>}
       </div>
     </div>
@@ -92,7 +92,7 @@ const description = w.summary.length > max ? `${w.summary.slice(0, max - 2)}…`
 
     {isGame && (
       <div class="detail-stage">
-        <Browser shot={work.cover} title="Tomo Nightwalker" ratio="16 / 9" eager sizes="(min-width: 1320px) 1320px, 94vw" widths={[640, 960, 1280]} />
+        <Browser shot={work.cover} title={w.name} ratio={`${work.cover.src.width} / ${work.cover.src.height}`} eager sizes="(min-width: 1320px) 1320px, 94vw" widths={[640, 960, Math.min(1280, work.cover.src.width)]} />
       </div>
     )}
 
@@ -152,7 +152,7 @@ const description = w.summary.length > max ? `${w.summary.slice(0, max - 2)}…`
         <div class="shotgrid">
           {work.gallery.pc.map((s) => (
             <figure>
-              <div class="shot"><Image src={s.src} alt={s.alt} widths={[640, 960, 1280]} sizes="(min-width: 1320px) 650px, (min-width: 760px) 46vw, 92vw" loading="lazy" decoding="async" /></div>
+              <div class="shot"><Image src={s.src} alt={s.alt} widths={[640, 960, 1280].filter((width) => width < s.src.width).concat(s.src.width)} sizes="(min-width: 1320px) 650px, (min-width: 760px) 46vw, 92vw" loading="lazy" decoding="async" /></div>
               <figcaption class="domain-note">{s.alt}</figcaption>
             </figure>
           ))}
@@ -177,7 +177,7 @@ const description = w.summary.length > max ? `${w.summary.slice(0, max - 2)}…`
     </div>
   </section>
 
-  {isGame && (
+  {work.slug === 'tomo-nightwalker' && (
     <section class="section section--tight" aria-labelledby="ai-title">
       <div class="wrap split">
         <h2 class="sh__title" id="ai-title">{g.aiTitle}</h2>

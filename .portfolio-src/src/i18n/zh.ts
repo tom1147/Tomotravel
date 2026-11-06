@@ -54,7 +54,7 @@ const zh: Dict = {
     },
     works: {
       title: '作品',
-      lead: '我的旅行媒体网站“Tomo Travel”，从网站设计到文章和两款游戏，全部由我亲手制作。这里从我做过的网站中精选几个进行介绍。',
+      lead: '我设计并运营旅行媒体网站“Tomo Travel”，也负责撰写文章和开发三款游戏。这里选了几个我做过的网站。',
       more: '查看全部作品',
     },
     services: {
@@ -95,7 +95,7 @@ const zh: Dict = {
           pre: '',
           amount: '',
           unit: '根据内容报价',
-          href: 'works/tomo-nightwalker/',
+          href: 'works/#games',
         },
       ],
       priceNote: '所有价格均以美元计。',
@@ -304,7 +304,7 @@ const zh: Dict = {
     role: '自由网页设计师 / 视频创作者',
     intro: [
       '我是一名住在日本的独立创作者。为个人、创作者和小型店铺制作网站和落地页，从设计到上线全部独立完成。',
-      '我还运营旅行YouTube频道“Tomo Travel Channel”，擅长视频的策划、拍摄和剪辑。与频道联动的旅行媒体网站，以及以频道为题材的两款浏览器游戏，也都是我亲手制作的。',
+      '我还负责旅行YouTube频道“Tomo Travel Channel”的视频策划、拍摄和剪辑。我为频道制作了旅行网站，也从旅途中取材，开发了合成益智、塔防和节奏三款浏览器游戏。',
     ],
     doLabel: '主要工作',
     do: [
@@ -380,7 +380,8 @@ const zh: Dict = {
     title: '作品',
     lead: '从我制作过的网站、视频和游戏中精选介绍。在详情页可以查看实际网站。',
     webTitle: '网站',
-    beyondTitle: '视频・游戏',
+    gamesTitle: (count: number) => `原创游戏（${count}款）`,
+    videoTitle: '视频',
   },
 
   workDetail: {

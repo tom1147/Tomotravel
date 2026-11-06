@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import HeroWall from '../components/HeroWall.astro';
+import MediaWorkCard from '../components/MediaWorkCard.astro';
 import WorkPanel from '../components/WorkPanel.astro';
 import SectionHead from '../components/SectionHead.astro';
 import VideoCard from '../components/VideoCard.astro';
@@ -10,12 +11,15 @@ import ContactBand from '../components/ContactBand.astro';
 import Icon from '../components/Icon.astro';
 import { useI18n } from '../i18n';
 import { site } from '../config/site';
-import { webWorksFor, getWork, videosFor, img } from '../data/works';
+import { worksFor, getWork, videosFor, img } from '../data/works';
 
 const { t, u, lang, paren } = useI18n(Astro.url);
 
 const h = t.home;
-const webWorks = webWorksFor(lang);
+const works = worksFor(lang);
+const webWorks = works.filter((work) => work.kind === 'web');
+const games = works.filter((work) => work.kind === 'game');
+const nightwalker = getWork('tomo-nightwalker', lang);
 const videos = videosFor(lang);
 const s = h.services;
 
@@ -133,23 +137,27 @@ const rowThumbs = {
   <!-- ゲーム -->
   <section class="section section--flush" aria-labelledby="game-title">
     <div class="wrap">
+      <SectionHead title={t.worksPage.gamesTitle(games.length)} id="game-title" />
       <div class="gameband">
         <div class="gameband__bg">
-          <Image src={img('works/tomo-nightwalker/title.webp')} alt={getWork('tomo-nightwalker', lang).cover.alt} widths={[640, 1280]} sizes="(min-width: 1400px) 1400px, 100vw" loading="lazy" />
+          <Image src={nightwalker.cover.src} alt={nightwalker.cover.alt} widths={[640, 1280]} sizes="(min-width: 1400px) 1400px, 100vw" loading="lazy" />
         </div>
         <div class="gameband__inner">
           <p class="gameband__label">{h.game.label}</p>
-          <h2 id="game-title">{h.game.title}</h2>
+          <h3>{h.game.title}</h3>
           <p>{h.game.body}</p>
           <p class="pitch">{h.game.pitch}</p>
           <div class="actions">
             <a class="btn" href={u('works/tomo-nightwalker/')}>{h.game.ctaDetail}</a>
-            <ExtLink href={site.game.web} class="btn btn--ghost">{h.game.ctaPlay}</ExtLink>
-            {site.game.apk && <a class="btn btn--ghost" href={site.game.apk} rel="noopener">{h.game.ctaApk}<Icon name="download" /></a>}
+            {nightwalker.url && <ExtLink href={nightwalker.url} class="btn btn--ghost">{h.game.ctaPlay}</ExtLink>}
+            {nightwalker.apk && <a class="btn btn--ghost" href={nightwalker.apk} rel="noopener">{h.game.ctaApk}<Icon name="download" /></a>}
           </div>
-          {site.game.apk && <p class="gameband__note">{h.game.apkNote}</p>}
+          {nightwalker.apk && <p class="gameband__note">{h.game.apkNote}</p>}
         </div>
       </div>
+      <ul class="wgrid">
+        {games.filter((work) => work.slug !== nightwalker.slug).map((work) => <li><MediaWorkCard work={work} /></li>)}
+      </ul>
     </div>
   </section>
 

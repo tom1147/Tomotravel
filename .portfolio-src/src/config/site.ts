@@ -39,11 +39,19 @@ export const site = {
     linkedin: '',
   },
 
-  game: {
-    web: 'https://tomo-nightwalker.pages.dev/',
-    itch: 'https://tomotravel.itch.io/tomo-nightwalker',
-    /** Android版APK（Cloudflare Workers経由で最新版を配信）。空にするとボタンは非表示 */
-    apk: 'https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk',
+  games: {
+    'tomo-travel-music': {
+      url: 'https://tomotravelmusic.pages.dev/',
+      apk: 'https://tomotravelmusic.pages.dev/TomoTravelMusic.apk',
+    },
+    'tomo-game': {
+      url: 'https://tomo-travel-game.pages.dev/',
+    },
+    'tomo-nightwalker': {
+      url: 'https://tomo-nightwalker.pages.dev/',
+      itch: 'https://tomotravel.itch.io/tomo-nightwalker',
+      apk: 'https://tomo-nightwalker-apk.tom-middle-pakipaki2.workers.dev/TomoNightwalker-Android-latest.apk',
+    },
   },
 } as const;
 

@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+import { useI18n } from '../i18n';
+import { isLatin, type LocalizedWork } from '../data/works';
+
+interface Props { work: LocalizedWork }
+const { work } = Astro.props;
+const { u } = useI18n(Astro.url);
+---
+<a class="wcard" href={u(`works/${work.slug}/`)}>
+  <div class="wcard__stage wcard__stage--plain" style={`--tint:${work.tint};--glow:${work.glow}`}>
+    <div class="wcard__img">
+      <Image src={work.cover.src} alt={work.cover.alt} widths={[480, 800, work.cover.src.width]} sizes="(min-width: 900px) 40vw, 90vw" loading="lazy" decoding="async" />
+    </div>
+  </div>
+  <div>
+    <p class="wcard__genre">{work.t.genre}</p>
+    <h3 class:list={['wcard__name', { en: isLatin(work.t.name) }]}>{work.t.name}</h3>
+    <p class="wcard__short">{work.t.short}</p>
+  </div>
+</a>

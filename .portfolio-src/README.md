@@ -38,7 +38,7 @@ Tomo Travel 側のファイルや設定は一切変更していません。
 | `/portfolio/about/` | プロフィール |
 | `/portfolio/contact/` | お問い合わせフォーム（Tomo Travel の Netlify フォームに届きます） |
 
-実績の詳細ページ：`tomo-travel` / `k-amigo` / `kiss-me` / `k-sayuri` / `tomo-nightwalker` / `tomo-travel-channel`
+実績の詳細ページ：`tomo-travel` / `k-amigo` / `kiss-me` / `k-sayuri` / `tomo-travel-music` / `tomo-game` / `tomo-nightwalker` / `tomo-travel-channel`
 
 ## 直して公開するまで
 
@@ -95,5 +95,5 @@ Node.js 20.3 以上が必要です。
 ## 画像について
 
 - Webサイトのスクリーンショットは、各サイトの公開中のソース（このPCのクローン）をブラウザで表示して撮影したものです。PC表示は 1440px 幅、スマートフォン表示は 390px 幅。
-- 動画のサムネイルは YouTube の公開サムネイル、ゲーム画面は Tomo Nightwalker の確認用スクリーンショットを使用しています。
+- 動画には YouTube の公開サムネイルを使用しています。ゲームには各作品のタイトルイラストやスクリーンショットを使用し、とも旅ミュージックでは選曲画面と演奏画面を紹介しています。
 - プロフィール写真は既存のアイコン画像（500×500）の背景を外したものです。より大きい写真があれば `src/assets/about/tomo.webp` を差し替えてください。

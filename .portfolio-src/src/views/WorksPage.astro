@@ -1,22 +1,31 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Browser from '../components/Browser.astro';
 import Phone from '../components/Phone.astro';
+import MediaWorkCard from '../components/MediaWorkCard.astro';
 import ContactBand from '../components/ContactBand.astro';
 import { useI18n } from '../i18n';
-import { worksFor, webWorksFor, isLatin } from '../data/works';
+import { worksFor } from '../data/works';
 
-const { t, u, lang, paren } = useI18n(Astro.url);
+const { t, u, lang } = useI18n(Astro.url);
 
 const p = t.worksPage;
-const webWorks = webWorksFor(lang);
-const beyond = worksFor(lang).filter((w) => w.kind !== 'web');
+const works = worksFor(lang);
+const webWorks = works.filter((w) => w.kind === 'web');
+const games = works.filter((w) => w.kind === 'game');
+const mediaGroups = [
+  { id: 'games', title: p.gamesTitle(games.length), works: games },
+  { id: 'video', title: p.videoTitle, works: works.filter((w) => w.kind === 'video') },
+];
 ---
 <Base title={p.title} description={p.lead} og="works.jpg">
   <div class="wrap page-head">
-    <h1>{p.title}</h1>
+    <h1 id="works-title">{p.title}</h1>
     <p class="page-head__lead">{p.lead}</p>
+    <nav class="works-jumps" aria-labelledby="works-title">
+      <a class="textlink" href="#web-title">{p.webTitle}</a>
+      {mediaGroups.map((group) => <a class="textlink" href={`#${group.id}`}>{group.title}</a>)}
+    </nav>
   </div>
 
   <section class="wrap" aria-labelledby="web-title">
@@ -40,27 +49,14 @@ const beyond = worksFor(lang).filter((w) => w.kind !== 'web');
     </ul>
   </section>
 
-  <section class="wrap section" aria-labelledby="beyond-title">
-    <h2 class="group-title" id="beyond-title">{p.beyondTitle}</h2>
-    <ul class="wgrid">
-      {beyond.map((w) => (
-        <li>
-          <a class="wcard" href={u(`works/${w.slug}/`)}>
-            <div class="wcard__stage wcard__stage--plain" style={`--tint:${w.tint};--glow:${w.glow}`}>
-              <div class="wcard__img">
-                <Image src={w.cover.src} alt={w.cover.alt} widths={[480, 800, 1200].filter((x) => x <= w.cover.src.width)} sizes="(min-width: 1320px) 560px, (min-width: 900px) 42vw, 85vw" loading="lazy" decoding="async" />
-              </div>
-            </div>
-            <div>
-              <p class="wcard__genre">{w.t.genre}</p>
-              <h3 class:list={['wcard__name', { en: isLatin(w.t.name) }]}>{w.t.name}</h3>
-              <p class="wcard__short">{w.t.short}</p>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
+  {mediaGroups.map((group) => (
+    <section class="wrap works-group" aria-labelledby={group.id}>
+      <h2 class="group-title" id={group.id}>{group.title}</h2>
+      <ul class:list={['wgrid', { 'wgrid--games': group.id === 'games' }]}>
+        {group.works.map((work) => <li><MediaWorkCard work={work} /></li>)}
+      </ul>
+    </section>
+  ))}
 
   <ContactBand />
 </Base>

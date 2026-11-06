@@ -1,5 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import type { Lang } from '../i18n';
+import { site } from '../config/site';
 
 /**
  * 制作実績のデータ。
@@ -41,6 +42,8 @@ type RawWork = {
   slug: string;
   kind: 'web' | 'video' | 'game';
   url?: string;
+  apk?: string;
+  itch?: string;
   /** URL表示用（https:// を除いたもの） */
   urlLabel?: string;
   /** 店舗サイト：共通ドメインの注記を出すかどうか */
@@ -94,7 +97,7 @@ const works: RawWork[] = [
         short: 'A travel media site linked to my YouTube channel — every article and game made by me.',
         genre: 'Travel media and YouTube companion site',
         summary:
-          'The official website for my travel YouTube channel. Beyond designing and building the site, I write the articles and made both of the games you can play on it. It gathers the prices, directions and travel tips that don’t fit in a video, so viewers can move between videos and articles while planning their trip.',
+          'The official website for my travel YouTube channel. I designed and built the site, write the travel guides and made its three browser games. The articles cover prices, directions and travel tips that don’t fit in a video, so viewers can use both while planning their trip.',
         audience: 'Japanese travelers planning trips to Southeast Asia (the Philippines, Vietnam, Thailand and more), and viewers of the channel',
         role: 'Planning, design, development, writing, game development and operation',
         design: [
@@ -106,7 +109,7 @@ const works: RawWork[] = [
           'Two-way links between articles and videos (related videos in articles, articles from the video list)',
           'Articles organized by region and series — Cebu, Manila, Ho Chi Minh City and more',
           'Video directory and KTV guide pages',
-          'Two original games (the merge puzzle “Tomo Game” and the tower defense game “Tomo Nightwalker”)',
+          'Three original games spanning merge puzzles (Tomo Game), tower defense (Tomo Nightwalker) and rhythm games (Tomo Travel Music)',
           'Contact form',
           'SEO basics such as structured data and sitemaps',
           'Responsive design',
@@ -117,7 +120,7 @@ const works: RawWork[] = [
         short: 'YouTubeチャンネルと連動した旅行メディア。記事やゲームも含めて、すべて自分で制作しています。',
         genre: '旅行メディア・YouTube連携サイト',
         summary:
-          '自分で運営している旅行YouTube「とも旅ちゃんねる」の公式サイトです。サイトのデザインと実装だけでなく、旅行記などの記事や、サイトで遊べる2本のゲームもすべて自分で制作しています。動画だけでは伝えきれない料金やアクセス、旅の情報を記事にまとめ、動画と記事を行き来しながら旅の準備ができる旅行メディアとして運営しています。',
+          '旅行YouTube「とも旅ちゃんねる」の公式サイトです。サイトのデザインと実装、旅行記の執筆、ブラウザで遊べる3本のゲームの制作を手がけています。記事では料金や行き方など、旅の準備をするときに動画とあわせて読みたい情報をまとめました。',
         audience: 'フィリピン・ベトナム・タイなど、東南アジアへの旅行を考えている日本人旅行者と、チャンネルの視聴者',
         role: '企画・デザイン・実装・記事執筆・ゲーム制作・運営',
         design: [
@@ -129,7 +132,7 @@ const works: RawWork[] = [
           '記事と動画の相互リンク（記事内の関連動画、動画一覧から紹介記事へ）',
           'セブ島・マニラ・ホーチミンなど、地域とシリーズ別の記事構成',
           '動画一覧ページとKTV情報ページ',
-          'オリジナルゲーム2本（マージパズル「Tomo Game」、タワーディフェンス「Tomo Nightwalker」）',
+          'オリジナルゲーム3本（マージパズル「Tomo Game」、タワーディフェンス「Tomo Nightwalker」、リズムゲーム「とも旅ミュージック」）',
           'お問い合わせフォーム',
           '構造化データやサイトマップなど、SEOの基本設定',
           'レスポンシブデザイン',
@@ -140,7 +143,7 @@ const works: RawWork[] = [
         short: '与我的YouTube频道联动的旅行媒体网站，文章和游戏也都由我亲手制作。',
         genre: '旅行媒体・YouTube联动网站',
         summary:
-          '我运营的旅行YouTube频道的官方网站。不仅是网站的设计与开发，旅行记等文章，以及网站上可以玩的两款游戏，也全部由我亲手制作。把视频里讲不完的价格、交通和旅行信息整理成文章，让观众可以在视频和文章之间来回浏览，轻松做好旅行准备。',
+          '这是我运营的旅行YouTube频道的官方网站。网站设计与开发、游记撰写和三款浏览器游戏的制作都由我负责。文章整理了视频里讲不完的价格、交通和旅行信息，方便观众在规划行程时对照查阅。',
         audience: '计划前往菲律宾、越南、泰国等东南亚地区旅行的日本游客，以及频道观众',
         role: '策划・设计・开发・撰稿・游戏制作・运营',
         design: [
@@ -152,7 +155,7 @@ const works: RawWork[] = [
           '文章与视频互相链接（文章内的相关视频、从视频列表跳转到介绍文章）',
           '按宿务、马尼拉、胡志明市等地区和系列整理的文章结构',
           '视频列表页和KTV信息页',
-          '两款原创游戏（合成解谜游戏“Tomo Game”、塔防游戏“Tomo Nightwalker”）',
+          '三款原创游戏，分别是合成益智游戏“Tomo Game”、塔防游戏“Tomo Nightwalker”和节奏游戏“Tomo Travel Music”',
           '联系表单',
           '结构化数据、网站地图等基础SEO设置',
           '响应式设计',
@@ -457,10 +460,90 @@ const works: RawWork[] = [
     },
   },
   {
+    slug: 'tomo-travel-music',
+    kind: 'game',
+    ...site.games['tomo-travel-music'],
+    tint: '#29150F',
+    glow: '#ECA15C',
+    cover: {
+      src: img('works/tomo-travel-music/cover.webp'),
+      alt: l('The jukebox artwork in Tomo Travel Music, with a neon music note and a city across the water at night', 'とも旅ミュージックのジュークボックスに描かれた、ネオンの音符と水辺の夜景', 'Tomo Travel Music 的点唱机插画，霓虹音符与水对岸的城市夜景相映'),
+    },
+    gallery: {
+      pc: [
+        { src: img('works/tomo-travel-music/record-select.webp'), alt: l('Browsing record sleeves in the jukebox before choosing a song', 'ジャケットをめくって曲を選ぶジュークボックスの画面', '在点唱机里翻看唱片封套，挑选要演奏的曲目') },
+        { src: img('works/tomo-travel-music/performance.webp'), alt: l('Six colored keys at the judgment line during a performance of Charm Music Night', '「Charm Music Night」の演奏画面。判定ラインに6色のキーが並ぶ', '演奏《Charm Music Night》时的画面，判定线上排列着六个彩色按键') },
+      ],
+      sp: [],
+    },
+    text: {
+      en: {
+        name: 'Tomo Travel Music',
+        short: 'Pick a record from the jukebox and play travel-inspired songs on six keys.',
+        genre: 'Rhythm game (browser / Android)',
+        summary: 'A six-key rhythm game built around a jukebox. Flip through record sleeves, listen to a preview and play along as notes reach the judgment line. Each of the 27 songs has five difficulty levels, for a total of 135 charts.',
+        role: 'Game design and development, chart production',
+        features: ['15-second song previews in the jukebox', 'Personal bests for score and combo, plus clear records for each chart', 'Portrait and landscape play with Japanese and English menus'],
+      },
+      ja: {
+        name: 'とも旅ミュージック',
+        short: 'ジュークボックスでレコードを選び、旅をテーマにした曲を6つのキーで演奏します。',
+        genre: 'リズムゲーム（ブラウザ / Android）',
+        summary: 'レコードのジャケットをめくり、気になる曲を試聴してから演奏できるリズムゲームです。音符が判定ラインに重なる瞬間に6つのキーを叩きます。全27曲に5段階の難易度があり、135譜面から選べます。',
+        role: 'ゲームの企画・開発、譜面制作',
+        features: ['選曲画面でサビ付近を約15秒試聴', '譜面ごとに最高スコア・最高コンボ・クリア状況を記録', '縦画面・横画面でのプレイ、日本語・英語の表示に対応'],
+      },
+      zh: {
+        name: 'Tomo Travel Music',
+        short: '在点唱机里挑一张唱片，用六个按键演奏以旅行为主题的乐曲。',
+        genre: '节奏游戏（浏览器 / 安卓）',
+        summary: '翻看唱片封套、试听曲目，再跟着音乐演奏。当音符到达判定线时，按下对应的键。游戏收录27首歌曲，每首有五档难度，共135张谱面。',
+        role: '游戏策划与开发、谱面制作',
+        features: ['选曲时可以试听约15秒的副歌片段', '每张谱面分别记录最高分、最高连击数和通关情况', '支持横屏和竖屏游玩，界面可切换日语和英语'],
+      },
+    },
+  },
+  {
+    slug: 'tomo-game',
+    kind: 'game',
+    ...site.games['tomo-game'],
+    tint: '#0F1E33',
+    glow: '#72C3D7',
+    cover: {
+      src: img('works/tomo-game/cover.webp'),
+      alt: l('Tomo Game title art with a crescent moon over a tropical beach', '三日月が浮かぶ南国のビーチを描いた「Tomo Game」のタイトルイラスト', 'Tomo Game 标题插画，热带海滩上空挂着一弯新月'),
+    },
+    text: {
+      en: {
+        name: 'Tomo Game',
+        short: 'Drop characters from my travels onto the board. Matching pairs merge and evolve.',
+        genre: 'Merge puzzle (browser)',
+        summary: 'A tropical puzzle game starring characters from my travels. Aim a drop so that two matching characters touch and evolve into the next one. A chain of five merges starts Fever and doubles your score.',
+        role: 'Game design and development',
+        features: ['Aim and drop with touch, mouse or keyboard controls', 'Consult the character guide to plan the next merge', 'Choose the background music and try to beat your personal best'],
+      },
+      ja: {
+        name: 'Tomo Game',
+        short: '旅で出会った仲間を落とし、同じ仲間をくっつけて進化させるパズルです。',
+        genre: 'マージパズル（ブラウザ）',
+        summary: '南国を舞台に、旅で出会った仲間を盤面に落としていくパズルです。同じ仲間どうしが触れると合体し、次の仲間に進化します。合体を5回連鎖させるとフィーバーに入り、得点が2倍になります。',
+        role: 'ゲームの企画・開発',
+        features: ['指・マウス・キーボードで落とす位置を調整', '仲間図鑑で進化の順番を確認', '好きなBGMを選び、自己ベストに挑戦'],
+      },
+      zh: {
+        name: 'Tomo Game',
+        short: '把旅途中遇见的伙伴落入棋盘，让相同的伙伴合体进化。',
+        genre: '合成益智游戏（浏览器）',
+        summary: '一款以热带海岛为背景的益智游戏。瞄准位置放下旅途中遇见的伙伴，相同的伙伴碰到一起就会合体，变成下一个角色。连续合成五次即可进入狂热模式，得分翻倍。',
+        role: '游戏策划与开发',
+        features: ['支持触屏、鼠标和键盘操作', '查看伙伴图鉴，规划下一次合成', '选择背景音乐，挑战个人最高分'],
+      },
+    },
+  },
+  {
     slug: 'tomo-nightwalker',
     kind: 'game',
-    url: 'https://tomo-nightwalker.pages.dev/',
-    urlLabel: 'tomo-nightwalker.pages.dev',
+    ...site.games['tomo-nightwalker'],
     tint: '#0B1726',
     glow: '#5CC8FF',
     cover: {
@@ -582,7 +665,9 @@ function localize(w: RawWork, lang: Lang) {
     slug: w.slug,
     kind: w.kind,
     url: w.url,
-    urlLabel: w.urlLabel,
+    urlLabel: w.urlLabel ?? (w.url && new URL(w.url).host),
+    apk: w.apk,
+    itch: w.itch,
     sharedDomain: w.sharedDomain,
     tint: w.tint,
     glow: w.glow,
