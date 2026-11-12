@@ -1,0 +1,24 @@
+/* Keep the A8 link and tracking image intact inside the site's existing buttons. */
+.ahamo-ad {
+    position: relative;
+    cursor: pointer;
+}
+
+.ahamo-ad > a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.ahamo-ad > a::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+}
+
+.ahamo-ad > img {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    width: 1px;
+    height: 1px;
+}
