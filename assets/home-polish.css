@@ -1,6 +1,36 @@
 /* Light motion and readable controls for the approved cinematic / C design. */
 .home-cinematic { --polish-time:240ms; --tap-target:44px; }
 .home-cinematic a.logo-text { transition:color var(--polish-time) var(--ease-out); }
+
+.home-cinematic .hero-game-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: .65em;
+  max-width: 100%;
+  min-height: var(--tap-target);
+  margin-top: clamp(6px, .8vw, 12px);
+  color: var(--color-ink);
+  font: 500 clamp(13px, 1.12vw, 17px)/1.55 var(--font-body);
+  text-decoration: none;
+}
+.hero-game-feature .hero-game-label {
+  padding-right: .75em;
+  border-right: 1px solid var(--color-gold-deep);
+  color: var(--color-accent);
+  font-size: .88em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.hero-game-feature .hero-game-title {
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold-deep);
+  text-underline-offset: .28em;
+}
+.hero-game-feature > [aria-hidden] { color: var(--color-accent); }
+.home-cinematic .hero-game-feature:is(:hover, :focus-visible) { color: var(--color-accent-hover); }
+@media (max-width: 639px) {
+  .hero-game-feature .hero-game-outlet { display: none; }
+}
 .home-cinematic .journey-atlas .atlas-sprite { display:block; object-fit:fill; }
 .home-cinematic .journey-atlas :is(.booking-picture,.prep-picture,.country-picture) > .atlas-sprite { object-fit:cover; }
 .home-cinematic .journey-atlas .gear-art > .atlas-sprite { object-fit:contain; }
