@@ -247,6 +247,7 @@
 }
 </script>
     <link rel="stylesheet" href="/assets/ahamo-ads.css">
+    <link rel="stylesheet" href="/assets/legacy-menu.css">
 </head>
 <body>
     <!-- ヘッダープレースホルダー -->
@@ -260,6 +261,9 @@
                     <!-- トップページへのリンク: blog/ から抜ける必要があるので ../ -->
                     <a href="https://tomotravel-pm.com/" class="logo-text">とも旅ちゃんねる<span class="vlog-text">VLOG</span></a>
                 </div>
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="メニューを開く">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
                 <nav role="navigation" aria-label="メインナビゲーション" id="main-nav">
                     <ul class="nav-menu">
                         <li class="article-game-link"><a href="https://tomotravel-pm.com/games/" aria-label="ゲーム一覧へ"><i class="fas fa-gamepad nav-icon" aria-hidden="true"></i>ゲーム</a></li>
@@ -279,9 +283,6 @@
                         <li><a href="https://x.com/tomotravel_pm" target="_blank" rel="noopener noreferrer" aria-label="X(旧Twitter)へ" class="social-nav-link"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
                     </ul>
                 </nav>
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
             </div>
         </div>
     </header>
@@ -662,7 +663,7 @@
 <!-- seo-include:footer-placeholder:end --></div>
 
     <!-- JavaScript (HTMLと同じ blog/ ディレクトリ内にある想定) -->
-    <script src="./script.js"></script>
+    <script src="./script.js?v=20261120"></script>
 
 <script id="video-discovery-script" src="/assets/video-discovery.js" defer></script>
 <script src="/assets/article-menu-offset.js" defer></script>

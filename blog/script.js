@@ -1,3 +1,5 @@
+const legacyMenuModule = import("/assets/legacy-menu.js");
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM fully loaded and parsed"); // デバッグ用ログ
 
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // === ヘッダー読み込み後に実行される初期化関数 ===
-    function initializeHeaderScript() {
+    async function initializeHeaderScript() {
         console.log("Attempting to initialize header scripts...");
 
         // --- ヘッダーのスクロール変化 ---
@@ -73,88 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
              console.error("Header element (#header) not found AFTER loading header.html");
         }
 
-        // --- ハンバーガーメニュー ---
-        const menuToggle = document.getElementById('menu-toggle'); // header.html内の要素を取得
-        const mainNav = document.getElementById('main-nav');       // header.html内の要素を取得
-        const body = document.body;
-        console.log("Menu toggle:", menuToggle, "Main nav:", mainNav);
-
-        // モバイルメニューを開閉する関数
-        function openMobileMenu() {
-            if (mainNav && menuToggle) {
-                mainNav.classList.add('active');
-                const icon = menuToggle.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                }
-                menuToggle.setAttribute('aria-expanded', 'true');
-                body.style.overflow = 'hidden'; // 背景のスクロールを禁止
-            }
-        }
-
-        function closeMobileMenu() {
-            // メニューがアクティブかどうかチェック
-            if (mainNav && menuToggle && mainNav.classList.contains('active')) {
-                mainNav.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-                menuToggle.setAttribute('aria-expanded', 'false');
-                body.style.overflow = ''; // 背景のスクロール禁止を解除
-            }
-        }
-
-        if (menuToggle && mainNav) {
-            menuToggle.setAttribute('aria-controls', 'main-nav');
-            menuToggle.setAttribute('aria-expanded', 'false');
-
-            menuToggle.addEventListener('click', function(event) {
-                event.stopPropagation(); // クリックイベントが伝播しないようにする
-                if (mainNav.classList.contains('active')) {
-                    closeMobileMenu();
-                } else {
-                    openMobileMenu();
-                }
-            });
-             console.log("Menu toggle click listener added.");
-
-            // ナビゲーションリンククリックでメニューを閉じる
-            const navLinks = mainNav.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // 今回はどのリンクでも閉じる
-                    closeMobileMenu();
-                });
-            });
-            console.log("Nav link click listeners added.");
-
-            // メニュー外クリックでメニューを閉じる
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = mainNav.contains(event.target);
-                const isClickOnToggle = menuToggle.contains(event.target);
-
-                if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('active')) {
-                    closeMobileMenu();
-                }
-            });
-            console.log("Document click listener for closing menu added.");
-
-             // ESCキーでメニューを閉じる
-             document.addEventListener('keydown', function(event) {
-                 if (event.key === 'Escape' && mainNav.classList.contains('active')) {
-                     closeMobileMenu();
-                 }
-             });
-            console.log("Document keydown listener for closing menu added.");
-
-        } else {
-            if (!menuToggle) console.error("Menu toggle element (#menu-toggle) not found AFTER loading header.html");
-            if (!mainNav) console.error("Main navigation element (#main-nav) not found AFTER loading header.html");
-        }
-         console.log("Header script initialization finished.");
+        const { initLegacyMenu } = await legacyMenuModule;
+        initLegacyMenu();
+        console.log("Header script initialization finished.");
     } // --- end of initializeHeaderScript ---
 
 

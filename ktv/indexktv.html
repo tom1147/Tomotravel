@@ -389,6 +389,11 @@
       color: #9af4ff;
     }
 
+    #malate-map-heading,
+    #ktv-videos-heading {
+      scroll-margin-top: 6rem;
+    }
+
     .map-section {
       margin: 34px 0 8px;
       padding: clamp(18px, 3vw, 28px);
@@ -1158,7 +1163,7 @@
       "publisher": {
         "@id": "https://tomotravel-pm.com/#organization"
       },
-      "dateModified": "2026-10-12",
+      "dateModified": "2026-11-20",
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "@id": "https://tomotravel-pm.com/ktv/indexktv#primaryimage",
@@ -1245,6 +1250,7 @@
   ]
 }
 </script>
+  <link rel="stylesheet" href="/assets/inquiry-paths.css">
 </head>
 
 <body>
@@ -1724,8 +1730,8 @@
           <span class="diamond">◇</span>
           新着・おすすめ記事
         </h2>
-        <a class="view-all" href="https://tomotravel-pm.com/ktv/indexktv">
-          すべての記事を見る →
+        <a class="view-all" href="#malate-map-heading">
+          地図で店舗を選ぶ →
         </a>
       </div>
 
@@ -1929,12 +1935,17 @@
 
     <section id="contact" class="contact-section" aria-labelledby="contact-heading">
       <h2 id="contact-heading">お問い合わせ</h2>
-      <p class="contact-lead">
-        お仕事のご依頼・撮影相談・掲載相談などはこちらからご連絡ください。<br>
-        詳細をご確認されたい方は、
-        <a href="https://tomotravel-pm.com/traveltest" class="detail-link">お仕事のご依頼の詳細はこちら <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </p>
-
+      <div class="inquiry-paths" role="group" aria-label="ご依頼の種類">
+          <div class="inquiry-path">
+            <a class="inquiry-choice" href="/traveltest">店舗を動画で紹介してほしい</a>
+            <div class="inquiry-resources"><a href="/videos/charm">店舗紹介の動画例</a></div>
+          </div>
+          <div class="inquiry-path">
+            <a class="inquiry-choice" href="/portfolio/ja/">Webサイトを作ってほしい</a>
+            <div class="inquiry-resources"><a href="/portfolio/ja/works/">制作実績</a><a href="/portfolio/ja/pricing/">制作料金</a></div>
+          </div>
+        </div>
+      <p class="contact-lead">掲載内容に関するお問い合わせはこちらのフォームからお送りください。</p>
       <div class="contact-form-container">
         <form name="contact" netlify netlify-honeypot="bot-field" hidden>
           <input type="text" name="name">

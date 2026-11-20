@@ -1,0 +1,69 @@
+.inquiry-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(100%, 46rem);
+  margin: 16px auto 24px;
+  text-align: left;
+}
+
+.inquiry-path {
+  padding: 10px 16px;
+  background: var(--journey-paper, transparent);
+  border: 1px solid currentColor;
+  border-color: color-mix(in srgb, currentColor 45%, transparent);
+  border-radius: 4px;
+}
+
+.inquiry-path a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.inquiry-path .inquiry-choice {
+  display: flex;
+  justify-content: space-between;
+  gap: .75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.inquiry-choice::after {
+  content: "";
+  width: .45em;
+  height: .45em;
+  flex: none;
+  margin-right: .2em;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+}
+
+.inquiry-path .inquiry-choice:is(:hover, :focus-visible) {
+  text-decoration: underline;
+}
+
+.inquiry-resources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
+  font-size: .875rem;
+}
+
+.inquiry-path a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .inquiry-paths {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
