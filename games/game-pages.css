@@ -1,0 +1,90 @@
+/* Shared shell for the game collection and its editorial features. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body.game-page {
+  --feature-night: #0d111d;
+  --feature-rule: #504939;
+  --feature-caption: #bdbbb6;
+  --feature-gap: clamp(16px, 4.5vw, 58px);
+  margin: 0;
+  background: var(--feature-night);
+}
+
+.game-page #header {
+  inset: 0 0 auto;
+  width: 100%;
+}
+
+.game-page #header .container {
+  margin-inline: auto;
+}
+
+.game-page .header-content {
+  position: relative;
+  align-items: center;
+}
+
+.game-page #header .nav-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.game-page #header a {
+  text-decoration: none;
+}
+
+.game-page .logo-text {
+  display: inline-block;
+}
+
+.game-page .menu-toggle {
+  cursor: pointer;
+}
+
+.cinematic-ready .game-page #page-main {
+  padding-top: 76px;
+}
+
+.feature-wrap {
+  width: min(100% - var(--feature-gap) * 2, 1000px);
+  margin-inline: auto;
+}
+
+.game-page .feature-footer {
+  margin: 0;
+  padding: 14px 0 20px;
+  border-color: var(--feature-rule);
+  background: var(--feature-night);
+}
+
+.feature-footer .feature-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+}
+
+.feature-footer a {
+  display: inline-block;
+  max-width: 100%;
+  padding-block: 5px;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .32em;
+  color: var(--feature-caption);
+  font: 400 13px/1.7 var(--font-body);
+}
+
+.game-page .feature-footer a:hover {
+  color: var(--color-accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+@media (min-width: 1200px) {
+  .game-page #page-main,
+  .cinematic-ready .game-page #page-main {
+    padding-top: 84px;
+  }
+}
