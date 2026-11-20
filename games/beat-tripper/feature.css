@@ -170,13 +170,6 @@
   margin-top: 14px;
 }
 
-.feature-page .feature-prose .feature-byline {
-  margin: 16px 0 0;
-  color: var(--color-accent);
-  font-family: var(--font-display);
-  text-align: right;
-}
-
 .feature-inquiry {
   display: flex;
   flex-wrap: wrap;
