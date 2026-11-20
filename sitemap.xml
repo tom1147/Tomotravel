@@ -259,7 +259,7 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <image:image>
       <image:loc>https://tomotravel-pm.com/_design-assets/20261003-c1/hero-night.webp</image:loc>
     </image:image>
@@ -2361,7 +2361,38 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/games/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-21</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/media/tomo-game-cover.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/media/nightwalker-cover.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/media/music-cover.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/media/tomo-game-play.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/media/tomo-game-cast.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/media/nightwalker-battle.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/media/music-play.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tomotravel-pm.com/games/beat-tripper/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/beat-tripper/stage.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://tomotravel-pm.com/games/beat-tripper/tomo-music-selection.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tomotravel-pm.com/ktv/charm</loc>
@@ -2572,6 +2603,6 @@
   </url>
   <url>
     <loc>https://tomotravel-pm.com/sitemap</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
 </urlset>
